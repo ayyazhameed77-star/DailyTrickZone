@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,123 +14,21 @@
     <meta property="og:url" content="https://dailyzone.com">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DailyZone - Your Daily Source of Knowledge">
+    <meta name="twitter:description" content="Blogging, Health, Travel, Earning Ideas & Web Development">
     <title>DailyZone - Blog, Health, Travel, Earning Ideas & Web Development</title>
+    <link rel="canonical" href="https://dailyzone.com">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Global Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* Header Styles */
-        .main-header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
-        .main-header .container { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-        .logo h1 { font-size: 1.8rem; font-weight: 700; }
-        .logo a { color: white; }
-        .nav-menu { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-        .nav-menu li a { color: white; font-weight: 500; transition: opacity 0.3s ease; }
-        .nav-menu li a:hover { opacity: 0.8; }
-        .header-actions { display: flex; gap: 1rem; }
-        .btn-login, .btn-signup, .btn-dashboard { padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; }
-        .btn-login { background: transparent; color: white; border: 2px solid white; }
-        .btn-signup { background: #fbbf24; color: #78350f; border: 2px solid #fbbf24; }
-        .btn-dashboard { background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid rgba(255, 255, 255, 0.3); }
-        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-        .mobile-menu-toggle span { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; }
-
-        /* Hero Section */
-        .hero-section { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 4rem 0; text-align: center; }
-        .hero-content h1 { font-size: 3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem; }
-        .hero-subtitle { font-size: 1.2rem; color: #475569; margin-bottom: 2rem; max-width: 800px; margin: 0 auto 2rem; }
-        .hero-search { max-width: 600px; margin: 2rem auto; display: flex; gap: 0.5rem; }
-        .hero-search input { flex: 1; padding: 1rem; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 1rem; }
-        .hero-search input:focus { border-color: #2563eb; }
-        .hero-search button { padding: 1rem 2rem; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-        .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; }
-        .stat-number { display: block; font-size: 2.5rem; font-weight: 700; color: #2563eb; }
-        .stat-label { display: block; font-size: 0.9rem; color: #64748b; margin-top: 0.5rem; }
-
-        /* Content Sections */
-        .content-section { padding: 4rem 0; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
-        .section-header p { font-size: 1.1rem; color: #64748b; }
-        .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .topic-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border: 2px solid transparent; }
-        .topic-card-link { text-decoration: none; display: block; }
-        .topic-card-link:hover .topic-card { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); border-color: #2563eb; cursor: pointer; }
-        .topic-icon { font-size: 2rem; display: inline-block; margin-bottom: 1rem; }
-        .topic-card h3 { font-size: 1.2rem; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem; }
-        .topic-card p { color: #64748b; font-size: 0.95rem; line-height: 1.5; }
-        .read-more-btn { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; border-radius: 6px; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
-        .topic-card-link:hover .read-more-btn { background: white; color: #2563eb; }
-
-        /* Section Specific Colors */
-        .health-section { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
-        .health-section .section-header h2 { color: #166534; }
-        .countries-section { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
-        .earning-section { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); }
-        .webdev-section { background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); }
-        .social-section { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
-
-        /* Countries Grid */
-        .countries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .country-group { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
-        .country-group h3 { font-size: 1.5rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem; border-bottom: 3px solid #f59e0b; padding-bottom: 0.5rem; }
-        .country-list { display: flex; flex-direction: column; gap: 0.5rem; }
-        .country-link { padding: 0.5rem 0.75rem; background: #fef3c7; border-radius: 6px; font-size: 0.9rem; color: #92400e; transition: all 0.2s ease; }
-        .country-link:hover { background: #fde68a; transform: translateX(5px); }
-
-        /* Newsletter */
-        .newsletter-section { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); padding: 4rem 0; color: white; }
-        .newsletter-content { text-align: center; max-width: 600px; margin: 0 auto; }
-        .newsletter-content h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
-        .newsletter-form { display: flex; gap: 0.5rem; margin-top: 2rem; }
-        .newsletter-form input { flex: 1; padding: 1rem; border: none; border-radius: 8px; font-size: 1rem; }
-        .newsletter-form button { padding: 1rem 2rem; background: white; color: #2563eb; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-
-        /* Footer */
-        .main-footer { background: #1e293b; color: #94a3b8; padding: 3rem 0 1rem; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-        .footer-about h3 { color: white; font-size: 1.5rem; margin-bottom: 1rem; }
-        .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
-        .social-links a { font-size: 1.5rem; transition: transform 0.2s ease; }
-        .social-links a:hover { transform: scale(1.2); }
-        .footer-links h4 { color: white; font-size: 1.1rem; margin-bottom: 1rem; }
-        .footer-links ul { display: flex; flex-direction: column; gap: 0.5rem; }
-        .footer-links ul li a:hover { color: white; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #334155; }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .main-header .container { flex-wrap: wrap; }
-            .main-nav { order: 3; width: 100%; display: none; }
-            .nav-menu { flex-direction: column; }
-            .mobile-menu-toggle { display: block; }
-            .hero-content h1 { font-size: 2rem; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .topics-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-        }
-        @media (max-width: 640px) {
-            .header-actions { display: none; }
-            .hero-search { flex-direction: column; }
-            .newsletter-form { flex-direction: column; }
-            .topics-grid { grid-template-columns: 1fr; }
-            .countries-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .topic-card { animation: fadeInUp 0.5s ease forwards; }
-    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="main-header">
         <div class="container">
-            <div class="logo"><a href="/"><h1>DailyZone</h1></a></div>
+            <div class="logo">
+                <a href="/">
+                    <h1>DailyZone</h1>
+                </a>
+            </div>
             <nav class="main-nav">
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
@@ -146,7 +45,11 @@
                 <a href="signup.html" class="btn-signup" id="signupBtn" style="display: none;">Sign Up</a>
                 <a href="dashboard.html" class="btn-dashboard" id="dashboardBtn" style="display: none;">Dashboard</a>
             </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -161,9 +64,18 @@
                     <button type="submit">Search</button>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat"><span class="stat-number">500+</span><span class="stat-label">Articles</span></div>
-                    <div class="stat"><span class="stat-number">200+</span><span class="stat-label">Countries</span></div>
-                    <div class="stat"><span class="stat-number">100+</span><span class="stat-label">Health Tips</span></div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Health Tips</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,16 +89,714 @@
                 <p>100+ Expert Blogging Topics to Help You Succeed Online</p>
             </div>
             <div class="topics-grid">
-                <a href="blog-post.html?id=1" class="topic-card-link"><div class="topic-card"><span class="topic-icon">📝</span><h3>How to start a blog in 2026</h3><p>Complete beginner's guide to launching your successful blog</p><span class="read-more-btn">Read More →</span></div></a>
-                <a href="blog-post.html?id=2" class="topic-card-link"><div class="topic-card"><span class="topic-icon">🚀</span><h3>Best blogging platforms for beginners</h3><p>Compare WordPress, Blogger, Medium and more</p><span class="read-more-btn">Read More →</span></div></a>
-                <a href="blog-post.html?id=3" class="topic-card-link"><div class="topic-card"><span class="topic-icon">🎯</span><h3>How to choose a blog niche</h3><p>Find the perfect niche for maximum growth</p><span class="read-more-btn">Read More →</span></div></a>
-                <a href="blog-post.html?id=4" class="topic-card-link"><div class="topic-card"><span class="topic-icon">🛠️</span><h3>Best free blogging tools</h3><p>Essential tools every blogger needs</p><span class="read-more-btn">Read More →</span></div></a>
-                <a href="blog-post.html?id=5" class="topic-card-link"><div class="topic-card"><span class="topic-icon">❌</span><h3>Blogging mistakes beginners make</h3><p>Avoid these common pitfalls and grow faster</p><span class="read-more-btn">Read More →</span></div></a>
+                <a href="blog-post.html?id=1" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📝</span>
+                        <h3>How to start a blog in 2026</h3>
+                        <p>Complete beginner's guide to launching your successful blog</p>
+                        <span class="read-more-btn">Read More →</span>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=2" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🚀</span>
+                        <h3>Best blogging platforms for beginners</h3>
+                        <p>Compare WordPress, Blogger, Medium and more</p>
+                        <span class="read-more-btn">Read More →</span>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=3" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎯</span>
+                        <h3>How to choose a blog niche</h3>
+                        <p>Find the perfect niche for maximum growth</p>
+                        <span class="read-more-btn">Read More →</span>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=4" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🛠️</span>
+                        <h3>Best free blogging tools</h3>
+                        <p>Essential tools every blogger needs</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=5" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">❌</span>
+                        <h3>Blogging mistakes beginners make</h3>
+                        <p>Avoid these common pitfalls and grow faster</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=6" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔍</span>
+                        <h3>How to write SEO friendly articles</h3>
+                        <p>Rank higher on Google with optimized content</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=7" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📊</span>
+                        <h3>Keyword research for beginners</h3>
+                        <p>Find profitable keywords that drive traffic</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=8" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📈</span>
+                        <h3>How to increase blog traffic</h3>
+                        <p>Proven strategies to boost your visitors</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=9" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📋</span>
+                        <h3>On-page SEO complete guide</h3>
+                        <p>Master on-page optimization techniques</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=10" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔗</span>
+                        <h3>Off-page SEO strategies</h3>
+                        <p>Build authority with external optimization</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=11" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔥</span>
+                        <h3>How to write viral blog posts</h3>
+                        <p>Create content that gets shared everywhere</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=12" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">✍️</span>
+                        <h3>Best content writing tips</h3>
+                        <p>Write engaging content that converts</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=13" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📌</span>
+                        <h3>How to find trending blog topics</h3>
+                        <p>Stay ahead with trending content ideas</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=14" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💰</span>
+                        <h3>Blogging for passive income</h3>
+                        <p>Build sustainable income streams</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=15" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🤝</span>
+                        <h3>Affiliate marketing for beginners</h3>
+                        <p>Start earning with affiliate programs</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=16" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💵</span>
+                        <h3>How to monetize a blog</h3>
+                        <p>Multiple revenue streams for bloggers</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=17" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔧</span>
+                        <h3>Best free SEO tools</h3>
+                        <p>Free tools to optimize your blog</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=18" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📺</span>
+                        <h3>Blogging vs YouTube earning</h3>
+                        <p>Compare earning potential of both platforms</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=19" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎨</span>
+                        <h3>How to create blog logo</h3>
+                        <p>Design a memorable brand identity</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=20" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💻</span>
+                        <h3>How to design blog website</h3>
+                        <p>Create a beautiful, user-friendly blog</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=21" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⚖️</span>
+                        <h3>WordPress vs Blogger comparison</h3>
+                        <p>Choose the right platform for you</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=22" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⚙️</span>
+                        <h3>How to install WordPress step by step</h3>
+                        <p>Complete WordPress installation guide</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=23" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎭</span>
+                        <h3>Best WordPress themes for blogging</h3>
+                        <p>Top themes for professional blogs</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=24" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔌</span>
+                        <h3>Best WordPress plugins</h3>
+                        <p>Essential plugins for every blog</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=25" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⚡</span>
+                        <h3>How to optimize website speed</h3>
+                        <p>Speed up your blog for better rankings</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=26" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⏱️</span>
+                        <h3>How to reduce website loading time</h3>
+                        <p>Techniques for faster page loads</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=27" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🆓</span>
+                        <h3>Best free keyword research tools</h3>
+                        <p>Find keywords without spending money</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=28" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">✅</span>
+                        <h3>How to get Google AdSense approval</h3>
+                        <p>Get approved fast with these tips</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=29" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🚫</span>
+                        <h3>AdSense mistakes to avoid</h3>
+                        <p>Common errors that get accounts banned</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=30" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎯</span>
+                        <h3>How to write high CTR titles</h3>
+                        <p>Craft headlines that get clicks</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=31" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🖼️</span>
+                        <h3>How to create attractive thumbnails</h3>
+                        <p>Design thumbnails that stand out</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=32" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📱</span>
+                        <h3>How to promote blog on social media</h3>
+                        <p>Drive traffic from social platforms</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=33" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📌</span>
+                        <h3>Pinterest traffic for blogs</h3>
+                        <p>Harness Pinterest for massive traffic</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=34" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">👥</span>
+                        <h3>Facebook traffic strategy</h3>
+                        <p>Grow your blog with Facebook marketing</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=35" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📸</span>
+                        <h3>Instagram traffic tips</h3>
+                        <p>Convert Instagram followers to readers</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=36" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📧</span>
+                        <h3>Email marketing for bloggers</h3>
+                        <p>Build relationships with email lists</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=37" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📮</span>
+                        <h3>How to build email list</h3>
+                        <p>Grow your subscriber base quickly</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=38" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎪</span>
+                        <h3>Best blogging niches for beginners</h3>
+                        <p>Profitable niches to start with</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=39" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔬</span>
+                        <h3>Micro niche blogging guide</h3>
+                        <p>Dominate small niches for big profits</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=40" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📃</span>
+                        <h3>How to write list articles</h3>
+                        <p>Master the art of listicles</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=41" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⭐</span>
+                        <h3>How to write product reviews</h3>
+                        <p>Write reviews that convert to sales</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=42" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⚖️</span>
+                        <h3>How to write comparison articles</h3>
+                        <p>Create helpful comparison content</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=43" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔗</span>
+                        <h3>How to get backlinks for blog</h3>
+                        <p>Build quality backlinks naturally</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=44" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">✍️</span>
+                        <h3>Guest posting guide</h3>
+                        <p>Land guest posts on authority sites</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=45" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔄</span>
+                        <h3>Internal linking SEO strategy</h3>
+                        <p>Boost SEO with smart internal links</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=46" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📊</span>
+                        <h3>How to improve Google ranking</h3>
+                        <p>Climb the search results ladder</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=47" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📝</span>
+                        <h3>How to write meta description</h3>
+                        <p>Craft compelling meta descriptions</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=48" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🖼️</span>
+                        <h3>How to optimize blog images</h3>
+                        <p>Optimize images for speed and SEO</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=49" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🗺️</span>
+                        <h3>How to create sitemap</h3>
+                        <p>Help search engines crawl your site</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=50" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🌐</span>
+                        <h3>How to submit website to Google</h3>
+                        <p>Get indexed faster on Google</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=51" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔍</span>
+                        <h3>Google Search Console guide</h3>
+                        <p>Master Google's webmaster tools</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=52" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📈</span>
+                        <h3>Google Analytics for beginners</h3>
+                        <p>Track and analyze your blog traffic</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=53" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📊</span>
+                        <h3>How to track website traffic</h3>
+                        <p>Monitor your blog's performance</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=54" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🖼️</span>
+                        <h3>Best free stock image websites</h3>
+                        <p>Find free images for your blog</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=55" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📅</span>
+                        <h3>Blogging content calendar guide</h3>
+                        <p>Plan your content strategically</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=56" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🤖</span>
+                        <h3>AI tools for bloggers</h3>
+                        <p>Leverage AI to boost productivity</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=57" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📄</span>
+                        <h3>How to write long-form content</h3>
+                        <p>Create comprehensive, valuable content</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=58" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🏛️</span>
+                        <h3>How to create pillar content</h3>
+                        <p>Build authority with cornerstone posts</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=59" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔮</span>
+                        <h3>Blogging trends in 2026</h3>
+                        <p>Stay ahead of blogging trends</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=60" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎤</span>
+                        <h3>Voice search SEO tips</h3>
+                        <p>Optimize for voice assistants</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=61" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📱</span>
+                        <h3>Mobile SEO optimization</h3>
+                        <p>Rank better on mobile searches</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=62" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⚡</span>
+                        <h3>Core Web Vitals guide</h3>
+                        <p>Meet Google's performance standards</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=63" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">✨</span>
+                        <h3>How to write engaging introductions</h3>
+                        <p>Hook readers from the first sentence</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=64" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💬</span>
+                        <h3>How to increase blog engagement</h3>
+                        <p>Get more comments and shares</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=65" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📉</span>
+                        <h3>How to reduce bounce rate</h3>
+                        <p>Keep visitors on your site longer</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=66" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎨</span>
+                        <h3>Blog design best practices</h3>
+                        <p>Create user-friendly blog designs</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=67" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎯</span>
+                        <h3>Minimalist blog design tips</h3>
+                        <p>Less is more in blog design</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=68" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📁</span>
+                        <h3>How to create blog categories</h3>
+                        <p>Organize your content effectively</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=69" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔤</span>
+                        <h3>Best fonts for websites</h3>
+                        <p>Choose readable, beautiful fonts</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=70" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎨</span>
+                        <h3>Best color combinations for blogs</h3>
+                        <p>Create appealing color schemes</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=71" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🏆</span>
+                        <h3>How to build authority website</h3>
+                        <p>Become a trusted source in your niche</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=72" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎯</span>
+                        <h3>How to build niche website</h3>
+                        <p>Dominate specific market segments</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=73" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📚</span>
+                        <h3>Blogging case studies</h3>
+                        <p>Learn from successful bloggers</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=74" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💰</span>
+                        <h3>How bloggers earn money</h3>
+                        <p>Real income strategies that work</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=75" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💵</span>
+                        <h3>Passive income blogging strategies</h3>
+                        <p>Build automated income streams</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=76" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📦</span>
+                        <h3>How to sell digital products</h3>
+                        <p>Monetize with ebooks, courses, templates</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=77" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎓</span>
+                        <h3>How to create online course</h3>
+                        <p>Build and sell your own courses</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=78" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🤝</span>
+                        <h3>Best affiliate programs</h3>
+                        <p>Top programs for maximum earnings</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=79" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📦</span>
+                        <h3>Amazon affiliate guide</h3>
+                        <p>Maximize Amazon Associates earnings</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=80" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💹</span>
+                        <h3>CPA marketing guide</h3>
+                        <p>Earn with cost-per-action marketing</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=81" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">👤</span>
+                        <h3>How to build personal brand</h3>
+                        <p>Stand out as a blogger</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=82" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⏱️</span>
+                        <h3>Blogging productivity tips</h3>
+                        <p>Get more done in less time</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=83" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📅</span>
+                        <h3>Time management for bloggers</h3>
+                        <p>Balance blogging with life</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=84" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">💻</span>
+                        <h3>Best laptop for blogging</h3>
+                        <p>Choose the right equipment</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=85" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📱</span>
+                        <h3>Best apps for bloggers</h3>
+                        <p>Essential mobile and desktop apps</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=86" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🤔</span>
+                        <h3>Blogging myths and facts</h3>
+                        <p>Separate truth from fiction</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=87" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">⚡</span>
+                        <h3>How to write faster blog posts</h3>
+                        <p>Increase your writing speed</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=88" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔄</span>
+                        <h3>How to repurpose blog content</h3>
+                        <p>Get more mileage from each post</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=89" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📢</span>
+                        <h3>Content marketing strategy</h3>
+                        <p>Plan your content for growth</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=90" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">✅</span>
+                        <h3>SEO checklist for bloggers</h3>
+                        <p>Complete SEO optimization list</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=91" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📋</span>
+                        <h3>Blog launch checklist</h3>
+                        <p>Everything you need before launch</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=92" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🏠</span>
+                        <h3>How to create blog homepage</h3>
+                        <p>Design an effective homepage</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=93" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">👥</span>
+                        <h3>Best blogging communities</h3>
+                        <p>Connect with other bloggers</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=94" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🎯</span>
+                        <h3>How to get first 1000 visitors</h3>
+                        <p>Milestone strategies for new blogs</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=95" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📧</span>
+                        <h3>How to get first 1000 email subscribers</h3>
+                        <p>Grow your list from zero</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=96" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔥</span>
+                        <h3>How to create viral content</h3>
+                        <p>Craft content that spreads</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=97" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📊</span>
+                        <h3>Blogging income report example</h3>
+                        <p>Real numbers from successful blogs</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=98" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">🔮</span>
+                        <h3>Future of blogging</h3>
+                        <p>What's coming next in blogging</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=99" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">👥</span>
+                        <h3>How to build blogging team</h3>
+                        <p>Scale with a team approach</p>
+                    </div>
+                </a>
+                <a href="blog-post.html?id=100" class="topic-card-link">
+                    <div class="topic-card">
+                        <span class="topic-icon">📖</span>
+                        <h3>Complete blogging guide for beginners</h3>
+                        <p>Everything you need to start</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Health Section -->
+    <!-- Health Blog Section -->
     <section id="health" class="content-section health-section">
         <div class="container">
             <div class="section-header">
@@ -194,16 +804,511 @@
                 <p>100+ Health Tips for a Better Lifestyle</p>
             </div>
             <div class="topics-grid">
-                <div class="topic-card"><span class="topic-icon">🌅</span><h3>Healthy morning routine tips</h3><p>Start your day with healthy habits</p></div>
-                <div class="topic-card"><span class="topic-icon">💧</span><h3>Benefits of drinking water daily</h3><p>Stay hydrated for optimal health</p></div>
-                <div class="topic-card"><span class="topic-icon">⚖️</span><h3>How to lose weight naturally</h3><p>Sustainable weight loss strategies</p></div>
-                <div class="topic-card"><span class="topic-icon">🏋️</span><h3>Best home workouts for beginners</h3><p>Exercise at home without equipment</p></div>
-                <div class="topic-card"><span class="topic-icon">🥗</span><h3>Healthy diet plan for beginners</h3><p>Nutrition basics for better health</p></div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌅</span>
+                    <h3>Healthy morning routine tips</h3>
+                    <p>Start your day with healthy habits</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💧</span>
+                    <h3>Benefits of drinking water daily</h3>
+                    <p>Stay hydrated for optimal health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⚖️</span>
+                    <h3>How to lose weight naturally</h3>
+                    <p>Sustainable weight loss strategies</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏋️</span>
+                    <h3>Best home workouts for beginners</h3>
+                    <p>Exercise at home without equipment</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🥗</span>
+                    <h3>Healthy diet plan for beginners</h3>
+                    <p>Nutrition basics for better health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🛡️</span>
+                    <h3>Foods that boost immunity</h3>
+                    <p>Strengthen your immune system</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>How to improve digestion naturally</h3>
+                    <p>Natural remedies for gut health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🚶</span>
+                    <h3>Benefits of walking daily</h3>
+                    <p>Simple exercise with big benefits</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🔥</span>
+                    <h3>Best exercises for weight loss</h3>
+                    <p>Effective workouts to burn fat</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏠</span>
+                    <h3>How to stay fit at home</h3>
+                    <p>Maintain fitness without a gym</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">😴</span>
+                    <h3>Tips for better sleep</h3>
+                    <p>Improve your sleep quality</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌙</span>
+                    <h3>Causes of insomnia and solutions</h3>
+                    <p>Overcome sleep problems naturally</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🧘</span>
+                    <h3>Yoga for beginners</h3>
+                    <p>Start your yoga journey today</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🧠</span>
+                    <h3>Meditation benefits for mental health</h3>
+                    <p>Find peace through meditation</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌸</span>
+                    <h3>Stress management tips</h3>
+                    <p>Handle stress effectively</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Natural ways to reduce stress</h3>
+                    <p>Holistic stress relief methods</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍳</span>
+                    <h3>Healthy breakfast ideas</h3>
+                    <p>Start your day with nutrition</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">✨</span>
+                    <h3>Foods for healthy skin</h3>
+                    <p>Eat your way to glowing skin</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Natural remedies for acne</h3>
+                    <p>Clear skin with natural treatments</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">✨</span>
+                    <h3>How to get glowing skin naturally</h3>
+                    <p>Natural beauty tips that work</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💇</span>
+                    <h3>Hair care tips for healthy hair</h3>
+                    <p>Maintain beautiful, strong hair</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌱</span>
+                    <h3>Best foods for hair growth</h3>
+                    <p>Nutrition for thicker hair</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Natural remedies for hair fall</h3>
+                    <p>Stop hair loss naturally</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">👁️</span>
+                    <h3>Eye care tips for screen users</h3>
+                    <p>Protect your eyes from screens</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">👁️</span>
+                    <h3>How to improve eyesight naturally</h3>
+                    <p>Natural vision improvement tips</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🎯</span>
+                    <h3>Tips to reduce belly fat</h3>
+                    <p>Lose stubborn abdominal fat</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💪</span>
+                    <h3>Best exercises for abs</h3>
+                    <p>Build a stronger core</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🤸</span>
+                    <h3>Benefits of stretching daily</h3>
+                    <p>Improve flexibility and health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍯</span>
+                    <h3>Home remedies for cold and cough</h3>
+                    <p>Natural relief from common ailments</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Natural remedies for sore throat</h3>
+                    <p>Soothe throat pain naturally</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">❤️</span>
+                    <h3>Best foods for heart health</h3>
+                    <p>Eat for a healthy heart</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💓</span>
+                    <h3>Tips to control blood pressure</h3>
+                    <p>Manage hypertension naturally</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">📊</span>
+                    <h3>How to maintain healthy cholesterol levels</h3>
+                    <p>Keep cholesterol in check</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍎</span>
+                    <h3>Foods that lower blood sugar</h3>
+                    <p>Manage diabetes with diet</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Natural ways to control diabetes</h3>
+                    <p>Holistic diabetes management</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌟</span>
+                    <h3>Healthy habits for long life</h3>
+                    <p>Live longer with these habits</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏃</span>
+                    <h3>Importance of regular exercise</h3>
+                    <p>Why exercise is essential</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🛡️</span>
+                    <h3>How to build strong immunity</h3>
+                    <p>Boost your body's defenses</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💊</span>
+                    <h3>Best vitamins for body health</h3>
+                    <p>Essential nutrients you need</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">☀️</span>
+                    <h3>Benefits of sunlight for health</h3>
+                    <p>Get your daily dose of vitamin D</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>How to detox your body naturally</h3>
+                    <p>Cleanse your body safely</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍋</span>
+                    <h3>Benefits of drinking lemon water</h3>
+                    <p>Start your day with lemon water</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍎</span>
+                    <h3>Apple cider vinegar health benefits</h3>
+                    <p>ACV for better health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍵</span>
+                    <h3>Green tea health benefits</h3>
+                    <p>Discover the power of green tea</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Herbal tea benefits</h3>
+                    <p>Natural teas for wellness</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍎</span>
+                    <h3>Benefits of eating fruits daily</h3>
+                    <p>Why fruits are essential</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🥕</span>
+                    <h3>Benefits of vegetables for health</h3>
+                    <p>Power of plant-based nutrition</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌾</span>
+                    <h3>Importance of fiber in diet</h3>
+                    <p>Why fiber matters for health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌱</span>
+                    <h3>Best protein sources for vegetarians</h3>
+                    <p>Plant-based protein options</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🥜</span>
+                    <h3>Healthy snacks for weight loss</h3>
+                    <p>Snack smart and lose weight</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💧</span>
+                    <h3>How to stay hydrated</h3>
+                    <p>Tips for proper hydration</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⚠️</span>
+                    <h3>Signs of dehydration</h3>
+                    <p>Recognize when you need water</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🦴</span>
+                    <h3>Tips for healthy bones</h3>
+                    <p>Maintain strong bones</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🥛</span>
+                    <h3>Calcium rich foods list</h3>
+                    <p>Foods for bone health</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">☀️</span>
+                    <h3>Vitamin D benefits</h3>
+                    <p>Why vitamin D is crucial</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⚡</span>
+                    <h3>How to improve metabolism</h3>
+                    <p>Boost your metabolic rate</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🚫</span>
+                    <h3>Tips to prevent obesity</h3>
+                    <p>Maintain healthy weight</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌟</span>
+                    <h3>Healthy lifestyle tips</h3>
+                    <p>Live your best life</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🧠</span>
+                    <h3>Importance of mental health</h3>
+                    <p>Prioritize your mental wellness</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">😊</span>
+                    <h3>Tips for positive thinking</h3>
+                    <p>Cultivate a positive mindset</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💪</span>
+                    <h3>How to stay motivated for fitness</h3>
+                    <p>Keep your fitness motivation high</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🎯</span>
+                    <h3>Fitness goals for beginners</h3>
+                    <p>Set achievable fitness targets</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏃</span>
+                    <h3>Benefits of running daily</h3>
+                    <p>Transform your health with running</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🚴</span>
+                    <h3>Cycling benefits for health</h3>
+                    <p>Pedal your way to fitness</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏊</span>
+                    <h3>Swimming benefits for body</h3>
+                    <p>Full-body workout in water</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">👴</span>
+                    <h3>Best exercises for seniors</h3>
+                    <p>Stay active at any age</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">👶</span>
+                    <h3>Healthy habits for children</h3>
+                    <p>Build healthy habits early</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏃</span>
+                    <h3>Importance of physical activity for kids</h3>
+                    <p>Keep children active and healthy</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🍱</span>
+                    <h3>Healthy school lunch ideas</h3>
+                    <p>Nutritious meals for kids</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🤰</span>
+                    <h3>Tips for healthy pregnancy</h3>
+                    <p>Guide for expecting mothers</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🚫</span>
+                    <h3>Foods to avoid during pregnancy</h3>
+                    <p>What not to eat when pregnant</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💪</span>
+                    <h3>Post pregnancy fitness tips</h3>
+                    <p>Get back in shape after baby</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">👩</span>
+                    <h3>Women's health tips</h3>
+                    <p>Health advice for women</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">👨</span>
+                    <h3>Men's health tips</h3>
+                    <p>Health advice for men</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏥</span>
+                    <h3>Importance of regular health checkups</h3>
+                    <p>Preventive healthcare matters</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🧍</span>
+                    <h3>How to maintain good posture</h3>
+                    <p>Stand and sit correctly</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💺</span>
+                    <h3>Tips to avoid back pain</h3>
+                    <p>Prevent and relieve back pain</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🤸</span>
+                    <h3>Exercises for neck pain</h3>
+                    <p>Relieve neck tension</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🦴</span>
+                    <h3>Tips for joint health</h3>
+                    <p>Maintain healthy joints</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌿</span>
+                    <h3>Natural remedies for headache</h3>
+                    <p>Relieve headaches naturally</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🧠</span>
+                    <h3>Migraine prevention tips</h3>
+                    <p>Avoid migraine triggers</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌬️</span>
+                    <h3>Benefits of deep breathing</h3>
+                    <p>Breathe better, feel better</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⚡</span>
+                    <h3>How to boost energy naturally</h3>
+                    <p>Natural energy boosters</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌙</span>
+                    <h3>Healthy evening routine</h3>
+                    <p>Wind down for better rest</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">😴</span>
+                    <h3>Importance of sleep for health</h3>
+                    <p>Why sleep is essential</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🛏️</span>
+                    <h3>Best bedtime habits</h3>
+                    <p>Sleep better tonight</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🚫</span>
+                    <h3>How to avoid junk food</h3>
+                    <p>Break unhealthy eating habits</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🥗</span>
+                    <h3>Healthy alternatives to junk food</h3>
+                    <p>Swap unhealthy for healthy</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⏰</span>
+                    <h3>Benefits of fasting for health</h3>
+                    <p>Health benefits of fasting</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">📅</span>
+                    <h3>Intermittent fasting guide</h3>
+                    <p>Complete IF guide for beginners</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">📈</span>
+                    <h3>Healthy weight gain tips</h3>
+                    <p>Gain weight the healthy way</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">💪</span>
+                    <h3>Foods for muscle growth</h3>
+                    <p>Eat to build muscle</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">📱</span>
+                    <h3>Best fitness apps</h3>
+                    <p>Apps to track your fitness</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏠</span>
+                    <h3>Home gym setup guide</h3>
+                    <p>Create your own workout space</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🏃</span>
+                    <h3>Healthy lifestyle for busy people</h3>
+                    <p>Stay healthy with a busy schedule</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⚡</span>
+                    <h3>Tips to stay active all day</h3>
+                    <p>Keep moving throughout the day</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">⚖️</span>
+                    <h3>Importance of balanced diet</h3>
+                    <p>Eat a variety of nutrients</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">🌟</span>
+                    <h3>Healthy living tips for beginners</h3>
+                    <p>Start your wellness journey</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">📅</span>
+                    <h3>Daily habits for better health</h3>
+                    <p>Small habits, big impact</p>
+                </div>
+                <div class="topic-card health-card">
+                    <span class="topic-icon">📖</span>
+                    <h3>Complete guide to healthy living</h3>
+                    <p>Your comprehensive health guide</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Countries Section -->
+    <!-- Country Blog Section -->
     <section id="countries" class="content-section countries-section">
         <div class="container">
             <div class="section-header">
@@ -211,37 +1316,279 @@
                 <p>206 Countries - Complete Travel Information</p>
             </div>
             <div class="countries-grid">
+                <!-- Asia -->
                 <div class="country-group">
                     <h3>Asia</h3>
                     <div class="country-list">
                         <a href="country-page.html?country=Pakistan" class="country-link">Pakistan Travel Guide</a>
                         <a href="country-page.html?country=India" class="country-link">India Travel Guide</a>
+                        <a href="country-page.html?country=Afghanistan" class="country-link">Afghanistan Travel Guide</a>
                         <a href="country-page.html?country=China" class="country-link">China Travel Guide</a>
                         <a href="country-page.html?country=Japan" class="country-link">Japan Travel Guide</a>
+                        <a href="country-page.html?country=South Korea" class="country-link">South Korea Travel Guide</a>
+                        <a href="country-page.html?country=North Korea" class="country-link">North Korea Travel Guide</a>
+                        <a href="country-page.html?country=Thailand" class="country-link">Thailand Travel Guide</a>
+                        <a href="country-page.html?country=Malaysia" class="country-link">Malaysia Travel Guide</a>
+                        <a href="country-page.html?country=Indonesia" class="country-link">Indonesia Travel Guide</a>
+                        <a href="country-page.html?country=Philippines" class="country-link">Philippines Travel Guide</a>
+                        <a href="country-page.html?country=Vietnam" class="country-link">Vietnam Travel Guide</a>
+                        <a href="country-page.html?country=Singapore" class="country-link">Singapore Travel Guide</a>
+                        <a href="country-page.html?country=Bangladesh" class="country-link">Bangladesh Travel Guide</a>
+                        <a href="country-page.html?country=Nepal" class="country-link">Nepal Travel Guide</a>
+                        <a href="country-page.html?country=Sri Lanka" class="country-link">Sri Lanka Travel Guide</a>
+                        <a href="country-page.html?country=Maldives" class="country-link">Maldives Travel Guide</a>
+                        <a href="country-page.html?country=Myanmar" class="country-link">Myanmar Travel Guide</a>
+                        <a href="country-page.html?country=Cambodia" class="country-link">Cambodia Travel Guide</a>
+                        <a href="country-page.html?country=Laos" class="country-link">Laos Travel Guide</a>
+                        <a href="#" class="country-link">Bhutan Travel Guide</a>
+                        <a href="#" class="country-link">Brunei Travel Guide</a>
+                        <a href="#" class="country-link">Timor-Leste Travel Guide</a>
+                        <a href="#" class="country-link">Mongolia Travel Guide</a>
+                        <a href="#" class="country-link">Kazakhstan Travel Guide</a>
+                        <a href="#" class="country-link">Uzbekistan Travel Guide</a>
+                        <a href="#" class="country-link">Turkmenistan Travel Guide</a>
+                        <a href="#" class="country-link">Kyrgyzstan Travel Guide</a>
+                        <a href="#" class="country-link">Tajikistan Travel Guide</a>
                     </div>
                 </div>
+
+                <!-- Middle East -->
+                <div class="country-group">
+                    <h3>Middle East</h3>
+                    <div class="country-list">
+                        <a href="#" class="country-link">Saudi Arabia Travel Guide</a>
+                        <a href="#" class="country-link">United Arab Emirates Travel Guide</a>
+                        <a href="#" class="country-link">Qatar Travel Guide</a>
+                        <a href="#" class="country-link">Oman Travel Guide</a>
+                        <a href="#" class="country-link">Kuwait Travel Guide</a>
+                        <a href="#" class="country-link">Bahrain Travel Guide</a>
+                        <a href="#" class="country-link">Iran Travel Guide</a>
+                        <a href="#" class="country-link">Iraq Travel Guide</a>
+                        <a href="#" class="country-link">Turkey Travel Guide</a>
+                        <a href="#" class="country-link">Israel Travel Guide</a>
+                        <a href="#" class="country-link">Jordan Travel Guide</a>
+                        <a href="#" class="country-link">Lebanon Travel Guide</a>
+                        <a href="#" class="country-link">Syria Travel Guide</a>
+                        <a href="#" class="country-link">Yemen Travel Guide</a>
+                        <a href="#" class="country-link">Azerbaijan Travel Guide</a>
+                        <a href="#" class="country-link">Armenia Travel Guide</a>
+                        <a href="#" class="country-link">Georgia Travel Guide</a>
+                        <a href="#" class="country-link">Cyprus Travel Guide</a>
+                    </div>
+                </div>
+
+                <!-- Europe -->
                 <div class="country-group">
                     <h3>Europe</h3>
                     <div class="country-list">
-                        <a href="country-page.html?country=Germany" class="country-link">Germany Travel Guide</a>
-                        <a href="country-page.html?country=France" class="country-link">France Travel Guide</a>
-                        <a href="country-page.html?country=Italy" class="country-link">Italy Travel Guide</a>
-                        <a href="country-page.html?country=Spain" class="country-link">Spain Travel Guide</a>
+                        <a href="#" class="country-link">Russia Travel Guide</a>
+                        <a href="#" class="country-link">Ukraine Travel Guide</a>
+                        <a href="#" class="country-link">Germany Travel Guide</a>
+                        <a href="#" class="country-link">France Travel Guide</a>
+                        <a href="#" class="country-link">Italy Travel Guide</a>
+                        <a href="#" class="country-link">Spain Travel Guide</a>
+                        <a href="#" class="country-link">Portugal Travel Guide</a>
+                        <a href="#" class="country-link">Netherlands Travel Guide</a>
+                        <a href="#" class="country-link">Belgium Travel Guide</a>
+                        <a href="#" class="country-link">Switzerland Travel Guide</a>
+                        <a href="#" class="country-link">Austria Travel Guide</a>
+                        <a href="#" class="country-link">Poland Travel Guide</a>
+                        <a href="#" class="country-link">Czech Republic Travel Guide</a>
+                        <a href="#" class="country-link">Slovakia Travel Guide</a>
+                        <a href="#" class="country-link">Hungary Travel Guide</a>
+                        <a href="#" class="country-link">Romania Travel Guide</a>
+                        <a href="#" class="country-link">Bulgaria Travel Guide</a>
+                        <a href="#" class="country-link">Greece Travel Guide</a>
+                        <a href="#" class="country-link">Denmark Travel Guide</a>
+                        <a href="#" class="country-link">Sweden Travel Guide</a>
+                        <a href="#" class="country-link">Norway Travel Guide</a>
+                        <a href="#" class="country-link">Finland Travel Guide</a>
+                        <a href="#" class="country-link">Iceland Travel Guide</a>
+                        <a href="#" class="country-link">Ireland Travel Guide</a>
+                        <a href="#" class="country-link">United Kingdom Travel Guide</a>
+                        <a href="#" class="country-link">Estonia Travel Guide</a>
+                        <a href="#" class="country-link">Latvia Travel Guide</a>
+                        <a href="#" class="country-link">Lithuania Travel Guide</a>
+                        <a href="#" class="country-link">Belarus Travel Guide</a>
+                        <a href="#" class="country-link">Moldova Travel Guide</a>
+                        <a href="#" class="country-link">Croatia Travel Guide</a>
+                        <a href="#" class="country-link">Slovenia Travel Guide</a>
+                        <a href="#" class="country-link">Bosnia and Herzegovina Travel Guide</a>
+                        <a href="#" class="country-link">Serbia Travel Guide</a>
+                        <a href="#" class="country-link">Montenegro Travel Guide</a>
+                        <a href="#" class="country-link">Albania Travel Guide</a>
+                        <a href="#" class="country-link">North Macedonia Travel Guide</a>
+                        <a href="#" class="country-link">Kosovo Travel Guide</a>
+                        <a href="#" class="country-link">Malta Travel Guide</a>
+                        <a href="#" class="country-link">Luxembourg Travel Guide</a>
+                        <a href="#" class="country-link">Monaco Travel Guide</a>
+                        <a href="#" class="country-link">Andorra Travel Guide</a>
+                        <a href="#" class="country-link">Liechtenstein Travel Guide</a>
+                        <a href="#" class="country-link">San Marino Travel Guide</a>
+                        <a href="#" class="country-link">Vatican City Travel Guide</a>
                     </div>
                 </div>
+
+                <!-- North America -->
                 <div class="country-group">
-                    <h3>Americas</h3>
+                    <h3>North America</h3>
                     <div class="country-list">
-                        <a href="country-page.html?country=United States" class="country-link">United States Travel Guide</a>
-                        <a href="country-page.html?country=Canada" class="country-link">Canada Travel Guide</a>
-                        <a href="country-page.html?country=Brazil" class="country-link">Brazil Travel Guide</a>
+                        <a href="#" class="country-link">United States Travel Guide</a>
+                        <a href="#" class="country-link">Canada Travel Guide</a>
+                        <a href="#" class="country-link">Mexico Travel Guide</a>
+                        <a href="#" class="country-link">Greenland Travel Guide</a>
+                    </div>
+                </div>
+
+                <!-- Central America & Caribbean -->
+                <div class="country-group">
+                    <h3>Central America & Caribbean</h3>
+                    <div class="country-list">
+                        <a href="#" class="country-link">Panama Travel Guide</a>
+                        <a href="#" class="country-link">Costa Rica Travel Guide</a>
+                        <a href="#" class="country-link">Nicaragua Travel Guide</a>
+                        <a href="#" class="country-link">Honduras Travel Guide</a>
+                        <a href="#" class="country-link">El Salvador Travel Guide</a>
+                        <a href="#" class="country-link">Guatemala Travel Guide</a>
+                        <a href="#" class="country-link">Belize Travel Guide</a>
+                        <a href="#" class="country-link">Cuba Travel Guide</a>
+                        <a href="#" class="country-link">Jamaica Travel Guide</a>
+                        <a href="#" class="country-link">Haiti Travel Guide</a>
+                        <a href="#" class="country-link">Dominican Republic Travel Guide</a>
+                        <a href="#" class="country-link">Bahamas Travel Guide</a>
+                        <a href="#" class="country-link">Barbados Travel Guide</a>
+                        <a href="#" class="country-link">Trinidad and Tobago Travel Guide</a>
+                        <a href="#" class="country-link">Saint Lucia Travel Guide</a>
+                        <a href="#" class="country-link">Grenada Travel Guide</a>
+                        <a href="#" class="country-link">Saint Vincent and the Grenadines Travel Guide</a>
+                        <a href="#" class="country-link">Antigua and Barbuda Travel Guide</a>
+                        <a href="#" class="country-link">Dominica Travel Guide</a>
+                        <a href="#" class="country-link">Saint Kitts and Nevis Travel Guide</a>
+                        <a href="#" class="country-link">Aruba Travel Guide</a>
+                        <a href="#" class="country-link">Curacao Travel Guide</a>
+                        <a href="#" class="country-link">Bonaire Travel Guide</a>
+                        <a href="#" class="country-link">Sint Maarten Travel Guide</a>
+                        <a href="#" class="country-link">Guadeloupe Travel Guide</a>
+                        <a href="#" class="country-link">Martinique Travel Guide</a>
+                        <a href="#" class="country-link">Reunion Travel Guide</a>
+                        <a href="#" class="country-link">Mayotte Travel Guide</a>
+                    </div>
+                </div>
+
+                <!-- South America -->
+                <div class="country-group">
+                    <h3>South America</h3>
+                    <div class="country-list">
+                        <a href="#" class="country-link">Brazil Travel Guide</a>
+                        <a href="#" class="country-link">Argentina Travel Guide</a>
+                        <a href="#" class="country-link">Chile Travel Guide</a>
+                        <a href="#" class="country-link">Peru Travel Guide</a>
+                        <a href="#" class="country-link">Colombia Travel Guide</a>
+                        <a href="#" class="country-link">Venezuela Travel Guide</a>
+                        <a href="#" class="country-link">Ecuador Travel Guide</a>
+                        <a href="#" class="country-link">Bolivia Travel Guide</a>
+                        <a href="#" class="country-link">Paraguay Travel Guide</a>
+                        <a href="#" class="country-link">Uruguay Travel Guide</a>
+                        <a href="#" class="country-link">Guyana Travel Guide</a>
+                        <a href="#" class="country-link">Suriname Travel Guide</a>
+                    </div>
+                </div>
+
+                <!-- Oceania -->
+                <div class="country-group">
+                    <h3>Oceania</h3>
+                    <div class="country-list">
+                        <a href="#" class="country-link">Australia Travel Guide</a>
+                        <a href="#" class="country-link">New Zealand Travel Guide</a>
+                        <a href="#" class="country-link">Fiji Travel Guide</a>
+                        <a href="#" class="country-link">Papua New Guinea Travel Guide</a>
+                        <a href="#" class="country-link">Solomon Islands Travel Guide</a>
+                        <a href="#" class="country-link">Vanuatu Travel Guide</a>
+                        <a href="#" class="country-link">Samoa Travel Guide</a>
+                        <a href="#" class="country-link">Tonga Travel Guide</a>
+                        <a href="#" class="country-link">Kiribati Travel Guide</a>
+                        <a href="#" class="country-link">Tuvalu Travel Guide</a>
+                        <a href="#" class="country-link">Nauru Travel Guide</a>
+                        <a href="#" class="country-link">Palau Travel Guide</a>
+                        <a href="#" class="country-link">Marshall Islands Travel Guide</a>
+                        <a href="#" class="country-link">Micronesia Travel Guide</a>
+                        <a href="#" class="country-link">Cook Islands Travel Guide</a>
+                        <a href="#" class="country-link">Niue Travel Guide</a>
+                        <a href="#" class="country-link">Tokelau Travel Guide</a>
+                        <a href="#" class="country-link">French Polynesia Travel Guide</a>
+                        <a href="#" class="country-link">New Caledonia Travel Guide</a>
+                    </div>
+                </div>
+
+                <!-- Africa -->
+                <div class="country-group">
+                    <h3>Africa</h3>
+                    <div class="country-list">
+                        <a href="#" class="country-link">Egypt Travel Guide</a>
+                        <a href="#" class="country-link">South Africa Travel Guide</a>
+                        <a href="#" class="country-link">Nigeria Travel Guide</a>
+                        <a href="#" class="country-link">Kenya Travel Guide</a>
+                        <a href="#" class="country-link">Ethiopia Travel Guide</a>
+                        <a href="#" class="country-link">Morocco Travel Guide</a>
+                        <a href="#" class="country-link">Algeria Travel Guide</a>
+                        <a href="#" class="country-link">Tunisia Travel Guide</a>
+                        <a href="#" class="country-link">Libya Travel Guide</a>
+                        <a href="#" class="country-link">Sudan Travel Guide</a>
+                        <a href="#" class="country-link">South Sudan Travel Guide</a>
+                        <a href="#" class="country-link">Ghana Travel Guide</a>
+                        <a href="#" class="country-link">Ivory Coast Travel Guide</a>
+                        <a href="#" class="country-link">Senegal Travel Guide</a>
+                        <a href="#" class="country-link">Mali Travel Guide</a>
+                        <a href="#" class="country-link">Burkina Faso Travel Guide</a>
+                        <a href="#" class="country-link">Niger Travel Guide</a>
+                        <a href="#" class="country-link">Chad Travel Guide</a>
+                        <a href="#" class="country-link">Cameroon Travel Guide</a>
+                        <a href="#" class="country-link">Central African Republic Travel Guide</a>
+                        <a href="#" class="country-link">Congo Travel Guide</a>
+                        <a href="#" class="country-link">DR Congo Travel Guide</a>
+                        <a href="#" class="country-link">Gabon Travel Guide</a>
+                        <a href="#" class="country-link">Equatorial Guinea Travel Guide</a>
+                        <a href="#" class="country-link">Angola Travel Guide</a>
+                        <a href="#" class="country-link">Namibia Travel Guide</a>
+                        <a href="#" class="country-link">Botswana Travel Guide</a>
+                        <a href="#" class="country-link">Zimbabwe Travel Guide</a>
+                        <a href="#" class="country-link">Zambia Travel Guide</a>
+                        <a href="#" class="country-link">Mozambique Travel Guide</a>
+                        <a href="#" class="country-link">Madagascar Travel Guide</a>
+                        <a href="#" class="country-link">Mauritius Travel Guide</a>
+                        <a href="#" class="country-link">Seychelles Travel Guide</a>
+                        <a href="#" class="country-link">Tanzania Travel Guide</a>
+                        <a href="#" class="country-link">Uganda Travel Guide</a>
+                        <a href="#" class="country-link">Rwanda Travel Guide</a>
+                        <a href="#" class="country-link">Burundi Travel Guide</a>
+                        <a href="#" class="country-link">Somalia Travel Guide</a>
+                        <a href="#" class="country-link">Djibouti Travel Guide</a>
+                        <a href="#" class="country-link">Eritrea Travel Guide</a>
+                        <a href="#" class="country-link">Lesotho Travel Guide</a>
+                        <a href="#" class="country-link">Eswatini Travel Guide</a>
+                        <a href="#" class="country-link">Benin Travel Guide</a>
+                        <a href="#" class="country-link">Togo Travel Guide</a>
+                        <a href="#" class="country-link">Guinea Travel Guide</a>
+                        <a href="#" class="country-link">Guinea-Bissau Travel Guide</a>
+                        <a href="#" class="country-link">Sierra Leone Travel Guide</a>
+                        <a href="#" class="country-link">Liberia Travel Guide</a>
+                        <a href="#" class="country-link">Gambia Travel Guide</a>
+                        <a href="#" class="country-link">Cape Verde Travel Guide</a>
+                    </div>
+                </div>
+
+                <!-- Europe Islands -->
+                <div class="country-group">
+                    <h3>European Territories</h3>
+                    <div class="country-list">
+                        <a href="#" class="country-link">Faroe Islands Travel Guide</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Earning Section -->
+    <!-- Earning Ideas Section -->
     <section id="earning" class="content-section earning-section">
         <div class="container">
             <div class="section-header">
@@ -249,22 +1596,312 @@
                 <p>30+ Ways to Make Money Online</p>
             </div>
             <div class="topics-grid">
-                <div class="topic-card"><span class="topic-icon">📝</span><h3>Blogging se paise</h3><p>Earn money through blogging</p></div>
-                <div class="topic-card"><span class="topic-icon">📺</span><h3>YouTube channel se earning</h3><p>Monetize your YouTube channel</p></div>
-                <div class="topic-card"><span class="topic-icon">💻</span><h3>Freelancing se online paise</h3><p>Make money with freelancing</p></div>
-                <div class="topic-card"><span class="topic-icon">🤝</span><h3>Affiliate marketing se income</h3><p>Earn through affiliate marketing</p></div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📝</span>
+                    <h3>Blogging se paise</h3>
+                    <p>Earn money through blogging</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📺</span>
+                    <h3>YouTube channel se earning</h3>
+                    <p>Monetize your YouTube channel</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">💻</span>
+                    <h3>Freelancing se online paise</h3>
+                    <p>Make money with freelancing</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🤝</span>
+                    <h3>Affiliate marketing se income</h3>
+                    <p>Earn through affiliate marketing</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📦</span>
+                    <h3>Drop shipping business start</h3>
+                    <p>Start your dropshipping business</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">👕</span>
+                    <h3>Print on demand se earning</h3>
+                    <p>Make money with print on demand</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📚</span>
+                    <h3>Online tutoring se paise</h3>
+                    <p>Teach online and earn</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">💾</span>
+                    <h3>Digital products sell earning</h3>
+                    <p>Sell digital products online</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📷</span>
+                    <h3>Stock photography se income</h3>
+                    <p>Sell photos and earn royalties</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🎓</span>
+                    <h3>Online course paise</h3>
+                    <p>Create and sell online courses</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📱</span>
+                    <h3>Mobile apps earning</h3>
+                    <p>Monetize mobile applications</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🔄</span>
+                    <h3>Website flipping se profit</h3>
+                    <p>Buy and sell websites for profit</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🌐</span>
+                    <h3>Domain flipping se paise</h3>
+                    <p>Trade domains for profit</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">💹</span>
+                    <h3>CPA marketing se earning</h3>
+                    <p>Earn with cost-per-action</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">✍️</span>
+                    <h3>Content writing se paise</h3>
+                    <p>Get paid for writing content</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🎨</span>
+                    <h3>Graphic design freelancing</h3>
+                    <p>Design and earn online</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📱</span>
+                    <h3>Social media management se income</h3>
+                    <p>Manage social accounts for money</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🔍</span>
+                    <h3>SEO services de paise</h3>
+                    <p>Offer SEO services online</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">👩‍💼</span>
+                    <h3>Virtual assistant ban earning</h3>
+                    <p>Work as a virtual assistant</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">⌨️</span>
+                    <h3>Data entry jobs se online income</h3>
+                    <p>Data entry work from home</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📋</span>
+                    <h3>Online surveys se earning</h3>
+                    <p>Get paid for taking surveys</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🎮</span>
+                    <h3>Gaming se paise</h3>
+                    <p>Monetize your gaming skills</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📹</span>
+                    <h3>Live streaming se earning</h3>
+                    <p>Make money from live streams</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🎵</span>
+                    <h3>TikTok se paise</h3>
+                    <p>Earn through TikTok content</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📸</span>
+                    <h3>Instagram se income</h3>
+                    <p>Monetize your Instagram</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">👥</span>
+                    <h3>Facebook page monetization guide</h3>
+                    <p>Monetize your Facebook page</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🎙️</span>
+                    <h3>Podcast se paise</h3>
+                    <p>Make money with podcasting</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📖</span>
+                    <h3>E-book sell</h3>
+                    <p>Write and sell e-books</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">🌐</span>
+                    <h3>Website development se earning</h3>
+                    <p>Build websites for clients</p>
+                </div>
+                <div class="topic-card earning-card">
+                    <span class="topic-icon">📱</span>
+                    <h3>App development se paise</h3>
+                    <p>Create apps and earn</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Web Development Section -->
+    <section id="webdev" class="content-section webdev-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Web Development Blog</h2>
+                <p>Learn Web Development from Scratch</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🌐</span>
+                    <h3>HTML5 Complete Guide</h3>
+                    <p>Master the foundation of web development</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🎨</span>
+                    <h3>CSS3 Styling Techniques</h3>
+                    <p>Create beautiful, responsive designs</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">⚡</span>
+                    <h3>JavaScript Fundamentals</h3>
+                    <p>Learn programming for the web</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">⚛️</span>
+                    <h3>React.js Tutorial</h3>
+                    <p>Build modern user interfaces</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🟢</span>
+                    <h3>Node.js Backend Development</h3>
+                    <p>Server-side JavaScript programming</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🐍</span>
+                    <h3>Python Web Development</h3>
+                    <p>Build web apps with Python</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🎯</span>
+                    <h3>Responsive Web Design</h3>
+                    <p>Make websites work on all devices</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">📱</span>
+                    <h3>Mobile-First Development</h3>
+                    <p>Design for mobile users first</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🔧</span>
+                    <h3>Web Development Tools</h3>
+                    <p>Essential tools for developers</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🚀</span>
+                    <h3>Website Performance Optimization</h3>
+                    <p>Speed up your websites</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🔒</span>
+                    <h3>Web Security Best Practices</h3>
+                    <p>Protect your websites from threats</p>
+                </div>
+                <div class="topic-card webdev-card">
+                    <span class="topic-icon">🗄️</span>
+                    <h3>Database Design Basics</h3>
+                    <p>Learn SQL and database concepts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social" class="content-section social-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Social Media Blog</h2>
+                <p>Master Social Media Marketing</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card social-card">
+                    <span class="topic-icon">📘</span>
+                    <h3>Facebook Marketing Strategy</h3>
+                    <p>Grow your business on Facebook</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">📸</span>
+                    <h3>Instagram Growth Hacks</h3>
+                    <p>Increase followers and engagement</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">🐦</span>
+                    <h3>Twitter Marketing Tips</h3>
+                    <p>Build your brand on Twitter/X</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">💼</span>
+                    <h3>LinkedIn for Business</h3>
+                    <p>Professional networking strategies</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">🎵</span>
+                    <h3>TikTok Marketing Guide</h3>
+                    <p>Viral content creation strategies</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">📌</span>
+                    <h3>Pinterest for Business</h3>
+                    <p>Drive traffic with Pinterest</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">▶️</span>
+                    <h3>YouTube Channel Growth</h3>
+                    <p>Build a successful YouTube channel</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">📱</span>
+                    <h3>Social Media Content Calendar</h3>
+                    <p>Plan your social media posts</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">📊</span>
+                    <h3>Social Media Analytics</h3>
+                    <p>Track and measure your success</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">💰</span>
+                    <h3>Social Media Advertising</h3>
+                    <p>Paid promotion strategies</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">🤝</span>
+                    <h3>Influencer Marketing</h3>
+                    <p>Collaborate with influencers</p>
+                </div>
+                <div class="topic-card social-card">
+                    <span class="topic-icon">💬</span>
+                    <h3>Community Management</h3>
+                    <p>Build engaged online communities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-content">
                 <h2>Subscribe to Our Newsletter</h2>
                 <p>Get the latest blogging tips, health advice, and earning ideas delivered to your inbox</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
+                    <input type="email" placeholder="Enter your email address" required aria-label="Email">
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
@@ -279,88 +1916,56 @@
                     <h3>DailyZone</h3>
                     <p>Your ultimate destination for blogging tips, health advice, travel guides, earning ideas, and web development tutorials.</p>
                     <div class="social-links">
-                        <a href="#">📘</a><a href="#">🐦</a><a href="#">📸</a><a href="#">▶️</a><a href="#">💼</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📸</a>
+                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
-                    <ul><li><a href="#home">Home</a></li><li><a href="#blog">Blog</a></li><li><a href="#health">Health</a></li><li><a href="#countries">Countries</a></li></ul>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#health">Health</a></li>
+                        <li><a href="#countries">Countries</a></li>
+                        <li><a href="#earning">Earning Ideas</a></li>
+                    </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Resources</h4>
-                    <ul><li><a href="#webdev">Web Development</a></li><li><a href="#social">Social Media</a></li><li><a href="#">SEO Tools</a></li><li><a href="#">Free Guides</a></li></ul>
+                    <ul>
+                        <li><a href="#webdev">Web Development</a></li>
+                        <li><a href="#social">Social Media</a></li>
+                        <li><a href="#">SEO Tools</a></li>
+                        <li><a href="#">Free Guides</a></li>
+                        <li><a href="#">Templates</a></li>
+                    </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Company</h4>
-                    <ul><li><a href="#about">About Us</a></li><li><a href="#contact">Contact</a></li><li><a href="#privacy">Privacy Policy</a></li><li><a href="#terms">Terms of Use</a></li></ul>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Use</a></li>
+                        <li><a href="#login">Log In</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2026 DailyZone.com. All rights reserved.</p></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DailyZone.com. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            });
-        }
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
-                    if (window.innerWidth <= 968) { navMenu.style.display = 'none'; }
-                }
-            });
-        });
-
-        // Search Functionality
-        const searchInput = document.querySelector('.hero-search input');
-        const searchButton = document.querySelector('.hero-search button');
-        if (searchButton && searchInput) {
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
-            function performSearch() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                if (!searchTerm) { alert('Please enter a search term!'); return; }
-                let found = false;
-                document.querySelectorAll('.topic-card, .country-link').forEach(card => {
-                    if (card.textContent.toLowerCase().includes(searchTerm)) {
-                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        card.style.border = '3px solid #ef4444';
-                        setTimeout(() => { card.style.border = ''; }, 2000);
-                        found = true;
-                    }
-                });
-                if (!found) alert('No results found for "' + searchTerm + '"');
-            }
-        }
-
-        // Newsletter Form
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector('input[type="email"]').value;
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) { alert('Please enter a valid email address'); return; }
-                alert('Thank you for subscribing! We\'ll send you updates at ' + email);
-                newsletterForm.querySelector('input').value = '';
-            });
-        }
-
-        // Check Login Status
+        // Check login status on page load
         window.addEventListener('DOMContentLoaded', () => {
             const currentUser = localStorage.getItem('currentUser');
+            
             if (currentUser) {
                 const user = JSON.parse(currentUser);
                 document.getElementById('loginBtn').style.display = 'none';
@@ -373,15 +1978,6 @@
                 document.getElementById('dashboardBtn').style.display = 'none';
             }
         });
-
-        // Scroll Effects
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.main-header');
-            if (window.pageYOffset > 100) header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-            else header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        });
-
-        console.log('DailyZone.com - Website loaded successfully! 🚀');
     </script>
 </body>
 </html>
