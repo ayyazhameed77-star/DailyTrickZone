@@ -57,11 +57,11 @@
             list-style: none;
         }
 
-        /* ===== Header Styles ===== */
+        /* ===== Header Styles - Mini Logo ===== */
         .blue-header {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 15px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -74,28 +74,58 @@
             align-items: center;
         }
 
-        .logo h1 {
-            font-size: 24px;
-            font-weight: 700;
+        /* Mini Logo */
+        .mini-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .logo span {
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            font-size: 10px;
+            letter-spacing: 1px;
+            opacity: 0.9;
             font-weight: 300;
-            color: rgba(255,255,255,0.9);
         }
 
         /* Navigation */
         .main-nav ul {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .main-nav a {
             color: var(--white);
             font-weight: 500;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 5px;
+            font-size: 14px;
         }
 
         .main-nav a:hover, .main-nav a.active {
@@ -129,7 +159,7 @@
         }
 
         .dropdown-menu li {
-            padding: 10px 15px;
+            padding: 8px 15px;
             border-bottom: 1px solid #eee;
         }
 
@@ -140,6 +170,7 @@
         .dropdown-menu a {
             color: var(--text-dark);
             display: block;
+            font-size: 13px;
         }
 
         .dropdown-menu a:hover {
@@ -151,11 +182,12 @@
         /* Login Button */
         .login-btn {
             background-color: rgba(255,255,255,0.2);
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 50px;
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 13px;
         }
 
         .login-btn:hover {
@@ -170,31 +202,73 @@
             cursor: pointer;
         }
 
-        /* ===== Hero Section ===== */
+        /* ===== Hero Section - All Light Blue ===== */
         .hero {
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .light-blue-bg {
-            background-color: var(--light-blue);
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,102,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero:after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,102,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 52px;
             margin-bottom: 20px;
             color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(0,102,255,0.2);
+            z-index: -1;
         }
 
         .hero-subtitle {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--text-light);
             margin-bottom: 30px;
+            font-weight: 300;
         }
 
         .hero-buttons {
@@ -205,34 +279,58 @@
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
             font-weight: 600;
             transition: var(--transition);
             cursor: pointer;
             border: none;
             font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 0;
         }
 
         .btn-primary {
             background-color: var(--primary-blue);
             color: var(--white);
+            box-shadow: 0 5px 15px rgba(0,102,255,0.3);
         }
 
         .btn-primary:hover {
             background-color: var(--dark-blue);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,102,255,0.4);
         }
 
         .btn-secondary {
             background-color: var(--white);
             color: var(--primary-blue);
             border: 2px solid var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(0,102,255,0.1);
         }
 
         .btn-secondary:hover {
             background-color: var(--primary-blue);
             color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,102,255,0.3);
         }
 
         .btn-outline {
@@ -255,6 +353,8 @@
             font-size: 14px;
             font-weight: 600;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
         .btn-small:hover {
@@ -262,46 +362,83 @@
             color: var(--white);
         }
 
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-2 {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-3 {
+            top: 40%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
         /* ===== Categories Section ===== */
         .featured-categories {
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
+            font-size: 36px;
+            margin-bottom: 50px;
             position: relative;
         }
 
         .section-title:after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-blue);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
             margin: 15px auto 0;
+            border-radius: 2px;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .category-card {
             background-color: var(--white);
-            padding: 30px 20px;
-            border-radius: 10px;
+            padding: 35px 25px;
+            border-radius: 15px;
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid #eee;
+            cursor: pointer;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,102,255,0.15);
             border-color: var(--primary-blue);
         }
 
@@ -313,6 +450,7 @@
 
         .category-card h3 {
             margin-bottom: 10px;
+            font-size: 22px;
         }
 
         .category-card p {
@@ -320,9 +458,11 @@
             margin-bottom: 20px;
         }
 
+        /* Rest of the CSS remains the same as before */
         /* ===== Popular Posts Slider ===== */
         .popular-posts {
             padding: 60px 0;
+            background-color: var(--light-blue);
         }
 
         .posts-slider {
@@ -426,6 +566,7 @@
             display: block;
             color: var(--text-dark);
             font-weight: 500;
+            cursor: pointer;
         }
 
         .topic-item a:hover {
@@ -436,23 +577,45 @@
         .newsletter {
             background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
             color: var(--white);
-            padding: 60px 0;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
         }
 
         .newsletter-content {
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .newsletter h2 {
-            font-size: 32px;
+            font-size: 36px;
             margin-bottom: 15px;
         }
 
         .newsletter p {
             margin-bottom: 30px;
             opacity: 0.9;
+            font-size: 18px;
         }
 
         .newsletter-form {
@@ -464,14 +627,16 @@
 
         .newsletter-form input {
             flex: 1;
-            padding: 15px 20px;
+            padding: 15px 25px;
             border: none;
             border-radius: 50px;
             font-size: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .newsletter-form input:focus {
             outline: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
         .newsletter-form button {
@@ -523,6 +688,7 @@
         .footer-column a {
             color: #999;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .footer-column a:hover {
@@ -545,6 +711,7 @@
             justify-content: center;
             color: #fff;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .social-icons a:hover {
@@ -569,14 +736,14 @@
             gap: 10px;
             max-height: 200px;
             overflow-y: auto;
-            padding: 10px;
+            padding: 15px;
             background-color: #222;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         .topic-tag {
             background-color: #333;
-            padding: 5px 12px;
+            padding: 6px 15px;
             border-radius: 20px;
             font-size: 12px;
             color: #ccc;
@@ -587,6 +754,7 @@
         .topic-tag:hover {
             background-color: var(--primary-blue);
             color: #fff;
+            transform: translateY(-2px);
         }
 
         .footer-bottom {
@@ -611,13 +779,14 @@
             
             .main-nav {
                 position: fixed;
-                top: 70px;
+                top: 64px;
                 left: -100%;
                 width: 80%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 64px);
                 background-color: var(--primary-blue);
                 transition: var(--transition);
                 z-index: 999;
+                overflow-y: auto;
             }
             
             .main-nav.active {
@@ -626,11 +795,21 @@
             
             .main-nav ul {
                 flex-direction: column;
-                padding: 30px;
+                padding: 20px;
+                align-items: flex-start;
+            }
+            
+            .main-nav ul li {
+                width: 100%;
+            }
+            
+            .main-nav a {
+                display: block;
+                padding: 12px;
             }
             
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .hero-subtitle {
@@ -656,8 +835,18 @@
         }
 
         @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 20px;
+            .logo-text h1 {
+                font-size: 16px;
+            }
+            
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
             }
             
             .section-title {
@@ -677,6 +866,7 @@
         .page-header {
             padding: 60px 0;
             text-align: center;
+            background-color: var(--light-blue);
         }
 
         .page-header h1 {
@@ -846,6 +1036,7 @@
 
         .login-footer a {
             color: var(--primary-blue);
+            cursor: pointer;
         }
 
         .login-footer a:hover {
@@ -972,11 +1163,15 @@
     </style>
 </head>
 <body>
-    <!-- Header - Blue -->
+    <!-- Header - Blue with Mini Logo -->
     <header class="blue-header">
         <div class="container">
-            <div class="logo">
-                <h1>Daily<span>TrickZone</span></h1>
+            <div class="mini-logo">
+                <div class="logo-icon">DTZ</div>
+                <div class="logo-text">
+                    <h1>Daily<span>TrickZone</span></h1>
+                    <span>TRICKS & TIPS DAILY</span>
+                </div>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -987,13 +1182,14 @@
                             <li><a href="#" onclick="showCategory('blog')">Blog Ideas</a></li>
                             <li><a href="#" onclick="showCategory('blog')">How to Start Blog 2026</a></li>
                             <li><a href="#" onclick="showCategory('blog')">SEO Guide</a></li>
+                            <li><a href="#" onclick="showCategory('blog')">Blogging Tools</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" onclick="showCategory('health')">Health Blog</a></li>
-                    <li><a href="#" onclick="showCategory('country')">Country Blog</a></li>
-                    <li><a href="#" onclick="showCategory('earn')">Earning Ideas</a></li>
-                    <li><a href="#" onclick="showCategory('webdev')">Web Development</a></li>
-                    <li><a href="#" onclick="showCategory('social')">Social Media</a></li>
+                    <li><a href="#" onclick="showCategory('health')">Health</a></li>
+                    <li><a href="#" onclick="showCategory('country')">Country</a></li>
+                    <li><a href="#" onclick="showCategory('earn')">Earning</a></li>
+                    <li><a href="#" onclick="showCategory('webdev')">Web Dev</a></li>
+                    <li><a href="#" onclick="showCategory('social')">Social</a></li>
                     <li><a href="#" onclick="showAbout()">About</a></li>
                     <li><a href="#" onclick="showContact()">Contact</a></li>
                     <li><a href="#" onclick="showLogin()" class="login-btn"><i class="fas fa-user"></i> Login</a></li>
@@ -1009,15 +1205,23 @@
     <main id="main-content">
         <!-- Home Page Content -->
         <div id="home-page" class="page-content">
-            <!-- Hero Section - Light Blue -->
-            <section class="hero light-blue-bg">
+            <!-- Hero Section - All Light Blue with Floating Elements -->
+            <section class="hero">
+                <div class="floating-element floating-1">✨</div>
+                <div class="floating-element floating-2">💡</div>
+                <div class="floating-element floating-3">🚀</div>
+                
                 <div class="container">
                     <div class="hero-content">
-                        <h1>Welcome to DailyTrickZone.com</h1>
+                        <h1>Welcome to <span>DailyTrickZone</span></h1>
                         <p class="hero-subtitle">Your Daily Dose of Tricks & Tips for Better Living, Earning & Learning!</p>
                         <div class="hero-buttons">
-                            <button class="btn btn-primary" onclick="showCategory('blog')">Explore Blogs</button>
-                            <button class="btn btn-secondary" onclick="showCategory('earn')">Start Earning</button>
+                            <button class="btn btn-primary" onclick="showCategory('blog')">
+                                <i class="fas fa-blog"></i> Explore Blogs
+                            </button>
+                            <button class="btn btn-secondary" onclick="showCategory('earn')">
+                                <i class="fas fa-dollar-sign"></i> Start Earning
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1069,7 +1273,7 @@
             </section>
 
             <!-- Popular Posts Slider -->
-            <section class="popular-posts light-blue-bg">
+            <section class="popular-posts">
                 <div class="container">
                     <h2 class="section-title">🔥 Trending Now</h2>
                     <div class="posts-slider">
@@ -1130,7 +1334,7 @@
             </section>
 
             <!-- Health Blog Section -->
-            <section class="health-ideas light-blue-bg">
+            <section class="health-ideas">
                 <div class="container">
                     <h2 class="section-title">💪 Health Blog (100+ Topics)</h2>
                     <div class="topics-grid" id="health-topics"></div>
@@ -1157,7 +1361,7 @@
 
         <!-- Category Pages (Hidden by default) -->
         <div id="category-page" class="page-content" style="display: none;">
-            <section class="page-header light-blue-bg">
+            <section class="page-header">
                 <div class="container">
                     <h1 id="category-title">Category</h1>
                     <p id="category-description">Explore all topics in this category</p>
@@ -1167,7 +1371,7 @@
             <!-- Search Box -->
             <div class="container">
                 <div class="search-box">
-                    <input type="text" id="topic-search" placeholder="Search topics..." onkeyup="searchTopics()">
+                    <input type="text" id="topic-search" placeholder="🔍 Search topics..." onkeyup="searchTopics()">
                 </div>
             </div>
 
@@ -1181,7 +1385,7 @@
 
         <!-- About Page -->
         <div id="about-page" class="page-content" style="display: none;">
-            <section class="page-header light-blue-bg">
+            <section class="page-header">
                 <div class="container">
                     <h1>About DailyTrickZone.com</h1>
                     <p>Your trusted source for daily tips and tricks</p>
@@ -1229,7 +1433,7 @@
 
         <!-- Contact Page -->
         <div id="contact-page" class="page-content" style="display: none;">
-            <section class="page-header light-blue-bg">
+            <section class="page-header">
                 <div class="container">
                     <h1>Contact Us</h1>
                     <p>We'd love to hear from you</p>
@@ -1960,11 +2164,12 @@
 
         // ========== SLIDER FUNCTIONALITY ==========
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const sliderContainer = document.getElementById('slider-container');
         
         function updateSlider() {
+            const sliderContainer = document.getElementById('slider-container');
+            const slides = document.querySelectorAll('.slide');
             if (!sliderContainer || !slides.length) return;
+            
             const slideWidth = slides[0]?.offsetWidth || 0;
             const translateX = -currentSlide * (slideWidth + 20);
             sliderContainer.style.transform = `translateX(${translateX}px)`;
@@ -1972,6 +2177,7 @@
 
         document.addEventListener('click', function(e) {
             if (e.target.closest('.next-slide')) {
+                const slides = document.querySelectorAll('.slide');
                 const maxSlide = slides.length - (window.innerWidth <= 768 ? 1 : 3);
                 if (currentSlide < maxSlide) {
                     currentSlide++;
@@ -2044,6 +2250,9 @@
             window.addEventListener('resize', function() {
                 updateSlider();
             });
+            
+            // Initial slider setup
+            setTimeout(updateSlider, 100);
         });
     </script>
 </body>
