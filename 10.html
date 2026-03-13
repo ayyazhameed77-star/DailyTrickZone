@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Off-Page SEO Strategies</title>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f7f2eb;
+    --surface:   #ffffff;
+    --surface2:  #f2ebe0;
+    --border:    #e0d5c5;
+    --ink:       #1e1608;
+    --muted:     #9e9080;
+    --accent:    #b5420a;
+    --forest:    #2a6044;
+    --navy:      #1a3f72;
+    --gold:      #c8881a;
+    --plum:      #6e3070;
+    --rust:      #a04020;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* paper texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 90px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .vol-line {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .vol-rule { flex: 0 0 44px; height: 2px; background: var(--accent); }
+
+  .vol-text {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Yeseva One', serif;
+    font-size: clamp(2.4rem, 6.2vw, 4rem);
+    font-weight: 400;
+    line-height: 1.09;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  h1 span {
+    display: block;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+    letter-spacing: 0.01em;
+  }
+
+  .header-border {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border) 50%, transparent);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #3a2c1c;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 54px 0;
+    position: relative;
+    padding: 38px 44px;
+    background: var(--ink);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '"';
+    position: absolute;
+    top: -24px; left: 28px;
+    font-family: 'Yeseva One', serif;
+    font-size: 8rem;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.22rem;
+    color: #f0e8dc !important;
+    line-height: 1.58;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.48rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 58px 0 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    letter-spacing: 0.005em;
+  }
+
+  .h2-index {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── STRATEGY CARDS ── */
+  .strat-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    background: var(--surface);
+  }
+
+  .strat-header {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .strat-color { width: 5px; flex-shrink: 0; }
+
+  .strat-header-body {
+    padding: 20px 26px;
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .strat-emoji {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .strat-card h3 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.06rem;
+    font-weight: 400;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .strat-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .strat-body {
+    padding: 20px 26px 22px 31px;
+  }
+
+  .strat-body p {
+    font-size: 0.94rem;
+    color: #5a4a38;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── POWER METER ── */
+  .power-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 26px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .power-lbl {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    width: 80px;
+  }
+
+  .power-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .power-fill {
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .power-val {
+    font-size: 9.5px;
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 58px;
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TRUST TRIANGLE ── */
+  .trust-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 32px 0;
+  }
+
+  .trust-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 18px;
+    text-align: center;
+  }
+
+  .trust-icon {
+    font-size: 26px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .trust-tile h4 {
+    font-family: 'Yeseva One', serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .trust-tile p {
+    font-size: 0.8rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.55;
+  }
+
+  /* ── ACTION LIST ── */
+  .action-panel {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 38px 0;
+  }
+
+  .ap-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .ap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 24px;
+  }
+
+  .ap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.89rem;
+    color: #b0a090;
+    line-height: 1.55;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  .ap-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 78px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Yeseva One', serif;
+    font-size: 0.96rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .trust-trio { grid-template-columns: 1fr 1fr; }
+    .ap-grid    { grid-template-columns: 1fr; }
+    .pull-quote { padding: 30px 28px; }
+    .power-lbl  { width: 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="vol-line">
+      <div class="vol-rule"></div>
+      <span class="vol-text">SEO Mastery Series · Off-Page</span>
+    </div>
+    <h1>Off-Page SEO<br><span>Strategies</span></h1>
+    <p class="deck">Your blog's reputation is built far beyond its own pages. Off-page SEO is the art of earning trust, authority, and visibility from the wider internet — and it is what separates blogs that plateau from blogs that grow without limit.</p>
+    <div class="header-border"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>Imagine two blogs with identical content — the same writing quality, the same keyword research, the same clean on-page structure. One of them sits on page one of Google and attracts ten thousand readers a month. The other languishes on page seven and is visited by almost no one. The difference between them is almost never the content itself. It is the authority each blog has accumulated in the eyes of the internet — and that authority is built entirely off the page.</p>
+
+    <p>Off-page SEO is everything that happens outside your website that signals to search engines that your content deserves to be trusted, recommended, and ranked. At its heart, it is reputation management for the digital world. And in 2026, with competition fiercer than ever, understanding it is not optional — it is the difference between being found and being forgotten.</p>
+
+    <!-- TRUST TRIO -->
+    <div class="trust-trio">
+      <div class="trust-tile">
+        <span class="trust-icon">🔗</span>
+        <h4>Backlinks</h4>
+        <p>The original currency of SEO — votes of confidence from other websites</p>
+      </div>
+      <div class="trust-tile">
+        <span class="trust-icon">🌐</span>
+        <h4>Authority</h4>
+        <p>Your domain's overall credibility built across the entire web over time</p>
+      </div>
+      <div class="trust-tile">
+        <span class="trust-icon">📣</span>
+        <h4>Mentions</h4>
+        <p>Brand signals that tell Google your name is known and respected online</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>On-page SEO tells Google what you are about. Off-page SEO tells Google whether you deserve to be trusted. Both matter — but only one is truly earned.</p>
+    </div>
+
+    <!-- STRATEGY 1: BACKLINKS -->
+    <h2>
+      <span class="h2-index" style="background:rgba(181,66,10,0.1);color:var(--accent);border:1px solid rgba(181,66,10,0.2)">01</span>
+      Backlink Building — The Foundation of Authority
+    </h2>
+
+    <p>A backlink is a link from another website pointing to yours. In the language of search engines, every backlink is a vote of confidence — a signal that someone else found your content valuable enough to reference. Not all backlinks are equal. A single link from a highly respected publication in your niche is worth more than a hundred links from obscure, low-quality directories.</p>
+
+    <div class="strat-card">
+      <div class="strat-header">
+        <div class="strat-color" style="background:var(--accent)"></div>
+        <div class="strat-header-body">
+          <span class="strat-emoji">✍️</span>
+          <h3>Guest Posting on Respected Blogs</h3>
+          <span class="strat-badge" style="background:rgba(181,66,10,0.1);color:var(--accent);border:1px solid rgba(181,66,10,0.2)">Top Strategy</span>
+        </div>
+      </div>
+      <div class="strat-body">
+        <p>Guest posting remains the most reliable and ethical way to earn quality backlinks. Identify well-respected blogs in your niche, pitch them a genuinely useful article idea, and write something exceptional in return for a link back to your own blog. You gain not only a backlink but also direct exposure to an established audience that already cares about your topic — a double reward for a single effort.</p>
+      </div>
+      <div class="power-row">
+        <span class="power-lbl">SEO Power</span>
+        <div class="power-track"><div class="power-fill" style="width:93%;background:var(--accent)"></div></div>
+        <span class="power-val" style="color:var(--accent)">Excellent</span>
+      </div>
+    </div>
+
+    <!-- STRATEGY 2: DIGITAL PR -->
+    <h2>
+      <span class="h2-index" style="background:rgba(42,96,68,0.1);color:var(--forest);border:1px solid rgba(42,96,68,0.2)">02</span>
+      Digital PR — Earn Links Through Stories Worth Telling
+    </h2>
+
+    <div class="strat-card">
+      <div class="strat-header">
+        <div class="strat-color" style="background:var(--forest)"></div>
+        <div class="strat-header-body">
+          <span class="strat-emoji">📰</span>
+          <h3>Create Content Journalists Want to Reference</h3>
+          <span class="strat-badge" style="background:rgba(42,96,68,0.1);color:var(--forest);border:1px solid rgba(42,96,68,0.2)">High Impact</span>
+        </div>
+      </div>
+      <div class="strat-body">
+        <p>One of the most powerful off-page SEO strategies is creating data-rich, original, or deeply researched content that journalists, bloggers, and media sites naturally want to link to. Original surveys, unique statistics, compelling infographics, and comprehensive industry guides all attract links passively — without you needing to ask for them. Produce something genuinely worth citing, and the internet will cite it.</p>
+      </div>
+      <div class="power-row">
+        <span class="power-lbl">SEO Power</span>
+        <div class="power-track"><div class="power-fill" style="width:87%;background:var(--forest)"></div></div>
+        <span class="power-val" style="color:var(--forest)">Very High</span>
+      </div>
+    </div>
+
+    <!-- STRATEGY 3: SOCIAL SIGNALS -->
+    <h2>
+      <span class="h2-index" style="background:rgba(26,63,114,0.1);color:var(--navy);border:1px solid rgba(26,63,114,0.2)">03</span>
+      Social Signals — Visibility That Builds Momentum
+    </h2>
+
+    <p>While social media links do not pass direct SEO authority the way backlinks do, the visibility they create has powerful indirect effects. A post that goes viral on Pinterest or gets widely shared on LinkedIn attracts real readers — and real readers often link to, reference, and share content further. Social presence signals to Google that your brand exists, is active, and is talked about by real people in the real world.</p>
+
+    <div class="strat-card">
+      <div class="strat-header">
+        <div class="strat-color" style="background:var(--navy)"></div>
+        <div class="strat-header-body">
+          <span class="strat-emoji">📌</span>
+          <h3>Pinterest as a Long-Term Traffic Engine</h3>
+          <span class="strat-badge" style="background:rgba(26,63,114,0.1);color:var(--navy);border:1px solid rgba(26,63,114,0.2)">Underrated</span>
+        </div>
+      </div>
+      <div class="strat-body">
+        <p>Pinterest operates more like a search engine than a social platform. Pins have an astonishing shelf life — a well-optimised pin can drive consistent traffic to your articles for months or years. For lifestyle, food, finance, travel, and home decor bloggers especially, Pinterest is one of the highest-returning off-page investments available, entirely free, and chronically underused by bloggers who have not yet discovered its compounding power.</p>
+      </div>
+      <div class="power-row">
+        <span class="power-lbl">SEO Power</span>
+        <div class="power-track"><div class="power-fill" style="width:74%;background:var(--navy)"></div></div>
+        <span class="power-val" style="color:var(--navy)">Strong</span>
+      </div>
+    </div>
+
+    <!-- STRATEGY 4: BRAND MENTIONS -->
+    <h2>
+      <span class="h2-index" style="background:rgba(110,48,112,0.1);color:var(--plum);border:1px solid rgba(110,48,112,0.2)">04</span>
+      Brand Mentions &amp; Community Presence
+    </h2>
+
+    <div class="strat-card">
+      <div class="strat-header">
+        <div class="strat-color" style="background:var(--plum)"></div>
+        <div class="strat-header-body">
+          <span class="strat-emoji">💬</span>
+          <h3>Be Genuinely Present in Your Niche</h3>
+          <span class="strat-badge" style="background:rgba(110,48,112,0.1);color:var(--plum);border:1px solid rgba(110,48,112,0.2)">Brand Building</span>
+        </div>
+      </div>
+      <div class="strat-body">
+        <p>When your name and blog are mentioned across the internet — in forums, in Reddit threads, in community groups, in podcast show notes — Google takes notice. These unlinked brand mentions are a growing ranking signal that tells search engines your blog is a recognised and discussed entity, not just a collection of web pages. Engage authentically in your niche's communities. Answer questions on Reddit and Quora. Show up in the places your audience already gathers — not to self-promote, but to genuinely contribute. The links and mentions that follow will be entirely natural.</p>
+      </div>
+      <div class="power-row">
+        <span class="power-lbl">SEO Power</span>
+        <div class="power-track"><div class="power-fill" style="width:78%;background:var(--plum)"></div></div>
+        <span class="power-val" style="color:var(--plum)">High</span>
+      </div>
+    </div>
+
+    <!-- ACTION PANEL -->
+    <div class="action-panel">
+      <div class="ap-title">✦ &nbsp; Off-Page SEO — Your Action Plan</div>
+      <div class="ap-grid">
+        <div class="ap-item"><div class="ap-dot"></div>Pitch one guest post this week</div>
+        <div class="ap-item"><div class="ap-dot"></div>Create one shareable resource</div>
+        <div class="ap-item"><div class="ap-dot"></div>Set up active Pinterest boards</div>
+        <div class="ap-item"><div class="ap-dot"></div>Join 2 niche communities online</div>
+        <div class="ap-item"><div class="ap-dot"></div>Answer questions on Quora/Reddit</div>
+        <div class="ap-item"><div class="ap-dot"></div>Monitor your brand mentions</div>
+        <div class="ap-item"><div class="ap-dot"></div>Reach out to 3 niche bloggers</div>
+        <div class="ap-item"><div class="ap-dot"></div>Build a consistent social presence</div>
+      </div>
+    </div>
+
+    <p>Off-page SEO is, at its deepest level, simply the digital expression of a very old idea: reputation is earned, not declared. You cannot optimise your way into trust — you have to do things worth trusting. Write content worth linking to. Build relationships worth maintaining. Show up in communities worth belonging to. Do these things consistently, and your off-page authority will grow with the quiet, unstoppable momentum of compound interest.</p>
+
+    <p>The internet is watching. Give it something remarkable to talk about.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Your authority is built in the spaces between your own pages.</span>
+  </footer>
+
+</div>
+</body>
+</html>
