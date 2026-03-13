@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Monetize a Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f5f8f5;
+    --surface:   #ffffff;
+    --surface2:  #edf4ed;
+    --border:    #daeada;
+    --ink:       #0e1a0e;
+    --muted:     #6a8a6a;
+    --accent:    #1a7a3c;
+    --gold:      #c8920a;
+    --navy:      #1a3a6e;
+    --rose:      #b83a5a;
+    --violet:    #5a2a8a;
+    --teal:      #0a7a7a;
+    --soft:      rgba(26,122,60,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Figtree', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.016'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .header-ribbon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .ribbon-block {
+    background: var(--accent);
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 4px;
+  }
+
+  .ribbon-dash {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  .ribbon-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6.2vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    line-height: 1.76;
+    max-width: 590px;
+    font-weight: 400;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hr-line { flex: 1; height: 1px; background: var(--border); }
+
+  .hr-leaf {
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.5;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.64em;
+    color: #2a3c2a;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 26px;
+    align-items: stretch;
+  }
+
+  .pq-bar {
+    background: linear-gradient(to bottom, var(--accent), var(--gold));
+    border-radius: 3px;
+  }
+
+  .pq-inner { padding: 4px 0; }
+
+  .pq-inner p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.26rem;
+    color: var(--ink) !important;
+    line-height: 1.62;
+    margin: 0 !important;
+    font-weight: 400;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.48rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Figtree', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── MONEY CARDS ── */
+  .money-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .money-card:hover {
+    border-color: rgba(26,122,60,0.3);
+    box-shadow: 0 6px 28px rgba(26,122,60,0.07);
+  }
+
+  .mc-head {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mc-stripe { width: 4px; flex-shrink: 0; }
+
+  .mc-head-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .mc-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .money-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .mc-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .mc-body { padding: 20px 24px 22px 28px; }
+
+  .mc-body p {
+    font-size: 0.94rem;
+    color: #4a6a4a;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── READINESS BAR ── */
+  .readiness-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .rr-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    width: 110px;
+  }
+
+  .rr-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .rr-fill {
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .rr-val {
+    font-size: 9.5px;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 80px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── INCOME MILESTONE ── */
+  .milestone-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 30px 0 38px;
+  }
+
+  .ms-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ms-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .ms1::before { background: var(--muted); }
+  .ms2::before { background: var(--accent); }
+  .ms3::before { background: var(--gold); }
+  .ms4::before { background: var(--rose); }
+
+  .ms-traffic {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .ms-tile h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .ms-tile p {
+    font-size: 0.77rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+
+  /* ── WARNING BOX ── */
+  .warning-box {
+    background: rgba(184,58,90,0.06);
+    border: 1px solid rgba(184,58,90,0.18);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .wb-icon { font-size: 16px; flex-shrink: 0; }
+
+  .warning-box p {
+    font-size: 0.88rem !important;
+    color: var(--rose) !important;
+    font-weight: 500;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── READINESS CHECKLIST ── */
+  .readiness-check {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+  }
+
+  .rc-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .rc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 28px;
+  }
+
+  .rc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.91rem;
+    color: #4a6a4a;
+    line-height: 1.58;
+  }
+
+  .rc-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid var(--accent);
+    background: rgba(26,122,60,0.07);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .milestone-strip { grid-template-columns: 1fr 1fr; }
+    .rc-grid { grid-template-columns: 1fr; }
+    .pull-quote { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-ribbon">
+      <span class="ribbon-block">Blog Income</span>
+      <div class="ribbon-dash"></div>
+      <span class="ribbon-tag">Complete Guide · 2026</span>
+    </div>
+    <h1>How to<br><em>Monetize</em> a Blog</h1>
+    <p class="deck">A blog without a monetisation strategy is a hobby. A blog with one — built on trust, consistent content, and a growing audience — can become a business that earns for years. Here is exactly how to build that.</p>
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <span class="hr-leaf">❧</span>
+      <div class="hr-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>The moment a blogger begins to wonder whether their writing could earn money, something quietly shifts. The blog stops being just a place to share ideas and starts feeling like the early seeds of something bigger — a platform, a business, a source of genuine financial freedom. That shift is worth honouring. And the path from a blog that earns nothing to one that earns consistently is not nearly as complicated as most people imagine.</p>
+
+    <p>Monetising a blog is not about selling out or plastering your pages with advertisements nobody asked for. Done well, it is simply the natural extension of the value you have already been providing — an invitation for readers who have benefited from your work to support it, or for products and services that genuinely serve your audience to reach them through your trusted voice. The key word, in every strategy, is trust. Without it, no monetisation method works. With it, almost all of them do.</p>
+
+    <div class="pull-quote">
+      <div class="pq-bar"></div>
+      <div class="pq-inner">
+        <p>You do not monetise a blog. You monetise an audience — and an audience that trusts you will always find ways to support what you build together.</p>
+      </div>
+    </div>
+
+    <!-- MILESTONE STRIP -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,122,60,0.1);color:var(--accent);border:1px solid rgba(26,122,60,0.2)">Reality Check</span>
+      Traffic Milestones & What They Unlock
+    </h2>
+
+    <div class="milestone-strip">
+      <div class="ms-tile ms1">
+        <span class="ms-traffic">0 – 1K / mo</span>
+        <h4>Start Here</h4>
+        <p>Amazon Associates, affiliate links, early email list</p>
+      </div>
+      <div class="ms-tile ms2">
+        <span class="ms-traffic">1K – 10K / mo</span>
+        <h4>Growing</h4>
+        <p>Google AdSense, digital products, sponsored posts</p>
+      </div>
+      <div class="ms-tile ms3">
+        <span class="ms-traffic">10K – 50K / mo</span>
+        <h4>Earning Well</h4>
+        <p>Mediavine ads, premium affiliates, online courses</p>
+      </div>
+      <div class="ms-tile ms4">
+        <span class="ms-traffic">50K+ / mo</span>
+        <h4>Full Income</h4>
+        <p>Raptive, brand deals, memberships, coaching</p>
+      </div>
+    </div>
+
+    <!-- METHOD 1: ADS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,122,60,0.1);color:var(--accent);border:1px solid rgba(26,122,60,0.2)">Method 01</span>
+      Display Advertising — The Passive Foundation
+    </h2>
+
+    <p>Display advertising is where most bloggers begin their monetisation journey — and for good reason. Once ads are placed on your site, they earn money every time a reader visits, without any additional effort on your part. Google AdSense is the starting point, welcoming blogs at almost any traffic level. As your monthly page views grow past ten thousand, premium networks like Mediavine unlock, offering dramatically higher earnings per visitor. A well-optimised blog in a valuable niche — finance, health, parenting, food — can earn hundreds of dollars monthly from ads alone, with the income growing steadily alongside traffic.</p>
+
+    <div class="money-card">
+      <div class="mc-head">
+        <div class="mc-stripe" style="background:var(--accent)"></div>
+        <div class="mc-head-inner">
+          <div class="mc-icon" style="background:rgba(26,122,60,0.1);color:var(--accent)">📊</div>
+          <h3>How to Maximise Your Ad Revenue</h3>
+          <span class="mc-badge" style="background:rgba(26,122,60,0.1);color:var(--accent);border:1px solid rgba(26,122,60,0.2)">Passive</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <p>Place ads above the fold, within long-form content, and in your sidebar — but never so densely that they disrupt the reading experience. A frustrated reader leaves. A reader who barely notices the ads stays, returns, and reads more. Longer articles earn more impressions than short ones. Content in high-CPM niches like personal finance, insurance, or technology earns significantly more per thousand visitors than lifestyle or general content. Let traffic growth and niche selection do the heavy lifting.</p>
+      </div>
+      <div class="readiness-row">
+        <span class="rr-label">Earning Potential</span>
+        <div class="rr-track"><div class="rr-fill" style="width:62%;background:var(--accent)"></div></div>
+        <span class="rr-val" style="color:var(--accent)">Moderate</span>
+      </div>
+    </div>
+
+    <!-- METHOD 2: AFFILIATE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(200,146,10,0.1);color:var(--gold);border:1px solid rgba(200,146,10,0.2)">Method 02</span>
+      Affiliate Marketing — Earn From Every Recommendation
+    </h2>
+
+    <div class="money-card">
+      <div class="mc-head">
+        <div class="mc-stripe" style="background:var(--gold)"></div>
+        <div class="mc-head-inner">
+          <div class="mc-icon" style="background:rgba(200,146,10,0.1);color:var(--gold)">🔗</div>
+          <h3>The Most Scalable Income Stream</h3>
+          <span class="mc-badge" style="background:rgba(200,146,10,0.1);color:var(--gold);border:1px solid rgba(200,146,10,0.2)">High Potential</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <p>Affiliate marketing means recommending a product or service in your content, earning a commission when a reader purchases through your unique link. One well-written review article, ranking on the first page of Google, can generate commissions every single day for years without a word being changed. The secret is authenticity — only recommend what you genuinely use and believe in. The commission is the reward for a genuine introduction. The moment it becomes the primary motivation, readers sense it immediately and trust collapses. Protect your credibility and the income will protect itself.</p>
+      </div>
+      <div class="readiness-row">
+        <span class="rr-label">Earning Potential</span>
+        <div class="rr-track"><div class="rr-fill" style="width:90%;background:var(--gold)"></div></div>
+        <span class="rr-val" style="color:var(--gold)">Very High</span>
+      </div>
+    </div>
+
+    <!-- METHOD 3: DIGITAL PRODUCTS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,58,110,0.1);color:var(--navy);border:1px solid rgba(26,58,110,0.2)">Method 03</span>
+      Digital Products — Create Once, Sell Forever
+    </h2>
+
+    <p>Your blog is a daily demonstration of your expertise. Digital products — e-books, templates, mini-courses, printables, workshops — package that expertise into something readers can purchase directly. The economics are extraordinary: zero inventory, zero shipping cost, infinite scalability. An e-book written across three focused weekends can earn for years. An online course built from the questions your readers ask most often can generate more income in a month than a traditional salary. The more deeply you understand your audience's specific problem, the more precisely you can create the product that solves it.</p>
+
+    <div class="money-card">
+      <div class="mc-head">
+        <div class="mc-stripe" style="background:var(--navy)"></div>
+        <div class="mc-head-inner">
+          <div class="mc-icon" style="background:rgba(26,58,110,0.1);color:var(--navy)">📦</div>
+          <h3>Start With One Small, Focused Product</h3>
+          <span class="mc-badge" style="background:rgba(26,58,110,0.1);color:var(--navy);border:1px solid rgba(26,58,110,0.2)">Scalable</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <p>Do not begin with a sprawling flagship course. Begin with a tightly scoped product that solves one very specific problem your audience faces — a checklist, a swipe file, a one-hour workshop. Price it modestly, deliver it generously, and use your readers' response to understand what they truly need next. Small products build trust faster than ambitious ones, and that trust becomes the foundation for every larger product you create afterward.</p>
+      </div>
+      <div class="readiness-row">
+        <span class="rr-label">Earning Potential</span>
+        <div class="rr-track"><div class="rr-fill" style="width:95%;background:var(--navy)"></div></div>
+        <span class="rr-val" style="color:var(--navy)">Exceptional</span>
+      </div>
+    </div>
+
+    <!-- METHOD 4: SPONSORED -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(90,42,138,0.1);color:var(--violet);border:1px solid rgba(90,42,138,0.2)">Method 04</span>
+      Sponsored Content — When Brands Pay for Your Voice
+    </h2>
+
+    <div class="money-card">
+      <div class="mc-head">
+        <div class="mc-stripe" style="background:var(--violet)"></div>
+        <div class="mc-head-inner">
+          <div class="mc-icon" style="background:rgba(90,42,138,0.1);color:var(--violet)">🤝</div>
+          <h3>Selective Partnerships That Serve Your Audience</h3>
+          <span class="mc-badge" style="background:rgba(90,42,138,0.1);color:var(--violet);border:1px solid rgba(90,42,138,0.2)">Premium</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <p>As your audience grows, brands will pay to be featured in your content — a sponsored post, a newsletter mention, a product review. These arrangements can pay hundreds or thousands of dollars per placement, depending on your traffic and niche authority. The cardinal rule is selectivity. Accept only partnerships that genuinely align with your audience's needs and your own values. A single misaligned sponsorship can cost you the trust that took years to earn. The bloggers who command the highest sponsored rates are not the ones with the biggest audiences — they are the ones whose audiences trust them most completely.</p>
+        <div class="warning-box">
+          <span class="wb-icon">⚠️</span>
+          <p>Always disclose sponsored content clearly and prominently. Transparency is not just a legal requirement in most countries — it is the ethical foundation that makes every other form of monetisation possible.</p>
+        </div>
+      </div>
+      <div class="readiness-row">
+        <span class="rr-label">Earning Potential</span>
+        <div class="rr-track"><div class="rr-fill" style="width:78%;background:var(--violet)"></div></div>
+        <span class="rr-val" style="color:var(--violet)">High</span>
+      </div>
+    </div>
+
+    <!-- READINESS CHECKLIST -->
+    <div class="readiness-check">
+      <div class="rc-title">
+        <span>✦</span> Is Your Blog Ready to Monetise? Check These First
+      </div>
+      <div class="rc-grid">
+        <div class="rc-item"><div class="rc-box"></div>Publishing consistently for 3+ months</div>
+        <div class="rc-item"><div class="rc-box"></div>Clear niche with defined audience</div>
+        <div class="rc-item"><div class="rc-box"></div>At least 10 solid, indexed posts</div>
+        <div class="rc-item"><div class="rc-box"></div>Google Analytics installed and tracking</div>
+        <div class="rc-item"><div class="rc-box"></div>Email list started, even if small</div>
+        <div class="rc-item"><div class="rc-box"></div>Growing organic traffic month on month</div>
+        <div class="rc-item"><div class="rc-box"></div>Readers engaging with comments or email</div>
+        <div class="rc-item"><div class="rc-box"></div>At least one product or service to offer</div>
+      </div>
+    </div>
+
+    <p>The bloggers who earn the most from their writing are not necessarily the ones with the most traffic. They are the ones who built genuine relationships with a specific audience, served that audience consistently and honestly, and then layered income streams thoughtfully on top of the trust they earned. Money follows value. Value follows trust. And trust is built one honest, helpful article at a time.</p>
+
+    <p>Your blog is already more valuable than you think. Monetisation is simply the art of ensuring that value flows both ways.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Earn from the audience you serve — never at their expense.</span>
+  </footer>
+
+</div>
+</body>
+</html>
