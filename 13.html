@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Find Trending Blog Topics</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #07101e;
+    --surface:  #0d1a2e;
+    --surface2: #112236;
+    --border:   #1a3050;
+    --text:     #d0e8ff;
+    --muted:    #4a7090;
+    --accent:   #00c2ff;
+    --emerald:  #00e5a0;
+    --amber:    #ffb700;
+    --rose:     #ff5f8a;
+    --violet:   #c084fc;
+    --glow-c:   rgba(0,194,255,0.10);
+    --glow-e:   rgba(0,229,160,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* deep ocean glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -160px; left: 50%;
+    transform: translateX(-50%);
+    width: 1000px; height: 450px;
+    background: radial-gradient(ellipse at center,
+      rgba(0,194,255,0.07) 0%,
+      rgba(0,229,160,0.04) 50%,
+      transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .header-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,194,255,0.08);
+    border: 1px solid rgba(0,194,255,0.22);
+    border-radius: 6px;
+    padding: 7px 16px;
+    margin-bottom: 28px;
+  }
+
+  .flag-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%,100% { opacity:1; box-shadow:0 0 10px var(--accent); }
+    50%      { opacity:0.4; box-shadow:0 0 4px var(--accent); }
+  }
+
+  .flag-text {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Bitter', serif;
+    font-size: clamp(2.3rem, 6vw, 3.9rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #e8f6ff;
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 600px;
+  }
+
+  .header-rule {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent 65%);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.62em;
+    color: #7ea8cc;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 34px 42px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--emerald) 60%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 70% at 0% 50%, var(--glow-c), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    font-size: 1.22rem;
+    font-weight: 600;
+    color: var(--accent) !important;
+    line-height: 1.62;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Bitter', serif;
+    font-size: 1.46rem;
+    font-weight: 700;
+    color: #e8f6ff;
+    margin: 56px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-pill {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ── SOURCE CARDS ── */
+  .source-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 18px 0;
+    transition: border-color 0.22s, box-shadow 0.22s;
+  }
+
+  .source-card:hover {
+    border-color: rgba(0,194,255,0.35);
+    box-shadow: 0 4px 28px rgba(0,194,255,0.06);
+  }
+
+  .sc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sc-bar { width: 4px; flex-shrink: 0; }
+
+  .sc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .sc-emoji {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .source-card h3 {
+    font-family: 'Bitter', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: #e8f6ff;
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .sc-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .sc-body { padding: 18px 24px 20px 28px; }
+
+  .sc-body p {
+    font-size: 0.94rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.75;
+  }
+
+  /* ── PRO TIP ── */
+  .pro-tip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pt-icon { font-size: 14px; flex-shrink: 0; padding-top: 1px; }
+
+  .pro-tip p {
+    font-size: 0.87rem !important;
+    color: var(--emerald) !important;
+    font-weight: 600;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── TREND SIGNAL GRID ── */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+    margin: 28px 0 36px;
+  }
+
+  .signal-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .signal-tile::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .s1::after { background: var(--accent); }
+  .s2::after { background: var(--emerald); }
+  .s3::after { background: var(--amber); }
+  .s4::after { background: var(--rose); }
+  .s5::after { background: var(--violet); }
+  .s6::after { background: var(--accent); }
+
+  .sig-icon { font-size: 24px; display: block; margin-bottom: 10px; }
+
+  .signal-tile h4 {
+    font-family: 'Bitter', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e8f6ff;
+    margin-bottom: 5px;
+    line-height: 1.25;
+  }
+
+  .signal-tile p {
+    font-size: 0.78rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+
+  /* ── SPEED METER ── */
+  .speed-rows {
+    display: grid;
+    gap: 13px;
+    margin: 24px 0 36px;
+  }
+
+  .speed-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 90px;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .speed-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .speed-track {
+    height: 7px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .speed-fill {
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .speed-desc {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* ── ACTION PANEL ── */
+  .action-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 34px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, var(--glow-e), transparent);
+    pointer-events: none;
+  }
+
+  .ap-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.91rem;
+    color: #4a7090;
+    line-height: 1.56;
+  }
+
+  .ap-arrow {
+    color: var(--emerald);
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 13px;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page          { padding: 54px 22px 74px; }
+    .signal-grid   { grid-template-columns: 1fr 1fr; }
+    .ap-grid       { grid-template-columns: 1fr; }
+    .speed-row     { grid-template-columns: 130px 1fr 70px; }
+    .pull-quote    { padding: 26px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-flag">
+      <div class="flag-dot"></div>
+      <span class="flag-text">Content Strategy · Trend Intelligence · 2026</span>
+    </div>
+    <h1>How to Find<br><em>Trending Blog Topics</em></h1>
+    <p class="deck">The bloggers who grow fastest are not the most talented writers in their niche — they are the most attuned listeners. Here is how to find what your audience is searching for right now, before anyone else does.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a particular kind of blog post that feels almost magical when you find it — the one that appears just when you needed it, answers the exact question forming in your mind, and arrives before the topic has been written to death by every other blogger in the space. That timing is not an accident. The bloggers who consistently publish at the crest of a wave are not lucky. They are paying close, deliberate attention to the signals the internet quietly sends every single day.</p>
+
+    <p>Finding trending blog topics is a skill — a combination of curiosity, observation, and a handful of reliable tools that can show you what thousands of real people are actively searching for, discussing, and sharing right now. Learn to read those signals well, and your content will always feel timely, relevant, and worth clicking on.</p>
+
+    <div class="pull-quote">
+      <p>The best blog topic is not the one that interests you most — it is the one that interests your reader most, right now, in this exact moment. Find that overlap and you find your next great post.</p>
+    </div>
+
+    <!-- TREND SIGNALS -->
+    <h2>
+      <span class="h2-pill" style="background:rgba(0,194,255,0.12);color:var(--accent);border:1px solid rgba(0,194,255,0.25)">Read These</span>
+      Six Signals That Reveal What Is Trending
+    </h2>
+
+    <p>Before reaching for any tool, understand this: trending topics leave visible footprints across the internet. The skill is learning to see them. These six signals appear in different places, travel at different speeds, and serve different purposes — but together they paint a complete picture of what your audience cares about right now.</p>
+
+    <div class="signal-grid">
+      <div class="signal-tile s1">
+        <span class="sig-icon">🔍</span>
+        <h4>Search Spikes</h4>
+        <p>Sudden rises in Google searches signal emerging interest</p>
+      </div>
+      <div class="signal-tile s2">
+        <span class="sig-icon">💬</span>
+        <h4>Forum Heat</h4>
+        <p>Reddit and Quora threads with rapid replies show real pain points</p>
+      </div>
+      <div class="signal-tile s3">
+        <span class="sig-icon">📱</span>
+        <h4>Social Momentum</h4>
+        <p>Topics spreading fast on X, TikTok or LinkedIn</p>
+      </div>
+      <div class="signal-tile s4">
+        <span class="sig-icon">📰</span>
+        <h4>News Cycles</h4>
+        <p>Breaking stories that your niche will want explained</p>
+      </div>
+      <div class="signal-tile s5">
+        <span class="sig-icon">🎙</span>
+        <h4>Podcast Themes</h4>
+        <p>Episode topics signal what your audience is hungry to learn</p>
+      </div>
+      <div class="signal-tile s6">
+        <span class="sig-icon">📧</span>
+        <h4>Email Questions</h4>
+        <p>The questions readers send you are pure content gold</p>
+      </div>
+    </div>
+
+    <!-- SOURCE 1: GOOGLE TRENDS -->
+    <h2>
+      <span class="h2-pill" style="background:rgba(0,194,255,0.12);color:var(--accent);border:1px solid rgba(0,194,255,0.25)">Tool 01</span>
+      Google Trends — The Pulse of the Internet
+    </h2>
+
+    <div class="source-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--accent)"></div>
+        <div class="sc-top-inner">
+          <span class="sc-emoji">📈</span>
+          <h3>See Exactly What the World Is Searching For</h3>
+          <span class="sc-tag" style="background:rgba(0,194,255,0.12);color:var(--accent);border:1px solid rgba(0,194,255,0.22)">Free · Essential</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Google Trends is the closest thing the internet has to a live heartbeat monitor. Type any topic into its search bar and instantly see whether interest is rising, falling, or seasonal — shown as a graph across the last hour, day, week, month, or five years. The "Trending Now" section reveals topics spiking in real time. The "Related Queries" section shows exactly what people are searching alongside your main topic, often revealing angles and subtopics you had never considered writing about.</p>
+        <div class="pro-tip">
+          <span class="pt-icon">⚡</span>
+          <p>Use Google Trends to compare two topic ideas side by side. The one with rising momentum — not just high volume — is almost always the smarter choice to write about first.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCE 2: REDDIT -->
+    <h2>
+      <span class="h2-pill" style="background:rgba(0,229,160,0.12);color:var(--emerald);border:1px solid rgba(0,229,160,0.25)">Tool 02</span>
+      Reddit — Where Genuine Questions Live
+    </h2>
+
+    <div class="source-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--emerald)"></div>
+        <div class="sc-top-inner">
+          <span class="sc-emoji">🌐</span>
+          <h3>Mine Communities for Real, Unfiltered Questions</h3>
+          <span class="sc-tag" style="background:rgba(0,229,160,0.12);color:var(--emerald);border:1px solid rgba(0,229,160,0.22)">Free · Underused</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Reddit is an extraordinary window into the unfiltered minds of your audience. Find the subreddits — the topic-specific communities — that serve your niche, and then sort by "Hot" or "Top — This Week." The posts generating the most conversation are not just popular — they reveal what people are genuinely confused about, passionate about, or frustrated by right now. A single afternoon browsing the right subreddits can generate months of compelling, audience-validated blog content.</p>
+        <div class="pro-tip">
+          <span class="pt-icon">⚡</span>
+          <p>Sort by "New" on relevant subreddits too. Early-stage conversations reveal topics before they peak — giving you a head start over every blogger who waits for trends to become obvious.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCE 3: ANSWER THE PUBLIC -->
+    <h2>
+      <span class="h2-pill" style="background:rgba(255,183,0,0.12);color:var(--amber);border:1px solid rgba(255,183,0,0.25)">Tool 03</span>
+      AnswerThePublic — A Map of Human Curiosity
+    </h2>
+
+    <div class="source-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--amber)"></div>
+        <div class="sc-top-inner">
+          <span class="sc-emoji">🗺</span>
+          <h3>Discover Every Question People Ask About Your Topic</h3>
+          <span class="sc-tag" style="background:rgba(255,183,0,0.12);color:var(--amber);border:1px solid rgba(255,183,0,0.22)">Free Tier · Powerful</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Type any niche keyword into AnswerThePublic and it generates a rich visual map of every question, comparison, preposition, and related phrase that real people are typing around that topic. It is essentially a map of human curiosity — organised by "Who," "What," "Where," "When," "Why," and "How." Each question is a potential blog post. Each cluster reveals an entire content series waiting to be written. For a beginner blogger seeking topic ideas, this single free tool can fill an editorial calendar for months.</p>
+        <div class="pro-tip">
+          <span class="pt-icon">⚡</span>
+          <p>Export the results as a spreadsheet. Highlight every question that you could answer from personal experience or deep knowledge. Those are your highest-priority posts — where your authority and audience demand intersect perfectly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCE 4: COMPETITOR GAP -->
+    <h2>
+      <span class="h2-pill" style="background:rgba(192,132,252,0.12);color:var(--violet);border:1px solid rgba(192,132,252,0.25)">Tool 04</span>
+      Competitor Blogs — Learn From What Already Works
+    </h2>
+
+    <div class="source-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--violet)"></div>
+        <div class="sc-top-inner">
+          <span class="sc-emoji">🔭</span>
+          <h3>Study the Most Shared Posts in Your Niche</h3>
+          <span class="sc-tag" style="background:rgba(192,132,252,0.12);color:var(--violet);border:1px solid rgba(192,132,252,0.22)">Free · Strategic</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Your competitors are running experiments every week — and publishing the results publicly on their blogs. Use a free tool like BuzzSumo or simply sort a competitor's blog by most shared or most commented to see which topics resonated most deeply with your shared audience. You are not looking to copy — you are looking to understand what the audience responds to, and then do it better. Find the popular topic they covered superficially and write the version that covers it completely.</p>
+      </div>
+    </div>
+
+    <!-- SPEED METER: TREND LIFESPAN -->
+    <h2>
+      <span class="h2-pill" style="background:rgba(255,95,138,0.12);color:var(--rose);border:1px solid rgba(255,95,138,0.25)">Know This</span>
+      How Long Different Trends Last
+    </h2>
+
+    <div class="speed-rows">
+      <div class="speed-row">
+        <span class="speed-label">Breaking News</span>
+        <div class="speed-track"><div class="speed-fill" style="width:18%;background:var(--rose)"></div></div>
+        <span class="speed-desc" style="color:var(--rose)">Hours</span>
+      </div>
+      <div class="speed-row">
+        <span class="speed-label">Social Viral Topics</span>
+        <div class="speed-track"><div class="speed-fill" style="width:32%;background:var(--amber)"></div></div>
+        <span class="speed-desc" style="color:var(--amber)">Days</span>
+      </div>
+      <div class="speed-row">
+        <span class="speed-label">Industry Shifts</span>
+        <div class="speed-track"><div class="speed-fill" style="width:58%;background:var(--accent)"></div></div>
+        <span class="speed-desc" style="color:var(--accent)">Months</span>
+      </div>
+      <div class="speed-row">
+        <span class="speed-label">Evergreen + Trending</span>
+        <div class="speed-track"><div class="speed-fill" style="width:90%;background:var(--emerald)"></div></div>
+        <span class="speed-desc" style="color:var(--emerald)">Years</span>
+      </div>
+    </div>
+
+    <!-- ACTION PANEL -->
+    <div class="action-panel">
+      <div class="ap-title">✦ &nbsp; Your Trending Topics Research Routine</div>
+      <div class="ap-grid">
+        <div class="ap-item"><span class="ap-arrow">→</span>Check Google Trends every Monday</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Browse 2 niche subreddits weekly</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Run AnswerThePublic monthly</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Note questions your readers ask you</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Review top competitor posts weekly</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Save ideas in a dedicated document</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Prioritise rising trends over peaked ones</div>
+        <div class="ap-item"><span class="ap-arrow">→</span>Always ask: can I own this topic better?</div>
+      </div>
+    </div>
+
+    <p>The bloggers who seem to always know what to write about are not special. They have simply built a habit of listening — to their readers, to the tools, to the quiet signals the internet sends constantly to those patient enough to notice them. Build that habit into your weekly routine, and you will never again stare at a blank page wondering what to write next.</p>
+
+    <p>The internet is always talking. You just need to learn how to listen.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Trends favour the curious, the consistent, and the quick.</span>
+  </footer>
+
+</div>
+</body>
+</html>
