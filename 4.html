@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Free Blogging Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #2a3441;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --gold: #e3b341;
+    --green: #3fb950;
+    --purple: #bc8cff;
+    --pink: #f778ba;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.82;
+  }
+
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 80px 40px 100px;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 64px;
+  }
+
+  .tag-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(88,166,255,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+
+  .tag.gold {
+    background: rgba(227,179,65,0.12);
+    color: var(--gold);
+    border-color: rgba(227,179,65,0.25);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .intro-lead {
+    font-size: 1.08rem;
+    color: var(--muted);
+    line-height: 1.75;
+    border-left: 2px solid var(--border);
+    padding-left: 20px;
+    margin-top: 24px;
+  }
+
+  /* Body */
+  .body p {
+    margin-bottom: 1.55em;
+    color: #cdd5df;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 48px 0;
+    padding: 32px 36px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 0 0 12px 12px;
+  }
+
+  .pull-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.22rem;
+    color: var(--gold) !important;
+    line-height: 1.6;
+    margin: 0 !important;
+  }
+
+  /* Section heading */
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.45rem;
+    color: var(--text);
+    margin: 52px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .h2-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Tool cards */
+  .tool-grid {
+    display: grid;
+    gap: 14px;
+    margin: 20px 0 32px;
+  }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: start;
+    transition: border-color 0.2s;
+  }
+
+  .tool-card:hover {
+    border-color: rgba(88,166,255,0.4);
+  }
+
+  .tool-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .tool-card h3 {
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .free-badge {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(63,185,80,0.15);
+    color: var(--green);
+    border: 1px solid rgba(63,185,80,0.3);
+  }
+
+  .tool-card p {
+    font-size: 0.91rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.65;
+  }
+
+  /* Footer */
+  .article-footer {
+    margin-top: 70px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+  }
+
+  .footer-meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer-ornament {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 48px 22px 70px; }
+    .tool-card { grid-template-columns: 1fr; }
+    .tool-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="tag-row">
+      <span class="tag">Blogging</span>
+      <span class="tag gold">Free Resources</span>
+    </div>
+    <h1>The Best <em>Free</em> Blogging Tools<br>Every Writer Needs</h1>
+    <p class="intro-lead">You do not need to spend a single dollar to build a serious blog. The right free tools, used well, are all you need to write, grow, and succeed.</p>
+  </header>
+
+  <div class="body">
+
+    <p>There is a persistent myth in the blogging world that success requires a large budget — premium themes, expensive plugins, paid SEO software, and sophisticated email platforms. The truth is far more encouraging. Today's ecosystem of free tools is extraordinary, and the bloggers who know how to use them are competing at the highest level without opening their wallets.</p>
+
+    <p>Whether you are just starting out or looking to streamline an existing blog, these free tools will cover every stage of your workflow — from the first idea to the last published word, and all the growth that follows.</p>
+
+    <div class="pull-quote">
+      <p>"The best blogging toolkit is not the most expensive one — it is the one you actually use every single day."</p>
+    </div>
+
+    <h2><span class="h2-icon" style="background:rgba(88,166,255,0.15);color:var(--accent)">✍</span> Writing & Publishing</h2>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(88,166,255,0.12);color:var(--accent)">📝</div>
+        <div>
+          <h3>WordPress.com <span class="free-badge">Free</span></h3>
+          <p>The world's most popular blogging platform, and for good reason. The free plan gives you a clean, professional space to publish immediately. It handles hosting, security, and updates — so you can focus entirely on writing, not on technical maintenance.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(188,140,255,0.12);color:var(--purple)">📄</div>
+        <div>
+          <h3>Google Docs <span class="free-badge">Free</span></h3>
+          <p>The underrated hero of every writer's workflow. Google Docs is where great posts are born — it autosaves constantly, works on any device, and makes collaboration effortless. Write your drafts here first before moving them to your publishing platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="h2-icon" style="background:rgba(227,179,65,0.15);color:var(--gold)">🔍</span> SEO & Keyword Research</h2>
+
+    <p>Writing beautifully means nothing if no one can find your words. SEO — search engine optimization — is the quiet art of making your content discoverable. These free tools give you a powerful head start.</p>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(227,179,65,0.12);color:var(--gold)">🔎</div>
+        <div>
+          <h3>Google Search Console <span class="free-badge">Free</span></h3>
+          <p>Directly from Google itself, this tool shows you exactly which search queries are bringing readers to your blog, which pages perform best, and where technical issues may be holding you back. It is indispensable and completely free.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(63,185,80,0.12);color:var(--green)">📊</div>
+        <div>
+          <h3>Ubersuggest (Free Tier) <span class="free-badge">Free</span></h3>
+          <p>Neil Patel's keyword tool offers a generous free plan that reveals search volume, keyword difficulty, and content ideas. Type in any topic and instantly discover what your potential readers are actually searching for.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="h2-icon" style="background:rgba(247,120,186,0.15);color:var(--pink)">🎨</span> Design & Visuals</h2>
+
+    <p>Readers judge a blog within seconds of landing on it. Strong visuals — a clean featured image, a well-designed header, a clear layout — build instant trust. You do not need a design degree or an expensive tool to achieve this.</p>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(247,120,186,0.12);color:var(--pink)">🖼</div>
+        <div>
+          <h3>Canva <span class="free-badge">Free</span></h3>
+          <p>Canva's free plan is one of the most generous in the design world. Create stunning featured images, Pinterest graphics, social media banners, and even infographics using beautiful ready-made templates. No design experience needed — just drag, drop, and publish.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(88,166,255,0.12);color:var(--accent)">📷</div>
+        <div>
+          <h3>Unsplash <span class="free-badge">Free</span></h3>
+          <p>High-resolution, professionally shot photographs — completely free and licensed for commercial use. Unsplash has tens of thousands of images across every topic imaginable, so you will always find the perfect visual to complement your post.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="h2-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">📈</span> Analytics & Growth</h2>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-badge" style="background:rgba(63,185,80,0.12);color:var(--green)">📉</div>
+        <div>
+          <h3>Google Analytics 4 <span class="free-badge">Free</span></h3>
+          <p>The gold standard in website analytics, and entirely free. Track your page views, understand where your readers come from, which posts they love most, how long they stay, and where they leave. Data-driven bloggers grow faster — and this tool makes that possible for anyone.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>The tools above are not shortcuts — they are foundations. Each one, used consistently, compounds over time into something real: a blog that is well-written, well-designed, easily found, and genuinely growing. The only investment they ask of you is attention and consistency — and those, fortunately, are entirely free.</p>
+
+    <p>Start with one tool from each category. Learn it deeply. Then layer in the next. You will be amazed at what you can build without spending a single cent.</p>
+
+  </div>
+
+  <footer class="article-footer">
+   
+    <span class="footer-ornament">✦</span>
+  </footer>
+
+</div>
+</body>
+</html>
