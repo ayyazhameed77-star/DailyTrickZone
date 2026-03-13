@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyword Research for Beginners</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0b0f1a;
+    --surface:  #111827;
+    --surface2: #16202f;
+    --border:   #1f2d40;
+    --text:     #dce8f5;
+    --muted:    #607080;
+    --accent:   #38bdf8;
+    --emerald:  #34d399;
+    --amber:    #fbbf24;
+    --violet:   #a78bfa;
+    --rose:     #fb7185;
+    --glow-a:   rgba(56,189,248,0.10);
+    --glow-e:   rgba(52,211,153,0.10);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Mulish', sans-serif;
+    font-size: 17px;
+    line-height: 1.88;
+  }
+
+  /* aurora top glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 340px;
+    background: radial-gradient(ellipse at center,
+      rgba(56,189,248,0.08) 0%,
+      rgba(167,139,250,0.06) 45%,
+      transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 92px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 30px;
+  }
+
+  .badge-blue   { background:rgba(56,189,248,0.12);  color:var(--accent);   border:1px solid rgba(56,189,248,0.25); }
+  .badge-green  { background:rgba(52,211,153,0.12);  color:var(--emerald);  border:1px solid rgba(52,211,153,0.25); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.3rem, 6vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #e8f4ff;
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 600px;
+  }
+
+  .header-line {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent 65%);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.6em;
+    color: #a0b8d0;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 34px 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 0% 50%, var(--glow-a), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), var(--emerald), transparent 70%);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.24rem;
+    color: var(--accent) !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.46rem;
+    font-weight: 700;
+    color: #e8f4ff;
+    margin: 56px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Mulish', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── CONCEPT CARDS ── */
+  .concept-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 18px 0;
+    transition: border-color 0.2s;
+  }
+
+  .concept-card:hover { border-color: rgba(56,189,248,0.3); }
+
+  .concept-top {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .c-accent-bar {
+    width: 4px;
+    flex-shrink: 0;
+  }
+
+  .concept-inner {
+    padding: 22px 26px;
+    flex: 1;
+  }
+
+  .concept-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    display: block;
+  }
+
+  .concept-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: #e8f4ff;
+    margin-bottom: 10px;
+  }
+
+  .concept-card p {
+    font-size: 0.93rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.72;
+  }
+
+  /* ── TOOL STRIP ── */
+  .tool-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .tool-tile {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .tool-tile:hover { border-color: rgba(56,189,248,0.3); }
+
+  .tool-emoji { font-size: 22px; display:block; margin-bottom: 8px; }
+
+  .tool-tile h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #e8f4ff;
+    margin-bottom: 4px;
+  }
+
+  .tool-tile p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.55;
+  }
+
+  .tool-tile .tool-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: rgba(52,211,153,0.12);
+    color: var(--emerald);
+    border: 1px solid rgba(52,211,153,0.25);
+  }
+
+  /* ── INTENT TABLE ── */
+  .intent-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0 36px;
+    font-size: 0.88rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .intent-table thead tr {
+    background: var(--surface2);
+  }
+
+  .intent-table th {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intent-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    color: #8090a8;
+    vertical-align: middle;
+    line-height: 1.55;
+  }
+
+  .intent-table tr:last-child td { border-bottom: none; }
+  .intent-table tr:hover td { background: var(--surface2); }
+
+  .intent-table td:first-child {
+    font-weight: 600;
+    color: #e8f4ff;
+  }
+
+  .it {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 72px; }
+    .tool-strip { grid-template-columns: 1fr 1fr; }
+    .pull-quote { padding: 26px 26px; }
+    .intent-table th, .intent-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="badge-row">
+      <span class="badge badge-blue">SEO Basics</span>
+      <span class="badge badge-green">Beginner's Guide</span>
+    </div>
+    <h1>Keyword Research<br>for <em>Beginners</em></h1>
+    <p class="deck">Before a single word of your article is written, the right keyword research can determine whether thousands of people find it — or no one does. Here is everything you need to know to start.</p>
+    <div class="header-line"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>Imagine writing an article you are genuinely proud of — carefully researched, clearly explained, beautifully structured — and then watching it disappear into the vast silence of the internet, unread and unfound. This is the quiet frustration of countless bloggers who skipped one foundational step: keyword research. It is not glamorous work, and it does not feel as creative as writing itself. But it is the invisible engine that determines whether your content reaches the people it was made for.</p>
+
+    <p>Keyword research is simply the practice of discovering the exact words and phrases real people type into search engines when they are looking for information, answers, or solutions. Do it well, and your articles become a bridge between your knowledge and your reader's curiosity. Do it poorly — or not at all — and that bridge is never built.</p>
+
+    <div class="pull-quote">
+      <p>Keyword research is not about chasing numbers on a spreadsheet. It is about listening — really listening — to what your audience is quietly asking the internet every single day.</p>
+    </div>
+
+    <!-- SECTION 1 -->
+    <h2>What a Keyword Actually Is
+      <span class="h2-chip" style="background:rgba(56,189,248,0.12);color:var(--accent);border:1px solid rgba(56,189,248,0.22)">The Basics</span>
+    </h2>
+
+    <p>A keyword is any word or phrase that someone types into a search engine. It can be a single word like "blogging," a short phrase like "start a blog," or a longer, more specific question like "how to start a blog with no money in 2026." These longer phrases are called <strong style="color:#e8f4ff">long-tail keywords</strong> — and for beginners, they are pure gold.</p>
+
+    <div class="concept-card">
+      <div class="concept-top">
+        <div class="c-accent-bar" style="background:var(--accent)"></div>
+        <div class="concept-inner">
+          <span class="concept-label" style="color:var(--accent)">Key Concept</span>
+          <h3>Short-Tail vs. Long-Tail Keywords</h3>
+          <p>Short-tail keywords — like "cooking" or "fitness" — have enormous search volume but brutal competition. Long-tail keywords — like "healthy meal prep for busy working moms" — have smaller volume but far less competition and much higher intent. As a beginner, long-tail keywords are where you win your first rankings.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <h2>Understanding Search Intent
+      <span class="h2-chip" style="background:rgba(167,139,250,0.12);color:var(--violet);border:1px solid rgba(167,139,250,0.22)">Critical</span>
+    </h2>
+
+    <p>Behind every keyword is a human being with a specific purpose. Search intent is that purpose — and matching your content to it is the single most important thing you can do for your rankings. Google does not just match words; it tries to understand what the searcher actually wants. If your article delivers exactly that, Google will reward it.</p>
+
+    <table class="intent-table">
+      <thead>
+        <tr>
+          <th>Intent Type</th>
+          <th>What They Want</th>
+          <th>Example Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="it" style="background:var(--accent)"></span>Informational</td>
+          <td>To learn something</td>
+          <td>"what is keyword research"</td>
+        </tr>
+        <tr>
+          <td><span class="it" style="background:var(--emerald)"></span>Navigational</td>
+          <td>To find a specific site</td>
+          <td>"Google Search Console login"</td>
+        </tr>
+        <tr>
+          <td><span class="it" style="background:var(--amber)"></span>Commercial</td>
+          <td>To compare before buying</td>
+          <td>"best keyword tools for bloggers"</td>
+        </tr>
+        <tr>
+          <td><span class="it" style="background:var(--rose)"></span>Transactional</td>
+          <td>To take action or buy</td>
+          <td>"buy Ahrefs subscription"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>For beginner bloggers, informational and commercial intent keywords are your most natural targets. You are here to teach, guide, and help — and these searchers are here to learn.</p>
+
+    <!-- SECTION 3 -->
+    <h2>How to Find Your First Keywords
+      <span class="h2-chip" style="background:rgba(52,211,153,0.12);color:var(--emerald);border:1px solid rgba(52,211,153,0.22)">Action Step</span>
+    </h2>
+
+    <p>You do not need expensive software to begin. The internet's best keyword research tool is already in your hands — the Google search bar itself. Type your topic into Google and observe every autocomplete suggestion that appears. These are real searches by real people, gathered in real time. Scroll to the bottom of the results page and look at "Related Searches." These clusters of phrases are a map of your audience's mind.</p>
+
+    <div class="concept-card">
+      <div class="concept-top">
+        <div class="c-accent-bar" style="background:var(--emerald)"></div>
+        <div class="concept-inner">
+          <span class="concept-label" style="color:var(--emerald)">Pro Technique</span>
+          <h3>The "Also Ask" Goldmine</h3>
+          <p>Every Google search page contains a "People Also Ask" box — a rotating list of questions real users are asking around your topic. Each question is a potential article, a potential subheading, or a potential angle you had not considered. This box alone can fuel months of content ideas, all pre-validated by actual search demand.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 — TOOLS -->
+    <h2>Free Tools Every Beginner Should Know
+      <span class="h2-chip" style="background:rgba(251,191,36,0.12);color:var(--amber);border:1px solid rgba(251,191,36,0.22)">Toolkit</span>
+    </h2>
+
+    <div class="tool-strip">
+      <div class="tool-tile">
+        <span class="tool-emoji">🔍</span>
+        <h4>Google Search Console</h4>
+        <p>See what keywords already bring visitors to your site.</p>
+        <span class="tool-tag">Free</span>
+      </div>
+      <div class="tool-tile">
+        <span class="tool-emoji">📈</span>
+        <h4>Google Trends</h4>
+        <p>Discover if a topic is rising, falling, or seasonal.</p>
+        <span class="tool-tag">Free</span>
+      </div>
+      <div class="tool-tile">
+        <span class="tool-emoji">💡</span>
+        <h4>Ubersuggest</h4>
+        <p>Keyword volume, difficulty scores and content ideas.</p>
+        <span class="tool-tag">Free Tier</span>
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2>One Keyword Per Article — Always
+      <span class="h2-chip" style="background:rgba(251,113,133,0.12);color:var(--rose);border:1px solid rgba(251,113,133,0.22)">Rule</span>
+    </h2>
+
+    <p>The most common keyword mistake beginners make is trying to rank for five different keywords in a single post. This dilutes your focus, confuses search engines, and produces writing that feels scattered. Choose one primary keyword per article, write the most thorough and genuinely useful article you can on that exact topic, and let related keywords appear naturally in the prose. Depth beats breadth, every single time.</p>
+
+    <p>Keyword research is not a one-time task — it is a habit you build into your writing process, post by post, month by month. Start small, stay curious, and let the data guide you toward the questions your readers are already asking. The answers are yours to give.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Find the words your readers are already whispering to Google.</span>
+  </footer>
+
+</div>
+</body>
+</html>
