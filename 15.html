@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affiliate Marketing for Beginners</title>
+<link href="https://fonts.googleapis.com/css2?family=Canela:ital,wght@0,400;0,700;1,400;1,700&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #faf7f2;
+    --surface:   #ffffff;
+    --surface2:  #f4f0e8;
+    --border:    #e8e0d0;
+    --ink:       #1c1508;
+    --muted:     #9a8e7c;
+    --accent:    #1a6b3c;
+    --gold:      #c89420;
+    --rust:      #b84818;
+    --navy:      #1c3d6e;
+    --plum:      #6a2060;
+    --teal:      #0e7a6a;
+    --soft-acc:  rgba(26,107,60,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .header-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .hl-pip {
+    width: 36px; height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .hl-text {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hl-pip2 {
+    width: 10px; height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 586px;
+  }
+
+  .header-bottom {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .hb-line { flex: 1; height: 1px; background: var(--border); }
+  .hb-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    margin: 0 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #362a1a;
+    font-weight: 400;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 28px 0 42px;
+    position: relative;
+  }
+
+  .how-flow::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 14%; right: 14%;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), var(--gold));
+    z-index: 0;
+  }
+
+  .hf-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hf-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 12px;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hf-step h4 {
+    font-family: 'DM Serif Text', serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .hf-step p {
+    font-size: 0.76rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 44px;
+    background: var(--ink);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 0% 100%, rgba(26,107,60,0.18), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote::after {
+    content: '"';
+    position: absolute;
+    top: -16px; right: 24px;
+    font-family: 'DM Serif Text', serif;
+    font-size: 8rem;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'DM Serif Text', serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    color: #f0e8d4 !important;
+    line-height: 1.62;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'DM Serif Text', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── CONCEPT CARDS ── */
+  .concept-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s;
+  }
+
+  .concept-card:hover {
+    box-shadow: 0 6px 28px rgba(26,107,60,0.08);
+  }
+
+  .cc-head {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cc-bar { width: 4px; flex-shrink: 0; }
+
+  .cc-head-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .cc-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .concept-card h3 {
+    font-family: 'DM Serif Text', serif;
+    font-size: 1.06rem;
+    font-weight: 400;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .cc-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .cc-body { padding: 20px 24px 22px 28px; }
+
+  .cc-body p {
+    font-size: 0.94rem;
+    color: #5a4838;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── INSIDER TIP ── */
+  .insider-tip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 9px 9px 0;
+    padding: 13px 18px;
+    margin-top: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .it-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .insider-tip p {
+    font-size: 0.87rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── COMMISSION TABLE ── */
+  .comm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 36px;
+    font-size: 0.88rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .comm-table thead tr { background: var(--surface2); }
+
+  .comm-table th {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comm-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    color: #5a4838;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .comm-table tr:last-child td { border-bottom: none; }
+  .comm-table tr:hover td { background: var(--surface2); }
+  .comm-table td:first-child { font-weight: 600; color: var(--ink); }
+
+  .ctag {
+    display: inline-block;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  /* ── RULES PANEL ── */
+  .rules-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+  }
+
+  .rp-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .rp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 28px;
+  }
+
+  .rp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.91rem;
+    color: #5a4838;
+    line-height: 1.58;
+  }
+
+  .rp-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'DM Serif Text', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .how-flow { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .how-flow::before { display: none; }
+    .rp-grid { grid-template-columns: 1fr; }
+    .pull-quote { padding: 28px 26px; }
+    .comm-table th, .comm-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-label">
+      <div class="hl-pip"></div>
+      <span class="hl-text">Beginner's Guide · Affiliate Marketing · 2026</span>
+      <div class="hl-pip2"></div>
+    </div>
+    <h1>Affiliate Marketing<br>for <em>Beginners</em></h1>
+    <p class="deck">Recommend products you genuinely love. Earn a commission every time someone buys through your link. That, at its heart, is affiliate marketing — and it is one of the most honest and rewarding income streams a blogger can build.</p>
+    <div class="header-bottom">
+      <div class="hb-line"></div>
+      <div class="hb-diamond"></div>
+      <div class="hb-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>You have probably clicked a link in a blog post, bought something, and never thought twice about it. Behind that effortless transaction was an affiliate arrangement — the blogger recommended a product, you trusted them, you purchased, and they earned a small commission for making the introduction. No pressure, no hard sell, no awkwardness. Just a genuine recommendation that helped both parties simultaneously. That simplicity is exactly why affiliate marketing has become the backbone income stream of so many successful blogs around the world.</p>
+
+    <p>For a beginner, the concept can feel intimidating — a tangle of programmes, links, disclosures, and strategies. But strip it back to its core and affiliate marketing is just this: you help your readers find something valuable, and you earn a reward for the introduction. If you are already writing about products, tools, or services in your niche, you are already doing the hard part. The affiliate structure simply ensures you are compensated for the value you are already creating.</p>
+
+    <!-- HOW IT WORKS -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(26,107,60,0.1);color:var(--accent);border:1px solid rgba(26,107,60,0.2)">How It Works</span>
+      The Simple Four-Step Flow
+    </h2>
+
+    <div class="how-flow">
+      <div class="hf-step">
+        <div class="hf-circle" style="border-color:var(--accent)">✍️</div>
+        <h4>You Write</h4>
+        <p>Create honest content featuring a product or service</p>
+      </div>
+      <div class="hf-step">
+        <div class="hf-circle" style="border-color:var(--gold)">🔗</div>
+        <h4>Reader Clicks</h4>
+        <p>Your unique tracked link records the referral</p>
+      </div>
+      <div class="hf-step">
+        <div class="hf-circle" style="border-color:var(--rust)">🛒</div>
+        <h4>They Buy</h4>
+        <p>Reader purchases — immediately or within the cookie window</p>
+      </div>
+      <div class="hf-step">
+        <div class="hf-circle" style="border-color:var(--teal)">💰</div>
+        <h4>You Earn</h4>
+        <p>Commission deposits automatically into your account</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>The secret to affiliate marketing is not finding the highest commission. It is finding the product your reader would thank you for discovering — and then telling them about it honestly.</p>
+    </div>
+
+    <!-- SECTION: PROGRAMMES -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(26,107,60,0.1);color:var(--accent);border:1px solid rgba(26,107,60,0.2)">Step 01</span>
+      Choose the Right Affiliate Programmes
+    </h2>
+
+    <p>Not all affiliate programmes are created equal — and choosing the right ones for your niche is the first real decision you will make. Some offer high commissions on premium products. Others offer tiny percentages but enormous sales volume. The best programmes for beginners are those that align naturally with content you are already writing, serve products your readers genuinely need, and are reliable enough to pay consistently and on time.</p>
+
+    <div class="concept-card">
+      <div class="cc-head">
+        <div class="cc-bar" style="background:var(--accent)"></div>
+        <div class="cc-head-inner">
+          <div class="cc-icon" style="background:rgba(26,107,60,0.1);color:var(--accent)">🏛</div>
+          <h3>Best Starting Programmes for New Bloggers</h3>
+          <span class="cc-badge" style="background:rgba(26,107,60,0.1);color:var(--accent);border:1px solid rgba(26,107,60,0.2)">Beginner-Safe</span>
+        </div>
+      </div>
+      <div class="cc-body">
+        <p>Amazon Associates is the most accessible entry point — low barrier to join, millions of products to recommend, and readers already trust Amazon deeply. ShareASale and CJ Affiliate host thousands of brand programmes across every niche imaginable. Bluehost, ConvertKit, and Canva all offer strong affiliate programmes specifically suited to bloggers. Start with one or two programmes that match what you already write about, rather than scattering links across dozens of unrelated products.</p>
+        <div class="insider-tip">
+          <span class="it-label">Insider Tip</span>
+          <p>Search "[product you use] + affiliate programme" in Google. Most tools and services bloggers already rely on have programmes waiting to be discovered — and your personal experience makes your recommendation far more convincing.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: COMMISSION RATES -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(200,148,32,0.1);color:var(--gold);border:1px solid rgba(200,148,32,0.2)">Know This</span>
+      Commission Rates Across Popular Niches
+    </h2>
+
+    <table class="comm-table">
+      <thead>
+        <tr>
+          <th>Niche / Product Type</th>
+          <th>Typical Commission</th>
+          <th>Cookie Window</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Software & SaaS Tools</td>
+          <td>20 – 50% recurring</td>
+          <td>30 – 90 days</td>
+          <td><span class="ctag" style="background:rgba(26,107,60,0.1);color:var(--accent);border:1px solid rgba(26,107,60,0.2)">Tech Bloggers</span></td>
+        </tr>
+        <tr>
+          <td>Web Hosting</td>
+          <td>$50 – $200 per sale</td>
+          <td>60 – 90 days</td>
+          <td><span class="ctag" style="background:rgba(28,61,110,0.1);color:var(--navy);border:1px solid rgba(28,61,110,0.2)">Blogging Niche</span></td>
+        </tr>
+        <tr>
+          <td>Finance & Insurance</td>
+          <td>$50 – $500 per lead</td>
+          <td>30 – 45 days</td>
+          <td><span class="ctag" style="background:rgba(200,148,32,0.1);color:var(--gold);border:1px solid rgba(200,148,32,0.2)">Finance Blogs</span></td>
+        </tr>
+        <tr>
+          <td>Amazon Physical Products</td>
+          <td>1 – 10%</td>
+          <td>24 hours</td>
+          <td><span class="ctag" style="background:rgba(184,72,24,0.1);color:var(--rust);border:1px solid rgba(184,72,24,0.2)">All Niches</span></td>
+        </tr>
+        <tr>
+          <td>Online Courses & Education</td>
+          <td>20 – 50%</td>
+          <td>30 – 60 days</td>
+          <td><span class="ctag" style="background:rgba(106,32,96,0.1);color:var(--plum);border:1px solid rgba(106,32,96,0.2)">Education Blogs</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION: WRITE HONESTLY -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(184,72,24,0.1);color:var(--rust);border:1px solid rgba(184,72,24,0.2)">Step 02</span>
+      Write Affiliate Content With Honesty at the Centre
+    </h2>
+
+    <div class="concept-card">
+      <div class="cc-head">
+        <div class="cc-bar" style="background:var(--rust)"></div>
+        <div class="cc-head-inner">
+          <div class="cc-icon" style="background:rgba(184,72,24,0.1);color:var(--rust)">🎯</div>
+          <h3>Trust Converts — Hype Never Does</h3>
+          <span class="cc-badge" style="background:rgba(184,72,24,0.1);color:var(--rust);border:1px solid rgba(184,72,24,0.2)">Most Important</span>
+        </div>
+      </div>
+      <div class="cc-body">
+        <p>The most effective affiliate content is not a sales page dressed up as a blog post. It is an honest review, a genuine comparison, a real tutorial using the product — written by someone who actually used it. When you share both the strengths and the limitations of a product, your recommendation becomes credible. Readers trust nuance. They distrust perfection. Tell them who the product is perfect for and who should look elsewhere, and the readers who stay will buy with confidence and thank you for the guidance.</p>
+        <div class="insider-tip">
+          <span class="it-label">Always Disclose</span>
+          <p>Legal guidelines in most countries require you to disclose affiliate relationships clearly. Place a simple disclosure at the top of any post containing affiliate links — it builds trust with readers and protects you legally. Transparency is good ethics and good business simultaneously.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: CONTENT TYPES -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(28,61,110,0.1);color:var(--navy);border:1px solid rgba(28,61,110,0.2)">Step 03</span>
+      The Content Formats That Convert Best
+    </h2>
+
+    <div class="concept-card">
+      <div class="cc-head">
+        <div class="cc-bar" style="background:var(--navy)"></div>
+        <div class="cc-head-inner">
+          <div class="cc-icon" style="background:rgba(28,61,110,0.1);color:var(--navy)">📝</div>
+          <h3>Four Post Types That Drive Affiliate Sales</h3>
+          <span class="cc-badge" style="background:rgba(28,61,110,0.1);color:var(--navy);border:1px solid rgba(28,61,110,0.2)">Proven</span>
+        </div>
+      </div>
+      <div class="cc-body">
+        <p>Reviews convert because readers searching "[product] review" are already close to buying and seeking final confirmation. Comparison posts — "X vs Y: Which Is Better?" — capture readers at the exact moment of decision. Best-of lists — "10 Best Tools for Bloggers in 2026" — attract broad audiences and allow natural placement of multiple affiliate links. Tutorial posts — "How to Set Up X in 10 Minutes" — demonstrate the product's value through practical use, removing every remaining doubt before the reader reaches your affiliate link. These four formats, written with genuine expertise and honest detail, will carry the bulk of your affiliate income.</p>
+      </div>
+    </div>
+
+    <!-- RULES PANEL -->
+    <div class="rules-panel">
+      <div class="rp-title">
+        <span>✦</span> The Affiliate Marketer's Code — Rules to Never Break
+      </div>
+      <div class="rp-grid">
+        <div class="rp-item"><div class="rp-dot"></div>Only recommend what you genuinely use</div>
+        <div class="rp-item"><div class="rp-dot"></div>Always disclose affiliate relationships</div>
+        <div class="rp-item"><div class="rp-dot"></div>Choose audience fit over high commissions</div>
+        <div class="rp-item"><div class="rp-dot"></div>Write reviews with real pros and cons</div>
+        <div class="rp-item"><div class="rp-dot"></div>Never link to products you distrust</div>
+        <div class="rp-item"><div class="rp-dot"></div>Update old reviews when products change</div>
+        <div class="rp-item"><div class="rp-dot"></div>Track which posts earn — improve the rest</div>
+        <div class="rp-item"><div class="rp-dot"></div>Treat your reader's wallet with respect</div>
+      </div>
+    </div>
+
+    <p>Affiliate marketing, done with care and honesty, is one of the most elegant income models a blogger can build. It asks nothing more than this: know your audience, know your products, and tell the truth about both. When those three things align, readers buy, commissions grow, and the income that arrives feels not like a trick, but like a natural reward for genuine service.</p>
+
+    <p>Start small. Choose one programme. Write one honest review. And let the rest build from there.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">The best affiliate post is one your reader would send to a friend.</span>
+  </footer>
+
+</div>
+</body>
+</html>
