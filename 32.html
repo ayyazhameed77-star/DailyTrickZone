@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Promote Your Blog on Social Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f9f6f1;
+    --surface:   #ffffff;
+    --surface2:  #f3ede5;
+    --border:    #e8ddd0;
+    --ink:       #1c1308;
+    --muted:     #9a8a78;
+    --accent:    #c43a88;
+    --blue:      #1a5abf;
+    --green:     #1a7848;
+    --amber:     #b86010;
+    --violet:    #6830a8;
+    --teal:      #0a7068;
+    --rose-soft: rgba(196,58,136,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .header-flag {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 28px;
+  }
+
+  .hf-block {
+    background: var(--accent);
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .hf-arrow {
+    width: 0; height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 12px solid var(--accent);
+    flex-shrink: 0;
+  }
+
+  .hf-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: 14px;
+  }
+
+  h1 {
+    font-family: 'Vollkorn', serif;
+    font-size: clamp(2.3rem, 6vw, 3.9rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .deck {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 588px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hr-line { flex: 1; height: 1px; background: var(--border); }
+  .hr-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #3c2c1c;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 46px;
+    background: var(--ink);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--violet) 60%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 0% 100%, rgba(196,58,136,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Vollkorn', serif;
+    font-style: italic;
+    font-size: 1.26rem;
+    color: #f0e8d8 !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── PLATFORM CARDS ── */
+  .platform-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .platform-card:hover {
+    box-shadow: 0 6px 28px rgba(196,58,136,0.08);
+    border-color: rgba(196,58,136,0.2);
+  }
+
+  .pc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pc-bar { width: 4px; flex-shrink: 0; }
+
+  .pc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .pc-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .platform-card h3 {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .pc-traffic {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .pc-body { padding: 18px 24px 20px 28px; }
+
+  .pc-body p {
+    font-size: 0.94rem;
+    color: #5a4030;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── STRATEGY TIP ── */
+  .strategy-tip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    border-radius: 0 9px 9px 0;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .st-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .strategy-tip p {
+    font-size: 0.86rem !important;
+    font-weight: 500;
+    margin: 0 !important;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── PLATFORM OVERVIEW ── */
+  .platform-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 26px 0 38px;
+  }
+
+  .po-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .po-tile:hover { border-color: rgba(196,58,136,0.25); }
+
+  .po-tile::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .pt1::after { background: var(--accent); }
+  .pt2::after { background: var(--blue); }
+  .pt3::after { background: var(--amber); }
+  .pt4::after { background: var(--green); }
+
+  .po-emoji { font-size: 24px; display: block; margin-bottom: 9px; }
+
+  .po-tile h4 {
+    font-family: 'Vollkorn', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .po-tile p {
+    font-size: 0.75rem !important;
+    color: var(--muted) !important;
+    margin: 0 0 8px !important;
+    line-height: 1.5;
+  }
+
+  .po-traffic {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  /* ── REPURPOSE FLOW ── */
+  .repurpose-flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 28px;
+    margin: 26px 0 36px;
+    overflow: hidden;
+  }
+
+  .rf-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .rf-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .rf-step {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .rf-step-icon { font-size: 20px; display: block; margin-bottom: 6px; }
+
+  .rf-step h4 {
+    font-family: 'Vollkorn', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+    line-height: 1.2;
+  }
+
+  .rf-step p {
+    font-size: 0.74rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.4;
+  }
+
+  .rf-arrow {
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.5;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  /* ── FINAL ACTION PANEL ── */
+  .action-panel {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 0% 100%, rgba(196,58,136,0.18), transparent),
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(104,48,168,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .ap-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #9a7868;
+    line-height: 1.56;
+  }
+
+  .ap-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Vollkorn', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .platform-overview { grid-template-columns: 1fr 1fr; }
+    .ap-grid { grid-template-columns: 1fr; }
+    .rf-steps { flex-direction: column; }
+    .rf-arrow { transform: rotate(90deg); }
+    .pull-quote { padding: 28px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-flag">
+      <span class="hf-block">Social Media</span>
+      <div class="hf-arrow"></div>
+      <span class="hf-sub">Blog Promotion Guide · 2026</span>
+    </div>
+    <h1>How to Promote Your<br>Blog on <em>Social Media</em></h1>
+    <p class="deck">Writing a great blog post is only half the work. The other half — the half most bloggers skip — is making sure the right people actually find it. Social media is your megaphone. Here is how to use it with intention.</p>
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <div class="hr-dot"></div>
+      <div class="hr-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a painful irony that lives at the heart of modern blogging. Bloggers who spend twenty hours writing a comprehensive, beautifully crafted post will sometimes spend twenty minutes promoting it — and then wonder why almost no one reads it. The internet is not a library where well-written books automatically rise to prominence. It is a marketplace, noisy and competitive, where the best content and the best promotion together produce the most reach. You need both.</p>
+
+    <p>Social media is not just a distribution channel. Used with intelligence and consistency, it becomes something far more valuable — a relationship engine that builds the audience you write for before they even visit your blog. It creates anticipation, establishes authority, and brings the right readers through your door with a sense that they already know and trust you. Here is how to build that system across the platforms that matter most.</p>
+
+    <div class="pull-quote">
+      <p>Social media does not replace the blog. The blog is the destination. Social media is every road that leads there — and great bloggers build all of them.</p>
+    </div>
+
+    <!-- PLATFORM OVERVIEW -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(196,58,136,0.1);color:var(--accent);border:1px solid rgba(196,58,136,0.2)">Choose First</span>
+      The Four Platforms Worth Your Time
+    </h2>
+
+    <div class="platform-overview">
+      <div class="po-tile pt1">
+        <span class="po-emoji">📌</span>
+        <h4>Pinterest</h4>
+        <p>Visual search engine with evergreen pin lifespan</p>
+        <span class="po-traffic" style="background:rgba(196,58,136,0.1);color:var(--accent);border:1px solid rgba(196,58,136,0.2)">Long-term</span>
+      </div>
+      <div class="po-tile pt2">
+        <span class="po-emoji">𝕏</span>
+        <h4>X (Twitter)</h4>
+        <p>Real-time conversations and niche authority building</p>
+        <span class="po-traffic" style="background:rgba(26,90,191,0.1);color:var(--blue);border:1px solid rgba(26,90,191,0.2)">Engagement</span>
+      </div>
+      <div class="po-tile pt3">
+        <span class="po-emoji">📸</span>
+        <h4>Instagram</h4>
+        <p>Visual storytelling that drives link-in-bio traffic</p>
+        <span class="po-traffic" style="background:rgba(184,96,16,0.1);color:var(--amber);border:1px solid rgba(184,96,16,0.2)">Brand Build</span>
+      </div>
+      <div class="po-tile pt4">
+        <span class="po-emoji">💼</span>
+        <h4>LinkedIn</h4>
+        <p>Professional authority for business and career niches</p>
+        <span class="po-traffic" style="background:rgba(26,120,72,0.1);color:var(--green);border:1px solid rgba(26,120,72,0.2)">B2B Traffic</span>
+      </div>
+    </div>
+
+    <!-- PLATFORM 1: PINTEREST -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(196,58,136,0.1);color:var(--accent);border:1px solid rgba(196,58,136,0.2)">Platform 01</span>
+      Pinterest — The Blogger's Secret Weapon
+    </h2>
+
+    <p>Pinterest is not a social media platform in the conventional sense. It is a visual search engine — and for bloggers, that distinction is everything. Unlike a tweet that lives for hours or an Instagram post that lives for days, a single well-optimised Pinterest pin can drive traffic to your blog for months or even years after it was first published. The traffic it generates is evergreen, compounding, and completely passive once the pin is live.</p>
+
+    <div class="platform-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--accent)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(196,58,136,0.1);color:var(--accent)">📌</div>
+          <h3>Creating Pinterest Pins That Drive Consistent Traffic</h3>
+          <span class="pc-traffic" style="background:rgba(196,58,136,0.1);color:var(--accent);border:1px solid rgba(196,58,136,0.2)">Highest ROI</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>Create 2–3 different pin designs for every blog post you publish — different images, different text overlays, different colour schemes — and pin them to relevant boards over the following weeks. Use vertical images at a 2:3 ratio (1000 × 1500 pixels) as they occupy more screen space in Pinterest feeds. Include your primary keyword in both the pin title and description, treating it exactly as you would on-page SEO. The Pinterest audience skews heavily toward lifestyle, food, finance, home, and wellness niches — if your blog falls into any of these categories, Pinterest alone can become your single largest traffic source.</p>
+        <div class="strategy-tip" style="border-left-color:var(--accent)">
+          <span class="st-label" style="color:var(--accent)">Strategy</span>
+          <p style="color:var(--muted)">Use the free Tailwind scheduler or Pinterest's own native scheduler to publish pins at peak engagement times — typically evenings and weekends — without manually posting each one. Consistent daily pinning outperforms sporadic large batches every time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLATFORM 2: X/TWITTER -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,90,191,0.1);color:var(--blue);border:1px solid rgba(26,90,191,0.2)">Platform 02</span>
+      X — Build Authority Through Real Conversations
+    </h2>
+
+    <div class="platform-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--blue)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(26,90,191,0.1);color:var(--blue)">𝕏</div>
+          <h3>Thread Storytelling and Niche Community Building</h3>
+          <span class="pc-traffic" style="background:rgba(26,90,191,0.1);color:var(--blue);border:1px solid rgba(26,90,191,0.2)">Authority</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>X rewards those who participate generously before they promote. The bloggers who build the strongest followings here are not the ones who post links to their articles — they are the ones who share genuinely useful insights, engage authentically in their niche's conversations, and build a reputation as a knowledgeable, reliable voice worth following. Share the three most valuable ideas from your latest blog post as a thread, with the full article linked at the end. The thread stands alone as valuable content. Those who want more click through to the post. This approach respects the platform's culture while serving the reader at both ends.</p>
+        <div class="strategy-tip" style="border-left-color:var(--blue)">
+          <span class="st-label" style="color:var(--blue)">Strategy</span>
+          <p style="color:var(--muted)">Reply to larger accounts in your niche every day — adding genuine insight rather than simple agreement. Consistent, thoughtful replies over months build visibility with audiences who have never heard of your blog but will eventually seek it out.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLATFORM 3: INSTAGRAM -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(184,96,16,0.1);color:var(--amber);border:1px solid rgba(184,96,16,0.2)">Platform 03</span>
+      Instagram — Make Your Blog Visually Irresistible
+    </h2>
+
+    <div class="platform-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--amber)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(184,96,16,0.1);color:var(--amber)">📸</div>
+          <h3>Stories, Reels and Link-in-Bio Traffic Funnels</h3>
+          <span class="pc-traffic" style="background:rgba(184,96,16,0.1);color:var(--amber);border:1px solid rgba(184,96,16,0.2)">Visual Brand</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>Instagram does not allow clickable links in posts — which forces a more creative approach to blog promotion. Use your bio link strategically, updating it every time you publish a new post and referencing it clearly in captions. Stories are your most powerful promotional tool: they are ephemeral, casual, and reach your existing audience directly. Use Stories to share behind-the-scenes glimpses of your blog process, ask questions related to your latest post topic, and create genuine anticipation for new content. Reels that distil one insight from a recent article into 30–60 seconds of entertaining video consistently outperform static posts in organic reach and profile discovery.</p>
+        <div class="strategy-tip" style="border-left-color:var(--amber)">
+          <span class="st-label" style="color:var(--amber)">Strategy</span>
+          <p style="color:var(--muted)">Create a free Linktree or similar link-in-bio page that lists your five most recent posts. Update it weekly. Mention "link in bio" in every post caption and at least twice in every Story sequence to capture readers at the moment of highest interest.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPURPOSE FLOW -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(104,48,168,0.1);color:var(--violet);border:1px solid rgba(104,48,168,0.2)">The System</span>
+      One Blog Post — Five Pieces of Social Content
+    </h2>
+
+    <div class="repurpose-flow">
+      <div class="rf-title">♻ &nbsp; The Repurposing Framework — Work Once, Publish Everywhere</div>
+      <div class="rf-steps">
+        <div class="rf-step">
+          <span class="rf-step-icon">📝</span>
+          <h4>Blog Post</h4>
+          <p>The original, full-length article</p>
+        </div>
+        <span class="rf-arrow">→</span>
+        <div class="rf-step">
+          <span class="rf-step-icon">📌</span>
+          <h4>Pinterest Pins</h4>
+          <p>2–3 visual pin designs</p>
+        </div>
+        <span class="rf-arrow">→</span>
+        <div class="rf-step">
+          <span class="rf-step-icon">🧵</span>
+          <h4>X Thread</h4>
+          <p>3 key insights as a thread</p>
+        </div>
+        <span class="rf-arrow">→</span>
+        <div class="rf-step">
+          <span class="rf-step-icon">🎬</span>
+          <h4>IG Reel</h4>
+          <p>One insight as short video</p>
+        </div>
+        <span class="rf-arrow">→</span>
+        <div class="rf-step">
+          <span class="rf-step-icon">📧</span>
+          <h4>Email</h4>
+          <p>Newsletter to subscribers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION PANEL -->
+    <div class="action-panel">
+      <div class="ap-title">✦ &nbsp; Your Social Media Promotion Action Plan</div>
+      <div class="ap-grid">
+        <div class="ap-item"><div class="ap-dot"></div>Choose one or two platforms to master first</div>
+        <div class="ap-item"><div class="ap-dot"></div>Create 3 Pinterest pins per post published</div>
+        <div class="ap-item"><div class="ap-dot"></div>Write one X thread per week from blog content</div>
+        <div class="ap-item"><div class="ap-dot"></div>Update bio link every time you publish</div>
+        <div class="ap-item"><div class="ap-dot"></div>Use a social scheduler — post consistently</div>
+        <div class="ap-item"><div class="ap-dot"></div>Engage with your niche daily — give first</div>
+        <div class="ap-item"><div class="ap-dot"></div>Repurpose every post into 4–5 social pieces</div>
+        <div class="ap-item"><div class="ap-dot"></div>Track which platforms drive real blog traffic</div>
+      </div>
+    </div>
+
+    <p>The bloggers who grow fastest on social media are not the ones who post the most. They are the ones who show up with genuine value, engage with their niche community as a participant rather than a broadcaster, and approach every platform with a single, clear question: how can I serve my reader here today? Answer that question consistently across the platforms where your audience lives, and the blog traffic that follows will feel less like promotion and more like a natural consequence of the relationships you built.</p>
+
+    <p>Start with one platform. Master it. Then expand from a position of real understanding rather than scattered effort.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Great social promotion is not broadcasting. It is belonging — to the community your blog was made for.</span>
+  </footer>
+
+</div>
+</body>
+</html>
