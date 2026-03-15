@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Free Keyword Research Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f8f4ef;
+    --surface:   #ffffff;
+    --surface2:  #f2ece4;
+    --border:    #e8ddd2;
+    --ink:       #1c1408;
+    --muted:     #9a8878;
+    --accent:    #b5380a;
+    --forest:    #2a6244;
+    --navy:      #1c3a6e;
+    --gold:      #c08810;
+    --plum:      #682858;
+    --teal:      #0a6870;
+    --soft:      rgba(181,56,10,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Mulish', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  .hr-dash {
+    width: 40px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .hr-chip {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hr-sep { color: var(--border); }
+
+  .hr-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.4rem, 6vw, 3.9rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .deck {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 588px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hrl-line { flex: 1; height: 1px; background: var(--border); }
+  .hrl-sym {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #3c2c1c;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 46px;
+    background: var(--ink);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '"';
+    position: absolute;
+    top: -16px; left: 26px;
+    font-family: 'Lora', serif;
+    font-size: 7rem;
+    color: var(--accent);
+    opacity: 0.22;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(181,56,10,0.12), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    color: #f0e8d8 !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.46rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Mulish', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── TOOL CARDS ── */
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .tool-card:hover {
+    box-shadow: 0 6px 28px rgba(181,56,10,0.07);
+    border-color: rgba(181,56,10,0.2);
+  }
+
+  .tc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tc-bar { width: 4px; flex-shrink: 0; }
+
+  .tc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .tc-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .tool-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .tc-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .tc-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .badge-free   { background:rgba(42,98,68,0.1);   color:var(--forest); border:1px solid rgba(42,98,68,0.22); }
+  .badge-must   { background:rgba(181,56,10,0.1);   color:var(--accent); border:1px solid rgba(181,56,10,0.22); }
+  .badge-google { background:rgba(28,58,110,0.1);   color:var(--navy);   border:1px solid rgba(28,58,110,0.22); }
+  .badge-pro    { background:rgba(200,136,16,0.1);  color:var(--gold);   border:1px solid rgba(200,136,16,0.22); }
+  .badge-ai     { background:rgba(104,40,88,0.1);   color:var(--plum);   border:1px solid rgba(104,40,88,0.22); }
+
+  .tc-body { padding: 18px 24px 20px 28px; }
+
+  .tc-body p {
+    font-size: 0.94rem;
+    color: #5a4030;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── INSIDER TIP ── */
+  .insider {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 9px 9px 0;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .ins-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .insider p {
+    font-size: 0.86rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── TOOL OVERVIEW GRID ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 26px 0 38px;
+  }
+
+  .og-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .og-tile:hover { border-color: rgba(181,56,10,0.25); }
+
+  .og-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .ot1::before { background: var(--accent); }
+  .ot2::before { background: var(--forest); }
+  .ot3::before { background: var(--navy); }
+  .ot4::before { background: var(--gold); }
+  .ot5::before { background: var(--plum); }
+  .ot6::before { background: var(--teal); }
+
+  .og-emoji { font-size: 24px; display: block; margin-bottom: 10px; }
+
+  .og-tile h4 {
+    font-family: 'Lora', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .og-tile p {
+    font-size: 0.76rem !important;
+    color: var(--muted) !important;
+    margin: 0 0 9px !important;
+    line-height: 1.5;
+  }
+
+  .og-free {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(42,98,68,0.1);
+    color: var(--forest);
+    border: 1px solid rgba(42,98,68,0.22);
+  }
+
+  /* ── USE CASE TABLE ── */
+  .use-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 38px;
+    font-size: 0.88rem;
+    border-radius: 13px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .use-table thead tr { background: var(--surface2); }
+
+  .use-table th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .use-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: #5a4030;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .use-table tr:last-child td { border-bottom: none; }
+  .use-table tr:hover td { background: var(--surface2); }
+  .use-table td:first-child { font-weight: 600; color: var(--ink); }
+
+  .ut-tag {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  /* ── RESEARCH ROUTINE ── */
+  .routine-panel {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .routine-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 0% 100%, rgba(181,56,10,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .rp-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #8a7860;
+    line-height: 1.58;
+  }
+
+  .rp-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .overview-grid { grid-template-columns: 1fr 1fr; }
+    .rp-grid { grid-template-columns: 1fr; }
+    .tc-badges { display: none; }
+    .pull-quote { padding: 28px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-row">
+      <div class="hr-dash"></div>
+      <span class="hr-chip">Keyword Research</span>
+      <span class="hr-sep">·</span>
+      <span class="hr-sub">Free Tools · 2026 Edition</span>
+    </div>
+    <h1>Best Free<br><em>Keyword Research</em><br>Tools</h1>
+    <p class="deck">Before you write a single word, the right keyword research tells you exactly what your audience is searching for — and which battles you can realistically win. These free tools give you that intelligence without spending a cent.</p>
+    <div class="header-rule">
+      <div class="hrl-line"></div>
+      <span class="hrl-sym">❧</span>
+      <div class="hrl-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a persistent belief among new bloggers that serious keyword research requires a serious budget — a monthly subscription to Ahrefs, SEMrush, or Moz, costing anywhere from one hundred to five hundred dollars a month. This belief keeps countless bloggers either overspending on tools they do not yet need or skipping keyword research entirely because they cannot afford the tools they have been told are essential. Both outcomes are unnecessary.</p>
+
+    <p>The free tools available for keyword research in 2026 are genuinely powerful. Several of them are provided directly by Google itself — sourced from the same data that powers its search engine — and the rest offer capabilities that were unthinkable in free software just a few years ago. The difference between a beginner using free tools intelligently and an expert using paid tools carelessly is almost always in favour of the beginner. Here are the best free tools available, and exactly what each one does that no other tool replicates.</p>
+
+    <div class="pull-quote">
+      <p>The most valuable keyword data in the world is free. It comes from Google, and it is available to anyone willing to look carefully at what Google is already trying to show you.</p>
+    </div>
+
+    <!-- OVERVIEW GRID -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(181,56,10,0.1);color:var(--accent);border:1px solid rgba(181,56,10,0.2)">At a Glance</span>
+      Six Free Tools, Six Distinct Superpowers
+    </h2>
+
+    <div class="overview-grid">
+      <div class="og-tile ot1">
+        <span class="og-emoji">🔍</span>
+        <h4>Google Search Console</h4>
+        <p>Real ranking data straight from Google</p>
+        <span class="og-free">Free Forever</span>
+      </div>
+      <div class="og-tile ot2">
+        <span class="og-emoji">📈</span>
+        <h4>Google Trends</h4>
+        <p>Discover rising topics before they peak</p>
+        <span class="og-free">Free Forever</span>
+      </div>
+      <div class="og-tile ot3">
+        <span class="og-emoji">💡</span>
+        <h4>Ubersuggest</h4>
+        <p>Volume, difficulty & content ideas fast</p>
+        <span class="og-free">Free Tier</span>
+      </div>
+      <div class="og-tile ot4">
+        <span class="og-emoji">🗺</span>
+        <h4>AnswerThePublic</h4>
+        <p>Every question your audience asks Google</p>
+        <span class="og-free">Free Tier</span>
+      </div>
+      <div class="og-tile ot5">
+        <span class="og-emoji">🔬</span>
+        <h4>Keyword Surfer</h4>
+        <p>Volume data directly in Google search results</p>
+        <span class="og-free">Free Extension</span>
+      </div>
+      <div class="og-tile ot6">
+        <span class="og-emoji">⚡</span>
+        <h4>Google Autocomplete</h4>
+        <p>Real-time suggestions from billions of searches</p>
+        <span class="og-free">Free Forever</span>
+      </div>
+    </div>
+
+    <!-- TOOL 1 -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(181,56,10,0.1);color:var(--accent);border:1px solid rgba(181,56,10,0.2)">Tool 01</span>
+      Google Search Console — The Ultimate Truth-Teller
+    </h2>
+
+    <p>No third-party tool — free or paid — can replicate what Google Search Console provides, because no third-party tool has direct access to Google's own search data. This tool shows you the actual keywords bringing real visitors to your blog right now, your average position in search results for each keyword, and your click-through rate from those positions. This is not estimated data. It is the real record of how Google sees and ranks your specific content.</p>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--accent)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(181,56,10,0.1);color:var(--accent)">🔍</div>
+          <h3>Google Search Console</h3>
+          <div class="tc-badges">
+            <span class="tc-badge badge-free">Free</span>
+            <span class="tc-badge badge-google">Google Official</span>
+            <span class="tc-badge badge-must">Install First</span>
+          </div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>The most powerful use of Search Console is finding keywords where your blog already ranks on pages two or three — positions eleven to thirty — and then improving those specific articles to push them onto page one. These are your fastest SEO wins, completely invisible without this tool. Navigate to Performance → Search Results, filter by position greater than ten and less than thirty, and you will find a list of articles that are nearly ranking and need only modest improvements to breakthrough. This single weekly habit, applied consistently, compounds into significant organic traffic growth over months.</p>
+        <div class="insider">
+          <span class="ins-label">Insider Use</span>
+          <p>Sort your keywords by impressions rather than clicks. High-impression, low-click keywords reveal titles that are being shown in search but failing to earn the click — a sign your headline needs to be rewritten, not your content.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 2 -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(42,98,68,0.1);color:var(--forest);border:1px solid rgba(42,98,68,0.2)">Tool 02</span>
+      Google Trends — Ride the Wave Before It Breaks
+    </h2>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--forest)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(42,98,68,0.1);color:var(--forest)">📈</div>
+          <h3>Google Trends</h3>
+          <div class="tc-badges">
+            <span class="tc-badge badge-free">Free</span>
+            <span class="tc-badge badge-google">Google Official</span>
+          </div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>Google Trends does something no other keyword tool can: it shows you the momentum of a search term over time — whether interest is rising, falling, seasonal, or holding steady. The difference between a keyword with ten thousand monthly searches that is declining and one with five thousand that is surging is enormous in terms of long-term traffic potential. A rising keyword written about today will compound its returns for months. A declining one will deliver diminishing returns no matter how well it is optimised. Use Trends to compare two or three keyword options before committing to writing — and always choose momentum over mere volume.</p>
+        <div class="insider">
+          <span class="ins-label">Insider Use</span>
+          <p>Use the "Related Queries" section in Google Trends to discover breakout keywords — searches that have increased by 5,000% or more recently. Publishing on these topics even a week before the mainstream can position you as the first comprehensive result.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 3 -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(28,58,110,0.1);color:var(--navy);border:1px solid rgba(28,58,110,0.2)">Tool 03</span>
+      Ubersuggest — Data-Driven Decisions Made Simple
+    </h2>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--navy)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(28,58,110,0.1);color:var(--navy)">💡</div>
+          <h3>Ubersuggest Free Tier</h3>
+          <div class="tc-badges">
+            <span class="tc-badge badge-free">Free Tier</span>
+            <span class="tc-badge badge-pro">Data Rich</span>
+          </div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>Ubersuggest sits at the perfect intersection of accessibility and depth for beginner and intermediate bloggers. Enter any keyword and receive its monthly search volume, SEO difficulty score, paid difficulty score, and a list of related keyword ideas — each with their own metrics. The keyword difficulty score is particularly valuable: it tells you honestly whether a term is realistically winnable for a new blog with modest authority, saving months of effort on battles that cannot yet be won. The free tier allows a limited number of daily searches — enough for regular keyword research without requiring an upgrade until your blog is ready to grow into more advanced strategies.</p>
+        <div class="insider">
+          <span class="ins-label">Insider Use</span>
+          <p>Type your competitor's domain URL into Ubersuggest instead of a keyword. The free tier shows their top-performing pages and the keywords driving their traffic — a direct map to the content opportunities in your niche.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 4 -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(200,136,16,0.1);color:var(--gold);border:1px solid rgba(200,136,16,0.2)">Tool 04</span>
+      AnswerThePublic — A Map of Human Curiosity
+    </h2>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--gold)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(200,136,16,0.1);color:var(--gold)">🗺</div>
+          <h3>AnswerThePublic</h3>
+          <div class="tc-badges">
+            <span class="tc-badge badge-free">Free Tier</span>
+            <span class="tc-badge badge-ai">Question-Based</span>
+          </div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>AnswerThePublic transforms any topic into a sprawling visual map of every question, comparison, preposition, and alphabetical variation that real people search around it. Type "home gardening" and within seconds you see every "how to," "what is," "can I," and "best way to" question that your potential readers are actively asking Google. Each question is a potential article. Each cluster of questions is a content series. For bloggers who struggle to find topic ideas, this tool eliminates the blank-page problem entirely — replacing it with the opposite challenge of having too many excellent ideas to choose from.</p>
+        <div class="insider">
+          <span class="ins-label">Insider Use</span>
+          <p>Export your results and filter for questions with clear informational intent — "how to," "what is," "why does." These match the content format readers expect and convert most reliably into loyal, returning visitors.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- USE CASE TABLE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(10,104,112,0.1);color:var(--teal);border:1px solid rgba(10,104,112,0.2)">Quick Ref</span>
+      Which Tool to Use — and When
+    </h2>
+
+    <table class="use-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Best Use Case</th>
+          <th>Data Type</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Search Console</td>
+          <td>Find near-ranking keywords to improve</td>
+          <td>Real data</td>
+          <td><span class="ut-tag" style="background:rgba(181,56,10,0.1);color:var(--accent);border:1px solid rgba(181,56,10,0.2)">All bloggers</span></td>
+        </tr>
+        <tr>
+          <td>Google Trends</td>
+          <td>Choose topics with rising momentum</td>
+          <td>Trend data</td>
+          <td><span class="ut-tag" style="background:rgba(42,98,68,0.1);color:var(--forest);border:1px solid rgba(42,98,68,0.2)">Content planning</span></td>
+        </tr>
+        <tr>
+          <td>Ubersuggest</td>
+          <td>Check volume & difficulty before writing</td>
+          <td>Volume data</td>
+          <td><span class="ut-tag" style="background:rgba(28,58,110,0.1);color:var(--navy);border:1px solid rgba(28,58,110,0.2)">Research phase</span></td>
+        </tr>
+        <tr>
+          <td>AnswerThePublic</td>
+          <td>Generate months of topic ideas</td>
+          <td>Question data</td>
+          <td><span class="ut-tag" style="background:rgba(200,136,16,0.1);color:var(--gold);border:1px solid rgba(200,136,16,0.2)">Idea generation</span></td>
+        </tr>
+        <tr>
+          <td>Keyword Surfer</td>
+          <td>Quick volume check while browsing Google</td>
+          <td>Inline data</td>
+          <td><span class="ut-tag" style="background:rgba(104,40,88,0.1);color:var(--plum);border:1px solid rgba(104,40,88,0.2)">Daily browsing</span></td>
+        </tr>
+        <tr>
+          <td>Google Autocomplete</td>
+          <td>Discover natural long-tail variations</td>
+          <td>Live data</td>
+          <td><span class="ut-tag" style="background:rgba(10,104,112,0.1);color:var(--teal);border:1px solid rgba(10,104,112,0.2)">Quick research</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ROUTINE PANEL -->
+    <div class="routine-panel">
+      <div class="rp-title">◆ &nbsp; Your Free Keyword Research Weekly Routine</div>
+      <div class="rp-grid">
+        <div class="rp-item"><div class="rp-dot"></div>Monday: Check Search Console for near-ranking posts</div>
+        <div class="rp-item"><div class="rp-dot"></div>Tuesday: Browse Google Trends for rising topics</div>
+        <div class="rp-item"><div class="rp-dot"></div>Wednesday: Research next post keyword in Ubersuggest</div>
+        <div class="rp-item"><div class="rp-dot"></div>Thursday: Generate related questions on AnswerThePublic</div>
+        <div class="rp-item"><div class="rp-dot"></div>Friday: Use Autocomplete to refine your final keyword</div>
+        <div class="rp-item"><div class="rp-dot"></div>Weekend: Write the article — everything else was preparation</div>
+      </div>
+    </div>
+
+    <p>Keyword research is not a one-time task you complete before launching your blog and never return to. It is a weekly practice — a habit of listening to what your audience is asking the internet, understanding which of those questions you are best positioned to answer, and directing your writing energy toward the searches you can genuinely win. The tools above make that practice completely free, surprisingly enjoyable, and far more effective than most bloggers paying for expensive alternatives will ever realise.</p>
+
+    <p>The data is there, waiting to be discovered. All it takes is the curiosity to look.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Great keyword research is not about finding what to write. It is about finding what people are already waiting to read.</span>
+  </footer>
+
+</div>
+</body>
+</html>
