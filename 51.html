@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Search Console Guide — Master Your SEO Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #fafaf7;
+    --surface:    #ffffff;
+    --surface2:   #f2f2ed;
+    --border:     #e4e4dc;
+    --ink:        #1a1a14;
+    --soft:       #3d3d30;
+    --muted:      #8a8a78;
+    --google-b:   #1a73e8;
+    --google-b-dim: rgba(26,115,232,0.09);
+    --google-b-mid: rgba(26,115,232,0.22);
+    --google-r:   #d93025;
+    --google-r-dim: rgba(217,48,37,0.08);
+    --google-y:   #f9ab00;
+    --google-y-dim: rgba(249,171,0,0.09);
+    --google-g:   #1e8e3e;
+    --google-g-dim: rgba(30,142,62,0.09);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  /* ── Google-colour top stripe ── */
+  .gbar {
+    height: 5px;
+    display: flex;
+  }
+  .gbar span {
+    flex: 1;
+  }
+  .gbar span:nth-child(1){ background:#4285f4; }
+  .gbar span:nth-child(2){ background:#ea4335; }
+  .gbar span:nth-child(3){ background:#fbbc05; }
+  .gbar span:nth-child(4){ background:#34a853; }
+  .gbar span:nth-child(5){ background:#4285f4; }
+  .gbar span:nth-child(6){ background:#ea4335; }
+
+  /* ── Header ── */
+  header {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 70px 32px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(66,133,244,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 50%, rgba(52,168,83,0.05) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* GSC mock icon */
+  .gsc-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px; height: 58px;
+    background: var(--ink);
+    border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 18px rgba(26,26,20,0.15);
+    position: relative;
+  }
+
+  .gsc-icon svg {
+    width: 32px; height: 32px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--google-b);
+    background: var(--google-b-dim);
+    border: 1px solid var(--google-b-mid);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 700px;
+    margin: 0 auto 18px;
+  }
+
+  h1 .blue  { color: #4285f4; }
+  h1 .red   { color: #ea4335; }
+  h1 .yellow{ color: #fbbc05; }
+  h1 .green { color: #34a853; }
+
+  .header-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Mock dashboard ── */
+  .mock-dash {
+    max-width: 660px;
+    margin: 44px auto 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(26,26,20,0.09);
+    overflow: hidden;
+  }
+
+  .dash-topbar {
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot { width:11px;height:11px;border-radius:50%; }
+  .dot-r{background:#ff5f57;} .dot-y{background:#febc2e;} .dot-g{background:#28c840;}
+
+  .dash-url {
+    flex: 1;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 4px 12px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin: 0 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .dash-body {
+    padding: 20px 20px 16px;
+  }
+
+  .dash-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .dash-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .dstat {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .dstat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .dstat-lbl {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .d1 .dstat-num { color: #4285f4; }
+  .d2 .dstat-num { color: #ea4335; }
+  .d3 .dstat-num { color: #fbbc05; }
+  .d4 .dstat-num { color: #34a853; }
+
+  /* mini chart bars */
+  .mini-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 40px;
+    padding: 0 4px;
+  }
+
+  .bar {
+    flex: 1;
+    background: linear-gradient(180deg, #4285f4, #a8c7fa);
+    border-radius: 3px 3px 0 0;
+    opacity: 0.7;
+  }
+
+  /* ── Main ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 62px 28px 90px;
+  }
+
+  /* ── Lead ── */
+  .lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.18rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.8;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 56px; }
+
+  .section-tag {
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--google-b);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .section-tag::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  p { color: var(--soft); margin-bottom: 16px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Feature cards ── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 26px 0;
+  }
+
+  @media (max-width: 540px) {
+    .feature-grid { grid-template-columns: 1fr; }
+    .dash-stats   { grid-template-columns: repeat(2,1fr); }
+  }
+
+  .fcard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 18px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .fcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(26,26,20,0.08);
+  }
+
+  .fcard-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .fcard-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+
+  .fcard-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .ic-blue   { background: var(--google-b-dim); }
+  .ic-red    { background: var(--google-r-dim); }
+  .ic-yellow { background: var(--google-y-dim); }
+  .ic-green  { background: var(--google-g-dim); }
+
+  /* ── Callout ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 22px 0;
+  }
+  .cb-blue   { background:var(--google-b-dim); border:1px solid var(--google-b-mid);           border-left:3px solid var(--google-b); }
+  .cb-red    { background:var(--google-r-dim); border:1px solid rgba(217,48,37,0.2);            border-left:3px solid var(--google-r); }
+  .cb-yellow { background:var(--google-y-dim); border:1px solid rgba(249,171,0,0.25);           border-left:3px solid var(--google-y); }
+  .cb-green  { background:var(--google-g-dim); border:1px solid rgba(30,142,62,0.22);           border-left:3px solid var(--google-g); }
+
+  .callout strong {
+    font-size: 0.67rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 5px;
+  }
+  .cb-blue   strong { color: var(--google-b); }
+  .cb-red    strong { color: var(--google-r); }
+  .cb-yellow strong { color: var(--google-y); }
+  .cb-green  strong { color: var(--google-g); }
+  .callout p { font-size: 0.9rem; margin: 0; }
+
+  /* ── Steps ── */
+  ol.steps {
+    list-style: none; padding: 0; margin: 20px 0;
+    counter-reset: step;
+  }
+  ol.steps li {
+    counter-increment: step;
+    padding: 13px 14px 13px 52px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+  ol.steps li:last-child { border-bottom: none; }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left: 10px; top: 11px;
+    width: 26px; height: 26px;
+    background: var(--google-b);
+    color: #fff;
+    font-size: 0.72rem; font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── Metrics table ── */
+  .metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    font-size: 0.88rem;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .metrics-table thead {
+    background: var(--ink);
+    color: #fff;
+  }
+  .metrics-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .metrics-table tbody tr:nth-child(even) {
+    background: var(--surface2);
+  }
+  .metrics-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    vertical-align: top;
+  }
+  .metrics-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .metrics-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ── Checklist ── */
+  ul.check {
+    list-style: none; padding: 0; margin: 18px 0;
+  }
+  ul.check li {
+    padding: 9px 0 9px 30px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+  ul.check li:last-child { border-bottom: none; }
+  ul.check li::before {
+    content: '✓';
+    position: absolute; left: 4px;
+    color: var(--google-g);
+    font-weight: 700; font-size: 0.85rem;
+  }
+
+  /* ── Divider ── */
+  hr.div {
+    border: none; border-top: 1px solid var(--border);
+    margin: 52px 0; position: relative;
+  }
+  hr.div::before {
+    content: 'G';
+    position: absolute; top: -13px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg); padding: 0 12px;
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 1rem;
+    background: linear-gradient(90deg,#4285f4,#ea4335,#fbbc05,#34a853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: var(--ink);
+    color: #fff;
+    padding: 44px 38px;
+    border-radius: 12px;
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(66,133,244,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%,  rgba(52,168,83,0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .closing h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem; font-weight: 900;
+    color: #fff; letter-spacing: -0.02em;
+    margin-bottom: 14px; position: relative;
+  }
+  .gc {
+    display: inline;
+  }
+  .gc .b{color:#4285f4;} .gc .r{color:#ea4335;}
+  .gc .y{color:#fbbc05;} .gc .g{color:#34a853;}
+  .closing p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem; max-width: 500px;
+    margin: 0 auto; position: relative;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 26px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.05em;
+  }
+
+  @media(max-width:600px){
+    main{padding:36px 16px 60px;}
+    header{padding:48px 18px 44px;}
+    h1{font-size:2rem;}
+    h2{font-size:1.35rem;}
+    .closing{padding:30px 18px;}
+    .metrics-table{font-size:0.78rem;}
+    .metrics-table td,.metrics-table th{padding:9px 10px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Google colour bar -->
+<div class="gbar">
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+</div>
+
+<header>
+  <!-- GSC icon -->
+  <div class="gsc-icon">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="8" stroke="#4285f4" stroke-width="2.5"/>
+      <line x1="20" y1="20" x2="28" y2="28" stroke="#34a853" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="14" cy="14" r="3.5" fill="#ea4335"/>
+    </svg>
+  </div>
+  <div class="badge">Free Google Tool</div>
+  <h1>
+    <span class="blue">G</span><span class="red">o</span><span class="yellow">o</span><span class="green">g</span><span class="blue">l</span><span class="red">e</span>
+    Search Console<br>The Complete Guide
+  </h1>
+  <p class="header-sub">~800 words &nbsp;·&nbsp; Practical &amp; Human &nbsp;·&nbsp; 2026 Edition</p>
+
+  <!-- Mock dashboard -->
+  <div class="mock-dash">
+    <div class="dash-topbar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="dash-url">search.google.com/search-console</div>
+    </div>
+    <div class="dash-body">
+      <p class="dash-title">Performance — Last 28 Days</p>
+      <div class="dash-stats">
+        <div class="dstat d1"><span class="dstat-num">12.4K</span><span class="dstat-lbl">Clicks</span></div>
+        <div class="dstat d2"><span class="dstat-num">148K</span><span class="dstat-lbl">Impressions</span></div>
+        <div class="dstat d3"><span class="dstat-num">8.4%</span><span class="dstat-lbl">CTR</span></div>
+        <div class="dstat d4"><span class="dstat-num">14.2</span><span class="dstat-lbl">Avg. Position</span></div>
+      </div>
+      <div class="mini-chart">
+        <div class="bar" style="height:40%"></div>
+        <div class="bar" style="height:55%"></div>
+        <div class="bar" style="height:45%"></div>
+        <div class="bar" style="height:70%"></div>
+        <div class="bar" style="height:60%"></div>
+        <div class="bar" style="height:80%"></div>
+        <div class="bar" style="height:65%"></div>
+        <div class="bar" style="height:90%"></div>
+        <div class="bar" style="height:75%"></div>
+        <div class="bar" style="height:100%"></div>
+        <div class="bar" style="height:85%"></div>
+        <div class="bar" style="height:95%"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Lead -->
+  <p class="lead">
+    Google Search Console is the most powerful free SEO tool that most bloggers barely use. It shows you exactly which keywords bring people to your site, which pages Google can and cannot index, and what technical problems are silently strangling your rankings. Here is how to use it properly — from setup to advanced strategy.
+  </p>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <p class="section-tag">Getting Started</p>
+    <h2>What Is Google Search Console?</h2>
+    <p>
+      Google Search Console (GSC) is a free tool provided by Google that lets website owners monitor, maintain, and troubleshoot their site's presence in Google Search results. Unlike Google Analytics — which tells you what happens <em>after</em> someone lands on your site — Search Console shows you what happens <em>before</em> the click, inside Google's own systems.
+    </p>
+    <p>
+      It tells you which of your pages Google has indexed, how often they appear in search results, what keywords triggered those appearances, and whether any technical issues are preventing your content from ranking. Every serious blogger and website owner should have it set up and checked regularly.
+    </p>
+    <div class="callout cb-blue">
+      <strong>Completely Free</strong>
+      <p>Google Search Console costs nothing and requires no credit card. It is a direct communication channel between your website and Google — there is no paid alternative that gives you this level of insight into your own search performance.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 2 — Setup -->
+  <div class="section">
+    <p class="section-tag">Setup</p>
+    <h2>How to Set Up Google Search Console</h2>
+    <p>
+      Getting started takes about five minutes. Here is the exact process from beginning to end:
+    </p>
+    <ol class="steps">
+      <li>Go to <strong>search.google.com/search-console</strong> and sign in with your Google account. Use the same Google account that manages your other Google tools.</li>
+      <li>Click <strong>Add Property</strong>. Choose "Domain" if you want to track your entire domain including all subdomains and protocols — this is the recommended option for most sites.</li>
+      <li><strong>Verify ownership</strong> of your site. The easiest method is adding a DNS TXT record through your domain registrar. If that feels technical, use the HTML file method or the Google Analytics integration if you already have GA installed.</li>
+      <li>Once verified, Google begins collecting data. <strong>Full data population takes 24–48 hours</strong> for the first view, but historical data starts appearing within a few days.</li>
+      <li>Submit your <strong>sitemap</strong> immediately. Go to Sitemaps in the left sidebar, paste your sitemap URL (usually yourdomain.com/sitemap.xml), and click Submit.</li>
+    </ol>
+    <div class="callout cb-yellow">
+      <strong>One Property Per Version</strong>
+      <p>If your site runs on both www and non-www versions, add both as separate properties. Google treats them as different websites. The Domain property type covers all versions automatically — another reason to choose it from the start.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 3 — Key reports -->
+  <div class="section">
+    <p class="section-tag">The Key Reports</p>
+    <h2>The Four Reports That Matter Most</h2>
+    <p>
+      Google Search Console has many sections, but four reports deliver the most actionable value for bloggers and content creators. Master these four and you will have more SEO insight than the majority of your competitors.
+    </p>
+
+    <div class="feature-grid">
+      <div class="fcard">
+        <div class="fcard-icon ic-blue">📊</div>
+        <p class="fcard-name">Performance Report</p>
+        <p class="fcard-desc">Shows clicks, impressions, click-through rate, and average position for every keyword and page. This is your most-used report.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon ic-red">🔍</div>
+        <p class="fcard-name">URL Inspection Tool</p>
+        <p class="fcard-desc">Check if any specific page is indexed by Google, see how Googlebot renders it, and request fresh indexing after an update.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon ic-yellow">📑</div>
+        <p class="fcard-name">Coverage / Indexing</p>
+        <p class="fcard-desc">Shows which pages are indexed, excluded, or producing errors — and exactly why. Critical for diagnosing crawl problems.</p>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon ic-green">📱</div>
+        <p class="fcard-name">Core Web Vitals</p>
+        <p class="fcard-desc">Reports on your site's loading speed, interactivity, and visual stability — three factors Google uses directly in its ranking algorithm.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 4 — The 4 metrics -->
+  <div class="section">
+    <p class="section-tag">Understanding the Numbers</p>
+    <h2>The 4 Performance Metrics Explained</h2>
+    <p>
+      The Performance report shows four metrics for every query and page. Understanding what each one actually means is the difference between acting on good data and drawing the wrong conclusions.
+    </p>
+
+    <table class="metrics-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>What It Means</th>
+          <th>What to Do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Clicks</td>
+          <td>How many times someone clicked your link in search results</td>
+          <td>Track trends over time — declining clicks on a page signal it needs a refresh</td>
+        </tr>
+        <tr>
+          <td>Impressions</td>
+          <td>How many times your page appeared in search results (even if not seen)</td>
+          <td>High impressions with low clicks means your title or meta description needs work</td>
+        </tr>
+        <tr>
+          <td>CTR</td>
+          <td>Clicks divided by impressions — the percentage of people who clicked</td>
+          <td>Industry average is 2–5%. Anything under 2% for a top-10 result is improvable</td>
+        </tr>
+        <tr>
+          <td>Avg. Position</td>
+          <td>Your average ranking position across all searches that triggered your page</td>
+          <td>Positions 8–15 are the "striking distance" sweet spot — prioritise these for quick wins</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 5 — Pro tips -->
+  <div class="section">
+    <p class="section-tag">Advanced Strategy</p>
+    <h2>Five Pro Ways to Use Search Console</h2>
+    <p>
+      Once you are comfortable with the basics, these five tactics will help you extract serious SEO value from the data Google is already handing you for free.
+    </p>
+
+    <ul class="check">
+      <li><strong>Find striking distance keywords:</strong> Filter the Performance report for queries where your average position is between 8 and 20. These pages almost rank — a content update or a few internal links could push them to page one.</li>
+      <li><strong>Discover keyword cannibalization:</strong> If multiple pages rank for the same query, they compete against each other. GSC reveals this — then you can consolidate content or clarify which page should own that keyword.</li>
+      <li><strong>Monitor index coverage weekly:</strong> The Coverage report alerts you to pages Google cannot crawl or index. Catching these early prevents months of lost traffic from pages that simply were not appearing in search.</li>
+      <li><strong>Speed up indexing of new content:</strong> After publishing a new article, paste the URL into the URL Inspection tool and click "Request Indexing." Google typically crawls it within hours instead of waiting days or weeks.</li>
+      <li><strong>Track Core Web Vitals by device:</strong> Poor scores on mobile are weighted more heavily than desktop in Google's rankings. Use the Core Web Vitals report to find and fix mobile performance issues first.</li>
+    </ul>
+
+    <div class="callout cb-green">
+      <strong>Monthly Habit</strong>
+      <p>Set a reminder to review your Search Console data once a month. Look for any sudden drops in impressions (possible penalty or crawl issue), check the Coverage report for new errors, and identify your top three striking-distance keywords to act on that month.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 6 -->
+  <div class="section">
+    <p class="section-tag">Common Mistakes</p>
+    <h2>What Most Bloggers Get Wrong</h2>
+    <p>
+      Having access to Google Search Console and actually using it are two very different things. The most common mistake is simply ignoring it after the initial setup. The second most common mistake is looking only at total clicks — and missing the rich keyword-level data that shows exactly what your audience is searching for.
+    </p>
+    <p>
+      Do not overlook the <strong>Search Type filter</strong> either. By default, GSC shows web search data — but you can switch to Image search or Video search. If you publish images or video, these filters reveal ranking opportunities most of your competitors are completely blind to.
+    </p>
+    <div class="callout cb-red">
+      <strong>Do Not Ignore Errors</strong>
+      <p>A red error in your Coverage report means Google cannot index that page at all. Every day that error sits unfixed is a day that page earns zero organic traffic. Treat Coverage errors as urgent and fix them within 48 hours of discovery.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <h3>
+      <span class="gc">
+        <span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="g">g</span><span class="b">l</span><span class="r">e</span>
+      </span>
+      Gave You the Data.<br>Now Use It.
+    </h3>
+    <p>
+      Google Search Console is the closest thing to a direct conversation with Google that any website owner can have. It is free, it is precise, and it reveals exactly what is working and what is not. Set it up today, submit your sitemap, and make it a habit. The bloggers who check it regularly consistently outrank the ones who do not.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 &nbsp;·&nbsp; Google Search Console Guide &nbsp;·&nbsp; Written for human readers
+</footer>
+
+</body>
+</html>
