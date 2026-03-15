@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Optimize Website Speed</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f6f9ff;
+    --surface:   #ffffff;
+    --surface2:  #eef3fd;
+    --border:    #dce6f8;
+    --ink:       #0d1829;
+    --muted:     #6a82a8;
+    --accent:    #1d4ed8;
+    --green:     #15803d;
+    --amber:     #b45309;
+    --rose:      #be123c;
+    --violet:    #6d28d9;
+    --teal:      #0d9488;
+    --soft-acc:  rgba(29,78,216,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 17px;
+    line-height: 1.88;
+  }
+
+  /* subtle halftone dots */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, #c7d8f8 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 72px; }
+
+  .header-kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .hk-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(29,78,216,0.1);
+    border: 1px solid rgba(29,78,216,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .hk-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(2.3rem, 6vw, 3.9rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.76;
+    max-width: 588px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border) 50%, transparent);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #253958;
+    font-weight: 300;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 44px;
+    background: var(--ink);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--teal) 60%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 0% 100%, rgba(29,78,216,0.15), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    color: #d4e4ff !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.46rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── SPEED FIX CARDS ── */
+  .fix-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .fix-card:hover {
+    box-shadow: 0 6px 28px rgba(29,78,216,0.08);
+    border-color: rgba(29,78,216,0.22);
+  }
+
+  .fc-head {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .fc-bar { width: 4px; flex-shrink: 0; }
+
+  .fc-head-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .fc-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .fix-card h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .fc-impact {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .fc-body { padding: 18px 24px 20px 28px; }
+
+  .fc-body p {
+    font-size: 0.94rem;
+    color: #4a6080;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── QUICK WIN ── */
+  .quick-win {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 16px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .qw-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .quick-win p {
+    font-size: 0.86rem !important;
+    font-weight: 500;
+    margin: 0 !important;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── SPEED SCORE DASHBOARD ── */
+  .speed-dash {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 28px;
+    margin: 28px 0 38px;
+  }
+
+  .sd-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .sd-rows { display: grid; gap: 13px; }
+
+  .sd-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 80px;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .sd-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .sd-track {
+    height: 8px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .sd-fill {
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .sd-val {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  /* ── BEFORE AFTER ── */
+  .ba-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 26px 0 36px;
+  }
+
+  .ba-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    overflow: hidden;
+  }
+
+  .ba-head {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ba-body { padding: 6px 0; }
+
+  .ba-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 7px 18px;
+    font-size: 0.88rem;
+    color: #4a6080;
+    line-height: 1.55;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ba-item:last-child { border-bottom: none; }
+
+  .ba-slow::before { content: '✗'; color: var(--rose); flex-shrink:0; }
+  .ba-fast::before { content: '✓'; color: var(--green); flex-shrink:0; }
+
+  .ba-item span { flex-shrink: 0; }
+
+  /* ── ACTION CHECKLIST ── */
+  .action-check {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action-check::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(29,78,216,0.18), transparent);
+    pointer-events: none;
+  }
+
+  .ac-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ac-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ac-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #5a7898;
+    line-height: 1.56;
+  }
+
+  .ac-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(13,148,136,0.5);
+    background: rgba(13,148,136,0.08);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .ba-compare { grid-template-columns: 1fr; }
+    .ac-grid { grid-template-columns: 1fr; }
+    .sd-row { grid-template-columns: 120px 1fr 60px; }
+    .pull-quote { padding: 28px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-kicker">
+      <div class="hk-icon">⚡</div>
+      <span class="hk-text">Performance Optimisation · Complete Guide · 2026</span>
+    </div>
+    <h1>How to Optimize<br><em>Website Speed</em></h1>
+    <p class="deck">Every second your blog takes to load, readers leave and search rankings slip. Speed is not a technical nicety — it is one of the most impactful investments you can make in your blog's success.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>Here is a fact that changes how you think about your blog: according to Google's own research, as page load time increases from one second to three seconds, the probability of a reader bouncing — leaving immediately without reading anything — increases by 32 percent. At five seconds, that figure jumps to 90 percent. The content you spent hours writing, the SEO you worked months to build, the reader who finally found you through search — all of it can be lost in the gap between your server's response and the moment something actually appears on their screen.</p>
+
+    <p>Website speed is not a developer problem. It is a blogger problem. And in 2026, with Google's Core Web Vitals firmly embedded in its ranking algorithm, a slow blog is not just losing readers — it is actively being penalised in search results in favour of faster competitors. The good news is that the most impactful speed improvements require no coding, no technical expertise, and no expensive tools. They require only attention, a few right decisions, and about an afternoon of focused work.</p>
+
+    <div class="pull-quote">
+      <p>A fast blog is not a luxury for technical bloggers. It is the baseline respect you owe every reader who chose to spend their time visiting what you built.</p>
+    </div>
+
+    <!-- SPEED IMPACT DASHBOARD -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(29,78,216,0.1);color:var(--accent);border:1px solid rgba(29,78,216,0.2)">The Stakes</span>
+      How Speed Affects Every Metric That Matters
+    </h2>
+
+    <div class="speed-dash">
+      <div class="sd-title">📊 &nbsp; Speed Impact — What Each Second Costs You</div>
+      <div class="sd-rows">
+        <div class="sd-row">
+          <span class="sd-label">Bounce Rate Increase</span>
+          <div class="sd-track"><div class="sd-fill" style="width:90%;background:var(--rose)"></div></div>
+          <span class="sd-val" style="color:var(--rose)">+90% at 5s</span>
+        </div>
+        <div class="sd-row">
+          <span class="sd-label">Google Rankings</span>
+          <div class="sd-track"><div class="sd-fill" style="width:85%;background:var(--amber)"></div></div>
+          <span class="sd-val" style="color:var(--amber)">High Impact</span>
+        </div>
+        <div class="sd-row">
+          <span class="sd-label">Conversion Rate Drop</span>
+          <div class="sd-track"><div class="sd-fill" style="width:70%;background:var(--violet)"></div></div>
+          <span class="sd-val" style="color:var(--violet)">-7% per sec</span>
+        </div>
+        <div class="sd-row">
+          <span class="sd-label">Reader Trust Lost</span>
+          <div class="sd-track"><div class="sd-fill" style="width:78%;background:var(--accent)"></div></div>
+          <span class="sd-val" style="color:var(--accent)">Significant</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIX 1: IMAGES -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(29,78,216,0.1);color:var(--accent);border:1px solid rgba(29,78,216,0.2)">Fix 01</span>
+      Optimise Every Image Before It Touches Your Blog
+    </h2>
+
+    <p>Images are the single largest contributor to slow page load times on the vast majority of blogs. A single uncompressed photograph exported directly from a smartphone can weigh four to six megabytes — enough to slow a page load by several seconds on its own. Yet most bloggers upload images without a second thought, gradually building a blog that becomes heavier and slower with every post they publish.</p>
+
+    <div class="fix-card">
+      <div class="fc-head">
+        <div class="fc-bar" style="background:var(--accent)"></div>
+        <div class="fc-head-inner">
+          <div class="fc-icon" style="background:rgba(29,78,216,0.1);color:var(--accent)">🖼</div>
+          <h3>Compress, Convert, and Lazy Load Every Image</h3>
+          <span class="fc-impact" style="background:rgba(29,78,216,0.1);color:var(--accent);border:1px solid rgba(29,78,216,0.2)">Highest Impact</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>Before uploading any image, compress it using a free tool like Squoosh or TinyPNG, reducing its file size by 60–80% without visible quality loss. Convert images to WebP format — a modern compression standard that is significantly smaller than JPEG or PNG while maintaining excellent visual quality. In WordPress, install the free Smush plugin to automatically compress and convert images on upload. Enable lazy loading — a technique that only loads images when the reader scrolls near them — to prevent all images from loading simultaneously when someone first arrives on your page.</p>
+        <div class="quick-win">
+          <span class="qw-label" style="color:var(--accent)">Quick Win</span>
+          <p style="color:var(--muted)">Run your heaviest blog post through PageSpeed Insights today. Images are almost always the first recommendation. Fixing them can cut your load time in half immediately.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIX 2: CACHING -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(21,128,61,0.1);color:var(--green);border:1px solid rgba(21,128,61,0.2)">Fix 02</span>
+      Install a Caching Plugin and Let It Work
+    </h2>
+
+    <div class="fix-card">
+      <div class="fc-head">
+        <div class="fc-bar" style="background:var(--green)"></div>
+        <div class="fc-head-inner">
+          <div class="fc-icon" style="background:rgba(21,128,61,0.1);color:var(--green)">⚡</div>
+          <h3>Serve Pre-Built Pages Instead of Building Each One Fresh</h3>
+          <span class="fc-impact" style="background:rgba(21,128,61,0.1);color:var(--green);border:1px solid rgba(21,128,61,0.2)">Very High Impact</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>Every time a visitor arrives at your WordPress blog without caching, the server builds the page from scratch — querying the database, processing PHP, assembling HTML — before sending it to the reader's browser. Caching saves a pre-built version of each page and delivers it instantly to subsequent visitors, bypassing the entire assembly process. WP Rocket is the gold standard caching plugin and activates meaningful improvements the moment it is switched on. For bloggers on tighter budgets, W3 Total Cache and LiteSpeed Cache are both free alternatives that deliver substantial speed improvements with a modest amount of configuration.</p>
+        <div class="quick-win">
+          <span class="qw-label" style="color:var(--green)">Quick Win</span>
+          <p style="color:var(--muted)">After installing any caching plugin, clear your existing cache and then re-run your PageSpeed Insights score. The improvement is typically immediate and measurable.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIX 3: HOSTING -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(180,83,9,0.1);color:var(--amber);border:1px solid rgba(180,83,9,0.2)">Fix 03</span>
+      Your Hosting Is the Foundation of Everything
+    </h2>
+
+    <div class="fix-card">
+      <div class="fc-head">
+        <div class="fc-bar" style="background:var(--amber)"></div>
+        <div class="fc-head-inner">
+          <div class="fc-icon" style="background:rgba(180,83,9,0.1);color:var(--amber)">🖥</div>
+          <h3>No Optimisation Overcomes Poor Hosting Infrastructure</h3>
+          <span class="fc-impact" style="background:rgba(180,83,9,0.1);color:var(--amber);border:1px solid rgba(180,83,9,0.2)">Critical Foundation</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>You can compress every image, install every caching plugin, and minify every script — but if your hosting server is slow, underpowered, or geographically distant from your readers, your blog will still load slowly. Quality hosting is the foundation on which every other speed optimisation rests. For WordPress blogs, consider hosting providers with servers in your readers' primary geographic location, PHP 8.0 or higher, built-in caching at the server level, and SSD storage as standard. SiteGround, Cloudways, and Kinsta consistently receive the highest performance scores in independent testing and are worth the modest additional cost over the very cheapest shared hosting options.</p>
+        <div class="quick-win">
+          <span class="qw-label" style="color:var(--amber)">Quick Win</span>
+          <p style="color:var(--muted)">Use GTmetrix or Pingdom to test your server response time (TTFB). If it exceeds 600ms, hosting quality is your primary problem — no plugin will fix this adequately.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIX 4: CODE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(109,40,217,0.1);color:var(--violet);border:1px solid rgba(109,40,217,0.2)">Fix 04</span>
+      Minify Code and Remove What Your Blog Does Not Need
+    </h2>
+
+    <div class="fix-card">
+      <div class="fc-head">
+        <div class="fc-bar" style="background:var(--violet)"></div>
+        <div class="fc-head-inner">
+          <div class="fc-icon" style="background:rgba(109,40,217,0.1);color:var(--violet)">🧹</div>
+          <h3>Smaller Code Means Faster Pages — Every Single Time</h3>
+          <span class="fc-impact" style="background:rgba(109,40,217,0.1);color:var(--violet);border:1px solid rgba(109,40,217,0.2)">Moderate–High</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>Every CSS file, JavaScript file, and HTML document your blog delivers to a reader's browser carries weight. Minification removes all unnecessary characters — spaces, comments, line breaks — from these files, reducing their size without changing their function. Most caching plugins include minification options. Equally important is the discipline of plugin minimalism — every active WordPress plugin loads additional CSS and JavaScript files. Deactivate and delete any plugin you do not actively use. Deactivated plugins that remain installed still consume server storage and can create security vulnerabilities. Run a lean blog and it will run a fast one.</p>
+        <div class="quick-win">
+          <span class="qw-label" style="color:var(--violet)">Quick Win</span>
+          <p style="color:var(--muted)">Audit your active plugins today. If you cannot immediately explain what each one does and why your blog needs it, deactivate it and monitor the speed improvement.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEFORE / AFTER -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(13,148,136,0.1);color:var(--teal);border:1px solid rgba(13,148,136,0.2)">Contrast</span>
+      Slow Blog vs Fast Blog — The Real Difference
+    </h2>
+
+    <div class="ba-compare">
+      <div class="ba-col">
+        <div class="ba-head" style="background:rgba(190,18,60,0.06);color:var(--rose)">
+          <span>🐌</span> Slow Blog (4+ seconds)
+        </div>
+        <div class="ba-body">
+          <div class="ba-item ba-slow"><span></span>90% of mobile visitors leave</div>
+          <div class="ba-item ba-slow"><span></span>Google penalises in rankings</div>
+          <div class="ba-item ba-slow"><span></span>High bounce rate hurts SEO</div>
+          <div class="ba-item ba-slow"><span></span>Readers lose trust instantly</div>
+          <div class="ba-item ba-slow"><span></span>Monetisation converts poorly</div>
+        </div>
+      </div>
+      <div class="ba-col">
+        <div class="ba-head" style="background:rgba(21,128,61,0.06);color:var(--green)">
+          <span>⚡</span> Fast Blog (under 2 seconds)
+        </div>
+        <div class="ba-body">
+          <div class="ba-item ba-fast"><span></span>Readers stay and read deeply</div>
+          <div class="ba-item ba-fast"><span></span>Google rewards with rankings</div>
+          <div class="ba-item ba-fast"><span></span>Lower bounce rate compounds</div>
+          <div class="ba-item ba-fast"><span></span>First impressions build trust</div>
+          <div class="ba-item ba-fast"><span></span>Subscribers and sales increase</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION CHECKLIST -->
+    <div class="action-check">
+      <div class="ac-title">✦ &nbsp; Your Speed Optimisation Action Plan</div>
+      <div class="ac-grid">
+        <div class="ac-item"><div class="ac-box"></div>Test current speed on PageSpeed Insights</div>
+        <div class="ac-item"><div class="ac-box"></div>Compress all existing images with Smush</div>
+        <div class="ac-item"><div class="ac-box"></div>Convert images to WebP format</div>
+        <div class="ac-item"><div class="ac-box"></div>Enable lazy loading for all images</div>
+        <div class="ac-item"><div class="ac-box"></div>Install and configure a caching plugin</div>
+        <div class="ac-item"><div class="ac-box"></div>Enable minification for CSS and JS files</div>
+        <div class="ac-item"><div class="ac-box"></div>Deactivate all unused plugins today</div>
+        <div class="ac-item"><div class="ac-box"></div>Check server TTFB with GTmetrix</div>
+        <div class="ac-item"><div class="ac-box"></div>Enable a CDN for global readers</div>
+        <div class="ac-item"><div class="ac-box"></div>Re-test speed after every change</div>
+      </div>
+    </div>
+
+    <p>Website speed optimisation is one of the highest-return investments a blogger can make — not because it is glamorous, but because its effects are immediate, measurable, and permanent. A blog that loads in under two seconds provides every reader the respect of their time, gives Google the signal it needs to trust your content, and converts passing visitors into committed readers at a significantly higher rate than a blog that makes them wait.</p>
+
+    <p>Run the speed test. Make the changes. Then return to what you do best — write something worth arriving for.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Speed is not a feature. It is the first thing every reader experiences.</span>
+  </footer>
+
+</div>
+</body>
+</html>
