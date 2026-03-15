@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile SEO Optimization — The Complete 2026 Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Sentient:ital,wght@0,400;0,700;1,400&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #f5f7ff;
+    --surface:      #ffffff;
+    --surface2:     #eef1ff;
+    --surface3:     #e4e8ff;
+    --border:       #d8dcf5;
+    --border2:      #c8ceee;
+    --ink:          #0d0f1e;
+    --soft:         #2d3152;
+    --muted:        #7478a0;
+    --indigo:       #3d52e8;
+    --indigo-dim:   rgba(61,82,232,0.10);
+    --indigo-mid:   rgba(61,82,232,0.22);
+    --indigo-glow:  rgba(61,82,232,0.08);
+    --cyan:         #06b8d4;
+    --cyan-dim:     rgba(6,184,212,0.10);
+    --cyan-mid:     rgba(6,184,212,0.24);
+    --green:        #16a85e;
+    --green-dim:    rgba(22,168,94,0.09);
+    --green-mid:    rgba(22,168,94,0.22);
+    --orange:       #e8640d;
+    --orange-dim:   rgba(232,100,13,0.09);
+    --orange-mid:   rgba(232,100,13,0.22);
+    --rose:         #e83d6e;
+    --rose-dim:     rgba(232,61,110,0.09);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.88;
+  }
+
+  /* ── Indigo top bar ── */
+  .topbar {
+    height: 4px;
+    background: linear-gradient(90deg,
+      var(--indigo) 0%, var(--cyan) 40%, var(--indigo) 100%);
+    background-size: 200%;
+    animation: barSlide 4s ease-in-out infinite alternate;
+  }
+  @keyframes barSlide {
+    from { background-position: 0% }
+    to   { background-position: 200% }
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    padding: 72px 32px 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .halo {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .halo-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(61,82,232,0.15) 0%, transparent 70%);
+    top: -200px; left: 50%; transform: translateX(-50%);
+  }
+
+  .halo-2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(6,184,212,0.08) 0%, transparent 70%);
+    top: 0; right: 0;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    width: 22px; height: 1px;
+    background: rgba(6,184,212,0.4);
+  }
+
+  h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    color: #f5f7ff;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 .grad {
+    background: linear-gradient(90deg, var(--indigo) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-meta {
+    font-size: 0.85rem;
+    color: rgba(245,247,255,0.3);
+    letter-spacing: 0.08em;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Phone mockup ── */
+  .phone-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phone {
+    width: 140px;
+    background: #1a1e35;
+    border-radius: 22px;
+    border: 2px solid rgba(255,255,255,0.12);
+    padding: 12px 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phone.main {
+    width: 160px;
+    border-color: rgba(61,82,232,0.6);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4),
+                0 0 0 1px rgba(61,82,232,0.3),
+                0 0 40px rgba(61,82,232,0.15);
+  }
+
+  .phone-notch {
+    width: 40px; height: 8px;
+    background: #0d0f1e;
+    border-radius: 4px;
+    margin: 0 auto 10px;
+  }
+
+  .phone-screen {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 10px 8px;
+    min-height: 180px;
+  }
+
+  .phone-bar {
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    opacity: 0.6;
+  }
+
+  .phone-bar.full { width: 100%; }
+  .phone-bar.mid  { width: 72%; }
+  .phone-bar.short{ width: 48%; }
+  .phone-bar.tiny { width: 30%; }
+
+  .pb-ind  { background: var(--indigo); }
+  .pb-cyan { background: var(--cyan);   }
+  .pb-grn  { background: var(--green);  }
+  .pb-muted{ background: var(--border2);}
+
+  .phone-score {
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .score-num {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--green);
+    display: block;
+    line-height: 1;
+  }
+
+  .score-lbl {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .phone-tag {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tag-good  { color: var(--green);  }
+  .tag-warn  { color: var(--orange); }
+  .tag-great { color: var(--cyan);   }
+
+  .phone-side {
+    opacity: 0.55;
+    transform: scale(0.92);
+    margin-bottom: 4px;
+  }
+
+  /* ── Smooth wave ── */
+  .wave {
+    background: var(--ink);
+    line-height: 0;
+  }
+  .wave svg { display:block; width:100%; }
+
+  /* ── Main ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 62px 28px 90px;
+  }
+
+  /* ── Lead ── */
+  .lead {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.82;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--indigo);
+    border-radius: 4px;
+    margin-bottom: 58px;
+    box-shadow: 0 2px 16px rgba(61,82,232,0.06);
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 56px; }
+
+  .section-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--indigo);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .section-tag::after {
+    content:''; flex:1; height:1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.03em;
+  }
+
+  p { color: var(--soft); margin-bottom: 16px; }
+  strong { color: var(--ink); font-weight: 700; }
+
+  /* ── Stat cards ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 26px 0;
+  }
+
+  @media(max-width:540px){
+    .stat-row { grid-template-columns: repeat(2,1fr); }
+    .phone-wrap .phone-side:last-child { display:none; }
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(61,82,232,0.08);
+  }
+
+  .stat-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.03em;
+  }
+
+  .stat-lbl {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+  }
+
+  .sn-ind  { color: var(--indigo); }
+  .sn-cyan { color: var(--cyan);   }
+  .sn-grn  { color: var(--green);  }
+  .sn-org  { color: var(--orange); }
+
+  /* ── Checklist cards ── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  @media(max-width:540px){ .check-grid { grid-template-columns:1fr; } }
+
+  .ck-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 18px;
+    transition: border-color 0.18s, transform 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ck-card:hover {
+    border-color: var(--indigo-mid);
+    transform: translateY(-2px);
+  }
+
+  .ck-card::before {
+    content:'';
+    position: absolute;
+    top:0; left:0; right:0;
+    height: 2px;
+    background: var(--indigo);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .ck-card:hover::before { transform: scaleX(1); }
+
+  .ck-icon { font-size: 1.3rem; margin-bottom: 8px; display:block; }
+  .ck-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+  .ck-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.62;
+  }
+
+  /* ── Callout boxes ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 22px 0;
+  }
+
+  .cb-ind  { background:var(--indigo-dim);  border:1px solid var(--indigo-mid);          border-left:3px solid var(--indigo);  }
+  .cb-cyan { background:var(--cyan-dim);    border:1px solid var(--cyan-mid);             border-left:3px solid var(--cyan);    }
+  .cb-grn  { background:var(--green-dim);   border:1px solid var(--green-mid);            border-left:3px solid var(--green);   }
+  .cb-org  { background:var(--orange-dim);  border:1px solid var(--orange-mid);           border-left:3px solid var(--orange);  }
+  .cb-rose { background:var(--rose-dim);    border:1px solid rgba(232,61,110,0.22);       border-left:3px solid var(--rose);    }
+
+  .callout strong {
+    font-size: 0.64rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    display: block; margin-bottom: 5px;
+  }
+  .cb-ind  strong { color:var(--indigo);  }
+  .cb-cyan strong { color:var(--cyan);    }
+  .cb-grn  strong { color:var(--green);   }
+  .cb-org  strong { color:var(--orange);  }
+  .cb-rose strong { color:var(--rose);    }
+  .callout p { font-size:0.9rem; margin:0; }
+
+  /* ── Speed score visual ── */
+  .speed-visual {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px;
+    margin: 24px 0;
+  }
+
+  .sv-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .sv-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sv-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sv-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--soft);
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .sv-track {
+    flex: 1;
+    background: var(--surface2);
+    border-radius: 6px;
+    height: 10px;
+    overflow: visible;
+    position: relative;
+  }
+
+  .sv-fill {
+    height: 100%;
+    border-radius: 6px;
+    position: relative;
+    animation: growSV 1.4s cubic-bezier(.4,0,.2,1) both;
+  }
+
+  @keyframes growSV {
+    from { width: 0% }
+  }
+
+  .sv-val {
+    font-size: 0.78rem;
+    font-weight: 700;
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Steps ── */
+  ol.steps {
+    list-style:none; padding:0; margin:20px 0;
+    counter-reset: step;
+  }
+
+  ol.steps li {
+    counter-increment: step;
+    padding: 14px 14px 14px 56px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.96rem;
+  }
+
+  ol.steps li:last-child { border-bottom:none; }
+
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left:10px; top:13px;
+    width:28px; height:28px;
+    background: var(--indigo);
+    color: #fff;
+    font-size: 0.75rem; font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items:center; justify-content:center;
+  }
+
+  /* ── Do / Don't ── */
+  .dd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 22px 0;
+  }
+
+  @media(max-width:480px){ .dd-grid { grid-template-columns: 1fr; } }
+
+  .dd-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .dd-head {
+    padding: 11px 16px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dd-head.do   { background:var(--green-dim); color:var(--green); }
+  .dd-head.dont { background:var(--rose-dim);  color:var(--rose);  }
+
+  .dd-item {
+    padding: 9px 16px;
+    font-size: 0.84rem;
+    color: var(--soft);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .dd-item:last-child { border-bottom: none; }
+  .dd-item span { flex-shrink: 0; font-size: 0.85rem; }
+
+  /* ── CWV table ── */
+  .cwv-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 22px 0;
+    font-size: 0.87rem;
+  }
+
+  .cwv-table thead {
+    background: var(--ink);
+    color: #f5f7ff;
+  }
+
+  .cwv-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cwv-table tbody tr:nth-child(even) { background: var(--surface2); }
+  .cwv-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    vertical-align: top;
+  }
+  .cwv-table tbody tr:last-child td { border-bottom: none; }
+  .cwv-table td:first-child { font-weight: 700; color: var(--ink); }
+
+  .badge-grn  { background:var(--green-dim); color:var(--green);  padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap; }
+  .badge-org  { background:var(--orange-dim);color:var(--orange); padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap; }
+  .badge-rose { background:var(--rose-dim);  color:var(--rose);   padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap; }
+
+  /* ── Checklist ── */
+  ul.check {
+    list-style:none; padding:0; margin:18px 0;
+  }
+  ul.check li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+  ul.check li:last-child { border-bottom: none; }
+  ul.check li::before {
+    content: '✓';
+    position: absolute; left: 4px;
+    color: var(--green);
+    font-weight: 700; font-size: 0.85rem;
+  }
+
+  /* ── Divider ── */
+  hr.div {
+    border:none; border-top:1px solid var(--border);
+    margin:52px 0; position:relative;
+  }
+  hr.div::before {
+    content:'📱';
+    position:absolute; top:-12px; left:50%;
+    transform:translateX(-50%);
+    background:var(--bg); padding:0 12px;
+    font-size:0.9rem;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(135deg, var(--ink) 0%, #161a38 100%);
+    color: #f5f7ff;
+    padding: 46px 40px;
+    border-radius: 12px;
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(61,82,232,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%,  rgba(6,184,212,0.10) 0%, transparent 50%);
+    pointer-events:none;
+  }
+
+  .closing h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #f5f7ff;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .closing h3 span {
+    background: linear-gradient(90deg, var(--indigo), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .closing p {
+    color: rgba(245,247,255,0.58);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align:center;
+    padding:26px;
+    font-size:0.75rem;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    letter-spacing:0.07em;
+    text-transform: uppercase;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0);    }
+  }
+
+  .section { animation: fadeUp 0.5s ease both; }
+  .section:nth-child(1){ animation-delay:0.05s; }
+  .section:nth-child(2){ animation-delay:0.10s; }
+  .section:nth-child(3){ animation-delay:0.15s; }
+  .section:nth-child(4){ animation-delay:0.20s; }
+  .section:nth-child(5){ animation-delay:0.25s; }
+  .section:nth-child(6){ animation-delay:0.30s; }
+
+  @media(max-width:600px){
+    main{padding:36px 16px 60px;}
+    header{padding:52px 18px 0;}
+    h1{font-size:2.2rem;}
+    h2{font-size:1.4rem;}
+    .closing{padding:30px 18px;}
+    .sv-label{width:120px; font-size:0.73rem;}
+    .phone-wrap{gap:10px;}
+    .phone.main{width:140px;}
+    .phone.phone-side{width:110px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<header>
+  <div class="halo halo-1"></div>
+  <div class="halo halo-2"></div>
+
+  <div class="eyebrow">Technical SEO · 2026</div>
+  <h1>Mobile SEO<br><span class="grad">Optimization</span><br>The Complete Guide</h1>
+  <p class="header-meta">~800 words &nbsp;·&nbsp; Practical &amp; Human &nbsp;·&nbsp; Built for Every Screen</p>
+
+  <!-- Phone mockups -->
+  <div class="phone-wrap">
+    <div class="phone phone-side">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-bar full pb-muted"></div>
+        <div class="phone-bar mid  pb-muted"></div>
+        <div class="phone-bar short pb-muted"></div>
+        <div class="phone-bar full pb-muted"></div>
+        <div class="phone-bar mid  pb-muted"></div>
+        <div class="phone-score">
+          <span class="score-num" style="color:var(--orange)">62</span>
+          <span class="score-lbl">Page Speed</span>
+        </div>
+        <p class="phone-tag tag-warn">⚠ Needs Work</p>
+      </div>
+    </div>
+
+    <div class="phone main">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-bar full pb-ind"></div>
+        <div class="phone-bar mid  pb-cyan"></div>
+        <div class="phone-bar short pb-grn"></div>
+        <div class="phone-bar full pb-ind"></div>
+        <div class="phone-bar mid  pb-cyan"></div>
+        <div class="phone-score">
+          <span class="score-num">96</span>
+          <span class="score-lbl">Page Speed</span>
+        </div>
+        <p class="phone-tag tag-great">✓ Optimized</p>
+      </div>
+    </div>
+
+    <div class="phone phone-side">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-bar full pb-muted"></div>
+        <div class="phone-bar mid  pb-muted"></div>
+        <div class="phone-bar short pb-muted"></div>
+        <div class="phone-bar full pb-muted"></div>
+        <div class="phone-bar mid  pb-muted"></div>
+        <div class="phone-score">
+          <span class="score-num" style="color:var(--rose)">41</span>
+          <span class="score-lbl">Page Speed</span>
+        </div>
+        <p class="phone-tag" style="color:var(--rose)">✗ Poor Score</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,50 L0,26 Q360,0 720,26 Q1080,50 1440,26 L1440,50 Z" fill="#f5f7ff"/>
+  </svg>
+</div>
+
+<main>
+
+  <!-- Lead -->
+  <p class="lead">
+    More than 63% of all Google searches now happen on a mobile device. Google ranks the mobile version of your website first — always. If your blog loads slowly, breaks on a small screen, or makes readers pinch and zoom to read a sentence, it is being penalised in ways most bloggers never even see. Mobile SEO is not optional in 2026. It is the foundation everything else is built on.
+  </p>
+
+  <!-- Stats -->
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="stat-num sn-ind">63%</span>
+      <span class="stat-lbl">of Google searches happen on mobile</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num sn-cyan">53%</span>
+      <span class="stat-lbl">of users abandon a page that takes over 3 seconds to load</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num sn-grn">100%</span>
+      <span class="stat-lbl">of Google indexing is now mobile-first</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num sn-org">4.5s</span>
+      <span class="stat-lbl">average mobile page load time — most sites are too slow</span>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <p class="section-tag">The Foundation</p>
+    <h2>What Is Mobile-First Indexing and Why It Changes Everything</h2>
+    <p>
+      Mobile-first indexing means Google primarily uses the <strong>mobile version of your website</strong> to determine how it ranks in search results — for both mobile and desktop searches. It switched to this approach because most users are mobile, and it makes sense to rank pages based on the experience the majority of searchers will actually have.
+    </p>
+    <p>
+      The practical consequence is significant. If your desktop site is beautifully optimised but your mobile version is slow, cramped, or missing content, Google sees only the mobile version when deciding where you rank. A stunning desktop design that performs poorly on a 375px wide screen is, from Google's perspective, a poor website — full stop.
+    </p>
+    <div class="callout cb-ind">
+      <strong>Check Yours Right Now</strong>
+      <p>Open Google Search Console, navigate to the "Mobile Usability" report, and see if Google has flagged any mobile issues on your site. Many bloggers are surprised to find problems they never knew existed — issues that have been quietly suppressing their rankings for months.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 2 — Responsive design -->
+  <div class="section">
+    <p class="section-tag">Design & Layout</p>
+    <h2>Responsive Design Is the Non-Negotiable Starting Point</h2>
+    <p>
+      A responsive website automatically adjusts its layout to fit any screen size — from a 5-inch phone to a 30-inch monitor. This is achieved through CSS media queries and fluid grid layouts that resize, reorder, and reflow content based on the available screen width.
+    </p>
+    <p>
+      Google explicitly recommends responsive design as the preferred approach for mobile SEO. Unlike separate mobile URLs or dynamic serving, responsive design means there is only one version of your page with one URL — making it simpler to crawl, index, and rank. Most modern website builders and WordPress themes are responsive by default, but responsive does not automatically mean optimised.
+    </p>
+
+    <div class="dd-grid">
+      <div class="dd-col">
+        <div class="dd-head do">✓ &nbsp; Mobile Best Practices</div>
+        <div class="dd-item"><span>✓</span> Text readable at 16px+ without zooming</div>
+        <div class="dd-item"><span>✓</span> Touch targets at least 48×48 pixels</div>
+        <div class="dd-item"><span>✓</span> No horizontal scrolling on any page</div>
+        <div class="dd-item"><span>✓</span> Content fits viewport without overflow</div>
+        <div class="dd-item"><span>✓</span> Navigation accessible with one thumb</div>
+      </div>
+      <div class="dd-col">
+        <div class="dd-head dont">✗ &nbsp; Mobile Killers</div>
+        <div class="dd-item"><span>✗</span> Intrusive pop-ups covering main content</div>
+        <div class="dd-item"><span>✗</span> Font sizes below 12px anywhere on page</div>
+        <div class="dd-item"><span>✗</span> Links so close together users tap the wrong one</div>
+        <div class="dd-item"><span>✗</span> Flash or plugins not supported on mobile</div>
+        <div class="dd-item"><span>✗</span> Unplayable video formats on iOS or Android</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 3 — Page speed -->
+  <div class="section">
+    <p class="section-tag">Speed Is Everything</p>
+    <h2>Page Speed on Mobile — The Numbers That Matter</h2>
+    <p>
+      Page speed is both a direct ranking factor and a user experience issue. On mobile networks, where connections are slower and less stable than broadband, speed gaps between sites become magnified. A page that loads in two seconds on Wi-Fi might take six seconds on a 4G connection — and over half of mobile users will abandon it before it finishes loading.
+    </p>
+
+    <div class="speed-visual">
+      <p class="sv-title">Mobile Load Time — User Abandonment Risk</p>
+      <div class="sv-bars">
+        <div class="sv-row">
+          <span class="sv-label">1–2 seconds</span>
+          <div class="sv-track">
+            <div class="sv-fill" style="width:9%; background:var(--green);"></div>
+          </div>
+          <span class="sv-val" style="color:var(--green)">9%</span>
+        </div>
+        <div class="sv-row">
+          <span class="sv-label">3 seconds</span>
+          <div class="sv-track">
+            <div class="sv-fill" style="width:32%; background:var(--cyan);"></div>
+          </div>
+          <span class="sv-val" style="color:var(--cyan)">32%</span>
+        </div>
+        <div class="sv-row">
+          <span class="sv-label">5 seconds</span>
+          <div class="sv-track">
+            <div class="sv-fill" style="width:53%; background:var(--orange);"></div>
+          </div>
+          <span class="sv-val" style="color:var(--orange)">53%</span>
+        </div>
+        <div class="sv-row">
+          <span class="sv-label">10 seconds</span>
+          <div class="sv-track">
+            <div class="sv-fill" style="width:74%; background:var(--rose);"></div>
+          </div>
+          <span class="sv-val" style="color:var(--rose)">74%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout cb-cyan">
+      <strong>Test Your Speed Now</strong>
+      <p>Run your site through Google's free PageSpeed Insights tool (pagespeed.web.dev). Switch to the Mobile tab and look at both the Performance score and the specific recommendations. Even fixing just the top two or three issues can produce a significant score improvement within 24 hours.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 4 — Core Web Vitals -->
+  <div class="section">
+    <p class="section-tag">Google's Ranking Signals</p>
+    <h2>Core Web Vitals — The Three Scores Google Uses to Rank You</h2>
+    <p>
+      Core Web Vitals are three specific performance measurements that Google uses as ranking signals. They are measured separately for mobile and desktop — and mobile scores are weighted more heavily. Understanding what each metric means is the first step to improving it.
+    </p>
+
+    <table class="cwv-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>What It Measures</th>
+          <th>Good Score</th>
+          <th>Poor Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LCP</td>
+          <td>Largest Contentful Paint — how fast the main content loads and appears</td>
+          <td><span class="badge-grn">Under 2.5s</span></td>
+          <td><span class="badge-rose">Over 4.0s</span></td>
+        </tr>
+        <tr>
+          <td>INP</td>
+          <td>Interaction to Next Paint — how quickly your page responds to user input</td>
+          <td><span class="badge-grn">Under 200ms</span></td>
+          <td><span class="badge-rose">Over 500ms</span></td>
+        </tr>
+        <tr>
+          <td>CLS</td>
+          <td>Cumulative Layout Shift — how much the page visually jumps as it loads</td>
+          <td><span class="badge-grn">Under 0.1</span></td>
+          <td><span class="badge-rose">Over 0.25</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      CLS is particularly frustrating on mobile — you go to tap a button and suddenly an image loads above it, shifting the whole page down. You tap the wrong thing. That experience is precisely what the CLS metric is designed to catch and penalise.
+    </p>
+
+    <div class="callout cb-grn">
+      <strong>Quick CLS Fix</strong>
+      <p>Always specify width and height attributes on every image and embed in your HTML. This reserves space in the layout before the image loads, preventing the jump. It is the single fastest improvement most bloggers can make to their CLS score — takes five minutes to implement site-wide.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 5 — Images -->
+  <div class="section">
+    <p class="section-tag">Image Optimisation</p>
+    <h2>Images Are the Biggest Mobile Speed Killer</h2>
+    <p>
+      On most blogs, unoptimised images account for 60–80% of total page weight. A single high-resolution photo uploaded straight from a camera can be 4–8MB. On mobile, that translates directly into seconds of additional load time per page visit. Fixing this is the highest-return mobile optimisation available to almost every blogger.
+    </p>
+
+    <div class="check-grid">
+      <div class="ck-card">
+        <span class="ck-icon">🗜️</span>
+        <p class="ck-name">Compress Every Image</p>
+        <p class="ck-desc">Use tools like Squoosh, TinyPNG, or ShortPixel to compress images before upload. Target under 150KB for most blog images without visible quality loss.</p>
+      </div>
+      <div class="ck-card">
+        <span class="ck-icon">🖼️</span>
+        <p class="ck-name">Use WebP Format</p>
+        <p class="ck-desc">WebP files are 25–35% smaller than JPG at the same visual quality. All major browsers and devices support it. Switch from JPG and PNG wherever possible.</p>
+      </div>
+      <div class="ck-card">
+        <span class="ck-icon">📐</span>
+        <p class="ck-name">Serve Correct Size</p>
+        <p class="ck-desc">Do not serve a 2400px wide image in a 600px column. Use srcset attributes to serve appropriately sized images to mobile vs desktop visitors.</p>
+      </div>
+      <div class="ck-card">
+        <span class="ck-icon">⏳</span>
+        <p class="ck-name">Lazy Load Below the Fold</p>
+        <p class="ck-desc">Add loading="lazy" to images that appear below the initial screen view. This defers loading until needed, dramatically improving initial page load time.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 6 — Action checklist -->
+  <div class="section">
+    <p class="section-tag">Your Action Plan</p>
+    <h2>The Mobile SEO Checklist — Start Here Today</h2>
+    <p>
+      Mobile SEO improvements compound quickly. Each fix you make reduces load time, improves user experience, and signals to Google that your site takes mobile seriously. Work through this checklist methodically and your mobile rankings will reflect the effort within weeks:
+    </p>
+
+    <ul class="check">
+      <li><strong>Run Google's Mobile-Friendly Test</strong> on your homepage and three key articles. Identify and fix any flagged issues immediately — these are the problems Google sees directly.</li>
+      <li><strong>Check PageSpeed Insights</strong> on the Mobile tab. Note your LCP, INP, and CLS scores. Prioritise improving whichever metric is furthest into the red zone first.</li>
+      <li><strong>Compress all images</strong> on your five most-visited pages using ShortPixel or Squoosh. Convert to WebP format where possible. Add width and height attributes to every image tag.</li>
+      <li><strong>Enable browser caching and GZIP compression</strong> through your hosting provider or a caching plugin like WP Rocket or W3 Total Cache. These two changes alone can halve your load time.</li>
+      <li><strong>Test your site on a real phone</strong> — not just a browser's device simulator. Tap every link, read a full article, test the navigation. Real devices reveal problems simulators mask entirely.</li>
+      <li><strong>Remove or reduce intrusive interstitials.</strong> Pop-ups that cover the main content on mobile are a direct Google penalty trigger. Replace full-screen pop-ups with slide-in banners or inline opt-in forms that do not obstruct reading.</li>
+      <li><strong>Use a CDN</strong> (Content Delivery Network) to serve your static assets from servers physically closer to your visitors. Cloudflare's free tier is sufficient for most blogs and reduces load times for international audiences significantly.</li>
+    </ul>
+
+    <div class="callout cb-org">
+      <strong>Monthly Habit</strong>
+      <p>Mobile SEO is not a one-time fix. Set a monthly reminder to re-run your PageSpeed Insights and Search Console Mobile Usability reports. Each time you install a new plugin, add a new widget, or update your theme, your mobile performance can shift. Catching regressions early prevents months of ranking loss.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <h3>Optimise Mobile.<br><span>Own the Rankings.</span></h3>
+    <p>
+      Every visitor who arrives on your blog via a mobile device is making an instant judgement. Fast and readable earns a read. Slow and broken earns a back-button. Google is simply measuring what your readers already feel. Fix the mobile experience — and the rankings will follow naturally, reliably, and permanently.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 &nbsp;·&nbsp; Mobile SEO Optimization Guide &nbsp;·&nbsp; Written for Human Readers
+</footer>
+
+</body>
+</html>
