@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Reduce Bounce Rate — The Complete Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Gloock:ital@0;1&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ── DESIGN: Warm data-studio ──
+     Soft off-white ground, forest green primary, warm amber accent
+     Gloock display serif (editorial weight) + Figtree body (clean, geometric)
+     Dashboard-style metric cards in header
+     Horizontal bounce-rate gauge animation
+     Side-by-side before/after tables
+     Feels like a premium analytics report + human writing hybrid
+  ── */
+
+  :root {
+    --bg:         #f6f4ef;
+    --surface:    #ffffff;
+    --surface2:   #eeecea;
+    --surface3:   #e6e3dd;
+    --border:     #dedad2;
+    --border2:    #ccc8be;
+    --ink:        #151210;
+    --soft:       #352e24;
+    --muted:      #8a8074;
+    --forest:     #1e5e3a;
+    --forest-dim: rgba(30,94,58,0.09);
+    --forest-mid: rgba(30,94,58,0.22);
+    --forest-lt:  #2a7a4e;
+    --amber:      #c47c1a;
+    --amber-dim:  rgba(196,124,26,0.09);
+    --amber-mid:  rgba(196,124,26,0.24);
+    --red:        #c03228;
+    --red-dim:    rgba(192,50,40,0.08);
+    --red-mid:    rgba(192,50,40,0.20);
+    --blue:       #1e4e8a;
+    --blue-dim:   rgba(30,78,138,0.08);
+    --blue-mid:   rgba(30,78,138,0.20);
+    --violet:     #5e3a9e;
+    --violet-dim: rgba(94,58,158,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* ── Top accent stripe ── */
+  .topstripe {
+    height: 4px;
+    background: linear-gradient(90deg,
+      var(--forest) 0%,
+      var(--forest-lt) 40%,
+      var(--amber) 100%);
+  }
+
+  /* ══════════════════════════════
+     HEADER
+  ══════════════════════════════ */
+  header {
+    background: var(--ink);
+    padding: 64px 32px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* grid-dot pattern overlay */
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* warm radial glow */
+  header::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% -10%,
+      rgba(30,94,58,0.22) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgba(30,200,100,0.7);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .kicker::before, .kicker::after {
+    content:''; width:22px; height:1px;
+    background: rgba(30,200,100,0.3);
+  }
+
+  h1 {
+    font-family: 'Gloock', Georgia, serif;
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #f6f4ef;
+    max-width: 700px;
+    margin: 0 auto 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #5fd48a;
+  }
+
+  .header-sub {
+    font-size: 0.85rem;
+    color: rgba(246,244,239,0.3);
+    letter-spacing: 0.08em;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Bounce rate gauge ── */
+  .gauge-wrap {
+    max-width: 660px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    padding: 24px 26px 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gauge-title {
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(246,244,239,0.32);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* semi-circle gauge */
+  .gauge-svg-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .gauge-svg {
+    width: 220px; height: 120px;
+    overflow: visible;
+  }
+
+  /* metric row */
+  .gauge-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .gm {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 7px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .gm-val {
+    font-family: 'Gloock', serif;
+    font-size: 1.3rem;
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .gm-lbl {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(246,244,239,0.3);
+  }
+
+  .gmv-r  { color: #f87171; }
+  .gmv-a  { color: #fbbf24; }
+  .gmv-g  { color: #4ade80; }
+  .gmv-b  { color: #60a5fa; }
+
+  /* ── Wave ── */
+  .wv { background:var(--ink); line-height:0; }
+  .wv svg { display:block; width:100%; }
+
+  /* ══════════════════════════════
+     MAIN
+  ══════════════════════════════ */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 28px 90px;
+  }
+
+  /* ── Lead ── */
+  .lead {
+    font-family: 'Gloock', Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.82;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--forest);
+    border-radius: 4px;
+    margin-bottom: 58px;
+    box-shadow: 0 2px 12px rgba(21,18,16,0.05);
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 56px; }
+
+  .section-tag {
+    font-size: 0.63rem; font-weight: 700;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--forest);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .section-tag::after {
+    content:''; flex:1; height:1px; background:var(--border);
+  }
+
+  h2 {
+    font-family: 'Gloock', Georgia, serif;
+    font-size: 1.82rem; font-weight: 400;
+    color: var(--ink); line-height: 1.2;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+  }
+
+  p { color: var(--soft); margin-bottom: 16px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Bounce rate spectrum bar ── */
+  .spectrum {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 22px 18px;
+    margin: 24px 0;
+  }
+
+  .spec-title {
+    font-size: 0.64rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px; text-align: center;
+  }
+
+  .spec-bar {
+    height: 16px;
+    border-radius: 8px;
+    background: linear-gradient(90deg,
+      #22c55e 0%,
+      #84cc16 22%,
+      #eab308 44%,
+      #f97316 66%,
+      #ef4444 100%);
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .spec-needle {
+    position: absolute;
+    top: -5px;
+    width: 4px; height: 26px;
+    background: var(--ink);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 2px #fff;
+    transition: left 1s cubic-bezier(.4,0,.2,1);
+  }
+
+  .spec-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+
+  .spec-zones {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .sz {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.7rem; font-weight: 600; color: var(--soft);
+  }
+
+  .sz-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  /* ── Reason cards ── */
+  .reason-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  @media(max-width:520px){
+    .reason-grid { grid-template-columns:1fr; }
+    .gauge-metrics{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  .rcard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 18px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(21,18,16,0.08);
+  }
+
+  .rcard-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .rb-r { background: var(--red);    }
+  .rb-a { background: var(--amber);  }
+  .rb-b { background: var(--blue);   }
+  .rb-f { background: var(--forest); }
+  .rb-v { background: var(--violet); }
+  .rb-o { background: #c06a18;       }
+
+  .rcard-icon { font-size: 1.4rem; margin-bottom: 8px; display:block; }
+
+  .rcard-name {
+    font-family: 'Gloock', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+
+  .rcard-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.62;
+  }
+
+  /* ── Fix rows ── */
+  .fix-list {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 22px 0;
+  }
+
+  .fix-row {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .fix-row:last-child { border-bottom:none; }
+  .fix-row:hover { background: var(--surface2); }
+
+  .fix-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .fi-f { background: var(--forest-dim); }
+  .fi-a { background: var(--amber-dim);  }
+  .fi-b { background: var(--blue-dim);   }
+  .fi-r { background: var(--red-dim);    }
+  .fi-v { background: var(--violet-dim); }
+  .fi-o { background: rgba(192,106,24,0.09); }
+
+  .fix-body { flex:1; }
+
+  .fix-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .fix-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .fix-impact {
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .imp-high { background: var(--forest-dim); color: var(--forest); }
+  .imp-med  { background: var(--amber-dim);  color: var(--amber);  }
+  .imp-fast { background: var(--blue-dim);   color: var(--blue);   }
+
+  /* ── Callouts ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 5px;
+    margin: 22px 0;
+  }
+
+  .cb-f { background:var(--forest-dim); border:1px solid var(--forest-mid); border-left:3px solid var(--forest); }
+  .cb-a { background:var(--amber-dim);  border:1px solid var(--amber-mid);  border-left:3px solid var(--amber);  }
+  .cb-r { background:var(--red-dim);    border:1px solid var(--red-mid);    border-left:3px solid var(--red);    }
+  .cb-b { background:var(--blue-dim);   border:1px solid var(--blue-mid);   border-left:3px solid var(--blue);   }
+  .cb-v { background:var(--violet-dim); border:1px solid rgba(94,58,158,.22); border-left:3px solid var(--violet);}
+
+  .callout strong {
+    font-size: 0.63rem; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    display: block; margin-bottom: 5px;
+  }
+  .cb-f strong { color:var(--forest); }
+  .cb-a strong { color:var(--amber);  }
+  .cb-r strong { color:var(--red);    }
+  .cb-b strong { color:var(--blue);   }
+  .cb-v strong { color:var(--violet); }
+  .callout p { font-size:0.9rem; margin:0; }
+
+  /* ── Before / After table ── */
+  .ba-table {
+    width:100%; border-collapse:collapse;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:8px; overflow:hidden;
+    margin:22px 0; font-size:0.87rem;
+  }
+
+  .ba-table thead { background:var(--ink); color:#f6f4ef; }
+
+  .ba-table thead th {
+    padding:11px 16px; text-align:left;
+    font-size:0.66rem; font-weight:700;
+    letter-spacing:0.15em; text-transform:uppercase;
+  }
+
+  .ba-table tbody tr:nth-child(even){ background:var(--surface2); }
+
+  .ba-table td {
+    padding:11px 16px;
+    border-bottom:1px solid var(--border);
+    color:var(--soft); vertical-align:top;
+  }
+
+  .ba-table tbody tr:last-child td { border-bottom:none; }
+  .ba-table td:first-child { font-weight:700; color:var(--ink); }
+
+  .badge-bad  { background:var(--red-dim);    color:var(--red);    padding:2px 8px; border-radius:20px; font-size:0.69rem; font-weight:700; }
+  .badge-good { background:var(--forest-dim); color:var(--forest); padding:2px 8px; border-radius:20px; font-size:0.69rem; font-weight:700; }
+
+  /* ── Steps ── */
+  ol.steps {
+    list-style:none; padding:0; margin:20px 0;
+    counter-reset:step;
+  }
+
+  ol.steps li {
+    counter-increment:step;
+    padding:13px 14px 13px 56px;
+    position:relative;
+    border-bottom:1px solid var(--border);
+    color:var(--soft); font-size:0.95rem;
+  }
+
+  ol.steps li:last-child { border-bottom:none; }
+
+  ol.steps li::before {
+    content:counter(step);
+    position:absolute; left:10px; top:12px;
+    width:28px; height:28px;
+    background:var(--forest);
+    color:#fff;
+    font-size:0.74rem; font-weight:700;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ── Progress bars (content scan) ── */
+  .progress-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .pr-row {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .pr-label {
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--soft); width: 150px; flex-shrink:0;
+  }
+
+  .pr-track {
+    flex:1; background:var(--surface3);
+    border-radius:4px; height:8px; overflow:hidden;
+  }
+
+  .pr-fill {
+    height:100%; border-radius:4px;
+    animation: fillPR 1.5s cubic-bezier(.4,0,.2,1) both;
+  }
+
+  @keyframes fillPR { from { width:0% } }
+
+  .pr-val {
+    font-size:0.78rem; font-weight:700;
+    color:var(--muted); width:38px; text-align:right; flex-shrink:0;
+  }
+
+  /* ── Checklist ── */
+  ul.check {
+    list-style:none; padding:0; margin:18px 0;
+  }
+
+  ul.check li {
+    padding:10px 0 10px 30px;
+    position:relative;
+    border-bottom:1px solid var(--border);
+    color:var(--soft); font-size:0.95rem;
+  }
+
+  ul.check li:last-child { border-bottom:none; }
+
+  ul.check li::before {
+    content:'✓';
+    position:absolute; left:4px;
+    color:var(--forest); font-weight:700; font-size:0.85rem;
+  }
+
+  /* ── Divider ── */
+  hr.div {
+    border:none; border-top:1px solid var(--border);
+    margin:52px 0; position:relative;
+  }
+
+  hr.div::before {
+    content:'◆';
+    position:absolute; top:-10px; left:50%;
+    transform:translateX(-50%);
+    background:var(--bg); padding:0 12px;
+    color:var(--forest); font-size:0.75rem;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: var(--forest);
+    color: rgba(246,244,239,0.9);
+    padding: 46px 40px;
+    border-radius: 10px;
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%,  rgba(196,124,26,0.15) 0%, transparent 50%);
+    pointer-events:none;
+  }
+
+  .closing h3 {
+    font-family: 'Gloock', serif;
+    font-size: 1.75rem; font-weight: 400;
+    font-style: italic;
+    color: #fff; letter-spacing: -0.01em;
+    margin-bottom: 14px; position:relative;
+    line-height: 1.25;
+  }
+
+  .closing h3 span { color: #a3e8b8; font-style: italic; }
+
+  .closing p {
+    color: rgba(246,244,239,0.6);
+    font-size: 0.95rem; max-width: 500px;
+    margin: 0 auto; position:relative;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align:center; padding:26px;
+    font-size:0.74rem; color:var(--muted);
+    border-top:1px solid var(--border);
+    letter-spacing:0.08em; text-transform:uppercase;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .section { animation:fadeUp 0.5s ease both; }
+  .section:nth-child(1){ animation-delay:.05s; }
+  .section:nth-child(2){ animation-delay:.10s; }
+  .section:nth-child(3){ animation-delay:.15s; }
+  .section:nth-child(4){ animation-delay:.20s; }
+  .section:nth-child(5){ animation-delay:.25s; }
+  .section:nth-child(6){ animation-delay:.30s; }
+
+  @media(max-width:600px){
+    main{padding:36px 16px 60px;}
+    header{padding:50px 18px 0;}
+    h1{font-size:2.3rem;}
+    h2{font-size:1.5rem;}
+    .closing{padding:30px 18px;}
+    .pr-label{width:110px; font-size:0.73rem;}
+    .fix-row{grid-template-columns:36px 1fr;}
+    .fix-impact{display:none;}
+    .gauge-wrap{padding:18px 16px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topstripe"></div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="kicker">Analytics &amp; UX Strategy</div>
+  <h1>How to Reduce<br><em>Bounce Rate</em></h1>
+  <p class="header-sub">~800 words &nbsp;·&nbsp; Practical &amp; Human &nbsp;·&nbsp; 2026 Edition</p>
+
+  <!-- Gauge dashboard -->
+  <div class="gauge-wrap">
+    <p class="gauge-title">Bounce Rate Health Dashboard</p>
+
+    <!-- SVG semi-circle gauge -->
+    <div class="gauge-svg-wrap">
+      <svg class="gauge-svg" viewBox="0 0 220 120">
+        <!-- Background arc -->
+        <path d="M 20 110 A 90 90 0 0 1 200 110"
+              fill="none" stroke="rgba(255,255,255,0.07)"
+              stroke-width="14" stroke-linecap="round"/>
+        <!-- Red zone (high bounce) -->
+        <path d="M 20 110 A 90 90 0 0 1 76 30"
+              fill="none" stroke="#ef4444" stroke-width="14"
+              stroke-linecap="round" opacity="0.7"/>
+        <!-- Amber zone -->
+        <path d="M 76 30 A 90 90 0 0 1 144 30"
+              fill="none" stroke="#f59e0b" stroke-width="14"
+              stroke-linecap="round" opacity="0.7"/>
+        <!-- Green zone (good) -->
+        <path d="M 144 30 A 90 90 0 0 1 200 110"
+              fill="none" stroke="#22c55e" stroke-width="14"
+              stroke-linecap="round" opacity="0.7"/>
+        <!-- Needle at ~45% (bad territory for demo) -->
+        <line x1="110" y1="110"
+              x2="52" y2="50"
+              stroke="white" stroke-width="3"
+              stroke-linecap="round"
+              style="transform-origin:110px 110px;
+                     transform:rotate(0deg);
+                     animation:needleSpin 1.6s cubic-bezier(.4,0,.2,1) forwards">
+        </line>
+        <circle cx="110" cy="110" r="6" fill="white"/>
+        <!-- Labels -->
+        <text x="12" y="118" fill="rgba(255,255,255,0.4)"
+              font-size="9" font-family="Figtree,sans-serif"
+              font-weight="600">0%</text>
+        <text x="98" y="18" fill="rgba(255,255,255,0.4)"
+              font-size="9" font-family="Figtree,sans-serif"
+              font-weight="600" text-anchor="middle">50%</text>
+        <text x="195" y="118" fill="rgba(255,255,255,0.4)"
+              font-size="9" font-family="Figtree,sans-serif"
+              font-weight="600">100%</text>
+        <!-- Value -->
+        <text x="110" y="90" fill="white"
+              font-size="22" font-family="Gloock,serif"
+              font-weight="400" text-anchor="middle">62%</text>
+        <text x="110" y="104" fill="rgba(255,255,255,0.35)"
+              font-size="8" font-family="Figtree,sans-serif"
+              font-weight="600" text-anchor="middle"
+              letter-spacing="2">AVG BOUNCE</text>
+      </svg>
+    </div>
+
+    <style>
+      @keyframes needleSpin {
+        from { transform: rotate(-90deg); }
+        to   { transform: rotate(-18deg); }
+      }
+    </style>
+
+    <div class="gauge-metrics">
+      <div class="gm">
+        <span class="gm-val gmv-r">80%+</span>
+        <span class="gm-lbl">Poor</span>
+      </div>
+      <div class="gm">
+        <span class="gm-val gmv-a">56–80%</span>
+        <span class="gm-lbl">Average</span>
+      </div>
+      <div class="gm">
+        <span class="gm-val gmv-g">26–40%</span>
+        <span class="gm-lbl">Great</span>
+      </div>
+      <div class="gm">
+        <span class="gm-val gmv-b">&lt;25%</span>
+        <span class="gm-lbl">Excellent</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wv">
+  <svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,52 L0,26 Q360,0 720,26 Q1080,52 1440,26 L1440,52 Z" fill="#f6f4ef"/>
+  </svg>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- Lead -->
+  <p class="lead">
+    Bounce rate is the percentage of visitors who land on your page and leave without clicking anything else. It is one of the most misunderstood metrics in web analytics — and one of the most fixable. A high bounce rate is rarely a mystery once you know where to look. The causes are almost always the same, and the fixes are more straightforward than most bloggers expect.
+  </p>
+
+  <!-- Section 1 — What is bounce rate -->
+  <div class="section">
+    <p class="section-tag">Understanding the Metric</p>
+    <h2>What Bounce Rate Actually Tells You</h2>
+    <p>
+      Bounce rate measures single-page sessions — visitors who arrive, look at one page, and leave without any further interaction. It does <strong>not</strong> necessarily mean they hated your content. Someone who reads your entire 3,000-word article for eight minutes and then leaves has a bounce — by the technical definition — but that is a successful visit.
+    </p>
+    <p>
+      Context matters enormously. A blog post might have a 70% bounce rate because readers found exactly what they needed and left satisfied. A product page with a 70% bounce rate is almost certainly losing sales. The question to ask is always: <em>given the purpose of this page, is this bounce rate acceptable?</em>
+    </p>
+
+    <div class="spectrum">
+      <p class="spec-title">Bounce Rate Spectrum — What the Numbers Mean</p>
+      <div class="spec-bar">
+        <div class="spec-needle" style="left:60%"></div>
+      </div>
+      <div class="spec-labels">
+        <span>0%</span>
+        <span>25%</span>
+        <span>50%</span>
+        <span>75%</span>
+        <span>100%</span>
+      </div>
+      <div class="spec-zones">
+        <div class="sz"><div class="sz-dot" style="background:#22c55e"></div>0–40% Excellent</div>
+        <div class="sz"><div class="sz-dot" style="background:#84cc16"></div>41–55% Good</div>
+        <div class="sz"><div class="sz-dot" style="background:#eab308"></div>56–70% Average</div>
+        <div class="sz"><div class="sz-dot" style="background:#f97316"></div>71–85% Needs Work</div>
+        <div class="sz"><div class="sz-dot" style="background:#ef4444"></div>85%+ Alarm</div>
+      </div>
+    </div>
+
+    <div class="callout cb-b">
+      <strong>GA4 Changed the Definition</strong>
+      <p>Google Analytics 4 replaced bounce rate with "engagement rate" — the percentage of sessions that lasted longer than 10 seconds, had a conversion, or viewed multiple pages. In GA4, a low engagement rate is the equivalent concern. The underlying problem — visitors not finding value — is the same either way.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 2 — Why people bounce -->
+  <div class="section">
+    <p class="section-tag">Root Causes</p>
+    <h2>Six Reasons Visitors Leave Without Engaging</h2>
+    <p>
+      Before trying to fix bounce rate, you need to know why visitors are leaving. Guessing leads to wasted effort. These are the six most common causes — and almost every high-bounce-rate page suffers from at least two of them simultaneously.
+    </p>
+
+    <div class="reason-grid">
+      <div class="rcard">
+        <div class="rcard-bar rb-r"></div>
+        <span class="rcard-icon">🐢</span>
+        <p class="rcard-name">Slow Page Load Speed</p>
+        <p class="rcard-desc">53% of mobile users abandon a page that takes more than 3 seconds to load. Speed is the single highest-impact factor for both bounce rate and SEO rankings.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-bar rb-a"></div>
+        <span class="rcard-icon">🎯</span>
+        <p class="rcard-name">Content Doesn't Match Intent</p>
+        <p class="rcard-desc">The visitor searched for X, clicked your result expecting X, and found something adjacent to X. The mismatch between expectation and reality is instant — and instantly fatal.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-bar rb-b"></div>
+        <span class="rcard-icon">😵</span>
+        <p class="rcard-name">Poor Readability</p>
+        <p class="rcard-desc">Dense paragraphs, tiny fonts, no subheadings, low contrast — any combination of these makes scanning impossible. Most readers scan before they commit. Make scanning easy.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-bar rb-f"></div>
+        <span class="rcard-icon">📱</span>
+        <p class="rcard-name">Bad Mobile Experience</p>
+        <p class="rcard-desc">Over 60% of web traffic is mobile. A site that works perfectly on desktop but breaks on a 375px screen is losing the majority of its visitors in the first five seconds.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-bar rb-v"></div>
+        <span class="rcard-icon">🚪</span>
+        <p class="rcard-name">No Clear Next Step</p>
+        <p class="rcard-desc">Readers finish your article and see no obvious path forward — no related posts, no internal links, no call to action. When there is nothing to do next, leaving is the default choice.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-bar rb-o"></div>
+        <span class="rcard-icon">⚡</span>
+        <p class="rcard-name">Intrusive Pop-ups</p>
+        <p class="rcard-desc">A full-screen pop-up appearing within 2 seconds of landing breaks the reading experience before it begins. Pop-ups that fire too early are one of the most reliable bounce rate killers there is.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 3 — Speed fixes -->
+  <div class="section">
+    <p class="section-tag">Highest Impact Fixes</p>
+    <h2>Speed First — Because Everything Else Is Secondary</h2>
+    <p>
+      No amount of great content, clever internal linking, or beautiful design will reduce bounce rate if your page takes six seconds to load. Speed is the foundation. A visitor who leaves while the page is still loading never sees anything else you built. Start here, always.
+    </p>
+
+    <div class="progress-rows">
+      <div class="pr-row">
+        <span class="pr-label">Image Compression</span>
+        <div class="pr-track"><div class="pr-fill" style="width:88%;background:var(--forest)"></div></div>
+        <span class="pr-val">High</span>
+      </div>
+      <div class="pr-row">
+        <span class="pr-label">Browser Caching</span>
+        <div class="pr-track"><div class="pr-fill" style="width:74%;background:var(--forest-lt)"></div></div>
+        <span class="pr-val">High</span>
+      </div>
+      <div class="pr-row">
+        <span class="pr-label">CDN Delivery</span>
+        <div class="pr-track"><div class="pr-fill" style="width:68%;background:var(--amber)"></div></div>
+        <span class="pr-val">Med</span>
+      </div>
+      <div class="pr-row">
+        <span class="pr-label">Lazy Loading</span>
+        <div class="pr-track"><div class="pr-fill" style="width:62%;background:var(--amber)"></div></div>
+        <span class="pr-val">Med</span>
+      </div>
+      <div class="pr-row">
+        <span class="pr-label">Minify CSS/JS</span>
+        <div class="pr-track"><div class="pr-fill" style="width:50%;background:var(--blue)"></div></div>
+        <span class="pr-val">Med</span>
+      </div>
+      <div class="pr-row">
+        <span class="pr-label">Remove Unused Plugins</span>
+        <div class="pr-track"><div class="pr-fill" style="width:82%;background:var(--forest)"></div></div>
+        <span class="pr-val">High</span>
+      </div>
+    </div>
+
+    <div class="callout cb-f">
+      <strong>Test First</strong>
+      <p>Run your site through Google PageSpeed Insights before making any changes. The "Opportunities" section tells you exactly which fixes will save the most load time — prioritise the top three and implement them before touching anything else. Measure before and after each fix.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 4 — Content & UX -->
+  <div class="section">
+    <p class="section-tag">Content &amp; Experience</p>
+    <h2>The UX Improvements That Move the Needle Most</h2>
+    <p>
+      Once speed is addressed, the next layer of bounce rate reduction is about the reading experience itself. These fixes are largely formatting and structure decisions — and they require no technical skill, only editorial judgment.
+    </p>
+
+    <div class="fix-list">
+      <div class="fix-row">
+        <div class="fix-icon fi-f">✍️</div>
+        <div class="fix-body">
+          <p class="fix-name">Rewrite Your Introduction</p>
+          <p class="fix-desc">The first three sentences determine whether a reader stays. A weak intro that summarises rather than hooks sends visitors back to Google within seconds. Rewrite introductions for your top-10 bounced pages first.</p>
+        </div>
+        <span class="fix-impact imp-high">High Impact</span>
+      </div>
+      <div class="fix-row">
+        <div class="fix-icon fi-a">🗂️</div>
+        <div class="fix-body">
+          <p class="fix-name">Break Up Text with Subheadings</p>
+          <p class="fix-desc">No paragraph longer than 4 lines. A subheading every 200–300 words. Readers scan before they commit — dense walls of text signal effort, not value, and effort repels.</p>
+        </div>
+        <span class="fix-impact imp-high">High Impact</span>
+      </div>
+      <div class="fix-row">
+        <div class="fix-icon fi-b">🔗</div>
+        <div class="fix-body">
+          <p class="fix-name">Add Internal Links Mid-Article</p>
+          <p class="fix-desc">Place 3–5 relevant internal links naturally within the body text. A "Related Reading" box at the 50% scroll point gives engaged readers a clear path to more content before they reach the end and run out of reasons to stay.</p>
+        </div>
+        <span class="fix-impact imp-med">Med Impact</span>
+      </div>
+      <div class="fix-row">
+        <div class="fix-icon fi-r">📐</div>
+        <div class="fix-body">
+          <p class="fix-name">Increase Body Font Size</p>
+          <p class="fix-desc">The minimum readable font size for body text is 16px. Many themes default to 14px. Increase to 16–18px and watch average session duration increase almost immediately — especially on mobile devices.</p>
+        </div>
+        <span class="fix-impact imp-fast">Quick Win</span>
+      </div>
+      <div class="fix-row">
+        <div class="fix-icon fi-v">⏰</div>
+        <div class="fix-body">
+          <p class="fix-name">Delay or Remove Pop-ups</p>
+          <p class="fix-desc">If you must use a pop-up, trigger it at 60% scroll depth or after 45 seconds — never on page load. Exit-intent pop-ups (triggered when the cursor moves toward the browser bar) are the least disruptive option available.</p>
+        </div>
+        <span class="fix-impact imp-high">High Impact</span>
+      </div>
+      <div class="fix-row">
+        <div class="fix-icon fi-o">🎯</div>
+        <div class="fix-body">
+          <p class="fix-name">Add a Strong Post-Article CTA</p>
+          <p class="fix-desc">After the last sentence, give readers one clear action: read a related article, subscribe to the newsletter, or download a resource. "The end" with nothing after it is a missed opportunity every single time.</p>
+        </div>
+        <span class="fix-impact imp-med">Med Impact</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 5 — Before / After -->
+  <div class="section">
+    <p class="section-tag">Measuring Progress</p>
+    <h2>Before and After — What Good Numbers Look Like</h2>
+    <p>
+      Improvements to bounce rate happen gradually over weeks, not overnight. Here is a realistic picture of what targeted fixes can achieve for different types of pages, based on typical results from consistent optimisation work:
+    </p>
+
+    <table class="ba-table">
+      <thead>
+        <tr>
+          <th>Page Type</th>
+          <th>Typical Before</th>
+          <th>After Fixes</th>
+          <th>Primary Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Blog Post</td>
+          <td><span class="badge-bad">72%</span></td>
+          <td><span class="badge-good">48%</span></td>
+          <td>Better intro + internal links</td>
+        </tr>
+        <tr>
+          <td>Homepage</td>
+          <td><span class="badge-bad">68%</span></td>
+          <td><span class="badge-good">38%</span></td>
+          <td>Clear CTA + page speed</td>
+        </tr>
+        <tr>
+          <td>Landing Page</td>
+          <td><span class="badge-bad">84%</span></td>
+          <td><span class="badge-good">55%</span></td>
+          <td>Intent match + load speed</td>
+        </tr>
+        <tr>
+          <td>Product Page</td>
+          <td><span class="badge-bad">76%</span></td>
+          <td><span class="badge-good">42%</span></td>
+          <td>Remove pop-ups + mobile fix</td>
+        </tr>
+        <tr>
+          <td>Category Page</td>
+          <td><span class="badge-bad">65%</span></td>
+          <td><span class="badge-good">35%</span></td>
+          <td>Better layout + readability</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout cb-a">
+      <strong>Track the Right Way</strong>
+      <p>Do not check your bounce rate daily — the swings are too random to be meaningful. Check it monthly, segmented by page type and traffic source. Organic search traffic will naturally have a different bounce rate to social media traffic. Always compare like with like.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 6 — Action plan -->
+  <div class="section">
+    <p class="section-tag">Your Action Plan</p>
+    <h2>The Six-Step Bounce Rate Reduction Plan</h2>
+    <p>
+      Work through these steps in order. Each builds on the last. The results compound — a faster page that is also easy to read and has clear next steps will show meaningful bounce rate improvements within four to six weeks of consistent effort:
+    </p>
+
+    <ol class="steps">
+      <li><strong>Identify your worst-performing pages.</strong> In Google Analytics, sort pages by bounce rate descending. Focus exclusively on your top-ten-traffic pages with the highest bounce rates. Small-traffic pages with poor bounce rates do not deserve your attention yet.</li>
+      <li><strong>Run PageSpeed Insights on each page.</strong> Fix the top two speed recommendations Google flags for each one. Image compression and caching alone typically cut load time by 30–40% on most blogs.</li>
+      <li><strong>Rewrite the introduction of each high-bounce article.</strong> Use a hook — a question, a statistic, or a vivid scene. The introduction is the bounce rate lever with the highest return on the time you invest in it.</li>
+      <li><strong>Add three internal links per article</strong> to related content already on your site. Place them naturally in the body text where they feel helpful, not decorative. Add a "You might also like" block just after the conclusion.</li>
+      <li><strong>Review your pop-up timing.</strong> If any pop-up fires in the first 30 seconds of a visit, delay it to 45 seconds or 60% scroll. Test the change with a two-week comparison window before evaluating.</li>
+      <li><strong>Review and repeat monthly.</strong> Bounce rate improvement is not a one-time project. Build a 30-minute monthly review into your content calendar — checking what changed, what worked, and which pages to optimise next.</li>
+    </ol>
+
+    <div class="callout cb-v">
+      <strong>The Compound Effect</strong>
+      <p>A 10% improvement in bounce rate on your top five pages can increase total site pageviews by 15–25% without a single additional visitor. The traffic you already have is under-engaged. Fixing bounce rate is, in many ways, the highest-ROI activity available to any blogger — before any new content is written at all.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <h3>Keep Them Reading.<br><span>Keep Them Coming Back.</span></h3>
+    <p>
+      A lower bounce rate is not just a number improving on a dashboard. It means more of your readers are discovering more of your work, spending more time with your ideas, and building the kind of familiarity that turns occasional visitors into loyal readers. Every fix you make to speed, readability, and flow compounds quietly in the background — week after week, post after post. Start today. The readers you already have are waiting to be engaged.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 &nbsp;·&nbsp; How to Reduce Bounce Rate &nbsp;·&nbsp; Written for Human Readers
+</footer>
+
+</body>
+</html>
