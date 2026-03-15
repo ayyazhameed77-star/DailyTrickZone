@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Free SEO Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;900&family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #06060e;
+    --surface:   #0e0e1c;
+    --surface2:  #131326;
+    --border:    #1e1e38;
+    --text:      #dcdcf8;
+    --muted:     #5858a0;
+    --accent:    #7c6fff;
+    --cyan:      #00e5cc;
+    --amber:     #ffcc44;
+    --rose:      #ff5580;
+    --green:     #44ee88;
+    --blue:      #44aaff;
+    --glow-v:    rgba(124,111,255,0.12);
+    --glow-c:    rgba(0,229,204,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Epilogue', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* deep cosmic glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 1100px; height: 550px;
+    background: radial-gradient(ellipse at center,
+      rgba(124,111,255,0.09) 0%,
+      rgba(0,229,204,0.05) 45%,
+      transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* grid pattern */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,111,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,111,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .ht-pill {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 30px;
+  }
+
+  .hp-v { background:rgba(124,111,255,0.14); color:var(--accent); border:1px solid rgba(124,111,255,0.3); }
+  .hp-c { background:rgba(0,229,204,0.10);   color:var(--cyan);   border:1px solid rgba(0,229,204,0.25); }
+
+  .ht-free {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .ht-free::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+    animation: gpulse 2s ease-in-out infinite;
+  }
+
+  @keyframes gpulse {
+    0%,100% { opacity:1; } 50% { opacity:0.3; }
+  }
+
+  h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1.9rem, 5.2vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #ededff;
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+  }
+
+  .header-line {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent 70%);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.62em;
+    color: #8888c0;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 34px 42px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--cyan) 55%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 0% 50%, var(--glow-v), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    color: var(--accent) !important;
+    line-height: 1.68;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #ededff;
+    margin: 56px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    letter-spacing: -0.02em;
+  }
+
+  .h2-tag {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── TOOL CARDS ── */
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 18px 0;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .tool-card:hover {
+    border-color: rgba(124,111,255,0.4);
+    box-shadow: 0 4px 32px rgba(124,111,255,0.07);
+  }
+
+  .tc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tc-bar { width: 4px; flex-shrink: 0; }
+
+  .tc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .tc-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .tool-card h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ededff;
+    flex: 1;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .tc-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .tc-body { padding: 18px 24px 20px 28px; }
+
+  .tc-body p {
+    font-size: 0.94rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── SUPERPOWER BOX ── */
+  .superpower {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sp-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .superpower p {
+    font-size: 0.86rem !important;
+    font-weight: 500;
+    margin: 0 !important;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── USECASE METER ── */
+  .use-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .use-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    width: 90px;
+  }
+
+  .use-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .use-fill { height: 100%; border-radius: 10px; }
+
+  .use-val {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 80px;
+  }
+
+  /* ── QUICK COMPARE ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 28px 0 38px;
+  }
+
+  .cg-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .cg-tile:hover { border-color: rgba(124,111,255,0.35); }
+
+  .cg-tile::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .cg1::before { background: var(--accent); }
+  .cg2::before { background: var(--cyan); }
+  .cg3::before { background: var(--amber); }
+  .cg4::before { background: var(--green); }
+  .cg5::before { background: var(--rose); }
+  .cg6::before { background: var(--blue); }
+
+  .cg-emoji { font-size: 22px; display: block; margin-bottom: 10px; }
+
+  .cg-tile h4 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ededff;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .cg-tile p {
+    font-size: 0.77rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+
+  .cg-free {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(68,238,136,0.12);
+    color: var(--green);
+    border: 1px solid rgba(68,238,136,0.25);
+  }
+
+  /* ── STACK PANEL ── */
+  .stack-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stack-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, var(--glow-c), transparent);
+    pointer-events: none;
+  }
+
+  .sp-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #5858a0;
+    line-height: 1.56;
+  }
+
+  .sp-arrow {
+    color: var(--cyan);
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .compare-grid { grid-template-columns: 1fr 1fr; }
+    .sp-grid { grid-template-columns: 1fr; }
+    .pull-quote { padding: 26px 26px; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <span class="ht-pill hp-v">SEO Tools</span>
+      <span class="ht-pill hp-c">100% Free</span>
+      <span class="ht-free">All Verified 2026</span>
+    </div>
+    <h1>Best Free<br><em>SEO Tools</em><br>for Bloggers</h1>
+    <p class="deck">You do not need to spend hundreds of dollars on SEO software to grow your blog's search visibility. The best free tools available today are genuinely powerful — and most bloggers never use more than a handful of them.</p>
+    <div class="header-line"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>Walk into any digital marketing conversation and someone will tell you that serious SEO requires serious spending — premium subscriptions, enterprise dashboards, and monthly retainers that would make a beginner blogger's eyes water. The truth is far more democratic than that. The free tools available to bloggers in 2026 are not stripped-down compromises. Many of them are made by Google itself, powered by the same data that determines where your content ranks, and available to anyone with an internet connection and the curiosity to use them.</p>
+
+    <p>The bloggers who grow fastest are not always the ones who spend the most. They are the ones who understand their tools deeply and use them consistently. Here are the best free SEO tools available right now — and exactly what each one does that no other tool can replicate.</p>
+
+    <div class="pull-quote">
+      <p>The most powerful SEO tool in the world is free — it is Google itself. Every other free tool on this list simply helps you understand what Google is already trying to tell you.</p>
+    </div>
+
+    <!-- QUICK COMPARE GRID -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(124,111,255,0.12);color:var(--accent);border:1px solid rgba(124,111,255,0.25)">At a Glance</span>
+      Six Free Tools, Six Different Superpowers
+    </h2>
+
+    <div class="compare-grid">
+      <div class="cg-tile cg1">
+        <span class="cg-emoji">🔍</span>
+        <h4>Google Search Console</h4>
+        <p>Your ranking & click data straight from Google</p>
+        <span class="cg-free">Free Forever</span>
+      </div>
+      <div class="cg-tile cg2">
+        <span class="cg-emoji">📈</span>
+        <h4>Google Analytics 4</h4>
+        <p>Who visits, from where, and what they do</p>
+        <span class="cg-free">Free Forever</span>
+      </div>
+      <div class="cg-tile cg3">
+        <span class="cg-emoji">🌊</span>
+        <h4>Google Trends</h4>
+        <p>Rising topics before the rest discover them</p>
+        <span class="cg-free">Free Forever</span>
+      </div>
+      <div class="cg-tile cg4">
+        <span class="cg-emoji">💡</span>
+        <h4>Ubersuggest</h4>
+        <p>Keyword volume, difficulty & content ideas</p>
+        <span class="cg-free">Free Tier</span>
+      </div>
+      <div class="cg-tile cg5">
+        <span class="cg-emoji">🗺</span>
+        <h4>AnswerThePublic</h4>
+        <p>Every question your audience asks Google</p>
+        <span class="cg-free">Free Tier</span>
+      </div>
+      <div class="cg-tile cg6">
+        <span class="cg-emoji">⚡</span>
+        <h4>PageSpeed Insights</h4>
+        <p>Site speed scores & actionable fixes</p>
+        <span class="cg-free">Free Forever</span>
+      </div>
+    </div>
+
+    <!-- TOOL 1 -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(124,111,255,0.12);color:var(--accent);border:1px solid rgba(124,111,255,0.25)">Tool 01</span>
+      Google Search Console — Your SEO Command Centre
+    </h2>
+
+    <p>If you could only use one SEO tool for the rest of your blogging life, this would be the one. Google Search Console is built and provided free by Google itself — and it shows you data no third-party tool can access: the exact keywords bringing real visitors to your site, your average position in search results, your click-through rates, and any technical errors Google encountered when crawling your pages.</p>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--accent)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(124,111,255,0.12);color:var(--accent)">🔍</div>
+          <h3>Google Search Console</h3>
+          <span class="tc-badge" style="background:rgba(124,111,255,0.12);color:var(--accent);border:1px solid rgba(124,111,255,0.25)">Non-Negotiable</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>Install this before anything else — it is the foundation of every intelligent SEO decision you will ever make. The "Performance" tab reveals which of your posts are appearing in search and for which keywords. The "Coverage" tab flags any pages Google cannot properly index. Use it weekly to find posts ranking on page two that need just a little improvement to break into the top five — these are your fastest wins, hiding in plain sight.</p>
+        <div class="superpower">
+          <span class="sp-label" style="color:var(--accent)">Superpower</span>
+          <p style="color:#7070c0">Shows you real Google data — not estimates. No paid tool has access to this level of accuracy about your own site's performance in search.</p>
+        </div>
+      </div>
+      <div class="use-row">
+        <span class="use-label">Usefulness</span>
+        <div class="use-track"><div class="use-fill" style="width:98%;background:var(--accent)"></div></div>
+        <span class="use-val" style="color:var(--accent)">Essential</span>
+      </div>
+    </div>
+
+    <!-- TOOL 2 -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(0,229,204,0.10);color:var(--cyan);border:1px solid rgba(0,229,204,0.25)">Tool 02</span>
+      Google Analytics 4 — Know Your Audience Deeply
+    </h2>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--cyan)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(0,229,204,0.10);color:var(--cyan)">📈</div>
+          <h3>Google Analytics 4</h3>
+          <span class="tc-badge" style="background:rgba(0,229,204,0.10);color:var(--cyan);border:1px solid rgba(0,229,204,0.22)">Always-On</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>Where Search Console tells you how people find your blog, Google Analytics tells you everything that happens after they arrive. Which posts hold readers longest? Which pages cause visitors to leave immediately? Where in the world is your audience? Which social networks send the most engaged traffic? These answers shape every content and SEO decision worth making. Set it up on day one and let it accumulate data silently — by month three, the patterns it reveals will feel almost like reading your audience's mind.</p>
+        <div class="superpower">
+          <span class="sp-label" style="color:var(--cyan)">Superpower</span>
+          <p style="color:#7070c0">Identifies your highest-performing content instantly, so you can write more of what works and less of what your audience quietly ignores.</p>
+        </div>
+      </div>
+      <div class="use-row">
+        <span class="use-label">Usefulness</span>
+        <div class="use-track"><div class="use-fill" style="width:95%;background:var(--cyan)"></div></div>
+        <span class="use-val" style="color:var(--cyan)">Essential</span>
+      </div>
+    </div>
+
+    <!-- TOOL 3 -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(255,204,68,0.10);color:var(--amber);border:1px solid rgba(255,204,68,0.25)">Tool 03</span>
+      Ubersuggest — Keyword Research Made Human
+    </h2>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--amber)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(255,204,68,0.10);color:var(--amber)">💡</div>
+          <h3>Ubersuggest Free Tier</h3>
+          <span class="tc-badge" style="background:rgba(255,204,68,0.10);color:var(--amber);border:1px solid rgba(255,204,68,0.22)">Keyword Power</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>Created by marketing expert Neil Patel, Ubersuggest's free tier gives beginner bloggers access to monthly search volume, keyword difficulty scores, CPC data, and a stream of related keyword ideas — all from a single search. Type in any topic from your niche and within seconds you can see whether a keyword is worth pursuing, how hard it will be to rank for, and a list of related keywords you may never have considered. It turns guesswork into decision-making built on real data.</p>
+        <div class="superpower">
+          <span class="sp-label" style="color:var(--amber)">Superpower</span>
+          <p style="color:#7070c0">The keyword difficulty score tells you honestly whether your blog can realistically rank for a term — saving you months of effort on battles you cannot yet win.</p>
+        </div>
+      </div>
+      <div class="use-row">
+        <span class="use-label">Usefulness</span>
+        <div class="use-track"><div class="use-fill" style="width:82%;background:var(--amber)"></div></div>
+        <span class="use-val" style="color:var(--amber)">Very High</span>
+      </div>
+    </div>
+
+    <!-- TOOL 4 -->
+    <h2>
+      <span class="h2-tag" style="background:rgba(68,238,136,0.10);color:var(--green);border:1px solid rgba(68,238,136,0.25)">Tool 04</span>
+      PageSpeed Insights — Speed Is an SEO Signal
+    </h2>
+
+    <div class="tool-card">
+      <div class="tc-top">
+        <div class="tc-bar" style="background:var(--green)"></div>
+        <div class="tc-top-inner">
+          <div class="tc-icon" style="background:rgba(68,238,136,0.10);color:var(--green)">⚡</div>
+          <h3>Google PageSpeed Insights</h3>
+          <span class="tc-badge" style="background:rgba(68,238,136,0.10);color:var(--green);border:1px solid rgba(68,238,136,0.22)">Technical SEO</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p>Google has publicly confirmed that page speed is a ranking factor — and PageSpeed Insights is Google's own free tool that measures it precisely. Enter your blog's URL and receive a detailed score with specific, actionable recommendations for improvement: oversized images to compress, render-blocking scripts to defer, unnecessary code to remove. A blog that loads in under two seconds earns better rankings, lower bounce rates, and significantly happier readers on mobile — where the majority of your audience is almost certainly reading right now.</p>
+        <div class="superpower">
+          <span class="sp-label" style="color:var(--green)">Superpower</span>
+          <p style="color:#7070c0">Gives you the exact fixes Google wants to see — straight from the source. Fix the top three recommendations and your mobile score will improve dramatically within days.</p>
+        </div>
+      </div>
+      <div class="use-row">
+        <span class="use-label">Usefulness</span>
+        <div class="use-track"><div class="use-fill" style="width:87%;background:var(--green)"></div></div>
+        <span class="use-val" style="color:var(--green)">High</span>
+      </div>
+    </div>
+
+    <!-- STACK PANEL -->
+    <div class="stack-panel">
+      <div class="sp-title">✦ &nbsp; Your Free SEO Tool Starter Stack</div>
+      <div class="sp-grid">
+        <div class="sp-item"><span class="sp-arrow">→</span>Install Google Search Console today</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Connect Google Analytics 4 immediately</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Research every post keyword on Ubersuggest</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Run PageSpeed on your blog homepage</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Check Google Trends weekly for topics</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Use AnswerThePublic for content ideas</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Review Search Console data every Monday</div>
+        <div class="sp-item"><span class="sp-arrow">→</span>Track progress month-on-month, patiently</div>
+      </div>
+    </div>
+
+    <p>Great SEO has never required a great budget. It has always required consistent effort, genuine curiosity, and the willingness to let data guide your decisions rather than intuition alone. The tools above will give you more clarity about your blog's search performance than most bloggers with paid subscriptions will ever achieve — because the tools are not the advantage. The habit of using them regularly and responding honestly to what they reveal is the advantage that matters.</p>
+
+    <p>Install them today. Check them weekly. Let the data speak — and then write exactly what it tells you your readers are searching for.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Free tools + consistent habits = compounding results.</span>
+  </footer>
+
+</div>
+</body>
+</html>
