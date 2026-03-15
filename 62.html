@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Web Vitals Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #03060d;
+    --surface:   #07101e;
+    --surface2:  #0c1828;
+    --border:    #122038;
+    --text:      #c0d8f8;
+    --muted:     #304a6a;
+    --lcp:       #22d3ee;  /* cyan */
+    --inp:       #a78bfa;  /* violet */
+    --cls:       #34d399;  /* emerald */
+    --google:    #4285f4;
+    --gold:      #fbbf24;
+    --rose:      #fb7185;
+    --glow-c:    rgba(34,211,238,0.10);
+    --glow-v:    rgba(167,139,250,0.08);
+    --glow-e:    rgba(52,211,153,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* circuit grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(34,211,238,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,0.025) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -180px; left: 50%;
+    transform: translateX(-50%);
+    width: 1100px; height: 500px;
+    background: radial-gradient(ellipse at 30%,
+      rgba(34,211,238,0.07) 0%,
+      rgba(167,139,250,0.05) 40%,
+      rgba(52,211,153,0.04) 70%,
+      transparent 85%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 76px; }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .ht-pill {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 30px;
+  }
+
+  .hp-google {
+    background: rgba(66,133,244,0.12);
+    border: 1px solid rgba(66,133,244,0.28);
+    color: var(--google);
+  }
+
+  .hp-cwv {
+    background: rgba(34,211,238,0.1);
+    border: 1px solid rgba(34,211,238,0.25);
+    color: var(--lcp);
+  }
+
+  .ht-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+  .ht-year {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 9.5px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1.9rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #e8f4ff;
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    font-style: normal;
+    font-weight: 300;
+    color: var(--lcp);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.78;
+    max-width: 590px;
+    font-style: italic;
+  }
+
+  .header-rule {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right,
+      var(--lcp) 0%, var(--inp) 33%, var(--cls) 66%, transparent 85%);
+    opacity: 0.4;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #6090c0;
+    font-weight: 300;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 54px 0;
+    padding: 34px 44px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--lcp), var(--inp) 50%, var(--cls), transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 0% 50%, var(--glow-c), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 1.26rem;
+    color: var(--lcp) !important;
+    line-height: 1.66;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.22rem;
+    font-weight: 600;
+    color: #e8f4ff;
+    margin: 60px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    letter-spacing: -0.02em;
+  }
+
+  .h2-chip {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── VITAL CARDS ── */
+  .vital-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 22px 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .vital-card:hover {
+    box-shadow: 0 0 40px rgba(34,211,238,0.06), 0 4px 24px rgba(0,0,0,0.3);
+  }
+
+  .vc-header {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .vc-accent-bar { width: 5px; flex-shrink: 0; }
+
+  .vc-header-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px 24px;
+    flex: 1;
+  }
+
+  .vc-metric-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .vc-abbr {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .vc-full-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 7.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    text-align: center;
+    max-width: 80px;
+    line-height: 1.4;
+  }
+
+  .vc-meta { flex: 1; }
+
+  .vital-card h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: #e8f4ff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .vc-scores {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vc-score {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .score-good   { background:rgba(52,211,153,0.12); color:var(--cls);  border:1px solid rgba(52,211,153,0.28); }
+  .score-needs  { background:rgba(251,191,36,0.12); color:var(--gold); border:1px solid rgba(251,191,36,0.28); }
+  .score-poor   { background:rgba(251,113,133,0.12); color:var(--rose); border:1px solid rgba(251,113,133,0.28); }
+
+  .vc-body { padding: 20px 24px 22px 28px; }
+
+  .vc-body p {
+    font-size: 0.94rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.76;
+    font-weight: 300;
+  }
+
+  /* ── FIX BOX ── */
+  .fix-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+
+  .fb-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .fb-items { display: grid; gap: 7px; }
+
+  .fb-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 0.87rem;
+    color: #5080a8;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .fb-item::before { content: '→'; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+
+  /* ── SCORE OVERVIEW ── */
+  .score-overview {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 30px;
+    margin: 26px 0 38px;
+  }
+
+  .so-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .so-rows { display: grid; gap: 13px; }
+
+  .so-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 110px;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .so-label {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .so-track {
+    height: 7px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .so-fill { height: 100%; border-radius: 10px; }
+
+  .so-val {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* ── HOW TO CHECK ── */
+  .tools-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0 36px;
+  }
+
+  .ts-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: border-color 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ts-tile:hover { border-color: rgba(34,211,238,0.28); }
+
+  .ts-tile::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .tt1::before { background: var(--lcp); }
+  .tt2::before { background: var(--inp); }
+  .tt3::before { background: var(--cls); }
+
+  .ts-emoji { font-size: 22px; display: block; margin-bottom: 9px; }
+
+  .ts-tile h4 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #e8f4ff;
+    margin-bottom: 5px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .ts-tile p {
+    font-size: 0.77rem !important;
+    color: var(--muted) !important;
+    margin: 0 0 8px !important;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .ts-free {
+    display: inline-block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(52,211,153,0.1);
+    color: var(--cls);
+    border: 1px solid rgba(52,211,153,0.25);
+  }
+
+  /* ── FINAL CHECKLIST ── */
+  .final-check {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-check::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 90% 60% at 50% 100%, var(--glow-e), transparent);
+    pointer-events: none;
+  }
+
+  .fc-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cls);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.56;
+    font-weight: 300;
+  }
+
+  .fc-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(52,211,153,0.38);
+    background: rgba(52,211,153,0.06);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .footer-meta {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .tools-strip { grid-template-columns: 1fr 1fr; }
+    .fc-grid { grid-template-columns: 1fr; }
+    .so-row { grid-template-columns: 120px 1fr 80px; }
+    .pull-quote { padding: 26px 26px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.05rem; }
+    .vc-scores { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <span class="ht-pill hp-google">Google Ranking Factor</span>
+      <span class="ht-pill hp-cwv">Core Web Vitals</span>
+      <span class="ht-sep"></span>
+      <span class="ht-year">Complete Guide 2026</span>
+    </div>
+    <h1>Core Web<br>Vitals <em>Guide</em></h1>
+    <p class="deck">Google's most technical ranking signals, made genuinely understandable — what LCP, INP, and CLS mean, why they matter to your blog, and exactly how to improve every one of them.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>In 2021, Google made a change to its ranking algorithm that gave every blogger a new set of words to learn: Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift. Collectively called Core Web Vitals, these three metrics were suddenly among the factors that determined whether your carefully crafted content appeared on page one of search results or was quietly displaced by a technically superior competitor whose content was merely adequate.</p>
+
+    <p>Since that introduction, the importance of Core Web Vitals has only grown. In 2026, they are firmly established as direct ranking signals that Google evaluates using real user experience data — not just laboratory simulations. For bloggers, this means that no amount of great content, quality backlinks, or perfect keyword optimisation fully compensates for a blog that Google's own users experience as slow, unresponsive, or visually unstable. Understanding what these metrics mean and how to improve them is no longer optional. It is a prerequisite for serious search performance.</p>
+
+    <div class="pull-quote">
+      <p>Core Web Vitals are not technical esoterica. They are the measurements of how your readers actually experience your blog — and Google has decided that experience matters as much as anything you have ever written.</p>
+    </div>
+
+    <!-- SCORE OVERVIEW -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(34,211,238,0.1);color:var(--lcp);border:1px solid rgba(34,211,238,0.22)">At a Glance</span>
+      The Three Vitals and Their Passing Thresholds
+    </h2>
+
+    <div class="score-overview">
+      <div class="so-title">📊 &nbsp; Good vs Needs Improvement vs Poor — What Google Measures</div>
+      <div class="so-rows">
+        <div class="so-row">
+          <span class="so-label" style="color:var(--lcp)">LCP — Load Speed</span>
+          <div class="so-track"><div class="so-fill" style="width:88%;background:linear-gradient(to right,var(--cls) 45%,var(--gold) 70%,var(--rose))"></div></div>
+          <span class="so-val" style="color:var(--cls)">≤ 2.5s good</span>
+        </div>
+        <div class="so-row">
+          <span class="so-label" style="color:var(--inp)">INP — Responsiveness</span>
+          <div class="so-track"><div class="so-fill" style="width:88%;background:linear-gradient(to right,var(--cls) 45%,var(--gold) 70%,var(--rose))"></div></div>
+          <span class="so-val" style="color:var(--cls)">≤ 200ms good</span>
+        </div>
+        <div class="so-row">
+          <span class="so-label" style="color:var(--cls)">CLS — Visual Stability</span>
+          <div class="so-track"><div class="so-fill" style="width:88%;background:linear-gradient(to right,var(--cls) 45%,var(--gold) 70%,var(--rose))"></div></div>
+          <span class="so-val" style="color:var(--cls)">≤ 0.1 good</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VITAL 1: LCP -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(34,211,238,0.1);color:var(--lcp);border:1px solid rgba(34,211,238,0.22)">Vital 01</span>
+      LCP — Largest Contentful Paint
+    </h2>
+
+    <p>LCP measures the moment at which the largest visible element on your page — most commonly a featured image, a hero photograph, or a large block of text — has fully loaded and become visible to the reader. It is Google's primary measure of loading performance and reflects the moment at which a visitor can actually see and engage with your main content. A slow LCP makes a page feel broken before it has even finished loading — the kind of experience that causes readers to press back before they have read a single word.</p>
+
+    <div class="vital-card">
+      <div class="vc-header">
+        <div class="vc-accent-bar" style="background:var(--lcp)"></div>
+        <div class="vc-header-inner">
+          <div class="vc-metric-badge">
+            <span class="vc-abbr" style="color:var(--lcp)">LCP</span>
+            <span class="vc-full-name" style="color:var(--lcp)">Largest Contentful Paint</span>
+          </div>
+          <div class="vc-meta">
+            <h3>The time from page request to your largest visible element appearing</h3>
+            <div class="vc-scores">
+              <span class="vc-score score-good">Good: ≤ 2.5s</span>
+              <span class="vc-score score-needs">Needs Work: 2.5–4.0s</span>
+              <span class="vc-score score-poor">Poor: &gt; 4.0s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vc-body">
+        <p>For most blogs, the LCP element is the featured image at the top of a post. The most common reason for LCP failure is that this image is too large, uploaded at full camera resolution, or not prioritised for early loading. A four-megabyte hero image that loads after every other page element is almost always the cause of a failing LCP score. Secondary causes include render-blocking JavaScript and CSS files that delay content from appearing, and slow server response times caused by unoptimised hosting or absent caching.</p>
+        <div class="fix-box">
+          <div class="fb-title" style="color:var(--lcp)">⚡ How to Fix LCP</div>
+          <div class="fb-items">
+            <div class="fb-item">Convert all images to WebP and compress to under 200KB before uploading</div>
+            <div class="fb-item">Add fetchpriority="high" to your hero image HTML tag to preload it first</div>
+            <div class="fb-item">Install a caching plugin — WP Rocket or W3 Total Cache — on WordPress</div>
+            <div class="fb-item">Use a CDN (Cloudflare free tier) to serve assets from servers near your readers</div>
+            <div class="fb-item">Defer loading of non-critical JavaScript files to after the main content renders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VITAL 2: INP -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(167,139,250,0.1);color:var(--inp);border:1px solid rgba(167,139,250,0.22)">Vital 02</span>
+      INP — Interaction to Next Paint
+    </h2>
+
+    <p>INP replaced the older FID metric in March 2024 and measures something more demanding: not just the first interaction a user makes with your page, but the responsiveness of every interaction throughout the entire session. When a reader clicks a navigation menu, expands a section, or uses a search function, INP measures how quickly the browser responds visually. A poor INP score makes a blog feel sluggish and unresponsive — the digital equivalent of pressing a button and waiting an uncomfortable moment before anything happens.</p>
+
+    <div class="vital-card">
+      <div class="vc-header">
+        <div class="vc-accent-bar" style="background:var(--inp)"></div>
+        <div class="vc-header-inner">
+          <div class="vc-metric-badge">
+            <span class="vc-abbr" style="color:var(--inp)">INP</span>
+            <span class="vc-full-name" style="color:var(--inp)">Interaction to Next Paint</span>
+          </div>
+          <div class="vc-meta">
+            <h3>The delay between any user interaction and the browser's visual response</h3>
+            <div class="vc-scores">
+              <span class="vc-score score-good">Good: ≤ 200ms</span>
+              <span class="vc-score score-needs">Needs Work: 200–500ms</span>
+              <span class="vc-score score-poor">Poor: &gt; 500ms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vc-body">
+        <p>INP failures on blogs are most commonly caused by excessive JavaScript execution — particularly from third-party scripts like social share buttons, live chat widgets, aggressive advertising scripts, and bloated page builders that run large amounts of code on every user interaction. The browser's main thread becomes so occupied processing JavaScript that it cannot respond quickly to user input. The solution almost always involves auditing and reducing third-party scripts, and optimising any custom code that runs in response to user events.</p>
+        <div class="fix-box">
+          <div class="fb-title" style="color:var(--inp)">⚡ How to Fix INP</div>
+          <div class="fb-items">
+            <div class="fb-item">Remove unnecessary third-party scripts — live chat, pop-ups, social widgets not actively used</div>
+            <div class="fb-item">Use a lightweight page builder or block theme rather than a heavy visual builder</div>
+            <div class="fb-item">Audit plugins with Query Monitor — identify and remove those adding heavy JS</div>
+            <div class="fb-item">Load third-party scripts asynchronously so they do not block main thread execution</div>
+            <div class="fb-item">Test with Chrome DevTools Performance panel to identify specific long tasks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VITAL 3: CLS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(52,211,153,0.1);color:var(--cls);border:1px solid rgba(52,211,153,0.22)">Vital 03</span>
+      CLS — Cumulative Layout Shift
+    </h2>
+
+    <p>CLS measures the total amount of unexpected visual movement your page elements cause during loading — the experience of reading a paragraph that suddenly jumps as an image loads above it, or tapping a button that shifts position the moment your finger makes contact. It is simultaneously the least intuitive Core Web Vital to understand and the one whose impact on user experience is the most viscerally annoying when it occurs. Every blogger has experienced it on someone else's website. Most do not realise their own blog may be inflicting the same frustration on their readers.</p>
+
+    <div class="vital-card">
+      <div class="vc-header">
+        <div class="vc-accent-bar" style="background:var(--cls)"></div>
+        <div class="vc-header-inner">
+          <div class="vc-metric-badge">
+            <span class="vc-abbr" style="color:var(--cls)">CLS</span>
+            <span class="vc-full-name" style="color:var(--cls)">Cumulative Layout Shift</span>
+          </div>
+          <div class="vc-meta">
+            <h3>The total visual instability caused by elements moving unexpectedly during load</h3>
+            <div class="vc-scores">
+              <span class="vc-score score-good">Good: ≤ 0.1</span>
+              <span class="vc-score score-needs">Needs Work: 0.1–0.25</span>
+              <span class="vc-score score-poor">Poor: &gt; 0.25</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vc-body">
+        <p>The single most common cause of CLS failures on blogs is images and advertisement slots without declared dimensions. When a browser begins loading a page, it needs to know how much space to reserve for each element. An image without a specified width and height collapses to zero space, then suddenly expands when it loads — pushing everything below it downward in a jarring shift. Ad slots that load asynchronously create the same problem at an even more disruptive scale. The fix is remarkably simple once you understand the cause.</p>
+        <div class="fix-box">
+          <div class="fb-title" style="color:var(--cls)">⚡ How to Fix CLS</div>
+          <div class="fb-items">
+            <div class="fb-item">Always set explicit width and height attributes on every image in your content</div>
+            <div class="fb-item">Reserve space for ad slots with min-height CSS before ads load</div>
+            <div class="fb-item">Avoid injecting content above existing content after the page has loaded</div>
+            <div class="fb-item">Ensure embedded content (videos, maps) has explicit dimensions set</div>
+            <div class="fb-item">Test with the CLS debugger in Chrome DevTools Layout Shift Regions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO CHECK -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(66,133,244,0.12);color:var(--google);border:1px solid rgba(66,133,244,0.25)">Measure It</span>
+      Three Free Tools to Check Your Core Web Vitals Today
+    </h2>
+
+    <div class="tools-strip">
+      <div class="ts-tile tt1">
+        <span class="ts-emoji">⚡</span>
+        <h4>PageSpeed Insights</h4>
+        <p>Real user field data + lab scores with specific recommendations per page</p>
+        <span class="ts-free">100% Free</span>
+      </div>
+      <div class="ts-tile tt2">
+        <span class="ts-emoji">🔎</span>
+        <h4>Google Search Console</h4>
+        <p>Core Web Vitals report showing field data across your entire site</p>
+        <span class="ts-free">100% Free</span>
+      </div>
+      <div class="ts-tile tt3">
+        <span class="ts-emoji">🛠</span>
+        <h4>Chrome DevTools</h4>
+        <p>Lighthouse tab and Performance panel for in-depth diagnosis</p>
+        <span class="ts-free">Built In</span>
+      </div>
+    </div>
+
+    <!-- FINAL CHECKLIST -->
+    <div class="final-check">
+      <div class="fc-title">✦ &nbsp; Core Web Vitals Improvement Checklist</div>
+      <div class="fc-grid">
+        <div class="fc-item"><div class="fc-box"></div>Run PageSpeed Insights on your 5 most visited posts</div>
+        <div class="fc-item"><div class="fc-box"></div>Convert all images to WebP, compress to under 200KB</div>
+        <div class="fc-item"><div class="fc-box"></div>Add width and height to every image element</div>
+        <div class="fc-item"><div class="fc-box"></div>Add fetchpriority="high" to hero images</div>
+        <div class="fc-item"><div class="fc-box"></div>Install a caching plugin on WordPress</div>
+        <div class="fc-item"><div class="fc-box"></div>Remove or defer unused third-party scripts</div>
+        <div class="fc-item"><div class="fc-box"></div>Reserve space for ad slots with min-height CSS</div>
+        <div class="fc-item"><div class="fc-box"></div>Enable Cloudflare CDN on your domain (free)</div>
+        <div class="fc-item"><div class="fc-box"></div>Check GSC Core Web Vitals report for site-wide issues</div>
+        <div class="fc-item"><div class="fc-box"></div>Re-test after changes and verify scores improved</div>
+      </div>
+    </div>
+
+    <p>Core Web Vitals are not the most glamorous aspect of blogging. Nobody sits down on a Sunday morning with coffee and thinks about Cumulative Layout Shift. But the bloggers who take a single focused afternoon to understand and address these metrics find that their effort compounds in ways that ongoing content publication never quite replicates — because once your pages pass Core Web Vitals, they pass for every reader, on every device, at every moment, indefinitely.</p>
+
+    <p>Run PageSpeed Insights on your homepage today. Look at your LCP, INP, and CLS scores. Then work through the fixes above in order of severity. The technical barrier is lower than it appears, the tools are free, and the ranking improvement is as direct and measurable as any SEO investment you will ever make.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Pass Core Web Vitals once, and your readers feel it on every visit forever.</span>
+  </footer>
+
+</div>
+</body>
+</html>
