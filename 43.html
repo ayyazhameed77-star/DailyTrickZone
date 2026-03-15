@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Get Backlinks for Your Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --parchment: #faf6ef;
+    --gold: #c9922a;
+    --gold-light: #e8b84b;
+    --rust: #9c3a1e;
+    --cream: #f2ead8;
+    --muted: #7a6a55;
+    --rule: #d4c4a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 18px;
+  }
+
+  /* Decorative top bar */
+  .masthead-bar {
+    background: var(--ink);
+    height: 6px;
+    width: 100%;
+  }
+
+  /* Header */
+  header {
+    background: var(--ink);
+    color: var(--parchment);
+    text-align: center;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,146,42,0.18) 0%, transparent 70%);
+  }
+
+  .header-tag {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 22px;
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 760px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .header-sub {
+    font-size: 1rem;
+    color: rgba(250,246,239,0.65);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  /* Decorative ornament */
+  .ornament {
+    display: block;
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin: 30px auto;
+    letter-spacing: 0.3em;
+    opacity: 0.85;
+  }
+
+  /* Main layout */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+  }
+
+  /* Drop cap intro */
+  .intro {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #2e2010;
+    border-left: 3px solid var(--gold);
+    padding-left: 22px;
+    margin-bottom: 48px;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* Section headers */
+  .step {
+    margin-bottom: 52px;
+  }
+
+  .step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin-bottom: 18px;
+    color: #2a1e0e;
+  }
+
+  /* Tip boxes */
+  .tip-box {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    padding: 18px 22px;
+    margin: 24px 0;
+    border-radius: 2px;
+  }
+
+  .tip-box strong {
+    font-family: 'Playfair Display', serif;
+    color: var(--rust);
+    font-style: italic;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
+
+  .tip-box p {
+    font-size: 0.93rem;
+    margin: 0;
+    color: var(--muted);
+  }
+
+  /* Horizontal rule */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 44px 0;
+    position: relative;
+  }
+
+  .divider::after {
+    content: '✦';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 12px;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  /* Bullet list */
+  ul.styled {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 24px;
+  }
+
+  ul.styled li {
+    padding: 7px 0 7px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.97rem;
+    color: #2a1e0e;
+  }
+
+  ul.styled li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* Final summary box */
+  .summary {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 36px 36px;
+    border-radius: 4px;
+    margin-top: 56px;
+    text-align: center;
+  }
+
+  .summary h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .summary p {
+    color: rgba(250,246,239,0.78);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 28px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    main { padding: 40px 18px 60px; }
+    header { padding: 40px 20px 36px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.35rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead-bar"></div>
+
+<header>
+  <span class="header-tag">SEO &amp; Content Strategy</span>
+  <h1>How to Get <em>Backlinks</em><br>for Your Blog</h1>
+  <p class="header-sub">A practical, human guide to earning links that matter — ~800 words</p>
+</header>
+
+<main>
+
+  <p class="intro">
+    Backlinks are the currency of the internet. Every link from another website pointing to yours is a vote of confidence — a signal to Google that your content deserves to be found. But earning quality backlinks is not about tricks. It is about strategy, patience, and genuine value.
+  </p>
+
+  <!-- Step 1 -->
+  <div class="step">
+    <span class="step-number">Strategy One</span>
+    <h2>Create Content Worth Linking To</h2>
+    <p>
+      Before chasing backlinks, ask yourself honestly: <em>is my content link-worthy?</em> The most powerful link-building strategy begins at the keyboard. Write in-depth guides, original research, unique data, or comprehensive tutorials that no one else has published.
+    </p>
+    <p>
+      "Skyscraper content" is the idea of finding a popular article in your niche and creating something significantly better — more detailed, more up-to-date, better designed. When your content is the best resource on a topic, other bloggers and journalists link to it naturally, without you ever asking.
+    </p>
+    <div class="tip-box">
+      <strong>Pro Tip</strong>
+      <p>Use tools like Ahrefs or Ubersuggest to find articles with many backlinks in your niche. Then build something better — and tell the people linking to the original about yours.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Step 2 -->
+  <div class="step">
+    <span class="step-number">Strategy Two</span>
+    <h2>Guest Posting on Relevant Blogs</h2>
+    <p>
+      Guest posting remains one of the most reliable methods for building backlinks. You write a high-quality article for another blog in your niche, and in return you receive a link back to your own site — usually within the author bio or naturally inside the content.
+    </p>
+    <p>
+      The key word is <em>relevant</em>. A backlink from a website about cooking does little good for a finance blog. Search Google for phrases like <strong>"write for us"</strong> or <strong>"guest post guidelines"</strong> along with your niche keyword. Pitch a specific article idea, show samples of your work, and make the editor's job easy.
+    </p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Step 3 -->
+  <div class="step">
+    <span class="step-number">Strategy Three</span>
+    <h2>The Broken Link Building Method</h2>
+    <p>
+      Every website has dead links — pages that once existed but have since been removed. This is your opportunity. Find a website in your niche, run it through a tool like Check My Links or Ahrefs, identify a broken outbound link, and then offer your own relevant content as a replacement.
+    </p>
+    <p>
+      Website owners genuinely appreciate this. You are doing them a favour by improving their user experience. A polite, brief email pointing out the broken link and suggesting your content as a replacement has a surprisingly high success rate.
+    </p>
+    <div class="tip-box">
+      <strong>Why It Works</strong>
+      <p>You are solving a problem for the website owner, not just asking for a favour. This makes your outreach feel helpful rather than spammy, and that changes everything.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Step 4 -->
+  <div class="step">
+    <span class="step-number">Strategy Four</span>
+    <h2>Build Relationships in Your Niche</h2>
+    <p>
+      Backlinks often follow real relationships. Comment thoughtfully on other blogs. Share other people's work on social media and tag them. Respond to questions in forums, Facebook Groups, or Reddit threads — and link to your own content only when it genuinely helps.
+    </p>
+    <p>
+      Over time, these interactions build a network. When you publish something new, the people who know you are far more likely to link to it, share it, or mention it in their own articles. Networking is slow — but the links it produces are some of the most valuable you can earn.
+    </p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Step 5 -->
+  <div class="step">
+    <span class="step-number">Strategy Five</span>
+    <h2>Get Listed in Directories &amp; Resource Pages</h2>
+    <p>
+      Many websites maintain "resource pages" — curated lists of the best tools, blogs, or articles in a given topic. Search for these pages in your niche using queries like:
+    </p>
+    <ul class="styled">
+      <li>"best blogs" + your niche keyword</li>
+      <li>"resources" + your niche keyword + inurl:links</li>
+      <li>"useful tools" + your topic</li>
+    </ul>
+    <p>
+      Reach out to the page owner with a short, friendly email. Explain who you are, describe your blog in one sentence, and politely ask if they would consider adding it to their list. Keep it brief — no one reads long cold emails.
+    </p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Step 6 -->
+  <div class="step">
+    <span class="step-number">Strategy Six</span>
+    <h2>HARO — Help a Reporter Out</h2>
+    <p>
+      Journalists and bloggers constantly need expert quotes for their articles. HARO (Help a Reporter Out) connects sources with writers. Sign up as a source, monitor daily email digests, and respond to queries relevant to your expertise.
+    </p>
+    <p>
+      If your quote is used, you often receive a backlink from a high-authority news site or publication — the kind of link that would otherwise be nearly impossible to earn. Respond quickly (within the hour), be concise, and provide real value in your answer.
+    </p>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h3>The Golden Rule of Backlinks</h3>
+    <p>
+      Stop thinking of backlinks as something you <em>take</em> — and start thinking of them as something you <em>earn</em>. Create remarkable content, build genuine relationships, and solve real problems for other website owners. The links will follow. Consistency over months and years is what separates blogs that rank from blogs that vanish.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 · SEO &amp; Content Strategy Guide · Written for human readers
+</footer>
+
+</body>
+</html>
