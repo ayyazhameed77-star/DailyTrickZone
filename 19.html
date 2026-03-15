@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create a Blog Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0810;
+    --surface:   #100e18;
+    --surface2:  #161224;
+    --border:    #221e34;
+    --text:      #e2d8f8;
+    --muted:     #6058a0;
+    --accent:    #e040fb;
+    --teal:      #00e5c0;
+    --amber:     #ffb300;
+    --blue:      #5588ff;
+    --rose:      #ff5577;
+    --green:     #44dd88;
+    --glow-p:    rgba(224,64,251,0.12);
+    --glow-t:    rgba(0,229,192,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* neon purple glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; right: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle,
+      rgba(224,64,251,0.08) 0%,
+      rgba(85,136,255,0.05) 40%,
+      transparent 68%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -150px; left: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle,
+      rgba(0,229,192,0.07) 0%,
+      transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .ht-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 30px;
+  }
+
+  .ht-purple { background:rgba(224,64,251,0.12); color:var(--accent); border:1px solid rgba(224,64,251,0.28); }
+  .ht-teal   { background:rgba(0,229,192,0.10);  color:var(--teal);   border:1px solid rgba(0,229,192,0.25); }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.3rem, 6vw, 3.9rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #f0e8ff;
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .deck {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent 65%);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.62em;
+    color: #9080c0;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 34px 42px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--blue) 50%, var(--teal) 100%);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, var(--glow-p), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.24rem;
+    font-weight: 700;
+    color: #f0e8ff !important;
+    line-height: 1.62;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.46rem;
+    font-weight: 700;
+    color: #f0e8ff;
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── DESIGN PRINCIPLE CARDS ── */
+  .principle-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .principle-card:hover {
+    border-color: rgba(224,64,251,0.35);
+    box-shadow: 0 4px 32px rgba(224,64,251,0.06);
+  }
+
+  .pc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pc-bar { width: 4px; flex-shrink: 0; }
+
+  .pc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .pc-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .principle-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: #f0e8ff;
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .pc-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .pc-body { padding: 18px 24px 20px 28px; }
+
+  .pc-body p {
+    font-size: 0.94rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── INSIDER NOTE ── */
+  .insider-note {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .in-icon { font-size: 14px; flex-shrink: 0; padding-top: 1px; }
+
+  .insider-note p {
+    font-size: 0.86rem !important;
+    font-style: italic;
+    font-weight: 500;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── LOGO STYLES GRID ── */
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+    margin: 26px 0 38px;
+  }
+
+  .style-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: border-color 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .style-tile:hover { border-color: rgba(224,64,251,0.3); }
+
+  .style-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 13px 13px 0 0;
+  }
+
+  .st1::before { background: var(--accent); }
+  .st2::before { background: var(--teal); }
+  .st3::before { background: var(--amber); }
+  .st4::before { background: var(--blue); }
+  .st5::before { background: var(--rose); }
+  .st6::before { background: var(--green); }
+
+  .st-emoji { font-size: 26px; display: block; margin-bottom: 12px; }
+
+  .style-tile h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: #f0e8ff;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .style-tile p {
+    font-size: 0.78rem !important;
+    color: var(--muted) !important;
+    margin: 0 0 10px !important;
+    line-height: 1.5;
+  }
+
+  .st-tag {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(224,64,251,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(224,64,251,0.22);
+  }
+
+  /* ── TOOL STRIP ── */
+  .tool-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0 36px;
+  }
+
+  .tool-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: border-color 0.22s;
+  }
+
+  .tool-tile:hover { border-color: rgba(0,229,192,0.3); }
+
+  .tool-emoji { font-size: 22px; display: block; margin-bottom: 9px; }
+
+  .tool-tile h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #f0e8ff;
+    margin-bottom: 4px;
+  }
+
+  .tool-tile p {
+    font-size: 0.78rem !important;
+    color: var(--muted) !important;
+    margin: 0 0 9px !important;
+    line-height: 1.5;
+  }
+
+  .free-pill {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(68,221,136,0.12);
+    color: var(--green);
+    border: 1px solid rgba(68,221,136,0.25);
+  }
+
+  /* ── LOGO CHECKLIST ── */
+  .logo-checklist {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-checklist::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, var(--glow-t), transparent);
+    pointer-events: none;
+  }
+
+  .lc-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.91rem;
+    color: #6058a0;
+    line-height: 1.56;
+  }
+
+  .lc-box {
+    width: 17px; height: 17px;
+    border-radius: 5px;
+    border: 1.5px solid var(--teal);
+    background: rgba(0,229,192,0.08);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .styles-grid { grid-template-columns: 1fr 1fr; }
+    .tool-strip  { grid-template-columns: 1fr 1fr; }
+    .lc-grid     { grid-template-columns: 1fr; }
+    .pull-quote  { padding: 26px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <span class="ht-tag ht-purple">Brand Design</span>
+      <span class="ht-tag ht-teal">Beginner's Guide</span>
+    </div>
+    <h1>How to Create a<br><em>Blog Logo</em></h1>
+    <p class="deck">Your logo is the first thing readers see and the last thing they forget. You do not need a designer or a design degree to create one that looks genuinely professional — just the right understanding and the right tools.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a moment every blogger reaches — usually somewhere between publishing their first few posts and starting to take their blog seriously — when they look at the top of their page and feel that something is missing. The words are there. The content is growing. But the blog does not yet look like a <em>brand</em>. It does not yet feel like something a stranger would trust at first glance. That missing piece, more often than not, is a logo.</p>
+
+    <p>A logo is not decoration. It is the visual shorthand for everything your blog represents — its personality, its niche, its tone, its promise to the reader. Done well, it communicates all of that in a single glance, before a single word is read. Done poorly — or skipped entirely — it leaves a gap in trust that great writing alone cannot fully close. The good news is that creating a beautiful, professional blog logo in 2026 has never been more accessible, more affordable, or more achievable by a complete beginner.</p>
+
+    <div class="pull-quote">
+      <p>Your logo does not need to be complex to be powerful. The most memorable logos in the world are often the simplest — a shape, a word, a colour that refuses to be forgotten.</p>
+    </div>
+
+    <!-- LOGO STYLES -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(224,64,251,0.12);color:var(--accent);border:1px solid rgba(224,64,251,0.25)">Step 01</span>
+      Choose Your Logo Style First
+    </h2>
+
+    <p>Before opening any design tool, you need to make one important creative decision: what kind of logo will best represent your blog? There are six main logo styles, each with a different visual personality and a different best-fit niche. Choosing the right style from the beginning saves you hours of redesigning later — and ensures your logo feels intentional rather than accidental.</p>
+
+    <div class="styles-grid">
+      <div class="style-tile st1">
+        <span class="st-emoji">✍️</span>
+        <h4>Wordmark</h4>
+        <p>Your blog name in a distinctive, styled font. Clean and timeless.</p>
+        <span class="st-tag">Most Popular</span>
+      </div>
+      <div class="style-tile st2">
+        <span class="st-emoji">🔷</span>
+        <h4>Lettermark</h4>
+        <p>Your blog initials designed as a striking monogram symbol.</p>
+        <span class="st-tag">Minimal</span>
+      </div>
+      <div class="style-tile st3">
+        <span class="st-emoji">🌿</span>
+        <h4>Icon + Text</h4>
+        <p>A simple graphic symbol beside your blog name. Versatile and warm.</p>
+        <span class="st-tag">Beginner-Friendly</span>
+      </div>
+      <div class="style-tile st4">
+        <span class="st-emoji">🔵</span>
+        <h4>Emblem</h4>
+        <p>Text enclosed within a badge or shield shape. Strong authority feel.</p>
+        <span class="st-tag">Traditional</span>
+      </div>
+      <div class="style-tile st5">
+        <span class="st-emoji">🎨</span>
+        <h4>Abstract Mark</h4>
+        <p>A unique geometric or artistic symbol representing your brand essence.</p>
+        <span class="st-tag">Creative Blogs</span>
+      </div>
+      <div class="style-tile st6">
+        <span class="st-emoji">😊</span>
+        <h4>Mascot</h4>
+        <p>A character or illustrated figure that personifies your blog's personality.</p>
+        <span class="st-tag">Niche Specific</span>
+      </div>
+    </div>
+
+    <!-- PRINCIPLE 1: SIMPLICITY -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(224,64,251,0.12);color:var(--accent);border:1px solid rgba(224,64,251,0.25)">Principle 01</span>
+      Make It Simple Enough to Tattoo
+    </h2>
+
+    <div class="principle-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--accent)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(224,64,251,0.12);color:var(--accent)">✂️</div>
+          <h3>Simplicity Is the Most Powerful Design Choice</h3>
+          <span class="pc-badge" style="background:rgba(224,64,251,0.12);color:var(--accent);border:1px solid rgba(224,64,251,0.22)">Rule #1</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>The most enduring logos in history — Apple's apple, Nike's swoosh, Twitter's bird — share a single quality: ruthless simplicity. When a logo is simple, it scales perfectly from a tiny favicon to a large website header without losing its identity. It works in black and white as well as colour. It is instantly recognisable after a single viewing. As a blogger, your logo must look clean and sharp on a mobile screen at sixty pixels wide — the size at which most readers will first encounter it. If it breaks at that size, it needs to be simplified further.</p>
+        <div class="insider-note">
+          <span class="in-icon">💡</span>
+          <p style="color:#9080c0">Test your logo by shrinking it to the size of a postage stamp. If you can still identify it clearly, it is simple enough. If it becomes a blur of detail, remove elements until it works at that scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINCIPLE 2: COLOUR -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(0,229,192,0.10);color:var(--teal);border:1px solid rgba(0,229,192,0.25)">Principle 02</span>
+      Choose Colours That Carry Meaning
+    </h2>
+
+    <div class="principle-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--teal)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(0,229,192,0.10);color:var(--teal)">🎨</div>
+          <h3>Colour Psychology in Logo Design</h3>
+          <span class="pc-badge" style="background:rgba(0,229,192,0.10);color:var(--teal);border:1px solid rgba(0,229,192,0.22)">Emotional</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>Colour is not decoration in logo design — it is communication. Green signals growth, health, and nature — perfect for wellness, gardening, or sustainability blogs. Blue conveys trust, calm, and professionalism — ideal for finance, technology, or business content. Warm tones like terracotta and gold suggest warmth, creativity, and approachability — beloved by lifestyle, food, and travel bloggers. Choose one dominant colour and one supporting accent, and use them consistently across your entire blog. Colour consistency is what transforms a collection of design choices into a recognisable brand.</p>
+        <div class="insider-note">
+          <span class="in-icon">💡</span>
+          <p style="color:#9080c0">Visit Coolors.co — a free colour palette generator — and search palettes tagged with your niche. Within minutes you will have professional colour combinations that designers charge hundreds of dollars to create.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINCIPLE 3: TYPOGRAPHY -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(255,179,0,0.12);color:var(--amber);border:1px solid rgba(255,179,0,0.25)">Principle 03</span>
+      Typography Is Half the Logo
+    </h2>
+
+    <div class="principle-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--amber)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(255,179,0,0.12);color:var(--amber)">🔤</div>
+          <h3>The Font You Choose Says Everything</h3>
+          <span class="pc-badge" style="background:rgba(255,179,0,0.12);color:var(--amber);border:1px solid rgba(255,179,0,0.22)">Overlooked</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>For wordmark and icon-plus-text logos — the two most common styles for bloggers — typography carries enormous weight. A serif font like Playfair Display signals elegance, authority, and tradition — perfect for editorial, fashion, or literary blogs. A geometric sans-serif like Montserrat feels modern, clean, and professional — suited to tech, business, or minimalist niches. A hand-lettered or script font like Pacifico brings warmth, personality, and approachability — beloved by food, family, and lifestyle creators. Use one font in your logo and maintain that typographic identity across your entire blog for instant visual cohesion.</p>
+        <div class="insider-note">
+          <span class="in-icon">💡</span>
+          <p style="color:#9080c0">Google Fonts offers over 1,000 beautiful typefaces completely free for commercial use. Pair a distinctive display font for your logo with a highly readable body font for your content — this single decision elevates every visual element of your blog instantly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FREE TOOLS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(85,136,255,0.12);color:var(--blue);border:1px solid rgba(85,136,255,0.25)">Step 02</span>
+      The Best Free Tools to Create Your Logo
+    </h2>
+
+    <div class="tool-strip">
+      <div class="tool-tile">
+        <span class="tool-emoji">🎨</span>
+        <h4>Canva</h4>
+        <p>Drag-and-drop logo builder with hundreds of blog templates</p>
+        <span class="free-pill">Free Plan</span>
+      </div>
+      <div class="tool-tile">
+        <span class="tool-emoji">⚡</span>
+        <h4>Looka</h4>
+        <p>AI-powered logo generator — enter your blog name and style preferences</p>
+        <span class="free-pill">Free Preview</span>
+      </div>
+      <div class="tool-tile">
+        <span class="tool-emoji">🖋</span>
+        <h4>Adobe Express</h4>
+        <p>Professional-grade logo design with a generous free tier</p>
+        <span class="free-pill">Free Tier</span>
+      </div>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="logo-checklist">
+      <div class="lc-title">✦ &nbsp; Before You Publish Your Logo — Final Checklist</div>
+      <div class="lc-grid">
+        <div class="lc-item"><div class="lc-box"></div>Looks sharp at 60px (favicon size)</div>
+        <div class="lc-item"><div class="lc-box"></div>Works in black & white without losing identity</div>
+        <div class="lc-item"><div class="lc-box"></div>Maximum two colours used throughout</div>
+        <div class="lc-item"><div class="lc-box"></div>Font reflects your blog's personality</div>
+        <div class="lc-item"><div class="lc-box"></div>Saved as PNG with transparent background</div>
+        <div class="lc-item"><div class="lc-box"></div>Feels different from your top competitors</div>
+        <div class="lc-item"><div class="lc-box"></div>Easy to read at all sizes</div>
+        <div class="lc-item"><div class="lc-box"></div>You genuinely love it and feel proud of it</div>
+      </div>
+    </div>
+
+    <p>Creating your blog logo is one of the most satisfying milestones on the blogging journey. It is the moment your blog stops being a collection of pages and starts becoming a brand with its own distinct identity — one that a reader can recognise, remember, and return to. Take your time with it. Explore the tools freely. Make a dozen rough versions before settling on one. And when you find the design that makes you pause and think, <em>yes, that is exactly it</em> — trust that feeling completely.</p>
+
+    <p>Your brand deserves a face. Today is the perfect day to design it.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">A great logo is not made in hours — it is refined until nothing can be removed.</span>
+  </footer>
+
+</div>
+</body>
+</html>
