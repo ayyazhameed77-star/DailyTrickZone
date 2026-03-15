@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Free Stock Image Websites</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #faf7f2;
+    --surface:   #ffffff;
+    --surface2:  #f4f0e8;
+    --border:    #e8ddd0;
+    --ink:       #1a1208;
+    --muted:     #9a8878;
+    --accent:    #c44820;
+    --teal:      #0a7868;
+    --navy:      #1a3a72;
+    --violet:    #6830a0;
+    --green:     #2a7848;
+    --gold:      #c08818;
+    --blue:      #1a5a9a;
+    --soft:      rgba(196,72,32,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .header-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .he-cam {
+    width: 38px; height: 38px;
+    background: rgba(196,72,32,0.1);
+    border: 1px solid rgba(196,72,32,0.22);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .he-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .he-cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .he-sub {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6.2vw, 4.1rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hr-line { flex: 1; height: 1px; background: var(--border); }
+  .hr-cam  { font-size: 12px; color: var(--accent); opacity: 0.45; }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #3a2c1a;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 48px;
+    background: var(--ink);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--teal) 60%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '"';
+    position: absolute;
+    bottom: -28px; right: 22px;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.26rem;
+    color: #f4ead8 !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Archivo', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── SITE CARDS ── */
+  .site-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 22px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .site-card:hover {
+    box-shadow: 0 6px 28px rgba(196,72,32,0.08);
+    border-color: rgba(196,72,32,0.2);
+  }
+
+  /* colour preview top bar */
+  .sc-preview {
+    height: 5px;
+    width: 100%;
+  }
+
+  .sc-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sc-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.18;
+    flex-shrink: 0;
+    font-style: italic;
+    width: 32px;
+  }
+
+  .sc-emoji { font-size: 26px; flex-shrink: 0; }
+
+  .sc-meta { flex: 1; }
+
+  .site-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .sc-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .sc-tag {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  .tag-free  { background:rgba(42,120,72,0.1);   color:var(--green);  border:1px solid rgba(42,120,72,0.22); }
+  .tag-comm  { background:rgba(26,58,114,0.1);    color:var(--navy);   border:1px solid rgba(26,58,114,0.22); }
+  .tag-qual  { background:rgba(196,72,32,0.1);    color:var(--accent); border:1px solid rgba(196,72,32,0.22); }
+  .tag-niche { background:rgba(104,48,160,0.1);   color:var(--violet); border:1px solid rgba(104,48,160,0.22); }
+  .tag-large { background:rgba(26,90,154,0.1);    color:var(--blue);   border:1px solid rgba(26,90,154,0.22); }
+  .tag-video { background:rgba(10,120,104,0.1);   color:var(--teal);   border:1px solid rgba(10,120,104,0.22); }
+
+  .sc-body { padding: 18px 24px 22px 24px; }
+
+  .sc-body p {
+    font-size: 0.94rem;
+    color: #5a4030;
+    margin: 0 0 12px !important;
+    line-height: 1.76;
+  }
+
+  .sc-body p:last-child { margin-bottom: 0 !important; }
+
+  /* ── BEST USE ── */
+  .best-use {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 9px 9px 0;
+    padding: 10px 16px;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .bu-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .best-use p {
+    font-size: 0.86rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── LICENSE OVERVIEW ── */
+  .license-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin: 26px 0 38px;
+  }
+
+  .lb-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .lb-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 22px;
+  }
+
+  .lb-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.89rem;
+    color: #5a4030;
+    line-height: 1.55;
+  }
+
+  .lb-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── COMPARE TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 36px;
+    font-size: 0.88rem;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .compare-table thead tr { background: var(--surface2); }
+
+  .compare-table th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: #5a4030;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: var(--surface2); }
+  .compare-table td:first-child { font-weight: 700; color: var(--ink); }
+
+  .ct-tag {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  /* ── USAGE TIPS PANEL ── */
+  .usage-panel {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .usage-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 0% 100%, rgba(196,72,32,0.18), transparent),
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(10,120,104,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .up-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .up-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .up-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #9a7858;
+    line-height: 1.56;
+  }
+
+  .up-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .lb-items { grid-template-columns: 1fr; }
+    .up-grid  { grid-template-columns: 1fr; }
+    .sc-tags  { display: none; }
+    .pull-quote { padding: 28px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-eyebrow">
+      <div class="he-cam">📷</div>
+      <div class="he-stack">
+        <span class="he-cat">Free Stock Images</span>
+        <span class="he-sub">Curated Guide · 2026</span>
+      </div>
+    </div>
+    <h1>Best Free<br>Stock Image <em>Websites</em></h1>
+    <p class="deck">Beautiful, professional, legally safe images — all completely free. These are the websites that serious bloggers bookmark and return to every single week, because great visuals make great content unforgettable.</p>
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <span class="hr-cam">◉</span>
+      <div class="hr-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a particular visual quality that separates the blogs readers remember from the ones they scroll past without a second glance. It is not always the writing — though the writing matters enormously. It is the images: the way a well-chosen photograph immediately signals quality before a single word is read, the way a relevant visual slows a reader's scroll and invites them to stay. Images are the first impression, the emotional context, and the visual relief that makes long-form content navigable.</p>
+
+    <p>For most bloggers, the words "professional stock photography" once meant expensive monthly subscriptions and watermarked previews. That world no longer exists. In 2026, the ecosystem of free, high-quality, commercially licensed stock photography is extraordinary — and the photographers contributing to these platforms are, in many cases, among the most talented image-makers working today. Here are the best free stock image websites available, honestly reviewed for quality, breadth, and licensing clarity.</p>
+
+    <div class="pull-quote">
+      <p>A great stock photograph does not just illustrate your blog post. It sets the mood, establishes the standard, and tells every new reader — before they have read a single sentence — that what follows is worth their time.</p>
+    </div>
+
+    <!-- LICENSE GUIDE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(196,72,32,0.1);color:var(--accent);border:1px solid rgba(196,72,32,0.2)">Understand First</span>
+      What "Free to Use" Actually Means — Licence Types Explained
+    </h2>
+
+    <p>Before diving into specific websites, it is worth understanding what you are actually allowed to do with free stock images — because "free" does not always mean "use for anything." Most of the best sites operate under Creative Commons Zero (CC0) licences, which grant you the widest possible freedom. Others have custom licences with specific restrictions worth knowing before you use an image commercially.</p>
+
+    <div class="license-box">
+      <div class="lb-title">⚖️ &nbsp; Free Image Licence Types — What Each Allows</div>
+      <div class="lb-items">
+        <div class="lb-item">
+          <div class="lb-dot" style="background:var(--green)"></div>
+          CC0 — Use for anything, no attribution required, commercial use permitted
+        </div>
+        <div class="lb-item">
+          <div class="lb-dot" style="background:var(--blue)"></div>
+          CC BY — Free to use commercially but must credit the photographer
+        </div>
+        <div class="lb-item">
+          <div class="lb-dot" style="background:var(--gold)"></div>
+          Custom Free — Site-specific licence, usually similar to CC0 but check details
+        </div>
+        <div class="lb-item">
+          <div class="lb-dot" style="background:var(--accent)"></div>
+          Editorial Only — Free to use but not for commercial or promotional purposes
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE 1: UNSPLASH -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(196,72,32,0.1);color:var(--accent);border:1px solid rgba(196,72,32,0.2)">Site 01</span>
+      Unsplash — The Gold Standard of Free Photography
+    </h2>
+
+    <div class="site-card">
+      <div class="sc-preview" style="background:linear-gradient(to right, #111, #333)"></div>
+      <div class="sc-head">
+        <span class="sc-rank" style="color:var(--accent)">01</span>
+        <span class="sc-emoji">🏆</span>
+        <div class="sc-meta">
+          <h3>Unsplash — unsplash.com</h3>
+          <div class="sc-tags">
+            <span class="sc-tag tag-free">Free</span>
+            <span class="sc-tag tag-comm">Commercial Use</span>
+            <span class="sc-tag tag-qual">Premium Quality</span>
+          </div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Unsplash has fundamentally changed what people expect from free stock photography. Its collection of over five million high-resolution photographs — contributed by a global community of professional and semi-professional photographers — covers virtually every subject a blogger could need, and the editorial and aesthetic quality is consistently exceptional. Lifestyle, architecture, food, travel, technology, people, nature, abstract — the breadth is extraordinary and the quality almost uniformly excellent.</p>
+        <p>The Unsplash Licence is generous and permissive: you can use images for free in commercial and non-commercial projects, modify and adapt them, and are not required to attribute the photographer — though attribution is strongly encouraged as a matter of professional courtesy. The only restriction is that you may not sell Unsplash images as standalone files or compile them into competing stock image platforms. For blogs, this means complete freedom to use any image in any post, any social media graphic, any newsletter, or any branded visual you create.</p>
+        <div class="best-use">
+          <span class="bu-label">Best For</span>
+          <p>Featured blog images, hero sections, social media graphics, and any content where the highest visual quality is a priority.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE 2: PEXELS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,90,154,0.1);color:var(--blue);border:1px solid rgba(26,90,154,0.2)">Site 02</span>
+      Pexels — The Most Diverse Collection
+    </h2>
+
+    <div class="site-card">
+      <div class="sc-preview" style="background:linear-gradient(to right, #05a081, #3fc36c)"></div>
+      <div class="sc-head">
+        <span class="sc-rank" style="color:var(--blue)">02</span>
+        <span class="sc-emoji">🌍</span>
+        <div class="sc-meta">
+          <h3>Pexels — pexels.com</h3>
+          <div class="sc-tags">
+            <span class="sc-tag tag-free">Free</span>
+            <span class="sc-tag tag-comm">Commercial Use</span>
+            <span class="sc-tag tag-large">Largest Library</span>
+          </div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Pexels offers one of the largest free image libraries available anywhere online — and critically, it curates both photographs and videos under its own completely free licence. Where Unsplash tends toward a certain editorial aesthetic that occasionally feels homogenous, Pexels is notably more diverse in both subject matter and photographic style, making it particularly valuable for bloggers in niches like food, family, health, fitness, and business who need images that genuinely reflect real people in real situations rather than carefully staged lifestyle photography.</p>
+        <p>The Pexels Licence, like Unsplash, allows free use in commercial and non-commercial projects without attribution requirements — though crediting creators is always appreciated and professionally courteous. Pexels has also built a particularly strong video library, making it the first destination for bloggers who need free video clips for their content or social media output.</p>
+        <div class="best-use">
+          <span class="bu-label">Best For</span>
+          <p>Niches requiring diverse representation, realistic lifestyle imagery, and any blogger also creating video content who needs a single destination for both.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE 3: PIXABAY -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(104,48,160,0.1);color:var(--violet);border:1px solid rgba(104,48,160,0.2)">Site 03</span>
+      Pixabay — The All-in-One Creative Resource
+    </h2>
+
+    <div class="site-card">
+      <div class="sc-preview" style="background:linear-gradient(to right, #2dc0e8, #b040e0)"></div>
+      <div class="sc-head">
+        <span class="sc-rank" style="color:var(--violet)">03</span>
+        <span class="sc-emoji">🎨</span>
+        <div class="sc-meta">
+          <h3>Pixabay — pixabay.com</h3>
+          <div class="sc-tags">
+            <span class="sc-tag tag-free">Free</span>
+            <span class="sc-tag tag-niche">Illustrations Too</span>
+            <span class="sc-tag tag-video">Video & Music</span>
+          </div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Pixabay's greatest strength is its breadth — it is not purely a photography platform. With over four million assets spanning photographs, vector illustrations, digital art, icon packs, and video footage, it is the most versatile free creative resource available to bloggers. The illustration and vector library is particularly distinctive: for bloggers who need infographic elements, digital artwork, or concept-driven visuals that photographs cannot convey, Pixabay's illustration collection is genuinely unmatched among free platforms.</p>
+        <p>All Pixabay content is released under the CC0 licence — completely free for commercial use, no attribution required, no restrictions on modification. The search and filtering tools are among the most sophisticated on any free platform, allowing you to filter by orientation, size, colour palette, and content type with precision that saves significant time when searching for specific visual requirements.</p>
+        <div class="best-use">
+          <span class="bu-label">Best For</span>
+          <p>Bloggers needing illustrations and vectors alongside photographs — infographic content, technology topics, and abstract concept visuals that stock photos rarely capture well.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE 4: STOCKSNAP -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(10,120,104,0.1);color:var(--teal);border:1px solid rgba(10,120,104,0.2)">Site 04</span>
+      StockSnap.io — Curated Quality Over Quantity
+    </h2>
+
+    <div class="site-card">
+      <div class="sc-preview" style="background:linear-gradient(to right, #0a9070, #20c890)"></div>
+      <div class="sc-head">
+        <span class="sc-rank" style="color:var(--teal)">04</span>
+        <span class="sc-emoji">✨</span>
+        <div class="sc-meta">
+          <h3>StockSnap.io — stocksnap.io</h3>
+          <div class="sc-tags">
+            <span class="sc-tag tag-free">Free CC0</span>
+            <span class="sc-tag tag-qual">Curated</span>
+            <span class="sc-tag tag-comm">Commercial Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>StockSnap prioritises curation over volume — its library is smaller than Pexels or Pixabay, but every image it contains has been reviewed for quality before acceptance. For bloggers who find the larger platforms overwhelming or who find themselves scrolling through too many mediocre results, StockSnap's editorial approach produces a noticeably higher hit rate when searching for something genuinely beautiful. New images are added daily and sorted by trending, which surfaces the freshest and most popular content prominently, making it an excellent destination when you need inspiration rather than a specific search term in mind. All content is CC0.</p>
+        <div class="best-use">
+          <span class="bu-label">Best For</span>
+          <p>Bloggers who value editorial quality and want a curated experience without sifting through thousands of mediocre results to find one exceptional image.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE 5: RESHOT -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(42,120,72,0.1);color:var(--green);border:1px solid rgba(42,120,72,0.2)">Site 05</span>
+      Reshot — The Authentic Alternative
+    </h2>
+
+    <div class="site-card">
+      <div class="sc-preview" style="background:linear-gradient(to right, #f06040, #f0a030)"></div>
+      <div class="sc-head">
+        <span class="sc-rank" style="color:var(--green)">05</span>
+        <span class="sc-emoji">🌱</span>
+        <div class="sc-meta">
+          <h3>Reshot — reshot.com</h3>
+          <div class="sc-tags">
+            <span class="sc-tag tag-free">Free</span>
+            <span class="sc-tag tag-niche">Anti-Generic</span>
+            <span class="sc-tag tag-comm">Commercial Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Reshot positions itself explicitly as an antidote to the visual clichés that dominate mainstream stock photography — no staged business handshakes, no smiling professionals pointing at laptops, no multicultural teams arranged in ascending height order. Instead, Reshot curates genuinely authentic, documentary-style photographs that feel like real moments captured rather than scenes constructed. For bloggers whose niche involves authenticity — personal finance, mental health, lifestyle, sustainability, community — Reshot's visual vocabulary resonates in ways that more polished stock photography often cannot.</p>
+        <div class="best-use">
+          <span class="bu-label">Best For</span>
+          <p>Personal blogs, wellness content, and any niche where authentic human moments are more compelling than professional photography studio aesthetics.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARE TABLE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(192,136,24,0.1);color:var(--gold);border:1px solid rgba(192,136,24,0.2)">Quick Ref</span>
+      Side-by-Side Comparison at a Glance
+    </h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Website</th>
+          <th>Library Size</th>
+          <th>Licence</th>
+          <th>Videos</th>
+          <th>Best Niche Fit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Unsplash</td>
+          <td>5M+ photos</td>
+          <td><span class="ct-tag" style="background:rgba(42,120,72,0.1);color:var(--green);border:1px solid rgba(42,120,72,0.2)">Custom Free</span></td>
+          <td>✗</td>
+          <td>All niches — premium quality</td>
+        </tr>
+        <tr>
+          <td>Pexels</td>
+          <td>3M+ photos</td>
+          <td><span class="ct-tag" style="background:rgba(42,120,72,0.1);color:var(--green);border:1px solid rgba(42,120,72,0.2)">Custom Free</span></td>
+          <td>✓ Yes</td>
+          <td>Diverse / lifestyle / food</td>
+        </tr>
+        <tr>
+          <td>Pixabay</td>
+          <td>4M+ assets</td>
+          <td><span class="ct-tag" style="background:rgba(42,120,72,0.1);color:var(--green);border:1px solid rgba(42,120,72,0.2)">CC0</span></td>
+          <td>✓ Yes</td>
+          <td>Tech / infographics / art</td>
+        </tr>
+        <tr>
+          <td>StockSnap</td>
+          <td>100K+ photos</td>
+          <td><span class="ct-tag" style="background:rgba(42,120,72,0.1);color:var(--green);border:1px solid rgba(42,120,72,0.2)">CC0</span></td>
+          <td>✗</td>
+          <td>Quality-first / editorial</td>
+        </tr>
+        <tr>
+          <td>Reshot</td>
+          <td>50K+ photos</td>
+          <td><span class="ct-tag" style="background:rgba(42,120,72,0.1);color:var(--green);border:1px solid rgba(42,120,72,0.2)">Custom Free</span></td>
+          <td>✗</td>
+          <td>Personal / authentic / real</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- USAGE TIPS PANEL -->
+    <div class="usage-panel">
+      <div class="up-title">◆ &nbsp; How to Use Free Stock Images Professionally</div>
+      <div class="up-grid">
+        <div class="up-item"><div class="up-dot"></div>Choose images that match your blog's visual tone consistently</div>
+        <div class="up-item"><div class="up-dot"></div>Avoid the most-used generic images — search deeper</div>
+        <div class="up-item"><div class="up-dot"></div>Compress every image before uploading — never upload raw files</div>
+        <div class="up-item"><div class="up-dot"></div>Always write descriptive alt text for every image you use</div>
+        <div class="up-item"><div class="up-dot"></div>Create a consistent visual style across your featured images</div>
+        <div class="up-item"><div class="up-dot"></div>Save search terms that consistently produce great results</div>
+        <div class="up-item"><div class="up-dot"></div>Build a personal image folder organised by topic and mood</div>
+        <div class="up-item"><div class="up-dot"></div>Credit photographers when possible — it costs nothing and matters</div>
+      </div>
+    </div>
+
+    <p>The era of paying for photography to make your blog look professional is genuinely over. The five websites above represent a combined library of more than twelve million high-quality, commercially licensed images available at zero cost — a creative abundance that would have been unimaginable to bloggers a decade ago. The only remaining investment required is discernment: the willingness to search past the obvious and the most-used results until you find the image that genuinely serves your content, your reader, and the visual identity you are building one post at a time.</p>
+
+    <p>Bookmark all five. Search them in order until you find something that feels right. Your blog's visual quality will improve permanently from this day forward — and it will cost you nothing but a few minutes and a good eye.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">The right image does not just decorate your content. It completes it.</span>
+  </footer>
+
+</div>
+</body>
+</html>
