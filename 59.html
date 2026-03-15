@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogging Trends in 2026 — What's Changing, What's Winning</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #f8f6f0;
+    --surface:     #ffffff;
+    --surface2:    #f0ede5;
+    --surface3:    #e8e4d8;
+    --border:      #ddd8cc;
+    --ink:         #151210;
+    --soft:        #3a3028;
+    --muted:       #8a7f70;
+    --lime:        #8db523;
+    --lime-dim:    rgba(141,181,35,0.10);
+    --lime-mid:    rgba(141,181,35,0.25);
+    --coral:       #e04f36;
+    --coral-dim:   rgba(224,79,54,0.09);
+    --coral-mid:   rgba(224,79,54,0.22);
+    --navy:        #1c3d6e;
+    --navy-dim:    rgba(28,61,110,0.08);
+    --navy-mid:    rgba(28,61,110,0.20);
+    --amber:       #d4841a;
+    --amber-dim:   rgba(212,132,26,0.10);
+    --teal:        #1a8a7a;
+    --teal-dim:    rgba(26,138,122,0.09);
+    --violet:      #7048b5;
+    --violet-dim:  rgba(112,72,181,0.09);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.88;
+  }
+
+  /* ── Ticker tape top bar ── */
+  .ticker-wrap {
+    background: var(--ink);
+    overflow: hidden;
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker-label {
+    background: var(--coral);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0 14px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .ticker-track {
+    display: flex;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-item {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    padding: 0 28px;
+    flex-shrink: 0;
+  }
+
+  .ticker-item span {
+    color: var(--lime);
+    margin-right: 8px;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .header-inner {
+    padding: 70px 32px 64px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Large year watermark */
+  .year-bg {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 25vw, 220px);
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+  }
+
+  /* glow blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .blob-1 {
+    width: 400px; height: 300px;
+    background: rgba(141,181,35,0.08);
+    top: -100px; left: -80px;
+  }
+
+  .blob-2 {
+    width: 350px; height: 300px;
+    background: rgba(224,79,54,0.08);
+    top: -60px; right: -60px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    width: 24px; height: 1px;
+    background: rgba(141,181,35,0.45);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: #f8f6f0;
+    max-width: 780px;
+    margin: 0 auto 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 .accent { color: var(--coral); }
+  h1 .year   { color: var(--lime);  }
+
+  .header-sub {
+    font-size: 0.86rem;
+    color: rgba(248,246,240,0.32);
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Trend meter bar ── */
+  .trend-bar-wrap {
+    max-width: 680px;
+    margin: 44px auto 0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px 10px 0 0;
+    padding: 22px 24px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tb-title {
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(248,246,240,0.35);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .tb-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .tb-label {
+    font-size: 0.73rem;
+    font-weight: 500;
+    color: rgba(248,246,240,0.6);
+    width: 140px;
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .tb-track {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .tb-fill {
+    height: 100%;
+    border-radius: 3px;
+    animation: growBar 1.6s cubic-bezier(.4,0,.2,1) both;
+  }
+
+  .tb-fill:nth-child(1){ animation-delay:0.1s; }
+
+  @keyframes growBar {
+    from { width:0% }
+  }
+
+  .tb-pct {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(248,246,240,0.4);
+    width: 36px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Curved separator ── */
+  .curve {
+    background: var(--ink);
+    line-height: 0;
+  }
+  .curve svg { display:block; width:100%; }
+
+  /* ── Main ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 28px 90px;
+  }
+
+  /* ── Lead ── */
+  .lead {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.22rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.8;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--coral);
+    border-radius: 3px;
+    margin-bottom: 58px;
+    box-shadow: 0 2px 12px rgba(21,18,16,0.05);
+  }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 56px; }
+
+  .section-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--coral);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .section-tag::after {
+    content: ''; flex:1; height:1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.015em;
+  }
+
+  p { color: var(--soft); margin-bottom: 16px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Trend cards (numbered big) ── */
+  .trend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 26px 0;
+  }
+
+  @media(max-width:540px){
+    .trend-grid { grid-template-columns: 1fr; }
+  }
+
+  .trend-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+
+  .trend-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(21,18,16,0.10);
+  }
+
+  .tc-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    position: absolute;
+    top: 10px; right: 16px;
+    opacity: 0.07;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  .tc-trend-label {
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .tl-up    { background:var(--lime-dim);   color:var(--lime);   }
+  .tl-hot   { background:var(--coral-dim);  color:var(--coral);  }
+  .tl-new   { background:var(--navy-dim);   color:var(--navy);   }
+  .tl-grow  { background:var(--amber-dim);  color:var(--amber);  }
+  .tl-shift { background:var(--teal-dim);   color:var(--teal);   }
+  .tl-rise  { background:var(--violet-dim); color:var(--violet); }
+
+  .tc-name {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 7px;
+    line-height: 1.25;
+  }
+
+  .tc-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .tc-top { border-top: 3px solid; }
+
+  /* ── Callout boxes ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 22px 0;
+  }
+
+  .cb-coral  { background:var(--coral-dim);  border:1px solid var(--coral-mid);           border-left:3px solid var(--coral);  }
+  .cb-lime   { background:var(--lime-dim);   border:1px solid var(--lime-mid);             border-left:3px solid var(--lime);   }
+  .cb-navy   { background:var(--navy-dim);   border:1px solid var(--navy-mid);             border-left:3px solid var(--navy);   }
+  .cb-amber  { background:var(--amber-dim);  border:1px solid rgba(212,132,26,0.25);       border-left:3px solid var(--amber);  }
+  .cb-teal   { background:var(--teal-dim);   border:1px solid rgba(26,138,122,0.25);       border-left:3px solid var(--teal);   }
+  .cb-violet { background:var(--violet-dim); border:1px solid rgba(112,72,181,0.25);       border-left:3px solid var(--violet); }
+
+  .callout strong {
+    font-size: 0.64rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    display: block; margin-bottom: 5px;
+  }
+  .cb-coral  strong { color:var(--coral);  }
+  .cb-lime   strong { color:var(--lime);   }
+  .cb-navy   strong { color:var(--navy);   }
+  .cb-amber  strong { color:var(--amber);  }
+  .cb-teal   strong { color:var(--teal);   }
+  .cb-violet strong { color:var(--violet); }
+  .callout p { font-size:0.9rem; margin:0; }
+
+  /* ── What's dying table ── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  @media(max-width:480px){ .compare { grid-template-columns:1fr; } }
+
+  .cmp-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .cmp-head {
+    padding: 11px 16px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .cmp-head.dying { background: var(--coral-dim); color: var(--coral); border-bottom: 1px solid rgba(224,79,54,0.2); }
+  .cmp-head.winning { background: var(--lime-dim); color: var(--lime); border-bottom: 1px solid rgba(141,181,35,0.2); }
+
+  .cmp-item {
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    color: var(--soft);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cmp-item:last-child { border-bottom: none; }
+  .cmp-icon { font-size: 0.9rem; }
+
+  /* ── Stat row ── */
+  .stat-row {
+    display: flex;
+    gap: 14px;
+    margin: 22px 0;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 130px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 5px;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-lbl {
+    font-size: 0.73rem;
+    color: var(--muted);
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+  }
+
+  .sn-c { color: var(--coral); }
+  .sn-l { color: var(--lime);  }
+  .sn-n { color: var(--navy);  }
+  .sn-a { color: var(--amber); }
+
+  /* ── Steps ── */
+  ol.steps {
+    list-style: none; padding:0; margin:20px 0;
+    counter-reset: step;
+  }
+
+  ol.steps li {
+    counter-increment: step;
+    padding: 13px 14px 13px 56px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+
+  ol.steps li:last-child { border-bottom: none; }
+
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left:10px; top:12px;
+    width:28px; height:28px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Checklist ── */
+  ul.check {
+    list-style: none; padding:0; margin:18px 0;
+  }
+  ul.check li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+  ul.check li:last-child { border-bottom: none; }
+  ul.check li::before {
+    content: '▸';
+    position: absolute; left: 4px;
+    color: var(--coral);
+    font-size: 0.8rem;
+    top: 12px;
+  }
+
+  /* ── Divider ── */
+  hr.div {
+    border: none; border-top: 1px solid var(--border);
+    margin: 52px 0; position: relative;
+  }
+  hr.div::before {
+    content: '2026';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    position: absolute; top: -11px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg); padding: 0 12px;
+    color: var(--coral);
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 46px 40px;
+    border-radius: 10px;
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '2026';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12rem;
+    position: absolute;
+    bottom: -40px; right: -20px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+
+  .closing::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(141,181,35,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%, rgba(224,79,54,0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .closing h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    letter-spacing: 0.04em;
+    color: #f8f6f0;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing h3 .cl { color: var(--lime);  }
+  .closing h3 .cc { color: var(--coral); }
+
+  .closing p {
+    color: rgba(248,246,240,0.58);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align:center;
+    padding:26px;
+    font-size:0.75rem;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    letter-spacing:0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0);    }
+  }
+
+  .section {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .section:nth-child(1){ animation-delay:0.05s; }
+  .section:nth-child(2){ animation-delay:0.10s; }
+  .section:nth-child(3){ animation-delay:0.15s; }
+  .section:nth-child(4){ animation-delay:0.20s; }
+  .section:nth-child(5){ animation-delay:0.25s; }
+  .section:nth-child(6){ animation-delay:0.30s; }
+
+  @media(max-width:600px){
+    main { padding:36px 16px 60px; }
+    .header-inner { padding:50px 18px 48px; }
+    h1 { font-size:3rem; }
+    h2 { font-size:1.5rem; }
+    .closing { padding:32px 18px; }
+    .tb-label { width:110px; font-size:0.68rem; }
+    .trend-bar-wrap { margin:28px 16px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ticker tape -->
+<div class="ticker-wrap">
+  <div class="ticker-label">2026 Trends</div>
+  <div class="ticker-track">
+    <span class="ticker-item"><span>↑</span>AI-Assisted Writing</span>
+    <span class="ticker-item"><span>↑</span>Video + Blog Hybrid</span>
+    <span class="ticker-item"><span>↑</span>Niche Authority Sites</span>
+    <span class="ticker-item"><span>↑</span>Email-First Blogging</span>
+    <span class="ticker-item"><span>↑</span>Original Research</span>
+    <span class="ticker-item"><span>↓</span>Thin Content</span>
+    <span class="ticker-item"><span>↑</span>Community Building</span>
+    <span class="ticker-item"><span>↓</span>Keyword Stuffing</span>
+    <!-- repeat for seamless loop -->
+    <span class="ticker-item"><span>↑</span>AI-Assisted Writing</span>
+    <span class="ticker-item"><span>↑</span>Video + Blog Hybrid</span>
+    <span class="ticker-item"><span>↑</span>Niche Authority Sites</span>
+    <span class="ticker-item"><span>↑</span>Email-First Blogging</span>
+    <span class="ticker-item"><span>↑</span>Original Research</span>
+    <span class="ticker-item"><span>↓</span>Thin Content</span>
+    <span class="ticker-item"><span>↑</span>Community Building</span>
+    <span class="ticker-item"><span>↓</span>Keyword Stuffing</span>
+  </div>
+</div>
+
+<header>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="year-bg">2026</div>
+  <div class="header-inner">
+    <div class="eyebrow">Annual Report</div>
+    <h1>BLOGGING<br><span class="accent">TRENDS</span><br><span class="year">2026</span></h1>
+    <p class="header-sub">~800 words &nbsp;·&nbsp; Practical &amp; Human &nbsp;·&nbsp; Fresh Perspective</p>
+
+    <!-- Trend momentum bars -->
+    <div class="trend-bar-wrap">
+      <p class="tb-title">Trend Momentum Index — 2026</p>
+      <div class="tb-rows">
+        <div class="tb-row">
+          <span class="tb-label">AI + Human Voice</span>
+          <div class="tb-track"><div class="tb-fill" style="width:92%;background:var(--lime);"></div></div>
+          <span class="tb-pct">92%</span>
+        </div>
+        <div class="tb-row">
+          <span class="tb-label">Video-Blog Hybrid</span>
+          <div class="tb-track"><div class="tb-fill" style="width:85%;background:var(--coral);"></div></div>
+          <span class="tb-pct">85%</span>
+        </div>
+        <div class="tb-row">
+          <span class="tb-label">Email-First Strategy</span>
+          <div class="tb-track"><div class="tb-fill" style="width:78%;background:var(--amber);"></div></div>
+          <span class="tb-pct">78%</span>
+        </div>
+        <div class="tb-row">
+          <span class="tb-label">Niche Authority</span>
+          <div class="tb-track"><div class="tb-fill" style="width:88%;background:var(--teal);"></div></div>
+          <span class="tb-pct">88%</span>
+        </div>
+        <div class="tb-row">
+          <span class="tb-label">Original Research</span>
+          <div class="tb-track"><div class="tb-fill" style="width:74%;background:var(--violet);"></div></div>
+          <span class="tb-pct">74%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="curve">
+  <svg viewBox="0 0 1440 54" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,54 L0,28 Q360,0 720,28 Q1080,54 1440,28 L1440,54 Z" fill="#f8f6f0"/>
+  </svg>
+</div>
+
+<main>
+
+  <!-- Lead -->
+  <p class="lead">
+    Blogging is not dying — it is evolving faster than at any point in the last decade. The bloggers who are thriving in 2026 are not the ones who write more. They are the ones who have adapted: sharper niche focus, stronger personal voice, smarter use of technology, and a direct relationship with their audience that no algorithm can take away.
+  </p>
+
+  <!-- Key stats -->
+  <div class="stat-row">
+    <div class="stat">
+      <span class="stat-num sn-c">600M</span>
+      <span class="stat-lbl">Active blogs on the internet in 2026</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num sn-l">77%</span>
+      <span class="stat-lbl">Of internet users read blogs regularly</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num sn-n">3×</span>
+      <span class="stat-lbl">More leads generated by blogging vs paid ads</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num sn-a">68%</span>
+      <span class="stat-lbl">Of bloggers now use AI tools in their workflow</span>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <p class="section-tag">Trend Report</p>
+    <h2>The Six Biggest Blogging Trends Defining 2026</h2>
+    <p>
+      The landscape shifted meaningfully in the past twelve months. Some trends accelerated, some collapsed, and a few emerged from nowhere to reshape what successful blogging looks like. Here are the six forces every blogger needs to understand right now.
+    </p>
+
+    <div class="trend-grid">
+      <div class="trend-card" style="border-top:3px solid var(--lime);">
+        <span class="tc-num">01</span>
+        <span class="tc-trend-label tl-up">↑ Rising Fast</span>
+        <p class="tc-name">AI-Assisted Writing with Human Voice</p>
+        <p class="tc-desc">AI handles research, outlines, and first drafts. The blogger's job is to inject personal experience, opinion, and stories that no AI can replicate. The combination wins.</p>
+      </div>
+      <div class="trend-card" style="border-top:3px solid var(--coral);">
+        <span class="tc-num">02</span>
+        <span class="tc-trend-label tl-hot">🔥 Dominant</span>
+        <p class="tc-name">Niche Authority Over Broad Topics</p>
+        <p class="tc-desc">General lifestyle blogs are losing ground. Hyper-specific sites — the blog that covers only sourdough for beginners, only budget travel in Southeast Asia — are dominating search results and building fierce loyal audiences.</p>
+      </div>
+      <div class="trend-card" style="border-top:3px solid var(--navy);">
+        <span class="tc-num">03</span>
+        <span class="tc-trend-label tl-new">★ Breakout</span>
+        <p class="tc-name">Video + Blog Hybrid Content</p>
+        <p class="tc-desc">The blogs seeing the strongest growth are embedding short video alongside written posts. A 90-second summary video at the top of an article dramatically increases time-on-page and return visits.</p>
+      </div>
+      <div class="trend-card" style="border-top:3px solid var(--amber);">
+        <span class="tc-num">04</span>
+        <span class="tc-trend-label tl-grow">↑ Growing</span>
+        <p class="tc-name">Email-First Publishing Strategy</p>
+        <p class="tc-desc">Smart bloggers are treating their email list as the primary destination and their blog as the archive. Google traffic is a bonus, not the plan. An email list of 5,000 engaged readers beats 50,000 monthly visitors who never return.</p>
+      </div>
+      <div class="trend-card" style="border-top:3px solid var(--teal);">
+        <span class="tc-num">05</span>
+        <span class="tc-trend-label tl-shift">⇄ Shifting</span>
+        <p class="tc-name">Original Research and First-Party Data</p>
+        <p class="tc-desc">As AI floods the web with regurgitated content, original surveys, experiments, and proprietary data stand out dramatically. Blogs that publish findings no one else has earn links, citations, and authority that generic content never will.</p>
+      </div>
+      <div class="trend-card" style="border-top:3px solid var(--violet);">
+        <span class="tc-num">06</span>
+        <span class="tc-trend-label tl-rise">↑ Emerging</span>
+        <p class="tc-name">Community-Led Blogging</p>
+        <p class="tc-desc">Blogs that build a community — through comment sections, Discord servers, private newsletters, or membership areas — retain readers far more effectively than those that publish into the void and hope for traffic.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 2 — What's dying vs winning -->
+  <div class="section">
+    <p class="section-tag">The Shift</p>
+    <h2>What Is Dying — and What Is Winning</h2>
+    <p>
+      The gap between old-style blogging and the new model has never been wider. Understanding what to leave behind is just as important as knowing what to adopt. Here is the honest comparison:
+    </p>
+
+    <div class="compare">
+      <div class="cmp-col">
+        <div class="cmp-head dying">✗ &nbsp; Losing Ground Fast</div>
+        <div class="cmp-item"><span class="cmp-icon">📉</span>Thin 500-word posts targeting single keywords</div>
+        <div class="cmp-item"><span class="cmp-icon">📉</span>Broad "everything" lifestyle blogs with no niche</div>
+        <div class="cmp-item"><span class="cmp-icon">📉</span>Posting for volume over quality and depth</div>
+        <div class="cmp-item"><span class="cmp-icon">📉</span>Relying entirely on Google for all traffic</div>
+        <div class="cmp-item"><span class="cmp-icon">📉</span>Stock photos and generic AI-generated images</div>
+        <div class="cmp-item"><span class="cmp-icon">📉</span>No email list, no community, no direct channel</div>
+      </div>
+      <div class="cmp-col">
+        <div class="cmp-head winning">✓ &nbsp; Thriving in 2026</div>
+        <div class="cmp-item"><span class="cmp-icon">📈</span>Deep, comprehensive long-form guides and studies</div>
+        <div class="cmp-item"><span class="cmp-icon">📈</span>Laser-focused niche blogs with a clear audience</div>
+        <div class="cmp-item"><span class="cmp-icon">📈</span>Less content, higher quality, stronger promotion</div>
+        <div class="cmp-item"><span class="cmp-icon">📈</span>Multi-channel: email + social + search + community</div>
+        <div class="cmp-item"><span class="cmp-icon">📈</span>Original photos, personal screenshots, real evidence</div>
+        <div class="cmp-item"><span class="cmp-icon">📈</span>Email list as the core audience, blog as the hub</div>
+      </div>
+    </div>
+
+    <div class="callout cb-coral">
+      <strong>The Hard Truth</strong>
+      <p>Google's AI-generated search summaries now answer many basic questions without requiring a click. Bloggers who only wrote surface-level informational posts are losing organic traffic fast. The protection against this is irreplaceable depth, personal experience, and originality — things AI cannot generate from thin air.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 3 — AI & human voice -->
+  <div class="section">
+    <p class="section-tag">The Biggest Shift</p>
+    <h2>AI Is a Tool, Not a Replacement — Use It Right</h2>
+    <p>
+      The most important blogging trend of 2026 is how successful bloggers have learned to use AI without sounding like AI. The bloggers who are growing fastest use artificial intelligence to handle the mechanical parts of writing — keyword research, outline structure, competitive analysis, first-draft scaffolding — while bringing their own voice, experience, and perspective to everything the AI cannot produce.
+    </p>
+    <p>
+      Google's Helpful Content systems are increasingly sophisticated at identifying content that is purely AI-generated with no human perspective. The posts that rank are the ones where a real person's expertise and experience are unmistakably present. <strong>Your story, your failures, your specific data, your opinion</strong> — these are what make a post irreplaceable.
+    </p>
+    <div class="callout cb-lime">
+      <strong>The Winning Formula</strong>
+      <p>AI for research, structure, and speed. Human voice for stories, opinions, original examples, and the kind of honesty that comes from actually having done the thing you are writing about. The combination produces content that is both efficient to create and impossible to replicate.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 4 — Action plan -->
+  <div class="section">
+    <p class="section-tag">Your Action Plan</p>
+    <h2>How to Position Your Blog for 2026 and Beyond</h2>
+    <p>
+      Knowing the trends is one thing. Translating them into concrete actions for your own blog is another. Here is a six-step plan to bring your blogging strategy in line with where the industry is heading:
+    </p>
+
+    <ol class="steps">
+      <li><strong>Audit your niche focus.</strong> If your blog covers more than three closely related topics, consider narrowing. In 2026, being the best resource on a specific subject beats being a decent resource on many subjects. Depth of expertise is the moat.</li>
+      <li><strong>Start or grow your email list immediately.</strong> Add an opt-in to every post, create a lead magnet relevant to your niche, and email your list at least once a week. Your email subscribers are the only audience you truly own — no algorithm can take them from you.</li>
+      <li><strong>Publish one piece of original research per quarter.</strong> Survey your audience, run an experiment, or analyse data no one else has published. Even a small study of 100 respondents creates linkable, citable content that generic posts cannot compete with.</li>
+      <li><strong>Add a short video introduction to your top posts.</strong> Record a 60–90 second face-to-camera video summarising the article and embed it at the top. This single change increases dwell time, builds personal connection, and gives you repurposable social content.</li>
+      <li><strong>Build one community channel.</strong> A free Discord server, a monthly Q&amp;A call, a simple comment section that you actively engage — any of these transforms passive readers into active participants who return regularly and tell others about your blog.</li>
+      <li><strong>Measure what matters in 2026.</strong> Email list growth, return visitor rate, and average time on page are more meaningful metrics this year than raw traffic. An engaged audience of 2,000 loyal readers is a far stronger foundation than 20,000 one-time visitors.</li>
+    </ol>
+
+    <div class="callout cb-navy">
+      <strong>Start With One</strong>
+      <p>Do not try to implement all six of these at once. Pick the single trend most relevant to where your blog is right now and execute it fully before moving to the next. Focused implementation always beats scattered effort.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 5 — Quick wins -->
+  <div class="section">
+    <p class="section-tag">Quick Wins</p>
+    <h2>Five Things You Can Do This Week</h2>
+    <p>
+      Big strategic shifts take time. But there are five things you can do in the next seven days that will immediately align your blog with the direction the industry is moving:
+    </p>
+
+    <ul class="check">
+      <li><strong>Update your three highest-traffic posts</strong> with original examples, new data, or personal experience that makes them irreplaceable rather than replaceable by AI summaries.</li>
+      <li><strong>Add an email opt-in form</strong> to your homepage and the top of your most popular article if you do not already have one. Offer a single relevant freebie — a checklist, a template, a short guide.</li>
+      <li><strong>Record a 60-second phone video</strong> summarising your best current article. You do not need a studio — a well-lit window is enough. Embed it in the post and share it on one social platform.</li>
+      <li><strong>Research one micro-niche angle</strong> within your broader topic that no one else in your space is covering comprehensively. Plan that as your next long-form piece — own the ground no one has claimed yet.</li>
+      <li><strong>Reply personally to every comment</strong> you receive this week. Community starts with one real conversation. In 2026, blogs that feel like a community grow faster than blogs that feel like a publication.</li>
+    </ul>
+
+    <div class="callout cb-teal">
+      <strong>The Long Game</strong>
+      <p>Every major blogging trend in 2026 points in the same direction: depth, authenticity, direct audience relationships, and irreplaceable personal value. These are not short-term tactics. They are the fundamentals of what great blogging has always been — amplified by the technology available today.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <h3>ADAPT.<br><span class="cl">DEEPEN.</span><br><span class="cc">OWN 2026.</span></h3>
+    <p>
+      The blogs that will dominate search results, build loyal audiences, and generate real income in 2026 are not the ones with the most posts. They are the ones written by real people, for specific audiences, with original insight no algorithm can replicate. That has always been the standard. This year, it is simply the minimum.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 &nbsp;·&nbsp; Blogging Trends in 2026 &nbsp;·&nbsp; Written for Human Readers
+</footer>
+
+</body>
+</html>
