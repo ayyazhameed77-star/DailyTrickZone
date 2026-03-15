@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Design Best Practices</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #fafbfd;
+    --surface:   #ffffff;
+    --surface2:  #f0f4fb;
+    --border:    #dce6f8;
+    --ink:       #080f22;
+    --muted:     #6070a0;
+    --accent:    #3b4cf8;
+    --teal:      #0891b2;
+    --violet:    #7c3aed;
+    --green:     #059669;
+    --amber:     #d97706;
+    --rose:      #e11d48;
+    --navy:      #1e3a8a;
+    --soft:      rgba(59,76,248,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* fine dot grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(59,76,248,0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .header-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .ht-icon {
+    width: 38px; height: 38px;
+    background: rgba(59,76,248,0.1);
+    border: 1px solid rgba(59,76,248,0.22);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .ht-text { display: flex; flex-direction: column; gap: 2px; }
+
+  .ht-cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .ht-sub {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Zilla Slab', serif;
+    font-size: clamp(2.5rem, 6.6vw, 4.4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.78;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent) 0%, var(--teal) 40%, transparent 70%);
+    opacity: 0.3;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #1e2c50;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 46px;
+    background: var(--accent);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 100% 0%, rgba(255,255,255,0.08), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote::after {
+    content: '"';
+    position: absolute;
+    bottom: -22px; right: 24px;
+    font-family: 'Zilla Slab', serif;
+    font-size: 9rem;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Zilla Slab', serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    color: #ffffff !important;
+    line-height: 1.62;
+    margin: 0 !important;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.52rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── PRACTICE CARDS ── */
+  .practice-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 22px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .practice-card:hover {
+    box-shadow: 0 6px 28px rgba(59,76,248,0.08);
+    border-color: rgba(59,76,248,0.24);
+  }
+
+  .pc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pc-bar { width: 4px; flex-shrink: 0; }
+
+  .pc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .pc-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .practice-card h3 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .pc-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .pc-body { padding: 18px 24px 20px 28px; }
+
+  .pc-body p {
+    font-size: 0.94rem;
+    color: #2a3860;
+    margin: 0 !important;
+    line-height: 1.78;
+  }
+
+  /* ── DESIGNER TIP ── */
+  .designer-tip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 9px 9px 0;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .dt-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .designer-tip p {
+    font-size: 0.87rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── DESIGN ELEMENTS GRID ── */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 26px 0 38px;
+  }
+
+  .eg-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .eg-tile:hover { border-color: rgba(59,76,248,0.28); }
+
+  .eg-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .egt1::before { background: var(--accent); }
+  .egt2::before { background: var(--teal); }
+  .egt3::before { background: var(--violet); }
+  .egt4::before { background: var(--green); }
+  .egt5::before { background: var(--amber); }
+  .egt6::before { background: var(--navy); }
+
+  .eg-emoji { font-size: 22px; display: block; margin-bottom: 9px; }
+
+  .eg-tile h4 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .eg-tile p {
+    font-size: 0.74rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+
+  /* ── TYPOGRAPHY SPECIMENS ── */
+  .typo-specimen {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 24px 0 36px;
+  }
+
+  .ts-header {
+    padding: 13px 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .ts-rows { display: grid; }
+
+  .ts-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .ts-row:last-child { border-bottom: none; }
+  .ts-row:hover { background: var(--surface2); }
+
+  .ts-role {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    width: 90px;
+  }
+
+  .ts-recommend {
+    flex: 1;
+    font-size: 0.88rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .ts-rule {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: right;
+    flex-shrink: 0;
+    max-width: 160px;
+    line-height: 1.4;
+  }
+
+  /* ── COLOUR THEORY MINI ── */
+  .colour-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 24px 0 36px;
+  }
+
+  .cc-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .cc-swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .cc-swatch {
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+
+  .cs-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 9px;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  .cc-swatch h5 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .cc-swatch p {
+    font-size: 0.7rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.4;
+  }
+
+  /* ── FINAL CHECKLIST ── */
+  .final-check {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-check::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 0% 100%, rgba(59,76,248,0.22), transparent),
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(8,145,178,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .fc-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* accent lightened for dark bg */
+  .fc-accent { color: #7b8afb; }
+
+  .fc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #6070b0;
+    line-height: 1.56;
+  }
+
+  .fc-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(59,76,248,0.4);
+    background: rgba(59,76,248,0.08);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Zilla Slab', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .elements-grid { grid-template-columns: 1fr 1fr; }
+    .cc-swatches { grid-template-columns: 1fr 1fr; }
+    .fc-grid { grid-template-columns: 1fr; }
+    .pull-quote { padding: 28px 26px; }
+    .ts-rule { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-tag">
+      <div class="ht-icon">🎨</div>
+      <div class="ht-text">
+        <span class="ht-cat">Blog Design</span>
+        <span class="ht-sub">Best Practices Guide · 2026</span>
+      </div>
+    </div>
+    <h1>Blog Design<br><em>Best Practices</em></h1>
+    <p class="deck">A beautifully written blog on a poorly designed website is like a great book with a broken spine — the content is there, but the experience defeats it before it begins. Here is how to design a blog that serves every word you write.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>Design is the first communication your blog makes before a single word is read. A visitor arrives on your homepage and in less than a second — before their eyes have tracked to your headline, before their brain has processed your niche, before any measure of your quality has been assessed — they have already formed a feeling about your blog. That feeling, shaped entirely by visual design, determines whether they lean forward into your content or reach for the back button.</p>
+
+    <p>This is not superficial. It is one of the most deeply human aspects of how we process information. We trust what looks trustworthy. We engage with what looks engaging. We read what looks readable. Blog design is not a matter of aesthetics separate from content quality — it is the environment in which content quality is perceived. The blogger who understands this and designs accordingly gives every piece of writing the context it deserves to be fairly judged.</p>
+
+    <div class="pull-quote">
+      <p>Design is not decoration added to a blog after the writing is done. It is the stage on which the writing performs — and a beautiful stage makes even ordinary performances memorable.</p>
+    </div>
+
+    <!-- KEY DESIGN ELEMENTS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(59,76,248,0.1);color:var(--accent);border:1px solid rgba(59,76,248,0.2)">The Foundation</span>
+      Six Elements That Define Every Great Blog Design
+    </h2>
+
+    <div class="elements-grid">
+      <div class="eg-tile egt1">
+        <span class="eg-emoji">📝</span>
+        <h4>Typography</h4>
+        <p>The single most impactful design element — affects every word on every page</p>
+      </div>
+      <div class="eg-tile egt2">
+        <span class="eg-emoji">🎨</span>
+        <h4>Colour Palette</h4>
+        <p>2–3 intentional colours that communicate personality and create trust</p>
+      </div>
+      <div class="eg-tile egt3">
+        <span class="eg-emoji">📐</span>
+        <h4>White Space</h4>
+        <p>The breathing room that makes content feel considered, not cluttered</p>
+      </div>
+      <div class="eg-tile egt4">
+        <span class="eg-emoji">📱</span>
+        <h4>Mobile Layout</h4>
+        <p>Over 65% of blog traffic is mobile — design for the smaller screen first</p>
+      </div>
+      <div class="eg-tile egt5">
+        <span class="eg-emoji">🔲</span>
+        <h4>Navigation</h4>
+        <p>Clear, simple, never more than seven options — readers must never feel lost</p>
+      </div>
+      <div class="eg-tile egt6">
+        <span class="eg-emoji">⚡</span>
+        <h4>Load Speed</h4>
+        <p>Every additional second costs readers — design for performance, not spectacle</p>
+      </div>
+    </div>
+
+    <!-- PRACTICE 1: TYPOGRAPHY -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(59,76,248,0.1);color:var(--accent);border:1px solid rgba(59,76,248,0.2)">Practice 01</span>
+      Typography — The Most Important Design Decision You Will Make
+    </h2>
+
+    <p>Of all the design elements that shape a reader's experience of a blog, typography carries the most weight. Not the colour scheme, not the logo, not the layout — the typefaces you choose and how you deploy them determine whether your content feels authoritative or amateurish, warm or cold, accessible or intimidating. Most readers could not explain why one blog feels more trustworthy than another — but the answer is almost always written in the typesetting.</p>
+
+    <div class="practice-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--accent)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(59,76,248,0.1);color:var(--accent)">🔤</div>
+          <h3>Choose Two Fonts, Set One Size Rule, and Break Neither</h3>
+          <span class="pc-badge" style="background:rgba(59,76,248,0.1);color:var(--accent);border:1px solid rgba(59,76,248,0.2)">Highest Priority</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>Every professionally designed blog uses a maximum of two typefaces: one for headings and one for body text. The heading font creates visual character and establishes brand personality — a serif like Playfair Display signals elegance; a geometric sans like Outfit signals modernity. The body font has one job: disappear while delivering your words with maximum readability. The ideal body font size for blog reading is between 16 and 18 pixels, with a line height between 1.6 and 1.9 — measurements that create the comfortable reading rhythm that keeps eyes on the page. Choose your type pairing through Google Fonts, which hosts hundreds of free professional-quality typefaces, and commit to it across every page of your blog without variation.</p>
+        <div class="designer-tip">
+          <span class="dt-label">Designer Tip</span>
+          <p>Contrast your two fonts by category rather than just weight. A serif heading font paired with a sans-serif body font creates natural visual hierarchy. Same-category pairings — two serifs or two sans-serifs — require much finer tuning to work well and are harder for non-designers to execute.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY REFERENCE -->
+    <div class="typo-specimen">
+      <div class="ts-header">🔤 &nbsp; Typography Role Guide — What to Set and Why</div>
+      <div class="ts-rows">
+        <div class="ts-row">
+          <span class="ts-role">H1 Heading</span>
+          <span class="ts-recommend">Display or serif font, 32–48px, bold weight</span>
+          <span class="ts-rule">One per page — the most prominent text element</span>
+        </div>
+        <div class="ts-row">
+          <span class="ts-role">H2 Heading</span>
+          <span class="ts-recommend">Same family as H1, 22–28px, semi-bold</span>
+          <span class="ts-rule">Section dividers — create visual breathing points</span>
+        </div>
+        <div class="ts-row">
+          <span class="ts-role">Body Text</span>
+          <span class="ts-recommend">Readable sans-serif or serif, 16–18px, regular</span>
+          <span class="ts-rule">Line height 1.7–1.9 — never compromise this</span>
+        </div>
+        <div class="ts-row">
+          <span class="ts-role">Caption / Meta</span>
+          <span class="ts-recommend">Body font at 13–14px, medium weight, muted colour</span>
+          <span class="ts-rule">Dates, categories, tags — secondary information</span>
+        </div>
+        <div class="ts-row">
+          <span class="ts-role">Max Line Width</span>
+          <span class="ts-recommend">600–760 pixels content width</span>
+          <span class="ts-rule">Prevents eye fatigue — never wider than 80 characters</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRACTICE 2: COLOUR -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(8,145,178,0.1);color:var(--teal);border:1px solid rgba(8,145,178,0.2)">Practice 02</span>
+      Colour — Less Is More, Always
+    </h2>
+
+    <div class="practice-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--teal)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(8,145,178,0.1);color:var(--teal)">🎨</div>
+          <h3>Three Colours Done Brilliantly Beat Twelve Colours Done Carelessly</h3>
+          <span class="pc-badge" style="background:rgba(8,145,178,0.1);color:var(--teal);border:1px solid rgba(8,145,178,0.2)">Visual Identity</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>The most common colour mistake in amateur blog design is using too many colours — applying them freely across backgrounds, buttons, headings, and accents until the page becomes visually exhausting rather than visually appealing. Professional blog design uses a colour system: one dominant background colour, usually white or very light, one primary action colour for links, buttons and key highlights, and one or two supporting colours used sparingly for variety and depth. This constraint, far from limiting creative expression, actually enables it — a controlled palette creates the visual coherence that makes a blog look designed rather than assembled.</p>
+        <div class="designer-tip">
+          <span class="dt-label">Palette Rule</span>
+          <p>Choose your accent colour first — the one that will represent your brand consistently across every button, link, and call to action. Then choose your background (almost always white or near-white for readability). Everything else is supporting cast. Test your choices at WebAIM Contrast Checker to ensure readability accessibility standards are met.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="colour-card">
+      <div class="cc-title">🎨 &nbsp; A Simple Four-Role Colour System for Any Blog</div>
+      <div class="cc-swatches">
+        <div class="cc-swatch">
+          <div class="cs-dot" style="background:#ffffff;border-color:#dce6f8;box-shadow:0 0 0 1px #dce6f8"></div>
+          <h5>Background</h5>
+          <p>White or cream — 90%+ of your blog's visual area</p>
+        </div>
+        <div class="cc-swatch">
+          <div class="cs-dot" style="background:#3b4cf8;border-color:rgba(59,76,248,0.3)"></div>
+          <h5>Primary Accent</h5>
+          <p>Links, buttons, key highlights — used consistently</p>
+        </div>
+        <div class="cc-swatch">
+          <div class="cs-dot" style="background:#1e2c50;border-color:rgba(30,44,80,0.3)"></div>
+          <h5>Text / Ink</h5>
+          <p>Near-black for body — avoid pure #000000</p>
+        </div>
+        <div class="cc-swatch">
+          <div class="cs-dot" style="background:#6070a0;border-color:rgba(96,112,160,0.3)"></div>
+          <h5>Muted Support</h5>
+          <p>Captions, dates, secondary information</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRACTICE 3: WHITE SPACE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(124,58,237,0.1);color:var(--violet);border:1px solid rgba(124,58,237,0.2)">Practice 03</span>
+      White Space — The Most Undervalued Element in Blog Design
+    </h2>
+
+    <div class="practice-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--violet)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(124,58,237,0.1);color:var(--violet)">⬜</div>
+          <h3>Empty Space Is Not Wasted Space — It Is Where Breathing Happens</h3>
+          <span class="pc-badge" style="background:rgba(124,58,237,0.1);color:var(--violet);border:1px solid rgba(124,58,237,0.2)">Readability</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>Beginning bloggers consistently make the same design mistake: filling every available space with content, widgets, banners, and elements in the belief that empty space represents wasted opportunity. The opposite is true. White space — the deliberate use of empty areas around and between design elements — is what gives your content room to be seen. It creates the sense of calm, considered quality that readers associate with premium publications and serious bloggers. Generous padding around your content area, meaningful space between sections, adequate line height in body text — these are not luxuries. They are the design choices that make reading feel like a pleasure rather than an effort.</p>
+        <div class="designer-tip">
+          <span class="dt-label">Spacing Rule</span>
+          <p>Set your content column width to a maximum of 740 pixels and add at least 24px of padding on each side on mobile. Between major sections, use at least 48–64px of vertical space. These numbers feel generous while designing and feel essential while reading.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRACTICE 4: MOBILE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(5,150,105,0.1);color:var(--green);border:1px solid rgba(5,150,105,0.2)">Practice 04</span>
+      Mobile-First Design — Your Reader's Default Experience
+    </h2>
+
+    <div class="practice-card">
+      <div class="pc-top">
+        <div class="pc-bar" style="background:var(--green)"></div>
+        <div class="pc-top-inner">
+          <div class="pc-icon" style="background:rgba(5,150,105,0.1);color:var(--green)">📱</div>
+          <h3>Design for the Phone First — Desktop Is the Luxury Screen</h3>
+          <span class="pc-badge" style="background:rgba(5,150,105,0.1);color:var(--green);border:1px solid rgba(5,150,105,0.2)">Non-Negotiable</span>
+        </div>
+      </div>
+      <div class="pc-body">
+        <p>More than 65% of blog traffic arrives on mobile devices — smartphones held vertically, screens four to six inches wide, touched rather than clicked. If your blog's mobile experience involves tiny text, buttons too small to tap accurately, images that overflow the screen, or navigation that requires zooming, you are actively frustrating the majority of your readers with every visit. Choose a mobile-responsive WordPress theme, test your blog on an actual smartphone after every design change, and treat the mobile experience as the primary design consideration rather than an afterthought to be accommodated by a responsive grid.</p>
+        <div class="designer-tip">
+          <span class="dt-label">Test Method</span>
+          <p>After any design change, physically view your blog on your smartphone — not just in a browser's mobile simulation mode. Real devices reveal spacing issues, font size problems, and tap target failures that desktop simulations consistently miss. Test on both iOS and Android if possible.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL CHECKLIST -->
+    <div class="final-check">
+      <div class="fc-title">◆ &nbsp; Blog Design Quality Checklist</div>
+      <div class="fc-grid">
+        <div class="fc-item"><div class="fc-box"></div>Two typefaces maximum — heading and body</div>
+        <div class="fc-item"><div class="fc-box"></div>Body text at 16–18px with 1.7+ line height</div>
+        <div class="fc-item"><div class="fc-box"></div>Maximum content width of 740–760 pixels</div>
+        <div class="fc-item"><div class="fc-box"></div>Three colours or fewer in your palette</div>
+        <div class="fc-item"><div class="fc-box"></div>Accent colour used consistently for all CTAs</div>
+        <div class="fc-item"><div class="fc-box"></div>Generous white space between all sections</div>
+        <div class="fc-item"><div class="fc-box"></div>Navigation under 7 items, always visible</div>
+        <div class="fc-item"><div class="fc-box"></div>Tested on a real mobile device today</div>
+        <div class="fc-item"><div class="fc-box"></div>PageSpeed score above 80 on mobile</div>
+        <div class="fc-item"><div class="fc-box"></div>All images have alt text and set dimensions</div>
+      </div>
+    </div>
+
+    <p>The best blog design is almost always the simplest one — the one that removes every element that serves the designer's ego rather than the reader's experience, keeps every element that makes the content clearer and more inviting, and maintains the discipline not to add complexity for its own sake. Great design is an act of editorial courage: the willingness to leave space, to limit colour, to resist the temptation to demonstrate all the things a website can do, and instead to do one thing exceptionally well — make reading feel effortless.</p>
+
+    <p>Review your blog today with a reader's eyes rather than a creator's eyes. Ask what is making the reading experience harder, not just what is making it different. Remove those things. Then let your content speak into the space you have created for it.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Good design is invisible. It simply makes the reading feel inevitable.</span>
+  </footer>
+
+</div>
+</body>
+</html>
