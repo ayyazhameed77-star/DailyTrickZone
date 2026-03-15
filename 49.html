@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create a Sitemap — Complete SEO Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f0f4f8;
+    --surface:   #ffffff;
+    --surface2:  #e8eef4;
+    --border:    #d0dae5;
+    --ink:       #0f1c2e;
+    --muted:     #6b7f96;
+    --soft:      #2e4258;
+    --blue:      #1b5fcc;
+    --blue-dim:  rgba(27,95,204,0.09);
+    --blue-mid:  rgba(27,95,204,0.20);
+    --cyan:      #0a9396;
+    --cyan-dim:  rgba(10,147,150,0.09);
+    --orange:    #e07b2a;
+    --orange-dim:rgba(224,123,42,0.09);
+    --green:     #2d7a4f;
+    --green-dim: rgba(45,122,79,0.09);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  /* ── Animated top bar ── */
+  .topbar {
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--blue) 0%,
+      var(--cyan) 33%,
+      var(--orange) 66%,
+      var(--blue) 100%);
+    background-size: 300%;
+    animation: flow 6s linear infinite;
+  }
+  @keyframes flow {
+    0%   { background-position: 0% }
+    100% { background-position: 300% }
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    padding: 76px 32px 68px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse,
+      rgba(27,95,204,0.15) 0%,
+      rgba(10,147,150,0.07) 40%,
+      transparent 70%);
+    pointer-events: none;
+  }
+
+  /* floating dots decoration */
+  .dots {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .dots span {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .dots span:nth-child(1){ width:180px;height:180px; top:-60px;left:-40px; }
+  .dots span:nth-child(2){ width:120px;height:120px; top:20px;right:60px; }
+  .dots span:nth-child(3){ width:80px; height:80px;  bottom:10px;left:200px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #7ab3ff;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    width: 24px; height: 1px;
+    background: rgba(122,179,255,0.4);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 680px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  h1 .accent {
+    background: linear-gradient(90deg, #7ab3ff, #4dd9d9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ── Wave divider ── */
+  .wave {
+    background: var(--ink);
+    line-height: 0;
+  }
+  .wave svg { display: block; width: 100%; }
+
+  /* ── Main ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 54px 28px 90px;
+  }
+
+  /* ── Lead ── */
+  .lead {
+    font-family: 'Lora', serif;
+    font-size: 1.12rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.8;
+    padding: 26px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 4px;
+    margin-bottom: 56px;
+    box-shadow: 0 2px 12px rgba(15,28,46,0.05);
+  }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 58px; }
+
+  .section-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .section-tag::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  p { color: var(--soft); margin-bottom: 16px; }
+
+  strong { color: var(--ink); font-weight: 500; }
+
+  /* ── Visual sitemap diagram ── */
+  .sitemap-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 30px 20px 26px;
+    margin: 28px 0;
+    overflow-x: auto;
+  }
+
+  .diag-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .tree-root {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .tree-line-v {
+    width: 2px; height: 22px;
+    background: var(--border);
+  }
+
+  .tree-h-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+  }
+
+  .tree-h-line {
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: var(--border);
+  }
+
+  .tree-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 0;
+    padding: 0 6px;
+  }
+
+  .tree-branch-line {
+    width: 2px; height: 18px;
+    background: var(--border);
+  }
+
+  .tree-node {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .node-blue  { background: var(--blue-dim);   border: 1px solid var(--blue-mid); color: var(--blue); }
+  .node-cyan  { background: var(--cyan-dim);   border: 1px solid rgba(10,147,150,0.25); color: var(--cyan); }
+  .node-orange{ background: var(--orange-dim); border: 1px solid rgba(224,123,42,0.25); color: var(--orange); }
+  .node-green { background: var(--green-dim);  border: 1px solid rgba(45,122,79,0.25);  color: var(--green); }
+
+  /* ── Callout ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 5px;
+    margin: 22px 0;
+  }
+
+  .callout.blue   { background: var(--blue-dim);   border: 1px solid var(--blue-mid);              border-left: 3px solid var(--blue); }
+  .callout.cyan   { background: var(--cyan-dim);   border: 1px solid rgba(10,147,150,0.25);        border-left: 3px solid var(--cyan); }
+  .callout.orange { background: var(--orange-dim); border: 1px solid rgba(224,123,42,0.25);        border-left: 3px solid var(--orange); }
+  .callout.green  { background: var(--green-dim);  border: 1px solid rgba(45,122,79,0.25);         border-left: 3px solid var(--green); }
+
+  .callout strong {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .callout.blue   strong { color: var(--blue); }
+  .callout.cyan   strong { color: var(--cyan); }
+  .callout.orange strong { color: var(--orange); }
+  .callout.green  strong { color: var(--green); }
+  .callout p { font-size: 0.9rem; margin: 0; }
+
+  /* ── Code snippet ── */
+  .code-block {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin: 22px 0;
+    overflow-x: auto;
+  }
+
+  .code-block pre {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: #c9d8ea;
+    white-space: pre;
+  }
+
+  .code-block .tag   { color: #7ab3ff; }
+  .code-block .attr  { color: #4dd9d9; }
+  .code-block .val   { color: #f4b860; }
+  .code-block .comment { color: #5a7a9a; font-style: italic; }
+
+  /* ── Steps list ── */
+  ol.steps {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    counter-reset: step;
+  }
+
+  ol.steps li {
+    counter-increment: step;
+    padding: 14px 14px 14px 56px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+
+  ol.steps li:last-child { border-bottom: none; }
+
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 12px; top: 12px;
+    width: 28px; height: 28px;
+    background: var(--blue);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Type cards ── */
+  .type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 540px) {
+    .type-grid { grid-template-columns: 1fr; }
+  }
+
+  .type-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 18px;
+    transition: box-shadow 0.2s;
+  }
+
+  .type-card:hover {
+    box-shadow: 0 4px 18px rgba(15,28,46,0.09);
+  }
+
+  .type-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .type-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+    letter-spacing: -0.01em;
+  }
+
+  .type-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── Divider ── */
+  hr.div {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 52px 0;
+    position: relative;
+  }
+  hr.div::before {
+    content: '◉';
+    position: absolute;
+    top: -11px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 12px;
+    color: var(--blue);
+    font-size: 0.8rem;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(135deg, var(--ink) 0%, #162440 100%);
+    color: #fff;
+    padding: 44px 38px;
+    border-radius: 10px;
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(27,95,204,0.2), transparent 70%);
+    pointer-events: none;
+  }
+
+  .closing h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .closing h3 span {
+    background: linear-gradient(90deg, #7ab3ff, #4dd9d9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .closing p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 26px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 600px) {
+    main { padding: 36px 16px 60px; }
+    header { padding: 50px 20px 50px; }
+    h1 { font-size: 2.1rem; }
+    h2 { font-size: 1.35rem; }
+    .closing { padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<header>
+  <div class="dots">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="eyebrow">Technical SEO Guide</div>
+  <h1>How to Create a<br><span class="accent">Sitemap</span><br>for Your Website</h1>
+  <p class="header-sub">~800 words &nbsp;·&nbsp; Practical &amp; Human &nbsp;·&nbsp; 2026 Edition</p>
+</header>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,48 L0,24 Q360,0 720,24 Q1080,48 1440,24 L1440,48 Z" fill="#f0f4f8"/>
+  </svg>
+</div>
+
+<main>
+
+  <!-- Lead -->
+  <p class="lead">
+    A sitemap is like handing Google a personal guided tour of your entire website. Without one, search engines may wander your pages randomly — missing your best content entirely. With one, every page you care about gets found, crawled, and considered for ranking. Here is everything you need to know.
+  </p>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <p class="section-tag">The Basics</p>
+    <h2>What Is a Sitemap and Why Do You Need One?</h2>
+    <p>
+      A sitemap is a file — usually written in XML — that lists all the important pages on your website. It tells search engines like Google and Bing: <em>"These are the pages I want you to find, crawl, and index."</em> Think of it as a table of contents for your entire site, written in a language that search bots understand perfectly.
+    </p>
+    <p>
+      Without a sitemap, Google still crawls your site — but it relies solely on following links from page to page. New pages, pages buried deep in your site architecture, or pages with few internal links pointing to them may never get discovered. A sitemap eliminates that uncertainty.
+    </p>
+
+    <div class="callout blue">
+      <strong>Why It Matters</strong>
+      <p>Google has stated that sitemaps are especially important for large sites, new sites with few external links, and sites with rich media content like images and video. If you fall into any of those categories, a sitemap is not optional — it is essential.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 2 — Types -->
+  <div class="section">
+    <p class="section-tag">Types of Sitemaps</p>
+    <h2>The Four Types of Sitemaps You Should Know</h2>
+    <p>
+      Not all sitemaps are the same. Different types of content call for different sitemap formats. Most websites use the XML sitemap as their primary file, but others are worth knowing about depending on what your site publishes.
+    </p>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <span class="type-icon">📄</span>
+        <p class="type-name">XML Sitemap</p>
+        <p class="type-desc">The standard format for all websites. Lists URLs with optional metadata like last modified date and update frequency.</p>
+      </div>
+      <div class="type-card">
+        <span class="type-icon">🖼️</span>
+        <p class="type-name">Image Sitemap</p>
+        <p class="type-desc">Helps Google discover and index images on your pages — especially useful for photographers, e-commerce, and portfolio sites.</p>
+      </div>
+      <div class="type-card">
+        <span class="type-icon">🎬</span>
+        <p class="type-name">Video Sitemap</p>
+        <p class="type-desc">Provides metadata about embedded videos so Google can surface them in video search results and rich snippets.</p>
+      </div>
+      <div class="type-card">
+        <span class="type-icon">📰</span>
+        <p class="type-name">News Sitemap</p>
+        <p class="type-desc">Required for sites approved by Google News. Covers articles published in the last 48 hours for fast news indexing.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 3 — What it looks like -->
+  <div class="section">
+    <p class="section-tag">Under the Hood</p>
+    <h2>What a Sitemap Actually Looks Like</h2>
+    <p>
+      An XML sitemap is a plain text file with a structured format. Here is a simple example of what the code inside looks like — clean, readable, and easy for any search engine to process:
+    </p>
+
+    <div class="code-block">
+      <pre><span class="comment">&lt;!-- sitemap.xml --&gt;</span>
+<span class="tag">&lt;?xml</span> <span class="attr">version</span>=<span class="val">"1.0"</span> <span class="attr">encoding</span>=<span class="val">"UTF-8"</span><span class="tag">?&gt;</span>
+<span class="tag">&lt;urlset</span> <span class="attr">xmlns</span>=<span class="val">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;url&gt;</span>
+    <span class="tag">&lt;loc&gt;</span>https://yourblog.com/<span class="tag">&lt;/loc&gt;</span>
+    <span class="tag">&lt;lastmod&gt;</span>2026-03-01<span class="tag">&lt;/lastmod&gt;</span>
+    <span class="tag">&lt;changefreq&gt;</span>weekly<span class="tag">&lt;/changefreq&gt;</span>
+    <span class="tag">&lt;priority&gt;</span>1.0<span class="tag">&lt;/priority&gt;</span>
+  <span class="tag">&lt;/url&gt;</span>
+
+  <span class="tag">&lt;url&gt;</span>
+    <span class="tag">&lt;loc&gt;</span>https://yourblog.com/seo-tips/<span class="tag">&lt;/loc&gt;</span>
+    <span class="tag">&lt;lastmod&gt;</span>2026-02-18<span class="tag">&lt;/lastmod&gt;</span>
+    <span class="tag">&lt;changefreq&gt;</span>monthly<span class="tag">&lt;/changefreq&gt;</span>
+    <span class="tag">&lt;priority&gt;</span>0.8<span class="tag">&lt;/priority&gt;</span>
+  <span class="tag">&lt;/url&gt;</span>
+
+<span class="tag">&lt;/urlset&gt;</span></pre>
+    </div>
+
+    <p>
+      Each <code style="background:var(--surface2);padding:2px 7px;border-radius:3px;font-size:0.85rem;color:var(--blue);">&lt;url&gt;</code> block contains the page address, when it was last updated, how often it changes, and a priority score from 0.1 to 1.0. You do not need to fill in every field — the <strong>loc</strong> (URL) is the only required one.
+    </p>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 4 — How to create -->
+  <div class="section">
+    <p class="section-tag">Step by Step</p>
+    <h2>How to Create Your Sitemap — 5 Simple Methods</h2>
+    <p>
+      The method you use depends on how your website is built. Here are the five most common approaches, from the simplest to the most hands-on:
+    </p>
+
+    <ol class="steps">
+      <li><strong>WordPress (Yoast SEO or Rank Math):</strong> Install either plugin, and your sitemap is generated automatically at <em>yourdomain.com/sitemap.xml</em>. No setup needed beyond activating the feature in the plugin settings.</li>
+      <li><strong>Shopify:</strong> Shopify automatically generates a sitemap for every store at <em>yourdomain.com/sitemap.xml</em>. It updates itself as you add products and pages — completely hands-off.</li>
+      <li><strong>Online Sitemap Generators:</strong> Tools like XML-Sitemaps.com let you enter your URL and download a ready-made sitemap file within minutes. Best for smaller sites under 500 pages.</li>
+      <li><strong>Screaming Frog SEO Spider:</strong> The free version crawls up to 500 URLs and exports a complete sitemap. The paid version handles unlimited pages. Ideal for medium and large sites.</li>
+      <li><strong>Write It Manually:</strong> For very small sites of five to ten pages, you can write the XML file by hand using the format shown above. Save it as <em>sitemap.xml</em> and upload it to your root folder.</li>
+    </ol>
+
+    <div class="sitemap-diagram">
+      <p class="diag-label">Visual — Your Website Structure in a Sitemap</p>
+      <div class="tree">
+        <div class="tree-root">🏠 Homepage (Priority 1.0)</div>
+        <div class="tree-line-v"></div>
+        <div class="tree-h-row" style="width:100%;position:relative;">
+          <div class="tree-h-line"></div>
+          <div class="tree-branch">
+            <div class="tree-branch-line"></div>
+            <div class="tree-node node-blue">Blog (0.9)</div>
+          </div>
+          <div class="tree-branch">
+            <div class="tree-branch-line"></div>
+            <div class="tree-node node-cyan">About (0.7)</div>
+          </div>
+          <div class="tree-branch">
+            <div class="tree-branch-line"></div>
+            <div class="tree-node node-orange">Services (0.8)</div>
+          </div>
+          <div class="tree-branch">
+            <div class="tree-branch-line"></div>
+            <div class="tree-node node-green">Contact (0.6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 5 — Submit -->
+  <div class="section">
+    <p class="section-tag">Submitting to Google</p>
+    <h2>How to Submit Your Sitemap to Google Search Console</h2>
+    <p>
+      Creating a sitemap is only half the job. You need to tell Google it exists. The fastest way is through Google Search Console — Google's free webmaster tool that every site owner should be using.
+    </p>
+
+    <ol class="steps">
+      <li>Go to <strong>Google Search Console</strong> and verify ownership of your website if you have not already done so.</li>
+      <li>In the left sidebar, click <strong>Sitemaps</strong> under the Indexing section.</li>
+      <li>In the "Add a new sitemap" field, type the path to your sitemap — usually just <em>sitemap.xml</em>.</li>
+      <li>Click <strong>Submit</strong>. Google will begin crawling it within hours to a few days.</li>
+    </ol>
+
+    <div class="callout cyan">
+      <strong>Also Submit to Bing</strong>
+      <p>Do not forget Bing Webmaster Tools. Bing powers both Bing and DuckDuckGo search results. Submitting your sitemap there takes two minutes and gives you access to a significant portion of additional search traffic at no extra cost.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 6 — Best practices -->
+  <div class="section">
+    <p class="section-tag">Best Practices</p>
+    <h2>Keep Your Sitemap Clean and Up to Date</h2>
+    <p>
+      A sitemap is not a set-and-forget tool. It needs occasional maintenance to stay accurate and useful. Including the wrong URLs — broken pages, redirects, or pages marked <em>noindex</em> — can actually confuse Google and dilute the crawl budget allocated to your site.
+    </p>
+    <p>
+      Only include pages you want indexed. If a page has a noindex tag, a canonical pointing elsewhere, or returns a 404 error, remove it from your sitemap immediately. Quality always beats quantity when it comes to the URLs you submit.
+    </p>
+
+    <div class="callout orange">
+      <strong>Sitemap Size Limit</strong>
+      <p>A single sitemap file can contain a maximum of 50,000 URLs and must not exceed 50MB uncompressed. If your site is larger, use a sitemap index file — a master XML file that points to multiple individual sitemaps, one for each section of your site.</p>
+    </div>
+
+    <div class="callout green">
+      <strong>Keep It Fresh</strong>
+      <p>Every time you publish a new article or page, make sure your sitemap updates to include it. If you use WordPress with Yoast or Rank Math, this happens automatically. For manually maintained sitemaps, build the update into your publishing checklist.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <h3>Give Google the <span>Map It Needs</span></h3>
+    <p>
+      A sitemap takes minutes to create and costs nothing to submit. Yet it directly influences how quickly and completely Google discovers your content. For any site that is serious about organic traffic, creating and maintaining a sitemap is not optional — it is the bare minimum of good technical SEO. Build it today. Submit it today. Then let Google do its job.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 &nbsp;·&nbsp; How to Create a Sitemap — Complete SEO Guide &nbsp;·&nbsp; Written for human readers
+</footer>
+
+</body>
+</html>
