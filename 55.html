@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogging Content Calendar Guide — Plan, Create, Publish</title>
+<link href="https://fonts.googleapis.com/css2?family=Bigshot+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #fff9f2;
+    --surface:     #ffffff;
+    --surface2:    #fef3e8;
+    --border:      #eaddce;
+    --ink:         #1c1409;
+    --soft:        #3d2e1a;
+    --muted:       #9a8268;
+    --terra:       #c4521a;
+    --terra-dim:   rgba(196,82,26,0.09);
+    --terra-mid:   rgba(196,82,26,0.22);
+    --moss:        #4a7c59;
+    --moss-dim:    rgba(74,124,89,0.10);
+    --sky:         #2e7fb8;
+    --sky-dim:     rgba(46,127,184,0.09);
+    --gold:        #c99a2e;
+    --gold-dim:    rgba(201,154,46,0.10);
+    --blush:       #c4526a;
+    --blush-dim:   rgba(196,82,106,0.09);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.88;
+  }
+
+  /* ── Decorative top ribbon ── */
+  .ribbon {
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--terra) 0px, var(--terra) 60px,
+      var(--gold)  60px, var(--gold)  120px,
+      var(--moss)  120px, var(--moss) 180px,
+      var(--sky)   180px, var(--sky)  240px,
+      var(--blush) 240px, var(--blush)300px
+    );
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 72px 32px 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Texture grain overlay */
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  /* radial warm glow */
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(196,82,26,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #e8a87c;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .kicker::before, .kicker::after {
+    content: '';
+    width: 30px; height: 1px;
+    background: rgba(232,168,124,0.45);
+  }
+
+  h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #fff9f2;
+    max-width: 720px;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #e8a87c;
+    font-weight: 400;
+  }
+
+  .header-meta {
+    font-size: 0.85rem;
+    color: rgba(255,249,242,0.38);
+    letter-spacing: 0.07em;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Calendar preview widget ── */
+  .cal-widget {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 12px 12px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 -6px 40px rgba(0,0,0,0.28);
+  }
+
+  .cal-head {
+    background: var(--surface2);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cal-month {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .cal-nav {
+    display: flex;
+    gap: 6px;
+  }
+
+  .cal-btn {
+    width: 26px; height: 26px;
+    border-radius: 5px;
+    background: var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 12px 14px 16px;
+    gap: 4px;
+  }
+
+  .cal-day-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    padding: 4px 0 8px;
+  }
+
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--soft);
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .cal-day.empty { opacity: 0 }
+
+  .cal-day.has-post {
+    font-weight: 700;
+    color: var(--surface);
+  }
+
+  .cal-day.has-post::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 5px;
+    z-index: -1;
+  }
+
+  .post-terra::before { background: var(--terra); }
+  .post-moss::before  { background: var(--moss);  }
+  .post-sky::before   { background: var(--sky);   }
+  .post-gold::before  { background: var(--gold);  }
+  .post-blush::before { background: var(--blush); }
+
+  .cal-day.today {
+    outline: 2px solid var(--terra);
+    outline-offset: 1px;
+    border-radius: 6px;
+  }
+
+  /* legend */
+  .cal-legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 10px 16px 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.67rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .leg-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+
+  /* ── Main ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 62px 28px 90px;
+  }
+
+  /* ── Lead ── */
+  .lead {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.82;
+    padding: 26px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--terra);
+    border-radius: 3px;
+    margin-bottom: 56px;
+    box-shadow: 0 2px 10px rgba(28,20,9,0.04);
+  }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 56px; }
+
+  .section-tag {
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .section-tag::after {
+    content: ''; flex:1; height:1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.22;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  p { color: var(--soft); margin-bottom: 16px; }
+  strong { color: var(--ink); font-weight: 700; }
+
+  /* ── Benefits grid ── */
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  @media(max-width:560px){
+    .benefit-grid { grid-template-columns:1fr 1fr; }
+    .cal-grid { gap: 2px; }
+  }
+
+  .bcard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+
+  .bcard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(28,20,9,0.08);
+  }
+
+  .bcard-icon { font-size: 1.6rem; margin-bottom: 8px; display:block; }
+
+  .bcard-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+
+  .bcard-desc {
+    font-size: 0.77rem;
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  /* ── Step list ── */
+  ol.steps {
+    list-style: none; padding:0; margin:20px 0;
+    counter-reset: step;
+  }
+
+  ol.steps li {
+    counter-increment: step;
+    padding: 15px 14px 15px 58px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--soft);
+    font-size: 0.96rem;
+  }
+
+  ol.steps li:last-child { border-bottom:none; }
+
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left: 10px; top: 13px;
+    width: 30px; height: 30px;
+    background: var(--terra);
+    color: #fff;
+    font-size: 0.78rem; font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  /* ── Content type cards ── */
+  .type-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 22px 0;
+  }
+
+  .type-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    transition: border-color 0.18s;
+  }
+
+  .type-item:hover { border-color: var(--terra-mid); }
+
+  .type-badge {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .tb-terra  { background: var(--terra-dim); }
+  .tb-moss   { background: var(--moss-dim);  }
+  .tb-sky    { background: var(--sky-dim);   }
+  .tb-gold   { background: var(--gold-dim);  }
+  .tb-blush  { background: var(--blush-dim); }
+
+  .type-info { flex: 1; }
+
+  .type-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .type-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .type-freq {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .freq-t { background:var(--terra-dim);  color:var(--terra);  }
+  .freq-m { background:var(--moss-dim);   color:var(--moss);   }
+  .freq-s { background:var(--sky-dim);    color:var(--sky);    }
+  .freq-g { background:var(--gold-dim);   color:var(--gold);   }
+  .freq-b { background:var(--blush-dim);  color:var(--blush);  }
+
+  /* ── Callout boxes ── */
+  .callout {
+    padding: 17px 20px;
+    border-radius: 5px;
+    margin: 22px 0;
+  }
+
+  .cb-terra { background:var(--terra-dim); border:1px solid var(--terra-mid);           border-left:3px solid var(--terra); }
+  .cb-moss  { background:var(--moss-dim);  border:1px solid rgba(74,124,89,0.25);        border-left:3px solid var(--moss);  }
+  .cb-sky   { background:var(--sky-dim);   border:1px solid rgba(46,127,184,0.25);       border-left:3px solid var(--sky);   }
+  .cb-gold  { background:var(--gold-dim);  border:1px solid rgba(201,154,46,0.25);       border-left:3px solid var(--gold);  }
+  .cb-blush { background:var(--blush-dim); border:1px solid rgba(196,82,106,0.25);       border-left:3px solid var(--blush); }
+
+  .callout strong {
+    font-size: 0.67rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform:uppercase;
+    display:block; margin-bottom:5px;
+  }
+  .cb-terra strong { color:var(--terra); }
+  .cb-moss  strong { color:var(--moss);  }
+  .cb-sky   strong { color:var(--sky);   }
+  .cb-gold  strong { color:var(--gold);  }
+  .cb-blush strong { color:var(--blush); }
+  .callout p { font-size:0.9rem; margin:0; }
+
+  /* ── Sample weekly plan ── */
+  .week-plan {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+
+  .week-plan-head {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 12px 20px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .week-row {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+
+  .week-row:last-child { border-bottom:none; }
+
+  .week-day {
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .week-task { color: var(--soft); }
+
+  .week-tag {
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── Checklist ── */
+  ul.check {
+    list-style:none; padding:0; margin:18px 0;
+  }
+  ul.check li {
+    padding: 10px 0 10px 32px;
+    position:relative;
+    border-bottom:1px solid var(--border);
+    color:var(--soft);
+    font-size:0.96rem;
+  }
+  ul.check li:last-child { border-bottom:none; }
+  ul.check li::before {
+    content:'✦';
+    position:absolute; left:4px;
+    color:var(--terra); font-size:0.75rem;
+  }
+
+  /* ── Divider ── */
+  hr.div {
+    border:none; border-top:1px solid var(--border);
+    margin:52px 0; position:relative;
+  }
+  hr.div::before {
+    content:'✦';
+    position:absolute; top:-10px; left:50%;
+    transform:translateX(-50%);
+    background:var(--bg); padding:0 12px;
+    color:var(--terra); font-size:0.85rem;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 46px 40px;
+    border-radius: 10px;
+    margin-top: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 10% 90%, rgba(196,82,26,0.14) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 10%, rgba(74,124,89,0.10) 0%, transparent 50%);
+    pointer-events:none;
+  }
+
+  .closing h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #fff9f2;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .closing h3 span { color: #e8a87c; }
+
+  .closing p {
+    color: rgba(255,249,242,0.62);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align:center;
+    padding:26px;
+    font-size:0.78rem;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    letter-spacing:0.05em;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0);    }
+  }
+
+  .section {
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:nth-child(1){ animation-delay:0.05s; }
+  .section:nth-child(2){ animation-delay:0.10s; }
+  .section:nth-child(3){ animation-delay:0.15s; }
+  .section:nth-child(4){ animation-delay:0.20s; }
+  .section:nth-child(5){ animation-delay:0.25s; }
+  .section:nth-child(6){ animation-delay:0.30s; }
+
+  @media(max-width:600px){
+    main{padding:36px 16px 60px;}
+    header{padding:50px 18px 0;}
+    h1{font-size:2.2rem;}
+    h2{font-size:1.38rem;}
+    .closing{padding:30px 20px;}
+    .week-row{grid-template-columns:70px 1fr; gap:8px;}
+    .week-tag{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon"></div>
+
+<header>
+  <div class="kicker">Content Strategy</div>
+  <h1>The Blogging<br><em>Content Calendar</em><br>Guide</h1>
+  <p class="header-meta">~800 words &nbsp;·&nbsp; Practical &amp; Human &nbsp;·&nbsp; 2026 Edition</p>
+
+  <!-- Calendar Preview Widget -->
+  <div class="cal-widget">
+    <div class="cal-head">
+      <span class="cal-month">📅 &nbsp;April 2026 — Publishing Plan</span>
+      <div class="cal-nav">
+        <div class="cal-btn">‹</div>
+        <div class="cal-btn">›</div>
+      </div>
+    </div>
+    <div class="cal-grid">
+      <!-- Day labels -->
+      <div class="cal-day-label">Mon</div>
+      <div class="cal-day-label">Tue</div>
+      <div class="cal-day-label">Wed</div>
+      <div class="cal-day-label">Thu</div>
+      <div class="cal-day-label">Fri</div>
+      <div class="cal-day-label">Sat</div>
+      <div class="cal-day-label">Sun</div>
+      <!-- Week 1 -->
+      <div class="cal-day empty"></div>
+      <div class="cal-day">1</div>
+      <div class="cal-day has-post post-terra">2</div>
+      <div class="cal-day">3</div>
+      <div class="cal-day">4</div>
+      <div class="cal-day">5</div>
+      <div class="cal-day">6</div>
+      <!-- Week 2 -->
+      <div class="cal-day has-post post-moss">7</div>
+      <div class="cal-day">8</div>
+      <div class="cal-day">9</div>
+      <div class="cal-day has-post post-sky">10</div>
+      <div class="cal-day today">11</div>
+      <div class="cal-day">12</div>
+      <div class="cal-day">13</div>
+      <!-- Week 3 -->
+      <div class="cal-day">14</div>
+      <div class="cal-day has-post post-gold">15</div>
+      <div class="cal-day">16</div>
+      <div class="cal-day">17</div>
+      <div class="cal-day has-post post-blush">18</div>
+      <div class="cal-day">19</div>
+      <div class="cal-day">20</div>
+      <!-- Week 4 -->
+      <div class="cal-day has-post post-terra">21</div>
+      <div class="cal-day">22</div>
+      <div class="cal-day">23</div>
+      <div class="cal-day has-post post-moss">24</div>
+      <div class="cal-day">25</div>
+      <div class="cal-day">26</div>
+      <div class="cal-day">27</div>
+      <!-- Week 5 -->
+      <div class="cal-day has-post post-sky">28</div>
+      <div class="cal-day">29</div>
+      <div class="cal-day has-post post-gold">30</div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+      <div class="cal-day empty"></div>
+    </div>
+    <div class="cal-legend">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--terra)"></div>How-To</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--moss)"></div>Listicle</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--sky)"></div>Opinion</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div>Case Study</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--blush)"></div>Round-Up</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Lead -->
+  <p class="lead">
+    The difference between bloggers who burn out after three months and those who publish consistently for years almost always comes down to one thing: a content calendar. It turns the overwhelming question of "what do I write next?" into a quiet, confident answer that is already waiting for you every Monday morning.
+  </p>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <p class="section-tag">The Foundation</p>
+    <h2>What Is a Content Calendar and Why Does It Matter?</h2>
+    <p>
+      A content calendar is a planned schedule of what you will publish, when you will publish it, and what type of content each piece will be. It can live in a spreadsheet, a dedicated tool like Notion or Trello, or even a simple paper notebook. The format is far less important than the habit of using it.
+    </p>
+    <p>
+      Without a calendar, most bloggers fall into a reactive pattern — writing only when inspiration strikes, scrambling to fill gaps, and publishing inconsistently. Consistency is one of the most powerful signals you can send to both your audience and to search engines. Readers return when they know new content is coming. Google rewards sites that publish regularly with more frequent crawling and indexing.
+    </p>
+    <div class="callout cb-terra">
+      <strong>The Consistency Effect</strong>
+      <p>Research consistently shows that blogs publishing two to four times per week receive significantly more organic traffic than those that publish sporadically. A content calendar is the only reliable way to hit that cadence without burning out or sacrificing quality.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 2 — Benefits -->
+  <div class="section">
+    <p class="section-tag">Why It Works</p>
+    <h2>Six Real Benefits of Planning Your Content</h2>
+    <p>
+      A content calendar is not just a to-do list — it is a strategic tool that improves almost every aspect of how you create and publish. Here is what changes when you start planning ahead:
+    </p>
+
+    <div class="benefit-grid">
+      <div class="bcard">
+        <span class="bcard-icon">🧭</span>
+        <p class="bcard-name">Clarity</p>
+        <p class="bcard-desc">You always know what to write next. No more blank-screen paralysis.</p>
+      </div>
+      <div class="bcard">
+        <span class="bcard-icon">⚡</span>
+        <p class="bcard-name">Speed</p>
+        <p class="bcard-desc">Planning ahead means you can batch research, outline, and draft more efficiently.</p>
+      </div>
+      <div class="bcard">
+        <span class="bcard-icon">🎯</span>
+        <p class="bcard-name">Strategy</p>
+        <p class="bcard-desc">Align your content with seasonal trends, product launches, and SEO goals.</p>
+      </div>
+      <div class="bcard">
+        <span class="bcard-icon">⚖️</span>
+        <p class="bcard-name">Balance</p>
+        <p class="bcard-desc">Mix content types — how-tos, listicles, opinions — for a varied, engaging feed.</p>
+      </div>
+      <div class="bcard">
+        <span class="bcard-icon">📊</span>
+        <p class="bcard-name">Analytics</p>
+        <p class="bcard-desc">Track which planned topics perform best and refine future planning accordingly.</p>
+      </div>
+      <div class="bcard">
+        <span class="bcard-icon">🤝</span>
+        <p class="bcard-name">Collaboration</p>
+        <p class="bcard-desc">If you work with writers or editors, a shared calendar keeps everyone aligned.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 3 — Content types -->
+  <div class="section">
+    <p class="section-tag">What to Include</p>
+    <h2>The Five Content Types Every Calendar Needs</h2>
+    <p>
+      A strong content calendar does not just track publish dates — it maps a deliberate <em>mix</em> of content types. Each type serves a different purpose for your audience and for your SEO strategy. Vary the mix and your blog never feels repetitive.
+    </p>
+
+    <div class="type-row">
+      <div class="type-item">
+        <div class="type-badge tb-terra">📖</div>
+        <div class="type-info">
+          <p class="type-name">How-To Guides &amp; Tutorials</p>
+          <p class="type-desc">Your highest-value SEO content. Answers a specific question and drives long-term organic traffic.</p>
+        </div>
+        <span class="type-freq freq-t">Weekly</span>
+      </div>
+      <div class="type-item">
+        <div class="type-badge tb-moss">📋</div>
+        <div class="type-info">
+          <p class="type-name">Listicles &amp; Round-Ups</p>
+          <p class="type-desc">Highly shareable, easy to scan, and great for social traffic. Readers love numbered lists.</p>
+        </div>
+        <span class="type-freq freq-m">Bi-weekly</span>
+      </div>
+      <div class="type-item">
+        <div class="type-badge tb-sky">💡</div>
+        <div class="type-info">
+          <p class="type-name">Opinion &amp; Personal Stories</p>
+          <p class="type-desc">Builds your voice and loyal readership. People follow blogs because of people, not just information.</p>
+        </div>
+        <span class="type-freq freq-s">Monthly</span>
+      </div>
+      <div class="type-item">
+        <div class="type-badge tb-gold">🔬</div>
+        <div class="type-info">
+          <p class="type-name">Case Studies &amp; Deep Dives</p>
+          <p class="type-desc">Establishes authority and earns backlinks. Takes time to write but delivers outsized long-term results.</p>
+        </div>
+        <span class="type-freq freq-g">Monthly</span>
+      </div>
+      <div class="type-item">
+        <div class="type-badge tb-blush">📡</div>
+        <div class="type-info">
+          <p class="type-name">News &amp; Trend Commentary</p>
+          <p class="type-desc">Taps into short-term search spikes. Timely posts can bring sudden traffic bursts from trending queries.</p>
+        </div>
+        <span class="type-freq freq-b">As needed</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 4 — How to build one -->
+  <div class="section">
+    <p class="section-tag">Building Yours</p>
+    <h2>How to Build Your Content Calendar in 6 Steps</h2>
+    <p>
+      Building a content calendar for the first time does not need to be complicated. Start with one month and expand from there. Here is the process that works for most bloggers:
+    </p>
+
+    <ol class="steps">
+      <li><strong>Set your publishing frequency first.</strong> Be realistic — one high-quality post per week beats three rushed ones. Choose a cadence you can maintain for six months without burning out, then stick to it.</li>
+      <li><strong>Brainstorm 20–30 topic ideas</strong> using keyword research tools, your existing analytics, reader questions, competitor gaps, and your own expertise. Do not filter at this stage — quantity over quality in the brainstorm.</li>
+      <li><strong>Categorise each idea</strong> by content type (how-to, listicle, opinion) and priority (high traffic potential, builds authority, fills a content gap). This lets you see at a glance if your mix is balanced.</li>
+      <li><strong>Map topics to calendar slots</strong> considering seasonal relevance. A gift guide belongs in November, not February. A spring cleaning tips post should run in March, not July.</li>
+      <li><strong>Add deadlines for each stage</strong> of the writing process: research, first draft, editing, images, and publish. Working backwards from the publish date keeps you from rushing at the last minute.</li>
+      <li><strong>Review and adjust monthly.</strong> At the end of each month, look at what performed well and what flopped. Let the data guide what types of content you schedule more or less of going forward.</li>
+    </ol>
+
+    <div class="callout cb-moss">
+      <strong>Tools to Use</strong>
+      <p>Notion, Trello, Airtable, and Google Sheets are all excellent for content calendars. Google Sheets is free and simple — good enough for most solo bloggers. Notion adds database-style views if you want to filter by content type or status. Choose the simplest tool you will actually use.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 5 — Sample week -->
+  <div class="section">
+    <p class="section-tag">In Practice</p>
+    <h2>What a Real Content Week Looks Like</h2>
+    <p>
+      A content calendar works best when it drives a weekly workflow — not just a list of publish dates. Here is how a structured blogging week might unfold when your calendar is guiding you:
+    </p>
+
+    <div class="week-plan">
+      <div class="week-plan-head">
+        📆 &nbsp; Sample Weekly Content Workflow
+      </div>
+      <div class="week-row">
+        <span class="week-day">Monday</span>
+        <span class="week-task">Review last week's analytics. Confirm this week's topic. Research keywords and outline the article.</span>
+        <span class="week-tag" style="background:var(--terra-dim);color:var(--terra);">Plan</span>
+      </div>
+      <div class="week-row">
+        <span class="week-day">Tuesday</span>
+        <span class="week-task">Write the first draft in one focused session. Do not edit — just write from outline to end.</span>
+        <span class="week-tag" style="background:var(--sky-dim);color:var(--sky);">Write</span>
+      </div>
+      <div class="week-row">
+        <span class="week-day">Wednesday</span>
+        <span class="week-task">Edit the draft. Improve clarity, trim excess, add internal links. Write meta description and title.</span>
+        <span class="week-tag" style="background:var(--moss-dim);color:var(--moss);">Edit</span>
+      </div>
+      <div class="week-row">
+        <span class="week-day">Thursday</span>
+        <span class="week-task">Add images, format for readability, final proof-read. Schedule the post for Friday morning.</span>
+        <span class="week-tag" style="background:var(--gold-dim);color:var(--gold);">Polish</span>
+      </div>
+      <div class="week-row">
+        <span class="week-day">Friday</span>
+        <span class="week-task">Post goes live. Share on social channels. Reach out to one or two relevant sites with a mention.</span>
+        <span class="week-tag" style="background:var(--blush-dim);color:var(--blush);">Publish</span>
+      </div>
+    </div>
+
+    <div class="callout cb-gold">
+      <strong>Batch When Possible</strong>
+      <p>If your schedule allows, try writing two posts in a single session on a productive day. A content buffer of two to three ready-to-publish posts gives you breathing room when life gets busy — and protects your consistency streak when it matters most.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- Section 6 — Common mistakes -->
+  <div class="section">
+    <p class="section-tag">Pitfalls to Avoid</p>
+    <h2>The Mistakes That Derail Most Content Calendars</h2>
+    <p>
+      A content calendar only delivers results if it gets used consistently. These are the patterns that cause most bloggers to abandon theirs within a few weeks:
+    </p>
+
+    <ul class="check">
+      <li><strong>Planning too far ahead with too much detail.</strong> A twelve-month calendar with fully written briefs for every post is impressive and paralyzing. Plan one month in detail, keep the next two months at the topic-idea level, and leave the rest loose.</li>
+      <li><strong>Scheduling more posts than you can realistically write.</strong> An ambitious calendar you fail to follow is demoralising. Start conservatively — one post per week — then increase only after you have held that pace for two full months.</li>
+      <li><strong>Ignoring performance data when planning future content.</strong> Your calendar should be a living document. If a topic you planned is clearly not resonating with your audience, swap it out. Data beats theory every time.</li>
+      <li><strong>Treating every week the same.</strong> Build lighter weeks into your calendar deliberately — weeks for updating old posts, researching future topics, or simply resting. Sustainable output over the long term beats unsustainable sprints.</li>
+    </ul>
+
+    <div class="callout cb-blush">
+      <strong>One Month at a Time</strong>
+      <p>The best content calendars are reviewed and rebuilt every month, not set-and-forgotten at the start of the year. A thirty-minute monthly planning session — reviewing last month's data, picking next month's topics, and slotting them into dates — is all it takes to stay ahead of the game indefinitely.</p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <h3>Plan It Once. <span>Publish It Forever.</span></h3>
+    <p>
+      A content calendar turns blogging from a reactive scramble into a calm, intentional practice. It will not write your posts for you — but it will make sure you always know exactly what to write, when to write it, and why it matters. Build yours this week. Start with just four posts. Let the habit grow from there.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 &nbsp;·&nbsp; Blogging Content Calendar Guide &nbsp;·&nbsp; Written for human readers
+</footer>
+
+</body>
+</html>
