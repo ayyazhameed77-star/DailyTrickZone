@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Improve Google Ranking</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f6f9f8;
+    --surface:   #ffffff;
+    --surface2:  #ecf4f1;
+    --border:    #d8ede7;
+    --ink:       #0a1a14;
+    --muted:     #6a8a7a;
+    --accent:    #1a7a50;
+    --google:    #1a73e8;
+    --amber:     #a86810;
+    --rose:      #a83040;
+    --violet:    #5820a0;
+    --teal:      #0a7878;
+    --gold:      #8a6010;
+    --soft:      rgba(26,122,80,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.016'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .header-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .hl-icon {
+    width: 38px; height: 38px;
+    background: rgba(26,115,232,0.1);
+    border: 1px solid rgba(26,115,232,0.22);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .hl-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hl-cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--google);
+  }
+
+  .hl-sub {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.4rem, 6.2vw, 4.1rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hr-line { flex: 1; height: 1px; background: var(--border); }
+  .hr-g {
+    font-size: 13px;
+    color: var(--google);
+    opacity: 0.5;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #1e3828;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: 26px;
+    align-items: stretch;
+  }
+
+  .pq-bar {
+    background: linear-gradient(to bottom, var(--google), var(--accent));
+    border-radius: 3px;
+  }
+
+  .pq-inner { padding: 4px 0; }
+
+  .pq-inner p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.26rem;
+    color: var(--ink) !important;
+    line-height: 1.62;
+    margin: 0 !important;
+    font-weight: 600;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── RANKING FACTOR CARDS ── */
+  .factor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .factor-card:hover {
+    box-shadow: 0 6px 28px rgba(26,122,80,0.08);
+    border-color: rgba(26,122,80,0.22);
+  }
+
+  .fc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .fc-bar { width: 4px; flex-shrink: 0; }
+
+  .fc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .fc-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .factor-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .fc-weight {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .fc-body { padding: 18px 24px 20px 28px; }
+
+  .fc-body p {
+    font-size: 0.94rem;
+    color: #2a4838;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── ACTION TIP ── */
+  .action-tip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 9px 9px 0;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .at-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .action-tip p {
+    font-size: 0.87rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── GOOGLE FACTORS OVERVIEW ── */
+  .factors-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 11px;
+    margin: 26px 0 38px;
+  }
+
+  .fo-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fo-tile:hover { border-color: rgba(26,122,80,0.25); }
+
+  .fo-tile::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .ft1::before { background: var(--google); }
+  .ft2::before { background: var(--accent); }
+  .ft3::before { background: var(--amber); }
+  .ft4::before { background: var(--violet); }
+
+  .fo-emoji { font-size: 22px; display: block; margin-bottom: 9px; }
+
+  .fo-tile h4 {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .fo-tile p {
+    font-size: 0.74rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+
+  /* ── RANKING IMPACT BARS ── */
+  .impact-bars {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin: 26px 0 36px;
+  }
+
+  .ib-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .ib-rows { display: grid; gap: 12px; }
+
+  .ib-row {
+    display: grid;
+    grid-template-columns: 190px 1fr 100px;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .ib-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .ib-track {
+    height: 7px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .ib-fill { height: 100%; border-radius: 10px; }
+
+  .ib-val {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  /* ── QUICK WINS ── */
+  .quick-wins {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin: 26px 0 36px;
+  }
+
+  .qw-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .qw-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 22px;
+  }
+
+  .qw-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #2a4838;
+    line-height: 1.56;
+  }
+
+  .qw-item::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 1px;
+  }
+
+  /* ── FINAL ACTION PANEL ── */
+  .final-panel {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 0% 100%, rgba(26,122,80,0.2), transparent),
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(26,115,232,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .fp-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #6a8870;
+    line-height: 1.56;
+  }
+
+  .fp-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .factors-overview { grid-template-columns: 1fr 1fr; }
+    .ib-row { grid-template-columns: 130px 1fr 70px; }
+    .qw-items { grid-template-columns: 1fr; }
+    .fp-grid { grid-template-columns: 1fr; }
+    .pull-quote { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-label">
+      <div class="hl-icon">🔍</div>
+      <div class="hl-stack">
+        <span class="hl-cat">Google Rankings</span>
+        <span class="hl-sub">Complete Strategy Guide · 2026</span>
+      </div>
+    </div>
+    <h1>How to Improve<br>Your <em>Google Ranking</em></h1>
+    <p class="deck">Ranking higher on Google is not a mystery reserved for technical experts. It is a set of learnable, actionable principles applied consistently over time. Here is the complete picture — every factor that matters, and exactly what to do about each one.</p>
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <span class="hr-g">◉</span>
+      <div class="hr-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a reason that "how to rank on Google" remains one of the most searched topics in the entire digital marketing space year after year. Google controls roughly 92% of global search traffic, which means a ranking improvement from position ten to position three on a single high-traffic keyword can transform a blog's entire business. The difference between page one and page two is not modest — it is the difference between being found and being invisible, between growing and stagnating.</p>
+
+    <p>Yet for many bloggers, Google's ranking algorithm feels like a black box — unpredictable, constantly changing, and accessible only to specialists with expensive tools and deep technical knowledge. The truth is both more humbling and more encouraging: Google's core ranking principles have remained remarkably consistent for years, and the actions that move the needle most are available to any blogger willing to understand them and apply them with patience and discipline.</p>
+
+    <div class="pull-quote">
+      <div class="pq-bar"></div>
+      <div class="pq-inner">
+        <p>Google's goal and your goal are identical — to put the most genuinely useful content in front of the person searching for it. Align your blog with that goal completely, and the rankings will follow.</p>
+      </div>
+    </div>
+
+    <!-- FACTORS OVERVIEW -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,115,232,0.1);color:var(--google);border:1px solid rgba(26,115,232,0.2)">The Pillars</span>
+      The Four Foundations Google Ranks On
+    </h2>
+
+    <div class="factors-overview">
+      <div class="fo-tile ft1">
+        <span class="fo-emoji">📝</span>
+        <h4>Content Quality</h4>
+        <p>Depth, originality, and genuine helpfulness to searchers</p>
+      </div>
+      <div class="fo-tile ft2">
+        <span class="fo-emoji">🔗</span>
+        <h4>Authority</h4>
+        <p>Backlinks and trust signals from respected external sites</p>
+      </div>
+      <div class="fo-tile ft3">
+        <span class="fo-emoji">⚡</span>
+        <h4>Technical SEO</h4>
+        <p>Speed, mobile experience, and clean site architecture</p>
+      </div>
+      <div class="fo-tile ft4">
+        <span class="fo-emoji">🎯</span>
+        <h4>Search Intent</h4>
+        <p>Matching what you wrote to why people are actually searching</p>
+      </div>
+    </div>
+
+    <!-- FACTOR 1: CONTENT -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,122,80,0.1);color:var(--accent);border:1px solid rgba(26,122,80,0.2)">Factor 01</span>
+      Content Quality — The Ranking Factor That Overrides Everything
+    </h2>
+
+    <p>Google's entire business model depends on sending searchers to content that genuinely answers their questions. In 2026, after years of algorithm refinements, this remains the single most important ranking factor — not because it is the easiest to manipulate, but because it is the hardest to fake at scale. A blog post that truly, comprehensively, and clearly addresses what its target keyword's searcher needs will consistently outperform technically superior but genuinely thinner content over time.</p>
+
+    <div class="factor-card">
+      <div class="fc-top">
+        <div class="fc-bar" style="background:var(--accent)"></div>
+        <div class="fc-top-inner">
+          <div class="fc-icon" style="background:rgba(26,122,80,0.1);color:var(--accent)">📝</div>
+          <h3>Write Content That Fully Satisfies Search Intent</h3>
+          <span class="fc-weight" style="background:rgba(26,122,80,0.1);color:var(--accent);border:1px solid rgba(26,122,80,0.2)">Highest Impact</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>Before writing a single word, search your target keyword and study the top ten results carefully. What questions do they all answer? What structure do they share? What subtopics do they consistently include? This analysis reveals what Google has determined that searchers want — and your content needs to address all of it while adding something the existing results lack. Longer content ranks better not because of word count, but because thorough coverage of a topic naturally satisfies more of the related questions a searcher may have. Aim for depth over length: every paragraph should earn its place by serving the reader, not padding a word count.</p>
+        <div class="action-tip">
+          <span class="at-label">Action Now</span>
+          <p>Open Google Search Console and find your posts ranking between positions 11–30. These articles are nearly ranking — they need targeted improvements to cross into page one, not new articles. Improve these posts first for the fastest ranking gains.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACTOR 2: BACKLINKS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,115,232,0.1);color:var(--google);border:1px solid rgba(26,115,232,0.2)">Factor 02</span>
+      Backlinks — Votes of Trust From the Wider Web
+    </h2>
+
+    <div class="factor-card">
+      <div class="fc-top">
+        <div class="fc-bar" style="background:var(--google)"></div>
+        <div class="fc-top-inner">
+          <div class="fc-icon" style="background:rgba(26,115,232,0.1);color:var(--google)">🔗</div>
+          <h3>Earn Links Rather Than Build Them — Quality Over Quantity</h3>
+          <span class="fc-weight" style="background:rgba(26,115,232,0.1);color:var(--google);border:1px solid rgba(26,115,232,0.2)">Off-Page Power</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>A backlink — another website linking to your content — is Google's most reliable signal that your content has earned external trust. The quality of the linking site matters enormously: a single link from a genuinely authoritative, relevant website carries more ranking weight than a hundred links from low-quality directories. The most sustainable way to earn backlinks is to create content so thorough, so original, or so data-rich that other writers naturally cite it as a reference. Guest posting on respected blogs in your niche, publishing original research or surveys, and creating comprehensive resource articles are the three most reliable ethical strategies for building the backlink profile that moves rankings consistently upward.</p>
+        <div class="action-tip">
+          <span class="at-label">Action Now</span>
+          <p>Identify your three most thorough, most original pieces of content. These are your link-earning assets. Promote them to other bloggers in your niche, pitch them as references in relevant guest posts, and add them to your email newsletter to drive shares.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACTOR 3: PAGE EXPERIENCE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(168,104,16,0.1);color:var(--amber);border:1px solid rgba(168,104,16,0.2)">Factor 03</span>
+      Page Experience — Google's Technical Report Card
+    </h2>
+
+    <div class="factor-card">
+      <div class="fc-top">
+        <div class="fc-bar" style="background:var(--amber)"></div>
+        <div class="fc-top-inner">
+          <div class="fc-icon" style="background:rgba(168,104,16,0.1);color:var(--amber)">⚡</div>
+          <h3>Core Web Vitals — The Technical Signals Google Measures Directly</h3>
+          <span class="fc-weight" style="background:rgba(168,104,16,0.1);color:var(--amber);border:1px solid rgba(168,104,16,0.2)">Technical</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>Since 2021, Google has used Core Web Vitals as direct ranking signals — measuring the speed, visual stability, and responsiveness of your pages as real users experience them. Largest Contentful Paint measures how quickly your main content loads. Cumulative Layout Shift measures how much page elements move unexpectedly as the page loads. Interaction to Next Paint measures how quickly your page responds to user input. These are not abstract technical scores — they directly reflect real user experience, and Google treats them as such. A blog failing Core Web Vitals faces a measurable ranking disadvantage against competitors whose pages score well, even when content quality is comparable.</p>
+        <div class="action-tip">
+          <span class="at-label">Action Now</span>
+          <p>Run your blog through Google PageSpeed Insights at pagespeed.web.dev and check your Core Web Vitals field data. Focus first on compressing images, installing a caching plugin, and choosing a lightweight theme — these three changes typically resolve the majority of performance issues for WordPress blogs.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACTOR 4: ON-PAGE SEO -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(88,32,160,0.1);color:var(--violet);border:1px solid rgba(88,32,160,0.2)">Factor 04</span>
+      On-Page SEO — The Signals You Control Completely
+    </h2>
+
+    <div class="factor-card">
+      <div class="fc-top">
+        <div class="fc-bar" style="background:var(--violet)"></div>
+        <div class="fc-top-inner">
+          <div class="fc-icon" style="background:rgba(88,32,160,0.1);color:var(--violet)">🎯</div>
+          <h3>Title Tags, Headings, and Keyword Placement Done Right</h3>
+          <span class="fc-weight" style="background:rgba(88,32,160,0.1);color:var(--violet);border:1px solid rgba(88,32,160,0.2)">In Your Control</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>On-page SEO encompasses every element within your article that helps Google understand precisely what your content covers. Your title tag should include your primary keyword naturally and ideally within the first 60 characters. Your H1 heading, opening paragraph, and at least one H2 subheading should each contain the keyword or a close variant. Your URL slug should be short, descriptive, and keyword-rich. Images should have descriptive alt text. Internal links should connect related content across your blog, distributing authority and signalling topical depth. None of these require technical expertise — they require attention, and that attention, applied consistently to every piece of content you publish, compounds into meaningfully stronger rankings over time.</p>
+        <div class="action-tip">
+          <span class="at-label">Action Now</span>
+          <p>Audit your five highest-traffic posts for on-page SEO. Check each one has the keyword in the title, URL, H1, opening 100 words, and at least one H2. Fix any gaps — these quick improvements can move existing rankings upward within days of reindexing.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACTOR 5: E-E-A-T -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(10,120,120,0.1);color:var(--teal);border:1px solid rgba(10,120,120,0.2)">Factor 05</span>
+      E-E-A-T — The Human Trust Signals Google Increasingly Values
+    </h2>
+
+    <div class="factor-card">
+      <div class="fc-top">
+        <div class="fc-bar" style="background:var(--teal)"></div>
+        <div class="fc-top-inner">
+          <div class="fc-icon" style="background:rgba(10,120,120,0.1);color:var(--teal)">🏆</div>
+          <h3>Experience, Expertise, Authoritativeness and Trustworthiness</h3>
+          <span class="fc-weight" style="background:rgba(10,120,120,0.1);color:var(--teal);border:1px solid rgba(10,120,120,0.2)">Growing Weight</span>
+        </div>
+      </div>
+      <div class="fc-body">
+        <p>E-E-A-T is Google's framework for evaluating whether content was created by someone with genuine experience and expertise on the topic — and whether that person and their website can be trusted. In 2026, with AI-generated content flooding the internet, human experience signals have become more valuable than ever. Add a detailed author bio demonstrating your credentials, link to authoritative external sources within your content, keep your About page specific and personal, earn mentions and links from respected voices in your niche, and — most importantly — write from direct experience wherever possible. The detail that comes from lived experience is precisely what Google's quality raters and algorithms are increasingly trained to recognise and reward.</p>
+        <div class="action-tip">
+          <span class="at-label">Action Now</span>
+          <p>Update your About page to explicitly address your experience and credentials in your niche. Then add or update author bios on your most important posts. These are quick, free improvements that directly serve Google's E-E-A-T evaluation of your blog.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RANKING IMPACT BARS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(138,96,16,0.1);color:var(--gold);border:1px solid rgba(138,96,16,0.2)">Prioritise</span>
+      Ranking Improvement Impact by Strategy
+    </h2>
+
+    <div class="impact-bars">
+      <div class="ib-title">📊 &nbsp; Estimated Ranking Impact — Where to Focus First</div>
+      <div class="ib-rows">
+        <div class="ib-row">
+          <span class="ib-label">Content Quality & Depth</span>
+          <div class="ib-track"><div class="ib-fill" style="width:96%;background:var(--accent)"></div></div>
+          <span class="ib-val" style="color:var(--accent)">Very High</span>
+        </div>
+        <div class="ib-row">
+          <span class="ib-label">Quality Backlinks</span>
+          <div class="ib-track"><div class="ib-fill" style="width:92%;background:var(--google)"></div></div>
+          <span class="ib-val" style="color:var(--google)">Very High</span>
+        </div>
+        <div class="ib-row">
+          <span class="ib-label">Page Speed & CWV</span>
+          <div class="ib-track"><div class="ib-fill" style="width:78%;background:var(--amber)"></div></div>
+          <span class="ib-val" style="color:var(--amber)">High</span>
+        </div>
+        <div class="ib-row">
+          <span class="ib-label">On-Page SEO Elements</span>
+          <div class="ib-track"><div class="ib-fill" style="width:82%;background:var(--violet)"></div></div>
+          <span class="ib-val" style="color:var(--violet)">High</span>
+        </div>
+        <div class="ib-row">
+          <span class="ib-label">E-E-A-T Signals</span>
+          <div class="ib-track"><div class="ib-fill" style="width:70%;background:var(--teal)"></div></div>
+          <span class="ib-val" style="color:var(--teal)">Growing</span>
+        </div>
+        <div class="ib-row">
+          <span class="ib-label">Internal Linking</span>
+          <div class="ib-track"><div class="ib-fill" style="width:62%;background:var(--rose)"></div></div>
+          <span class="ib-val" style="color:var(--rose)">Moderate</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK WINS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,122,80,0.1);color:var(--accent);border:1px solid rgba(26,122,80,0.2)">Start Today</span>
+      Eight Quick Ranking Wins You Can Do This Week
+    </h2>
+
+    <div class="quick-wins">
+      <div class="qw-title">⚡ &nbsp; Immediate Actions With Measurable Ranking Impact</div>
+      <div class="qw-items">
+        <div class="qw-item">Find posts at positions 11–30 in Search Console and improve them first</div>
+        <div class="qw-item">Update your top posts' title tags to include the keyword earlier</div>
+        <div class="qw-item">Add internal links between your related posts systematically</div>
+        <div class="qw-item">Compress all images and enable lazy loading on your blog</div>
+        <div class="qw-item">Add or update author bios with genuine credentials</div>
+        <div class="qw-item">Rewrite any posts under 800 words to add genuine depth</div>
+        <div class="qw-item">Submit your XML sitemap to Google Search Console</div>
+        <div class="qw-item">Add schema markup to blog posts using your SEO plugin</div>
+      </div>
+    </div>
+
+    <!-- FINAL PANEL -->
+    <div class="final-panel">
+      <div class="fp-title">◆ &nbsp; Your Google Ranking Improvement Checklist</div>
+      <div class="fp-grid">
+        <div class="fp-item"><div class="fp-dot"></div>Research search intent before writing every post</div>
+        <div class="fp-item"><div class="fp-dot"></div>Target keywords with realistic ranking difficulty</div>
+        <div class="fp-item"><div class="fp-dot"></div>Cover topics more thoroughly than top competitors</div>
+        <div class="fp-item"><div class="fp-dot"></div>Earn backlinks through guest posts and great content</div>
+        <div class="fp-item"><div class="fp-dot"></div>Pass Core Web Vitals on PageSpeed Insights</div>
+        <div class="fp-item"><div class="fp-dot"></div>Place keywords in title, H1, URL and opening</div>
+        <div class="fp-item"><div class="fp-dot"></div>Build E-E-A-T through detailed author credentials</div>
+        <div class="fp-item"><div class="fp-dot"></div>Track rankings weekly and improve what is near page one</div>
+        <div class="fp-item"><div class="fp-dot"></div>Keep publishing — fresh content signals active site</div>
+        <div class="fp-item"><div class="fp-dot"></div>Patience — most ranking improvements take 3–6 months</div>
+      </div>
+    </div>
+
+    <p>Improving your Google ranking is not a single action or a one-time project. It is a discipline — a way of approaching every piece of content you create, every technical decision you make, and every relationship you build within your niche. The bloggers who consistently rank well are not the ones who cracked a code or discovered a shortcut. They are the ones who understood what Google has always rewarded — genuine helpfulness, earned trust, and a consistently excellent experience for every person who arrives at their page.</p>
+
+    <p>Build your blog around those values, and the rankings will follow with a reliability that no algorithm change can disturb.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Google rewards the blogs that deserve to be found. Become one of them.</span>
+  </footer>
+
+</div>
+</body>
+</html>
