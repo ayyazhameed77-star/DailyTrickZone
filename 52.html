@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Analytics for Beginners</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Overpass:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #06080f;
+    --surface:   #0c1020;
+    --surface2:  #111528;
+    --border:    #182038;
+    --text:      #d0deff;
+    --muted:     #405080;
+    --ga4:       #e37400;
+    --blue:      #4285f4;
+    --green:     #34a853;
+    --red:       #ea4335;
+    --yellow:    #fbbc04;
+    --teal:      #00897b;
+    --violet:    #7c4dff;
+    --glow-o:    rgba(227,116,0,0.10);
+    --glow-b:    rgba(66,133,244,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Overpass', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* warm data glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -150px; right: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle,
+      rgba(227,116,0,0.08) 0%,
+      rgba(66,133,244,0.05) 40%,
+      transparent 68%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px; left: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle,
+      rgba(52,168,83,0.06) 0%,
+      transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .ga4-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .ga4-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(227,116,0,0.12);
+    border: 1px solid rgba(227,116,0,0.3);
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ga4);
+  }
+
+  .ga4-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--ga4);
+    box-shadow: 0 0 10px var(--ga4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.3;} }
+
+  .badge-sep {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .badge-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(2.2rem, 5.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.022em;
+    color: #eef4ff;
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ga4);
+    font-weight: 400;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent 65%);
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #7090b8;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 34px 42px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ga4), var(--blue) 50%, var(--green), transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 0% 50%, var(--glow-o), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 1.24rem;
+    color: var(--ga4) !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.44rem;
+    font-weight: 700;
+    color: #eef4ff;
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Overpass', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── METRIC CARDS ── */
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .metric-card:hover {
+    border-color: rgba(227,116,0,0.3);
+    box-shadow: 0 4px 32px rgba(227,116,0,0.06);
+  }
+
+  .mc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mc-bar { width: 4px; flex-shrink: 0; }
+
+  .mc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .mc-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .metric-card h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.04rem;
+    font-weight: 700;
+    color: #eef4ff;
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .mc-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .mc-body { padding: 18px 24px 20px 28px; }
+
+  .mc-body p {
+    font-size: 0.94rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── INSIGHT TIP ── */
+  .insight {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 11px 16px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .in-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .insight p {
+    font-size: 0.86rem !important;
+    font-weight: 400;
+    margin: 0 !important;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── FOUR METRICS GRID ── */
+  .metrics-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 26px 0 38px;
+  }
+
+  .mo-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 20px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: border-color 0.22s;
+  }
+
+  .mo-tile:hover { border-color: rgba(227,116,0,0.28); }
+
+  .mo-color {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .mo-content h4 {
+    font-family: 'Merriweather', serif;
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: #eef4ff;
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+
+  .mo-content p {
+    font-size: 0.8rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.55;
+  }
+
+  /* ── REPORTS GUIDE ── */
+  .reports-guide {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 24px 0 36px;
+  }
+
+  .rg-header {
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .rg-rows { display: grid; gap: 0; }
+
+  .rg-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .rg-row:last-child { border-bottom: none; }
+  .rg-row:hover { background: var(--surface2); }
+
+  .rg-path {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    flex-shrink: 0;
+    padding-top: 3px;
+    min-width: 110px;
+    font-style: italic;
+  }
+
+  .rg-content h4 {
+    font-family: 'Merriweather', serif;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #eef4ff;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+
+  .rg-content p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── SETUP STEPS ── */
+  .setup-steps {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0 36px;
+  }
+
+  .ss-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: border-color 0.22s;
+  }
+
+  .ss-item:hover { border-color: rgba(227,116,0,0.25); }
+
+  .ss-num {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: rgba(227,116,0,0.12);
+    border: 1px solid rgba(227,116,0,0.25);
+    color: var(--ga4);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ss-content h4 {
+    font-family: 'Merriweather', serif;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #eef4ff;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+
+  .ss-content p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── WEEKLY HABIT PANEL ── */
+  .weekly-habit {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 30px;
+    margin: 26px 0 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .weekly-habit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, var(--glow-b), transparent);
+    pointer-events: none;
+  }
+
+  .wh-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wh-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wh-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.56;
+  }
+
+  .wh-arrow {
+    color: var(--ga4);
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* ── FINAL CHECKLIST ── */
+  .final-check {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-check::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, var(--glow-o), transparent);
+    pointer-events: none;
+  }
+
+  .fc-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ga4);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.56;
+  }
+
+  .fc-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(227,116,0,0.4);
+    background: rgba(227,116,0,0.08);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .metrics-overview { grid-template-columns: 1fr; }
+    .wh-grid { grid-template-columns: 1fr; }
+    .fc-grid { grid-template-columns: 1fr; }
+    .pull-quote { padding: 26px 26px; }
+    .rg-path { min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="ga4-badge-row">
+      <span class="ga4-badge">GA4 · Google Analytics 4</span>
+      <span class="badge-sep"></span>
+      <span class="badge-sub">Beginner's Guide · 2026</span>
+    </div>
+    <h1>Google Analytics<br>for <em>Beginners</em></h1>
+    <p class="deck">Most bloggers install Google Analytics and never open it again. The ones who check it regularly — with intention and curiosity — make better decisions, grow faster, and understand their readers in ways that transform everything they write.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a version of blogging that feels like writing messages and dropping them into a vast, silent ocean — publishing steadily into the void with no real sense of who reads, how they found you, what they loved, or why they left. And then there is blogging with Google Analytics installed, understood, and consulted regularly. These are not the same experience. One is guesswork. The other is informed, iterative craft.</p>
+
+    <p>Google Analytics 4 — the current version of Google's free analytics platform — is one of the most powerful tools ever made available at no cost to content creators. It tells you how many people visited your blog, where in the world they live, which articles they read, how they found you, how long they stayed, and which pages caused them to leave. Used well, it transforms every decision from intuition into evidence. The only challenge it presents to beginners is the learning curve of understanding what to look at, what it means, and what to do about it.</p>
+
+    <div class="pull-quote">
+      <p>Data without interpretation is just noise. But data read with curiosity and acted on with courage is the most reliable competitive advantage available to any blogger willing to open the dashboard.</p>
+    </div>
+
+    <!-- SETUP STEPS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(227,116,0,0.12);color:var(--ga4);border:1px solid rgba(227,116,0,0.28)">First Things First</span>
+      Setting Up Google Analytics on Your Blog
+    </h2>
+
+    <div class="setup-steps">
+      <div class="ss-item">
+        <div class="ss-num">01</div>
+        <div class="ss-content">
+          <h4>Create a Google Analytics account at analytics.google.com</h4>
+          <p>Sign in with your Google account, click "Start measuring," enter your account name (your blog name), and complete the property setup. Choose your country, timezone, and currency carefully — these affect how your data is reported and cannot be easily changed later.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-num">02</div>
+        <div class="ss-content">
+          <h4>Create a GA4 Property for your blog</h4>
+          <p>During setup, choose "Web" as your platform and enter your blog's URL. GA4 will generate a Measurement ID — a string beginning with G- that is unique to your property. This is what connects your blog to your Analytics account.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-num">03</div>
+        <div class="ss-content">
+          <h4>Install the tracking code on your website</h4>
+          <p>In WordPress, the simplest method is using your SEO plugin. Rank Math, Yoast, and MonsterInsights all provide dedicated fields for your GA4 Measurement ID. Paste your G- code into the appropriate field, save, and your tracking begins immediately. Alternatively, use the "Insert Headers and Footers" plugin to manually add the Google tag code to your site's &lt;head&gt; section.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-num">04</div>
+        <div class="ss-content">
+          <h4>Verify tracking is working correctly</h4>
+          <p>After installation, visit your blog in a separate browser window, then check the GA4 Realtime report. If you can see yourself as an active user, your tracking code is working correctly. Allow 24–48 hours for meaningful data to begin populating your standard reports.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOUR KEY METRICS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(66,133,244,0.12);color:var(--blue);border:1px solid rgba(66,133,244,0.28)">Understand First</span>
+      The Four Metrics Every Beginner Needs to Know
+    </h2>
+
+    <p>GA4 contains dozens of reports and hundreds of individual metrics — enough to overwhelm any beginner into paralysis. The practical truth is that four metrics answer the vast majority of questions a beginning blogger needs to ask of their data. Understand these four deeply, and everything else is context.</p>
+
+    <div class="metrics-overview">
+      <div class="mo-tile">
+        <div class="mo-color" style="background:rgba(227,116,0,0.12);color:var(--ga4)">👤</div>
+        <div class="mo-content">
+          <h4>Users</h4>
+          <p>The number of individual people who visited your blog in a given time period. The most fundamental measure of your audience size and growth rate over time.</p>
+        </div>
+      </div>
+      <div class="mo-tile">
+        <div class="mo-color" style="background:rgba(66,133,244,0.12);color:var(--blue)">📄</div>
+        <div class="mo-content">
+          <h4>Sessions</h4>
+          <p>The number of times people visited and interacted with your blog. One user can have multiple sessions — the ratio between users and sessions shows how often people return.</p>
+        </div>
+      </div>
+      <div class="mo-tile">
+        <div class="mo-color" style="background:rgba(52,168,83,0.12);color:var(--green)">⏱</div>
+        <div class="mo-content">
+          <h4>Engagement Rate</h4>
+          <p>The percentage of sessions where users actively engaged with your content — scrolled, clicked, or stayed longer than 10 seconds. Higher is always better; aim for above 50%.</p>
+        </div>
+      </div>
+      <div class="mo-tile">
+        <div class="mo-color" style="background:rgba(234,67,53,0.12);color:var(--red)">🔗</div>
+        <div class="mo-content">
+          <h4>Traffic Sources</h4>
+          <p>Where your visitors come from — Organic Search, Direct, Social, Referral, or Email. This tells you which of your promotional strategies are actually working and which deserve more investment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORTS GUIDE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(52,168,83,0.12);color:var(--green);border:1px solid rgba(52,168,83,0.28)">Navigate GA4</span>
+      The Five Reports Every Beginner Should Use Regularly
+    </h2>
+
+    <div class="reports-guide">
+      <div class="rg-header">📊 &nbsp; GA4 Report Navigator — Where to Find What You Need</div>
+      <div class="rg-rows">
+        <div class="rg-row">
+          <span class="rg-path">Home Dashboard</span>
+          <div class="rg-content">
+            <h4>Your Daily Overview</h4>
+            <p>The GA4 home screen shows your most important metrics at a glance — users in the last 28 days, top pages, traffic sources, and engagement trends. Start every analytics session here to understand the overall health of your blog in sixty seconds.</p>
+          </div>
+        </div>
+        <div class="rg-row">
+          <span class="rg-path">Reports → Traffic Acquisition</span>
+          <div class="rg-content">
+            <h4>Where Your Readers Come From</h4>
+            <p>This is the report you check to understand which channels — Google search, Pinterest, direct visits, email — are sending the most engaged readers to your blog. Focus your promotional energy on the channels that send visitors who read, not visitors who bounce.</p>
+          </div>
+        </div>
+        <div class="rg-row">
+          <span class="rg-path">Reports → Pages & Screens</span>
+          <div class="rg-content">
+            <h4>Your Best and Worst Performing Content</h4>
+            <p>This report shows your most-viewed pages and your average engagement time per page. Articles with high views but low engagement time are failing to hold readers — they need to be improved or updated. Articles with high engagement but low views need better promotion and SEO optimisation.</p>
+          </div>
+        </div>
+        <div class="rg-row">
+          <span class="rg-path">Reports → Demographics</span>
+          <div class="rg-content">
+            <h4>Who Your Readers Actually Are</h4>
+            <p>Geographic location, age range, language, and device type. Knowing your audience's geography helps you schedule publications at the right time. Knowing their devices tells you whether mobile optimisation deserves urgent attention — and for most blogs in 2026, it absolutely does.</p>
+          </div>
+        </div>
+        <div class="rg-row">
+          <span class="rg-path">Reports → Realtime</span>
+          <div class="rg-content">
+            <h4>What Is Happening on Your Blog Right Now</h4>
+            <p>Shows active users in real time, which pages they are reading, and where they came from. Invaluable for monitoring traffic spikes after publishing a new post, checking that a social media promotion is working, or simply experiencing the quiet satisfaction of watching real people read your work live.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY REPORT CARD -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(227,116,0,0.12);color:var(--ga4);border:1px solid rgba(227,116,0,0.28)">Power Move</span>
+      The One Report That Improves Your Blog the Fastest
+    </h2>
+
+    <div class="metric-card">
+      <div class="mc-top">
+        <div class="mc-bar" style="background:var(--ga4)"></div>
+        <div class="mc-top-inner">
+          <div class="mc-icon" style="background:rgba(227,116,0,0.12);color:var(--ga4)">🏆</div>
+          <h3>Pages With High Views and Low Engagement — Your Priority Improvement List</h3>
+          <span class="mc-badge" style="background:rgba(227,116,0,0.12);color:var(--ga4);border:1px solid rgba(227,116,0,0.28)">High Impact</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <p>Navigate to Reports → Pages and Screens, and sort your content by views. Then look at the engagement time column for each high-view page. Any article that receives significant traffic but shows an average engagement time below 60 seconds has a problem — readers are arriving and leaving almost immediately. This pattern tells you the article's title is promising something the content is not delivering, the content is poorly structured or hard to read, the page is loading too slowly on mobile, or the topic is simply not resonating with the audience who found it. Each of these has a specific solution, and fixing them systematically across your most-visited underperforming content is one of the fastest ways to improve your blog's overall performance.</p>
+        <div class="insight">
+          <span class="in-label" style="color:var(--ga4)">Action</span>
+          <p style="color:var(--muted)">Make a list of your top ten pages by views. Flag any with average engagement time under 90 seconds. Schedule one hour this week to improve each one — better headlines, clearer structure, more value in the opening paragraphs. Then re-check the engagement time in four weeks to measure the impact of your improvements.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECOND METRIC CARD -->
+    <div class="metric-card">
+      <div class="mc-top">
+        <div class="mc-bar" style="background:var(--blue)"></div>
+        <div class="mc-top-inner">
+          <div class="mc-icon" style="background:rgba(66,133,244,0.12);color:var(--blue)">🔗</div>
+          <h3>Track Conversions — Where Your Readers Become Your Subscribers</h3>
+          <span class="mc-badge" style="background:rgba(66,133,244,0.12);color:var(--blue);border:1px solid rgba(66,133,244,0.25)">Growth Insight</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <p>GA4 allows you to set up custom events to track specific actions on your blog — email sign-ups, clicks on your lead magnet download, clicks on affiliate links, or button presses on your contact form. These conversion events transform GA4 from a passive traffic counter into an active growth measurement system. When you know which traffic sources produce the most subscribers, which blog posts lead most frequently to email sign-ups, and which calls to action generate the most clicks, every content and promotion decision you make becomes significantly more intelligent. Setting up conversion tracking in GA4 is a slightly more technical step that your SEO plugin or Google Tag Manager can help facilitate — but the insight it provides is worth every minute of the setup.</p>
+        <div class="insight">
+          <span class="in-label" style="color:var(--blue)">Key Truth</span>
+          <p style="color:var(--muted)">The number that matters most is not how many people visited — it is how many of them took the next step you wanted them to take. Traffic without conversion is an audience without a relationship.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEKLY HABIT PANEL -->
+    <div class="weekly-habit">
+      <div class="wh-title">📅 &nbsp; Your Weekly Google Analytics Review Habit</div>
+      <div class="wh-grid">
+        <div class="wh-item"><span class="wh-arrow">→</span>Check total users vs the same period last week</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Review Traffic Acquisition for channel shifts</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Note your top three pages by engagement time</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Flag any high-view, low-engagement articles</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Check which new posts are gaining organic traction</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Review device split — desktop vs mobile ratio</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Note geographic audience shifts or new locations</div>
+        <div class="wh-item"><span class="wh-arrow">→</span>Write one insight and one action in your notes</div>
+      </div>
+    </div>
+
+    <!-- FINAL CHECKLIST -->
+    <div class="final-check">
+      <div class="fc-title">✦ &nbsp; Google Analytics Beginner's Action Checklist</div>
+      <div class="fc-grid">
+        <div class="fc-item"><div class="fc-box"></div>Create GA4 account at analytics.google.com</div>
+        <div class="fc-item"><div class="fc-box"></div>Set up a property with your blog's URL</div>
+        <div class="fc-item"><div class="fc-box"></div>Install tracking code via SEO plugin or header</div>
+        <div class="fc-item"><div class="fc-box"></div>Verify with Realtime report — see yourself</div>
+        <div class="fc-item"><div class="fc-box"></div>Bookmark your GA4 dashboard for weekly use</div>
+        <div class="fc-item"><div class="fc-box"></div>Review Traffic Acquisition every Monday</div>
+        <div class="fc-item"><div class="fc-box"></div>Identify top 10 pages by views this week</div>
+        <div class="fc-item"><div class="fc-box"></div>Flag low-engagement articles for improvement</div>
+        <div class="fc-item"><div class="fc-box"></div>Connect GA4 to Google Search Console</div>
+        <div class="fc-item"><div class="fc-box"></div>Set up one conversion event this month</div>
+      </div>
+    </div>
+
+    <p>Google Analytics is not a dashboard for obsessing over numbers. It is a mirror — one that shows you how your blog is actually performing versus how you imagine it is performing. The gap between those two pictures is where every meaningful improvement lives. Beginners who learn to read that mirror with curiosity rather than anxiety, who treat each unexpected number as a question worth answering rather than a judgment worth fearing, grow into the kind of bloggers whose decisions are consistently better informed than those of the people they compete with.</p>
+
+    <p>Install it today. Open it next Monday. Read one report. Ask one question. Take one action. That cycle, repeated weekly for a year, will teach you more about your audience and your craft than any course, book, or strategy guide ever could.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Every number in your analytics was left there by a real person. Learn to read them.</span>
+  </footer>
+
+</div>
+</body>
+</html>
