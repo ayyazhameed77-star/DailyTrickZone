@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Optimize Blog Images</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f8f4ef;
+    --surface:   #ffffff;
+    --surface2:  #f2ede6;
+    --border:    #e8ddd0;
+    --ink:       #1a1008;
+    --muted:     #9a8870;
+    --accent:    #c45a10;
+    --teal:      #0a7870;
+    --navy:      #1a3a7a;
+    --green:     #2a7048;
+    --violet:    #6830a0;
+    --gold:      #b87018;
+    --soft:      rgba(196,90,16,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 90px 46px 114px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 74px; }
+
+  .header-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .he-icon {
+    width: 36px; height: 36px;
+    background: rgba(196,90,16,0.1);
+    border: 1px solid rgba(196,90,16,0.22);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .he-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .he-cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .he-sub {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Bitter', serif;
+    font-size: clamp(2.4rem, 6.2vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.76;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hr-line { flex: 1; height: 1px; background: var(--border); }
+  .hr-mark { font-size: 12px; color: var(--accent); opacity: 0.5; }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #3a2a18;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 52px 0;
+    padding: 36px 46px;
+    background: var(--ink);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--teal) 60%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '"';
+    position: absolute;
+    bottom: -22px; right: 22px;
+    font-family: 'Bitter', serif;
+    font-size: 8rem;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    font-size: 1.26rem;
+    color: #f4ead8 !important;
+    line-height: 1.64;
+    margin: 0 !important;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Bitter', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 58px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Raleway', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── OPTIMISATION CARDS ── */
+  .opt-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+    transition: box-shadow 0.22s, border-color 0.22s;
+  }
+
+  .opt-card:hover {
+    box-shadow: 0 6px 28px rgba(196,90,16,0.08);
+    border-color: rgba(196,90,16,0.22);
+  }
+
+  .oc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .oc-bar { width: 4px; flex-shrink: 0; }
+
+  .oc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .oc-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .opt-card h3 {
+    font-family: 'Bitter', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .oc-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .oc-body { padding: 18px 24px 20px 28px; }
+
+  .oc-body p {
+    font-size: 0.94rem;
+    color: #5a3a20;
+    margin: 0 !important;
+    line-height: 1.76;
+  }
+
+  /* ── INSIDER TIP ── */
+  .insider {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 9px 9px 0;
+    padding: 12px 18px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .ins-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .insider p {
+    font-size: 0.86rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ── FORMAT COMPARE TABLE ── */
+  .format-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 26px 0 38px;
+    font-size: 0.88rem;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .format-table thead tr { background: var(--surface2); }
+
+  .format-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .format-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    color: #5a3a20;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .format-table tr:last-child td { border-bottom: none; }
+  .format-table tr:hover td { background: var(--surface2); }
+  .format-table td:first-child { font-weight: 700; color: var(--ink); }
+
+  .ft-tag {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  /* ── SIZE IMPACT BARS ── */
+  .size-bars {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 24px 0 36px;
+  }
+
+  .sb-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .sb-rows { display: grid; gap: 11px; }
+
+  .sb-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 110px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sb-label { font-size: 0.87rem; font-weight: 600; color: var(--ink); }
+
+  .sb-track {
+    height: 7px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .sb-fill { height: 100%; border-radius: 10px; }
+
+  .sb-val { font-size: 0.8rem; font-weight: 700; text-align: right; }
+
+  /* ── ALT TEXT GUIDE ── */
+  .alt-guide {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 24px 0 36px;
+  }
+
+  .ag-header {
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .ag-rows { display: grid; gap: 0; }
+
+  .ag-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .ag-row:last-child { border-bottom: none; }
+  .ag-row:hover { background: var(--surface2); }
+
+  .ag-type {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 3px;
+    width: 54px;
+  }
+
+  .ag-example {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.5;
+    margin-bottom: 3px;
+  }
+
+  .ag-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .ag-content { flex: 1; }
+
+  /* ── TOOLS GRID ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 11px;
+    margin: 22px 0 36px;
+  }
+
+  .tg-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .tg-tile:hover { border-color: rgba(196,90,16,0.25); }
+
+  .tg-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .tt1::before { background: var(--accent); }
+  .tt2::before { background: var(--teal); }
+  .tt3::before { background: var(--navy); }
+  .tt4::before { background: var(--green); }
+
+  .tg-emoji { font-size: 22px; display: block; margin-bottom: 9px; }
+
+  .tg-tile h4 {
+    font-family: 'Bitter', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .tg-tile p {
+    font-size: 0.75rem !important;
+    color: var(--muted) !important;
+    margin: 0 0 8px !important;
+    line-height: 1.5;
+  }
+
+  .tg-free {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(42,112,72,0.1);
+    color: var(--green);
+    border: 1px solid rgba(42,112,72,0.22);
+  }
+
+  /* ── FINAL CHECKLIST ── */
+  .final-check {
+    background: var(--ink);
+    border-radius: 18px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-check::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 0% 100%, rgba(196,90,16,0.2), transparent),
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(10,120,112,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .fc-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #9a7858;
+    line-height: 1.56;
+  }
+
+  .fc-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(196,90,16,0.4);
+    background: rgba(196,90,16,0.08);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .fc-grid { grid-template-columns: 1fr; }
+    .sb-row { grid-template-columns: 110px 1fr 80px; }
+    .pull-quote { padding: 28px 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-eyebrow">
+      <div class="he-icon">🖼</div>
+      <div class="he-text">
+        <span class="he-cat">Image Optimisation</span>
+        <span class="he-sub">Complete Guide · 2026</span>
+      </div>
+    </div>
+    <h1>How to Optimize<br><em>Blog Images</em></h1>
+    <p class="deck">Unoptimised images are silently slowing your blog, hurting your search rankings, and frustrating readers who never wait for pages that take too long to load. Here is everything you need to fix that — permanently.</p>
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <span class="hr-mark">◉</span>
+      <div class="hr-line"></div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>Every blogger understands the importance of words. Hours are spent crafting headlines, refining sentences, and editing for clarity. But the images those same bloggers upload to their posts — dropped in from camera rolls or stock photo sites without a second thought — often represent the single largest performance problem their entire blog faces. A four-megabyte photograph embedded in a 1,200-word article turns what could be a one-second page load into a four-second ordeal, costing rankings, readers, and revenue simultaneously.</p>
+
+    <p>Image optimisation is one of the most impactful technical improvements available to any blogger — and one of the easiest to implement once you understand the handful of principles that govern it. The investment is modest. The returns compound indefinitely with every image you add to every post, for as long as your blog exists. This is not glamorous work. But it is the kind of disciplined, unsexy improvement that separates blogs that grow from blogs that plateau.</p>
+
+    <div class="pull-quote">
+      <p>Every unoptimised image is a small tax on every reader who ever visits that page — paid in seconds of waiting. Optimise your images and give that time back to the people who chose to spend it with your words.</p>
+    </div>
+
+    <!-- FORMAT GUIDE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(196,90,16,0.1);color:var(--accent);border:1px solid rgba(196,90,16,0.2)">Step 01</span>
+      Choose the Right Image Format — It Changes Everything
+    </h2>
+
+    <p>The format you use to save your images before uploading them to your blog has a dramatic effect on their file size — often more than any other single decision. Most bloggers default to JPEG or PNG without understanding when each is appropriate, and many miss the transformative opportunity that WebP — a modern image format developed by Google — now offers across every blogging platform.</p>
+
+    <div class="format-table">
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Best For</th>
+          <th>File Size</th>
+          <th>Transparency</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JPEG</td>
+          <td>Photographs, rich colour images</td>
+          <td>Medium</td>
+          <td>✗ No</td>
+          <td><span class="ft-tag" style="background:rgba(196,90,16,0.1);color:var(--accent);border:1px solid rgba(196,90,16,0.2)">Good fallback</span></td>
+        </tr>
+        <tr>
+          <td>PNG</td>
+          <td>Logos, screenshots, transparent images</td>
+          <td>Large</td>
+          <td>✓ Yes</td>
+          <td><span class="ft-tag" style="background:rgba(168,104,24,0.1);color:var(--gold);border:1px solid rgba(168,104,24,0.2)">Transparency only</span></td>
+        </tr>
+        <tr>
+          <td>WebP</td>
+          <td>Everything — photos and graphics</td>
+          <td>Very Small</td>
+          <td>✓ Yes</td>
+          <td><span class="ft-tag" style="background:rgba(42,112,72,0.1);color:var(--green);border:1px solid rgba(42,112,72,0.2)">Use this always</span></td>
+        </tr>
+        <tr>
+          <td>AVIF</td>
+          <td>Photos where maximum compression matters</td>
+          <td>Smallest</td>
+          <td>✓ Yes</td>
+          <td><span class="ft-tag" style="background:rgba(26,58,122,0.1);color:var(--navy);border:1px solid rgba(26,58,122,0.2)">Future standard</span></td>
+        </tr>
+        <tr>
+          <td>SVG</td>
+          <td>Icons, logos, illustrations</td>
+          <td>Tiny</td>
+          <td>✓ Yes</td>
+          <td><span class="ft-tag" style="background:rgba(104,48,160,0.1);color:var(--violet);border:1px solid rgba(104,48,160,0.2)">Vectors only</span></td>
+        </tr>
+      </tbody>
+    </div>
+
+    <!-- OPTIMISATION 1: COMPRESSION -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(196,90,16,0.1);color:var(--accent);border:1px solid rgba(196,90,16,0.2)">Step 02</span>
+      Compress Every Image Before It Touches Your Blog
+    </h2>
+
+    <div class="opt-card">
+      <div class="oc-top">
+        <div class="oc-bar" style="background:var(--accent)"></div>
+        <div class="oc-top-inner">
+          <div class="oc-icon" style="background:rgba(196,90,16,0.1);color:var(--accent)">🗜</div>
+          <h3>Reduce File Size by 60–80% Without Any Visible Quality Loss</h3>
+          <span class="oc-badge" style="background:rgba(196,90,16,0.1);color:var(--accent);border:1px solid rgba(196,90,16,0.2)">Highest Impact</span>
+        </div>
+      </div>
+      <div class="oc-body">
+        <p>Image compression removes data from image files that the human eye cannot meaningfully perceive, resulting in dramatically smaller files that look visually identical to the originals. A typical uncompressed JPEG photograph from a modern smartphone weighs four to six megabytes. The same photograph, compressed with a free tool like Squoosh or TinyPNG, can be reduced to 100–300 kilobytes — a reduction of 90% or more with no visible quality difference on any screen. Applied across all images on a page, this single habit can cut page load time in half and dramatically improve Core Web Vitals scores. Make compression the first step of your image workflow, before any image ever reaches your blog's upload interface.</p>
+        <div class="insider">
+          <span class="ins-label">Insider Tip</span>
+          <p>For WordPress blogs, install the free Smush plugin. It automatically compresses every image you upload to the correct quality level, converts JPEGs to WebP on serving, and can bulk-compress your entire existing media library in one operation — fixing your historic images in a single afternoon.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIZE IMPACT -->
+    <div class="size-bars">
+      <div class="sb-title">📊 &nbsp; Page Load Impact — Unoptimised vs Optimised Images</div>
+      <div class="sb-rows">
+        <div class="sb-row">
+          <span class="sb-label">Single photo (raw)</span>
+          <div class="sb-track"><div class="sb-fill" style="width:82%;background:var(--accent)"></div></div>
+          <span class="sb-val" style="color:var(--accent)">~4.2 MB</span>
+        </div>
+        <div class="sb-row">
+          <span class="sb-label">Compressed JPEG</span>
+          <div class="sb-track"><div class="sb-fill" style="width:24%;background:var(--gold)"></div></div>
+          <span class="sb-val" style="color:var(--gold)">~280 KB</span>
+        </div>
+        <div class="sb-row">
+          <span class="sb-label">Converted to WebP</span>
+          <div class="sb-track"><div class="sb-fill" style="width:12%;background:var(--green)"></div></div>
+          <span class="sb-val" style="color:var(--green)">~120 KB</span>
+        </div>
+        <div class="sb-row">
+          <span class="sb-label">Page with 5 raw images</span>
+          <div class="sb-track"><div class="sb-fill" style="width:95%;background:var(--accent)"></div></div>
+          <span class="sb-val" style="color:var(--accent)">~20 MB</span>
+        </div>
+        <div class="sb-row">
+          <span class="sb-label">Same page optimised</span>
+          <div class="sb-track"><div class="sb-fill" style="width:14%;background:var(--teal)"></div></div>
+          <span class="sb-val" style="color:var(--teal)">~600 KB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIMISATION 2: DIMENSIONS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(10,120,112,0.1);color:var(--teal);border:1px solid rgba(10,120,112,0.2)">Step 03</span>
+      Upload the Right Dimensions — Never Larger Than Needed
+    </h2>
+
+    <div class="opt-card">
+      <div class="oc-top">
+        <div class="oc-bar" style="background:var(--teal)"></div>
+        <div class="oc-top-inner">
+          <div class="oc-icon" style="background:rgba(10,120,112,0.1);color:var(--teal)">📐</div>
+          <h3>A 5,000-Pixel Image Displayed at 800 Pixels Is 40× Heavier Than Necessary</h3>
+          <span class="oc-badge" style="background:rgba(10,120,112,0.1);color:var(--teal);border:1px solid rgba(10,120,112,0.2)">Often Overlooked</span>
+        </div>
+      </div>
+      <div class="oc-body">
+        <p>One of the most common and costly image mistakes in blogging is uploading photographs at their full camera resolution — five, six, or even eight thousand pixels wide — when the blog post content area will never display them wider than 700 to 800 pixels on any device. The browser downloads the full-resolution file, spends processing power resizing it, and your reader waits for all of it. Before uploading, resize images to the maximum width they will ever be displayed on your blog. For standard blog post images, 1200 pixels wide is generous and future-proofs for retina screens. For thumbnail images and featured images in sidebars, 600–800 pixels is sufficient. Resize before compression, not after, for the most effective file reduction.</p>
+        <div class="insider">
+          <span class="ins-label">Size Guide</span>
+          <p>Blog post featured images: 1200 × 628 pixels maximum. In-content images: 800 pixels wide maximum. Thumbnails and avatars: 400 pixels maximum. Pinterest pins: 1000 × 1500 pixels. Apply these consistently and your media library stays lean indefinitely.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIMISATION 3: LAZY LOADING -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(26,58,122,0.1);color:var(--navy);border:1px solid rgba(26,58,122,0.2)">Step 04</span>
+      Enable Lazy Loading — Load Images Only When Needed
+    </h2>
+
+    <div class="opt-card">
+      <div class="oc-top">
+        <div class="oc-bar" style="background:var(--navy)"></div>
+        <div class="oc-top-inner">
+          <div class="oc-icon" style="background:rgba(26,58,122,0.1);color:var(--navy)">⏳</div>
+          <h3>Why Download Images the Reader May Never Actually See?</h3>
+          <span class="oc-badge" style="background:rgba(26,58,122,0.1);color:var(--navy);border:1px solid rgba(26,58,122,0.2)">Speed Booster</span>
+        </div>
+      </div>
+      <div class="oc-body">
+        <p>Lazy loading is the technique of deferring the loading of images that are below the visible area of the screen until the reader actually scrolls toward them. Without lazy loading, a browser landing on a long blog post attempts to download every single image in the article simultaneously — including images several thousand pixels below the fold that the reader may never reach. With lazy loading enabled, only the images visible in the current viewport are downloaded immediately, dramatically improving initial page load speed and the all-important Largest Contentful Paint metric that Google measures as part of Core Web Vitals. In WordPress, this can be enabled with a single checkbox in your caching or performance plugin, or natively through your image optimisation plugin.</p>
+        <div class="insider">
+          <span class="ins-label">Quick Enable</span>
+          <p>WordPress 5.5 and above enables lazy loading by default for all images. Check yours is working by right-clicking any in-article image and inspecting its HTML — you should see loading="lazy" in the image tag. If not, your theme or plugin may be overriding it and needs to be updated.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIMISATION 4: ALT TEXT -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(104,48,160,0.1);color:var(--violet);border:1px solid rgba(104,48,160,0.2)">Step 05</span>
+      Write Alt Text That Serves Both Readers and Google
+    </h2>
+
+    <div class="opt-card">
+      <div class="oc-top">
+        <div class="oc-bar" style="background:var(--violet)"></div>
+        <div class="oc-top-inner">
+          <div class="oc-icon" style="background:rgba(104,48,160,0.1);color:var(--violet)">♿</div>
+          <h3>Alt Text Is Accessibility and SEO — Neglect Neither</h3>
+          <span class="oc-badge" style="background:rgba(104,48,160,0.1);color:var(--violet);border:1px solid rgba(104,48,160,0.2)">SEO + A11y</span>
+        </div>
+      </div>
+      <div class="oc-body">
+        <p>Alt text — the alternative text description attached to every image — serves two equally important purposes. For readers using screen readers due to visual impairment, it provides the only way to understand what an image shows. For search engines, it is one of the primary signals used to understand what an image contains and how it relates to the surrounding content. Good alt text is specific, descriptive, and naturally incorporates relevant keywords where genuinely appropriate — not stuffed with keyword repetitions that help nobody. Write alt text as if describing the image to someone who cannot see it, and include your target keyword where it fits naturally within that description.</p>
+      </div>
+    </div>
+
+    <!-- ALT TEXT GUIDE -->
+    <div class="alt-guide">
+      <div class="ag-header">✍ &nbsp; Alt Text — Good vs Bad Examples</div>
+      <div class="ag-rows">
+        <div class="ag-row">
+          <div class="ag-content">
+            <span class="ag-type" style="color:var(--accent)">✗ Bad</span>
+          </div>
+          <div style="flex:1">
+            <div class="ag-example">"image1.jpg"</div>
+            <div class="ag-note">Filename left as alt text — provides no information to anyone</div>
+          </div>
+        </div>
+        <div class="ag-row">
+          <div class="ag-content">
+            <span class="ag-type" style="color:var(--accent)">✗ Bad</span>
+          </div>
+          <div style="flex:1">
+            <div class="ag-example">"blog, blogging, blog tips, how to blog, blogger"</div>
+            <div class="ag-note">Keyword stuffing — penalised by Google, meaningless to screen readers</div>
+          </div>
+        </div>
+        <div class="ag-row">
+          <div class="ag-content">
+            <span class="ag-type" style="color:var(--green)">✓ Good</span>
+          </div>
+          <div style="flex:1">
+            <div class="ag-example">"Person typing on a laptop at a wooden desk with a coffee cup beside them"</div>
+            <div class="ag-note">Descriptive, natural, accessible — serves both readers and search engines</div>
+          </div>
+        </div>
+        <div class="ag-row">
+          <div class="ag-content">
+            <span class="ag-type" style="color:var(--green)">✓ Good</span>
+          </div>
+          <div style="flex:1">
+            <div class="ag-example">"WordPress dashboard showing a new blog post being edited"</div>
+            <div class="ag-note">Specific, contextual, naturally includes the relevant keyword — perfect</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FREE TOOLS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(42,112,72,0.1);color:var(--green);border:1px solid rgba(42,112,72,0.2)">Tools</span>
+      The Best Free Image Optimisation Tools
+    </h2>
+
+    <div class="tools-grid">
+      <div class="tg-tile tt1">
+        <span class="tg-emoji">🔧</span>
+        <h4>Squoosh</h4>
+        <p>Google's own browser-based compression tool — no upload limit</p>
+        <span class="tg-free">Free</span>
+      </div>
+      <div class="tg-tile tt2">
+        <span class="tg-emoji">🐷</span>
+        <h4>TinyPNG</h4>
+        <p>Simple JPEG and PNG compression with excellent output quality</p>
+        <span class="tg-free">Free Tier</span>
+      </div>
+      <div class="tg-tile tt3">
+        <span class="tg-emoji">💪</span>
+        <h4>Smush (WP)</h4>
+        <p>Auto-compress on upload and bulk-optimise existing images</p>
+        <span class="tg-free">Free Plugin</span>
+      </div>
+      <div class="tg-tile tt4">
+        <span class="tg-emoji">🚀</span>
+        <h4>ShortPixel</h4>
+        <p>WordPress plugin with WebP conversion and lossy compression</p>
+        <span class="tg-free">100/mo Free</span>
+      </div>
+    </div>
+
+    <!-- FINAL CHECKLIST -->
+    <div class="final-check">
+      <div class="fc-title">◆ &nbsp; Your Complete Image Optimisation Checklist</div>
+      <div class="fc-grid">
+        <div class="fc-item"><div class="fc-box"></div>Convert all images to WebP format before uploading</div>
+        <div class="fc-item"><div class="fc-box"></div>Resize images to max 1200px wide before compressing</div>
+        <div class="fc-item"><div class="fc-box"></div>Compress every image — target under 200KB per file</div>
+        <div class="fc-item"><div class="fc-box"></div>Enable lazy loading for all below-fold images</div>
+        <div class="fc-item"><div class="fc-box"></div>Write descriptive alt text for every single image</div>
+        <div class="fc-item"><div class="fc-box"></div>Use descriptive filenames — not "IMG_4782.jpg"</div>
+        <div class="fc-item"><div class="fc-box"></div>Install Smush or ShortPixel to automate future uploads</div>
+        <div class="fc-item"><div class="fc-box"></div>Bulk-optimise your existing media library today</div>
+        <div class="fc-item"><div class="fc-box"></div>Check Core Web Vitals on PageSpeed Insights after</div>
+        <div class="fc-item"><div class="fc-box"></div>Audit your heaviest posts and optimise images first</div>
+      </div>
+    </div>
+
+    <p>Image optimisation is the kind of invisible work that readers never consciously notice — which is precisely the point. When images are perfectly optimised, pages load before impatience can form, content appears instantly, and the entire reading experience flows without friction or delay. The reader simply arrives and reads. That seamlessness is the goal, and it is available to any blogger willing to invest one afternoon of focused effort followed by a handful of sustainable habits.</p>
+
+    <p>Audit your heaviest posts today. Compress, convert, resize, and set up automation for everything that follows. Your readers will feel the difference even if they never know why — and Google will measure it precisely.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Fast images are invisible. Slow ones are all your reader thinks about.</span>
+  </footer>
+
+</div>
+</body>
+</html>
