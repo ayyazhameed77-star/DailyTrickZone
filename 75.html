@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passive Income Blogging Strategies</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #05080f;
+    --surface:   #0a1020;
+    --surface2:  #0f1830;
+    --border:    #162040;
+    --text:      #ccdeff;
+    --muted:     #3a5080;
+    --accent:    #f59e0b;
+    --gold2:     #fbbf24;
+    --teal:      #14b8a6;
+    --blue:      #3b82f6;
+    --green:     #10b981;
+    --violet:    #8b5cf6;
+    --rose:      #f43f5e;
+    --glow-g:    rgba(245,158,11,0.10);
+    --glow-t:    rgba(20,184,166,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* starfield */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(245,158,11,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 12%, rgba(251,191,36,0.38) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 55% 80%, rgba(20,184,166,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 50%, rgba(139,92,246,0.28) 0%, transparent 100%),
+      radial-gradient(2px 2px at 22% 88%, rgba(59,130,246,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 42% 35%, rgba(16,185,129,0.22) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -180px; left: 50%;
+    transform: translateX(-50%);
+    width: 1100px; height: 520px;
+    background: radial-gradient(ellipse at 40%,
+      rgba(245,158,11,0.09) 0%,
+      rgba(20,184,166,0.05) 45%,
+      transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 762px;
+    margin: 0 auto;
+    padding: 92px 46px 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 76px; }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .ht-pill {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 30px;
+  }
+
+  .hp-gold {
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: var(--accent);
+  }
+
+  .hp-teal {
+    background: rgba(20,184,166,0.1);
+    border: 1px solid rgba(20,184,166,0.25);
+    color: var(--teal);
+  }
+
+  .ht-glow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ht-glow::before {
+    content: '●';
+    font-size: 8px;
+    text-shadow: 0 0 8px var(--green);
+  }
+
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.6rem, 6.8vw, 4.6rem);
+    font-weight: 400;
+    line-height: 1.09;
+    letter-spacing: -0.022em;
+    color: #f0e8d0;
+    margin-bottom: 22px;
+  }
+
+  h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--accent), var(--gold2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .deck {
+    font-size: 1.06rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.78;
+    max-width: 590px;
+  }
+
+  .header-rule {
+    margin-top: 40px;
+    height: 1px;
+    background: linear-gradient(to right,
+      var(--accent) 0%, var(--teal) 45%, transparent 70%);
+    opacity: 0.4;
+  }
+
+  /* ── BODY ── */
+  .body p {
+    margin-bottom: 1.65em;
+    color: #6888c0;
+    font-weight: 300;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 54px 0;
+    padding: 34px 44px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--teal) 55%, transparent);
+  }
+
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 0% 50%, var(--glow-g), transparent);
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    color: var(--accent) !important;
+    line-height: 1.66;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+  }
+
+  /* ── SECTION HEADING ── */
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.54rem;
+    font-weight: 400;
+    color: #f0e8d0;
+    margin: 60px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .h2-chip {
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── STRATEGY CARDS ── */
+  .strat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 22px 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .strat-card:hover {
+    border-color: rgba(245,158,11,0.3);
+    box-shadow: 0 4px 32px rgba(245,158,11,0.06);
+  }
+
+  .sc-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sc-bar { width: 4px; flex-shrink: 0; }
+
+  .sc-top-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .sc-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .strat-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #f0e8d0;
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .sc-badge {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .sc-body { padding: 18px 24px 20px 28px; }
+
+  .sc-body p {
+    font-size: 0.94rem;
+    color: var(--muted);
+    margin: 0 !important;
+    line-height: 1.78;
+    font-weight: 300;
+  }
+
+  /* ── PASSIVE NOTE ── */
+  .passive-note {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 11px 16px;
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .pn-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .passive-note p {
+    font-size: 0.86rem !important;
+    font-weight: 400;
+    margin: 0 !important;
+    line-height: 1.62;
+    font-style: italic;
+    font-family: 'Instrument Serif', serif !important;
+  }
+
+  /* ── PASSIVE VS ACTIVE ── */
+  .pa-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin: 26px 0 38px;
+  }
+
+  .pac-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    overflow: hidden;
+  }
+
+  .pac-head {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pac-body { padding: 6px 0; }
+
+  .pac-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 7px 18px;
+    font-size: 0.88rem;
+    color: #5888c0;
+    line-height: 1.55;
+    border-bottom: 1px solid var(--border);
+    font-weight: 300;
+  }
+
+  .pac-item:last-child { border-bottom: none; }
+  .pac-earn::before  { content: '✓'; color:var(--green);  flex-shrink:0; font-size:12px; margin-top:1px; }
+  .pac-active::before { content: '○'; color:var(--muted); flex-shrink:0; font-size:12px; margin-top:1px; }
+
+  /* ── INCOME OVERVIEW GRID ── */
+  .passive-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 26px 0 38px;
+  }
+
+  .pg-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.22s;
+  }
+
+  .pg-tile:hover { border-color: rgba(245,158,11,0.28); }
+
+  .pg-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .pt1::before { background: var(--accent); }
+  .pt2::before { background: var(--teal); }
+  .pt3::before { background: var(--violet); }
+  .pt4::before { background: var(--green); }
+
+  .pg-emoji { font-size: 22px; display: block; margin-bottom: 9px; }
+
+  .pg-tile h4 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: #f0e8d0;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .pg-tile p {
+    font-size: 0.73rem !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── COMPOUND TIMELINE ── */
+  .compound-timeline {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 24px 0 36px;
+  }
+
+  .ct-title {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .ct-rows { display: grid; gap: 12px; }
+
+  .ct-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 90px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ct-label { font-size: 0.86rem; font-weight: 500; color: var(--text); }
+
+  .ct-track { height: 7px; background: var(--border); border-radius: 10px; overflow: hidden; }
+
+  .ct-fill { height: 100%; border-radius: 10px; }
+
+  .ct-val { font-size: 0.8rem; font-weight: 600; text-align: right; }
+
+  /* ── FINAL CHECKLIST ── */
+  .final-check {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-check::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, var(--glow-t), transparent);
+    pointer-events: none;
+  }
+
+  .fc-title {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 26px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.56;
+    font-weight: 300;
+  }
+
+  .fc-box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(20,184,166,0.38);
+    background: rgba(20,184,166,0.07);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 76px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sig {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted);
+  }
+
+  .footer-meta {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--border);
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 54px 22px 74px; }
+    .passive-grid { grid-template-columns: 1fr 1fr; }
+    .pa-compare { grid-template-columns: 1fr; }
+    .fc-grid { grid-template-columns: 1fr; }
+    .ct-row { grid-template-columns: 100px 1fr 70px; }
+    .pull-quote { padding: 26px 26px; }
+    h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <span class="ht-pill hp-gold">Passive Income</span>
+      <span class="ht-pill hp-teal">Blogging Strategy</span>
+      <span class="ht-glow">Earns While You Sleep · 2026</span>
+    </div>
+    <h1>Passive Income<br><em>Blogging Strategies</em></h1>
+    <p class="deck">The most compelling promise in blogging is not just the income — it is the kind of income. Money that arrives while you sleep, while you holiday, while you write the next post. Here is how that income is actually built, honestly and completely.</p>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>There is a phrase that appears in almost every conversation about blogging for income: passive income. It gets invoked with varying degrees of honesty. At one end of the spectrum, it is used carelessly — as though a blogger simply launches a website and watches money materialise indefinitely with no further effort. At the other end, sceptics dismiss it entirely, insisting that no income is truly passive because everything requires maintenance. Both positions miss the truth that lies between them.</p>
+
+    <p>Genuine passive income from blogging exists — and thousands of bloggers live on it. But it is not free. It is prepaid. The blogger who earns £3,000 a month while barely touching their blog in a given week has almost certainly invested years of consistent, often unrewarded effort building the traffic, the trust, and the content infrastructure that makes that hands-off earning possible. Passive income in blogging is not the absence of work. It is the delayed, compounding return on work already done — and understanding that distinction changes everything about how you approach building it.</p>
+
+    <div class="pull-quote">
+      <p>Passive income is not money for nothing. It is money for something you already did — content you already created, trust you already earned, and systems you already built. The work comes first. The passivity follows.</p>
+    </div>
+
+    <!-- WHAT IS PASSIVE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(245,158,11,0.12);color:var(--accent);border:1px solid rgba(245,158,11,0.25)">Define It</span>
+      Passive vs Active — Understanding the Difference
+    </h2>
+
+    <div class="pa-compare">
+      <div class="pac-col">
+        <div class="pac-head" style="color:var(--accent)">
+          <span>💰</span> Passive Income Sources
+        </div>
+        <div class="pac-body">
+          <div class="pac-item pac-earn"><span></span>Display advertising on old posts</div>
+          <div class="pac-item pac-earn"><span></span>Affiliate links in evergreen content</div>
+          <div class="pac-item pac-earn"><span></span>Digital product sales from your shop</div>
+          <div class="pac-item pac-earn"><span></span>Email sequence promoting products</div>
+          <div class="pac-item pac-earn"><span></span>Membership site subscriptions</div>
+        </div>
+      </div>
+      <div class="pac-col">
+        <div class="pac-head" style="color:var(--muted)">
+          <span>⏱</span> Active Income Sources
+        </div>
+        <div class="pac-body">
+          <div class="pac-item pac-active"><span></span>Sponsored posts (written fresh)</div>
+          <div class="pac-item pac-active"><span></span>Freelance writing for clients</div>
+          <div class="pac-item pac-active"><span></span>One-to-one coaching sessions</div>
+          <div class="pac-item pac-active"><span></span>Live workshops and webinars</div>
+          <div class="pac-item pac-active"><span></span>Consulting by the hour</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSIVE INCOME TYPES GRID -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(20,184,166,0.1);color:var(--teal);border:1px solid rgba(20,184,166,0.22)">The Methods</span>
+      Four Passive Income Streams That Compound Over Time
+    </h2>
+
+    <div class="passive-grid">
+      <div class="pg-tile pt1">
+        <span class="pg-emoji">📢</span>
+        <h4>Ad Revenue</h4>
+        <p>Traffic monetised automatically, 24 hours a day</p>
+      </div>
+      <div class="pg-tile pt2">
+        <span class="pg-emoji">🔗</span>
+        <h4>Affiliate Links</h4>
+        <p>Commission paid on purchases made through evergreen posts</p>
+      </div>
+      <div class="pg-tile pt3">
+        <span class="pg-emoji">📦</span>
+        <h4>Digital Products</h4>
+        <p>Courses and ebooks sold from automated sales pages</p>
+      </div>
+      <div class="pg-tile pt4">
+        <span class="pg-emoji">📧</span>
+        <h4>Email Funnels</h4>
+        <p>Automated sequences that sell while you are offline</p>
+      </div>
+    </div>
+
+    <!-- STRATEGY 1: EVERGREEN SEO -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(245,158,11,0.12);color:var(--accent);border:1px solid rgba(245,158,11,0.25)">Strategy 01</span>
+      Evergreen SEO Content — The Engine of All Passive Income
+    </h2>
+
+    <p>Every passive income strategy in blogging depends on one foundation: a steady stream of organic search traffic arriving at your blog without you actively promoting it every day. That traffic comes from evergreen SEO content — articles that rank for keywords people search consistently, month after month and year after year, generating readers whether you published something new this week or not. Without this foundation, every other passive income strategy has no audience to serve.</p>
+
+    <div class="strat-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--accent)"></div>
+        <div class="sc-top-inner">
+          <div class="sc-icon" style="background:rgba(245,158,11,0.12);color:var(--accent)">🌱</div>
+          <h3>Write Content That Earns Readers for Years — Not Days</h3>
+          <span class="sc-badge" style="background:rgba(245,158,11,0.12);color:var(--accent);border:1px solid rgba(245,158,11,0.25)">Foundation</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>Evergreen content targets search queries that do not expire with the news cycle — "how to create a budget," "best email marketing tools," "how to lose weight walking" — topics people will search for in five years with the same frequency as today. A single well-optimised evergreen post can attract hundreds of readers every month indefinitely. Fifty such posts, each earning a modest amount through advertising and affiliate links, generate income that requires no daily attention to sustain. This is the mathematical reality behind passive blogging income: enough well-ranked evergreen posts become a passive income machine that runs on the fuel of consistent organic traffic.</p>
+        <div class="passive-note">
+          <span class="pn-label" style="color:var(--accent)">The Maths</span>
+          <p style="color:var(--muted)">If 40 evergreen posts each attract 500 monthly readers, that is 20,000 monthly visitors — enough for a Mediavine account earning £600–£2,000 per month passively. Add affiliate links to those same posts and that figure can double or triple without any additional traffic.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRATEGY 2: AFFILIATE SYSTEMS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(139,92,246,0.12);color:var(--violet);border:1px solid rgba(139,92,246,0.25)">Strategy 02</span>
+      Affiliate Link Systems — Commission That Compounds Every Month
+    </h2>
+
+    <div class="strat-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--violet)"></div>
+        <div class="sc-top-inner">
+          <div class="sc-icon" style="background:rgba(139,92,246,0.12);color:var(--violet)">🔗</div>
+          <h3>Build a Library of Affiliate-Rich Posts That Earn While You Sleep</h3>
+          <span class="sc-badge" style="background:rgba(139,92,246,0.12);color:var(--violet);border:1px solid rgba(139,92,246,0.25)">High ROI</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>An affiliate link embedded in a post that ranks on page one of Google for a commercial keyword is a passive income asset — it generates commission every time a reader clicks through and buys, twenty-four hours a day, without any action on your part. The strategy for building a passive affiliate income system involves three deliberate content types: review articles that assess specific products in depth, comparison articles that help readers choose between two or more options, and "best of" roundup articles that curate the top products in a category. These content formats target searchers at the point of purchase decision — the moment of highest conversion intent — and with affiliate links embedded naturally throughout, they turn organic search traffic into commission income entirely passively.</p>
+        <div class="passive-note">
+          <span class="pn-label" style="color:var(--violet)">Key Strategy</span>
+          <p style="color:var(--muted)">Prioritise affiliate programmes with recurring commissions — software subscriptions, membership platforms, and SaaS tools that pay a percentage of the customer's monthly fee for the lifetime of the subscription. A single referred customer paying £30 a month can earn you £6–£12 every month for years.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRATEGY 3: DIGITAL PRODUCTS -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(59,130,246,0.12);color:var(--blue);border:1px solid rgba(59,130,246,0.25)">Strategy 03</span>
+      Digital Products With Automated Sales Funnels
+    </h2>
+
+    <div class="strat-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--blue)"></div>
+        <div class="sc-top-inner">
+          <div class="sc-icon" style="background:rgba(59,130,246,0.12);color:var(--blue)">📦</div>
+          <h3>A Sales Page That Never Sleeps, a Product That Never Runs Out</h3>
+          <span class="sc-badge" style="background:rgba(59,130,246,0.12);color:var(--blue);border:1px solid rgba(59,130,246,0.25)">Best Margins</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>A digital product — ebook, course, template pack, workbook — is the closest thing to genuinely passive income that a blogger can build. Created once, hosted on a simple sales page, promoted through evergreen blog content and an automated email sequence, it can sell every day with no ongoing effort beyond occasional updates. The automation layer is what transforms a digital product from a one-time launch into a passive income stream: a welcome email sequence that introduces new subscribers to your product, a dedicated sales page optimised for conversion, and links embedded naturally throughout the blog posts most likely to attract readers who need what you created. Every piece of this system can be set up in a week and then operate indefinitely on its own.</p>
+        <div class="passive-note">
+          <span class="pn-label" style="color:var(--blue)">Realistic Projection</span>
+          <p style="color:var(--muted)">A £47 ebook that sells five copies a week through an automated email funnel generates £940 per month passively. At ten copies a week — achievable with 2,000+ monthly new email subscribers — that is £1,880 per month from a document you wrote once.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRATEGY 4: EMAIL AUTOMATION -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(16,185,129,0.12);color:var(--green);border:1px solid rgba(16,185,129,0.25)">Strategy 04</span>
+      Email Automation — Your 24-Hour Passive Sales Force
+    </h2>
+
+    <div class="strat-card">
+      <div class="sc-top">
+        <div class="sc-bar" style="background:var(--green)"></div>
+        <div class="sc-top-inner">
+          <div class="sc-icon" style="background:rgba(16,185,129,0.12);color:var(--green)">📧</div>
+          <h3>A Well-Built Email Sequence Is the Most Powerful Automation a Blogger Owns</h3>
+          <span class="sc-badge" style="background:rgba(16,185,129,0.12);color:var(--green);border:1px solid rgba(16,185,129,0.25)">Evergreen Sales</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p>An automated email sequence — a series of pre-written emails delivered automatically to every new subscriber at scheduled intervals — is the engine that powers passive digital product sales. A new reader subscribes to your blog's email list to receive a free lead magnet. Over the following ten to fourteen days, they receive a sequence of emails that build trust, demonstrate expertise, share genuinely valuable content, and naturally introduce them to your paid product or affiliate recommendations. Every email in this sequence was written once. It will be sent to every new subscriber you ever gain, indefinitely, generating sales and affiliate commissions completely automatically. Building this sequence is the highest-leverage passive income investment available to any blogger with an established email platform and a product worth selling.</p>
+        <div class="passive-note">
+          <span class="pn-label" style="color:var(--green)">Build This First</span>
+          <p style="color:var(--muted)">Before spending time on a second digital product, invest in perfecting your email welcome sequence. A sequence that converts three percent of new subscribers into buyers at £47 means every hundred new subscribers generates £141 in passive product income — automatically, forever.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPOUND TIMELINE -->
+    <h2>
+      <span class="h2-chip" style="background:rgba(245,158,11,0.12);color:var(--accent);border:1px solid rgba(245,158,11,0.25)">The Compound</span>
+      How Passive Income Grows Over Time
+    </h2>
+
+    <div class="compound-timeline">
+      <div class="ct-title">📈 &nbsp; Passive Income Growth — The Compounding Reality</div>
+      <div class="ct-rows">
+        <div class="ct-row">
+          <span class="ct-label">Month 6</span>
+          <div class="ct-track"><div class="ct-fill" style="width:10%;background:var(--accent)"></div></div>
+          <span class="ct-val" style="color:var(--accent)">£20–80/mo</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-label">Month 12</span>
+          <div class="ct-track"><div class="ct-fill" style="width:24%;background:var(--accent)"></div></div>
+          <span class="ct-val" style="color:var(--accent)">£100–400/mo</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-label">Month 18</span>
+          <div class="ct-track"><div class="ct-fill" style="width:44%;background:var(--teal)"></div></div>
+          <span class="ct-val" style="color:var(--teal)">£300–1,200/mo</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-label">Year 2</span>
+          <div class="ct-track"><div class="ct-fill" style="width:66%;background:var(--green)"></div></div>
+          <span class="ct-val" style="color:var(--green)">£800–3,500/mo</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-label">Year 3+</span>
+          <div class="ct-track"><div class="ct-fill" style="width:92%;background:var(--violet)"></div></div>
+          <span class="ct-val" style="color:var(--violet)">£2K–10K+/mo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL CHECKLIST -->
+    <div class="final-check">
+      <div class="fc-title">✦ &nbsp; Your Passive Income Building Plan</div>
+      <div class="fc-grid">
+        <div class="fc-item"><div class="fc-box"></div>Identify 20 evergreen keyword targets in your niche</div>
+        <div class="fc-item"><div class="fc-box"></div>Write and optimise one evergreen post per week</div>
+        <div class="fc-item"><div class="fc-box"></div>Join 3 affiliate programmes with recurring commissions</div>
+        <div class="fc-item"><div class="fc-box"></div>Add affiliate links to every relevant existing post</div>
+        <div class="fc-item"><div class="fc-box"></div>Create one simple digital product this quarter</div>
+        <div class="fc-item"><div class="fc-box"></div>Build a 7-email automated welcome sequence</div>
+        <div class="fc-item"><div class="fc-box"></div>Apply to Mediavine at 50,000 monthly sessions</div>
+        <div class="fc-item"><div class="fc-box"></div>Update your top affiliate posts every 6 months</div>
+        <div class="fc-item"><div class="fc-box"></div>Track which content earns most and write more like it</div>
+        <div class="fc-item"><div class="fc-box"></div>Be patient — passive income compounds slowly, then fast</div>
+      </div>
+    </div>
+
+    <p>Passive income blogging is a long game played with a set of very learnable cards. Evergreen content that ranks and earns indefinitely. Affiliate links that convert quietly in the background. Digital products delivered by automated systems to readers whose trust was earned months before the sale. Email sequences that work while you are sleeping, cooking, or writing tomorrow's post. None of these require special talent. All of them require consistent effort, applied with patience, in the right direction.</p>
+
+    <p>The bloggers earning passively today are the ones who planted their seeds two and three years ago. The best time to plant yours was then. The second-best time is this week.</p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="article-footer">
+    <span class="footer-sig">Passive income is not freedom from work. It is the freedom that your previous work eventually earns you.</span>
+  </footer>
+
+</div>
+</body>
+</html>
