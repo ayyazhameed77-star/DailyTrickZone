@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create a Blog Homepage — No.</title>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --white:      #ffffff;
+    --snow:       #f8f9fc;
+    --ice:        #eef1f8;
+    --pale:       #e4e9f4;
+    --cobalt:     #2952cc;
+    --cobalt-dk:  #1a3a9e;
+    --cobalt-lt:  rgba(41,82,204,0.08);
+    --cobalt-xlt: rgba(41,82,204,0.04);
+    --gold:       #b8922a;
+    --gold-lt:    rgba(184,146,42,0.1);
+    --sky:        #5b8def;
+    --sky-lt:     rgba(91,141,239,0.1);
+    --ink:        #0c1428;
+    --charcoal:   #1e2d4a;
+    --text:       #2e3f60;
+    --muted:      #7a8db0;
+    --border:     #d8dfee;
+    --border-lt:  #eaeffa;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 20px rgba(41,82,204,0.04);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .nav-brand-mark {
+    width: 28px; height: 28px;
+    background: var(--cobalt);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
+  }
+
+  .nav-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-series {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-num {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--cobalt);
+    background: var(--cobalt-lt);
+    border: 1px solid rgba(41,82,204,0.15);
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    padding: 96px 60px 88px;
+  }
+
+  /* Blueprint grid */
+  .blueprint-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(91,141,239,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,141,239,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Large dots at grid intersections */
+  .blueprint-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(91,141,239,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0;
+    pointer-events: none;
+  }
+
+  /* Gradient overlay */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 70% 50%, rgba(41,82,204,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(184,146,42,0.06) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(12,20,40,0.3) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 820px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  .eyebrow-tag {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--sky);
+    background: rgba(91,141,239,0.12);
+    border: 1px solid rgba(91,141,239,0.2);
+    padding: 5px 14px;
+    border-radius: 3px;
+  }
+
+  .eyebrow-rule {
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: rgba(91,141,239,0.3);
+  }
+
+  .eyebrow-right {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  h1 .sub-line {
+    display: block;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.55em;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: rgba(255,255,255,0.45);
+    margin-top: 6px;
+  }
+
+  .hero-desc {
+    margin-top: 28px;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 500px;
+    line-height: 1.7;
+    border-left: 2px solid rgba(91,141,239,0.4);
+    padding-left: 20px;
+  }
+
+  .hero-footer {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hf-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hf-val {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .hf-key {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+  }
+
+  .hf-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.06); }
+
+  /* ── COBALT RULE ── */
+  .cobalt-rule {
+    height: 3px;
+    background: linear-gradient(90deg, var(--cobalt) 0%, var(--sky) 40%, var(--gold) 80%, transparent 100%);
+  }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 64px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+
+  .intro-lead {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.35rem;
+    color: var(--charcoal);
+    line-height: 1.75;
+    font-style: italic;
+    font-weight: 300;
+    max-width: 700px;
+  }
+
+  .intro-lead strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--cobalt);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border-lt);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .sec-label {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sec-label::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--cobalt);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  h2 {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 1.75rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 18px;
+    line-height: 1.9;
+  }
+
+  p strong {
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  /* ── WIREFRAME MOCK ── */
+  .wireframe-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .wireframe-title::before, .wireframe-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .wireframe {
+    background: var(--snow);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 28px 0 36px;
+    box-shadow: 0 4px 32px rgba(41,82,204,0.06);
+  }
+
+  /* Browser chrome */
+  .wf-chrome {
+    background: var(--pale);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .wf-dots { display: flex; gap: 5px; }
+  .wf-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .wf-dot:nth-child(1) { background: #ff6058; }
+  .wf-dot:nth-child(2) { background: #ffbd2e; }
+  .wf-dot:nth-child(3) { background: #27c93f; }
+
+  .wf-url {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 4px 12px;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  /* Wireframe sections */
+  .wf-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+
+  .wf-nav-mock {
+    background: var(--cobalt);
+    border-radius: 5px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 12px;
+  }
+
+  .wf-logo-block {
+    width: 60px; height: 12px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 3px;
+  }
+
+  .wf-nav-links {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .wf-nav-link {
+    width: 36px; height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+  }
+
+  .wf-cta-btn {
+    width: 44px; height: 20px;
+    background: var(--gold);
+    border-radius: 4px;
+    opacity: 0.9;
+  }
+
+  .wf-hero-mock {
+    background: linear-gradient(135deg, var(--cobalt-lt) 0%, var(--ice) 100%);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wf-hero-mock::after {
+    content: 'HERO SECTION';
+    position: absolute;
+    top: 8px; right: 10px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--cobalt);
+    opacity: 0.4;
+  }
+
+  .wf-h-line-lg { width: 180px; height: 10px; background: var(--cobalt); border-radius: 3px; opacity: 0.3; }
+  .wf-h-line-md { width: 130px; height: 7px; background: var(--muted); border-radius: 3px; opacity: 0.3; }
+  .wf-h-line-sm { width: 80px; height: 20px; background: var(--cobalt); border-radius: 4px; opacity: 0.5; }
+
+  .wf-section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin: 4px 0 2px;
+    opacity: 0.7;
+  }
+
+  .wf-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .wf-featured-mock {
+    background: var(--white);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .wf-card-tall {
+    background: var(--cobalt-lt);
+    border-radius: 4px;
+    min-height: 72px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .wf-card-wide {
+    background: var(--ice);
+    border-radius: 4px;
+    min-height: 72px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .wf-card-img { height: 28px; background: var(--pale); border-radius: 3px; }
+  .wf-card-title { height: 7px; background: var(--cobalt); border-radius: 2px; opacity: 0.4; }
+  .wf-card-meta { height: 5px; background: var(--muted); border-radius: 2px; opacity: 0.25; width: 70%; }
+  .wf-card-line { height: 5px; background: var(--muted); border-radius: 2px; opacity: 0.2; }
+
+  .wf-cats-mock {
+    background: var(--white);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .wf-cat-pill {
+    height: 22px;
+    border-radius: 100px;
+    background: var(--cobalt-lt);
+    border: 1px solid var(--border);
+  }
+
+  .wf-email-mock {
+    background: var(--cobalt);
+    border-radius: 6px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 14px;
+    opacity: 0.85;
+  }
+
+  .wf-email-text { width: 100px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 2px; }
+  .wf-email-input { flex: 1; height: 28px; background: rgba(255,255,255,0.15); border-radius: 4px; max-width: 140px; }
+  .wf-email-btn { width: 60px; height: 28px; background: var(--gold); border-radius: 4px; opacity: 0.9; }
+
+  .wf-footer-mock {
+    background: var(--charcoal);
+    border-radius: 5px;
+    height: 32px;
+    opacity: 0.7;
+  }
+
+  /* ── SECTION GUIDE CARDS ── */
+  .section-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0 32px;
+  }
+
+  .sec-card {
+    background: var(--snow);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+  }
+
+  .sec-card:hover {
+    border-color: rgba(41,82,204,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(41,82,204,0.06);
+  }
+
+  .sec-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 0 0 10px 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .sec-card:hover::after { opacity: 1; }
+  .sc-cobalt::after, .sc-cobalt:hover { border-color: rgba(41,82,204,0.3); }
+  .sc-cobalt::after { background: var(--cobalt); }
+  .sc-gold::after { background: var(--gold); }
+  .sc-sky::after { background: var(--sky); }
+  .sc-muted::after { background: var(--muted); }
+
+  .sc-num {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: var(--cobalt);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .sc-icon { font-size: 1.4rem; margin-bottom: 10px; }
+
+  .sc-title {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .sc-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    background: var(--cobalt);
+    border-radius: 10px;
+    padding: 48px 52px;
+    margin: 52px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-family: 'Crimson Pro', serif;
+    font-size: 14rem;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: -40px; left: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pq-inner {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    position: relative;
+    max-width: 640px;
+  }
+
+  .pq-inner em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ── TIPS BOX ── */
+  .tips-box {
+    background: var(--gold-lt);
+    border: 1.5px solid rgba(184,146,42,0.2);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+
+  .tips-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .tips-box p {
+    margin-bottom: 0;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.75;
+  }
+
+  .tips-box p strong { font-weight: 600; font-style: italic; }
+
+  /* ── PRIORITY LIST ── */
+  .priority-list {
+    list-style: none;
+    margin: 22px 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .priority-list li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    align-items: start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-lt);
+  }
+
+  .priority-list li:last-child { border-bottom: none; }
+
+  .pl-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--cobalt-lt);
+    border: 1px solid rgba(41,82,204,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pl-content strong {
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.97rem;
+    letter-spacing: 0.01em;
+  }
+
+  .pl-content p {
+    margin-bottom: 0;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── FINALE ── */
+  .finale {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 56px 52px;
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Blueprint pattern in finale */
+  .finale-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(91,141,239,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,141,239,0.05) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+    border-radius: 14px;
+  }
+
+  .finale-glow {
+    position: absolute;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41,82,204,0.1), transparent 70%);
+    bottom: -80px; right: -60px;
+    pointer-events: none;
+  }
+
+  .finale-eyebrow {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 18px;
+    position: relative;
+  }
+
+  .finale h2 {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.2;
+    position: relative;
+  }
+
+  .finale p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.08rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.85;
+    margin-bottom: 18px;
+    position: relative;
+  }
+
+  .finale p strong { color: rgba(255,255,255,0.8); font-weight: 500; font-style: italic; }
+  .finale p:last-child { margin-bottom: 0; }
+
+  .finale-close {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.22);
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--snow);
+    border-top: 1px solid var(--border);
+    padding: 26px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  footer .ft-cobalt { color: var(--cobalt); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes riseIn {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero-eyebrow { animation: riseIn 0.55s ease both 0.05s; }
+  h1            { animation: riseIn 0.55s ease both 0.18s; }
+  .hero-desc    { animation: riseIn 0.55s ease both 0.3s; }
+  .hero-footer  { animation: riseIn 0.55s ease both 0.44s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 660px) {
+    .top-nav { padding: 0 22px; }
+    .hero { padding: 60px 24px 56px; }
+    .page { padding: 0 24px 80px; }
+    footer { padding: 22px 24px; }
+    .section-cards { grid-template-columns: 1fr; }
+    .wf-featured-mock { grid-template-columns: 1fr; }
+    .pull-quote { padding: 36px 28px; }
+    .finale { padding: 38px 28px; }
+    .wf-cats-mock .wf-cat-pill { display: none; }
+    .wf-cats-mock .wf-cat-pill:nth-child(-n+4) { display: block; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="nav-brand">
+    <div class="nav-brand-mark">⌂</div>
+    Blog Design Studio
+  </div>
+  <div class="nav-meta">
+    <span class="nav-series">Design Guide · 2025</span>
+    <span class="nav-num">No. 92</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="blueprint-grid"></div>
+  <div class="blueprint-dots"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-tag">No. 92</span>
+      <span class="eyebrow-rule"></span>
+      <span class="eyebrow-right">Blog Design · Homepage Guide</span>
+    </div>
+
+    <h1>
+      How to Create a
+      <span class="sub-line">Blog Homepage That Actually Works</span>
+    </h1>
+
+    <p class="hero-desc">
+      Your homepage is not just the front door to your blog — it is your most powerful first impression, your content showcase, and your reader retention engine, all in one screen.
+    </p>
+
+    <div class="hero-footer">
+      <div class="hf-item">
+        <span class="hf-val">~800</span>
+        <span class="hf-key">Words</span>
+      </div>
+      <div class="hf-sep"></div>
+      <div class="hf-item">
+        <span class="hf-val">6 min</span>
+        <span class="hf-key">Read Time</span>
+      </div>
+      <div class="hf-sep"></div>
+      <div class="hf-item">
+        <span class="hf-val">7</span>
+        <span class="hf-key">Sections</span>
+      </div>
+      <div class="hf-sep"></div>
+      <div class="hf-item">
+        <span class="hf-val">2025</span>
+        <span class="hf-key">Edition</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="cobalt-rule"></div>
+
+<!-- BODY -->
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p class="intro-lead">
+      Most bloggers treat their homepage as an afterthought — a default archive of recent posts slapped together during setup and never revisited. But your homepage is <strong>the single most visited page on your blog</strong>. It is where first impressions form, where new readers decide whether to stay or leave, and where subscribers are made or lost. Building it with intention changes everything.
+    </p>
+  </div>
+
+  <!-- SECTION 1 — WHY IT MATTERS -->
+  <div class="section">
+    <div class="sec-label">Section 01</div>
+    <h2>Why Your Homepage Decides Your Blog's Future</h2>
+    <p>
+      A visitor who lands on your blog homepage from a search result, a social share, or a friend's recommendation makes a subconscious decision in under three seconds: <em>Is this blog for me?</em> The answer to that question is determined almost entirely by what they see before they scroll.
+    </p>
+    <p>
+      Clarity is everything. A homepage that communicates <strong>who you are, what your blog is about, and why a specific reader should care</strong> — in the first visible screen — holds visitors long enough for your content to do its job. A homepage that fails at this sends them straight back to Google, never to return.
+    </p>
+    <p>
+      The good news is that a great blog homepage does not require advanced design skills or expensive tools. It requires clear thinking about your reader, your brand, and the journey you want visitors to take from the moment they arrive.
+    </p>
+  </div>
+
+  <!-- SECTION 2 — WIREFRAME -->
+  <div class="section">
+    <div class="sec-label">Section 02</div>
+    <h2>The Anatomy of a High-Converting Homepage</h2>
+    <p>
+      Before you touch a design tool, understand the structure. Every effective blog homepage follows a similar blueprint — each section serving a specific purpose in the reader's journey from stranger to subscriber.
+    </p>
+
+    <div class="wireframe-title">Homepage Blueprint — Annotated Layout</div>
+
+    <div class="wireframe">
+      <!-- Browser chrome -->
+      <div class="wf-chrome">
+        <div class="wf-dots">
+          <div class="wf-dot"></div>
+          <div class="wf-dot"></div>
+          <div class="wf-dot"></div>
+        </div>
+        <div class="wf-url">yourblog.com</div>
+      </div>
+
+      <!-- Wireframe body -->
+      <div class="wf-body">
+
+        <!-- Nav -->
+        <div class="wf-section-label">① Navigation Bar</div>
+        <div class="wf-nav-mock">
+          <div class="wf-logo-block"></div>
+          <div class="wf-nav-links">
+            <div class="wf-nav-link"></div>
+            <div class="wf-nav-link"></div>
+            <div class="wf-nav-link"></div>
+          </div>
+          <div class="wf-cta-btn"></div>
+        </div>
+
+        <!-- Hero -->
+        <div class="wf-section-label">② Hero Section — Your Value Proposition</div>
+        <div class="wf-hero-mock">
+          <div class="wf-h-line-lg"></div>
+          <div class="wf-h-line-md"></div>
+          <div class="wf-h-line-sm"></div>
+        </div>
+
+        <!-- Featured posts -->
+        <div class="wf-section-label">③ Featured / Latest Posts Grid</div>
+        <div class="wf-featured-mock">
+          <div class="wf-card-tall">
+            <div class="wf-card-img"></div>
+            <div class="wf-card-title"></div>
+            <div class="wf-card-meta"></div>
+            <div class="wf-card-line"></div>
+            <div class="wf-card-line" style="width:60%"></div>
+          </div>
+          <div class="wf-card-wide">
+            <div class="wf-card-img" style="height:20px"></div>
+            <div class="wf-card-title"></div>
+            <div class="wf-card-meta"></div>
+          </div>
+          <div class="wf-card-wide">
+            <div class="wf-card-img" style="height:20px"></div>
+            <div class="wf-card-title"></div>
+            <div class="wf-card-meta"></div>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="wf-section-label">④ Category Navigation</div>
+        <div class="wf-cats-mock">
+          <div class="wf-cat-pill" style="width:70px;"></div>
+          <div class="wf-cat-pill" style="width:90px;"></div>
+          <div class="wf-cat-pill" style="width:60px;"></div>
+          <div class="wf-cat-pill" style="width:80px;"></div>
+          <div class="wf-cat-pill" style="width:55px;"></div>
+          <div class="wf-cat-pill" style="width:75px;"></div>
+        </div>
+
+        <!-- Email -->
+        <div class="wf-section-label">⑤ Email Sign-Up Banner</div>
+        <div class="wf-email-mock">
+          <div class="wf-email-text"></div>
+          <div class="wf-email-input"></div>
+          <div class="wf-email-btn"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="wf-section-label">⑥ Footer</div>
+        <div class="wf-footer-mock"></div>
+
+      </div>
+    </div>
+
+    <p>
+      Notice how each section serves a purpose: the navigation orients the reader, the hero earns their attention, the posts grid shows your content's value, categories help them self-select their interests, and the email banner converts casual visitors into subscribers you'll keep.
+    </p>
+  </div>
+
+  <!-- SECTION 3 — HERO SECTION -->
+  <div class="section">
+    <div class="sec-label">Section 03</div>
+    <h2>Crafting Your Hero Section</h2>
+    <p>
+      The hero section is the most important real estate on your homepage. It is what every visitor sees first, and it must answer one question instantly: <strong>"What is this blog and why should I read it?"</strong>
+    </p>
+    <p>
+      Great blog hero sections have three components: a clear headline that states your blog's focus, a one-sentence description of who it is for, and a single call to action — typically a button to read your best post or subscribe to your list. Nothing more. Resist the temptation to say everything at once.
+    </p>
+
+    <div class="tips-box">
+      <div class="tips-label">✦ Headline Formula</div>
+      <p>Try this structure: <strong>"I help [specific audience] achieve [specific outcome] through [your method]."</strong> Turn that into a punchy headline and you have a hero section that immediately filters for your ideal reader and makes everyone else self-select out — which is exactly what you want.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4 — POSTS + CATEGORIES -->
+  <div class="section">
+    <div class="sec-label">Section 04</div>
+    <h2>Showcasing Your Best Content</h2>
+    <p>
+      Below the hero, you have a choice: display your most recent posts, or display your most important ones. For most blogs, the answer is a mix of both — but with a deliberate hierarchy. Lead with your single best, most valuable post in a large featured card. Then show a grid of recent posts below it.
+    </p>
+    <p>
+      Category navigation is often under-designed on blog homepages, but it is one of the most powerful tools for keeping readers engaged. When a visitor sees your categories listed clearly — "Budgeting," "Investing," "Side Income" — they immediately know your full scope and can navigate to exactly what interests them. <strong>Make categories prominent, visual, and easy to click.</strong>
+    </p>
+
+    <div class="section-cards">
+      <div class="sec-card sc-cobalt">
+        <div class="sc-icon">📌</div>
+        <div class="sc-title">Featured Post Card</div>
+        <p class="sc-desc">One large, prominent card for your absolute best piece. This is your strongest first impression of actual content — choose something that demonstrates your expertise at its peak.</p>
+      </div>
+      <div class="sec-card sc-gold">
+        <div class="sc-icon">📋</div>
+        <div class="sc-title">Recent Posts Grid</div>
+        <p class="sc-desc">A clean 2 or 3-column grid of your most recent posts beneath the featured card. Use a thumbnail image, post title, date, and category tag for each — nothing more.</p>
+      </div>
+      <div class="sec-card sc-sky">
+        <div class="sc-icon">🏷️</div>
+        <div class="sc-title">Visual Categories</div>
+        <p class="sc-desc">A row of visual category cards or chips with icons. Readers who arrive from a single post often explore by topic — give them a clear, visual way to do exactly that.</p>
+      </div>
+      <div class="sec-card sc-muted">
+        <div class="sc-icon">👤</div>
+        <div class="sc-title">Brief About Snippet</div>
+        <p class="sc-desc">A short two-sentence about section with a photo. People follow blogs because of the person behind them. Make yourself visible and human, even on the homepage.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <p class="pq-inner">
+      Your homepage is not a table of contents. It is a <em>conversation starter</em> — the moment where a stranger decides, in silence, whether your voice is worth following.
+    </p>
+  </div>
+
+  <!-- SECTION 5 — EMAIL -->
+  <div class="section">
+    <div class="sec-label">Section 05</div>
+    <h2>The Email Sign-Up: Your Most Important Element</h2>
+    <p>
+      Of every element on your blog homepage, the email sign-up form is the one with the most long-term financial and audience value. Social followers come and go with algorithm changes. Email subscribers are yours permanently. A homepage that converts even 2% of visitors into subscribers builds a list that compounds in value every month.
+    </p>
+    <p>
+      Place an email sign-up in at least two locations on your homepage: once in a prominent banner section (often between the posts grid and the footer), and once in the sidebar or as a floating element. Pair it with a compelling lead magnet — a free guide, a checklist, a mini-course — and your conversion rate will be five to ten times higher than a plain "subscribe for updates" form.
+    </p>
+
+    <div class="tips-box">
+      <div class="tips-label">💡 Conversion Tip</div>
+      <p>The copy on your email sign-up matters enormously. <strong>"Get weekly tips on growing your blog"</strong> outperforms <strong>"Subscribe to my newsletter"</strong> every time. Lead with the benefit the reader receives, not the action you're asking them to take.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 — DESIGN PRINCIPLES -->
+  <div class="section">
+    <div class="sec-label">Section 06</div>
+    <h2>Design Principles for a Homepage That Converts</h2>
+    <p>
+      You do not need to be a designer to build a homepage that looks and works brilliantly. You need to apply a handful of principles that separate effective homepage design from cluttered, confusing ones.
+    </p>
+
+    <ul class="priority-list">
+      <li>
+        <div class="pl-icon">🎯</div>
+        <div class="pl-content">
+          <strong>One Primary Call to Action Per Screen</strong>
+          <p>Every visible section of your homepage should have one clear next step. Giving visitors two equal choices creates decision paralysis. Guide them forward — one step at a time.</p>
+        </div>
+      </li>
+      <li>
+        <div class="pl-icon">⬜</div>
+        <div class="pl-content">
+          <strong>Generous White Space</strong>
+          <p>White space is not empty space — it is breathing room that makes your content feel premium and easy to read. Crowded homepages feel cheap and overwhelming. Give every element room to exist.</p>
+        </div>
+      </li>
+      <li>
+        <div class="pl-icon">📱</div>
+        <div class="pl-content">
+          <strong>Mobile-First Layout</strong>
+          <p>Over 60% of your visitors will arrive on a mobile phone. Design your homepage for mobile first, then scale up to desktop. Every font size, button, and grid must look intentional on a small screen.</p>
+        </div>
+      </li>
+      <li>
+        <div class="pl-icon">🔤</div>
+        <div class="pl-content">
+          <strong>Consistent Typography Hierarchy</strong>
+          <p>Use one font for headings, one for body text. Vary size and weight for hierarchy — never more than three font sizes in the same visual region. Typographic consistency signals professionalism instantly.</p>
+        </div>
+      </li>
+      <li>
+        <div class="pl-icon">⚡</div>
+        <div class="pl-content">
+          <strong>Speed Above Everything</strong>
+          <p>A homepage that loads in over three seconds loses more than half its visitors before they even see it. Compress every image. Use a fast host. Remove unused plugins. Speed is design too.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- FINALE -->
+  <div class="finale">
+    <div class="finale-grid"></div>
+    <div class="finale-glow"></div>
+
+    <div class="finale-eyebrow">Final Word — No.</div>
+    <h2>Build It Like a Welcome</h2>
+    <p>
+      The best blog homepages feel like walking into a well-designed space where everything is exactly where you'd expect it and nothing is in your way. They are <strong>clear before they are clever</strong>. They guide before they impress. They make the visitor feel instantly that they are in the right place for the right reasons.
+    </p>
+    <p>
+      Start with the blueprint: hero section, featured post, posts grid, categories, email sign-up, footer. Get those working well first. Then refine the typography, polish the spacing, improve the mobile experience, and test your headlines. Iteration over six months will produce a homepage that most established bloggers still haven't built.
+    </p>
+    <p>
+      <strong>Your homepage is never truly finished — it grows as your blog grows.</strong> But the version you build this week, built with intention and care, will be the foundation that everything else stands on.
+    </p>
+    <p class="finale-close">
+      "The reader who stays is the one who felt, in the first three seconds, that your homepage was built for them."
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>How to Create a Blog Homepage</span>
+  <span class="ft-cobalt">No.2</span>
+  <span>Blog Design Studio · 2025</span>
+</footer>
+
+</body>
+</html>
