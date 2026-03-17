@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog Launch Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #f4f7f4;
+    --paper:    #ffffff;
+    --ink:      #141c14;
+    --char:     #1e2a1e;
+    --green:    #2e7d52;
+    --green2:   #3aa068;
+    --mint:     #e4f5ec;
+    --pale:     #f0faf4;
+    --gold:     #d4922a;
+    --gold2:    #f0b040;
+    --coral:    #d44a38;
+    --border:   #d0ddd0;
+    --muted:    #6a7a6a;
+    --sky:      #3a6898;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER BAR ── */
+  .hbar {
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 40px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hbar-logo {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.15rem;
+    color: #fff;
+    letter-spacing: .03em;
+  }
+  .hbar-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .htag {
+    font-size: .63rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid rgba(255,255,255,.25);
+    color: rgba(255,255,255,.7);
+  }
+  .htag.lit { background: rgba(255,255,255,.15); color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--char);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  /* grid texture */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255,255,255,.03) 50px),
+      repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(255,255,255,.03) 50px);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 72px 36px 64px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 52px;
+    align-items: end;
+    position: relative; z-index: 2;
+  }
+  @media(max-width:700px){ .hero-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  .hero-left {}
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--green2);
+    margin-bottom: 22px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--green2);
+    flex-shrink: 0;
+  }
+  .hero h1 {
+    font-family: 'Abril Fatface', serif;
+    font-size: clamp(3rem, 6.5vw, 5.2rem);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--green2); }
+  .hero-sub {
+    font-size: .98rem;
+    color: rgba(255,255,255,.55);
+    line-height: 1.8;
+    max-width: 460px;
+  }
+
+  /* right — count panel */
+  .hero-panel {
+    background: var(--green);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 4px;
+    background: var(--gold2);
+  }
+  .panel-label {
+    font-size: .64rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    margin-bottom: 18px;
+  }
+  .count-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .count-item:last-child { border-bottom: none; }
+  .ci-num {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.8rem;
+    color: var(--gold2);
+    line-height: 1;
+    min-width: 42px;
+    text-align: right;
+  }
+  .ci-text {}
+  .ci-title {
+    font-size: .82rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .ci-sub {
+    font-size: .7rem;
+    color: rgba(255,255,255,.45);
+    margin-top: 2px;
+  }
+
+  /* ── PROGRESS BAR STRIP ── */
+  .progress-strip {
+    background: var(--ink);
+    padding: 16px 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .prog-label {
+    font-size: .63rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    white-space: nowrap;
+    margin-right: 6px;
+  }
+  .prog-seg {
+    flex: 1;
+    min-width: 60px;
+    height: 6px;
+    background: rgba(255,255,255,.08);
+    position: relative;
+    cursor: default;
+  }
+  .prog-seg .fill {
+    height: 100%;
+    background: var(--green2);
+    transition: width .6s ease;
+  }
+  .prog-seg .seg-name {
+    position: absolute;
+    bottom: 11px;
+    left: 0;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    white-space: nowrap;
+  }
+  .prog-arrow {
+    color: rgba(255,255,255,.2);
+    font-size: .8rem;
+    flex-shrink: 0;
+  }
+
+  /* ── BODY ── */
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 68px 24px 88px;
+  }
+
+  p {
+    font-size: 1.03rem;
+    line-height: 1.9;
+    margin-bottom: 1.5em;
+    color: #1e2e1e;
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-family: 'Abril Fatface', serif;
+    font-size: 5.2rem;
+    line-height: .8;
+    margin: 5px 13px -4px 0;
+    color: var(--green);
+  }
+
+  /* ── PHASE HEADER ── */
+  .ph {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 0 16px;
+    align-items: start;
+    margin: 52px 0 16px;
+  }
+  .ph-badge {
+    background: var(--green);
+    color: #fff;
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.3rem;
+    width: 52px; height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ph-badge.gold  { background: var(--gold); }
+  .ph-badge.coral { background: var(--coral); }
+  .ph-badge.sky   { background: var(--sky); }
+  .ph-badge.char  { background: var(--char); }
+  .ph-inner {}
+  .ph-cat {
+    font-size: .64rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .ph-cat.gold  { color: var(--gold); }
+  .ph-cat.coral { color: var(--coral); }
+  .ph-cat.sky   { color: var(--sky); }
+  .ph-cat.char  { color: var(--char); }
+  h2 {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1.18;
+    font-weight: 400;
+  }
+
+  /* ── CHECKLIST BLOCK ── */
+  .cl-block {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    margin: 14px 0 4px;
+    overflow: hidden;
+  }
+  .cl-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-item:hover { background: var(--pale); }
+  .cl-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 14px 0;
+    background: var(--mint);
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+    font-size: .95rem;
+    color: var(--green);
+    font-weight: 700;
+  }
+  .cl-text {
+    padding: 13px 16px;
+  }
+  .cl-text strong {
+    display: block;
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .cl-text span {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── TIP BOX ── */
+  .tip {
+    background: var(--mint);
+    border-left: 4px solid var(--green);
+    padding: 16px 20px;
+    margin: 16px 0 4px;
+    font-size: .94rem;
+    color: #1a3020;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .tip b { font-style: normal; color: var(--green); font-weight: 600; }
+
+  /* ── PULL QUOTE ── */
+  .pq {
+    background: var(--green);
+    color: #fff;
+    padding: 42px 48px;
+    margin: 52px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  @media(max-width:540px){ .pq { padding: 32px 24px; margin: 40px 0; } }
+  .pq::after {
+    content: '✓';
+    position: absolute;
+    bottom: -30px; right: 16px;
+    font-size: 10rem;
+    color: rgba(255,255,255,.06);
+    font-family: 'Abril Fatface', serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .pq p {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: #e0f5e8;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 600px;
+    position: relative; z-index: 1;
+  }
+  .pq-src {
+    display: block;
+    font-size: .67rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    margin-top: 18px;
+    position: relative; z-index: 1;
+  }
+
+  /* ── RULE ── */
+  .rule { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* ── MASTER CHECKLIST ── */
+  .master-cl {
+    background: var(--char);
+    color: #fff;
+    padding: 36px 36px 28px;
+    margin: 36px 0;
+    position: relative;
+  }
+  .master-cl::before {
+    content: 'MASTER LAUNCH CHECKLIST';
+    position: absolute;
+    top: -11px; left: 22px;
+    background: var(--gold);
+    color: #fff;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .24em;
+    padding: 3px 12px;
+    font-family: 'Karla', sans-serif;
+  }
+  .master-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 28px;
+    margin-top: 12px;
+  }
+  @media(max-width:500px){ .master-grid { grid-template-columns: 1fr; } }
+  .mc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: .88rem;
+    color: rgba(255,255,255,.75);
+    line-height: 1.5;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .mc-icon {
+    color: var(--green2);
+    font-size: .8rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    background: var(--ink);
+    color: #fff;
+    padding: 60px 44px;
+    text-align: center;
+    margin-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--green2), var(--gold2));
+  }
+  .cta-eye {
+    font-size: .64rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--green2);
+    margin-bottom: 18px;
+  }
+  .cta h3 {
+    font-family: 'Abril Fatface', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.12;
+    margin-bottom: 14px;
+  }
+  .cta h3 .hl { color: var(--green2); }
+  .cta p {
+    color: rgba(255,255,255,.5);
+    font-size: .95rem;
+    max-width: 400px;
+    margin: 0 auto 30px;
+  }
+  .cta-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .cbtn {
+    display: inline-block;
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+    font-size: .8rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .2s;
+  }
+  .cbtn.solid {
+    background: var(--green);
+    color: #fff;
+    border-color: var(--green);
+  }
+  .cbtn.solid:hover { background: var(--green2); border-color: var(--green2); }
+  .cbtn.outline {
+    background: transparent;
+    color: rgba(255,255,255,.6);
+    border-color: rgba(255,255,255,.2);
+  }
+  .cbtn.outline:hover { border-color: #fff; color: #fff; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hbar            { animation: fadeUp .4s ease both; }
+  .hero            { animation: fadeUp .5s .05s ease both; }
+  .progress-strip  { animation: fadeUp .5s .1s ease both; }
+  .wrap            { animation: fadeUp .5s .15s ease both; }
+  .cta             { animation: fadeUp .5s .2s ease both; }
+</style>
+</head>
+<body>
+
+<!-- HEADER BAR -->
+<div class="hbar">
+  <div class="hbar-logo">BlogReady</div>
+  <div class="hbar-tags">
+    <span class="htag">Blogging</span>
+    <span class="htag lit">Launch Guide</span>
+    <span class="htag">800 Words</span>
+    <span class="htag">2025</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">The Complete Pre-Launch Guide</div>
+      <h1>Blog Launch<br/><span class="accent">Checklist</span></h1>
+      <p class="hero-sub">Everything you need to do before hitting publish on your very first post — organised, prioritised, and ready to follow step by step.</p>
+    </div>
+    <div class="hero-panel">
+      <div class="panel-label">What's inside this guide</div>
+      <div class="count-item">
+        <div class="ci-num">5</div>
+        <div class="ci-text">
+          <div class="ci-title">Launch Phases</div>
+          <div class="ci-sub">Setup → Design → Content → Tech → Promote</div>
+        </div>
+      </div>
+      <div class="count-item">
+        <div class="ci-num">30+</div>
+        <div class="ci-text">
+          <div class="ci-title">Checklist Items</div>
+          <div class="ci-sub">Every task you need before going live</div>
+        </div>
+      </div>
+      <div class="count-item">
+        <div class="ci-num">0</div>
+        <div class="ci-text">
+          <div class="ci-title">Excuses Left</div>
+          <div class="ci-sub">After reading this, you are ready to launch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS STRIP -->
+<div class="progress-strip">
+  <div class="prog-label">Your Journey</div>
+  <div class="prog-seg">
+    <div class="fill" style="width:100%"></div>
+    <div class="seg-name">Setup</div>
+  </div>
+  <div class="prog-arrow">›</div>
+  <div class="prog-seg">
+    <div class="fill" style="width:100%"></div>
+    <div class="seg-name">Design</div>
+  </div>
+  <div class="prog-arrow">›</div>
+  <div class="prog-seg">
+    <div class="fill" style="width:100%"></div>
+    <div class="seg-name">Content</div>
+  </div>
+  <div class="prog-arrow">›</div>
+  <div class="prog-seg">
+    <div class="fill" style="width:100%"></div>
+    <div class="seg-name">Technical</div>
+  </div>
+  <div class="prog-arrow">›</div>
+  <div class="prog-seg">
+    <div class="fill" style="width:100%"></div>
+    <div class="seg-name">Launch</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+
+  <!-- INTRO -->
+  <p class="drop-cap">
+    Launching a blog is one of the most exciting things you can do online — but it is also one of the easiest things to rush and regret. Many new bloggers hit publish before their site is truly ready, then spend the next six months fixing problems that a simple pre-launch checklist would have prevented entirely. First impressions on the internet are permanent. A visitor who arrives at a broken, unfinished, or unprofessional blog rarely comes back. Getting your launch right from the very beginning sets the foundation for everything that follows.
+  </p>
+  <p>
+    This checklist walks you through every step you need to complete before your blog goes live — from choosing your platform and domain all the way to sending your first promotional email. Work through each phase in order, tick off each item, and launch with confidence knowing you have left nothing important behind.
+  </p>
+
+  <!-- PHASE 1 — SETUP -->
+  <div class="ph">
+    <div class="ph-badge">1</div>
+    <div class="ph-inner">
+      <div class="ph-cat">Phase One</div>
+      <h2>Foundation Setup</h2>
+    </div>
+  </div>
+  <p>
+    Before you write a single word of content, your blog needs a solid technical foundation. This is the infrastructure everything else is built on — and getting it right now saves enormous headaches later. Choose your blogging platform carefully. WordPress on your own hosting gives you the most flexibility and ownership. Platforms like Ghost or Squarespace offer simplicity but with trade-offs in customisation. Whatever you choose, make sure you own your domain name and your hosting account entirely.
+  </p>
+
+  <div class="cl-block">
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Choose your blogging platform</strong>
+        <span>WordPress, Ghost, Squarespace — pick based on your goals and tech comfort</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Register a domain name</strong>
+        <span>Keep it short, memorable, and easy to spell. Aim for .com if possible</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Set up reliable web hosting</strong>
+        <span>SiteGround, Kinsta, or WP Engine are trusted choices for new bloggers</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Install SSL certificate (HTTPS)</strong>
+        <span>Required for security, SEO rankings, and reader trust — most hosts provide this free</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 — DESIGN -->
+  <div class="ph">
+    <div class="ph-badge gold">2</div>
+    <div class="ph-inner">
+      <div class="ph-cat gold">Phase Two</div>
+      <h2>Design & Branding</h2>
+    </div>
+  </div>
+  <p>
+    Your blog's design communicates your credibility before a reader has processed a single word. It does not need to be beautiful or elaborate — but it must be clean, fast, and consistent. Choose a theme that loads quickly on mobile devices since more than sixty percent of web traffic now comes from phones. Define two or three brand colours and stick to them everywhere. Create or commission a simple logo. Set up a clear navigation menu so visitors can instantly find your best content, your about page, and a way to contact you.
+  </p>
+
+  <div class="cl-block">
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Install a fast, mobile-responsive theme</strong>
+        <span>Test it on your phone — if it is slow or clunky on mobile, choose another</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Create a simple logo and favicon</strong>
+        <span>Canva is free, easy, and produces professional results for new bloggers</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Set brand colours and fonts consistently</strong>
+        <span>Two fonts maximum — one for headings, one for body text</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Build clear navigation menu</strong>
+        <span>Home, Blog, About, Contact — visitors should find anything in two clicks</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip"><b>Design Rule:</b> A clean, fast, boring-looking blog will always outperform a slow, flashy one. Speed and clarity are more valuable than visual complexity.</div>
+
+  <!-- PHASE 3 — CONTENT -->
+  <div class="ph">
+    <div class="ph-badge coral">3</div>
+    <div class="ph-inner">
+      <div class="ph-cat coral">Phase Three</div>
+      <h2>Essential Content Pages</h2>
+    </div>
+  </div>
+  <p>
+    You need more than blog posts before launching. Several core pages are absolutely essential — without them, your blog feels incomplete and unprofessional. Your About page is often the most-visited page on any new blog. Write it in first person, explain who you are, why you started this blog, and most importantly, what is in it for your reader. Your Contact page builds trust and opens doors to collaboration opportunities. And your first three to five blog posts should be written and ready to publish before you invite anyone to visit.
+  </p>
+
+  <div class="cl-block">
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Write a compelling About page</strong>
+        <span>Tell your story, establish credibility, and explain what readers will gain</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Create a Contact page</strong>
+        <span>Include a contact form and professional email address</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Publish 3–5 high-quality launch posts</strong>
+        <span>Give first-time visitors enough to read, share, and come back for</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Add Privacy Policy and Disclaimer pages</strong>
+        <span>Required legally if you plan to monetise, run ads, or collect emails</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pq">
+    <p>Your blog does not need to be perfect to launch. It needs to be ready — and ready means your reader can arrive, trust what they see, and find genuine value.</p>
+    <span class="pq-src">— The Blogger's Launch Standard</span>
+  </div>
+
+  <!-- PHASE 4 — TECHNICAL -->
+  <div class="ph">
+    <div class="ph-badge sky">4</div>
+    <div class="ph-inner">
+      <div class="ph-cat sky">Phase Four</div>
+      <h2>Technical & SEO Essentials</h2>
+    </div>
+  </div>
+  <p>
+    Technical preparation separates blogs that grow from blogs that stay invisible. Set up Google Analytics before you launch so you have data from day one — not from the day you remembered to install it six months later. Submit your sitemap to Google Search Console so your posts can be discovered in search results. Install a caching plugin to make sure your site loads fast. Configure your SEO plugin to set proper meta titles and descriptions. None of this is complicated, but all of it is essential.
+  </p>
+
+  <div class="cl-block">
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Install Google Analytics or Fathom</strong>
+        <span>Track visitors, traffic sources, and top content from launch day forward</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Submit sitemap to Google Search Console</strong>
+        <span>Helps Google find and index your posts faster after publishing</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Configure an SEO plugin (Yoast or Rank Math)</strong>
+        <span>Set your homepage meta title, description, and default social sharing image</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Test page speed and mobile display</strong>
+        <span>Use Google PageSpeed Insights — aim for 80+ on mobile</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 5 — LAUNCH -->
+  <div class="ph">
+    <div class="ph-badge char">5</div>
+    <div class="ph-inner">
+      <div class="ph-cat char">Phase Five</div>
+      <h2>Pre-Launch & Promotion</h2>
+    </div>
+  </div>
+  <p>
+    Your blog is built, your content is ready, your technical setup is complete. Now comes the part most bloggers skip entirely — telling people about it. Set up an email signup form before you launch so every early visitor can subscribe. Share your first posts on the social platforms where your audience already spends time. Tell your personal network. Even a modest launch announcement to two hundred people can generate your first hundred visitors and your first handful of loyal readers who will stay with you for years.
+  </p>
+
+  <div class="cl-block">
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Set up an email list and signup form</strong>
+        <span>Mailchimp, ConvertKit, or MailerLite — start free, start today</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Create social media profiles for your blog</strong>
+        <span>Choose one or two platforms where your ideal readers actually are</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Write and schedule a launch announcement</strong>
+        <span>Email, social post, and personal message to your closest network</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-check">✓</div>
+      <div class="cl-text">
+        <strong>Plan your first 30 days of content</strong>
+        <span>Consistency in the first month builds the habit and the audience</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule"/>
+
+  <!-- MASTER CHECKLIST -->
+  <div class="master-cl">
+    <div class="master-grid">
+      <div class="mc-item"><span class="mc-icon">✦</span>Domain name registered</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Hosting account set up</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>SSL certificate active</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Mobile-responsive theme installed</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Logo and favicon created</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Navigation menu configured</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>About page written</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Contact page published</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>3–5 launch posts ready</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Privacy policy added</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Google Analytics installed</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Search Console sitemap submitted</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>SEO plugin configured</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Page speed tested</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Email signup form live</div>
+      <div class="mc-item"><span class="mc-icon">✦</span>Launch announcement scheduled</div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <p>
+    A blog launch is not a moment — it is a momentum. Everything on this checklist exists to give you the strongest possible start, so that when your first visitors arrive, they find something worth staying for, worth bookmarking, and worth sharing with a friend. You do not need everything to be perfect. You need it to be ready.
+  </p>
+  <p>
+    Work through these five phases this week. Tick every item. Then take a breath, hit publish, and send that first announcement. The readers who find you in week one often become your most loyal followers for years. Give them a blog that is genuinely ready to welcome them.
+  </p>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-eye">✦ You Are Ready</div>
+  <h3>Time to <span class="hl">Launch<br/>Your Blog</span></h3>
+  <p>Every item is checked. Every page is ready. The only thing left is to press publish and share it with the world.</p>
+  <div class="cta-btns">
+    <a class="cbtn solid" href="#">Launch My Blog ✦</a>
+    <a class="cbtn outline" href="#">Download Checklist PDF</a>
+  </div>
+</div>
+
+</body>
+</html>
