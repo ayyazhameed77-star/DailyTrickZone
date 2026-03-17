@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogging Myths & Facts — No. 86</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --black:      #0a0a0a;
+    --off-black:  #111111;
+    --charcoal:   #1e1e1e;
+    --dark-gray:  #2c2c2c;
+    --mid-gray:   #555555;
+    --light-gray: #999999;
+    --silver:     #cccccc;
+    --off-white:  #f5f5f0;
+    --white:      #ffffff;
+    --red:        #d42b2b;
+    --red-dark:   #a01f1f;
+    --red-lt:     rgba(212,43,43,0.08);
+    --green:      #1a8a3a;
+    --green-lt:   rgba(26,138,58,0.08);
+    --border:     #2a2a2a;
+    --border-lt:  #e8e8e2;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--off-white);
+    color: var(--black);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP TICKER ── */
+  .ticker-bar {
+    background: var(--red);
+    padding: 0;
+    overflow: hidden;
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker-label {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    overflow: hidden;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker-content {
+    display: flex;
+    gap: 60px;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+    padding-left: 40px;
+  }
+
+  .ticker-content span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .ticker-content span::before {
+    content: '✦ ';
+    color: rgba(255,255,255,0.4);
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--black);
+    padding: 0 56px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .masthead-top {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pub-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .pub-date {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--light-gray);
+  }
+
+  .pub-issue {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── HERO HEADLINE ── */
+  .hero-headline {
+    padding: 60px 0 52px;
+  }
+
+  .hero-kicker {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-kicker::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--red);
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3.4rem, 9vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  h1 .and {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    text-transform: none;
+    font-size: 0.7em;
+    color: var(--silver);
+    letter-spacing: 0;
+    display: inline;
+  }
+
+  .hero-deck {
+    margin-top: 28px;
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--silver);
+    max-width: 560px;
+    line-height: 1.7;
+    border-left: 2px solid var(--red);
+    padding-left: 20px;
+  }
+
+  .hero-meta-row {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hmeta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hmeta-val {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .hmeta-key {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+  }
+
+  /* ── PAGE BODY ── */
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 64px 0 52px;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 64px;
+  }
+
+  .intro-text {
+    font-family: 'Spectral', serif;
+    font-size: 1.3rem;
+    color: var(--charcoal);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 720px;
+  }
+
+  .intro-text strong {
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  /* ── MYTH-FACT CARD ── */
+  .myth-fact-block {
+    margin-bottom: 60px;
+  }
+
+  .block-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .block-num::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-lt);
+  }
+
+  /* The two-panel card */
+  .myth-fact-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 2px solid var(--black);
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--black);
+  }
+
+  /* MYTH side */
+  .myth-side {
+    background: var(--red-lt);
+    border-right: 2px solid var(--black);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .myth-side::before {
+    content: 'MYTH';
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 5.5rem;
+    color: rgba(212,43,43,0.06);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+
+  .myth-header {
+    background: var(--red);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .myth-header span {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .myth-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .myth-body {
+    padding: 28px 28px 36px;
+    position: relative;
+  }
+
+  .myth-claim {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.05rem;
+    color: var(--red-dark);
+    line-height: 1.3;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .myth-explain {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--mid-gray);
+    line-height: 1.7;
+  }
+
+  /* FACT side */
+  .fact-side {
+    background: var(--green-lt);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fact-side::before {
+    content: 'FACT';
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 5.5rem;
+    color: rgba(26,138,58,0.06);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+
+  .fact-header {
+    background: var(--green);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fact-header span {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .fact-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .fact-body {
+    padding: 28px 28px 36px;
+    position: relative;
+  }
+
+  .fact-claim {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.05rem;
+    color: var(--green);
+    line-height: 1.3;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .fact-explain {
+    font-family: 'Spectral', serif;
+    font-size: 0.97rem;
+    color: var(--charcoal);
+    line-height: 1.75;
+  }
+
+  /* ── STANDALONE SINGLE ENTRY ── */
+  .standalone {
+    margin-bottom: 60px;
+    border: 2px solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+    overflow: hidden;
+  }
+
+  .standalone-header {
+    background: var(--black);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .standalone-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .standalone-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+  }
+
+  .standalone-body {
+    background: var(--white);
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .sa-myth { border-right: 2px dashed var(--border-lt); padding-right: 32px; }
+
+  .sa-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sa-label .badge {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+  }
+
+  .badge-myth { background: var(--red); color: white; }
+  .badge-fact { background: var(--green); color: white; }
+
+  .sa-myth .sa-label { color: var(--red); }
+  .sa-fact .sa-label { color: var(--green); }
+
+  .sa-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.95rem;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .sa-text {
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    color: var(--mid-gray);
+    line-height: 1.75;
+  }
+
+  .sa-fact .sa-text { color: var(--charcoal); }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 64px 0;
+    padding: 52px 56px;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14rem;
+    color: var(--red);
+    opacity: 0.12;
+    position: absolute;
+    top: -30px;
+    left: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.5;
+    position: relative;
+    max-width: 680px;
+  }
+
+  .pull-quote blockquote em {
+    font-style: normal;
+    color: var(--red);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── VERDICT BOX ── */
+  .verdict-box {
+    background: var(--black);
+    padding: 36px 40px;
+    margin: 44px 0;
+    border-left: 6px solid var(--red);
+    position: relative;
+  }
+
+  .verdict-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .verdict-text {
+    font-family: 'Spectral', serif;
+    font-size: 1.1rem;
+    color: var(--off-white);
+    line-height: 1.75;
+  }
+
+  .verdict-text strong {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  /* ── FINALE ── */
+  .finale {
+    background: var(--white);
+    border: 2px solid var(--black);
+    box-shadow: 8px 8px 0 var(--black);
+    padding: 52px 48px;
+    margin-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .finale::after {
+    content: '86';
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14rem;
+    color: rgba(0,0,0,0.04);
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+  }
+
+  .finale-kicker {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .finale-kicker::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .finale h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .finale p {
+    font-family: 'Spectral', serif;
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    line-height: 1.85;
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  .finale p strong {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--black);
+  }
+
+  .finale p:last-child { margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 3px solid var(--red);
+    padding: 28px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  footer .ft-red { color: var(--red); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes drop {
+    from { opacity:0; transform: translateY(-16px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .hero-kicker   { animation: drop 0.5s ease both 0.05s; }
+  h1             { animation: drop 0.5s ease both 0.18s; }
+  .hero-deck     { animation: drop 0.5s ease both 0.32s; }
+  .hero-meta-row { animation: drop 0.5s ease both 0.46s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .masthead { padding: 0 24px; }
+    .page { padding: 0 24px 80px; }
+    footer { padding: 22px 24px; }
+    .hero-headline { padding: 48px 0 40px; }
+    .myth-fact-card { grid-template-columns: 1fr; }
+    .myth-side { border-right: none; border-bottom: 2px solid var(--black); }
+    .standalone-body { grid-template-columns: 1fr; }
+    .sa-myth { border-right: none; padding-right: 0; border-bottom: 2px dashed var(--border-lt); padding-bottom: 28px; }
+    .pull-quote { padding: 36px 28px; }
+    .finale { padding: 36px 28px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">Breaking</div>
+  <div class="ticker-track">
+    <div class="ticker-content">
+      <span>Blogging is dead — MYTH</span>
+      <span>You need to post daily — MYTH</span>
+      <span>Anyone can earn from blogging — FACT</span>
+      <span>Longer posts always rank better — MYTH</span>
+      <span>Niche blogs outperform general ones — FACT</span>
+      <span>You need a big audience to make money — MYTH</span>
+      <span>Consistency beats perfection — FACT</span>
+      <span>Blogging is dead — MYTH</span>
+      <span>You need to post daily — MYTH</span>
+      <span>Anyone can earn from blogging — FACT</span>
+      <span>Longer posts always rank better — MYTH</span>
+      <span>Niche blogs outperform general ones — FACT</span>
+      <span>You need a big audience to make money — MYTH</span>
+      <span>Consistency beats perfection — FACT</span>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="pub-name">The Blogger's Dispatch</span>
+    <span class="pub-date">Truth Edition — 2025</span>
+    <span class="pub-issue">Issue No. 86</span>
+  </div>
+  <div class="hero-headline">
+    <div class="hero-kicker">Fact Check Series</div>
+    <h1>Blogging<br>Myths <span class="and">&amp;</span><br>Facts</h1>
+    <p class="hero-deck">
+      The blogging world is full of advice that sounds true but isn't. We're separating the dangerous myths from the facts that actually build real blogs.
+    </p>
+    <div class="hero-meta-row">
+      <div class="hmeta">
+        <span class="hmeta-val">7</span>
+        <span class="hmeta-key">Myths Busted</span>
+      </div>
+      <div class="hmeta">
+        <span class="hmeta-val">7</span>
+        <span class="hmeta-key">Facts Revealed</span>
+      </div>
+      <div class="hmeta">
+        <span class="hmeta-val">~800</span>
+        <span class="hmeta-key">Words</span>
+      </div>
+      <div class="hmeta">
+        <span class="hmeta-val">6 min</span>
+        <span class="hmeta-key">Read Time</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p class="intro-text">
+      Every week, new bloggers quit because of advice that was never true to begin with. They believe they need to post daily, that blogging is dead, that you must have thousands of followers before you earn a cent, and that shorter posts perform better. <strong>Almost all of it is wrong.</strong> Let's go through the biggest myths — and replace each one with the truth that will actually help you grow.
+    </p>
+  </div>
+
+  <!-- MYTH-FACT 1 -->
+  <div class="myth-fact-block">
+    <div class="block-num">Myth vs Fact — 01</div>
+    <div class="myth-fact-card">
+      <div class="myth-side">
+        <div class="myth-header">
+          <div class="myth-icon">✗</div>
+          <span>The Myth</span>
+        </div>
+        <div class="myth-body">
+          <div class="myth-claim">Blogging Is Dead</div>
+          <p class="myth-explain">You've heard it everywhere: "Nobody reads blogs anymore. Social media killed blogging. It's too late to start." This is perhaps the most damaging myth in the blogging world because it stops people before they begin.</p>
+        </div>
+      </div>
+      <div class="fact-side">
+        <div class="fact-header">
+          <div class="fact-icon">✓</div>
+          <span>The Fact</span>
+        </div>
+        <div class="fact-body">
+          <div class="fact-claim">Blogging Has Never Been More Valuable</div>
+          <p class="fact-explain">Over 77% of internet users still read blogs regularly. Google processes over 8.5 billion searches daily — and most of those results lead to blog posts. The format thrives because it answers questions in depth, in a way a 30-second video never can. Blogs are alive. Badly-written, un-SEO-optimised, abandoned ones are dead. Good ones grow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MYTH-FACT 2 -->
+  <div class="myth-fact-block">
+    <div class="block-num">Myth vs Fact — 02</div>
+    <div class="myth-fact-card">
+      <div class="myth-side">
+        <div class="myth-header">
+          <div class="myth-icon">✗</div>
+          <span>The Myth</span>
+        </div>
+        <div class="myth-body">
+          <div class="myth-claim">You Must Post Every Single Day</div>
+          <p class="myth-explain">The "post daily" advice floods beginner blogging forums. It sounds committed and productive. New bloggers burn themselves out following it — producing thin, rushed content that hurts their SEO more than it helps.</p>
+        </div>
+      </div>
+      <div class="fact-side">
+        <div class="fact-header">
+          <div class="fact-icon">✓</div>
+          <span>The Fact</span>
+        </div>
+        <div class="fact-body">
+          <div class="fact-claim">Quality and Consistency Trump Frequency</div>
+          <p class="fact-explain">HubSpot data consistently shows that blogs publishing two to four high-quality posts per week outperform those publishing daily low-quality content. Google's algorithms reward depth, relevance, and expertise. One genuinely helpful, well-researched post a week beats seven shallow ones every time. Publish when you have something worth saying.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <blockquote>
+      The most dangerous blogging advice isn't obviously wrong — it's the kind that sounds like <em>wisdom</em> but quietly keeps you stuck, busy, and earning nothing.
+    </blockquote>
+  </div>
+
+  <!-- MYTH-FACT 3 -->
+  <div class="myth-fact-block">
+    <div class="block-num">Myth vs Fact — 03</div>
+    <div class="myth-fact-card">
+      <div class="myth-side">
+        <div class="myth-header">
+          <div class="myth-icon">✗</div>
+          <span>The Myth</span>
+        </div>
+        <div class="myth-body">
+          <div class="myth-claim">You Need Thousands of Readers to Earn Money</div>
+          <p class="myth-explain">Aspiring bloggers see income reports from bloggers with 100,000 monthly visitors and assume they need the same scale before making a single dollar. This myth keeps profitable niches untouched and wallets empty for years.</p>
+        </div>
+      </div>
+      <div class="fact-side">
+        <div class="fact-header">
+          <div class="fact-icon">✓</div>
+          <span>The Fact</span>
+        </div>
+        <div class="fact-body">
+          <div class="fact-claim">500 Loyal Readers Can Generate Real Income</div>
+          <p class="fact-explain">A small, highly targeted audience in the right niche can generate significant income through affiliate commissions, digital products, email courses, or consulting. A blog with 500 monthly readers in a premium niche — personal finance, legal advice, software — earning £50 per conversion converts better than 50,000 casual readers in a saturated lifestyle niche. It's about intent, not volume.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MYTH-FACT 4 & 5 — Compact two-entry format -->
+  <div class="standalone">
+    <div class="standalone-header">
+      <span class="standalone-label">Myth vs Fact — 04 &amp; 05</span>
+      <span class="standalone-num">Double Feature</span>
+    </div>
+    <div class="standalone-body">
+      <div class="sa-myth">
+        <div class="sa-label">
+          <span class="badge badge-myth">✗</span>
+          Myth 04
+        </div>
+        <div class="sa-title">Longer Posts Always Rank Better</div>
+        <p class="sa-text">The "write 3,000 words minimum" rule gets repeated endlessly. Bloggers pad their posts with fluff, repetition, and unnecessary sections just to hit a word count.</p>
+      </div>
+      <div class="sa-fact">
+        <div class="sa-label">
+          <span class="badge badge-fact">✓</span>
+          Fact 04
+        </div>
+        <div class="sa-title">Comprehensive Beats Long. Always.</div>
+        <p class="sa-text">Google ranks content that best answers the search query — not the longest one. A 900-word post that fully answers "how to hard-boil an egg" will outrank a 3,000-word post that repeats itself. Match the depth of your content to the depth of the question.</p>
+      </div>
+    </div>
+    <div class="standalone-body" style="border-top: 2px dashed var(--border-lt);">
+      <div class="sa-myth">
+        <div class="sa-label">
+          <span class="badge badge-myth">✗</span>
+          Myth 05
+        </div>
+        <div class="sa-title">Social Media Is More Important Than SEO</div>
+        <p class="sa-text">Many bloggers pour hours into Instagram and TikTok while ignoring search entirely. Social traffic feels exciting — but it evaporates the moment you stop posting.</p>
+      </div>
+      <div class="sa-fact">
+        <div class="sa-label">
+          <span class="badge badge-fact">✓</span>
+          Fact 05
+        </div>
+        <div class="sa-title">SEO Traffic Compounds. Social Traffic Doesn't.</div>
+        <p class="sa-text">A well-optimised blog post drives organic traffic for years. Social content has a shelf life measured in hours. The most sustainable blogs are built on search first, social second. SEO is a long-term asset; social is a short-term amplifier.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT BOX -->
+  <div class="verdict-box">
+    <div class="verdict-label">⚡ The Pattern</div>
+    <p class="verdict-text">Notice the pattern in every myth: they all make blogging feel harder, more expensive, more time-consuming, or more dependent on luck than it really is. <strong>Every one of these myths benefits the people selling blogging courses, not the people actually building blogs.</strong> The truth is simpler, slower, and far more achievable.</p>
+  </div>
+
+  <!-- MYTH-FACT 6 -->
+  <div class="myth-fact-block">
+    <div class="block-num">Myth vs Fact — 06</div>
+    <div class="myth-fact-card">
+      <div class="myth-side">
+        <div class="myth-header">
+          <div class="myth-icon">✗</div>
+          <span>The Myth</span>
+        </div>
+        <div class="myth-body">
+          <div class="myth-claim">You Need to Be a Perfect Writer to Blog</div>
+          <p class="myth-explain">Imposter syndrome is a quiet blog killer. Potential bloggers with valuable expertise never publish because they compare their rough drafts to polished posts from writers who've been doing this for a decade.</p>
+        </div>
+      </div>
+      <div class="fact-side">
+        <div class="fact-header">
+          <div class="fact-icon">✓</div>
+          <span>The Fact</span>
+        </div>
+        <div class="fact-body">
+          <div class="fact-claim">Clarity Matters More Than Craft</div>
+          <p class="fact-explain">The most-read blogs online are not written by exceptional prose stylists. They're written by people who explain things clearly, answer questions directly, and write like they're talking to a friend. Readers aren't grading your grammar — they're asking "does this help me?" Write clearly, write honestly, and keep improving. That's the entire standard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MYTH-FACT 7 -->
+  <div class="myth-fact-block">
+    <div class="block-num">Myth vs Fact — 07</div>
+    <div class="myth-fact-card">
+      <div class="myth-side">
+        <div class="myth-header">
+          <div class="myth-icon">✗</div>
+          <span>The Myth</span>
+        </div>
+        <div class="myth-body">
+          <div class="myth-claim">Picking a Broad Niche Reaches More People</div>
+          <p class="myth-explain">Logic says: wider net, more fish. So new bloggers start "lifestyle" or "general interest" blogs, covering everything from recipes to travel to productivity, hoping to appeal to everyone.</p>
+        </div>
+      </div>
+      <div class="fact-side">
+        <div class="fact-header">
+          <div class="fact-icon">✓</div>
+          <span>The Fact</span>
+        </div>
+        <div class="fact-body">
+          <div class="fact-claim">Narrower Niches Build Faster, Stronger Audiences</div>
+          <p class="fact-explain">A blog about "personal finance for UK freelancers in their 30s" will build a loyal, returning audience far faster than a general money blog. It ranks for specific terms, earns trust because it speaks directly to a real person's situation, and converts readers into buyers or subscribers at dramatically higher rates. Niche isn't a limitation — it is the strategy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINALE -->
+  <div class="finale">
+    <div class="finale-kicker">Final Verdict — No. 86</div>
+    <h2>Stop Letting Myths Run Your Blog</h2>
+    <p>
+      Every myth on this list has one thing in common: it puts the obstacle outside you. The algorithm, the word count, the follower number, the writing skill — all of it framed as something you don't have yet, something you must acquire before you deserve to succeed.
+    </p>
+    <p>
+      The facts tell a different story. <strong>Blogging success belongs to the person who picks a focused niche, writes clearly and helpfully, publishes consistently (not frantically), understands basic SEO, and refuses to quit before the compound growth kicks in.</strong>
+    </p>
+    <p>
+      You don't need more time. You don't need a bigger audience. You don't need to post daily or write 3,000 words every time. You need to <strong>do the honest, useful, consistent work</strong> — and let the myths die the quiet death they deserve.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>Blogging Myths &amp; Facts</span>
+  <span class="ft-red">No. 86</span>
+  <span>The Blogger's Dispatch · 2025</span>
+</footer>
+
+</body>
+</html>
