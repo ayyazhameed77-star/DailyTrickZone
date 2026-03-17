@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Get Your First 1000 Blog Visitors</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #f2f4f8;
+    --paper:    #ffffff;
+    --ink:      #0a0e18;
+    --blue:     #1440c8;
+    --blue2:    #2858e8;
+    --sky:      #e8eeff;
+    --electric: #0070ff;
+    --gold:     #d4920a;
+    --gold2:    #f0ad20;
+    --border:   #d0d8e8;
+    --muted:    #5a6480;
+    --green:    #1a7a50;
+    --red:      #c42828;
+    --near:     #0e1428;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Merriweather', Georgia, serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── DATE BANNER ── */
+  .datebanner {
+    background: var(--near);
+    color: rgba(255,255,255,.45);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 36px;
+    font-family: 'Oswald', sans-serif;
+    font-size: .65rem;
+    font-weight: 400;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .datebanner strong { color: var(--gold2); font-weight: 600; }
+
+  /* ── BROADSHEET HEADER ── */
+  .broadsheet {
+    background: var(--paper);
+    border-bottom: 4px double var(--ink);
+    padding: 0;
+    overflow: hidden;
+  }
+  .bs-top {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 2px solid var(--ink);
+  }
+  .bs-title-col {
+    flex: 1;
+    padding: 44px 44px 36px;
+    border-right: 2px solid var(--ink);
+  }
+  .bs-kicker {
+    font-family: 'Oswald', sans-serif;
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bs-kicker::before {
+    content: '';
+    display: block;
+    width: 28px; height: 3px;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+    font-weight: 700;
+    line-height: .96;
+    letter-spacing: -.01em;
+    margin-bottom: 18px;
+  }
+  h1 .blue  { color: var(--blue); }
+  h1 .rule-under {
+    display: inline-block;
+    border-bottom: 5px solid var(--gold2);
+    padding-bottom: 2px;
+  }
+  .bs-deck {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 500px;
+    font-style: italic;
+  }
+
+  /* right stats column */
+  .bs-stats-col {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .bs-stat {
+    flex: 1;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--sky);
+    transition: background .2s;
+  }
+  .bs-stat:last-child { border-bottom: none; }
+  .bs-stat:hover { background: #dae4ff; }
+  .bs-stat .st-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .bs-stat .st-n {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blue);
+    display: block;
+    line-height: 1;
+  }
+  .bs-stat .st-l {
+    font-size: .66rem;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  @media(max-width:680px){
+    .bs-top { flex-direction: column; }
+    .bs-title-col { border-right: none; border-bottom: 2px solid var(--ink); }
+    .bs-stats-col { width: 100%; flex-direction: row; flex-wrap: wrap; }
+    .bs-stat { flex: 1; min-width: 120px; border-right: 1px solid var(--border); }
+  }
+
+  /* ── CHANNEL STRIP ── */
+  .channel-strip {
+    background: var(--blue);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background-color: rgba(255,255,255,.15);
+  }
+  @media(max-width:580px){ .channel-strip { grid-template-columns: repeat(3,1fr); } }
+  .cs-cell {
+    background: var(--blue);
+    padding: 14px 10px;
+    text-align: center;
+    cursor: default;
+    transition: background .2s;
+  }
+  .cs-cell:hover { background: var(--blue2); }
+  .cs-emoji { font-size: 1.2rem; display: block; margin-bottom: 4px; }
+  .cs-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+  }
+
+  /* ── BODY ── */
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 24px 92px;
+  }
+
+  p {
+    font-size: 1.04rem;
+    line-height: 1.9;
+    margin-bottom: 1.5em;
+    color: #1a2030;
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-family: 'Oswald', sans-serif;
+    font-size: 5.4rem;
+    font-weight: 700;
+    line-height: .78;
+    margin: 4px 13px -4px 0;
+    color: var(--blue);
+  }
+
+  /* ── SECTION HEADS ── */
+  .sh {
+    margin: 52px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--ink);
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+  }
+  .sh-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: .88;
+    flex-shrink: 0;
+  }
+  .sh-body {}
+  .sh-cat {
+    font-family: 'Oswald', sans-serif;
+    font-size: .62rem;
+    font-weight: 500;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: .01em;
+  }
+
+  /* ── STRATEGY CARD ── */
+  .strat {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    margin: 16px 0;
+    display: grid;
+    grid-template-columns: 5px 1fr;
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .strat:hover { box-shadow: 0 4px 22px rgba(20,64,200,.1); }
+  .s-bar              { background: var(--blue); }
+  .s-bar.gold         { background: var(--gold); }
+  .s-bar.green        { background: var(--green); }
+  .s-bar.red          { background: var(--red); }
+  .s-inner { padding: 18px 22px; }
+  .s-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .s-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: .02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .s-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+  .sb-blue   { background: var(--sky);   color: var(--blue);  }
+  .sb-gold   { background: #fdf4e0;      color: var(--gold);  }
+  .sb-green  { background: #e8f5ee;      color: var(--green); }
+  .sb-red    { background: #fdeaea;      color: var(--red);   }
+  .s-desc {
+    font-size: .95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--sky);
+    border-left: 4px solid var(--blue);
+    padding: 16px 20px;
+    margin: 14px 0 4px;
+    font-size: .97rem;
+    color: #0e1a3a;
+    line-height: 1.75;
+    font-style: italic;
+  }
+  .callout b { font-style: normal; color: var(--blue); font-weight: 700; }
+
+  /* ── TRAFFIC METER VISUAL ── */
+  .traffic-meter {
+    background: var(--near);
+    padding: 28px 28px 22px;
+    margin: 24px 0 8px;
+  }
+  .tm-head {
+    font-family: 'Oswald', sans-serif;
+    font-size: .64rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    margin-bottom: 18px;
+  }
+  .tm-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .tm-row:last-child { margin-bottom: 0; }
+  .tm-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    width: 100px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .tm-track {
+    flex: 1;
+    height: 10px;
+    background: rgba(255,255,255,.07);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .tm-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--blue2);
+    transition: width 1s ease;
+  }
+  .tm-fill.gold   { background: var(--gold2); }
+  .tm-fill.green  { background: #28c870; }
+  .tm-fill.teal   { background: #20b8c8; }
+  .tm-fill.purple { background: #9040d8; }
+  .tm-pct {
+    font-family: 'Oswald', sans-serif;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--blue2);
+    width: 44px;
+    flex-shrink: 0;
+    text-align: left;
+  }
+  .tm-pct.gold   { color: var(--gold2); }
+  .tm-pct.green  { color: #28c870; }
+  .tm-pct.teal   { color: #20b8c8; }
+  .tm-pct.purple { color: #9040d8; }
+
+  /* ── PULL QUOTE ── */
+  .pq {
+    background: var(--blue);
+    color: #fff;
+    padding: 44px 52px;
+    margin: 54px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  @media(max-width:540px){ .pq { padding: 32px 24px; margin: 40px 0; } }
+  .pq::before {
+    content: '"';
+    position: absolute;
+    top: -28px; left: 16px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.05);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .pq::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .pq p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.45rem;
+    font-style: italic;
+    font-weight: 300;
+    color: #e8eeff;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+    position: relative; z-index: 1;
+  }
+  .pq-src {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: .65rem;
+    font-weight: 500;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+    margin-top: 18px;
+    position: relative; z-index: 1;
+  }
+
+  /* ── 30-DAY PLAN TABLE ── */
+  .plan-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0 36px;
+    font-size: .94rem;
+  }
+  .plan-table thead tr { background: var(--near); }
+  .plan-table th {
+    color: rgba(255,255,255,.6);
+    font-family: 'Oswald', sans-serif;
+    font-size: .64rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+  }
+  .plan-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+    color: #1a2030;
+    vertical-align: middle;
+  }
+  .plan-table tr:last-child td { border-bottom: none; }
+  .plan-table td:first-child {
+    font-family: 'Oswald', sans-serif;
+    font-size: .92rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--blue);
+    width: 24%;
+  }
+  .goal-tag {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: .62rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 2px;
+  }
+  .gt-blue  { background: var(--sky);   color: var(--blue);  }
+  .gt-gold  { background: #fdf4e0;      color: var(--gold);  }
+  .gt-green { background: #e8f5ee;      color: var(--green); }
+
+  /* ── RULE ── */
+  .rule { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+  .rule.thick { border-top: 3px solid var(--ink); }
+
+  /* ── MASTER CHECKLIST ── */
+  .master {
+    background: var(--paper);
+    border: 2px solid var(--near);
+    padding: 30px 32px;
+    margin: 36px 0;
+    position: relative;
+  }
+  .master::before {
+    content: 'YOUR 1,000-VISITOR ACTION PLAN';
+    position: absolute;
+    top: -12px; left: 18px;
+    background: var(--blue);
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    padding: 3px 14px;
+  }
+  .master-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 28px;
+    margin-top: 12px;
+  }
+  @media(max-width:500px){ .master-grid { grid-template-columns: 1fr; } }
+  .mi {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .93rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .mi:last-child { border-bottom: none; }
+  .mi-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    background: var(--near);
+    color: #fff;
+    padding: 64px 44px;
+    text-align: center;
+    margin-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle 380px at 25% 50%, rgba(20,64,200,.25) 0%, transparent 65%),
+      radial-gradient(circle 300px at 75% 50%, rgba(0,112,255,.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue), var(--electric), var(--gold2));
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-eye {
+    font-family: 'Oswald', sans-serif;
+    font-size: .65rem;
+    font-weight: 500;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 14px;
+  }
+  .cta h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: .01em;
+    margin-bottom: 14px;
+  }
+  .cta h3 .blue { color: var(--electric); }
+  .cta p {
+    color: rgba(255,255,255,.45);
+    font-size: .98rem;
+    font-style: italic;
+    max-width: 400px;
+    margin: 0 auto 30px;
+  }
+  .cta-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .cbtn {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .2s;
+  }
+  .cbtn.solid {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+  }
+  .cbtn.solid:hover { background: var(--blue2); border-color: var(--blue2); }
+  .cbtn.ghost {
+    background: transparent;
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.18);
+  }
+  .cbtn.ghost:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .datebanner    { animation: fadeUp .38s ease both; }
+  .broadsheet    { animation: fadeUp .5s .05s ease both; }
+  .channel-strip { animation: fadeUp .5s .1s ease both; }
+  .wrap          { animation: fadeUp .5s .14s ease both; }
+  .cta           { animation: fadeUp .5s .18s ease both; }
+</style>
+</head>
+<body>
+
+<!-- DATE BANNER -->
+<div class="datebanner">
+  <span>The Blogger's Growth Report</span>
+  <span>✦ <strong>Traffic Edition 2025</strong> ✦</span>
+  <span>800 Words · Beginner to Advanced</span>
+</div>
+
+<!-- BROADSHEET HEADER -->
+<div class="broadsheet">
+  <div class="bs-top">
+    <div class="bs-title-col">
+      <div class="bs-kicker">Complete Traffic Strategy</div>
+      <h1>HOW TO GET<br/>YOUR FIRST<br/><span class="rule-under"><span class="blue">1,000</span> VISITORS</span></h1>
+      <p class="bs-deck">Zero traffic does not mean zero potential. Every blog that ranks, shares, and grows today once had an empty analytics dashboard. Here is exactly how to change that.</p>
+    </div>
+    <div class="bs-stats-col">
+      <div class="bs-stat">
+        <span class="st-icon">📊</span>
+        <div><span class="st-n">90 days</span><span class="st-l">Realistic Timeline</span></div>
+      </div>
+      <div class="bs-stat">
+        <span class="st-icon">🎯</span>
+        <div><span class="st-n">6 Sources</span><span class="st-l">Traffic Channels</span></div>
+      </div>
+      <div class="bs-stat">
+        <span class="st-icon">⚡</span>
+        <div><span class="st-n">Free</span><span class="st-l">No Budget Needed</span></div>
+      </div>
+      <div class="bs-stat">
+        <span class="st-icon">📈</span>
+        <div><span class="st-n">Step-by-Step</span><span class="st-l">Proven System</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANNEL STRIP -->
+<div class="channel-strip">
+  <div class="cs-cell"><span class="cs-emoji">🔍</span><span class="cs-name">SEO</span></div>
+  <div class="cs-cell"><span class="cs-emoji">📌</span><span class="cs-name">Pinterest</span></div>
+  <div class="cs-cell"><span class="cs-emoji">📱</span><span class="cs-name">Social</span></div>
+  <div class="cs-cell"><span class="cs-emoji">✍️</span><span class="cs-name">Guest Posts</span></div>
+  <div class="cs-cell"><span class="cs-emoji">📧</span><span class="cs-name">Email</span></div>
+  <div class="cs-cell"><span class="cs-emoji">🤝</span><span class="cs-name">Community</span></div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+
+  <!-- INTRO -->
+  <p class="drop-cap">
+    Every successful blog in the world once had exactly the traffic you have right now — none. The bloggers who broke through that wall did not have secret connections, paid advertising budgets, or some mysterious advantage you lack. They had a plan and the patience to execute it consistently for long enough to see results compound. Getting your first one thousand visitors is a milestone that feels enormous before you hit it and surprisingly achievable once you understand the specific channels that drive early-stage blog traffic. Here is the complete roadmap.
+  </p>
+  <p>
+    The key insight that most new bloggers miss is this: your first thousand visitors will not come from a single source. They will arrive from a combination of five or six channels, each contributing a small but growing stream that eventually becomes a meaningful river. Start all of them at once — do not wait for one to work before trying the next. Diversified early traffic compounds faster and builds a stronger foundation than any single-channel approach.
+  </p>
+
+  <!-- SECTION 1 — SEO -->
+  <div class="sh">
+    <div class="sh-num">01</div>
+    <div class="sh-body">
+      <div class="sh-cat">Long-Term Engine</div>
+      <h2>Write SEO-Optimised Content That Ranks Over Time</h2>
+    </div>
+  </div>
+  <p>
+    Search engine optimisation is the most powerful long-term traffic source available to any blogger — but it requires patience. New blogs typically do not rank for competitive keywords in their first months. The strategy is to target long-tail keywords: specific, lower-competition phrases that real people type into Google when they need an answer. Instead of targeting "how to cook pasta" — which is dominated by established sites — write "how to cook pasta without it sticking together in a small apartment kitchen." That specificity wins.
+  </p>
+
+  <div class="strat">
+    <div class="s-bar"></div>
+    <div class="s-inner">
+      <div class="s-head">
+        <div class="s-title">🔍 SEO Quick-Start Framework</div>
+        <span class="s-badge sb-blue">Compounding Traffic</span>
+      </div>
+      <div class="s-desc">Use free tools like Ubersuggest, Google Search Console, or Answer the Public to find long-tail keywords with under 1,000 monthly searches. Write one optimised post per week targeting one specific keyword per post. Include the keyword naturally in your title, first paragraph, one subheading, and meta description. Consistency over twelve weeks begins to show measurable results.</div>
+    </div>
+  </div>
+
+  <div class="callout"><b>SEO Rule:</b> One well-researched, properly optimised post will drive more long-term traffic than ten posts written without keyword intent. Always know what you are ranking for before you write.</div>
+
+  <!-- TRAFFIC METER VISUAL -->
+  <div class="traffic-meter">
+    <div class="tm-head">Expected Traffic Sources · First 90 Days</div>
+    <div class="tm-row">
+      <div class="tm-label">Social Media</div>
+      <div class="tm-track"><div class="tm-fill" style="width:55%"></div></div>
+      <div class="tm-pct">35%</div>
+    </div>
+    <div class="tm-row">
+      <div class="tm-label">Pinterest</div>
+      <div class="tm-track"><div class="tm-fill gold" style="width:40%"></div></div>
+      <div class="tm-pct gold">25%</div>
+    </div>
+    <div class="tm-row">
+      <div class="tm-label">SEO / Google</div>
+      <div class="tm-track"><div class="tm-fill green" style="width:25%"></div></div>
+      <div class="tm-pct green">15%</div>
+    </div>
+    <div class="tm-row">
+      <div class="tm-label">Communities</div>
+      <div class="tm-track"><div class="tm-fill teal" style="width:20%"></div></div>
+      <div class="tm-pct teal">13%</div>
+    </div>
+    <div class="tm-row">
+      <div class="tm-label">Guest Posts</div>
+      <div class="tm-track"><div class="tm-fill purple" style="width:18%"></div></div>
+      <div class="tm-pct purple">12%</div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 — PINTEREST -->
+  <div class="sh">
+    <div class="sh-num">02</div>
+    <div class="sh-body">
+      <div class="sh-cat">Visual Search Engine</div>
+      <h2>Use Pinterest as a Traffic Machine From Day One</h2>
+    </div>
+  </div>
+  <p>
+    Pinterest is the most underrated traffic source for new bloggers, and it is arguably the fastest way to generate early visitors before your SEO takes effect. Unlike Instagram or Twitter, Pinterest is a visual search engine — pins have a lifespan of months and years, not hours. A single well-designed pin linking to a helpful post can drive hundreds of visitors to your blog week after week. Create five to ten pins per post using Canva, write keyword-rich descriptions, and publish consistently. Within thirty days, Pinterest can become your top traffic source.
+  </p>
+
+  <div class="strat">
+    <div class="s-bar gold"></div>
+    <div class="s-inner">
+      <div class="s-head">
+        <div class="s-title">📌 Pinterest Traffic Blueprint</div>
+        <span class="s-badge sb-gold">Fast Early Results</span>
+      </div>
+      <div class="s-desc">Create a business Pinterest account, claim your website, and enable rich pins. Design tall vertical pins (1000×1500px) in Canva with bold text overlays and your blog URL. Write keyword-rich pin descriptions of 100–200 words. Pin five to ten times per day using a tool like Tailwind to schedule in advance. Join group boards in your niche to amplify reach from day one.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 — SOCIAL & COMMUNITY -->
+  <div class="sh">
+    <div class="sh-num">03</div>
+    <div class="sh-body">
+      <div class="sh-cat">Immediate Visibility</div>
+      <h2>Build Presence in Communities Where Your Readers Already Are</h2>
+    </div>
+  </div>
+  <p>
+    Social media and online communities give you something SEO and Pinterest cannot deliver in the first weeks — immediate, same-day traffic. Share every post on Facebook, Instagram, or Twitter immediately after publishing. More powerfully, join Facebook Groups, Reddit communities, Quora, and niche forums where your ideal readers actively participate. Answer questions genuinely and thoroughly, then reference your blog post as an additional resource. This is not spam — it is genuinely helpful, and it drives targeted visitors who are already interested in exactly what you write about.
+  </p>
+
+  <!-- PULL QUOTE -->
+  <div class="pq">
+    <p>Your first thousand visitors will not find you by accident. They will find you because you showed up consistently in the right places, answered real questions, and gave them a reason to click.</p>
+    <span class="pq-src">— The Traffic Builder's Truth</span>
+  </div>
+
+  <!-- SECTION 4 — GUEST POSTING -->
+  <div class="sh">
+    <div class="sh-num">04</div>
+    <div class="sh-body">
+      <div class="sh-cat">Borrowed Audiences</div>
+      <h2>Guest Post to Borrow Established Audiences</h2>
+    </div>
+  </div>
+  <p>
+    Guest posting on established blogs in your niche is one of the most efficient ways to drive targeted traffic to a brand-new blog. When you write a high-quality guest post for a site that already has the audience you want, even a small percentage of their readers will click through to learn more about you. Find five to ten blogs in your niche that accept guest contributors, pitch specific topic ideas that genuinely fit their audience, and write the best possible version of that article. One strong guest post per month in your first three months can dramatically accelerate your growth.
+  </p>
+
+  <div class="strat">
+    <div class="s-bar green"></div>
+    <div class="s-inner">
+      <div class="s-head">
+        <div class="s-title">✍️ Guest Post Outreach System</div>
+        <span class="s-badge sb-green">Targeted Visitors</span>
+      </div>
+      <div class="s-desc">Search "[your niche] + write for us" or "[your niche] + guest post guidelines" to find accepting blogs. Send a short, personalised email with two or three specific topic ideas that fit their existing content. Include links to your best writing samples. Follow up once after seven days. Aim for one accepted guest post per month and always include a compelling author bio with a link back to your best content.</div>
+    </div>
+  </div>
+
+  <!-- 30-DAY PLAN TABLE -->
+  <table class="plan-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Focus</th>
+        <th>Goal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Week 1–2</td>
+        <td>Publish 3 SEO posts, set up Pinterest, share on social daily</td>
+        <td><span class="goal-tag gt-blue">50 Visitors</span></td>
+      </tr>
+      <tr>
+        <td>Week 3–4</td>
+        <td>Pin daily, join 3 communities, answer 10 questions with blog links</td>
+        <td><span class="goal-tag gt-blue">150 Visitors</span></td>
+      </tr>
+      <tr>
+        <td>Month 2</td>
+        <td>Guest post pitch, 8 more SEO posts, build email list</td>
+        <td><span class="goal-tag gt-gold">400 Visitors</span></td>
+      </tr>
+      <tr>
+        <td>Month 3</td>
+        <td>First guest post live, Pinterest compounding, SEO clicks begin</td>
+        <td><span class="goal-tag gt-green">1,000 Visitors</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="rule thick"/>
+
+  <!-- MASTER CHECKLIST -->
+  <div class="master">
+    <div class="master-grid">
+      <div class="mi"><div class="mi-dot"></div>Publish 2 SEO-optimised posts per week</div>
+      <div class="mi"><div class="mi-dot"></div>Target long-tail keywords only</div>
+      <div class="mi"><div class="mi-dot"></div>Create Pinterest business account</div>
+      <div class="mi"><div class="mi-dot"></div>Design 5–10 pins per post in Canva</div>
+      <div class="mi"><div class="mi-dot"></div>Pin 5–10 times daily via Tailwind</div>
+      <div class="mi"><div class="mi-dot"></div>Share every post on social same day</div>
+      <div class="mi"><div class="mi-dot"></div>Join 5 niche Facebook Groups</div>
+      <div class="mi"><div class="mi-dot"></div>Answer 3 Quora questions per week</div>
+      <div class="mi"><div class="mi-dot"></div>Pitch 2 guest posts this month</div>
+      <div class="mi"><div class="mi-dot"></div>Set up Google Search Console today</div>
+      <div class="mi"><div class="mi-dot"></div>Install Google Analytics on day one</div>
+      <div class="mi"><div class="mi-dot"></div>Review top posts monthly and improve</div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <p>
+    One thousand visitors is not the finish line — it is the starting gun. It is the point at which your blog begins to feel real, your strategies begin to reveal which channels work best for your specific niche, and your momentum becomes genuinely self-reinforcing. The path to one thousand is almost always slower than new bloggers hope and faster than they fear when they commit to working all six traffic channels simultaneously with consistency.
+  </p>
+  <p>
+    Start today with two things: publish one well-researched, keyword-targeted post and create your Pinterest business account. Those two actions, repeated consistently over ninety days, will get you to one thousand visitors — and show you exactly how to reach ten thousand after that.
+  </p>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <div class="cta-eye">The Journey Starts With Visitor Number One</div>
+    <h3>BUILD YOUR<br/><span class="blue">FIRST 1,000</span><br/>VISITORS NOW</h3>
+    <p>Pick two strategies from this guide and execute them every single day for 30 days. The results will surprise you.</p>
+    <div class="cta-btns">
+      <a class="cbtn solid" href="#">Start Growing Today ✦</a>
+      <a class="cbtn ghost" href="#">Download the Plan</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
