@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blogging Productivity Tips</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #f0f4f0;
+    --paper:    #ffffff;
+    --ink:      #151e15;
+    --forest:   #2a5c3f;
+    --forest2:  #3d7a56;
+    --mint:     #e4f0e8;
+    --sage:     #c8dece;
+    --gold:     #c8962a;
+    --gold2:    #e8b84a;
+    --border:   #d4e0d4;
+    --muted:    #6a7a6a;
+    --warm:     #faf7f0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER STRIP ── */
+  .strip {
+    background: var(--forest);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 32px;
+    font-size: .68rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+  }
+  .strip span { color: var(--gold2); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--warm);
+    border-bottom: 3px solid var(--forest);
+    padding: 72px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle 400px at 20% 50%, rgba(42,92,63,.06) 0%, transparent 70%),
+      radial-gradient(circle 400px at 80% 50%, rgba(200,150,42,.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--mint);
+    border: 1px solid var(--sage);
+    color: var(--forest);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 auto 22px;
+  }
+  .hero h1 .hl {
+    color: var(--forest);
+    font-style: italic;
+  }
+  .hero-desc {
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .ornament-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
+    color: var(--forest2);
+    font-size: .65rem;
+    letter-spacing: .3em;
+  }
+  .ornament-row::before,
+  .ornament-row::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--forest);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1px;
+    background-color: rgba(255,255,255,.1);
+  }
+  @media(max-width:560px){ .stats-bar { grid-template-columns: 1fr 1fr; } }
+  .stat-cell {
+    background: var(--forest);
+    padding: 22px 16px;
+    text-align: center;
+  }
+  .stat-cell .num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold2);
+    display: block;
+    line-height: 1;
+  }
+  .stat-cell .lbl {
+    font-size: .67rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    margin-top: 5px;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  p {
+    font-size: 1.03rem;
+    line-height: 1.9;
+    margin-bottom: 1.5em;
+    color: #2a3028;
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 5.2rem;
+    font-weight: 700;
+    line-height: .8;
+    margin: 4px 12px -4px 0;
+    color: var(--forest);
+  }
+
+  /* ── TIP SECTION ── */
+  .tip-block {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 20px;
+    margin: 44px 0 0;
+    align-items: start;
+  }
+  .tip-num {
+    width: 56px;
+    height: 56px;
+    background: var(--forest);
+    color: #fff;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tip-content {}
+  .tip-tag {
+    font-size: .67rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--forest2);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .hl-box {
+    background: var(--mint);
+    border: 1px solid var(--sage);
+    border-left: 4px solid var(--forest);
+    padding: 20px 22px;
+    margin: 18px 0 4px;
+    font-size: .95rem;
+    color: #2a4030;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .hl-box strong {
+    font-style: normal;
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  /* ── TIME BLOCK VISUAL ── */
+  .time-blocks {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin: 20px 0 8px;
+  }
+  @media(max-width:480px){ .time-blocks { grid-template-columns: 1fr; } }
+  .tb {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .tb .tb-time {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--forest);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .tb .tb-label {
+    font-size: .78rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .tb.gold-tb { border-top: 3px solid var(--gold); }
+  .tb.gold-tb .tb-time { color: var(--gold); }
+
+  /* ── PULL QUOTE ── */
+  .pq {
+    background: var(--ink);
+    color: #fff;
+    padding: 40px 44px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .pq::after {
+    content: '❝';
+    position: absolute;
+    bottom: -20px; right: 20px;
+    font-size: 8rem;
+    color: rgba(255,255,255,.04);
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .pq p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #e8f0e8;
+    line-height: 1.6;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .pq-src {
+    display: block;
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-top: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--gold);
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .checklist h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 18px;
+    letter-spacing: .02em;
+  }
+  .checklist ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 28px;
+  }
+  @media(max-width:480px){ .checklist ul { grid-template-columns: 1fr; } }
+  .checklist li {
+    font-size: .93rem;
+    color: #3a3820;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.55;
+  }
+  .checklist li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--forest);
+    font-weight: 700;
+    font-size: .85rem;
+  }
+
+  /* ── FOOTER CTA ── */
+  .cta {
+    background: linear-gradient(135deg, var(--forest) 0%, #1a3c28 100%);
+    padding: 60px 32px;
+    text-align: center;
+    color: #fff;
+    margin-top: 70px;
+  }
+  .cta h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .cta h3 em { color: var(--gold2); font-style: italic; }
+  .cta p {
+    color: rgba(255,255,255,.65);
+    font-size: .95rem;
+    max-width: 420px;
+    margin: 0 auto 28px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold2);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: .88rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 14px 38px;
+    text-decoration: none;
+    border: 2px solid var(--gold2);
+    transition: background .2s, color .2s;
+    cursor: pointer;
+  }
+  .cta-btn:hover { background: transparent; color: var(--gold2); }
+
+  /* ── ANIM ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .strip, .hero, .stats-bar { animation: fadeUp .55s ease both; }
+  .wrap  { animation: fadeUp .55s .12s ease both; }
+  .cta   { animation: fadeUp .55s .2s ease both; }
+</style>
+</head>
+<body>
+
+<!-- STRIP -->
+<div class="strip">
+  <span>The Blogger's Playbook</span>
+  <span>✦</span>
+  <span>800 Words · <span>Productivity Edition</span></span>
+  <span>✦</span>
+  <span>Write More. Stress Less.</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">✦ Essential Guide</div>
+  <h1>Blogging<br/><span class="hl">Productivity</span> Tips<br/>That Actually Work</h1>
+  <p class="hero-desc">Stop staring at blank screens. Learn the systems, habits, and mindset shifts that help bloggers write more, publish consistently, and grow faster.</p>
+  <div class="ornament-row">✦ ✦ ✦</div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-cell"><span class="num">3×</span><span class="lbl">More Output</span></div>
+  <div class="stat-cell"><span class="num">90%</span><span class="lbl">Bloggers Quit Early</span></div>
+  <div class="stat-cell"><span class="num">1 hr</span><span class="lbl">Daily Is Enough</span></div>
+  <div class="stat-cell"><span class="num">10</span><span class="lbl">Tips Inside</span></div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+
+  <!-- INTRO -->
+  <p class="drop-cap">
+    Every blogger starts with energy and enthusiasm. Ideas flow freely, posts go up regularly, and the future looks bright. Then life happens. Writing slows down. Deadlines slip. The blog that once excited you begins to feel like a chore. The problem is almost never talent or ideas — it is almost always a lack of the right systems and habits. Productivity is not about doing more. It is about doing the right things, in the right order, without burning out.
+  </p>
+  <p>
+    The bloggers who publish consistently year after year are not superhuman. They have simply learned a set of practical strategies that protect their time, fuel their creativity, and keep momentum alive even on the hard days. Here are the ten most powerful blogging productivity tips you can start using today.
+  </p>
+
+  <!-- TIP 1 -->
+  <div class="tip-block">
+    <div class="tip-num">01</div>
+    <div class="tip-content">
+      <div class="tip-tag">Planning</div>
+      <h2>Batch Your Content Planning Once a Month</h2>
+    </div>
+  </div>
+  <p>
+    Sitting down every day and asking "what should I write about today?" is a massive productivity killer. Instead, dedicate one hour each month to mapping out your entire content calendar. Brainstorm twenty to thirty topic ideas, pick the best twelve, assign them to specific dates, and walk away. When you open your laptop each morning, the decision is already made. You simply write.
+  </p>
+  <div class="hl-box"><strong>Pro Tip:</strong> Keep a running "idea dump" note on your phone. Every time a topic idea strikes you — in the shower, on a walk, mid-conversation — add it immediately. Your monthly planning session then becomes effortless.</div>
+
+  <!-- TIP 2 -->
+  <div class="tip-block">
+    <div class="tip-num">02</div>
+    <div class="tip-content">
+      <div class="tip-tag">Time Management</div>
+      <h2>Write in Time Blocks, Not Marathon Sessions</h2>
+    </div>
+  </div>
+  <p>
+    Long, unstructured writing sessions rarely produce great work. Your focus drifts, quality drops, and you end the day exhausted. Instead, write in focused blocks of twenty-five to fifty minutes with short breaks between them. This is the foundation of the Pomodoro Technique — and it works extraordinarily well for bloggers. Three focused blocks in a morning will consistently outperform five hours of distracted writing.
+  </p>
+  <div class="time-blocks">
+    <div class="tb">
+      <span class="tb-time">25 min</span>
+      <span class="tb-label">Deep writing — no distractions</span>
+    </div>
+    <div class="tb gold-tb">
+      <span class="tb-time">5 min</span>
+      <span class="tb-label">Short break — step away</span>
+    </div>
+    <div class="tb">
+      <span class="tb-time">3× daily</span>
+      <span class="tb-label">Equals one full blog post</span>
+    </div>
+  </div>
+
+  <!-- TIP 3 -->
+  <div class="tip-block">
+    <div class="tip-num">03</div>
+    <div class="tip-content">
+      <div class="tip-tag">Workflow</div>
+      <h2>Separate Writing from Editing — Always</h2>
+    </div>
+  </div>
+  <p>
+    The single biggest killer of writing momentum is editing while you write. Every time you stop mid-sentence to fix a word or rewrite a paragraph, you interrupt the creative flow that makes first drafts possible. Write the entire draft first — messy, imperfect, and unpolished. Then close it, rest, and return later with fresh eyes to edit. You will write faster, feel less stuck, and produce better work.
+  </p>
+
+  <div class="pq">
+    <p>The first draft is you telling yourself the story. The second draft is you telling the story to your reader. Never confuse the two.</p>
+    <span class="pq-src">— The Blogger's Golden Rule</span>
+  </div>
+
+  <!-- TIP 4 -->
+  <div class="tip-block">
+    <div class="tip-num">04</div>
+    <div class="tip-content">
+      <div class="tip-tag">Environment</div>
+      <h2>Design a Distraction-Free Writing Environment</h2>
+    </div>
+  </div>
+  <p>
+    Your environment shapes your output more than you realise. Turn off notifications. Close every browser tab that is not related to your current post. Use a full-screen writing app like iA Writer or Notion's focus mode. Some bloggers go further — a dedicated writing playlist, a specific chair, or even a different café. When your brain associates a certain environment with deep writing, getting into the zone becomes automatic.
+  </p>
+
+  <!-- TIP 5 -->
+  <div class="tip-block">
+    <div class="tip-num">05</div>
+    <div class="tip-content">
+      <div class="tip-tag">Templates</div>
+      <h2>Build Post Templates for Every Format You Use</h2>
+    </div>
+  </div>
+  <p>
+    If you write how-to posts, listicles, opinion pieces, or reviews regularly, build a reusable template for each one. A template is simply a skeleton — the headings, sections, and structural elements that every post of that type shares. Instead of starting from a blank page each time, you start from a clear outline. This single habit can cut your writing time in half and dramatically improve the consistency of your content.
+  </p>
+
+  <!-- TIP 6 -->
+  <div class="tip-block">
+    <div class="tip-num">06</div>
+    <div class="tip-content">
+      <div class="tip-tag">Habits</div>
+      <h2>Protect Your Writing Time Like a Meeting</h2>
+    </div>
+  </div>
+  <p>
+    Most bloggers write "whenever they find time." That time never comes. Treat your writing session as a non-negotiable appointment in your calendar — block it, name it, and honour it. Even thirty focused minutes every morning before the world wakes up will produce a published post every three to four days. Consistency compounds. The bloggers who show up every day are the ones who build real audiences.
+  </p>
+
+  <!-- CHECKLIST -->
+  <div class="checklist">
+    <h3>✦ Your Daily Blogging Productivity Checklist</h3>
+    <ul>
+      <li>Review your content calendar</li>
+      <li>Open your template before writing</li>
+      <li>Turn off all notifications</li>
+      <li>Write your draft without editing</li>
+      <li>Use timed writing blocks</li>
+      <li>Add new ideas to your idea dump</li>
+      <li>Edit only after a full break</li>
+      <li>Schedule your post in advance</li>
+      <li>Track your word count daily</li>
+      <li>Celebrate every published post</li>
+    </ul>
+  </div>
+
+  <!-- CLOSING -->
+  <p>
+    Blogging productivity is not about grinding harder. It is about building a smart, sustainable system that keeps you writing, publishing, and growing — even when inspiration is low, life is busy, or motivation has temporarily disappeared. Start with just two or three of these tips. Apply them this week. Notice the difference in how much you produce and how much lighter writing feels.
+  </p>
+  <p>
+    Your blog does not need more of your time. It needs more of your focus — given consistently, protected fiercely, and celebrated every single time you hit publish.
+  </p>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h3>Write More.<br/><em>Publish Consistently.</em></h3>
+  <p>Pick two tips from this guide, apply them tomorrow morning, and see what changes. One focused hour is all it takes.</p>
+  <a class="cta-btn" href="#">Start Writing Today ✦</a>
+</div>
+
+</body>
+</html>
