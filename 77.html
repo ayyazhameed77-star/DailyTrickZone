@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Create an Online Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1208;
+    --cream: #fdf6e8;
+    --warm: #f5e9cc;
+    --gold: #c8923a;
+    --gold-light: #e8b96a;
+    --rust: #9e4b1a;
+    --sage: #5a7a5a;
+    --rule: #d6c49a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 56px 24px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.04) 40px
+    );
+    pointer-events: none;
+  }
+  .masthead-label {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    margin-bottom: 18px;
+  }
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .masthead-sub {
+    font-size: 1rem;
+    font-style: italic;
+    color: #b0a88c;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .ornament {
+    color: var(--gold);
+    font-size: 1.6rem;
+    letter-spacing: .3em;
+    display: block;
+    margin: 24px auto 0;
+    opacity: .7;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .byline-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 28px 0 0;
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #9a8c6e;
+  }
+  .byline-bar span { color: var(--gold); }
+
+  .rule-line {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 20px 0 36px;
+  }
+  .rule-double {
+    border: none;
+    border-top: 3px double var(--rule);
+    margin: 44px 0;
+  }
+
+  /* ── DROP CAP & PARAGRAPHS ── */
+  .drop-cap::first-letter {
+    float: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2rem;
+    font-weight: 900;
+    line-height: .78;
+    margin: 4px 10px -4px 0;
+    color: var(--gold);
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 1.4em;
+    color: #2a2010;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-num {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 44px 0 10px;
+  }
+  .num-badge {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 4px solid var(--gold);
+    margin: 36px 0;
+    padding: 18px 24px;
+    background: var(--warm);
+  }
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.22rem;
+    font-style: italic;
+    color: var(--rust);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── CHECKLIST BOX ── */
+  .checklist-box {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--gold);
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .checklist-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--rust);
+    letter-spacing: .02em;
+  }
+  .checklist-box ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+  @media(max-width:520px){ .checklist-box ul { grid-template-columns: 1fr; } }
+  .checklist-box li {
+    font-size: .94rem;
+    line-height: 1.5;
+    padding-left: 22px;
+    position: relative;
+    color: #3a2e1a;
+    margin: 0;
+  }
+  .checklist-box li::before {
+    content: '✦';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-size: .7rem;
+    top: 3px;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    display: flex;
+    gap: 1px;
+    margin: 36px 0;
+    background: var(--rule);
+  }
+  .stat-cell {
+    flex: 1;
+    background: var(--cream);
+    text-align: center;
+    padding: 22px 12px;
+  }
+  .stat-cell .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .stat-cell .label {
+    font-size: .75rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #7a6e54;
+    margin-top: 4px;
+  }
+
+  /* ── FINAL CTA ── */
+  .cta-footer {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 48px 24px;
+    margin-top: 60px;
+  }
+  .cta-footer h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .cta-footer p {
+    color: #b0a88c;
+    font-size: .95rem;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .cta-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 36px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Lora', serif;
+    font-size: .95rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-decoration: none;
+    border: 2px solid var(--gold);
+    transition: background .2s, color .2s;
+    cursor: pointer;
+  }
+  .cta-btn:hover { background: transparent; color: var(--gold-light); }
+
+  /* ── FADE-IN ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(22px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .masthead, .article-wrap, .cta-footer {
+    animation: fadeUp .7s ease both;
+  }
+  .article-wrap { animation-delay: .15s; }
+  .cta-footer   { animation-delay: .25s; }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-label">Complete Guide · Education &amp; E-Learning</div>
+  <h1>How to Create an<br/><em>Online Course</em></h1>
+  <p class="masthead-sub">A step-by-step guide to turning your knowledge into a powerful, profitable, and purposeful learning experience.</p>
+  <span class="ornament">✦ ✦ ✦</span>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <div class="byline-bar">
+    <span>Step-by-Step</span> · <span>800 Words</span> · <span>Beginner Friendly</span>
+  </div>
+  <hr class="rule-line"/>
+
+  <!-- INTRO -->
+  <p class="drop-cap">
+    Creating an online course is one of the most rewarding things you can do with your expertise. Whether you are a seasoned professional, a passionate hobbyist, or a skilled craftsperson, there is an audience out there eager to learn from you. An online course lets you share your knowledge at scale — once you build it, it works for you around the clock, reaching students in every corner of the world.
+  </p>
+  <p>
+    But where do you begin? Many aspiring course creators feel overwhelmed before they write a single lesson. The good news is that the process is far simpler than it looks. It breaks down into clear, manageable steps. Follow them in order, and by the end you will have a course you are proud to publish.
+  </p>
+
+  <div class="stats-strip">
+    <div class="stat-cell"><span class="big">$370B</span><span class="label">E-Learning Market by 2026</span></div>
+    <div class="stat-cell"><span class="big">57%</span><span class="label">Learners Prefer Online</span></div>
+    <div class="stat-cell"><span class="big">7 Steps</span><span class="label">To Your First Course</span></div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="section-num"><div class="num-badge">1</div><h2>Choose a Profitable, Passionate Topic</h2></div>
+  <p>
+    Your course topic should sit at the intersection of two things: what you know deeply, and what people genuinely want to learn. Start by making a list of your skills, experiences, and knowledge. Then ask yourself — have people ever paid you for this? Do strangers ask you questions about it? A topic that solves a specific, painful problem for a specific group of people is almost always a winner.
+  </p>
+  <p>
+    Narrow is powerful. "Photography" is too broad. "Night photography for beginners using a smartphone" is a course someone will buy tonight.
+  </p>
+
+  <!-- STEP 2 -->
+  <div class="section-num"><div class="num-badge">2</div><h2>Define Your Ideal Student</h2></div>
+  <p>
+    Before you write a single lesson, picture one person sitting in front of a screen taking your course. What do they already know? What do they struggle with? What do they hope to achieve? Writing for one specific person makes your course feel personal, relevant, and incredibly useful — even when thousands of people take it.
+  </p>
+
+  <div class="pull-quote">
+    <p>"A great online course does not try to teach everyone everything. It teaches one person one transformation — clearly and completely."</p>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section-num"><div class="num-badge">3</div><h2>Outline Your Course Structure</h2></div>
+  <p>
+    Think of your course as a journey with a clear beginning, middle, and end. Start by writing down every topic or skill a student needs to reach the final outcome. Then group those topics into modules — typically four to eight modules works well. Each module should have a single clear focus and build logically on the one before it.
+  </p>
+  <p>
+    A clean structure keeps students motivated. When people see progress — "I just finished Module 3 of 6!" — they are far more likely to complete the course and leave a glowing review.
+  </p>
+
+  <!-- STEP 4 -->
+  <div class="section-num"><div class="num-badge">4</div><h2>Record High-Quality Video Lessons</h2></div>
+  <p>
+    You do not need a Hollywood studio. You need decent lighting, a reasonably quiet room, and a clear voice. A ring light and a simple USB microphone cost very little and make an enormous difference in perceived quality. Film in short, focused lessons — five to twelve minutes is ideal. Long lectures lose attention fast.
+  </p>
+  <p>
+    Be yourself on camera. Students sign up because of you. Authenticity, energy, and genuine care for your student's progress matter far more than perfect production values.
+  </p>
+
+  <!-- STEP 5 -->
+  <div class="section-num"><div class="num-badge">5</div><h2>Choose the Right Platform</h2></div>
+  <p>
+    Popular platforms like Teachable, Thinkific, Kajabi, and Udemy each offer different strengths. If you want full control over pricing and branding, self-hosted platforms are the answer. If you want built-in traffic from a marketplace, Udemy can send students your way from day one. Consider your goals, technical comfort level, and budget before committing.
+  </p>
+
+  <!-- STEP 6 -->
+  <div class="section-num"><div class="num-badge">6</div><h2>Price and Launch with Confidence</h2></div>
+  <p>
+    Price based on the transformation you deliver, not the hours of video you recorded. A course that helps someone earn a promotion or learn a new career skill is worth hundreds of dollars — price it accordingly. Before your official launch, consider offering a founding student discount to ten to twenty early buyers. Their feedback will sharpen the course, and their testimonials will fuel your marketing.
+  </p>
+
+  <!-- STEP 7 -->
+  <div class="section-num"><div class="num-badge">7</div><h2>Gather Feedback and Keep Improving</h2></div>
+  <p>
+    Your first version does not need to be perfect — it needs to be published. After your first cohort completes the course, reach out personally and ask: "What was most helpful? What was confusing? What would you add?" Use those answers to improve every module. The best online courses are living documents that grow better with every student who takes them.
+  </p>
+
+  <hr class="rule-double"/>
+
+  <!-- CHECKLIST -->
+  <div class="checklist-box">
+    <h3>Your Online Course Launch Checklist</h3>
+    <ul>
+      <li>Topic chosen &amp; validated</li>
+      <li>Ideal student defined</li>
+      <li>Full course outline written</li>
+      <li>All video lessons recorded</li>
+      <li>Platform selected &amp; set up</li>
+      <li>Course priced strategically</li>
+      <li>Sales page written</li>
+      <li>Founding students recruited</li>
+      <li>Email list started</li>
+      <li>Feedback loop created</li>
+    </ul>
+  </div>
+
+  <!-- CLOSING -->
+  <p>
+    Creating an online course is not just a business decision — it is a generous act. You are packaging years of learning, trial, and hard-won experience into something that can genuinely change another person's life. The world needs what you know. The only thing left to do is begin.
+  </p>
+
+</div><!-- /article-wrap -->
+
+<!-- CTA FOOTER -->
+<div class="cta-footer">
+  <h3>Ready to Build Your Course?</h3>
+  <p>Start with Step 1 today. Pick your topic, write it down, and commit. The rest will follow.</p>
+  <a class="cta-btn" href="#">Begin Your Journey ✦</a>
+</div>
+
+</body>
+</html>
