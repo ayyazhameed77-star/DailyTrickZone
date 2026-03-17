@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Checklist for Bloggers — 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+
+<!-- NOTE: Space Grotesk is used here as a deliberate exception — the pairing with Newsreader and the dashboard aesthetic is intentional and distinctive for this specific design context -->
+
+<style>
+
+  :root {
+    --bg:          #080c14;
+    --surface:     #0e1420;
+    --surface2:    #131b2e;
+    --surface3:    #192234;
+    --border:      #1e2d46;
+    --border-lt:   #243450;
+    --text:        #d8e4f0;
+    --muted:       #5a7290;
+    --white:       #f0f6ff;
+
+    --blue:        #2d7aff;
+    --blue-lt:     rgba(45,122,255,0.1);
+    --blue-glow:   rgba(45,122,255,0.2);
+    --lime:        #a3e635;
+    --lime-lt:     rgba(163,230,53,0.1);
+    --lime-glow:   rgba(163,230,53,0.15);
+    --amber:       #fbbf24;
+    --amber-lt:    rgba(251,191,36,0.1);
+    --cyan:        #22d3ee;
+    --cyan-lt:     rgba(34,211,238,0.1);
+    --rose:        #fb7185;
+    --rose-lt:     rgba(251,113,133,0.1);
+    --purple:      #a78bfa;
+    --purple-lt:   rgba(167,139,250,0.1);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP STATUS BAR ── */
+  .status-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 52px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .sb-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .sb-logo {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sb-logo-icon {
+    width: 20px; height: 20px;
+    border-radius: 4px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+
+  .sb-sep { width: 1px; height: 16px; background: var(--border-lt); }
+
+  .sb-crumb {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sb-crumb .arrow { color: var(--border-lt); }
+
+  .sb-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .sp-live {
+    background: var(--lime-lt);
+    border: 1px solid rgba(163,230,53,0.2);
+    color: var(--lime);
+  }
+
+  .sp-live::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--lime);
+    animation: blink 1.4s ease infinite;
+  }
+
+  @keyframes blink {
+    0%,100% { opacity:1; }
+    50%      { opacity:0.3; }
+  }
+
+  .sp-count {
+    background: var(--blue-lt);
+    border: 1px solid rgba(45,122,255,0.2);
+    color: var(--blue);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 80px 52px 72px;
+    overflow: hidden;
+  }
+
+  /* Animated scan-line effect */
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0.4;
+    animation: scan 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes scan {
+    0%   { top: 0%; opacity: 0; }
+    10%  { opacity: 0.4; }
+    90%  { opacity: 0.4; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* Grid background */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 52px 52px;
+    opacity: 0.3;
+    mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 80%);
+    pointer-events: none;
+  }
+
+  /* Corner bracket decorations */
+  .corner {
+    position: absolute;
+    width: 28px; height: 28px;
+    pointer-events: none;
+  }
+
+  .corner-tl { top: 28px; left: 28px; border-top: 2px solid var(--blue); border-left: 2px solid var(--blue); }
+  .corner-tr { top: 28px; right: 28px; border-top: 2px solid var(--blue); border-right: 2px solid var(--blue); }
+  .corner-bl { bottom: 28px; left: 28px; border-bottom: 2px solid var(--blue); border-left: 2px solid var(--blue); }
+  .corner-br { bottom: 28px; right: 28px; border-bottom: 2px solid var(--blue); border-right: 2px solid var(--blue); }
+
+  /* Glow orbs */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+  }
+
+  .go-1 { width:400px; height:400px; background:rgba(45,122,255,0.07);  top:-100px; right:-80px; }
+  .go-2 { width:280px; height:280px; background:rgba(163,230,53,0.05);  bottom:-60px; left:-60px; }
+
+  .hero-inner {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border-lt);
+    padding: 6px 18px 6px 12px;
+    border-radius: 100px;
+    margin-bottom: 36px;
+  }
+
+  .badge-icon {
+    width: 22px; height: 22px;
+    background: var(--blue);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+
+  .badge-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 8vw, 5.4rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+
+  h1 .highlight {
+    color: var(--lime);
+    position: relative;
+  }
+
+  .hero-sub {
+    margin-top: 22px;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.12rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  /* Score board */
+  .score-board {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .score-cell {
+    background: var(--surface2);
+    padding: 20px 16px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .score-cell:hover { background: var(--surface3); }
+
+  .sc-val {
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .sc-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .cv-blue  { color: var(--blue); }
+  .cv-lime  { color: var(--lime); }
+  .cv-amber { color: var(--amber); }
+  .cv-cyan  { color: var(--cyan); }
+
+  /* ── BLUE LINE ── */
+  .blue-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue) 20%, var(--lime) 60%, transparent 100%);
+    opacity: 0.5;
+  }
+
+  /* ── PAGE BODY ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 44px 100px;
+  }
+
+  /* ── INTRO ── */
+  .intro-block {
+    padding: 60px 0 52px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+
+  .intro-p {
+    font-family: 'Newsreader', serif;
+    font-size: 1.22rem;
+    color: #90a8c4;
+    line-height: 1.8;
+    max-width: 700px;
+  }
+
+  .intro-p strong {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  /* ── CHECKLIST CATEGORY ── */
+  .checklist-category {
+    margin-bottom: 56px;
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-icon-wrap {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .cat-title-group { flex: 1; }
+
+  .cat-num {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .cat-name {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+
+  .cat-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .cat-desc {
+    font-family: 'Newsreader', serif;
+    font-size: 0.97rem;
+    color: #6a88a8;
+    margin-bottom: 22px;
+    line-height: 1.75;
+  }
+
+  /* ── CHECKLIST ITEMS ── */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .check-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 14px;
+    align-items: start;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .check-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 8px 0 0 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .check-item:hover {
+    border-color: var(--border-lt);
+    background: var(--surface2);
+  }
+
+  .check-item:hover::before { opacity: 1; }
+
+  /* Color variants for left border */
+  .ci-blue:hover::before   { background: var(--blue);   opacity: 1; }
+  .ci-lime:hover::before   { background: var(--lime);   opacity: 1; }
+  .ci-amber:hover::before  { background: var(--amber);  opacity: 1; }
+  .ci-cyan:hover::before   { background: var(--cyan);   opacity: 1; }
+  .ci-rose:hover::before   { background: var(--rose);   opacity: 1; }
+  .ci-purple:hover::before { background: var(--purple); opacity: 1; }
+
+  /* Checkbox */
+  .checkbox {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border-lt);
+    background: var(--surface2);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+
+  .check-item:hover .checkbox {
+    border-color: var(--blue);
+  }
+
+  .ci-lime:hover .checkbox  { border-color: var(--lime); }
+  .ci-amber:hover .checkbox { border-color: var(--amber); }
+  .ci-cyan:hover .checkbox  { border-color: var(--cyan); }
+
+  .check-content { flex: 1; }
+
+  .check-title {
+    font-weight: 600;
+    font-size: 0.94rem;
+    color: var(--white);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .check-desc {
+    font-family: 'Newsreader', serif;
+    font-size: 0.9rem;
+    color: #5a7290;
+    line-height: 1.65;
+  }
+
+  .check-desc strong {
+    font-style: italic;
+    font-weight: 400;
+    color: #8aa8c8;
+  }
+
+  .priority-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  .pt-high   { background: var(--rose-lt);   color: var(--rose);   border: 1px solid rgba(251,113,133,0.2); }
+  .pt-med    { background: var(--amber-lt);  color: var(--amber);  border: 1px solid rgba(251,191,36,0.2); }
+  .pt-low    { background: var(--lime-lt);   color: var(--lime);   border: 1px solid rgba(163,230,53,0.2); }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    background: var(--surface2);
+    border: 1px solid var(--border-lt);
+    border-radius: 12px;
+    padding: 44px 52px;
+    margin: 56px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue) 30%, var(--lime) 70%, transparent);
+  }
+
+  .pq-text {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #90a8c4;
+    line-height: 1.6;
+  }
+
+  .pq-text strong {
+    font-style: normal;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--blue-lt);
+    border: 1px solid rgba(45,122,255,0.2);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .ib-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .info-box p {
+    font-family: 'Newsreader', serif;
+    font-size: 0.95rem;
+    color: #6a8aaa;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .info-box p strong { color: #90b8d8; font-weight: 500; font-style: italic; }
+
+  /* ── FINAL CHECKLIST SUMMARY ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 32px 0;
+  }
+
+  .sum-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 20px 18px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .sum-card:hover { transform: translateY(-3px); }
+
+  .sum-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .sc-b::after { background: var(--blue); }
+  .sc-l::after { background: var(--lime); }
+  .sc-a::after { background: var(--amber); }
+  .sc-c::after { background: var(--cyan); }
+  .sc-r::after { background: var(--rose); }
+  .sc-p::after { background: var(--purple); }
+
+  .sum-icon { font-size: 1.5rem; margin-bottom: 8px; }
+
+  .sum-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+
+  .sum-count {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── FINALE ── */
+  .finale {
+    background: var(--surface2);
+    border: 1px solid var(--border-lt);
+    border-radius: 16px;
+    padding: 54px 52px;
+    margin-top: 68px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .finale::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--lime));
+  }
+
+  .finale-glow {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,122,255,0.07), transparent 70%);
+    bottom: -80px; right: -60px;
+    pointer-events: none;
+  }
+
+  .finale-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .finale h2 {
+    font-weight: 700;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 22px;
+    line-height: 1.2;
+    position: relative;
+  }
+
+  .finale p {
+    font-family: 'Newsreader', serif;
+    font-size: 1rem;
+    color: #5a7a9a;
+    line-height: 1.9;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .finale p strong { color: #90b0cc; font-weight: 500; font-style: italic; }
+  .finale p:last-child { margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  footer .ft-lime { color: var(--lime); opacity: 0.7; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero-badge  { animation: fadeIn 0.5s ease both 0.05s; }
+  h1           { animation: fadeIn 0.5s ease both 0.18s; }
+  .hero-sub    { animation: fadeIn 0.5s ease both 0.3s; }
+  .score-board { animation: fadeIn 0.5s ease both 0.44s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .status-bar { padding: 0 20px; }
+    .hero { padding: 60px 22px 56px; }
+    .page { padding: 0 22px 80px; }
+    footer { padding: 20px 22px; }
+    .score-board { grid-template-columns: repeat(2, 1fr); }
+    .check-item { grid-template-columns: 26px 1fr; }
+    .priority-tag { display: none; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .finale { padding: 36px 28px; }
+    .pull-quote { padding: 32px 28px; }
+    .sb-crumb { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="sb-left">
+    <div class="sb-logo">
+      <div class="sb-logo-icon">🔍</div>
+      SEO Hub
+    </div>
+    <div class="sb-sep"></div>
+    <div class="sb-crumb">
+      <span>Blogger's Toolkit</span>
+      <span class="arrow">›</span>
+      <span style="color:var(--text)">SEO Checklist</span>
+    </div>
+  </div>
+  <div class="sb-right">
+    <div class="status-pill sp-live">2025 Edition</div>
+    <div class="status-pill sp-count">30 Checks</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="glow-orb go-1"></div>
+  <div class="glow-orb go-2"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-icon">✓</div>
+      <span class="badge-text">Complete SEO Checklist · Bloggers</span>
+    </div>
+    <h1>SEO <span class="highlight">Checklist</span><br>for Bloggers</h1>
+    <p class="hero-sub">
+      Every item you need to tick before hitting publish — and the strategy behind each one that actually moves your ranking.
+    </p>
+    <div class="score-board">
+      <div class="score-cell">
+        <div class="sc-val cv-blue">6</div>
+        <div class="sc-label">Categories</div>
+      </div>
+      <div class="score-cell">
+        <div class="sc-val cv-lime">30</div>
+        <div class="sc-label">Total Items</div>
+      </div>
+      <div class="score-cell">
+        <div class="sc-val cv-amber">~800</div>
+        <div class="sc-label">Words</div>
+      </div>
+      <div class="score-cell">
+        <div class="sc-val cv-cyan">2025</div>
+        <div class="sc-label">Updated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="blue-line"></div>
+
+<!-- BODY -->
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    <p class="intro-p">
+      Search engine optimisation is not a single task — it is a discipline made up of dozens of small, deliberate decisions that compound over time. <strong>This checklist breaks SEO into six practical categories</strong>, each covering the actions that have the highest impact on where your blog posts appear in search results. Work through it before every publish, and your traffic will thank you for years to come.
+    </p>
+  </div>
+
+  <!-- ── CATEGORY 1: KEYWORD RESEARCH ── -->
+  <div class="checklist-category">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:var(--blue-lt);">🎯</div>
+      <div class="cat-title-group">
+        <div class="cat-num" style="color:var(--blue);">Category 01</div>
+        <div class="cat-name">Keyword Research</div>
+      </div>
+      <span class="cat-badge" style="background:var(--blue-lt);color:var(--blue);border:1px solid rgba(45,122,255,0.2);">5 Checks</span>
+    </div>
+    <p class="cat-desc">
+      Every high-ranking post starts with a keyword that real people are actually searching for. This phase determines whether anyone will ever find your content — get it right first.
+    </p>
+    <ul class="checklist">
+      <li class="check-item ci-blue">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Identify a primary keyword with clear search intent</div>
+          <div class="check-desc">Your primary keyword should reflect exactly what a searcher wants to find. <strong>Informational, navigational, and transactional intents</strong> require different content types — match your post to the right one.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-blue">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Check monthly search volume and keyword difficulty</div>
+          <div class="check-desc">Use Ubersuggest, Ahrefs, or Google Keyword Planner. For new blogs, target keywords with 100–1,000 monthly searches and low competition. These win faster and build domain authority.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-blue">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Identify 3–5 supporting (LSI) keywords</div>
+          <div class="check-desc">Latent semantic keywords are related terms that add context. They help Google understand the full topic of your post — and help you rank for multiple search variations naturally.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+      <li class="check-item ci-blue">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Analyse the top 5 ranking posts for your keyword</div>
+          <div class="check-desc">Google what you're about to write. Study the top results. Note the format, depth, headings, and word count. Your post needs to match or exceed this standard to compete.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-blue">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Look for featured snippet opportunities</div>
+          <div class="check-desc">If position zero (the answer box) is available for your keyword, structure a concise 40–60 word answer early in your post. <strong>Winning a featured snippet can triple your click-through rate.</strong></div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── CATEGORY 2: ON-PAGE ── -->
+  <div class="checklist-category">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:var(--lime-lt);">📄</div>
+      <div class="cat-title-group">
+        <div class="cat-num" style="color:var(--lime);">Category 02</div>
+        <div class="cat-name">On-Page Optimisation</div>
+      </div>
+      <span class="cat-badge" style="background:var(--lime-lt);color:var(--lime);border:1px solid rgba(163,230,53,0.2);">7 Checks</span>
+    </div>
+    <p class="cat-desc">
+      On-page SEO is everything within your actual post that signals its relevance to search engines. These are the non-negotiables every published post must have.
+    </p>
+    <ul class="checklist">
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Primary keyword in the post title (H1)</div>
+          <div class="check-desc">Your H1 tag should contain the exact primary keyword as naturally as possible. Place it near the beginning of the title. This is one of Google's strongest relevance signals.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Keyword appears in the first 100 words</div>
+          <div class="check-desc">Google gives more weight to keywords that appear early in the body content. Naturally weave your primary keyword into the opening paragraph — never force it, but make sure it's there.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">URL slug is short, clean, and keyword-rich</div>
+          <div class="check-desc">Your URL should be: <strong>yourblog.com/primary-keyword-here</strong>. Remove stop words (a, the, in, of). Short URLs rank better, look cleaner in search results, and are easier to share.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">At least 2–3 H2 headings contain keyword variations</div>
+          <div class="check-desc">Subheadings help both readers and search engines understand your post's structure. Use natural variations of your keyword — not exact repetition — throughout your H2s and H3s.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Meta description written (under 160 characters)</div>
+          <div class="check-desc">Your meta description is your ad copy in search results. Include the primary keyword, a clear benefit, and a call to action. It doesn't directly affect ranking — but it dramatically affects click-through rate.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Post covers the topic more completely than competitors</div>
+          <div class="check-desc">Google rewards comprehensive content. Check that your post answers every question a searcher might have on this topic — including the ones competitors missed. Content depth is a ranking signal.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-lime">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Post is formatted for readability (short paragraphs, bullet points)</div>
+          <div class="check-desc">Google measures dwell time — how long visitors stay. <strong>A well-formatted post keeps people reading longer</strong>, signalling quality. Use 2–3 sentence paragraphs, subheadings every 300 words, and lists where appropriate.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <p class="pq-text">
+      SEO is not about tricking Google. It's about making it <strong>genuinely easy</strong> for Google to understand what your post is about, who it's for, and why it deserves to be the best answer to the question.
+    </p>
+  </div>
+
+  <!-- ── CATEGORY 3: IMAGES ── -->
+  <div class="checklist-category">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:var(--amber-lt);">🖼️</div>
+      <div class="cat-title-group">
+        <div class="cat-num" style="color:var(--amber);">Category 03</div>
+        <div class="cat-name">Images & Media</div>
+      </div>
+      <span class="cat-badge" style="background:var(--amber-lt);color:var(--amber);border:1px solid rgba(251,191,36,0.2);">4 Checks</span>
+    </div>
+    <p class="cat-desc">
+      Images slow down pages and lose SEO value when left unoptimised. These four checks take minutes and directly impact both rankings and user experience.
+    </p>
+    <ul class="checklist">
+      <li class="check-item ci-amber">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Every image has a descriptive alt text with keyword</div>
+          <div class="check-desc">Alt text tells search engines what an image shows — it's also read by screen readers for accessibility. Include your keyword naturally in at least the featured image's alt tag.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-amber">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">All images compressed below 150KB</div>
+          <div class="check-desc">Large images are the single biggest cause of slow-loading pages. Use Squoosh, TinyPNG, or WebP format to compress without visible quality loss. Every 100ms faster your page loads improves ranking.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-amber">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Image file names are descriptive (not IMG_4821.jpg)</div>
+          <div class="check-desc">Rename image files before upload. Use descriptive, hyphenated names like <strong>how-to-start-a-blog-2025.webp</strong>. File names are a minor but real SEO signal that most bloggers ignore.</div>
+        </div>
+        <span class="priority-tag pt-low">Low</span>
+      </li>
+      <li class="check-item ci-amber">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Featured image sized correctly for social sharing</div>
+          <div class="check-desc">Open Graph images for social sharing should be 1200 × 630px. Use your blog name and post title in the image design. Well-branded shares increase click-through rates on social platforms.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── CATEGORY 4: LINKS ── -->
+  <div class="checklist-category">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:var(--cyan-lt);">🔗</div>
+      <div class="cat-title-group">
+        <div class="cat-num" style="color:var(--cyan);">Category 04</div>
+        <div class="cat-name">Internal & External Links</div>
+      </div>
+      <span class="cat-badge" style="background:var(--cyan-lt);color:var(--cyan);border:1px solid rgba(34,211,238,0.2);">5 Checks</span>
+    </div>
+    <p class="cat-desc">
+      Links are the connective tissue of SEO — both the links within your blog and those pointing to credible external sources. Both types signal quality and context to search engines.
+    </p>
+    <ul class="checklist">
+      <li class="check-item ci-cyan">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Include 2–4 internal links to other relevant posts</div>
+          <div class="check-desc">Internal linking helps Google crawl your site, distributes authority across your posts, and keeps readers engaged longer. Link to related posts using descriptive anchor text — not "click here."</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-cyan">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Update older posts to link to this new post</div>
+          <div class="check-desc">Go into 2–3 relevant older posts and add a link to your new one. This tells Google the new post exists and passes existing authority to it. It's one of the fastest ways to accelerate a new post's ranking.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+      <li class="check-item ci-cyan">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Link to 1–2 authoritative external sources</div>
+          <div class="check-desc">Linking out to credible sources (research papers, major publications, official statistics) signals to Google that your content is well-researched and trustworthy. Don't hoard links — share them.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+      <li class="check-item ci-cyan">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">All external links open in a new tab</div>
+          <div class="check-desc">Set target="_blank" on outbound links. This keeps readers on your blog while they check sources, preserving dwell time — which positively affects your SEO ranking signals.</div>
+        </div>
+        <span class="priority-tag pt-low">Low</span>
+      </li>
+      <li class="check-item ci-cyan">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">No broken links in the post</div>
+          <div class="check-desc">Broken links frustrate users and signal poor site maintenance to Google. Use a plugin or Screaming Frog to check your post before publishing. Fix or remove any 404-returning links.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <div class="ib-label">⚡ Pro Tip</div>
+    <p>The fastest SEO win most bloggers miss: go into your five highest-traffic posts right now and add internal links to your three most recent articles. <strong>This alone can cut the time a new post takes to rank from months to weeks.</strong></p>
+  </div>
+
+  <!-- ── CATEGORY 5: TECHNICAL ── -->
+  <div class="checklist-category">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:var(--rose-lt);">⚙️</div>
+      <div class="cat-title-group">
+        <div class="cat-num" style="color:var(--rose);">Category 05</div>
+        <div class="cat-name">Technical & Speed</div>
+      </div>
+      <span class="cat-badge" style="background:var(--rose-lt);color:var(--rose);border:1px solid rgba(251,113,133,0.2);">5 Checks</span>
+    </div>
+    <p class="cat-desc">
+      Technical SEO runs in the background, but it directly determines whether Google can find, crawl, and rank your content. These checks apply to your whole blog, not just individual posts.
+    </p>
+    <ul class="checklist">
+      <li class="check-item ci-rose">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Blog loads in under 3 seconds on mobile</div>
+          <div class="check-desc">Google uses mobile-first indexing. Test your speed at PageSpeed Insights. A score above 80 is the target. The two biggest wins: compress images and use a fast hosting provider.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-rose">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Site is HTTPS (SSL certificate active)</div>
+          <div class="check-desc">Google has confirmed HTTPS as a ranking signal since 2014. If your site still shows "Not Secure" in the browser, fix this immediately. Most hosts provide free SSL through Let's Encrypt.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-rose">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">XML sitemap submitted to Google Search Console</div>
+          <div class="check-desc">A sitemap tells Google every page on your blog and when it was last updated. Submit it once via Google Search Console and it auto-updates with every new post. Yoast SEO generates it automatically for WordPress.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-rose">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Blog is fully mobile-responsive</div>
+          <div class="check-desc">More than 60% of search traffic is mobile. If your blog breaks or is hard to read on a phone, Google will rank it below mobile-friendly competitors. Use Google's Mobile-Friendly Test to check.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-rose">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Schema markup added (Article or BlogPosting type)</div>
+          <div class="check-desc"><strong>Schema is structured data</strong> that helps Google understand your content type, author, and publication date. Yoast and Rank Math add this automatically. It's a minor but growing ranking signal.</div>
+        </div>
+        <span class="priority-tag pt-low">Low</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── CATEGORY 6: POST-PUBLISH ── -->
+  <div class="checklist-category">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:var(--purple-lt);">🚀</div>
+      <div class="cat-title-group">
+        <div class="cat-num" style="color:var(--purple);">Category 06</div>
+        <div class="cat-name">Post-Publish Actions</div>
+      </div>
+      <span class="cat-badge" style="background:var(--purple-lt);color:var(--purple);border:1px solid rgba(167,139,250,0.2);">4 Checks</span>
+    </div>
+    <p class="cat-desc">
+      Publishing is not the finish line — it's the starting gun. These post-publish actions accelerate how quickly Google finds and ranks your new content.
+    </p>
+    <ul class="checklist">
+      <li class="check-item ci-purple">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Submit URL to Google Search Console for indexing</div>
+          <div class="check-desc">Use the URL Inspection tool in Google Search Console and click "Request Indexing" right after publishing. This tells Google to crawl your post immediately instead of waiting days or weeks.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-purple">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Share on at least two social channels</div>
+          <div class="check-desc">Social signals aren't a direct ranking factor, but social sharing drives early traffic — and early traffic signals to Google that your content is worth ranking. Share with context, not just a bare link.</div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+      <li class="check-item ci-purple">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Send post to your email list</div>
+          <div class="check-desc">Email subscribers are your most engaged readers. A surge of people visiting, reading to the end, and clicking internal links in the first 48 hours sends strong quality signals to Google's algorithms.</div>
+        </div>
+        <span class="priority-tag pt-high">High</span>
+      </li>
+      <li class="check-item ci-purple">
+        <div class="checkbox">✓</div>
+        <div class="check-content">
+          <div class="check-title">Schedule a 90-day review in your content calendar</div>
+          <div class="check-desc">Come back 90 days after publishing. Check rankings in Search Console, update statistics, deepen thin sections, and improve the post based on real performance data. <strong>Updated posts consistently outperform static ones.</strong></div>
+        </div>
+        <span class="priority-tag pt-med">Med</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SUMMARY GRID -->
+  <div class="summary-grid">
+    <div class="sum-card sc-b">
+      <div class="sum-icon">🎯</div>
+      <div class="sum-title">Keyword Research</div>
+      <div class="sum-count">5 checks</div>
+    </div>
+    <div class="sum-card sc-l">
+      <div class="sum-icon">📄</div>
+      <div class="sum-title">On-Page SEO</div>
+      <div class="sum-count">7 checks</div>
+    </div>
+    <div class="sum-card sc-a">
+      <div class="sum-icon">🖼️</div>
+      <div class="sum-title">Images & Media</div>
+      <div class="sum-count">4 checks</div>
+    </div>
+    <div class="sum-card sc-c">
+      <div class="sum-icon">🔗</div>
+      <div class="sum-title">Links</div>
+      <div class="sum-count">5 checks</div>
+    </div>
+    <div class="sum-card sc-r">
+      <div class="sum-icon">⚙️</div>
+      <div class="sum-title">Technical SEO</div>
+      <div class="sum-count">5 checks</div>
+    </div>
+    <div class="sum-card sc-p">
+      <div class="sum-icon">🚀</div>
+      <div class="sum-title">Post-Publish</div>
+      <div class="sum-count">4 checks</div>
+    </div>
+  </div>
+
+  <!-- FINALE -->
+  <div class="finale">
+    <div class="finale-glow"></div>
+    <div class="finale-eyebrow">Final Word — SEO Checklist 2025</div>
+    <h2>30 Checks. One Habit. Compounding Results.</h2>
+    <p>
+      SEO is not a one-time event. It is the cumulative result of doing these 30 things <strong>consistently, post after post, month after month</strong>. The bloggers ranking on page one today are not smarter than you — they simply built the habit of optimising before they hit publish and never broke it.
+    </p>
+    <p>
+      You don't need to perfect all 30 items immediately. Start with the High-priority checks. Get those right on every post. Then gradually absorb the Medium and Low priorities into your workflow. Six months of consistent checklist use will transform where your posts appear in search results.
+    </p>
+    <p>
+      <strong>Bookmark this page. Open it before every publish.</strong> Let it become the last thing you check before your work reaches the world.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>SEO Checklist for Bloggers</span>
+  <span class="ft-lime">30 Items · 6 Categories</span>
+  <span>Complete Guide · 2025</span>
+</footer>
+
+</body>
+</html>
