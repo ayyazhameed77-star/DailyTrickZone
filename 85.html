@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Apps for Bloggers — No. 85</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg:         #0e0e12;
+    --surface:    #14141a;
+    --surface2:   #1c1c24;
+    --border:     #2a2a36;
+    --border-lt:  #323240;
+    --text:       #e8e6f0;
+    --muted:      #6b6880;
+    --white:      #f5f3ff;
+
+    /* Category accent colors */
+    --violet:     #8b5cf6;
+    --violet-lt:  rgba(139,92,246,0.12);
+    --cyan:       #06b6d4;
+    --cyan-lt:    rgba(6,182,212,0.12);
+    --rose:       #f43f5e;
+    --rose-lt:    rgba(244,63,94,0.12);
+    --amber:      #f59e0b;
+    --amber-lt:   rgba(245,158,11,0.12);
+    --emerald:    #10b981;
+    --emerald-lt: rgba(16,185,129,0.12);
+    --indigo:     #6366f1;
+    --indigo-lt:  rgba(99,102,241,0.12);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV BAR ── */
+  .navbar {
+    background: rgba(14,14,18,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--violet);
+    box-shadow: 0 0 10px var(--violet);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-issue {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--violet);
+    background: var(--violet-lt);
+    border: 1px solid rgba(139,92,246,0.25);
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 100px 48px 90px;
+    overflow: hidden;
+  }
+
+  /* Mesh gradient background */
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 70%, rgba(6,182,212,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 60% 10%, rgba(244,63,94,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.25;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border-lt);
+    padding: 7px 18px;
+    border-radius: 100px;
+    margin-bottom: 36px;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--violet);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(139,92,246,0.4); }
+    50%      { opacity:0.8; box-shadow: 0 0 0 6px rgba(139,92,246,0); }
+  }
+
+  .badge-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 5.6rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+
+  h1 .gradient-text {
+    background: linear-gradient(135deg, var(--violet) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    margin-top: 24px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--surface);
+  }
+
+  .hstat {
+    flex: 1;
+    padding: 20px 24px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .hstat:last-child { border-right: none; }
+
+  .hstat-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hstat-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── INTRO ── */
+  .intro-section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 48px 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intro-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    color: #b0accc;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  /* ── CATEGORY SECTION ── */
+  .cat-section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-section:last-of-type { border-bottom: none; }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .cat-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cat-title-group { flex: 1; }
+
+  .cat-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .cat-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+
+  .cat-count {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .cat-intro {
+    font-size: 0.97rem;
+    color: #8885a0;
+    margin-bottom: 28px;
+    line-height: 1.8;
+    max-width: 640px;
+  }
+
+  /* ── APP CARDS ── */
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  .app-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    transition: border-color 0.25s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+
+  .app-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Per-category hover glow */
+  .cat-writing .app-card:hover  { border-color: rgba(139,92,246,0.4); }
+  .cat-seo .app-card:hover      { border-color: rgba(6,182,212,0.4); }
+  .cat-design .app-card:hover   { border-color: rgba(244,63,94,0.4); }
+  .cat-productivity .app-card:hover { border-color: rgba(245,158,11,0.4); }
+  .cat-analytics .app-card:hover { border-color: rgba(16,185,129,0.4); }
+
+  .app-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .app-emoji {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .app-name-group { flex: 1; }
+
+  .app-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+
+  .app-type {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .app-price {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    letter-spacing: 0.03em;
+  }
+
+  .free { background: rgba(16,185,129,0.15); color: var(--emerald); border: 1px solid rgba(16,185,129,0.2); }
+  .paid { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+  .freemium { background: rgba(99,102,241,0.12); color: var(--indigo); border: 1px solid rgba(99,102,241,0.2); }
+
+  .app-desc {
+    font-size: 0.91rem;
+    color: #7a7890;
+    line-height: 1.75;
+  }
+
+  .app-highlight {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .pull-quote {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px 52px;
+    margin: 56px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--violet), var(--cyan), transparent);
+  }
+
+  .pull-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #c8c5e0;
+    line-height: 1.6;
+  }
+
+  .pull-text strong {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  /* ── FINALE ── */
+  .finale-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+  }
+
+  .finale {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .finale::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,92,246,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .finale-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .finale-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 48px;
+    height: 1px;
+    background: var(--violet);
+    opacity: 0.35;
+  }
+
+  .finale h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 22px;
+    line-height: 1.2;
+  }
+
+  .finale p {
+    font-size: 1rem;
+    color: #7a7890;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .finale p strong { color: #c0bdd8; font-weight: 500; }
+  .finale p:last-child { margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .footer-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border-lt);
+    display: inline-block;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero-badge  { animation: fadeUp 0.55s ease both 0.05s; }
+  h1           { animation: fadeUp 0.55s ease both 0.18s; }
+  .hero-desc   { animation: fadeUp 0.55s ease both 0.3s; }
+  .hero-stats  { animation: fadeUp 0.55s ease both 0.44s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .navbar { padding: 0 20px; }
+    .hero { padding: 70px 24px 64px; }
+    .intro-section, .cat-section { padding: 44px 24px; }
+    .pull-wrap, .finale-wrap { padding: 0 24px 60px; }
+    .pull-quote { padding: 32px 28px; }
+    .finale { padding: 36px 28px; }
+    footer { padding: 20px 24px; }
+    .app-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; border-radius: 8px; }
+    .hstat { border-right: none; border-bottom: 1px solid var(--border); }
+    .hstat:last-child { border-bottom: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <span class="dot"></span>
+    Blogger's Toolkit
+  </div>
+  <div class="nav-right">
+    <span class="nav-tag">Apps Guide · 2025</span>
+    <span class="nav-issue">No. 85</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text">Essential Blogger Tools · 2025</span>
+    </div>
+    <h1>Best Apps for<br><span class="gradient-text">Bloggers</span></h1>
+    <p class="hero-desc">
+      The right tool doesn't just save time — it changes how you think, create, and grow. These are the apps every serious blogger actually needs.
+    </p>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num">18+</div>
+        <div class="hstat-label">Apps Covered</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">5</div>
+        <div class="hstat-label">Categories</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">~800</div>
+        <div class="hstat-label">Words</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="intro-section">
+  <p class="intro-text">
+    Behind every great blog is a toolkit that quietly does the heavy lifting. You don't need dozens of apps — you need the right ones. Here are the best tools across five essential categories, hand-picked for bloggers who want to write better, rank higher, look professional, stay organised, and actually understand their growth.
+  </p>
+</div>
+
+<!-- ── CATEGORY 1: WRITING ── -->
+<div class="cat-section cat-writing">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--violet-lt);">✍️</div>
+    <div class="cat-title-group">
+      <div class="cat-label" style="color:var(--violet);">Category 01</div>
+      <div class="cat-title">Writing & Drafting</div>
+    </div>
+    <span class="cat-count">4 Apps</span>
+  </div>
+  <p class="cat-intro">
+    Your writing environment shapes your thinking. The best writing apps remove friction, eliminate distractions, and let the words come out faster and cleaner.
+  </p>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--violet-lt);">📝</div>
+        <div class="app-name-group">
+          <div class="app-name">Notion</div>
+          <div class="app-type" style="color:var(--violet);">All-in-one Workspace</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Notion is the ultimate blogging command centre. Use it to manage your content calendar, store research, draft posts, and track ideas — all in one place. Its flexible database system lets you build a custom editorial workflow that actually fits how you think.</p>
+      <div class="app-highlight" style="color:var(--violet);">⚡ Best for: Content planning + drafting combined</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--violet-lt);">🎯</div>
+        <div class="app-name-group">
+          <div class="app-name">iA Writer</div>
+          <div class="app-type" style="color:var(--violet);">Distraction-Free Writing</div>
+        </div>
+        <span class="app-price paid">Paid</span>
+      </div>
+      <p class="app-desc">When it's time to just write, iA Writer is unmatched. Its minimal, typewriter-style interface removes every distraction and puts your words centre stage. The focus mode highlights only the sentence you're writing — ideal for first drafts.</p>
+      <div class="app-highlight" style="color:var(--violet);">⚡ Best for: Deep-focus drafting sessions</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--violet-lt);">🔤</div>
+        <div class="app-name-group">
+          <div class="app-name">Grammarly</div>
+          <div class="app-type" style="color:var(--violet);">Grammar & Style</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Every blogger needs a second pair of eyes. Grammarly catches grammar errors, suggests clearer phrasing, adjusts tone, and flags passive voice — all in real time. The premium version's clarity and engagement scores are genuinely useful for tightening your prose.</p>
+      <div class="app-highlight" style="color:var(--violet);">⚡ Best for: Editing and polishing every post</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--violet-lt);">🧠</div>
+        <div class="app-name-group">
+          <div class="app-name">Hemingway Editor</div>
+          <div class="app-type" style="color:var(--violet);">Readability Tool</div>
+        </div>
+        <span class="app-price free">Free</span>
+      </div>
+      <p class="app-desc">Named for the master of clear prose, Hemingway highlights sentences that are too long, adverbs to cut, and passive constructions to remove. It gives your writing a readability grade and pushes you to write the way people actually read — fast and clearly.</p>
+      <div class="app-highlight" style="color:var(--violet);">⚡ Best for: Making complex writing scannable</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CATEGORY 2: SEO ── -->
+<div class="cat-section cat-seo">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--cyan-lt);">🔍</div>
+    <div class="cat-title-group">
+      <div class="cat-label" style="color:var(--cyan);">Category 02</div>
+      <div class="cat-title">SEO & Keyword Research</div>
+    </div>
+    <span class="cat-count">3 Apps</span>
+  </div>
+  <p class="cat-intro">
+    Writing great content nobody finds is heartbreaking. These tools ensure the right people discover your work through search.
+  </p>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--cyan-lt);">📊</div>
+        <div class="app-name-group">
+          <div class="app-name">Ubersuggest</div>
+          <div class="app-type" style="color:var(--cyan);">Keyword Research</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Neil Patel's Ubersuggest gives bloggers affordable access to keyword ideas, search volumes, competition scores, and content suggestions. The free tier is surprisingly generous and enough to build a solid SEO strategy for a growing blog.</p>
+      <div class="app-highlight" style="color:var(--cyan);">⚡ Best for: Beginners discovering keyword opportunities</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--cyan-lt);">🌐</div>
+        <div class="app-name-group">
+          <div class="app-name">Google Search Console</div>
+          <div class="app-type" style="color:var(--cyan);">Search Performance</div>
+        </div>
+        <span class="app-price free">Free</span>
+      </div>
+      <p class="app-desc">Completely free and essential. Google Search Console shows exactly which queries bring people to your blog, which pages rank, and where there's room to improve. It's the most honest data you'll get about how Google sees your content.</p>
+      <div class="app-highlight" style="color:var(--cyan);">⚡ Best for: Tracking real search performance data</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--cyan-lt);">⚙️</div>
+        <div class="app-name-group">
+          <div class="app-name">Yoast SEO</div>
+          <div class="app-type" style="color:var(--cyan);">WordPress Plugin</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">If you blog on WordPress, Yoast is non-negotiable. It analyses each post for keyword usage, readability, meta descriptions, and internal linking — giving you a simple traffic-light scoring system so every post is optimised before you hit publish.</p>
+      <div class="app-highlight" style="color:var(--cyan);">⚡ Best for: On-page SEO on WordPress blogs</div>
+    </div>
+  </div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="pull-wrap">
+  <div class="pull-quote">
+    <p class="pull-text">
+      The right app doesn't replace your voice. It <strong>amplifies it</strong> — cutting the friction between your ideas and the page, between your content and your audience.
+    </p>
+  </div>
+</div>
+
+<!-- ── CATEGORY 3: DESIGN ── -->
+<div class="cat-section cat-design">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--rose-lt);">🎨</div>
+    <div class="cat-title-group">
+      <div class="cat-label" style="color:var(--rose);">Category 03</div>
+      <div class="cat-title">Design & Visuals</div>
+    </div>
+    <span class="cat-count">3 Apps</span>
+  </div>
+  <p class="cat-intro">
+    Readers judge content by how it looks before they read a single word. These tools make your blog beautiful — without needing design skills.
+  </p>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--rose-lt);">🖌️</div>
+        <div class="app-name-group">
+          <div class="app-name">Canva</div>
+          <div class="app-type" style="color:var(--rose);">Graphic Design</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Canva is the design tool that made every blogger a graphic designer. Create featured images, Pinterest graphics, social media posts, and infographics with drag-and-drop simplicity. The blog graphics templates alone are worth signing up for.</p>
+      <div class="app-highlight" style="color:var(--rose);">⚡ Best for: Featured images + social visuals, fast</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--rose-lt);">📸</div>
+        <div class="app-name-group">
+          <div class="app-name">Unsplash</div>
+          <div class="app-type" style="color:var(--rose);">Free Stock Photos</div>
+        </div>
+        <span class="app-price free">Free</span>
+      </div>
+      <p class="app-desc">High-quality, royalty-free photography for every blog post — completely free. Unsplash's library is vast and genuinely beautiful, a world apart from traditional stock photo sites. Use it for featured images, section breaks, and any visual that needs professional quality.</p>
+      <div class="app-highlight" style="color:var(--rose);">⚡ Best for: Beautiful images with zero licensing cost</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--rose-lt);">⚡</div>
+        <div class="app-name-group">
+          <div class="app-name">Squoosh</div>
+          <div class="app-type" style="color:var(--rose);">Image Optimisation</div>
+        </div>
+        <span class="app-price free">Free</span>
+      </div>
+      <p class="app-desc">Slow-loading images kill SEO and lose readers. Squoosh compresses images without visible quality loss — directly in your browser. A 2MB photo becomes 150KB. It's one of the simplest, highest-impact tools a blogger can use for site performance.</p>
+      <div class="app-highlight" style="color:var(--rose);">⚡ Best for: Speeding up your blog with smaller images</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CATEGORY 4: PRODUCTIVITY ── -->
+<div class="cat-section cat-productivity">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--amber-lt);">⏱️</div>
+    <div class="cat-title-group">
+      <div class="cat-label" style="color:var(--amber);">Category 04</div>
+      <div class="cat-title">Productivity & Organisation</div>
+    </div>
+    <span class="cat-count">4 Apps</span>
+  </div>
+  <p class="cat-intro">
+    Ideas are worthless without a system to capture and act on them. These tools keep your blogging operation running smoothly, even on your busiest days.
+  </p>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--amber-lt);">💡</div>
+        <div class="app-name-group">
+          <div class="app-name">Trello</div>
+          <div class="app-type" style="color:var(--amber);">Content Calendar</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Trello's visual Kanban boards are perfect for managing a content pipeline. Create columns for ideas, in-progress, written, edited, and published — and drag cards through the stages. A single glance tells you exactly where your content stands at any moment.</p>
+      <div class="app-highlight" style="color:var(--amber);">⚡ Best for: Visual content workflow management</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--amber-lt);">📱</div>
+        <div class="app-name-group">
+          <div class="app-name">Buffer</div>
+          <div class="app-type" style="color:var(--amber);">Social Scheduling</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Write your promotional social posts once, schedule them across platforms, and forget about it. Buffer handles Instagram, Twitter/X, LinkedIn, Pinterest, and Facebook from a single dashboard. Batch your social content weekly and reclaim your daily mental bandwidth.</p>
+      <div class="app-highlight" style="color:var(--amber);">⚡ Best for: Automating social media promotion</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--amber-lt);">🗒️</div>
+        <div class="app-name-group">
+          <div class="app-name">Apple Notes / Google Keep</div>
+          <div class="app-type" style="color:var(--amber);">Quick Capture</div>
+        </div>
+        <span class="app-price free">Free</span>
+      </div>
+      <p class="app-desc">Your best blog ideas arrive at the worst moments. Both apps open in under a second and sync across all your devices. Build the daily habit of dropping every idea, observation, and title concept in here the moment it strikes. Your future self will thank you.</p>
+      <div class="app-highlight" style="color:var(--amber);">⚡ Best for: Capturing ideas before they vanish</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--amber-lt);">📧</div>
+        <div class="app-name-group">
+          <div class="app-name">Mailchimp / ConvertKit</div>
+          <div class="app-type" style="color:var(--amber);">Email Marketing</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Your email list is the one audience you truly own. Mailchimp is the gentlest starting point — free up to 500 subscribers with solid automation. ConvertKit is the upgrade path for bloggers who want more powerful segmentation and sequence tools as they grow.</p>
+      <div class="app-highlight" style="color:var(--amber);">⚡ Best for: Building an owned, loyal audience</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CATEGORY 5: ANALYTICS ── -->
+<div class="cat-section cat-analytics">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--emerald-lt);">📈</div>
+    <div class="cat-title-group">
+      <div class="cat-label" style="color:var(--emerald);">Category 05</div>
+      <div class="cat-title">Analytics & Growth</div>
+    </div>
+    <span class="cat-count">2 Apps</span>
+  </div>
+  <p class="cat-intro">
+    If you don't measure, you can't grow. These tools reveal what your audience loves, what they ignore, and where your next opportunity hides.
+  </p>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--emerald-lt);">📉</div>
+        <div class="app-name-group">
+          <div class="app-name">Google Analytics 4</div>
+          <div class="app-type" style="color:var(--emerald);">Web Analytics</div>
+        </div>
+        <span class="app-price free">Free</span>
+      </div>
+      <p class="app-desc">The industry standard, and still free. GA4 shows you exactly which posts get traffic, how long people stay, where they come from, and what they do next. It's complex, but you only need to track a handful of key metrics as a blogger — and those are easy to find.</p>
+      <div class="app-highlight" style="color:var(--emerald);">⚡ Best for: Understanding your full audience behaviour</div>
+    </div>
+    <div class="app-card">
+      <div class="app-top">
+        <div class="app-emoji" style="background:var(--emerald-lt);">🔥</div>
+        <div class="app-name-group">
+          <div class="app-name">Hotjar</div>
+          <div class="app-type" style="color:var(--emerald);">Heatmaps & Behaviour</div>
+        </div>
+        <span class="app-price freemium">Freemium</span>
+      </div>
+      <p class="app-desc">Hotjar shows you heatmaps of where readers actually click, scroll, and stop reading on your posts. This visual insight is invaluable for improving blog layouts, repositioning calls-to-action, and understanding which parts of your content genuinely hold attention.</p>
+      <div class="app-highlight" style="color:var(--emerald);">⚡ Best for: Seeing your blog through a reader's eyes</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINALE -->
+<div class="finale-wrap">
+  <div class="finale">
+    <div class="finale-eyebrow">Final Word — No. 85</div>
+    <h2>Build Your Stack. Then Get Out of Your Own Way.</h2>
+    <p>
+      The perfect blogger's toolkit is not the most expensive one, or the one with the most apps. It's the <strong>smallest set of tools that removes every excuse not to write, not to publish, and not to grow.</strong>
+    </p>
+    <p>
+      Start with what you need most right now. If your writing is inconsistent — get Notion and iA Writer. If nobody's finding your posts — install Google Search Console and Yoast. If your visuals look amateur — open Canva. Add one layer at a time until the system hums.
+    </p>
+    <p>
+      The best app is the one you actually open. <strong>Pick it, learn it, use it daily</strong> — and then focus your best energy on the thing no app can do for you: writing something worth reading.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>Best Apps for Bloggers</span>
+  <span class="footer-dot"></span>
+  <span>No. 85 · Blogger's Toolkit</span>
+  <span class="footer-dot"></span>
+  <span>Complete Guide · 2025</span>
+</footer>
+
+</body>
+</html>
