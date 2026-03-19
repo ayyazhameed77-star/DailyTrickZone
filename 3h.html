@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Weight Loss Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4ecca3;
+            --secondary: #2c3e50;
+            --accent-pink: #ff6b6b;
+            --accent-blue: #45b7d1;
+            --accent-yellow: #feca57;
+            --bg-light: #fdfdfd;
+            --text-dark: #333;
+            --text-gray: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: -50px auto 50px;
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-left: 8px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card:nth-child(1) { border-color: var(--accent-blue); }
+        .card:nth-child(2) { border-color: var(--accent-pink); }
+        .card:nth-child(3) { border-color: var(--accent-yellow); }
+        .card:nth-child(4) { border-color: var(--primary); }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 span {
+            color: inherit;
+            opacity: 0.8;
+            font-style: italic;
+            margin-left: 10px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #f0f9fb;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px dashed var(--accent-blue);
+            margin-top: 1rem;
+        }
+
+        .highlight-title {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Bottom CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 30px 30px 0 0;
+            margin-top: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: white;
+            color: var(--secondary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 40vh;
+                clip-path: none;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topic Photo / Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Naturally Slim</h1>
+            <p>A compassionate guide to losing weight without compromising your health.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Introduction -->
+        <article>
+            <p>In a world obsessed with quick fixes, detox teas, and crash diets, the most sustainable path to weight loss is often the quietest one: living naturally. Losing weight shouldn't feel like punishment; it should feel like nurturing your body back to its ideal state. When we approach weight management through lifestyle changes rather than deprivation, the results are not only healthier but permanent. This journey isn't about shrinking your size—it's about expanding your vitality.</p>
+        </article>
+
+        <!-- Card 1: Nutrition -->
+        <div class="card">
+            <h2><span class="icon">🥗</span> Prioritize Whole, Single-Ingredient Foods</h2>
+            <p>The foundation of natural weight loss lies in what you eat, specifically by returning to whole foods. Ultra-processed foods are engineered to override your brain's satiety signals, leading to overconsumption of calories without providing nutrients. Instead, focus on filling your plate with vegetables, lean proteins, nuts, seeds, and fruits.</p>
+            <div class="highlight-box">
+                <span class="highlight-title">Why It Works</span>
+                <br>Fiber-rich foods take longer to digest, keeping you full longer and stabilizing your blood sugar. When you reduce processed sugar, your cravings naturally diminish because your taste buds begin to reset, finding sweetness in fruit rather than candy.
+            </div>
+        </div>
+
+        <!-- Card 2: Mindful Eating -->
+        <div class="card">
+            <h2><span class="icon">🧘‍♀️</span> Practice Intuitive and Mindful Eating</h2>
+            <p>We often eat out of habit, boredom, or stress rather than hunger. To lose weight naturally, you must reconnect with your body's internal cues. This means slowing down significantly. Take small bites, chew thoroughly, and put your fork down between mouthfuls. Eliminate distractions like televisions or phones while eating.</p>
+            <p>Mindful eating allows your brain time to catch up with your stomach. It typically takes 20 minutes for satiety signals to register. By rushing meals, you unknowingly consume more than necessary before your brain realizes you are full. Learning to honor your hunger cues helps regulate your intake without counting calories obsessively.</p>
+        </div>
+
+        <!-- Card 3: Movement -->
+        <div class="card">
+            <h2><span class="icon">🏃‍♂️</span> Move Your Body With Joy</h2>
+            <p>Exercise is essential for health, but if viewed solely as a tool for burning calories, it can lead to burnout. Natural weight loss supports movement that brings you joy. Whether it’s a dance class, hiking in nature, swimming, or simply walking your dog, consistency beats intensity.</p>
+            <div class="highlight-box">
+                <span class="highlight-title">The Metabolic Benefit</span>
+                <br>Regular movement builds muscle mass, which increases your Basal Metabolic Rate (BMR). Essentially, having more muscle makes your body burn more calories even while you are at rest. Find an activity you don't hate, and you'll find yourself doing it effortlessly every day.
+            </div>
+        </div>
+
+        <!-- Card 4: Rest & Stress -->
+        <div class="card">
+            <h2><span class="icon">💤</span> Master Sleep and Manage Stress</h2>
+            <p>This is the most overlooked aspect of weight loss. Chronic stress elevates cortisol, a hormone that encourages fat storage, particularly around the abdominal area. Similarly, lack of sleep disrupts the hunger hormones ghrelin and leptin. When you are tired, your body craves high-carb, sugary foods for quick energy.</p>
+            <p>Prioritizing 7-9 hours of quality sleep is actually a form of weight control. When you rest properly, you have better impulse control the next day. Creating a calming bedtime routine—avoiding screens an hour before bed and keeping the room cool—can dramatically improve your hormonal balance and support your weight loss goals.</p>
+        </div>
+
+    </div>
+
+    <!-- Footer / Call to Action -->
+    <section class="cta-section">
+        <h2>Your Journey Starts Today</h2>
+        <p style="margin: 1rem auto;">Remember, progress is not always linear. Be patient with yourself, celebrate small wins, and trust the process. Healthy habits compound over time into a transformative life.</p>
+        <a href="#" class="btn">Start Your Fresh Day</a>
+    </section>
+
+</body>
+</html>
