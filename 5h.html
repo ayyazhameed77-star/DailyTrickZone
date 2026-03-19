@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Diet Plan for Beginners</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 420px;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85) saturate(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 40px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.6em;
+            background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 45px;
+        }
+
+        .intro {
+            font-size: 1.15em;
+            color: #555;
+            margin-bottom: 35px;
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            border-radius: 15px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .diet-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diet-card {
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .card-basics {
+            background: linear-gradient(to right, #fff0f6, #ffe4ec);
+            border-left: 6px solid #ff6b9d;
+        }
+
+        .card-breakfast {
+            background: linear-gradient(to right, #fffbeb, #fef3c7);
+            border-left: 6px solid #f59e0b;
+        }
+
+        .card-meals {
+            background: linear-gradient(to right, #f0fdf4, #dcfce7);
+            border-left: 6px solid #10b981;
+        }
+
+        .card-snacks {
+            background: linear-gradient(to right, #fdf2f8, #fce7f3);
+            border-left: 6px solid #ec4899;
+        }
+
+        .card-planning {
+            background: linear-gradient(to right, #ecfeff, #cffafe);
+            border-left: 6px solid #06b6d4;
+        }
+
+        h2 {
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: 1.6em;
+        }
+
+        p {
+            color: #4b5563;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            margin-top: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+            text-align: center;
+        }
+
+        .highlight-box h2 {
+            color: white;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .conclusion {
+            margin-top: 35px;
+            padding: 28px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(250, 112, 154, 0.3);
+        }
+
+        .tip-list {
+            margin-top: 15px;
+            text-align: left;
+            list-style: none;
+        }
+
+        .tip-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .tip-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #fee140;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .content { padding: 25px; }
+            .hero-section { height: 320px; }
+            .diet-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                 alt="Colorful healthy food spread" 
+                 class="hero-image">
+            <div class="hero-overlay">
+                <h1>Healthy Diet Plan for Beginners</h1>
+                <p class="subtitle">Nourish Your Body, Transform Your Life</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                Embarking on a healthy eating journey doesn't require drastic changes or expensive superfoods. Instead, it's about building sustainable habits that honor your body while enjoying delicious, wholesome foods. This beginner-friendly guide will help you navigate nutrition basics without overwhelming complexity, proving that eating well can be both simple and joyful.
+            </div>
+
+            <div class="diet-grid">
+                <div class="diet-card card-basics">
+                    <h2><span class="icon">🌱</span> Foundation First: The Balance Plate</h2>
+                    <p>Forget complicated calorie counting for now. Instead, visualize your plate divided into sections: half should be colorful vegetables and fruits, one quarter lean proteins like chicken, fish, beans, or tofu, and the remaining quarter whole grains such as brown rice, quinoa, or whole wheat pasta. Add a thumb-sized portion of healthy fats like avocado, nuts, or olive oil. This visual approach ensures you receive essential nutrients without measuring every bite, making healthy eating intuitive and stress-free from day one.</p>
+                </div>
+
+                <div class="diet-card card-breakfast">
+                    <h2><span class="icon">🌅</span> Morning Energy Boosters</h2>
+                    <p>Breakfast sets the tone for your entire day, so prioritize protein and fiber to maintain steady energy. Consider oatmeal topped with fresh berries and a sprinkle of chia seeds, or whole grain toast with mashed avocado and a poached egg. Greek yogurt parfaits layered with nuts and honey offer convenience without sacrificing nutrition. If you're rushing, a spinach and banana smoothie with almond butter takes minutes but delivers sustained fullness that prevents mid-morning crashes and unhealthy snacking temptations.</p>
+                </div>
+
+                <div class="diet-card card-meals">
+                    <h2><span class="icon">🥗</span> Wholesome Lunch & Dinner Ideas</h2>
+                    <p>Midday and evening meals should focus on satisfaction and nourishment. Build hearty salads with mixed greens, grilled salmon, chickpeas, colorful bell peppers, and a drizzle of tahini dressing. For warm comfort, try stir-fried vegetables with lean beef over cauliflower rice, or lentil curry served alongside steamed broccoli. Sheet pan dinners featuring roasted chicken thighs, sweet potatoes, and Brussels sprouts minimize cleanup while maximizing flavor. Remember to season generously with herbs and spices rather than excessive salt, transforming simple ingredients into restaurant-worthy dishes.</p>
+                </div>
+
+                <div class="diet-card card-snacks">
+                    <h2><span class="icon">🍎</span> Smart Snacking & Hydration</h2>
+                    <p>Healthy eating includes between-meal nourishment when done thoughtfully. Stock your kitchen with apple slices paired with peanut butter, raw carrots with hummus, or a small handful of almonds and dark chocolate chips. These combinations balance natural sugars with protein and fats to keep cravings at bay. Equally important is hydration—aim for eight glasses of water daily, infusing with cucumber or lemon for variety. Often, thirst disguises itself as hunger, so drink a glass before reaching for snacks to ensure you're truly hungry.</p>
+                </div>
+
+                <div class="diet-card card-planning">
+                    <h2><span class="icon">📅</span> The 80/20 Mindset</h2>
+                    <p>Sustainability trumps perfection in healthy eating. Follow the 80/20 rule: nourish your body with whole foods eighty percent of the time, while allowing yourself flexibility for celebrations, cravings, or convenience foods twenty percent of the time. This psychological freedom prevents the binge-restrict cycle that derails many beginners. Prepare ingredients in advance by washing vegetables, cooking grains, and portioning proteins on Sundays, setting yourself up for success during busy weekdays when willpower runs low.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h2>Your Week at a Glance</h2>
+                <ul class="tip-list">
+                    <li>Monday: Mediterranean grilled chicken with quinoa salad</li>
+                    <li>Tuesday: Vegetable stir-fry with brown rice and edamame</li>
+                    <li>Wednesday: Baked salmon with roasted asparagus and sweet potato</li>
+                    <li>Thursday: Turkey and vegetable soup with whole grain roll</li>
+                    <li>Friday: Homemade veggie pizza on whole wheat crust</li>
+                </ul>
+            </div>
+
+            <div class="conclusion">
+                Remember, healthy eating is a marathon, not a sprint. Start with one small change—perhaps adding a vegetable to every lunch or swapping soda for sparkling water. These micro-habits compound into lasting transformation, proving that the best diet is the one you can maintain happily for life.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
