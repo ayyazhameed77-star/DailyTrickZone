@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eye Care Tips for Screen Users</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight: #0d1b2a;
+    --deep-blue: #1a2f4a;
+    --blue-mid: #1e4976;
+    --sky: #3a86c8;
+    --aqua: #5bbfd4;
+    --gold: #e4b44a;
+    --cream: #fdf8f0;
+    --soft-white: #f4f0ea;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --blush: #ffe8d6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.8;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, var(--midnight) 0%, var(--deep-blue) 45%, var(--blue-mid) 100%);
+    padding: 72px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(91,191,212,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 40%, rgba(58,134,200,0.10) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '◉';
+    position: absolute;
+    font-size: 320px;
+    color: rgba(255,255,255,0.025);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(91,191,212,0.18);
+    border: 1px solid rgba(91,191,212,0.4);
+    color: var(--aqua);
+    font-size: 10.5px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+    color: #fff;
+    line-height: 1.15;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    font-weight: 600;
+    position: relative;
+  }
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.62);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    position: relative;
+  }
+  .hero-line {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--aqua), var(--gold));
+    margin: 28px auto 0;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  /* ── Meta bar ── */
+  .meta-bar {
+    background: var(--deep-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 28px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+  .meta-bar strong { color: var(--aqua); }
+
+  /* ── Wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 52px 24px 80px;
+  }
+
+  /* ── Intro ── */
+  .intro-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #f0fafe 100%);
+    border-left: 4px solid var(--sky);
+    border-radius: 0 14px 14px 0;
+    padding: 28px 32px;
+    margin-bottom: 52px;
+    font-size: 1.07rem;
+    font-style: italic;
+    color: var(--deep-blue);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.9;
+    font-weight: 400;
+  }
+
+  /* ── Tip section ── */
+  .tip-section {
+    margin-bottom: 46px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .section-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--deep-blue), var(--sky));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 18px rgba(26,47,74,0.25);
+  }
+  .section-title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 3px;
+  }
+  .section-title-group h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.88;
+  }
+
+  /* ── How-to card ── */
+  .howto-card {
+    background: #fff;
+    border: 1px solid #ddeaf8;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 14px rgba(58,134,200,0.07);
+  }
+  .howto-icon { font-size: 1.25rem; margin-top: 2px; flex-shrink: 0; }
+  .howto-text {
+    font-size: 0.93rem;
+    color: var(--text-mid);
+    line-height: 1.72;
+  }
+  .howto-text strong { color: var(--deep-blue); font-weight: 600; }
+
+  /* ── Divider ── */
+  .wave-divider {
+    text-align: center;
+    margin: 30px 0;
+    color: var(--aqua);
+    font-size: 1.1rem;
+    letter-spacing: 12px;
+    opacity: 0.4;
+  }
+
+  /* ── 20-20-20 rule highlight ── */
+  .rule-highlight {
+    background: linear-gradient(135deg, var(--midnight), var(--deep-blue));
+    border-radius: 18px;
+    padding: 36px 32px;
+    text-align: center;
+    margin: 42px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .rule-highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(91,191,212,0.12) 0%, transparent 70%);
+  }
+  .rule-highlight h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    position: relative;
+    font-style: italic;
+  }
+  .rule-steps {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    position: relative;
+  }
+  .rule-step {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(91,191,212,0.25);
+    border-radius: 12px;
+    padding: 16px 22px;
+    min-width: 130px;
+  }
+  .rule-step .big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--aqua);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .rule-step p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+
+  /* ── Lifestyle grid ── */
+  .habits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media (max-width: 560px) { .habits-grid { grid-template-columns: 1fr; } }
+  .habit-card {
+    background: #fff;
+    border: 1px solid #e2eaf5;
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .habit-card .h-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .habit-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 6px;
+  }
+  .habit-card p { font-size: 0.86rem; color: var(--text-light); line-height: 1.65; }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(135deg, #e8f6fb 0%, #f0fafe 100%);
+    border-radius: 18px;
+    padding: 40px 36px;
+    text-align: center;
+    margin-top: 56px;
+    border: 1px solid #c8e8f5;
+  }
+  .closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.32rem;
+    font-style: italic;
+    color: var(--deep-blue);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sky);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="meta-bar">
+  <span>✦ Beauty &amp; Wellness · Eye Health</span>
+  <span><strong>~800 Words</strong> · Screen Care Guide</span>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">👁 Eye Wellness Guide</div>
+  <h1>Eye Care Tips for <em>Screen Users</em></h1>
+  <p class="hero-sub">Protect your most beautiful feature in a world lit by screens</p>
+  <div class="hero-line"></div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    Think about how many hours your eyes spend staring at screens today — your phone in the morning, a laptop at work, a tablet in the evening, and the television before bed. Our eyes were never designed for this much artificial light. Yet here we are, and our eyes are quietly paying the price. The good news? With a few simple, mindful habits, you can protect and care for your eyes every single day — and they will thank you for it.
+  </div>
+
+  <!-- 1. 20-20-20 Rule -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">👁️</div>
+      <div class="section-title-group">
+        <span>Tip No. 1</span>
+        <h2>Follow the 20-20-20 Rule</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>If there is one rule every screen user must know, it is this one. When we stare at screens, we blink far less than normal — sometimes only a third as often as we should. This causes eye muscles to tighten and the surface of the eye to dry out, leading to that familiar stinging, heavy feeling at the end of a long day.</p>
+      <p>Optometrists around the world recommend the 20-20-20 rule as the single most effective habit to prevent digital eye strain. It is beautifully simple and costs absolutely nothing.</p>
+    </div>
+  </div>
+
+  <div class="rule-highlight">
+    <h3>The 20 · 20 · 20 Rule</h3>
+    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;position:relative;">Every 20 minutes, give your eyes this gift</p>
+    <div class="rule-steps">
+      <div class="rule-step">
+        <div class="big-num">20</div>
+        <p>Minutes of screen time</p>
+      </div>
+      <div class="rule-step">
+        <div class="big-num">20</div>
+        <p>Seconds of looking away</p>
+      </div>
+      <div class="rule-step">
+        <div class="big-num">20</div>
+        <p>Feet into the distance</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 2. Screen Distance & Position -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🖥️</div>
+      <div class="section-title-group">
+        <span>Tip No. 2</span>
+        <h2>Mind Your Screen Distance & Position</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>How you position yourself in front of a screen matters more than most people realise. Sitting too close forces your eye muscles to work overtime to focus, leading to headaches and fatigue. Sitting with a screen above eye level causes you to open your eyes wider, which accelerates drying.</p>
+      <div class="howto-card">
+        <div class="howto-icon">📐</div>
+        <div class="howto-text"><strong>Golden rule:</strong> Keep your screen at arm's length — about 50 to 70 centimetres from your face. The top of the screen should sit at or slightly below eye level. This relaxed downward gaze naturally reduces how much of your eye surface is exposed, keeping moisture in and strain out.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 3. Adjust Screen Brightness & Blue Light -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">💡</div>
+      <div class="section-title-group">
+        <span>Tip No. 3</span>
+        <h2>Adjust Brightness & Reduce Blue Light</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>A screen that is significantly brighter than the room around it forces your eyes to constantly adjust, like walking from a dark room into harsh sunlight over and over again. Matching your screen's brightness to your environment takes enormous pressure off your eyes instantly.</p>
+      <p>Blue light — the short, high-energy wavelength emitted by all screens — is particularly problematic in the evenings. It suppresses the production of melatonin, disrupting your sleep, and has been linked to long-term retinal stress with prolonged exposure.</p>
+      <div class="howto-card">
+        <div class="howto-icon">🌙</div>
+        <div class="howto-text"><strong>Simple fixes:</strong> Enable Night Mode or Warm Display on all your devices after 7 PM. Reduce screen brightness in dimly lit rooms. If you spend many hours at a computer professionally, consider investing in blue-light filtering glasses — they make a genuine difference to end-of-day eye comfort.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 4. Blink More & Stay Hydrated -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">💧</div>
+      <div class="section-title-group">
+        <span>Tip No. 4</span>
+        <h2>Blink Consciously & Stay Hydrated</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>This sounds almost too simple — but it is one of the most overlooked eye care habits. Every time you blink, a fresh layer of tears spreads across the surface of your eye, keeping it clean, lubricated, and comfortable. Screen focus dramatically reduces blinking frequency, which is why eyes feel gritty and irritated after long sessions.</p>
+      <p>Hydration works from the inside out. When your body is dehydrated, tear production drops and eyes become dry and sensitive far more quickly. Many people who suffer from chronic dry eyes find significant relief simply by drinking more water throughout the day.</p>
+      <div class="howto-card">
+        <div class="howto-icon">✨</div>
+        <div class="howto-text"><strong>Daily practice:</strong> Make a conscious effort to blink fully and slowly every few minutes when using screens. Keep a large glass of water at your desk as a constant reminder to hydrate. If you work in air-conditioned spaces — which accelerate eye dryness — preservative-free lubricating eye drops are a gentle, safe daily companion.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 5. Nourish Your Eyes From Within -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🥗</div>
+      <div class="section-title-group">
+        <span>Tip No. 5</span>
+        <h2>Nourish Your Eyes From Within</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>True eye health begins on your plate. The retina and lens of your eyes rely on specific nutrients to stay healthy, fight oxidative damage from screen light, and maintain clear vision over time. Neglecting eye nutrition while staring at screens for hours is like exercising without ever eating — unsustainable.</p>
+      <div class="howto-card">
+        <div class="howto-icon">🍽️</div>
+        <div class="howto-text"><strong>Eye-loving foods:</strong> Leafy greens like spinach and kale are rich in lutein and zeaxanthin — antioxidants that act as natural sunglasses for your retina. Carrots and sweet potatoes provide beta-carotene. Omega-3 fatty acids in walnuts and fish support tear quality. And Vitamin C in citrus fruits protects the lens from damage.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- Daily Habits Grid -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌟</div>
+      <div class="section-title-group">
+        <span>Daily Routine</span>
+        <h2>Small Habits, Big Protection</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Protecting your eyes is not a single act — it is a collection of small, daily decisions that add up to lifelong eye health.</p>
+    </div>
+    <div class="habits-grid">
+      <div class="habit-card">
+        <div class="h-icon">😴</div>
+        <h4>Screen-Free Sleep</h4>
+        <p>Put all screens away at least 30 minutes before bed. Your eyes need darkness to fully rest and recover overnight.</p>
+      </div>
+      <div class="habit-card">
+        <div class="h-icon">🕶️</div>
+        <h4>Wear UV Protection</h4>
+        <p>Outdoors, always wear sunglasses with UV400 protection. UV damage to the eyes is cumulative and irreversible.</p>
+      </div>
+      <div class="habit-card">
+        <div class="h-icon">🌿</div>
+        <h4>Palming Exercise</h4>
+        <p>Rub your palms together, cup them over closed eyes, and breathe deeply for one minute. Instant soothing relief.</p>
+      </div>
+      <div class="habit-card">
+        <div class="h-icon">🩺</div>
+        <h4>Regular Eye Checks</h4>
+        <p>Visit an eye specialist at least once a year. Many conditions are silent at first — early detection saves vision.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p>"Your eyes witness every beautiful moment of your life. In a world full of screens and artificial light, the kindest thing you can do is pause, look up, look far — and let them breathe."</p>
+    <small>✦ Rest them · Nourish them · Protect them ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
