@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Maintain Healthy Cholesterol Levels</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:         #0d5c63;
+    --deep-teal:    #083d42;
+    --mid-teal:     #117a83;
+    --aqua:         #2aabb8;
+    --mint-soft:    #c8edf0;
+    --mint-pale:    #e8f8fa;
+    --gold:         #c98a20;
+    --warm-gold:    #f0b840;
+    --cream:        #f6fafb;
+    --warm-white:   #f0f9fa;
+    --text:         #0d2b2e;
+    --text-mid:     #2a5558;
+    --text-light:   #5a8a8e;
+    --white:        #ffffff;
+    --coral:        #e05c52;
+    --coral-soft:   #fdecea;
+    --green:        #1e6b40;
+    --green-soft:   #e5f5ec;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--deep-teal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 28px;
+    font-size: 0.79rem;
+    color: rgba(255,255,255,0.42);
+    letter-spacing: 0.6px;
+  }
+  .top-bar strong { color: var(--mint-soft); }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(148deg, #042428 0%, #083d42 38%, #0d5c63 72%, #117a83 100%);
+    padding: 80px 24px 68px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 62% 55% at 8% 65%,
+        rgba(42,171,184,0.13) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 48% at 90% 25%,
+        rgba(240,184,64,0.09) 0%, transparent 62%),
+      url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Ccircle cx='26' cy='26' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero::after {
+    content: '◎';
+    position: absolute;
+    font-size: 440px;
+    color: rgba(255,255,255,0.022);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,237,240,0.14);
+    border: 1px solid rgba(200,237,240,0.32);
+    color: var(--mint-soft);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 7px 22px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    color: #fff;
+    line-height: 1.15;
+    max-width: 760px;
+    margin: 0 auto 18px;
+    font-weight: 700;
+    position: relative;
+  }
+  .hero h1 em {
+    color: var(--warm-gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.56);
+    font-size: 1rem;
+    font-weight: 300;
+    position: relative;
+    letter-spacing: 0.3px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .hero-accent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    position: relative;
+  }
+  .hero-accent-line {
+    width: 44px; height: 2px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 2px;
+  }
+  .hero-accent-dot {
+    width: 8px; height: 8px;
+    background: var(--warm-gold);
+    border-radius: 50%;
+  }
+
+  /* ── Article wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 24px 88px;
+  }
+
+  /* ── Intro box ── */
+  .intro-box {
+    background: linear-gradient(135deg, var(--mint-pale) 0%, #f8fdfe 100%);
+    border-left: 5px solid var(--aqua);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 34px;
+    margin-bottom: 52px;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--deep-teal);
+    font-family: 'Bodoni Moda', serif;
+    line-height: 1.92;
+  }
+
+  /* ── Cholesterol explainer ── */
+  .explainer-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  @media(max-width:560px){ .explainer-row { grid-template-columns:1fr; } }
+  .explainer-card {
+    border-radius: 16px;
+    padding: 24px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .explainer-card.good {
+    background: linear-gradient(135deg, #e5f5ec, #f2faf5);
+    border: 1px solid #b8dfc4;
+  }
+  .explainer-card.bad {
+    background: linear-gradient(135deg, var(--coral-soft), #fff5f4);
+    border: 1px solid #f5c0bc;
+  }
+  .explainer-card .ec-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .good .ec-badge { background: #b8dfc4; color: var(--green); }
+  .bad  .ec-badge { background: #f5c0bc; color: #8b1a1a; }
+  .explainer-card h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .good h3 { color: var(--green); }
+  .bad  h3 { color: #8b1a1a;    }
+  .explainer-card p { font-size: 0.88rem; line-height: 1.7; }
+  .good p { color: #3a6e4e; }
+  .bad  p { color: #7a3030; }
+  .explainer-card .ec-big {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+    opacity: 0.18;
+    position: absolute;
+    bottom: 10px;
+    right: 18px;
+  }
+  .good .ec-big { color: var(--green); }
+  .bad  .ec-big { color: var(--coral); }
+
+  /* ── Tip section ── */
+  .tip-section { margin-bottom: 50px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 54px; height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--deep-teal), var(--mid-teal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.55rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(8,61,66,0.28);
+  }
+  .title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--aqua);
+    margin-bottom: 3px;
+  }
+  .title-group h2 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.6rem;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1.22;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.9;
+  }
+
+  /* ── Action card ── */
+  .action-card {
+    background: var(--white);
+    border: 1px solid #b8e0e5;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 16px rgba(13,92,99,0.07);
+  }
+  .ac-icon { font-size: 1.3rem; margin-top: 1px; flex-shrink: 0; }
+  .ac-text { font-size: 0.94rem; color: var(--text-mid); line-height: 1.78; }
+  .ac-text strong { color: var(--deep-teal); font-weight: 600; }
+
+  /* ── Divider ── */
+  .wave-divider {
+    text-align: center;
+    margin: 28px 0;
+    color: var(--aqua);
+    font-size: 1rem;
+    letter-spacing: 14px;
+    opacity: 0.38;
+  }
+
+  /* ── Foods grid ── */
+  .foods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  @media(max-width:560px){ .foods-grid { grid-template-columns: 1fr 1fr; } }
+  .food-chip {
+    background: var(--white);
+    border: 1px solid #b8e0e5;
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: transform 0.2s;
+  }
+  .food-chip:hover { transform: translateY(-3px); }
+  .food-chip .fc-icon { font-size: 1.9rem; margin-bottom: 9px; }
+  .food-chip h4 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 5px;
+  }
+  .food-chip p { font-size: 0.77rem; color: var(--text-light); line-height: 1.55; }
+
+  /* ── Lifestyle block ── */
+  .lifestyle-block {
+    background: linear-gradient(145deg, var(--deep-teal), #0e6e78);
+    border-radius: 20px;
+    padding: 38px 32px;
+    margin: 42px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .lifestyle-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 65% 55% at 85% 15%,
+      rgba(200,237,240,0.12) 0%, transparent 65%);
+  }
+  .lifestyle-block::after {
+    content: '◎';
+    position: absolute;
+    font-size: 200px;
+    color: rgba(255,255,255,0.04);
+    bottom: -30px; right: 20px;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .lifestyle-block h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.55rem;
+    color: var(--warm-gold);
+    font-style: italic;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .lifestyle-block > p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.87rem;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .ls-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+  @media(max-width:500px){ .ls-steps { grid-template-columns: 1fr; } }
+  .ls-step {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(200,237,240,0.2);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .ls-num {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mint-soft);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ls-step-text h5 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .ls-step-text p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.55;
+  }
+
+  /* ── Avoid box ── */
+  .avoid-box {
+    background: linear-gradient(135deg, var(--coral-soft), #fff8f7);
+    border: 1px solid #f5c0bc;
+    border-radius: 16px;
+    padding: 26px 30px;
+    margin: 36px 0;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .avoid-box .av-icon { font-size: 2.2rem; flex-shrink: 0; margin-top: 3px; }
+  .avoid-box h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.08rem;
+    color: #8b1a1a;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .avoid-box p { font-size: 0.93rem; color: #7a3030; line-height: 1.78; }
+  .avoid-box ul {
+    margin-top: 10px;
+    padding-left: 18px;
+  }
+  .avoid-box ul li {
+    font-size: 0.91rem;
+    color: #7a3030;
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+
+  /* ── Habits row ── */
+  .habits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media(max-width:560px){ .habits-row { grid-template-columns: 1fr; } }
+  .habit-tile {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 20px 22px;
+    border: 1px solid #b8e0e5;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .habit-tile .ht-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .habit-tile h4 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 6px;
+  }
+  .habit-tile p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(135deg, var(--mint-pale) 0%, #f8fdfe 100%);
+    border-radius: 20px;
+    padding: 44px 36px;
+    text-align: center;
+    margin-top: 60px;
+    border: 1px solid #b8e0e5;
+  }
+  .closing-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .closing p {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.28rem;
+    font-style: italic;
+    color: var(--deep-teal);
+    line-height: 1.82;
+    margin-bottom: 14px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--aqua);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>✦ Wellness &amp; Heart Health</span>
+  <span><strong>~800 Words</strong> · Cholesterol Guide</span>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">💙 Cholesterol Wellness Guide</div>
+  <h1>How to Maintain<br><em>Healthy Cholesterol Levels</em></h1>
+  <p class="hero-sub">Simple, powerful, and deeply human ways to keep your blood flowing beautifully</p>
+  <div class="hero-accent">
+    <div class="hero-accent-line"></div>
+    <div class="hero-accent-dot"></div>
+    <div class="hero-accent-line"></div>
+  </div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    Cholesterol has been given a frighteningly bad reputation — and that reputation is only half deserved. The truth is, cholesterol is not your enemy. Your body actually makes it naturally because it needs it. It builds cell membranes, produces hormones, and supports your brain. The real story is not about eliminating cholesterol — it is about balance. When that balance tips the wrong way, quietly and without warning, your heart begins to pay the price. The good news? You have more power over that balance than you may realise.
+  </div>
+
+  <!-- Good vs Bad explainer -->
+  <div class="explainer-row">
+    <div class="explainer-card good">
+      <div class="ec-badge">✓ The Good Kind</div>
+      <h3>HDL Cholesterol</h3>
+      <p>High-Density Lipoprotein is your heart's best friend. It travels through the bloodstream collecting excess cholesterol and carrying it back to the liver to be removed from the body. Higher HDL means lower heart disease risk. You want this number high — ideally above 60 mg/dL.</p>
+      <div class="ec-big">↑</div>
+    </div>
+    <div class="explainer-card bad">
+      <div class="ec-badge">⚠ The Harmful Kind</div>
+      <h3>LDL Cholesterol</h3>
+      <p>Low-Density Lipoprotein deposits cholesterol along the walls of arteries, forming plaque that narrows and hardens them over time. This is the silent process behind most heart attacks and strokes. You want this number low — ideally below 100 mg/dL for a healthy heart.</p>
+      <div class="ec-big">↓</div>
+    </div>
+  </div>
+
+  <!-- 1. Eat the Right Fats -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🫒</div>
+      <div class="title-group">
+        <span>Tip No. 1</span>
+        <h2>Choose the Right Fats Every Day</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Fat is not the villain it was once made out to be — but the type of fat you eat makes an enormous difference to your cholesterol balance. Saturated fats, found in red meat, butter, full-fat dairy, and fried foods, raise LDL cholesterol in a meaningful and measurable way. Trans fats — found in processed baked goods, margarine, and packaged snacks — are even more dangerous. They raise LDL while simultaneously lowering HDL, which is a deeply harmful double effect on the heart.</p>
+      <p>Unsaturated fats, on the other hand, actively improve your cholesterol profile. The monounsaturated fats in olive oil and avocado lower LDL while protecting HDL. The polyunsaturated omega-3 fats in fatty fish, walnuts, and flaxseeds reduce triglycerides, lower inflammation, and support overall cardiovascular health in ways that no medication can fully replicate.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">✨</div>
+      <div class="ac-text"><strong>The golden swap:</strong> Replace butter with extra virgin olive oil. Replace crisps and cookies with a small handful of walnuts or almonds. Replace cream-based sauces with avocado or olive oil dressings. These simple substitutions — made consistently over weeks and months — produce genuinely measurable improvements in your cholesterol blood tests.</div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 2. Fibre Is Your Cholesterol Cleaner -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌾</div>
+      <div class="title-group">
+        <span>Tip No. 2</span>
+        <h2>Eat More Fibre — Nature's Cholesterol Cleaner</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Soluble fibre is one of the most powerful, natural tools available to lower LDL cholesterol — and most people simply do not eat enough of it. Here is why it works so beautifully: soluble fibre dissolves in your digestive system and forms a thick, gel-like substance that binds to cholesterol in the gut before it can be absorbed into the bloodstream. It literally traps it and carries it out of the body. The result, over time, is a measurable and consistent reduction in LDL levels.</p>
+      <p>A single daily bowl of oats contains enough beta-glucan — the specific type of soluble fibre responsible for this effect — to lower LDL by up to ten percent in just a few weeks. It is humble, affordable, and extraordinarily effective. Add berries, ground flaxseed, and a drizzle of honey and you have one of the most heart-protective breakfasts in existence.</p>
+    </div>
+    <div class="foods-grid">
+      <div class="food-chip">
+        <div class="fc-icon">🌾</div>
+        <h4>Oats</h4>
+        <p>Beta-glucan fibre binds to LDL and removes it from your blood naturally</p>
+      </div>
+      <div class="food-chip">
+        <div class="fc-icon">🫘</div>
+        <h4>Lentils & Beans</h4>
+        <p>Highest plant source of soluble fibre — deeply filling and cholesterol-lowering</p>
+      </div>
+      <div class="food-chip">
+        <div class="fc-icon">🍎</div>
+        <h4>Apples & Pears</h4>
+        <p>Rich in pectin — a soluble fibre that actively scrubs cholesterol from the gut</p>
+      </div>
+      <div class="food-chip">
+        <div class="fc-icon">🥦</div>
+        <h4>Broccoli</h4>
+        <p>High in fibre and plant sterols that block cholesterol absorption in the intestine</p>
+      </div>
+      <div class="food-chip">
+        <div class="fc-icon">🫐</div>
+        <h4>Berries</h4>
+        <p>Soluble fibre plus anthocyanins that raise HDL and protect artery walls together</p>
+      </div>
+      <div class="food-chip">
+        <div class="fc-icon">🌱</div>
+        <h4>Flaxseeds</h4>
+        <p>Ground flaxseed is rich in omega-3s and soluble fibre — a remarkable daily double</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 3. Move Your Body -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🏃</div>
+      <div class="title-group">
+        <span>Tip No. 3</span>
+        <h2>Move Your Body — Exercise Is Medicine</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Regular physical activity is one of the most effective ways to raise HDL cholesterol naturally — and it does not require hours at the gym. Exercise stimulates the enzymes that help move LDL from the blood and artery walls to the liver, where it is processed and removed from the body. At the same time, it boosts the production of HDL — giving your cardiovascular system a powerful double benefit with every session.</p>
+      <p>The most important thing is consistency over intensity. A brisk thirty-minute walk five days a week produces significantly better cholesterol improvements than an occasional intense workout followed by days of inactivity. Your heart thrives on rhythm and regularity, not dramatic bursts followed by long rests.</p>
+    </div>
+  </div>
+
+  <div class="lifestyle-block">
+    <h3>Movement That Moves Your Cholesterol</h3>
+    <p>Four types of exercise proven to improve your cholesterol profile</p>
+    <div class="ls-steps">
+      <div class="ls-step">
+        <div class="ls-num">01</div>
+        <div class="ls-step-text">
+          <h5>Brisk Walking</h5>
+          <p>30–45 minutes daily raises HDL by up to 5% and reduces LDL measurably within weeks of consistent practice.</p>
+        </div>
+      </div>
+      <div class="ls-step">
+        <div class="ls-num">02</div>
+        <div class="ls-step-text">
+          <h5>Swimming</h5>
+          <p>One of the best full-body cardio exercises for heart health — gentle on joints and powerful for cholesterol management.</p>
+        </div>
+      </div>
+      <div class="ls-step">
+        <div class="ls-num">03</div>
+        <div class="ls-step-text">
+          <h5>Strength Training</h5>
+          <p>Building lean muscle mass increases your metabolism and improves how your body processes and stores fats and cholesterol.</p>
+        </div>
+      </div>
+      <div class="ls-step">
+        <div class="ls-num">04</div>
+        <div class="ls-step-text">
+          <h5>Yoga & Stretching</h5>
+          <p>Reduces cortisol and stress hormones that drive LDL production — and significantly improves overall cardiovascular markers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">◈ ◈ ◈</div>
+
+  <!-- 4. What to Avoid -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">⚠️</div>
+      <div class="title-group">
+        <span>Tip No. 4</span>
+        <h2>What to Limit & Avoid</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Understanding what raises LDL is just as important as knowing what lowers it. Many people are surprised to find that some of the most common daily habits are quietly damaging their cholesterol balance — not dramatically, but consistently, over months and years, in ways that only become visible on a blood test.</p>
+    </div>
+  </div>
+
+  <div class="avoid-box">
+    <div class="av-icon">🚫</div>
+    <div>
+      <h3>These Habits Raise Your LDL Quietly</h3>
+      <ul>
+        <li><strong>Trans fats</strong> — in packaged biscuits, fried fast food, and commercial pastries. Read labels carefully and avoid anything listing "partially hydrogenated oils."</li>
+        <li><strong>Excess sugar and refined carbs</strong> — white bread, sugary drinks, and sweets raise triglycerides and lower HDL at the same time, a dangerous combination.</li>
+        <li><strong>Smoking</strong> — damages artery walls and actively lowers HDL. Quitting smoking raises HDL levels within just weeks of stopping.</li>
+        <li><strong>Excess alcohol</strong> — more than one to two drinks daily raises triglycerides significantly and contributes to fatty liver disease, which worsens cholesterol management.</li>
+        <li><strong>A sedentary lifestyle</strong> — sitting for long hours without movement allows LDL to accumulate undisturbed. Even short hourly walks make a real difference over time.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. Daily habits -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌿</div>
+      <div class="title-group">
+        <span>Tip No. 5</span>
+        <h2>Daily Habits That Protect Your Balance</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Healthy cholesterol is not a destination you arrive at once — it is a daily practice of small, consistent, loving choices. These habits, built gently over time, add up to a genuinely protected and thriving cardiovascular system.</p>
+    </div>
+    <div class="habits-row">
+      <div class="habit-tile">
+        <div class="ht-icon">🍵</div>
+        <h4>Drink Green Tea Daily</h4>
+        <p>Catechins in green tea have been shown to lower LDL by up to eight percent with regular daily consumption. A beautiful, gentle ritual.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🧄</div>
+        <h4>Add Garlic to Meals</h4>
+        <p>Allicin in fresh garlic consistently lowers total cholesterol and LDL in clinical studies. Crush it fresh into daily cooking for maximum benefit.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">😴</div>
+        <h4>Sleep 7–8 Hours</h4>
+        <p>Poor sleep raises cortisol which drives LDL production and inflammation. Quality sleep is one of the most overlooked cholesterol management tools.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🩺</div>
+        <h4>Test Regularly</h4>
+        <p>Get a full lipid panel blood test at least once a year. Knowing your numbers precisely is the foundation of managing them confidently and calmly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <span class="closing-icon">💙</span>
+    <p>"Healthy cholesterol is not about fear — it is about friendship with your own body. Feed it well, move it lovingly, rest it deeply, and it will find its own beautiful balance in return."</p>
+    <small>✦ Balance it · Nourish it · Move it · Know it ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
