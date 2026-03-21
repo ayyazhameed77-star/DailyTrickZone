@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthy Habits for Long Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #f8f5ef;
+    --ink:        #16120a;
+    --gold:       #b8882a;
+    --deep-gold:  #8a6010;
+    --bronze:     #c86820;
+    --teal:       #2a6868;
+    --soft-teal:  #e8f4f4;
+    --cream:      #f0ead8;
+    --muted:      #7a6a50;
+    --rule:       #d8c8a0;
+    --pale:       #fdf9f3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.95;
+  }
+
+  /* Ornate top border */
+  .top-ornament {
+    background: var(--ink);
+    padding: 18px 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .top-ornament .title-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .top-ornament .rule-line {
+    flex: 1;
+    max-width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* Wrapper */
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 70px 36px 110px;
+  }
+
+  /* Roman numeral label */
+  .roman-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .roman-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.35;
+  }
+
+  /* Grand title */
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.8rem, 7vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.06;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+  }
+  h1 .gold-word  { color: var(--gold); }
+  h1 .italic-word { font-style: italic; }
+  h1 .teal-word  { color: var(--teal); font-style: italic; }
+
+  /* Deck */
+  .deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    padding: 18px 22px;
+    background: var(--cream);
+    border-left: 5px solid var(--gold);
+  }
+
+  /* Byline */
+  .byline {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 46px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Body text */
+  p { margin-bottom: 1.55em; color: #201808; }
+
+  /* Beautiful drop cap */
+  p.lead::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    float: left;
+    line-height: 0.70;
+    margin-right: 14px;
+    margin-top: 12px;
+    padding-bottom: 6px;
+  }
+  p.lead { font-size: 1.1rem; font-weight: 500; }
+
+  /* Section headings */
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3em 0 0.6em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 18px;
+  }
+  .habit-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.7;
+  }
+  .habit-title {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  /* Pull quote */
+  blockquote {
+    margin: 3.5em 0;
+    position: relative;
+    padding: 38px 44px;
+    background: var(--ink);
+    color: #f0e8d0;
+    text-align: center;
+  }
+  blockquote::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(184,136,42,0.4);
+    pointer-events: none;
+  }
+  blockquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    color: #f0e8d0;
+    line-height: 1.55;
+    margin: 0;
+  }
+  blockquote p em { color: var(--gold); font-style: normal; }
+  blockquote cite {
+    display: block;
+    margin-top: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* Gold callout box */
+  .gold-box {
+    background: var(--pale);
+    border: 1px solid #e0c870;
+    border-top: 4px solid var(--gold);
+    padding: 24px 30px;
+    margin: 2.5em 0;
+  }
+  .gold-box strong {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--deep-gold);
+    display: block;
+    margin-bottom: 11px;
+  }
+  .gold-box p { margin: 0; font-size: 0.98rem; color: #3a2808; line-height: 1.8; }
+
+  /* Teal callout box */
+  .teal-box {
+    background: var(--soft-teal);
+    border: 1px solid #a8c8c8;
+    border-left: 5px solid var(--teal);
+    padding: 24px 30px;
+    margin: 2.5em 0;
+  }
+  .teal-box strong {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 11px;
+  }
+  .teal-box p { margin: 0; font-size: 0.98rem; color: #0a2828; line-height: 1.8; }
+
+  /* Bronze box */
+  .bronze-box {
+    background: #fdf3ec;
+    border: 1px solid #e8b888;
+    border-left: 5px solid var(--bronze);
+    padding: 24px 30px;
+    margin: 2.5em 0;
+  }
+  .bronze-box strong {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    display: block;
+    margin-bottom: 11px;
+  }
+  .bronze-box p { margin: 0; font-size: 0.98rem; color: #3a1808; line-height: 1.8; }
+
+  /* Decorative divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 44px 0;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* Longevity habits visual band */
+  .habit-band {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2px;
+    margin: 3em 0;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .habit-tile {
+    background: var(--cream);
+    padding: 22px 14px;
+    text-align: center;
+    border-right: 1px solid var(--rule);
+    transition: background 0.3s ease;
+  }
+  .habit-tile:last-child { border-right: none; }
+  .habit-tile:hover { background: var(--ink); }
+  .habit-tile:hover .ht-icon { filter: brightness(2); }
+  .habit-tile:hover .ht-label { color: var(--gold); }
+  .ht-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+  .ht-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--deep-gold);
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+  }
+
+  /* Footer */
+  .footer-bar {
+    margin-top: 68px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bar span {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-stamp {
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.69rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+  }
+
+  /* Page load animation */
+  @keyframes ascend {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .wrapper > * {
+    animation: ascend 0.85s ease both;
+  }
+  .wrapper > *:nth-child(1) { animation-delay: 0.05s; }
+  .wrapper > *:nth-child(2) { animation-delay: 0.13s; }
+  .wrapper > *:nth-child(3) { animation-delay: 0.21s; }
+  .wrapper > *:nth-child(4) { animation-delay: 0.29s; }
+  .wrapper > *:nth-child(n+5) { animation-delay: 0.36s; }
+
+  @media (max-width: 580px) {
+    .wrapper { padding: 44px 20px 74px; }
+    h1 { font-size: 2.3rem; }
+    blockquote { padding: 26px 22px; }
+    .habit-band { grid-template-columns: repeat(3, 1fr); }
+    h2 { grid-template-columns: auto 1fr; gap: 12px; }
+    .habit-num { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-ornament">
+  <div class="rule-line"></div>
+  <span class="title-text">Longevity &nbsp;·&nbsp; Wellness &nbsp;·&nbsp; The Art of Living Well</span>
+  <div class="rule-line"></div>
+</div>
+
+<div class="wrapper">
+
+  <div class="roman-label">I &nbsp;·&nbsp; The Longevity Collection</div>
+
+  <h1>
+    The <span class="gold-word">Ancient</span> Art of<br>
+    <span class="teal-word">Living Long</span> and<br>
+    Living <span class="italic-word">Well</span>
+  </h1>
+
+  <div class="deck">
+    The world's longest-lived people do not have a secret. They have habits — quiet,
+    consistent, unremarkable daily habits that, layered together over a lifetime, build
+    something extraordinary. Here is what they know.
+  </div>
+
+  <div class="byline">
+    <span>Longevity &amp; Wellness Desk</span>
+    <span>800 Words &nbsp;·&nbsp; A Lifetime Guide</span>
+  </div>
+
+  <p class="lead">
+    In the mountains of Sardinia, in the islands of Okinawa, in the hills of
+    Nicoya and the villages of Ikaria, there are clusters of people who routinely
+    live past ninety — and sometimes past one hundred — with minds still sharp,
+    bodies still moving, and hearts still full of laughter. Researchers have studied
+    these communities for decades, searching for the secret of their extraordinary
+    longevity. What they found was not a miracle supplement, not a cutting-edge
+    medical procedure, and certainly not a life of sacrifice and restriction. What
+    they found were habits. Simple, human, deeply pleasurable habits, practiced every
+    single day without drama or fanfare. This is what they share.
+  </p>
+
+  <blockquote>
+    <p>It is not the <em>years</em> in your life that count.<br>It is the <em>life</em> in your years.</p>
+    <cite>— Abraham Lincoln</cite>
+  </blockquote>
+
+  <h2>
+    <span class="habit-num">I</span>
+    <span class="habit-title">Move Naturally — Not Obsessively</span>
+  </h2>
+
+  <p>
+    The longest-lived people on earth do not run marathons. They do not spend two
+    hours a day in the gym. What they do is move — constantly, naturally, as a
+    seamless part of daily life. They walk to the market. They tend gardens. They
+    climb hills. They knead bread by hand. Movement is so woven into their lives
+    that it never feels like exercise, because it never is. The human body was
+    designed to move gently and often, not intensely and rarely. A thirty-minute
+    walk each morning, taken daily without exception, does more for longevity than
+    an occasional intense gym session surrounded by weeks of stillness. Move your
+    body in ways that bring joy, and do so every single day.
+  </p>
+
+  <h2>
+    <span class="habit-num">II</span>
+    <span class="habit-title">Eat Plants, Mostly — and Stop at 80%</span>
+  </h2>
+
+  <p>
+    The diets of the world's longest-lived communities are not complicated. They
+    eat an abundance of vegetables, legumes, whole grains, nuts, and fruits.
+    Meat appears occasionally — as a celebration, a flavouring, a side note —
+    not as the centrepiece of every meal. But perhaps the most powerful dietary
+    habit of all comes from Okinawa, where the people practise something called
+    <em>hara hachi bu</em> — a Confucian teaching that instructs you to stop eating when
+    you are eighty percent full. By the time the fullness signal reaches your brain
+    from your stomach, that remaining twenty percent arrives quietly on its own.
+    Eating slightly less at every meal, without hunger, without suffering, over
+    decades — is one of the most profound longevity practices in the world.
+  </p>
+
+  <div class="gold-box">
+    <strong>The 80% Rule</strong>
+    <p>Before every meal, remind yourself to eat slowly and stop before you feel completely full. Put your fork down between bites. Conversation helps. So does eating without screens. This single habit, practised consistently, can reduce caloric intake by 15–20% without any feeling of deprivation — and its long-term effects on health and weight are remarkable.</p>
+  </div>
+
+  <h2>
+    <span class="habit-num">III</span>
+    <span class="habit-title">Sleep as if Your Life Depends on It — It Does</span>
+  </h2>
+
+  <p>
+    Modern culture treats sleep as optional — something to sacrifice when ambition
+    demands it. The world's longest-lived cultures treat it as sacred. During deep
+    sleep, the brain clears toxic waste products that accumulate during waking hours.
+    The immune system rebuilds. Hormones rebalance. Cells repair themselves at a
+    molecular level. People who consistently sleep fewer than six hours per night have
+    significantly higher rates of heart disease, diabetes, obesity, cognitive decline,
+    and early death. Seven to nine hours is not laziness. It is the most productive
+    thing your body does all day — and it does it while you are beautifully, peacefully
+    unconscious.
+  </p>
+
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <h2>
+    <span class="habit-num">IV</span>
+    <span class="habit-title">Belong to Something — and Someone</span>
+  </h2>
+
+  <p>
+    Loneliness is as dangerous to human health as smoking fifteen cigarettes a day.
+    This is not a metaphor — it is a finding repeated across dozens of major studies.
+    The people who live longest are embedded in communities: faith communities, family
+    structures, friendship circles, neighbourhood networks. They are known. They are
+    needed. They show up for others, and others show up for them. In Sardinia, elderly
+    men gather every evening in the village square simply to be together. In Okinawa,
+    small groups of lifelong friends called <em>moai</em> meet regularly and support each other
+    financially, emotionally, and socially for life. Connection is not a luxury. For
+    the human body and mind, it is as essential as food and water.
+  </p>
+
+  <div class="teal-box">
+    <strong>The Moai Principle</strong>
+    <p>Find your people and tend to those relationships with the same care you give your body. Call a friend this week — not to text, but to speak. Share a meal. Show up when someone needs you. The science of longevity says this matters as much as any diet or exercise regime ever could.</p>
+  </div>
+
+  <h2>
+    <span class="habit-num">V</span>
+    <span class="habit-title">Know Your Purpose — Your Reason to Rise</span>
+  </h2>
+
+  <p>
+    In Japan, this is called <em>ikigai</em> — your reason for being, the thing that makes
+    you glad to get out of bed each morning. In Nicoya, Costa Rica, it is called
+    <em>plan de vida</em> — your life plan, your sense of direction and meaning. Research
+    has found that people with a strong sense of purpose live an average of seven
+    years longer than those without one. Purpose does not have to be grand. It can
+    be raising children, tending a garden, creating art, teaching, volunteering, or
+    simply being present for the people who depend on you. What matters is that
+    when morning comes, something calls you forward. That call is medicine.
+  </p>
+
+  <h2>
+    <span class="habit-num">VI</span>
+    <span class="habit-title">Manage Stress — Choose Downshift Rituals</span>
+  </h2>
+
+  <p>
+    Every long-lived culture has a daily ritual for shedding the stress of the day.
+    Sardinians drink wine with friends at dusk. Okinawans take a few moments to
+    remember their ancestors. Seventh-day Adventists in Loma Linda, California,
+    observe the Sabbath as a complete weekly pause from work and worry. Chronic
+    stress produces a cascade of inflammatory hormones that age cells, damage
+    arteries, and shorten telomeres — the protective caps on DNA that determine
+    how quickly we age. The antidote is not the absence of difficulty. It is a
+    reliable, daily ritual that tells your nervous system: you are safe now. Rest.
+  </p>
+
+  <div class="bronze-box">
+    <strong>Begin Your Own Downshift Ritual</strong>
+    <p>Choose one simple act that signals the end of your working day — a cup of tea in silence, ten minutes of gentle walking, a few pages of a book, or simply sitting outside and watching the light change. Do it every evening. Make it non-negotiable. Within two weeks, your body will begin to unwind the moment the ritual begins.</p>
+  </div>
+
+  <!-- Visual habit band -->
+  <div class="habit-band">
+    <div class="habit-tile">
+      <span class="ht-icon">🚶</span>
+      <span class="ht-label">Move Daily</span>
+    </div>
+    <div class="habit-tile">
+      <span class="ht-icon">🥗</span>
+      <span class="ht-label">Eat Plants</span>
+    </div>
+    <div class="habit-tile">
+      <span class="ht-icon">😴</span>
+      <span class="ht-label">Sleep Well</span>
+    </div>
+    <div class="habit-tile">
+      <span class="ht-icon">🤝</span>
+      <span class="ht-label">Connect</span>
+    </div>
+    <div class="habit-tile">
+      <span class="ht-icon">🌅</span>
+      <span class="ht-label">Find Purpose</span>
+    </div>
+    <div class="habit-tile">
+      <span class="ht-icon">🍵</span>
+      <span class="ht-label">Rest & Unwind</span>
+    </div>
+  </div>
+
+  <p>
+    The beautiful truth about longevity is that it rewards no single dramatic act.
+    It rewards the ten thousand quiet choices made over a lifetime — the walk taken
+    instead of the elevator, the meal eaten slowly and with gratitude, the friend
+    called instead of a scroll through a screen, the moment of stillness carved from
+    a busy evening. None of these acts feel significant in the moment. Together,
+    across the years, they compose a life that is not only long — but genuinely,
+    deeply, richly worth living. Begin today. Begin small. The oldest people in
+    the world did exactly the same thing. They simply never stopped.
+  </p>
+
+  <div class="footer-bar">
+    <span>Longevity &amp; Wellness Desk — The Long Life Collection</span>
+    <span class="footer-stamp">~ Words</span>
+  </div>
+
+</div>
+</body>
+</html>
