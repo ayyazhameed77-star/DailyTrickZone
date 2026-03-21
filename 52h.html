@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signs of Dehydration</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #f0f6fb;
+    --ink:          #081428;
+    --ocean:        #1050a0;
+    --ocean-deep:   #082060;
+    --sky:          #2880c8;
+    --sky-pale:     #e8f2fc;
+    --wave:         #38a0d8;
+    --wave-pale:    #e0f4fc;
+    --coral:        #c84040;
+    --coral-pale:   #fdf2f2;
+    --amber:        #c08020;
+    --amber-pale:   #fdf8e8;
+    --teal:         #187868;
+    --teal-pale:    #e8f5f2;
+    --violet:       #6838b0;
+    --violet-pale:  #f4f0fc;
+    --cream:        #e8f2fc;
+    --muted:        #486080;
+    --rule:         #a8c8e8;
+    --pale:         #f5fafd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.95;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    background: linear-gradient(160deg, #040c1e 0%, #082060 30%, #1050a0 65%, #1868c0 100%);
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Water ripple rings */
+  .ripple-wrap {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(56,160,216,0.18);
+    animation: rippleOut 5s ease-out infinite;
+  }
+  .ripple:nth-child(1){ width:200px;height:200px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:0s;}
+  .ripple:nth-child(2){ width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:1.2s;}
+  .ripple:nth-child(3){ width:480px;height:480px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:2.4s;}
+  .ripple:nth-child(4){ width:620px;height:620px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:3.6s;}
+  @keyframes rippleOut {
+    0%  { opacity: 0.6; transform: translate(-50%,-50%) scale(0.8); }
+    100%{ opacity: 0;   transform: translate(-50%,-50%) scale(1.4); }
+  }
+
+  /* Glow */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(56,160,216,0.14) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 65%, rgba(56,160,216,0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Wave bottom */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 54px;
+    background: var(--bg);
+    clip-path: polygon(
+      0 100%, 0 55%,
+      5% 35%, 10% 55%, 15% 30%, 20% 52%,
+      25% 28%, 30% 50%, 35% 26%, 40% 48%,
+      45% 24%, 50% 46%, 55% 22%, 60% 44%,
+      65% 20%, 70% 42%, 75% 18%, 80% 40%,
+      85% 16%, 90% 38%, 95% 14%, 100% 36%,
+      100% 100%
+    );
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 58px 36px 82px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(160,210,255,0.88);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    animation: fadeUp 0.8s ease both 0.05s;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 44px; height: 1px;
+    background: rgba(140,200,255,0.4);
+  }
+
+  .hero h1 {
+    font-family: 'Spectral', serif;
+    font-size: clamp(2.4rem, 6.5vw, 4.1rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.07;
+    letter-spacing: -0.022em;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease both 0.15s;
+  }
+  .hero h1 em { font-style: italic; color: #90d8ff; }
+
+  .hero-sub {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: rgba(180,220,255,0.86);
+    max-width: 580px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s ease both 0.24s;
+  }
+
+  /* Drop icon row */
+  .drop-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: fadeUp 0.8s ease both 0.32s;
+  }
+  .drop-row .dr-line { width: 50px; height: 1px; background: rgba(140,200,255,0.38); }
+  .drop-icon {
+    font-size: 1.9rem;
+    display: inline-block;
+    animation: dropFall 2.8s ease-in-out infinite;
+  }
+  .drop-icon:nth-child(2){ animation-delay: 0.4s; }
+  .drop-icon:nth-child(3){ animation-delay: 0.8s; font-size: 1.3rem; }
+  .drop-icon:nth-child(4){ animation-delay: 1.2s; }
+  .drop-icon:nth-child(5){ animation-delay: 1.6s; }
+  @keyframes dropFall {
+    0%,100%{ transform: translateY(0) scale(1);    }
+    50%    { transform: translateY(6px) scale(0.9); }
+  }
+
+  /* ══ WRAPPER ══ */
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 34px 110px;
+  }
+
+  /* Byline */
+  .byline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 44px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Body */
+  p { margin-bottom: 1.55em; color: #0c1e30; }
+
+  /* Drop cap */
+  p.lead::first-letter {
+    font-family: 'Spectral', serif;
+    font-size: 5.6rem;
+    font-weight: 800;
+    color: var(--ocean);
+    float: left;
+    line-height: 0.70;
+    margin-right: 13px;
+    margin-top: 12px;
+    padding-bottom: 6px;
+  }
+  p.lead { font-size: 1.08rem; font-weight: 300; }
+
+  /* ══ Section headings ══ */
+  h2 {
+    font-family: 'Spectral', serif;
+    font-size: 1.52rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3em 0 0.65em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .h2-drop {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ocean-deep), var(--ocean));
+    color: #fff;
+    font-size: 1.45rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(16,80,160,0.32);
+    transition: transform 0.3s ease;
+  }
+  .h2-drop:hover { transform: scale(1.12) translateY(-3px); }
+  .h2-txt {
+    flex: 1;
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 7px;
+    line-height: 1.25;
+  }
+
+  /* ══ Pull quote ══ */
+  blockquote {
+    margin: 3.5em 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 6px 1fr;
+    gap: 0;
+    align-items: stretch;
+    min-height: 140px;
+  }
+  .bq-left {
+    background: linear-gradient(135deg, var(--ocean-deep), var(--ocean));
+    padding: 34px 40px;
+    border-radius: 3px 0 0 3px;
+  }
+  .bq-left p {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.45rem;
+    color: #e8f4ff;
+    line-height: 1.57;
+    margin: 0 0 12px;
+  }
+  .bq-left p em { color: #90d8ff; font-style: normal; font-weight: 600; }
+  .bq-left cite {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(160,210,255,0.75);
+    font-style: normal;
+    display: block;
+  }
+  .bq-mid { background: var(--wave); }
+  .bq-right {
+    background: var(--cream);
+    padding: 34px 36px;
+    border-radius: 0 3px 3px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .bq-right .stat {
+    font-family: 'Spectral', serif;
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: var(--ocean);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .bq-right .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ══ Call-out boxes ══ */
+  .cbox {
+    padding: 22px 28px;
+    margin: 2.2em 0;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-left: 5px solid transparent;
+  }
+  .cbox strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .cbox p { margin: 0; font-size: 0.97rem; line-height: 1.82; }
+
+  .cbox-sky    { background: var(--sky-pale);    border-color: #90c0e8; border-left-color: var(--sky);    }
+  .cbox-sky    strong { color: var(--sky);    } .cbox-sky    p { color: #081828; }
+
+  .cbox-coral  { background: var(--coral-pale);  border-color: #e8a8a8; border-left-color: var(--coral);  }
+  .cbox-coral  strong { color: var(--coral);  } .cbox-coral  p { color: #380808; }
+
+  .cbox-amber  { background: var(--amber-pale);  border-color: #e8c870; border-left-color: var(--amber);  }
+  .cbox-amber  strong { color: var(--amber);  } .cbox-amber  p { color: #3c2400; }
+
+  .cbox-teal   { background: var(--teal-pale);   border-color: #80c0b8; border-left-color: var(--teal);   }
+  .cbox-teal   strong { color: var(--teal);   } .cbox-teal   p { color: #082818; }
+
+  .cbox-violet { background: var(--violet-pale); border-color: #b0a0d8; border-left-color: var(--violet); }
+  .cbox-violet strong { color: var(--violet); } .cbox-violet p { color: #180830; }
+
+  .cbox-wave   { background: var(--wave-pale);   border-color: #80c8e8; border-left-color: var(--wave);   }
+  .cbox-wave   strong { color: #1878a8;       } .cbox-wave   p { color: #082838; }
+
+  /* ══ Urine colour chart ══ */
+  .urine-chart {
+    margin: 2.8em 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    box-shadow: 0 4px 18px rgba(16,80,160,0.1);
+  }
+  .uc-header {
+    background: var(--ocean);
+    padding: 14px 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(200,230,255,0.9);
+  }
+  .uc-rows { display: flex; flex-direction: column; }
+  .uc-row {
+    display: grid;
+    grid-template-columns: 40px 120px 1fr;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid rgba(168,200,232,0.3);
+    transition: background 0.2s ease;
+  }
+  .uc-row:last-child { border-bottom: none; }
+  .uc-row:hover { background: rgba(56,160,216,0.06); }
+  .uc-swatch {
+    height: 48px;
+    flex-shrink: 0;
+  }
+  .uc-level {
+    padding: 0 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--pale);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(168,200,232,0.3);
+  }
+  .uc-desc {
+    padding: 0 18px;
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    background: var(--pale);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    color: #0c1e30;
+  }
+  .level-1 .uc-swatch { background: #f8f0c0; }
+  .level-2 .uc-swatch { background: #f0d860; }
+  .level-3 .uc-swatch { background: #d8a820; }
+  .level-4 .uc-swatch { background: #b07010; }
+  .level-5 .uc-swatch { background: #804010; }
+  .level-1 .uc-level  { color: #3a8820; }
+  .level-2 .uc-level  { color: #a07810; }
+  .level-3 .uc-level  { color: var(--amber); }
+  .level-4 .uc-level  { color: var(--coral); }
+  .level-5 .uc-level  { color: #800000; }
+
+  /* ══ Sign cards ══ */
+  .sign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 14px;
+    margin: 3em 0;
+  }
+  .sign-card {
+    background: var(--pale);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 22px 14px 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+  }
+  .sign-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--sky);
+    transition: height 0.3s ease;
+  }
+  .sign-card:nth-child(2)::before { background: var(--coral);  }
+  .sign-card:nth-child(3)::before { background: var(--amber);  }
+  .sign-card:nth-child(4)::before { background: var(--teal);   }
+  .sign-card:nth-child(5)::before { background: var(--violet); }
+  .sign-card:nth-child(6)::before { background: var(--wave);   }
+  .sign-card:nth-child(7)::before { background: var(--ocean);  }
+  .sign-card:nth-child(8)::before { background: #d07030;       }
+
+  .sign-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(16,80,160,0.14); }
+  .sign-card:hover::before { height: 7px; }
+
+  .sg-icon { font-size: 2.3rem; display: block; margin-bottom: 10px; }
+  .sg-name {
+    font-family: 'Spectral', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .sg-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--muted);
+    line-height: 1.48;
+  }
+
+  /* ══ Emergency banner ══ */
+  .emergency-banner {
+    background: linear-gradient(135deg, #3c0808, var(--coral));
+    border-radius: 3px;
+    padding: 28px 32px;
+    margin: 2.8em 0;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .em-icon { font-size: 2.2rem; flex-shrink: 0; margin-top: 2px; }
+  .em-body h3 {
+    font-family: 'Spectral', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .em-body p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.91rem;
+    color: rgba(255,220,220,0.9);
+    margin: 0;
+    line-height: 1.75;
+  }
+
+  /* ══ Water intake visual ══ */
+  .water-tracker {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 2.8em 0;
+    text-align: center;
+  }
+  .wt-title {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ocean);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .wt-drops {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .wt-drop {
+    font-size: 1.7rem;
+    transition: all 0.3s ease;
+    cursor: default;
+    filter: grayscale(0.3);
+  }
+  .wt-drop:hover { transform: scale(1.2); filter: grayscale(0); }
+  .wt-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ══ Ornament ══ */
+  .ornament {
+    text-align: center;
+    margin: 38px 0;
+    font-size: 1.05rem;
+    letter-spacing: 0.7em;
+    color: var(--wave);
+    opacity: 0.5;
+  }
+
+  /* ══ Footer ══ */
+  .footer-bar {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bar > span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-badge {
+    background: linear-gradient(135deg, var(--ocean-deep), var(--sky));
+    color: #c8e8ff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+  }
+
+  /* ══ Animations ══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+  .wrapper > * { animation: fadeUp 0.75s ease both; }
+  .wrapper > *:nth-child(1)  { animation-delay: 0.05s; }
+  .wrapper > *:nth-child(2)  { animation-delay: 0.12s; }
+  .wrapper > *:nth-child(3)  { animation-delay: 0.19s; }
+  .wrapper > *:nth-child(n+4){ animation-delay: 0.26s; }
+
+  @media (max-width: 580px) {
+    .wrapper        { padding: 42px 18px 72px; }
+    .hero-inner     { padding: 42px 20px 74px; }
+    blockquote      { grid-template-columns: 1fr; }
+    .bq-mid         { height: 5px; display: block; }
+    .bq-left        { border-radius: 3px 3px 0 0; padding: 26px 24px; }
+    .bq-right       { border-radius: 0 0 3px 3px; padding: 24px; }
+    .sign-grid      { grid-template-columns: repeat(2, 1fr); }
+    .uc-row         { grid-template-columns: 32px 100px 1fr; }
+    h2              { gap: 12px; }
+    .h2-drop        { min-width: 42px; height: 42px; font-size: 1.2rem; }
+    .emergency-banner{ flex-direction: column; gap: 10px; padding: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="ripple-wrap">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Body Signals &nbsp;·&nbsp; Water Balance &nbsp;·&nbsp; Listen Closely</div>
+    <h1>Your Body Is Asking<br>for Water Right Now —<br><em>Are You Listening?</em></h1>
+    <p class="hero-sub">
+      Dehydration begins long before thirst arrives. By the time you feel
+      thirsty, your body has already been speaking — in whispers,
+      in aches, in fog, in fatigue. Here is how to hear it.
+    </p>
+    <div class="drop-row">
+      <div class="dr-line"></div>
+      <span class="drop-icon">💧</span>
+      <span class="drop-icon">💧</span>
+      <span class="drop-icon">✦</span>
+      <span class="drop-icon">💧</span>
+      <span class="drop-icon">💧</span>
+      <div class="dr-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ARTICLE BODY ══ -->
+<div class="wrapper">
+
+  <div class="byline">
+    <span>Health &amp; Body Signals Desk</span>
+    <span>800 Words &nbsp;·&nbsp; A Guide to Recognising Dehydration</span>
+  </div>
+
+  <p class="lead">
+    The human body is sixty percent water. Not approximately — not roughly —
+    exactly and precisely sixty percent, and every single function it performs
+    depends on maintaining that balance within a remarkably narrow margin.
+    Water carries oxygen in the blood. It cushions joints. It regulates body
+    temperature. It flushes toxins through the kidneys. It lubricates the eyes,
+    the mouth, and the digestive tract. It carries electrical signals through
+    the nerves and keeps the brain alive with the clarity it needs to think.
+    Lose as little as one to two percent of your body's water through sweat,
+    breathing, or simply not drinking enough — and the consequences begin
+    immediately. Not eventually. Not after days of neglect. Immediately.
+    The body begins to signal, quietly at first, and then with increasing
+    urgency, that what it needs more than anything else in the world is
+    a glass of water.
+  </p>
+
+  <blockquote>
+    <div class="bq-left">
+      <p>By the time you feel <em>thirsty</em>, you are already dehydrated. Thirst is not the warning — thirst is the emergency.</p>
+      <cite>— Clinical Hydration Research</cite>
+    </div>
+    <div class="bq-mid"></div>
+    <div class="bq-right">
+      <div class="stat">60%</div>
+      <div class="stat-label">of the human body is water. Lose just 2% and cognitive performance drops measurably.</div>
+    </div>
+  </blockquote>
+
+  <!-- 1. Headache -->
+  <h2>
+    <span class="h2-drop">🤕</span>
+    <span class="h2-txt">The Dehydration Headache — A Signal Misread as Stress</span>
+  </h2>
+
+  <p>
+    The brain floats inside the skull in a cushion of cerebrospinal fluid —
+    a fluid that is almost entirely water. When you are dehydrated, that
+    cushion thins. The brain, slightly shrunken from fluid loss, pulls
+    very gently away from the skull's inner walls and triggers the pain
+    receptors in the meninges — the membranes that wrap the brain. The
+    result is a dehydration headache: often dull, often occurring at the
+    temples or the back of the skull, often mistaken for tension, stress,
+    or the beginning of a migraine. Before reaching for a painkiller the
+    next time a headache arrives in the late afternoon, drink two large
+    glasses of water and wait twenty minutes. In a significant proportion
+    of cases, the headache diminishes or disappears entirely. It was never
+    about stress. It was always about water.
+  </p>
+
+  <div class="cbox cbox-sky">
+    <strong>The Afternoon Headache Pattern</strong>
+    <p>The most common time for dehydration headaches is mid-to-late afternoon — precisely when most people have been working through the morning without adequate water intake. If you experience a headache most days between 2–5pm, track your water consumption from the previous six hours. The correlation is usually unmistakable.</p>
+  </div>
+
+  <!-- 2. Fatigue -->
+  <h2>
+    <span class="h2-drop">😴</span>
+    <span class="h2-txt">Unexplained Fatigue — When Tiredness Is Really Thirst</span>
+  </h2>
+
+  <p>
+    Fatigue is the most common and most frequently misattributed sign of
+    dehydration — and it operates through multiple simultaneous pathways.
+    When blood volume decreases due to fluid loss, the heart must work
+    harder to pump the same amount of oxygen to the muscles and brain.
+    The muscles themselves, which are 75 percent water, function less
+    efficiently when dehydrated — contracting with less power and recovering
+    with less speed. The brain, deprived of adequate fluid, reduces its
+    non-essential activities in a cascade of metabolic conservation — and
+    the experience of that reduction is the heavy, slow, foggy exhaustion
+    that feels like the body is running on half its usual power. People
+    who begin each morning with 500 millilitres of water before coffee,
+    food, or screens consistently report noticeably higher energy levels
+    within a week. Not because water is a stimulant. But because they
+    were exhausted by dehydration, and the water simply returned them
+    to baseline.
+  </p>
+
+  <div class="ornament">— 💧 —</div>
+
+  <!-- 3. Dark urine -->
+  <h2>
+    <span class="h2-drop">🌡️</span>
+    <span class="h2-txt">The Colour of Your Urine — Nature's Hydration Meter</span>
+  </h2>
+
+  <p>
+    Your kidneys are among the most sophisticated filtration systems ever
+    designed — and they communicate the state of your hydration with
+    extraordinary clarity through the colour of your urine. Pale straw
+    yellow to pale yellow is optimal — a sign that the kidneys are
+    filtering efficiently with plenty of fluid. As dehydration progresses,
+    urine becomes darker, more concentrated, and more strongly scented.
+    Bright yellow signals mild dehydration — easy to correct. Amber or
+    dark orange signals significant dehydration — drink water now, and
+    drink it steadily. Brown urine is a medical warning. It can signal
+    severe dehydration, rhabdomyolysis (muscle breakdown), or kidney
+    stress — and it requires immediate medical attention. The body offers
+    this information freely, multiple times a day. We simply need to look.
+  </p>
+
+  <!-- Urine colour chart -->
+  <div class="urine-chart">
+    <div class="uc-header">💧 Urine Colour Hydration Guide</div>
+    <div class="uc-rows">
+      <div class="uc-row level-1">
+        <div class="uc-swatch"></div>
+        <div class="uc-level">Optimal</div>
+        <div class="uc-desc">Pale straw — well hydrated, keep going</div>
+      </div>
+      <div class="uc-row level-2">
+        <div class="uc-swatch"></div>
+        <div class="uc-level">Mild</div>
+        <div class="uc-desc">Bright yellow — drink a glass of water now</div>
+      </div>
+      <div class="uc-row level-3">
+        <div class="uc-swatch"></div>
+        <div class="uc-level">Moderate</div>
+        <div class="uc-desc">Amber — noticeably dehydrated, act quickly</div>
+      </div>
+      <div class="uc-row level-4">
+        <div class="uc-swatch"></div>
+        <div class="uc-level">Severe</div>
+        <div class="uc-desc">Dark orange — significant dehydration, drink steadily</div>
+      </div>
+      <div class="uc-row level-5">
+        <div class="uc-swatch"></div>
+        <div class="uc-level">Urgent</div>
+        <div class="uc-desc">Brown — seek medical attention immediately</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Brain fog -->
+  <h2>
+    <span class="h2-drop">🧠</span>
+    <span class="h2-txt">Brain Fog and Poor Concentration — The Mind Goes Dry</span>
+  </h2>
+
+  <p>
+    The brain is eighty percent water. Of all the organs in the body, it
+    is the most sensitive to dehydration — and the effects are measurable
+    far sooner than most people realise. Studies using cognitive testing
+    have found that a fluid loss of just one to two percent of body weight
+    — the equivalent of a single hour of moderate exercise without drinking —
+    produces significant impairments in short-term memory, attention,
+    arithmetic ability, psychomotor speed, and the capacity for complex
+    reasoning. The fogginess, the difficulty concentrating, the strange
+    sense that thoughts are moving through syrup — these are not signs of
+    mental weakness or a need for more sleep. They are often dehydration,
+    plain and correctable, hiding behind more dramatic explanations. A
+    student who drinks water consistently throughout an exam performs
+    measurably better than one who does not. The difference is not
+    intelligence. It is hydration.
+  </p>
+
+  <div class="cbox cbox-violet">
+    <strong>The Cognitive Dehydration Study</strong>
+    <p>Research from the University of East London found that students who drank 500ml of water before an exam improved their test results by up to 10% compared to those who did not. Even mild dehydration measurably impairs working memory, attention, and processing speed — and it is completely reversible within 20 minutes of drinking adequate water.</p>
+  </div>
+
+  <!-- 5. Dry skin / lips -->
+  <h2>
+    <span class="h2-drop">👄</span>
+    <span class="h2-txt">Dry Mouth, Cracked Lips, and Dull Skin</span>
+  </h2>
+
+  <p>
+    The skin is the body's largest organ, and it is among the first to
+    show the visible effects of dehydration. When fluid levels fall,
+    the body prioritises internal organs — drawing water inward and away
+    from the skin. The result is a loss of elasticity and plumpness, a
+    dullness to the complexion, and a tightness around the eyes and cheeks
+    that no amount of moisturiser can correct from the outside. Pinch the
+    skin on the back of your hand and release it — well-hydrated skin
+    springs back immediately. Dehydrated skin returns slowly, remaining
+    tented for a moment before settling. The lips crack. The mouth feels
+    sticky. The tongue feels heavy. These are not cosmetic complaints.
+    They are the visible language of a body that is low on its most
+    essential substance — and they disappear, with gratifying speed,
+    when that substance is returned.
+  </p>
+
+  <div class="cbox cbox-teal">
+    <strong>The Skin Elasticity Test</strong>
+    <p>Gently pinch the skin on the back of your hand between two fingers, hold for two seconds, then release. In a well-hydrated person, the skin returns to flat within one second. In a moderately dehydrated person, it takes two to three seconds. In severe dehydration, the skin may remain tented for five seconds or longer. This simple test, used by medical professionals worldwide, takes two seconds and tells you everything.</p>
+  </div>
+
+  <!-- 6. Dizziness -->
+  <h2>
+    <span class="h2-drop">💫</span>
+    <span class="h2-txt">Dizziness and Low Blood Pressure — When the River Runs Low</span>
+  </h2>
+
+  <p>
+    Blood is predominantly water. When the body is significantly dehydrated,
+    blood volume decreases — and with it, blood pressure. The heart, now
+    working harder to circulate a reduced volume through the same network
+    of vessels, cannot always compensate fast enough when you stand up
+    suddenly. The resulting dizziness — a momentary blackening of the
+    vision, a rushing in the ears, an unsteadiness that passes in seconds
+    — is called orthostatic hypotension, and it is a clear, physical
+    statement from your cardiovascular system that it does not have enough
+    fluid to work as designed. Mild dizziness after standing is common.
+    But if it happens regularly, particularly in the afternoon or after
+    exercise, and resolves after drinking water, the message is unambiguous.
+    The river that carries everything through your body is running low.
+    Fill it.
+  </p>
+
+  <div class="cbox cbox-amber">
+    <strong>Electrolytes Matter Too</strong>
+    <p>When dehydration is caused by heavy sweating, illness, or prolonged exercise, plain water alone may not be sufficient to restore balance. Sodium, potassium, and magnesium — electrolytes lost in sweat — are needed to help cells absorb and retain water. A pinch of sea salt and a squeeze of lemon in your water, or coconut water, provides natural electrolyte replenishment without the added sugars of commercial sports drinks.</p>
+  </div>
+
+  <!-- Sign cards -->
+  <div class="sign-grid">
+    <div class="sign-card">
+      <span class="sg-icon">🤕</span>
+      <span class="sg-name">Headache</span>
+      <span class="sg-note">Brain cushion thins as fluid drops</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">😴</span>
+      <span class="sg-name">Fatigue</span>
+      <span class="sg-note">Heart works harder with less blood volume</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">🟡</span>
+      <span class="sg-name">Dark Urine</span>
+      <span class="sg-note">Kidneys concentrating due to low fluid</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">🧠</span>
+      <span class="sg-name">Brain Fog</span>
+      <span class="sg-note">Even 1–2% loss impairs cognition</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">👄</span>
+      <span class="sg-name">Dry Mouth</span>
+      <span class="sg-note">Saliva production reduced by dehydration</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">💫</span>
+      <span class="sg-name">Dizziness</span>
+      <span class="sg-note">Low blood pressure from reduced blood volume</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">💢</span>
+      <span class="sg-name">Muscle Cramps</span>
+      <span class="sg-note">Electrolyte imbalance in dehydrated muscles</span>
+    </div>
+    <div class="sign-card">
+      <span class="sg-icon">❤️</span>
+      <span class="sg-name">Fast Heartbeat</span>
+      <span class="sg-note">Heart compensates for reduced blood volume</span>
+    </div>
+  </div>
+
+  <!-- Emergency banner -->
+  <div class="emergency-banner">
+    <span class="em-icon">🚨</span>
+    <div class="em-body">
+      <h3>Signs of Severe Dehydration — Seek Help Immediately</h3>
+      <p>Extreme thirst, no urination for 8+ hours, sunken eyes, rapid or weak pulse, confusion, extreme weakness, or loss of consciousness are signs of severe dehydration requiring immediate medical attention — especially in children, the elderly, or anyone with fever, vomiting, or diarrhoea. Do not wait. Act immediately.</p>
+    </div>
+  </div>
+
+  <!-- Water tracker -->
+  <div class="water-tracker">
+    <div class="wt-title">Your Daily Water Goal — 8 Glasses Minimum</div>
+    <div class="wt-drops">
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+      <span class="wt-drop">💧</span>
+    </div>
+    <div class="wt-label">8 × 250ml = 2 litres &nbsp;·&nbsp; More in heat, exercise, or illness</div>
+  </div>
+
+  <div class="cbox cbox-wave">
+    <strong>How to Drink More Without Thinking About It</strong>
+    <p>Keep a large water bottle visible on your desk — people drink 30–40% more water when it is within sight. Drink a full glass immediately upon waking, before every meal, and before every cup of coffee or tea. Eat water-rich foods — cucumber, watermelon, celery, oranges. Set a gentle phone reminder every two hours. Hydration is a habit, not a discipline — and once formed, it costs nothing and returns everything.</p>
+  </div>
+
+  <p>
+    Water is not a supplement. It is not a wellness trend. It is the
+    substance your body is made of — and every headache that should not
+    be there, every afternoon that feels heavier than it should, every
+    bout of fog that will not lift, every moment of dizzy unsteadiness
+    when you stand — these are not mysterious ailments. They are
+    messages, written in the most ancient biological language available,
+    asking for the one thing that costs nothing, weighs nothing, and
+    fixes more than almost anything else you will ever do for yourself.
+    Pick up the glass. Fill it. Drink. Your body has been asking.
+    It deserves an answer.
+  </p>
+
+  <div class="footer-bar">
+    <span>Health &amp; Body Signals Desk — Dehydration Recognition Guide</span>
+    <span class="footer-badge">~800 Words</span>
+  </div>
+
+</div>
+</body>
+</html>
