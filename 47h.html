@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefits of Vegetables for Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Josefin+Sans:wght@300;400;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --broccoli:     #1e5c2a;
+    --deep-green:   #0f3318;
+    --mid-green:    #2a7a3a;
+    --leaf:         #4aaa5a;
+    --mint:         #8dd8a0;
+    --mint-pale:    #e8f8ec;
+    --mint-soft:    #f2fbf4;
+    --carrot:       #e06820;
+    --carrot-pale:  #fff3eb;
+    --tomato:       #c83030;
+    --tomato-pale:  #fdeaea;
+    --purple:       #6a3a8a;
+    --purple-pale:  #f4eefb;
+    --gold:         #d4920a;
+    --gold-pale:    #fff8e8;
+    --sky:          #1a7aaa;
+    --sky-pale:     #e8f5fd;
+    --cream:        #f8faf5;
+    --warm-white:   #fbfdf8;
+    --text:         #0e2a14;
+    --text-mid:     #2a4a30;
+    --text-light:   #5a8060;
+    --white:        #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--deep-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 28px;
+    font-size: 0.79rem;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.7px;
+  }
+  .top-bar strong { color: var(--mint); }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(148deg, #061508 0%, #0f3318 28%, #1e5c2a 58%, #2a7a3a 82%, #3a9a4a 100%);
+    padding: 0;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  /* Organic blob shapes */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+    background: radial-gradient(circle at 50% 50%,
+      rgba(141,216,160,0.1) 0%,
+      rgba(74,170,90,0.06) 45%,
+      transparent 68%);
+    border: 1px solid rgba(141,216,160,0.07);
+    animation: blobmove 12s ease-in-out infinite alternate;
+  }
+  @keyframes blobmove {
+    0%   { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.06) rotate(8deg); }
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 52% 50% at 8% 72%,
+        rgba(212,146,10,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 42% 44% at 90% 20%,
+        rgba(141,216,160,0.1) 0%, transparent 58%),
+      url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.016'%3E%3Ccircle cx='22' cy='22' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  /* Big deco word */
+  .hero-deco {
+    position: absolute;
+    bottom: -40px; right: -15px;
+    font-family: 'Yeseva One', serif;
+    font-size: 18vw;
+    color: rgba(255,255,255,0.022);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -4px;
+  }
+  .hero-content {
+    position: relative;
+    padding: 86px 32px 62px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(141,216,160,0.14);
+    border: 1px solid rgba(141,216,160,0.3);
+    color: var(--mint);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 7px 22px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Yeseva One', serif;
+    font-size: clamp(2.5rem, 6.8vw, 4.8rem);
+    color: #fff;
+    line-height: 1.08;
+    max-width: 680px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    color: #b8f0c0;
+    font-style: italic;
+    font-family: 'Lora', serif;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.56);
+    font-size: 1.02rem;
+    font-weight: 300;
+    margin-top: 18px;
+    max-width: 500px;
+    line-height: 1.62;
+    letter-spacing: 0.3px;
+  }
+  /* Stat pills */
+  .hero-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-stat .hs-num {
+    font-family: 'Yeseva One', serif;
+    font-size: 2.2rem;
+    color: var(--mint);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat .hs-label {
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.44);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+  .hero-bar {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--broccoli), var(--leaf), var(--mint),
+      var(--gold), var(--carrot), var(--tomato), var(--purple));
+  }
+
+  /* ── Article wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 24px 90px;
+  }
+
+  /* ── Intro box ── */
+  .intro-box {
+    background: linear-gradient(135deg, var(--mint-pale), var(--mint-soft));
+    border-left: 5px solid var(--leaf);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 34px;
+    margin-bottom: 52px;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--broccoli);
+    font-family: 'Lora', serif;
+    line-height: 1.92;
+  }
+
+  /* ── Section ── */
+  .tip-section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--deep-green), var(--mid-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 22px rgba(15,51,24,0.3);
+  }
+  .title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 3px;
+  }
+  .title-group h2 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.58rem;
+    color: var(--text);
+    font-weight: 400;
+    line-height: 1.22;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.92;
+  }
+
+  /* ── Action card ── */
+  .action-card {
+    background: var(--white);
+    border: 1px solid #b0dab8;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 18px rgba(30,92,42,0.07);
+  }
+  .ac-icon { font-size: 1.3rem; margin-top: 1px; flex-shrink: 0; }
+  .ac-text { font-size: 0.94rem; color: var(--text-mid); line-height: 1.78; }
+  .ac-text strong { color: var(--deep-green); font-weight: 700; }
+
+  /* ── Rainbow divider ── */
+  .rainbow-divider {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg,
+      var(--leaf), var(--gold), var(--carrot),
+      var(--tomato), var(--purple), var(--sky));
+    border-radius: 4px;
+    margin: 32px 0;
+    opacity: 0.5;
+  }
+
+  /* ── Rainbow veggies grid ── */
+  .rainbow-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+  @media(max-width:600px){ .rainbow-grid { grid-template-columns: 1fr 1fr; } }
+  .rainbow-card {
+    border-radius: 16px;
+    padding: 20px 14px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .rainbow-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  }
+  .rainbow-card.grn  { background: linear-gradient(135deg,#e8f8ec,#f4fbf6); border-color:#b0dab8; }
+  .rainbow-card.org  { background: linear-gradient(135deg,#fff3eb,#fffaf5); border-color:#f0b878; }
+  .rainbow-card.red  { background: linear-gradient(135deg,#fdeaea,#fff5f5); border-color:#f0b0b0; }
+  .rainbow-card.purp { background: linear-gradient(135deg,#f4eefb,#faf7ff); border-color:#c8b0e8; }
+  .rainbow-card.yell { background: linear-gradient(135deg,#fff8e8,#fffef4); border-color:#f0d878; }
+  .rainbow-card.wht  { background: linear-gradient(135deg,#f5f5f5,#fcfcfc); border-color:#d8d8d8; }
+  .rainbow-card .rc-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .rainbow-card h4 {
+    font-family: 'Yeseva One', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .rainbow-card.grn  h4 { color: var(--broccoli); }
+  .rainbow-card.org  h4 { color: #8a4a00; }
+  .rainbow-card.red  h4 { color: #8a1818; }
+  .rainbow-card.purp h4 { color: var(--purple); }
+  .rainbow-card.yell h4 { color: #7a6000; }
+  .rainbow-card.wht  h4 { color: #4a4a4a; }
+  .rainbow-card p { font-size: 0.77rem; line-height: 1.58; }
+  .rainbow-card.grn  p { color: #2a5a38; }
+  .rainbow-card.org  p { color: #7a4200; }
+  .rainbow-card.red  p { color: #7a1a1a; }
+  .rainbow-card.purp p { color: #4a2a6a; }
+  .rainbow-card.yell p { color: #6a5000; }
+  .rainbow-card.wht  p { color: #4a4a4a; }
+
+  /* ── Dark nature block ── */
+  .nature-block {
+    background: linear-gradient(145deg, var(--deep-green), var(--broccoli));
+    border-radius: 22px;
+    padding: 40px 34px;
+    margin: 44px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .nature-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 65% 55% at 88% 8%,
+        rgba(141,216,160,0.13) 0%, transparent 62%),
+      url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.018'%3E%3Ccircle cx='22' cy='22' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .nature-block::after {
+    content: '🥦';
+    position: absolute;
+    font-size: 160px;
+    bottom: -15px; right: 18px;
+    pointer-events: none;
+    opacity: 0.1;
+    line-height: 1;
+  }
+  .nature-block h3 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.5rem;
+    color: var(--mint);
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .nature-block > p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.87rem;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .nat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+  @media(max-width:500px){ .nat-grid { grid-template-columns: 1fr; } }
+  .nat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(141,216,160,0.2);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .nat-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 1px; }
+  .nat-text h5 { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .nat-text p  { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.58; }
+
+  /* ── Colour = Nutrition box ── */
+  .colour-box {
+    background: linear-gradient(135deg, var(--gold-pale), #fffef8);
+    border: 1px solid #f0d878;
+    border-radius: 18px;
+    padding: 28px 32px;
+    margin: 36px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .colour-box .cb-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 2px; }
+  .colour-box h3 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.08rem;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .colour-box p { font-size: 0.93rem; color: #4a3800; line-height: 1.8; }
+
+  /* ── Plate visual ── */
+  .plate-section {
+    background: var(--white);
+    border: 1px solid #b0dab8;
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin: 36px 0;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .plate-section h3 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1.1rem;
+    color: var(--broccoli);
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .plate-section > p {
+    font-size: 0.86rem;
+    color: var(--text-light);
+    margin-bottom: 22px;
+  }
+  .plate-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .pb-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .pb-label {
+    width: 130px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    flex-shrink: 0;
+  }
+  .pb-track {
+    flex: 1;
+    height: 11px;
+    background: #eef8f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .pb-fill {
+    height: 100%;
+    border-radius: 10px;
+  }
+  .pb-fill.g1 { background: linear-gradient(90deg, #2e8b57, #52c27a); }
+  .pb-fill.g2 { background: linear-gradient(90deg, #e06820, #f5a050); }
+  .pb-fill.g3 { background: linear-gradient(90deg, #c83030, #e87070); }
+  .pb-fill.g4 { background: linear-gradient(90deg, #6a3a8a, #a870d0); }
+  .pb-fill.g5 { background: linear-gradient(90deg, #d4920a, #f0c040); }
+  .pb-value {
+    width: 64px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Daily habits ── */
+  .habits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media(max-width:560px){ .habits-row { grid-template-columns: 1fr; } }
+  .habit-tile {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 22px 22px;
+    border: 1px solid #b8d8c0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .habit-tile .ht-icon { font-size: 1.7rem; margin-bottom: 10px; }
+  .habit-tile h4 {
+    font-family: 'Yeseva One', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--broccoli);
+    margin-bottom: 7px;
+  }
+  .habit-tile p { font-size: 0.85rem; color: var(--text-light); line-height: 1.66; }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(145deg, var(--deep-green), var(--broccoli));
+    border-radius: 22px;
+    padding: 50px 38px;
+    text-align: center;
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 50%,
+        rgba(141,216,160,0.1) 0%, transparent 65%);
+  }
+  .closing-icon {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    display: block;
+    position: relative;
+    animation: leafspin 5s ease-in-out infinite;
+  }
+  @keyframes leafspin {
+    0%,100% { transform: rotate(-5deg) scale(1); }
+    50%      { transform: rotate(5deg) scale(1.1); }
+  }
+  .closing p {
+    font-family: 'Lora', serif;
+    font-size: 1.28rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.82;
+    margin-bottom: 16px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(141,216,160,0.65);
+    font-weight: 700;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>✦ Natural Health &amp; Nutrition</span>
+  <span><strong>~800 Words</strong> · Vegetables Guide</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-deco">EAT</div>
+  <div class="hero-content">
+    <div class="hero-badge">🥦 Nature's Greatest Medicine</div>
+    <h1>Benefits of Vegetables<br><em>for Health</em></h1>
+    <p class="hero-sub">The most colourful, nourishing, and life-giving gift the earth has ever placed on your plate</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-num">20,000+</div>
+        <div class="hs-label">Phytonutrients in plants</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">80%</div>
+        <div class="hs-label">Disease risk reduction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">5+</div>
+        <div class="hs-label">Servings needed daily</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bar"></div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    If you could take a single pill that strengthened your heart, sharpened your mind, protected you from cancer, improved your skin, strengthened your bones, balanced your blood sugar, boosted your immunity, and helped you live a longer and more energetic life — you would take it without hesitation. That pill does not exist. But the vegetables sitting quietly in your refrigerator do all of this and more. They always have. The most powerful medicine on earth has roots, leaves, and a colour that makes it immediately, unmistakably alive.
+  </div>
+
+  <!-- 1. The Rainbow Principle -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌈</div>
+      <div class="title-group">
+        <span>Benefit No. 1</span>
+        <h2>Every Colour on Your Plate Is a Different Medicine</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Nature colour-coded your medicine for you. Each colour group in the vegetable world contains a distinct set of phytonutrients — plant compounds that have no caloric value but extraordinary biological value — that protect different systems in the body in different ways. The deep green of broccoli signals sulforaphane, a powerful anti-cancer compound. The vivid orange of carrots signals beta-carotene, which your body converts to Vitamin A for eye health and immune function. The rich red of tomatoes signals lycopene, one of the most potent antioxidants known to reduce prostate and breast cancer risk.</p>
+      <p>The deep purple of aubergine and red cabbage signals anthocyanins — the same brain-protective flavonoids found in blueberries. The creamy white of garlic and onions signals allicin — the remarkable antimicrobial and cardiovascular-protective compound that has been used medicinally for five thousand years. Eating a genuinely diverse range of vegetable colours every single day ensures you are receiving this extraordinary full spectrum of protection, rather than the narrow slice that comes from eating the same two or three vegetables on rotation.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🎨</div>
+      <div class="ac-text"><strong>Eat the rainbow daily:</strong> Challenge yourself to include at least three different vegetable colours at every meal. Green leaves, an orange or red vegetable, and something purple or white creates a genuinely complete phytonutrient profile that no supplement can replicate. The more colours on your plate, the more comprehensively your body is protected.</div>
+    </div>
+  </div>
+
+  <div class="rainbow-divider"></div>
+
+  <!-- Rainbow grid -->
+  <div class="rainbow-grid">
+    <div class="rainbow-card grn">
+      <div class="rc-icon">🥦</div>
+      <h4>Green</h4>
+      <p>Sulforaphane, folate, Vitamin K — cancer protection, bone health, heart strength</p>
+    </div>
+    <div class="rainbow-card org">
+      <div class="rc-icon">🥕</div>
+      <h4>Orange</h4>
+      <p>Beta-carotene, Vitamin A — eye health, immunity, radiant glowing skin</p>
+    </div>
+    <div class="rainbow-card red">
+      <div class="rc-icon">🍅</div>
+      <h4>Red</h4>
+      <p>Lycopene, Vitamin C — cancer prevention, heart protection, immune strength</p>
+    </div>
+    <div class="rainbow-card purp">
+      <div class="rc-icon">🍆</div>
+      <h4>Purple</h4>
+      <p>Anthocyanins, resveratrol — brain health, memory, anti-ageing protection</p>
+    </div>
+    <div class="rainbow-card yell">
+      <div class="rc-icon">🌽</div>
+      <h4>Yellow</h4>
+      <p>Lutein, zeaxanthin — eye protection, cell repair, cardiovascular support</p>
+    </div>
+    <div class="rainbow-card wht">
+      <div class="rc-icon">🧄</div>
+      <h4>White</h4>
+      <p>Allicin, quercetin — antimicrobial, cholesterol-lowering, immune activation</p>
+    </div>
+  </div>
+
+  <div class="rainbow-divider"></div>
+
+  <!-- 2. Heart and Cancer Protection -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">❤️</div>
+      <div class="title-group">
+        <span>Benefit No. 2</span>
+        <h2>They Protect Your Heart and Reduce Cancer Risk</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>The evidence connecting vegetable consumption to reduced heart disease and cancer risk is among the most consistent and robust in all of nutritional science. The World Health Organisation estimates that up to eighty percent of premature heart disease and stroke is preventable — and a diet rich in vegetables is one of the most significant individual factors in that prevention. Vegetables lower blood pressure, reduce LDL cholesterol, decrease arterial inflammation, and improve the flexibility and function of blood vessels — all simultaneously, all naturally, with every serving.</p>
+      <p>For cancer protection, cruciferous vegetables — broccoli, cauliflower, kale, Brussels sprouts, and cabbage — contain sulforaphane and indole-3-carbinol, compounds that activate the body's own cancer-fighting enzymes, inhibit tumour growth, and promote the self-destruction of cancer cells before they can establish and spread. A Harvard study following over one hundred thousand adults found that those who ate the most vegetables had significantly lower rates of colorectal, breast, stomach, and lung cancers over a fifteen-year follow-up period.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🥬</div>
+      <div class="ac-text"><strong>Your most powerful anti-cancer vegetables:</strong> Broccoli, kale, Brussels sprouts, garlic, onions, spinach, tomatoes, and beetroot. Aim to eat at least one cruciferous vegetable every single day — lightly steamed or roasted, not boiled to mush, which destroys the very sulforaphane you are eating them for. Chop broccoli and let it rest for five minutes before cooking to maximise sulforaphane activation.</div>
+    </div>
+  </div>
+
+  <!-- Dark nature block -->
+  <div class="nature-block">
+    <h3>What Vegetables Are Quietly Doing For You Right Now</h3>
+    <p>The remarkable cascade of healing that happens with every vegetable-rich meal</p>
+    <div class="nat-grid">
+      <div class="nat-card">
+        <div class="nat-icon">🧬</div>
+        <div class="nat-text">
+          <h5>Repairing Your DNA</h5>
+          <p>Folate in leafy greens and antioxidants across all vegetables actively repair DNA damage that accumulates daily from pollution, stress, and normal cellular activity.</p>
+        </div>
+      </div>
+      <div class="nat-card">
+        <div class="nat-icon">🔥</div>
+        <div class="nat-text">
+          <h5>Cooling Inflammation</h5>
+          <p>Chronic inflammation is the root of most modern disease. The phytonutrients in brightly coloured vegetables suppress inflammatory pathways at the cellular level with every meal.</p>
+        </div>
+      </div>
+      <div class="nat-card">
+        <div class="nat-icon">🦠</div>
+        <div class="nat-text">
+          <h5>Feeding Your Gut Microbiome</h5>
+          <p>The fibre in vegetables is the primary food source for your beneficial gut bacteria — the diverse ecosystem that governs immunity, mood, digestion, and metabolic health.</p>
+        </div>
+      </div>
+      <div class="nat-card">
+        <div class="nat-icon">✨</div>
+        <div class="nat-text">
+          <h5>Beautifying Your Skin</h5>
+          <p>Vitamin C builds collagen. Beta-carotene creates a natural skin glow. Antioxidants fight the oxidative damage that causes premature wrinkles, dullness, and uneven tone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Gut, Brain, Weight -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🧠</div>
+      <div class="title-group">
+        <span>Benefit No. 3</span>
+        <h2>They Nourish Your Brain, Gut, and Weight Naturally</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Your brain is made largely of fat — but it runs on glucose and it is protected by antioxidants. The deep green leafy vegetables — spinach, kale, Swiss chard, and romaine lettuce — are consistently linked to slower cognitive decline and better memory performance as we age. A study from Rush University found that people who ate one to two servings of leafy greens daily had the cognitive function of someone eleven years younger than those who ate few or none. Eleven years. From a daily salad.</p>
+      <p>Vegetables are also the primary food source for the gut microbiome — the trillions of bacteria that live in the digestive system and govern immunity, mood, inflammation, and metabolic health. The diverse fibres in different vegetables feed different beneficial bacterial species, creating the rich microbial diversity that is the hallmark of genuine good health. And because vegetables are simultaneously low in calories and high in volume, fibre, and water content, they are the most effective natural tool available for maintaining a healthy weight without ever feeling hungry or deprived.</p>
+    </div>
+  </div>
+
+  <!-- Colour = Nutrition box -->
+  <div class="colour-box">
+    <div class="cb-icon">🌟</div>
+    <div>
+      <h3>The One Rule That Changes Everything — Half Your Plate</h3>
+      <p>The simplest and most evidence-based dietary recommendation in all of nutrition science is this: fill at least half your plate with vegetables at every meal. Not as a side thought or a garnish — as the centrepiece. Cultures that follow this pattern naturally — the Mediterranean, Japanese, and Blue Zone populations — consistently show the lowest rates of heart disease, cancer, diabetes, dementia, and obesity in the world. The half-plate rule is not a diet. It is a decision to let food be medicine, every single day, three times a day.</p>
+    </div>
+  </div>
+
+  <!-- Plate visual bars -->
+  <div class="plate-section">
+    <h3>Your Daily Vegetable Targets — And What Each Protects</h3>
+    <p>Based on WHO and Harvard nutrition guidelines for optimal health protection</p>
+    <div class="plate-bars">
+      <div class="pb-row">
+        <div class="pb-label">Leafy Greens</div>
+        <div class="pb-track"><div class="pb-fill g1" style="width:85%"></div></div>
+        <div class="pb-value">2 cups/day</div>
+      </div>
+      <div class="pb-row">
+        <div class="pb-label">Orange & Yellow</div>
+        <div class="pb-track"><div class="pb-fill g2" style="width:65%"></div></div>
+        <div class="pb-value">1 serving</div>
+      </div>
+      <div class="pb-row">
+        <div class="pb-label">Red Vegetables</div>
+        <div class="pb-track"><div class="pb-fill g3" style="width:60%"></div></div>
+        <div class="pb-value">1 serving</div>
+      </div>
+      <div class="pb-row">
+        <div class="pb-label">Purple Vegetables</div>
+        <div class="pb-track"><div class="pb-fill g4" style="width:48%"></div></div>
+        <div class="pb-value">3–4×/week</div>
+      </div>
+      <div class="pb-row">
+        <div class="pb-label">Garlic & Onions</div>
+        <div class="pb-track"><div class="pb-fill g5" style="width:72%"></div></div>
+        <div class="pb-value">Daily</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily habits -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">💚</div>
+      <div class="title-group">
+        <span>Daily Practice</span>
+        <h2>Simple Ways to Eat More Vegetables Every Day</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Knowing why vegetables matter is the first step — making them effortlessly present in your daily life is where the real transformation begins. These habits make eating more vegetables feel natural, joyful, and deeply satisfying rather than like a discipline or sacrifice.</p>
+    </div>
+    <div class="habits-row">
+      <div class="habit-tile">
+        <div class="ht-icon">🌅</div>
+        <h4>Sneak Greens into Breakfast</h4>
+        <p>Add a large handful of spinach to your morning smoothie — it disappears completely behind the banana and berries but delivers folate, iron, and Vitamin K from your very first meal.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🥗</div>
+        <h4>Make Vegetables the Hero</h4>
+        <p>Shift your mindset from vegetables as a side dish to the main event. Roasted vegetables with olive oil, garlic, and herbs are not a compromise — they are one of the most delicious meals on earth.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🛒</div>
+        <h4>Buy What's in Season</h4>
+        <p>Seasonal vegetables are cheaper, more flavourful, and more nutritious than out-of-season produce. When vegetables taste extraordinary, eating more of them requires no willpower at all.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🫙</div>
+        <h4>Keep Cut Veg Visible</h4>
+        <p>Wash and chop a selection of raw vegetables each Sunday and keep them at eye level in your fridge. What you see first is what you eat — make vegetables the easiest choice in the house.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <span class="closing-icon">🥦</span>
+    <p>"Every vegetable you eat is a message of love to your own body. It says: I see you, I value you, I want you to thrive. Your body receives that message at the cellular level — and it responds with energy, health, and a long and vibrant life."</p>
+    <small>✦ Eat the rainbow · Fill the plate · Feed the life ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
