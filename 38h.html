@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build Strong Immunity</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #f3f7f4;
+    --ink:         #0a160c;
+    --emerald:     #1a6b3c;
+    --jade:        #2d8c58;
+    --mint:        #4db87a;
+    --amber:       #d4891a;
+    --amber-light: #fdf5e8;
+    --crimson:     #b83040;
+    --sky:         #2060a0;
+    --sky-light:   #eaf2fc;
+    --cream:       #edf5ef;
+    --muted:       #4a6650;
+    --rule:        #b8d4c0;
+    --pale:        #f8fbf9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18.5px;
+    line-height: 1.92;
+  }
+
+  /* Top hero band */
+  .hero-band {
+    background: linear-gradient(135deg, #0a2e18 0%, #1a6b3c 50%, #0d3d22 100%);
+    padding: 52px 36px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Radial glow behind hero text */
+  .hero-band::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(77,184,122,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 18px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--mint);
+  }
+
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(200,240,215,0.85);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.65;
+    position: relative;
+  }
+
+  /* Shield icon */
+  .shield-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+    position: relative;
+  }
+  .shield-row span {
+    font-size: 2rem;
+    animation: shieldPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes shieldPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.12); opacity: 0.85; }
+  }
+  .shield-line {
+    width: 60px;
+    height: 1px;
+    background: rgba(77,184,122,0.5);
+  }
+
+  /* Main wrapper */
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 34px 110px;
+  }
+
+  /* Byline strip */
+  .byline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 44px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Body text */
+  p { margin-bottom: 1.55em; color: #10200f; }
+
+  /* Drop cap */
+  p.lead::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 5.6rem;
+    font-weight: 900;
+    color: var(--emerald);
+    float: left;
+    line-height: 0.70;
+    margin-right: 14px;
+    margin-top: 12px;
+    padding-bottom: 8px;
+  }
+  p.lead { font-size: 1.1rem; font-weight: 400; }
+
+  /* Section headings */
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3em 0 0.6em;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .step-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    background: var(--emerald);
+    color: #fff;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+    box-shadow: 0 4px 14px rgba(26,107,60,0.35);
+  }
+  .h2-inner {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 8px;
+    flex: 1;
+    line-height: 1.25;
+    padding-top: 8px;
+  }
+
+  /* Pull quote */
+  blockquote {
+    margin: 3.5em 0;
+    padding: 36px 44px;
+    background: var(--cream);
+    border-left: 6px solid var(--emerald);
+    position: relative;
+  }
+  blockquote::before {
+    content: '\201C';
+    font-family: 'Fraunces', serif;
+    font-size: 7rem;
+    color: var(--mint);
+    opacity: 0.25;
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    line-height: 1;
+  }
+  blockquote p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--emerald);
+    line-height: 1.55;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* Amber tip box */
+  .amber-box {
+    background: var(--amber-light);
+    border: 1px solid #e8c070;
+    border-left: 5px solid var(--amber);
+    padding: 22px 28px;
+    margin: 2.2em 0;
+    border-radius: 3px;
+  }
+  .amber-box strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .amber-box p { margin: 0; font-size: 0.97rem; color: #3c2208; line-height: 1.8; }
+
+  /* Sky blue box */
+  .sky-box {
+    background: var(--sky-light);
+    border: 1px solid #a8c4e0;
+    border-left: 5px solid var(--sky);
+    padding: 22px 28px;
+    margin: 2.2em 0;
+    border-radius: 3px;
+  }
+  .sky-box strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--sky);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .sky-box p { margin: 0; font-size: 0.97rem; color: #081838; line-height: 1.8; }
+
+  /* Red warning box */
+  .red-box {
+    background: #fdf0f2;
+    border: 1px solid #e8a8b0;
+    border-left: 5px solid var(--crimson);
+    padding: 22px 28px;
+    margin: 2.2em 0;
+    border-radius: 3px;
+  }
+  .red-box strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .red-box p { margin: 0; font-size: 0.97rem; color: #300810; line-height: 1.8; }
+
+  /* Immunity pillars grid */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 3em 0;
+  }
+  .pillar-card {
+    background: var(--pale);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--emerald);
+    padding: 22px 16px 18px;
+    text-align: center;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  .pillar-card:hover {
+    background: var(--emerald);
+    border-top-color: var(--mint);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26,107,60,0.2);
+  }
+  .pillar-card:hover .pc-label { color: #ffffff; }
+  .pillar-card:hover .pc-desc  { color: rgba(200,240,215,0.85); }
+  .pc-icon  { font-size: 2.2rem; display: block; margin-bottom: 10px; }
+  .pc-label {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--emerald);
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+  }
+  .pc-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.71rem;
+    color: var(--muted);
+    line-height: 1.5;
+    transition: color 0.3s;
+  }
+
+  /* Ornament */
+  .ornament {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.7em;
+    color: var(--jade);
+    opacity: 0.55;
+  }
+
+  /* Footer */
+  .footer-bar {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bar > span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-badge {
+    background: var(--emerald);
+    color: #c0f0d0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-band > * { animation: fadeUp 0.8s ease both; }
+  .hero-eyebrow  { animation-delay: 0.1s; }
+  .hero-title    { animation-delay: 0.2s; }
+  .hero-sub      { animation-delay: 0.3s; }
+  .shield-row    { animation-delay: 0.4s; }
+
+  .wrapper > * {
+    animation: fadeUp 0.75s ease both;
+  }
+  .wrapper > *:nth-child(1) { animation-delay: 0.05s; }
+  .wrapper > *:nth-child(2) { animation-delay: 0.13s; }
+  .wrapper > *:nth-child(3) { animation-delay: 0.21s; }
+  .wrapper > *:nth-child(n+4) { animation-delay: 0.28s; }
+
+  @media (max-width: 580px) {
+    .wrapper { padding: 40px 18px 72px; }
+    .hero-band { padding: 38px 20px 32px; }
+    blockquote { padding: 24px 22px; }
+    .pillars { grid-template-columns: repeat(2, 1fr); }
+    h2 { gap: 12px; }
+    .step-bubble { min-width: 38px; height: 38px; font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero Header -->
+<div class="hero-band">
+  <div class="hero-eyebrow">Immunity &nbsp;·&nbsp; Strength &nbsp;·&nbsp; Resilience</div>
+  <h1 class="hero-title">How to Build a<br><em>Strong Immune System</em></h1>
+  <p class="hero-sub">
+    Your immune system is the most sophisticated defence network ever created.
+    Here is how to honour it — and make it unbreakable.
+  </p>
+  <div class="shield-row">
+    <div class="shield-line"></div>
+    <span>🛡️</span>
+    <div class="shield-line"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <div class="byline">
+    <span>Health &amp; Immunity Desk</span>
+    <span>800 Words &nbsp;·&nbsp; A Complete Guide</span>
+  </div>
+
+  <p class="lead">
+    Inside your body, right now, an invisible army is standing guard. Billions
+    of cells — white blood cells, antibodies, natural killer cells, T-cells,
+    B-cells — are patrolling your blood, your tissues, and your organs, searching
+    for anything that does not belong. A virus. A bacterium. A rogue cell that has
+    turned dangerous. This army has protected you your entire life, mostly without
+    your knowledge and certainly without your gratitude. But here is the truth that
+    modern science has made undeniable: how you live determines how well that army
+    fights. Feed it well, rest it properly, and it becomes formidable. Neglect it,
+    and it falters quietly — leaving you vulnerable to every illness that passes through.
+    Building strong immunity is not about taking a pill. It is about building a life.
+  </p>
+
+  <blockquote>
+    <p>The part can never be well unless the whole is well. To take care of one part, you must take care of all parts.</p>
+    <cite>— Plato</cite>
+  </blockquote>
+
+  <h2>
+    <span class="step-bubble">1</span>
+    <span class="h2-inner">Nourish Your Body with Immune-Boosting Foods</span>
+  </h2>
+
+  <p>
+    Your immune cells are made from what you eat. This is not a figure of speech —
+    it is biochemistry. Vitamin C, found abundantly in citrus fruits, bell peppers,
+    kiwi, and broccoli, stimulates the production and function of white blood cells
+    — your body's primary infection fighters. Zinc, found in nuts, seeds, legumes,
+    and meat, is essential for the development of immune cells and the production of
+    antibodies. Vitamin D — obtained from sunlight, fatty fish, and fortified foods —
+    activates the immune response in ways that no other nutrient can replicate. People
+    with low Vitamin D levels are significantly more susceptible to respiratory
+    infections, autoimmune conditions, and prolonged illness. Eat a rainbow of
+    vegetables and fruits every day. Include garlic — whose allicin compound has
+    direct antimicrobial properties — and ginger, which reduces inflammatory markers
+    throughout the body. Your plate is your first line of defence.
+  </p>
+
+  <div class="amber-box">
+    <strong>Daily Immunity Plate</strong>
+    <p>Aim to include at least one source of Vitamin C, one zinc-rich food, and one portion of leafy greens at every main meal. Add a clove of garlic and a thumb of fresh ginger to your cooking daily. These small additions cost almost nothing — and their cumulative effect on immunity over months is profound.</p>
+  </div>
+
+  <h2>
+    <span class="step-bubble">2</span>
+    <span class="h2-inner">Sleep — Where Immunity Is Built and Repaired</span>
+  </h2>
+
+  <p>
+    Sleep is not rest for the immune system — it is work. During deep sleep, the
+    body produces and releases cytokines — proteins that coordinate the immune
+    response and fight infection and inflammation. People who sleep fewer than
+    six hours per night are four times more likely to catch a cold when exposed
+    to the virus than those who sleep seven hours or more. That is not a small
+    difference — it is the difference between a robust immune system and a
+    compromised one. Chronic sleep deprivation also reduces the number of natural
+    killer cells circulating in the blood, lowers antibody production after
+    vaccination, and prolongs recovery from illness. Seven to nine hours of
+    quality sleep is not indulgence. It is the most important immune-building
+    activity your body performs — and it does it while you sleep peacefully,
+    undisturbed.
+  </p>
+
+  <div class="ornament">— ✦ —</div>
+
+  <h2>
+    <span class="step-bubble">3</span>
+    <span class="h2-inner">Move Your Body — Exercise as Immune Medicine</span>
+  </h2>
+
+  <p>
+    Moderate, regular exercise is one of the most powerful natural immune
+    boosters known to science. It increases the circulation of immune cells
+    throughout the body, reduces chronic inflammation, improves lymphatic
+    drainage, and enhances the surveillance capacity of the entire immune
+    network. A thirty-minute brisk walk five days a week has been shown to
+    reduce the frequency of upper respiratory infections by nearly half in
+    people who were previously sedentary. The key word is moderate. Extreme,
+    prolonged exercise — marathon training without adequate recovery, for
+    example — can temporarily suppress immunity rather than enhance it. The
+    goal is consistent, enjoyable movement that makes you breathe deeply and
+    feel alive. Walk, swim, dance, cycle, stretch. Do it every day. Your
+    immune cells will circulate more freely for it.
+  </p>
+
+  <h2>
+    <span class="step-bubble">4</span>
+    <span class="h2-inner">Manage Stress Before It Manages You</span>
+  </h2>
+
+  <p>
+    Stress is the silent destroyer of immune function. When cortisol — the
+    body's primary stress hormone — remains elevated for extended periods, it
+    directly suppresses the immune system. It reduces the production of
+    lymphocytes, impairs the function of natural killer cells, and creates
+    a state of chronic low-grade inflammation that weakens every line of
+    defence. The people who fall ill most often are frequently not those
+    exposed to the most germs — they are those living under the most
+    sustained psychological pressure. Deep breathing, meditation, yoga,
+    time in nature, laughter, music, and meaningful conversation all
+    measurably lower cortisol and restore immune function. Stress management
+    is not a luxury. For your immune system, it is essential maintenance.
+  </p>
+
+  <div class="sky-box">
+    <strong>The Science of Calm</strong>
+    <p>Studies show that just 20 minutes of mindful breathing or meditation daily can significantly lower cortisol levels and increase natural killer cell activity within eight weeks. The immune system responds to calm the same way a garden responds to water — it begins to flourish almost immediately when the conditions are right.</p>
+  </div>
+
+  <h2>
+    <span class="step-bubble">5</span>
+    <span class="h2-inner">Hydrate — Water Is the River Your Immunity Travels</span>
+  </h2>
+
+  <p>
+    Every immune cell in your body depends on adequate hydration to function.
+    Water carries nutrients to cells, flushes toxins from the body, and
+    maintains the mucous membranes lining your nose, throat, and lungs —
+    the first physical barrier that traps and expels pathogens before they
+    can enter the bloodstream. When you are even mildly dehydrated, these
+    membranes dry out and crack, making it dramatically easier for viruses
+    and bacteria to gain entry. Eight to ten glasses of clean water per day
+    is not a wellness cliché — it is a physiological minimum. Add warm
+    lemon water each morning, herbal teas throughout the day, and
+    hydrating foods like cucumber, watermelon, and leafy greens. Keep the
+    river flowing, and your immune army moves swiftly through it.
+  </p>
+
+  <h2>
+    <span class="step-bubble">6</span>
+    <span class="h2-inner">Protect Your Gut — Where 70% of Immunity Lives</span>
+  </h2>
+
+  <p>
+    Perhaps the most surprising truth about immunity is where it lives: in
+    your gut. Approximately seventy percent of the immune system is housed
+    in the gut-associated lymphoid tissue — a vast network of immune cells
+    lining the intestinal wall. The trillions of bacteria, fungi, and
+    microorganisms that inhabit your gut — your microbiome — train, regulate,
+    and directly influence every branch of immune function. A diverse, healthy
+    microbiome produces short-chain fatty acids that reduce inflammation,
+    stimulate antibody production, and keep immune responses balanced and
+    precise. Feed it with prebiotic foods — garlic, onions, bananas, oats —
+    and probiotic foods — yogurt, kefir, sauerkraut, kimchi. Avoid
+    unnecessary antibiotics, excessive sugar, and ultra-processed foods,
+    all of which erode microbial diversity over time. A healthy gut is a
+    fortress. Neglect it, and the entire immune architecture weakens from
+    the inside.
+  </p>
+
+  <!-- Immunity Pillars visual -->
+  <div class="pillars">
+    <div class="pillar-card">
+      <span class="pc-icon">🥦</span>
+      <span class="pc-label">Nutrition</span>
+      <span class="pc-desc">Vitamins C, D & Zinc daily</span>
+    </div>
+    <div class="pillar-card">
+      <span class="pc-icon">😴</span>
+      <span class="pc-label">Sleep</span>
+      <span class="pc-desc">7–9 hours, non-negotiable</span>
+    </div>
+    <div class="pillar-card">
+      <span class="pc-icon">🏃</span>
+      <span class="pc-label">Exercise</span>
+      <span class="pc-desc">30 mins moderate daily</span>
+    </div>
+    <div class="pillar-card">
+      <span class="pc-icon">🧘</span>
+      <span class="pc-label">Calm Mind</span>
+      <span class="pc-desc">Lower cortisol daily</span>
+    </div>
+    <div class="pillar-card">
+      <span class="pc-icon">💧</span>
+      <span class="pc-label">Hydration</span>
+      <span class="pc-desc">8–10 glasses of water</span>
+    </div>
+    <div class="pillar-card">
+      <span class="pc-icon">🦠</span>
+      <span class="pc-label">Gut Health</span>
+      <span class="pc-desc">Feed your microbiome</span>
+    </div>
+  </div>
+
+  <div class="red-box">
+    <strong>Important Note</strong>
+    <p>Building strong immunity through lifestyle is deeply powerful — but it does not replace vaccination, medical care, or prescribed treatment when illness occurs. These habits work alongside medicine, not instead of it. If you have a chronic health condition or are immunocompromised, always consult your doctor before making significant lifestyle changes.</p>
+  </div>
+
+  <p>
+    Your immune system does not ask for much. It asks for sleep, for nourishing
+    food, for clean water, for movement, for calm, and for a healthy gut to call
+    home. Give it these things — not perfectly, but consistently — and it will
+    repay you in a currency no amount of money can buy: years of health, vitality,
+    and resilience. The invisible army inside you is ready to fight. Your only job
+    is to make sure it is strong enough to win. Begin today. Begin simply.
+    Feed the army well. Let it rest. And watch how powerfully it protects you —
+    every single day, for the rest of your life.
+  </p>
+
+  <div class="footer-bar">
+    <span>Health &amp; Immunity Desk — The Complete Immunity Guide</span>
+    <span class="footer-badge">~ Words</span>
+  </div>
+
+</div>
+</body>
+</html>
