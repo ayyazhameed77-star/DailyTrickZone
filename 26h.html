@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tips to Reduce Belly Fat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose:       #8b2252;
+    --deep-rose:  #6a1a3f;
+    --blush:      #c4527a;
+    --soft-pink:  #f7d6e0;
+    --peach:      #fdeee8;
+    --warm-cream: #fdf8f4;
+    --gold:       #c9882a;
+    --warm-gold:  #f0b84a;
+    --text:       #2c1a22;
+    --text-mid:   #5a3a48;
+    --text-light: #8a6070;
+    --white:      #ffffff;
+    --mint-accent:#2e7d5e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--warm-cream);
+    font-family: 'Mulish', sans-serif;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--deep-rose);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 28px;
+    font-size: 0.79rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.6px;
+  }
+  .top-bar strong { color: #f7c5d5; }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(145deg, #6a1a3f 0%, #8b2252 45%, #b84070 100%);
+    padding: 76px 24px 62px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 10% 60%, rgba(247,214,224,0.1) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 88% 30%, rgba(201,136,42,0.09) 0%, transparent 60%);
+  }
+  .hero::after {
+    content: '✿';
+    position: absolute;
+    font-size: 420px;
+    color: rgba(255,255,255,0.022);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(247,214,224,0.15);
+    border: 1px solid rgba(247,214,224,0.35);
+    color: #f7d6e0;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 7px 22px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.3rem, 6vw, 4rem);
+    color: #fff;
+    line-height: 1.18;
+    max-width: 740px;
+    margin: 0 auto 18px;
+    font-weight: 700;
+    position: relative;
+  }
+  .hero h1 em {
+    color: var(--warm-gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    font-weight: 300;
+    position: relative;
+    letter-spacing: 0.3px;
+  }
+  .hero-accent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    position: relative;
+  }
+  .hero-accent-line {
+    width: 40px; height: 2px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+  }
+  .hero-accent-dot {
+    width: 8px; height: 8px;
+    background: var(--warm-gold);
+    border-radius: 50%;
+  }
+
+  /* ── Article wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 54px 24px 84px;
+  }
+
+  /* ── Intro ── */
+  .intro-box {
+    background: linear-gradient(135deg, #fdeef4 0%, #fff5f8 100%);
+    border-left: 5px solid var(--blush);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 34px;
+    margin-bottom: 52px;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--deep-rose);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.92;
+  }
+
+  /* ── Tip section ── */
+  .tip-section { margin-bottom: 48px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 54px; height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--deep-rose), var(--blush));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.55rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(106,26,63,0.28);
+  }
+  .title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 3px;
+  }
+  .title-group h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1.22;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.9;
+  }
+
+  /* ── Action card ── */
+  .action-card {
+    background: var(--white);
+    border: 1px solid #f0d0da;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 16px rgba(139,34,82,0.07);
+  }
+  .ac-icon { font-size: 1.3rem; margin-top: 1px; flex-shrink: 0; }
+  .ac-text { font-size: 0.94rem; color: var(--text-mid); line-height: 1.75; }
+  .ac-text strong { color: var(--deep-rose); font-weight: 700; }
+
+  /* ── Divider ── */
+  .petal-divider {
+    text-align: center;
+    margin: 28px 0;
+    color: var(--blush);
+    font-size: 1rem;
+    letter-spacing: 14px;
+    opacity: 0.38;
+  }
+
+  /* ── Foods that fight belly fat grid ── */
+  .foods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  @media (max-width: 560px) { .foods-grid { grid-template-columns: 1fr 1fr; } }
+  .food-card {
+    background: var(--white);
+    border: 1px solid #f0d8e2;
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: transform 0.2s;
+  }
+  .food-card:hover { transform: translateY(-3px); }
+  .food-card .f-icon { font-size: 1.9rem; margin-bottom: 9px; }
+  .food-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--deep-rose);
+    margin-bottom: 5px;
+  }
+  .food-card p { font-size: 0.78rem; color: var(--text-light); line-height: 1.55; }
+
+  /* ── Workout highlight block ── */
+  .workout-block {
+    background: linear-gradient(135deg, var(--deep-rose), #b84070);
+    border-radius: 20px;
+    padding: 38px 32px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .workout-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(247,214,224,0.1) 0%, transparent 60%);
+  }
+  .workout-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--warm-gold);
+    font-style: italic;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .workout-block > p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.88rem;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .workout-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+  @media (max-width: 500px) { .workout-steps { grid-template-columns: 1fr; } }
+  .w-step {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(247,214,224,0.22);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .w-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f7c5d5;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .w-step-text h5 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .w-step-text p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.55;
+  }
+
+  /* ── Habits grid ── */
+  .habits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media (max-width: 560px) { .habits-row { grid-template-columns: 1fr; } }
+  .habit-tile {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 20px 22px;
+    border: 1px solid #f0d8e2;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .habit-tile .ht-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .habit-tile h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--deep-rose);
+    margin-bottom: 6px;
+  }
+  .habit-tile p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+  /* ── Myth buster ── */
+  .myth-box {
+    background: linear-gradient(135deg, #fff8e8, #fdf3d8);
+    border: 1px solid #e8cc88;
+    border-radius: 16px;
+    padding: 26px 30px;
+    margin: 36px 0;
+  }
+  .myth-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: #7a5010;
+    font-style: italic;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .myth-box p {
+    font-size: 0.94rem;
+    color: #6a4a20;
+    line-height: 1.78;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(135deg, #fdeef4 0%, #fff5f8 100%);
+    border-radius: 20px;
+    padding: 42px 36px;
+    text-align: center;
+    margin-top: 58px;
+    border: 1px solid #f0c8d8;
+  }
+  .closing p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--deep-rose);
+    line-height: 1.78;
+    margin-bottom: 14px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blush);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>✦ Beauty &amp; Wellness · Body Care</span>
+  <span><strong>~800 Words</strong> · Belly Fat Guide</span>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">🌸 Body Wellness Guide</div>
+  <h1>Tips to Reduce<br><em>Belly Fat</em></h1>
+  <p class="hero-sub">Honest, gentle, and effective ways to feel lighter and stronger from the inside out</p>
+  <div class="hero-accent">
+    <div class="hero-accent-line"></div>
+    <div class="hero-accent-dot"></div>
+    <div class="hero-accent-line"></div>
+  </div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    Let's be honest — belly fat is one of the most talked-about beauty and health concerns women face today. And while flat-tummy promises are everywhere, the real truth is both simpler and more empowering than any quick fix. Reducing belly fat is not about punishing yourself with extreme diets or gruelling workouts. It is about understanding your body, making kinder choices every day, and giving yourself the consistency and patience you truly deserve. Your body is capable of beautiful transformation — here is how to begin.
+  </div>
+
+  <!-- 1. Clean Up Your Eating -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🥗</div>
+      <div class="title-group">
+        <span>Tip No. 1</span>
+        <h2>Eat Clean, Not Less</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>The biggest mistake most women make is eating less rather than eating right. Starving yourself slows your metabolism, triggers cravings, and actually encourages your body to store more fat — especially around the belly. What truly works is choosing whole, nutrient-dense foods that keep you satisfied, fuel your energy, and naturally reduce bloating and fat accumulation.</p>
+      <p>Refined sugar and processed carbohydrates — white bread, packaged snacks, sugary drinks — spike your insulin levels sharply, and insulin is the hormone that tells your body to store fat. Reducing these alone can produce visible changes in your belly within just a few weeks.</p>
+    </div>
+    <div class="foods-grid">
+      <div class="food-card">
+        <div class="f-icon">🥑</div>
+        <h4>Avocado</h4>
+        <p>Healthy fats reduce inflammation and keep you full far longer</p>
+      </div>
+      <div class="food-card">
+        <div class="f-icon">🫚</div>
+        <h4>Olive Oil</h4>
+        <p>Monounsaturated fats actively help the body burn abdominal fat</p>
+      </div>
+      <div class="food-card">
+        <div class="f-icon">🫘</div>
+        <h4>Legumes</h4>
+        <p>High fibre and protein combo that stabilises blood sugar beautifully</p>
+      </div>
+      <div class="food-card">
+        <div class="f-icon">🥦</div>
+        <h4>Broccoli</h4>
+        <p>Reduces oestrogen-related belly fat and fights bloating naturally</p>
+      </div>
+      <div class="food-card">
+        <div class="f-icon">🫐</div>
+        <h4>Berries</h4>
+        <p>Low-sugar antioxidants that fight inflammation linked to belly fat</p>
+      </div>
+      <div class="food-card">
+        <div class="f-icon">🌾</div>
+        <h4>Whole Grains</h4>
+        <p>Oats and quinoa digest slowly, preventing fat-storing insulin spikes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="petal-divider">✿ ✿ ✿</div>
+
+  <!-- 2. Drink More Water -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">💧</div>
+      <div class="title-group">
+        <span>Tip No. 2</span>
+        <h2>Drink More Water — Seriously</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Water is perhaps the most underrated fat-loss tool available to us — and it is completely free. When your body is even mildly dehydrated, it confuses thirst with hunger, leading to unnecessary snacking and overeating. Water also supports liver function, and the liver is the organ primarily responsible for metabolising stored fat. A sluggish, dehydrated liver means slower fat burning.</p>
+      <p>Beyond fat loss, drinking enough water dramatically reduces water retention and bloating — two things that make the belly look and feel larger than it actually is. Many women are stunned by how much flatter their stomach feels within just a few days of proper hydration.</p>
+      <div class="action-card">
+        <div class="ac-icon">🌿</div>
+        <div class="ac-text"><strong>Try this daily:</strong> Start every morning with a large glass of warm lemon water on an empty stomach. Lemon stimulates digestion, supports liver detoxification, and gently kick-starts your metabolism before breakfast. Aim for 2 to 3 litres of water throughout the day — more if you exercise or live in a hot climate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="petal-divider">✿ ✿ ✿</div>
+
+  <!-- 3. Move Your Body -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🏃</div>
+      <div class="title-group">
+        <span>Tip No. 3</span>
+        <h2>Move Your Body Every Day</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>You cannot out-eat a sedentary lifestyle — and you do not need to run marathons to see results. The most effective approach for reducing belly fat combines cardiovascular exercise, which burns calories and mobilises stored fat, with strength training, which builds lean muscle and raises your resting metabolism. Even walking — done consistently and briskly — produces remarkable results over time.</p>
+    </div>
+  </div>
+
+  <div class="workout-block">
+    <h3>4 Moves That Target Belly Fat</h3>
+    <p>No gym required — just commitment and consistency</p>
+    <div class="workout-steps">
+      <div class="w-step">
+        <div class="w-num">01</div>
+        <div class="w-step-text">
+          <h5>Brisk Walking</h5>
+          <p>30–45 minutes daily of brisk walking is one of the most scientifically proven ways to reduce visceral belly fat consistently.</p>
+        </div>
+      </div>
+      <div class="w-step">
+        <div class="w-num">02</div>
+        <div class="w-step-text">
+          <h5>Plank Hold</h5>
+          <p>Hold a forearm plank for 30 to 60 seconds. This strengthens deep core muscles that pull the abdomen inward naturally.</p>
+        </div>
+      </div>
+      <div class="w-step">
+        <div class="w-num">03</div>
+        <div class="w-step-text">
+          <h5>Bicycle Crunches</h5>
+          <p>The most effective ab exercise for targeting obliques and the lower belly. Aim for 3 sets of 20 reps daily.</p>
+        </div>
+      </div>
+      <div class="w-step">
+        <div class="w-num">04</div>
+        <div class="w-step-text">
+          <h5>Yoga Twists</h5>
+          <p>Seated and supine twists massage digestive organs, reduce bloating, and tone the waistline from the inside out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="petal-divider">✿ ✿ ✿</div>
+
+  <!-- 4. Sleep & Stress -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌙</div>
+      <div class="title-group">
+        <span>Tip No. 4</span>
+        <h2>Sleep Well & Manage Stress</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>This is the tip most people ignore — and it is the one that makes everything else either work or fail. When you do not sleep enough, your body produces more ghrelin — the hunger hormone — and less leptin, the hormone that signals fullness. The result? Intense cravings for sugary, fatty foods and a body primed to store whatever you eat directly as abdominal fat.</p>
+      <p>Chronic stress is equally damaging. Elevated cortisol — the stress hormone — specifically drives fat storage in the belly area. This is your body's ancient survival mechanism, but in modern life it works against us. Managing stress is not a luxury — for a flat stomach, it is a necessity.</p>
+      <div class="action-card">
+        <div class="ac-icon">✨</div>
+        <div class="ac-text"><strong>Restore yourself:</strong> Prioritise 7 to 8 hours of sleep every night. Practice 10 minutes of deep breathing or meditation each morning to lower cortisol. Even gentle stretching before bed reduces stress hormones and improves the quality of fat-burning deep sleep significantly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="myth-box">
+    <h3>💛 A Kind Truth Worth Remembering</h3>
+    <p>Spot reduction — the idea that you can lose fat from only one specific area — is a myth. When your body loses fat, it does so from all over, gradually. Belly fat, particularly visceral fat around the organs, is actually the first type to respond to healthy eating and exercise. Trust the process, stay consistent, and your body will reward your patience.</p>
+  </div>
+
+  <!-- 5. Daily Habits -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌸</div>
+      <div class="title-group">
+        <span>Tip No. 5</span>
+        <h2>These Daily Habits Change Everything</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Real, lasting change comes from small decisions made consistently — not from dramatic overhauls that last three days. Build these habits gently, one at a time, and watch how your body responds with gratitude.</p>
+    </div>
+    <div class="habits-row">
+      <div class="habit-tile">
+        <div class="ht-icon">🍵</div>
+        <h4>Drink Green Tea</h4>
+        <p>Green tea contains EGCG, an antioxidant that actively boosts metabolism and has been shown to specifically target abdominal fat.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🚫</div>
+        <h4>Cut Liquid Sugar</h4>
+        <p>Sodas, fruit juices, and sweetened coffees are silent fat-storers. Replace them with water, herbal teas, or black coffee.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🍽️</div>
+        <h4>Eat Slowly & Mindfully</h4>
+        <p>Eating fast leads to overeating. It takes 20 minutes for your brain to register fullness — slow down and savour every bite.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">⏰</div>
+        <h4>Try Intermittent Fasting</h4>
+        <p>A simple 12 to 16-hour eating window gives your digestive system rest and naturally reduces calorie intake without deprivation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p>"Your belly has carried your breath, your laughter, and your strength every single day of your life. Treat it with love — nourish it, move it, rest it — and it will transform beautifully."</p>
+    <small>✦ Nourish it · Move it · Rest it · Love it ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
