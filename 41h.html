@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Detox Your Body Naturally</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #f2f7f3;
+    --ink:          #0c1a0e;
+    --pine:         #1e5c30;
+    --fern:         #2e8048;
+    --sage:         #5aaa70;
+    --mint-pale:    #e6f5ea;
+    --lemon:        #d4b820;
+    --lemon-pale:   #fdfae8;
+    --aqua:         #1878a0;
+    --aqua-pale:    #e8f4fb;
+    --clay:         #b86030;
+    --clay-pale:    #fdf3ec;
+    --lavender:     #7058b8;
+    --lavender-pale:#f3f0fd;
+    --cream:        #edf5ef;
+    --muted:        #486050;
+    --rule:         #b8d4c0;
+    --pale:         #f8fbf9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18.5px;
+    line-height: 1.93;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(150deg, #0c2a10 0%, #1e5c30 40%, #0a3818 100%);
+    padding: 60px 36px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Leaf pattern overlay */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(90,170,112,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(90,170,112,0.10) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Wavy bottom edge */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 48px;
+    background: var(--bg);
+    clip-path: polygon(0 60%, 5% 40%, 10% 55%, 15% 35%, 20% 50%,
+                        25% 30%, 30% 48%, 35% 28%, 40% 46%, 45% 26%,
+                        50% 44%, 55% 24%, 60% 42%, 65% 22%, 70% 40%,
+                        75% 20%, 80% 38%, 85% 18%, 90% 36%, 95% 16%,
+                        100% 34%, 100% 100%, 0 100%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: var(--sage);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2.5rem, 6.5vw, 4.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 em { font-style: italic; color: #a0e8b8; }
+
+  .hero-sub {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(196, 236, 210, 0.88);
+    max-width: 580px;
+    margin: 0 auto 30px;
+    line-height: 1.68;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Floating leaf icons */
+  .leaf-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .leaf-row .hline { width: 60px; height: 1px; background: rgba(90,170,112,0.45); }
+  .leaf-icon {
+    font-size: 1.9rem;
+    display: inline-block;
+    animation: sway 3s ease-in-out infinite;
+  }
+  .leaf-icon:nth-child(3) { animation-delay: 0.8s; font-size: 1.4rem; }
+  .leaf-icon:nth-child(5) { animation-delay: 1.6s; }
+  @keyframes sway {
+    0%,100% { transform: rotate(-8deg) scale(1);   }
+    50%      { transform: rotate( 8deg) scale(1.1); }
+  }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 34px 110px;
+  }
+
+  /* Byline */
+  .byline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 44px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Body text */
+  p { margin-bottom: 1.55em; color: #121e14; }
+
+  /* Drop cap */
+  p.lead::first-letter {
+    font-family: 'Crimson Pro', serif;
+    font-size: 5.6rem;
+    font-weight: 700;
+    color: var(--pine);
+    float: left;
+    line-height: 0.70;
+    margin-right: 13px;
+    margin-top: 12px;
+    padding-bottom: 6px;
+  }
+  p.lead { font-size: 1.1rem; font-weight: 400; }
+
+  /* ── Section headings ── */
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3em 0 0.6em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .step-orb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pine), var(--fern));
+    color: #fff;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(30,92,48,0.32);
+  }
+  .h2-line {
+    flex: 1;
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  /* ── Pull quote ── */
+  blockquote {
+    margin: 3.5em 0;
+    padding: 38px 46px;
+    background: var(--cream);
+    border-top: 5px solid var(--pine);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  blockquote::before {
+    content: '\201C';
+    font-family: 'Crimson Pro', serif;
+    font-size: 8rem;
+    color: var(--sage);
+    opacity: 0.2;
+    position: absolute;
+    top: -16px; left: 18px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  blockquote p {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--pine);
+    line-height: 1.55;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Coloured call-out boxes ── */
+  .cbox {
+    padding: 22px 28px;
+    margin: 2.2em 0;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-left: 5px solid transparent;
+  }
+  .cbox strong {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .cbox p { margin: 0; font-size: 0.97rem; line-height: 1.82; }
+
+  .cbox-lemon   { background: var(--lemon-pale); border-color: #e8d060; border-left-color: var(--lemon); }
+  .cbox-lemon   strong { color: #8a6800; }
+  .cbox-lemon   p      { color: #3c2c00; }
+
+  .cbox-aqua    { background: var(--aqua-pale); border-color: #90c0d8; border-left-color: var(--aqua); }
+  .cbox-aqua    strong { color: var(--aqua); }
+  .cbox-aqua    p      { color: #082838; }
+
+  .cbox-clay    { background: var(--clay-pale); border-color: #e0a880; border-left-color: var(--clay); }
+  .cbox-clay    strong { color: var(--clay); }
+  .cbox-clay    p      { color: #3c1000; }
+
+  .cbox-lavender{ background: var(--lavender-pale); border-color: #b8a8e0; border-left-color: var(--lavender); }
+  .cbox-lavender strong { color: var(--lavender); }
+  .cbox-lavender p      { color: #180838; }
+
+  .cbox-pine    { background: var(--mint-pale); border-color: #90c8a0; border-left-color: var(--pine); }
+  .cbox-pine    strong { color: var(--pine); }
+  .cbox-pine    p      { color: #0c2010; }
+
+  /* ── Detox ritual cards ── */
+  .ritual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 14px;
+    margin: 3em 0;
+  }
+  .ritual-card {
+    background: var(--pale);
+    border: 1px solid var(--rule);
+    border-bottom: 4px solid var(--fern);
+    border-radius: 3px;
+    padding: 22px 14px 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .ritual-card:hover {
+    transform: translateY(-5px);
+    background: var(--pine);
+    border-color: var(--pine);
+    box-shadow: 0 10px 28px rgba(30,92,48,0.22);
+  }
+  .ritual-card:hover .rc-label { color: #c0f0d0; }
+  .ritual-card:hover .rc-note  { color: rgba(180,240,200,0.75); }
+  .rc-icon  { font-size: 2.2rem; display: block; margin-bottom: 10px; }
+  .rc-label {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--pine);
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+  }
+  .rc-note {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1.5;
+    transition: color 0.3s;
+  }
+
+  /* ── Ornament ── */
+  .ornament {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.7em;
+    color: var(--fern);
+    opacity: 0.5;
+  }
+
+  /* ── Footer ── */
+  .footer-bar {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bar > span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-badge {
+    background: linear-gradient(135deg, var(--pine), var(--fern));
+    color: #c0f0d0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.8s ease both; }
+  .hero-eyebrow { animation-delay: 0.08s; }
+  .hero h1      { animation-delay: 0.18s; }
+  .hero-sub     { animation-delay: 0.28s; }
+  .leaf-row     { animation-delay: 0.38s; }
+
+  .wrapper > * { animation: fadeUp 0.75s ease both; }
+  .wrapper > *:nth-child(1)  { animation-delay: 0.05s; }
+  .wrapper > *:nth-child(2)  { animation-delay: 0.12s; }
+  .wrapper > *:nth-child(3)  { animation-delay: 0.19s; }
+  .wrapper > *:nth-child(n+4){ animation-delay: 0.26s; }
+
+  @media (max-width: 580px) {
+    .wrapper    { padding: 42px 18px 72px; }
+    .hero       { padding: 40px 20px 52px; }
+    blockquote  { padding: 26px 22px; }
+    .ritual-grid{ grid-template-columns: repeat(2, 1fr); }
+    h2          { gap: 12px; }
+    .step-orb   { min-width: 40px; height: 40px; font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-eyebrow">Natural Wellness &nbsp;·&nbsp; Cleanse &amp; Restore &nbsp;·&nbsp; Body Detox</div>
+  <h1>How to <em>Detox</em> Your Body<br>the Way Nature Intended</h1>
+  <p class="hero-sub">
+    Your body already knows how to cleanse itself — it has been doing it since
+    the day you were born. Your only job is to stop getting in the way,
+    and to give it what it needs to do that work beautifully.
+  </p>
+  <div class="leaf-row">
+    <div class="hline"></div>
+    <span class="leaf-icon">🌿</span>
+    <span class="leaf-icon">✦</span>
+    <span class="leaf-icon">🌿</span>
+    <div class="hline"></div>
+  </div>
+</div>
+
+<!-- ══ ARTICLE BODY ══ -->
+<div class="wrapper">
+
+  <div class="byline">
+    <span>Natural Wellness Desk</span>
+    <span>800 Words &nbsp;·&nbsp; A Cleanse &amp; Restore Guide</span>
+  </div>
+
+  <p class="lead">
+    The word detox has been hijacked. It appears on the labels of expensive
+    teas, juice cleanses, and powders that promise to flush your body of toxins
+    in three days or less. It is sold with urgency and dressed in the language
+    of science — and almost none of it is real. Here is what is real: your body
+    is already one of the most extraordinary detoxification systems ever assembled.
+    Your liver, kidneys, lungs, skin, and lymphatic system are working right now —
+    at this very moment — filtering, neutralising, and eliminating harmful
+    substances with a precision that no bottled product could ever match. The
+    question is not how to detox your body. The question is how to support the
+    systems that are already doing it. And the answers, as they so often are,
+    are beautifully, refreshingly simple.
+  </p>
+
+  <blockquote>
+    <p>Nature itself is the best physician. Given the right conditions, the body heals, cleanses, and restores itself with remarkable intelligence.</p>
+    <cite>— Hippocrates</cite>
+  </blockquote>
+
+  <!-- 1 -->
+  <h2>
+    <span class="step-orb">1</span>
+    <span class="h2-line">Begin Every Morning with Warm Lemon Water</span>
+  </h2>
+
+  <p>
+    Before your first meal, before your coffee, before anything else enters your
+    body — drink a large glass of warm water with the juice of half a fresh lemon.
+    This single morning ritual has been practised across cultures for centuries,
+    and for good reason. Warm water stimulates the digestive system after its
+    overnight fast, flushing the gastrointestinal tract and encouraging the
+    elimination of waste. Lemon provides Vitamin C, which supports liver enzyme
+    function — and the liver is the body's master detoxification organ, processing
+    every toxin, chemical, and metabolic byproduct that passes through your blood.
+    The citric acid in lemon also stimulates bile production, which aids in the
+    digestion and absorption of fats. This small act costs nothing. Its daily
+    practice over weeks gently wakes the body's cleansing systems and keeps them
+    running smoothly through everything that follows.
+  </p>
+
+  <div class="cbox cbox-lemon">
+    <strong>Morning Ritual Recipe</strong>
+    <p>Juice of ½ fresh lemon in a glass of warm — not boiling — water. Drink it slowly, on an empty stomach, 15–20 minutes before breakfast. Add a thin slice of fresh ginger for an even more powerful digestive and anti-inflammatory effect. Do this every morning for two weeks and notice the difference in your energy and digestion.</p>
+  </div>
+
+  <!-- 2 -->
+  <h2>
+    <span class="step-orb">2</span>
+    <span class="h2-line">Hydrate Abundantly — Water is the River of Detox</span>
+  </h2>
+
+  <p>
+    Every cell in your body produces waste as it works. That waste must be carried
+    away — dissolved in water, transported to the kidneys, filtered, and expelled
+    as urine. Your kidneys process approximately 200 litres of blood every single
+    day, cleaning it with extraordinary thoroughness and precision. But they can
+    only do this work when they are adequately hydrated. When you are dehydrated —
+    even mildly — waste products accumulate in the blood, the lymphatic system
+    slows, and the skin cannot release toxins efficiently through sweat. Eight to
+    ten glasses of clean water daily is not a wellness cliché. It is the single
+    most important thing you can do to support your body's natural detox systems.
+    Add herbal teas — dandelion root, green tea, nettle — for additional liver
+    and kidney support. The river must keep flowing, or the waste builds up at
+    its banks.
+  </p>
+
+  <div class="cbox cbox-aqua">
+    <strong>Hydration Detox Teas</strong>
+    <p>Dandelion root tea supports liver function and acts as a gentle diuretic. Green tea is rich in catechins that enhance liver enzyme activity. Nettle tea supports kidney filtration. Drink one cup of any of these daily alongside your water intake for a quiet but consistent boost to your body's natural cleansing processes.</p>
+  </div>
+
+  <div class="ornament">— 🌿 —</div>
+
+  <!-- 3 -->
+  <h2>
+    <span class="step-orb">3</span>
+    <span class="h2-line">Eat Foods That Support Your Liver</span>
+  </h2>
+
+  <p>
+    The liver performs over five hundred functions — and detoxification is among
+    its most vital. It converts fat-soluble toxins into water-soluble compounds
+    that can be excreted through bile and urine, neutralises alcohol and
+    medications, and filters bacteria from the bloodstream. To do all of this,
+    it needs specific nutrients that most people rarely think about. Cruciferous
+    vegetables — broccoli, cauliflower, Brussels sprouts, and kale — contain
+    sulphur compounds that activate liver detoxification enzymes. Beetroot is
+    rich in betalains, pigments that support Phase 2 liver detoxification.
+    Garlic contains allicin and selenium, both of which assist the liver in
+    cleansing the blood. Turmeric's curcumin reduces liver inflammation and
+    supports bile production. Eating these foods regularly — not occasionally,
+    not as a three-day cleanse — is what genuine liver support looks like.
+  </p>
+
+  <!-- 4 -->
+  <h2>
+    <span class="step-orb">4</span>
+    <span class="h2-line">Sweat — Your Skin is a Detox Organ Too</span>
+  </h2>
+
+  <p>
+    The skin is the body's largest organ, and sweating is one of its most
+    important detoxification functions. Sweat carries small amounts of heavy
+    metals, bisphenols, phthalates, and other environmental chemicals out through
+    the pores — compounds that are difficult for the kidneys and liver to process
+    alone. Exercise-induced sweating, infrared sauna sessions, or even vigorous
+    movement on a warm day all support this function. But the detox benefit of
+    exercise goes far deeper than sweat. Physical activity increases circulation,
+    delivering oxygenated blood to every tissue and speeding up the removal of
+    cellular waste. It stimulates the lymphatic system — which, unlike the
+    cardiovascular system, has no pump of its own and relies entirely on
+    movement to circulate. Thirty minutes of daily movement is not just
+    good for your heart. It is the engine that keeps the body's entire
+    waste-removal network in motion.
+  </p>
+
+  <div class="cbox cbox-clay">
+    <strong>Move to Detox</strong>
+    <p>Exercise, walking, yoga, and rebounding (jumping on a mini-trampoline) are among the most effective ways to stimulate lymphatic flow and promote natural detoxification through sweat and increased circulation. Even 20–30 minutes of brisk walking daily makes a measurable difference to lymphatic drainage and toxin elimination over time.</p>
+  </div>
+
+  <!-- 5 -->
+  <h2>
+    <span class="step-orb">5</span>
+    <span class="h2-line">Sleep Deeply — Detox Happens at Night</span>
+  </h2>
+
+  <p>
+    One of the most remarkable discoveries in modern neuroscience is the
+    glymphatic system — a network of channels in the brain that opens fully
+    only during deep sleep and flushes away metabolic waste, including the
+    amyloid plaques associated with Alzheimer's disease. During the day,
+    your brain works intensely, producing waste faster than it can clear it.
+    At night, the glymphatic system expands and washes the brain with
+    cerebrospinal fluid — a biological cleanse that cannot happen while you
+    are awake. Sleep is not passive. It is the most active detox process
+    your body performs — and it happens in the dark, in silence, when the
+    world believes you are simply resting. Seven to nine hours of quality sleep
+    every night is not a luxury. It is the deepest cleanse available to a
+    human being — and it is entirely free.
+  </p>
+
+  <div class="cbox cbox-lavender">
+    <strong>Optimise Your Night Detox</strong>
+    <p>Sleep in a cool, completely dark room. Avoid screens and alcohol for at least one hour before bed — both suppress the deep sleep stages when glymphatic cleansing is most active. A consistent sleep schedule, kept even on weekends, dramatically improves the depth and quality of your nightly brain detox.</p>
+  </div>
+
+  <!-- 6 -->
+  <h2>
+    <span class="step-orb">6</span>
+    <span class="h2-line">Reduce What Burdens the System</span>
+  </h2>
+
+  <p>
+    No detox practice is complete without reducing the load of what goes in.
+    Ultra-processed foods, excess sugar, alcohol, cigarette smoke, and chronic
+    stress all generate toxins faster than the body can clear them — flooding
+    the liver with work, inflaming the gut lining, disrupting the microbiome,
+    and suppressing every detox pathway simultaneously. You cannot pour clean
+    water into a vessel that is still being filled with pollutants and call it
+    detoxification. The most powerful detox step you can take is a quiet,
+    honest reduction — less alcohol, less processed food, less sugar, less
+    unnecessary medication, and less of the cortisol-soaked stress that
+    inflames the body from the inside. Replace them with whole foods, clean
+    water, movement, sleep, and calm. This is not a diet. It is an act of
+    profound respect for a body that has been working tirelessly on your behalf
+    since the very first moment it began to breathe.
+  </p>
+
+  <div class="cbox cbox-pine">
+    <strong>Important Reminder</strong>
+    <p>Commercial detox teas, juice cleanses, and expensive detox kits have little scientific support and some carry real risks. Your liver, kidneys, skin, lungs, and lymphatic system are your detox system — all they need is the right conditions to work brilliantly. Trust your body. Support it wisely. It already knows what to do.</p>
+  </div>
+
+  <!-- Ritual Cards -->
+  <div class="ritual-grid">
+    <div class="ritual-card">
+      <span class="rc-icon">🍋</span>
+      <span class="rc-label">Lemon Water</span>
+      <span class="rc-note">Every morning, empty stomach</span>
+    </div>
+    <div class="ritual-card">
+      <span class="rc-icon">💧</span>
+      <span class="rc-label">Hydrate</span>
+      <span class="rc-note">8–10 glasses daily</span>
+    </div>
+    <div class="ritual-card">
+      <span class="rc-icon">🥦</span>
+      <span class="rc-label">Liver Foods</span>
+      <span class="rc-note">Cruciferous vegs & beets</span>
+    </div>
+    <div class="ritual-card">
+      <span class="rc-icon">🏃</span>
+      <span class="rc-label">Sweat Daily</span>
+      <span class="rc-note">Move your lymph system</span>
+    </div>
+    <div class="ritual-card">
+      <span class="rc-icon">😴</span>
+      <span class="rc-label">Deep Sleep</span>
+      <span class="rc-note">Brain's nightly cleanse</span>
+    </div>
+    <div class="ritual-card">
+      <span class="rc-icon">🚫</span>
+      <span class="rc-label">Reduce Toxins</span>
+      <span class="rc-note">Less processed, less stress</span>
+    </div>
+  </div>
+
+  <p>
+    The body does not need to be saved. It needs to be trusted, supported, and
+    given the conditions in which it already knows how to thrive. Warm water in
+    the morning. Clean food on the plate. Movement in the afternoon. Sleep in
+    the dark. These are not grand gestures — they are quiet, daily acts of care
+    that accumulate into something extraordinary over time. Your body has been
+    detoxing itself every day of your life. Give it what it needs, and watch it
+    do that ancient, intelligent work more beautifully than any product ever
+    sold in a bottle ever could.
+  </p>
+
+  <div class="footer-bar">
+    <span>Natural Wellness Desk — Body Detox &amp; Restore Guide</span>
+    <span class="footer-badge">~800 Words</span>
+  </div>
+
+</div>
+</body>
+</html>
