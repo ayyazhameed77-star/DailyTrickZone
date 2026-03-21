@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbal Tea Benefits</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Gilda+Display&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:       #1c3a2a;
+    --deep-forest:  #112218;
+    --mid-forest:   #2a5a3a;
+    --leaf:         #4a8a5a;
+    --sage:         #7ab88a;
+    --mint:         #b8ddc8;
+    --mint-pale:    #e8f5ee;
+    --mint-soft:    #f0faf4;
+    --gold:         #c88a20;
+    --warm-gold:    #e8aa40;
+    --gold-pale:    #fff8e8;
+    --gold-soft:    #fdf5e0;
+    --lavender:     #7a60a8;
+    --lav-soft:     #f0ecf8;
+    --rose:         #c05870;
+    --rose-soft:    #fdeef2;
+    --cream:        #faf8f2;
+    --warm-white:   #fffdf8;
+    --text:         #1a2a1e;
+    --text-mid:     #2e4a38;
+    --text-light:   #6a8a72;
+    --white:        #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Karla', sans-serif;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--deep-forest);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 28px;
+    font-size: 0.79rem;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.7px;
+  }
+  .top-bar strong { color: var(--mint); }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(150deg, #060f08 0%, #112218 28%, #1c3a2a 58%, #2a5a3a 85%, #3a7a4a 100%);
+    padding: 0;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  /* Steam wisps */
+  .steam-wrap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .steam {
+    position: absolute;
+    bottom: 60%;
+    width: 3px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    animation: steamrise 5s ease-in-out infinite;
+    filter: blur(3px);
+  }
+  .steam:nth-child(1) { left: 18%; height: 120px; animation-delay: 0s; animation-duration: 5.5s; }
+  .steam:nth-child(2) { left: 22%; height: 90px;  animation-delay: 1.2s; width: 2px; }
+  .steam:nth-child(3) { left: 20%; height: 110px; animation-delay: 2.6s; animation-duration: 6s; }
+  @keyframes steamrise {
+    0%   { transform: translateY(0) scaleX(1); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 0.5; }
+    100% { transform: translateY(-200px) scaleX(2.5); opacity: 0; }
+  }
+  /* Botanical circles bg */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -120px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 50%,
+        rgba(122,184,138,0.08) 0%,
+        rgba(74,138,90,0.05) 40%,
+        transparent 68%);
+    border: 1px solid rgba(122,184,138,0.06);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 50% at 5% 75%,
+        rgba(200,138,32,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 45% at 92% 25%,
+        rgba(122,184,138,0.1) 0%, transparent 58%),
+      url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Ccircle cx='24' cy='24' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  /* Large deco word */
+  .hero-deco {
+    position: absolute;
+    bottom: -30px; right: -10px;
+    font-family: 'Abril Fatface', serif;
+    font-size: 20vw;
+    color: rgba(255,255,255,0.022);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -3px;
+  }
+  .hero-content {
+    position: relative;
+    padding: 86px 32px 62px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(122,184,138,0.15);
+    border: 1px solid rgba(122,184,138,0.32);
+    color: var(--mint);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 7px 22px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Abril Fatface', serif;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    color: #fff;
+    line-height: 1.05;
+    max-width: 680px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    color: var(--warm-gold);
+    font-style: italic;
+    font-family: 'Gilda Display', serif;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.56);
+    font-size: 1.02rem;
+    font-weight: 300;
+    margin-top: 18px;
+    max-width: 500px;
+    line-height: 1.62;
+  }
+  .hero-pills {
+    display: flex;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(122,184,138,0.25);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.78);
+    font-weight: 500;
+  }
+  .hero-pill strong { color: var(--warm-gold); }
+  .hero-bar {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--forest), var(--leaf), var(--sage),
+      var(--gold), var(--lavender), var(--rose));
+  }
+
+  /* ── Article wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 24px 90px;
+  }
+
+  /* ── Intro box ── */
+  .intro-box {
+    background: linear-gradient(135deg, var(--mint-pale), var(--mint-soft));
+    border-left: 5px solid var(--sage);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 34px;
+    margin-bottom: 52px;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--forest);
+    font-family: 'Gilda Display', serif;
+    line-height: 1.92;
+  }
+
+  /* ── Section ── */
+  .tip-section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--deep-forest), var(--mid-forest));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 22px rgba(17,34,24,0.3);
+  }
+  .title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 3px;
+  }
+  .title-group h2 {
+    font-family: 'Gilda Display', serif;
+    font-size: 1.65rem;
+    color: var(--text);
+    font-weight: 400;
+    line-height: 1.22;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.92;
+  }
+
+  /* ── Action card ── */
+  .action-card {
+    background: var(--white);
+    border: 1px solid #b8ddc8;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 18px rgba(28,58,42,0.07);
+  }
+  .ac-icon { font-size: 1.3rem; margin-top: 1px; flex-shrink: 0; }
+  .ac-text { font-size: 0.94rem; color: var(--text-mid); line-height: 1.78; }
+  .ac-text strong { color: var(--forest); font-weight: 700; }
+
+  /* ── Leaf divider ── */
+  .leaf-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .leaf-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--sage), transparent); }
+  .leaf-icon { font-size: 1.2rem; }
+
+  /* ── Tea varieties grid ── */
+  .teas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+  @media(max-width:600px){ .teas-grid { grid-template-columns: 1fr 1fr; } }
+  .tea-card {
+    border-radius: 16px;
+    padding: 22px 14px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .tea-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  }
+  .tea-card.green  { background: linear-gradient(135deg,#e8f5ee,#f4fbf6); border-color:#b8d8c8; }
+  .tea-card.cham   { background: linear-gradient(135deg,#fffbe8,#fffef4); border-color:#f0d878; }
+  .tea-card.pep    { background: linear-gradient(135deg,#eef8f0,#f5fdf7); border-color:#a8d8b0; }
+  .tea-card.ginger { background: linear-gradient(135deg,#fff2e8,#fffaf4); border-color:#f0c098; }
+  .tea-card.lav    { background: linear-gradient(135deg,#f4f0fc,#faf8ff); border-color:#c8b8e8; }
+  .tea-card.hibis  { background: linear-gradient(135deg,#fdeef4,#fff5f8); border-color:#f0b0c8; }
+  .tea-card .tc-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .tea-card h4 {
+    font-family: 'Gilda Display', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .tea-card.green  h4 { color: var(--forest); }
+  .tea-card.cham   h4 { color: #7a6000; }
+  .tea-card.pep    h4 { color: #1a5a30; }
+  .tea-card.ginger h4 { color: #8a4000; }
+  .tea-card.lav    h4 { color: var(--lavender); }
+  .tea-card.hibis  h4 { color: var(--rose); }
+  .tea-card p { font-size: 0.77rem; line-height: 1.58; }
+  .tea-card.green  p { color: #3a6a4a; }
+  .tea-card.cham   p { color: #6a5200; }
+  .tea-card.pep    p { color: #1e5028; }
+  .tea-card.ginger p { color: #7a3800; }
+  .tea-card.lav    p { color: #5a4888; }
+  .tea-card.hibis  p { color: #9a3858; }
+
+  /* ── Dark steep block ── */
+  .steep-block {
+    background: linear-gradient(145deg, var(--deep-forest), var(--mid-forest));
+    border-radius: 22px;
+    padding: 40px 34px;
+    margin: 44px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .steep-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 65% 55% at 88% 10%,
+        rgba(122,184,138,0.14) 0%, transparent 62%),
+      url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.018'%3E%3Ccircle cx='24' cy='24' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .steep-block::after {
+    content: '🍵';
+    position: absolute;
+    font-size: 150px;
+    bottom: -15px; right: 18px;
+    pointer-events: none;
+    opacity: 0.1;
+    line-height: 1;
+  }
+  .steep-block h3 {
+    font-family: 'Gilda Display', serif;
+    font-size: 1.55rem;
+    color: var(--warm-gold);
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .steep-block > p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.87rem;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .steep-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+  @media(max-width:500px){ .steep-grid { grid-template-columns: 1fr; } }
+  .sg-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(122,184,138,0.22);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .sg-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 1px; }
+  .sg-text h5 { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .sg-text p  { font-size: 0.8rem; color: rgba(255,255,255,0.56); line-height: 1.58; }
+
+  /* ── Ritual box ── */
+  .ritual-box {
+    background: linear-gradient(135deg, var(--lav-soft), #f8f6ff);
+    border: 1px solid #d0c0f0;
+    border-radius: 18px;
+    padding: 28px 32px;
+    margin: 36px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .ritual-box .rb-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 2px; }
+  .ritual-box h3 {
+    font-family: 'Gilda Display', serif;
+    font-size: 1.1rem;
+    color: var(--lavender);
+    margin-bottom: 8px;
+  }
+  .ritual-box p { font-size: 0.93rem; color: #3a2a5a; line-height: 1.8; }
+
+  /* ── Brewing guide ── */
+  .brew-guide {
+    background: var(--white);
+    border: 1px solid #b8ddc8;
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin: 36px 0;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .brew-guide h3 {
+    font-family: 'Gilda Display', serif;
+    font-size: 1.12rem;
+    color: var(--forest);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brew-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .brew-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--mint-soft);
+    border-radius: 12px;
+    padding: 14px 18px;
+    border: 1px solid #c8e8d8;
+  }
+  .brew-step .bn {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.5rem;
+    color: var(--sage);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+    min-width: 28px;
+  }
+  .brew-step p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+  .brew-step strong { color: var(--forest); }
+
+  /* ── Habits row ── */
+  .habits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media(max-width:560px){ .habits-row { grid-template-columns: 1fr; } }
+  .habit-tile {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 22px 22px;
+    border: 1px solid #c0ddc8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .habit-tile .ht-icon { font-size: 1.7rem; margin-bottom: 10px; }
+  .habit-tile h4 {
+    font-family: 'Gilda Display', serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 7px;
+  }
+  .habit-tile p { font-size: 0.85rem; color: var(--text-light); line-height: 1.66; }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(145deg, var(--deep-forest), var(--mid-forest));
+    border-radius: 22px;
+    padding: 50px 38px;
+    text-align: center;
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 50%,
+        rgba(122,184,138,0.1) 0%, transparent 65%);
+  }
+  .closing-steam {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    display: block;
+    position: relative;
+    animation: steambob 4s ease-in-out infinite;
+  }
+  @keyframes steambob {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+  }
+  .closing p {
+    font-family: 'Gilda Display', serif;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.82;
+    margin-bottom: 16px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(184,221,200,0.65);
+    font-weight: 600;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>✦ Natural Health &amp; Wellness</span>
+  <span><strong>~800 Words</strong> · Herbal Tea Guide</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="steam-wrap">
+    <div class="steam"></div>
+    <div class="steam"></div>
+    <div class="steam"></div>
+  </div>
+  <div class="hero-deco">TEA</div>
+  <div class="hero-content">
+    <div class="hero-badge">🍵 Ancient Plant Wisdom</div>
+    <h1>Herbal Tea<br><em>Benefits</em></h1>
+    <p class="hero-sub">Nature's most comforting medicine — steeped in warmth, healing, and thousands of years of wisdom</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><strong>Calm</strong> — anxiety & stress relief</div>
+      <div class="hero-pill"><strong>Sleep</strong> — deeper rest tonight</div>
+      <div class="hero-pill"><strong>Digestion</strong> — gentle gut healing</div>
+      <div class="hero-pill"><strong>Immunity</strong> — natural defence</div>
+    </div>
+  </div>
+  <div class="hero-bar"></div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    There is a particular kind of peace that settles over you when you wrap both hands around a warm mug of herbal tea — before the first sip has even reached your lips. Part of it is the warmth. Part of it is the fragrance rising gently through the air. But a large part of it is ancient: humans have been brewing healing plants into hot water for over five thousand years, across every culture on earth, because it works. Herbal tea is not simply a pleasant ritual. It is medicine in the most beautiful form nature ever invented.
+  </div>
+
+  <!-- 1. Calms the Mind -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌸</div>
+      <div class="title-group">
+        <span>Benefit No. 1</span>
+        <h2>It Calms the Mind and Melts Away Stress</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>In a world that demands constant urgency, the simple act of brewing and drinking herbal tea is itself a form of medicine. But beyond the ritual, certain herbal teas work directly on the nervous system to reduce anxiety and lower stress hormones in ways that are measurable, reliable, and profound. Chamomile — the world's most beloved herbal tea — contains apigenin, a natural compound that binds to the same receptors in the brain as anti-anxiety medications, producing genuine calm without drowsiness or dependence.</p>
+      <p>Lavender tea reduces cortisol — the stress hormone that, when chronically elevated, damages everything from your heart to your immune system to your skin. Lemon balm, a gentle member of the mint family, has been used since the Middle Ages to ease anxiety and nervous tension, and modern clinical trials consistently confirm what centuries of healers already knew. Even the warmth and steam of a hot mug activates the parasympathetic nervous system — the "rest and digest" mode — within minutes of holding it.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🌿</div>
+      <div class="ac-text"><strong>Best teas for stress and anxiety:</strong> Chamomile, lavender, lemon balm, passionflower, and ashwagandha tea. For the deepest calming effect, steep chamomile for five full minutes — the longer the steep, the higher the apigenin content. Drink in silence, away from screens, with both hands around the mug. The ritual itself amplifies every benefit.</div>
+    </div>
+  </div>
+
+  <div class="leaf-divider">
+    <div class="leaf-line"></div>
+    <div class="leaf-icon">🌿</div>
+    <div class="leaf-line"></div>
+  </div>
+
+  <!-- Tea varieties grid -->
+  <div class="teas-grid">
+    <div class="tea-card green">
+      <div class="tc-icon">🍵</div>
+      <h4>Green Tea</h4>
+      <p>L-theanine + antioxidants — calm focus, cancer protection, heart health</p>
+    </div>
+    <div class="tea-card cham">
+      <div class="tc-icon">🌼</div>
+      <h4>Chamomile</h4>
+      <p>Apigenin calms anxiety, aids sleep, reduces inflammation naturally</p>
+    </div>
+    <div class="tea-card pep">
+      <div class="tc-icon">🌱</div>
+      <h4>Peppermint</h4>
+      <p>Relieves IBS, headaches, bloating and sharpens mental clarity</p>
+    </div>
+    <div class="tea-card ginger">
+      <div class="tc-icon">🫚</div>
+      <h4>Ginger</h4>
+      <p>Anti-inflammatory powerhouse — nausea, digestion, immunity booster</p>
+    </div>
+    <div class="tea-card lav">
+      <div class="tc-icon">💜</div>
+      <h4>Lavender</h4>
+      <p>Lowers cortisol, eases insomnia, relieves headaches gently</p>
+    </div>
+    <div class="tea-card hibis">
+      <div class="tc-icon">🌺</div>
+      <h4>Hibiscus</h4>
+      <p>Lowers blood pressure, rich in Vitamin C, powerful heart protector</p>
+    </div>
+  </div>
+
+  <div class="leaf-divider">
+    <div class="leaf-line"></div>
+    <div class="leaf-icon">🌿</div>
+    <div class="leaf-line"></div>
+  </div>
+
+  <!-- 2. Sleep -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌙</div>
+      <div class="title-group">
+        <span>Benefit No. 2</span>
+        <h2>It Gives You Deeper, More Restful Sleep</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Sleep is the foundation of every other aspect of your health — and herbal teas are one of the gentlest, most effective, and most sustainable ways to improve its quality. Unlike pharmaceutical sleep aids, which often cause grogginess, dependence, and disrupted sleep architecture, herbal sleep teas work with your body's own natural rhythms rather than overriding them. They prepare the brain and nervous system for sleep rather than forcing a chemical shutdown.</p>
+      <p>Valerian root — one of the most extensively studied herbal sleep remedies — has been shown in multiple clinical trials to reduce the time it takes to fall asleep and improve the quality of deep sleep. Passionflower tea increases levels of GABA in the brain — the calming neurotransmitter that quiets mental chatter and eases the racing thoughts that keep so many people awake at night. Chamomile, taken thirty to forty-five minutes before bed, consistently improves sleep quality in both young adults and the elderly.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">😴</div>
+      <div class="ac-text"><strong>Your evening sleep tea ritual:</strong> Begin your wind-down with a mug of chamomile, passionflower, or valerian tea about 45 minutes before your intended sleep time. Dim the lights, put away your phone, and sip slowly. The combination of warmth, calming compounds, and the conscious intention of rest signals your entire nervous system that the day is over and it is safe to let go.</div>
+    </div>
+  </div>
+
+  <!-- Steep block: healing properties -->
+  <div class="steep-block">
+    <h3>What Each Cup Is Quietly Doing For You</h3>
+    <p>The remarkable healing that happens with every sip of the right herbal tea</p>
+    <div class="steep-grid">
+      <div class="sg-card">
+        <div class="sg-icon">🛡️</div>
+        <div class="sg-text">
+          <h5>Building Immunity</h5>
+          <p>Elderflower, echinacea, and ginger teas stimulate immune cell activity and reduce the duration and severity of colds and flu significantly.</p>
+        </div>
+      </div>
+      <div class="sg-card">
+        <div class="sg-icon">🔥</div>
+        <div class="sg-text">
+          <h5>Fighting Inflammation</h5>
+          <p>Turmeric, ginger, and green tea contain powerful anti-inflammatory compounds that reduce chronic inflammation — the root of most modern disease.</p>
+        </div>
+      </div>
+      <div class="sg-card">
+        <div class="sg-icon">🫀</div>
+        <div class="sg-text">
+          <h5>Protecting the Heart</h5>
+          <p>Hibiscus tea lowers systolic blood pressure as effectively as some medications. Green tea reduces LDL cholesterol and improves arterial elasticity.</p>
+        </div>
+      </div>
+      <div class="sg-card">
+        <div class="sg-icon">✨</div>
+        <div class="sg-text">
+          <h5>Beautifying Skin</h5>
+          <p>Rooibos and green tea are loaded with antioxidants that reduce oxidative skin damage, improve complexion clarity, and slow the visible signs of ageing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Digestion -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌱</div>
+      <div class="title-group">
+        <span>Benefit No. 3</span>
+        <h2>It Heals and Soothes the Entire Digestive System</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>The digestive system responds to herbal teas with particular gratitude. Peppermint tea contains menthol, which relaxes the smooth muscles of the gut, relieving cramping, bloating, and the spasms associated with Irritable Bowel Syndrome with remarkable speed. A 2014 study found peppermint tea to be as effective as antispasmodic drugs for IBS symptoms — a finding that speaks volumes about the power of this humble leaf.</p>
+      <p>Ginger tea is the most potent natural anti-nausea remedy known, proven effective for morning sickness, chemotherapy-induced nausea, and motion sickness alike. Fennel tea relaxes intestinal muscles and expels trapped gas. Liquorice root tea soothes and heals inflamed gut lining. Dandelion root tea stimulates bile production, supporting fat digestion and liver health simultaneously. After every heavy meal, a cup of the right herbal tea is quite literally the kindest thing you can do for your body.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🍵</div>
+      <div class="ac-text"><strong>After-meal tea guide:</strong> Peppermint for bloating and IBS. Ginger for nausea and slow digestion. Fennel for trapped gas and cramping. Dandelion root for liver support and heavy, fatty meals. Liquorice root for acid reflux and gut inflammation. Keep a small selection of these in your kitchen and reach for the right one intuitively — your body will quickly learn what it needs.</div>
+    </div>
+  </div>
+
+  <!-- Ritual box -->
+  <div class="ritual-box">
+    <div class="rb-icon">🕯️</div>
+    <div>
+      <h3>The Tea Ritual — Why the Act Itself Is Medicine</h3>
+      <p>Science has confirmed something that tea drinkers across every culture have known intuitively for millennia: the ritual of making and drinking tea is therapeutic entirely independent of the herbal compounds in the cup. The deliberate pause, the warmth held between the palms, the fragrant steam, the slow and conscious sipping — all of these activate the parasympathetic nervous system, reduce cortisol, lower heart rate, and shift the mind from anxious future-thinking into present-moment calm. In a world of constant speed, making tea is a revolutionary act of self-care.</p>
+    </div>
+  </div>
+
+  <!-- Brewing guide -->
+  <div class="brew-guide">
+    <h3>🌿 How to Brew the Perfect Cup — Every Time</h3>
+    <div class="brew-steps">
+      <div class="brew-step">
+        <div class="bn">1</div>
+        <p><strong>Use fresh, filtered water.</strong> The quality of your water matters enormously. Hard or chlorinated water dulls the flavour and reduces the extraction of beneficial compounds from the herbs.</p>
+      </div>
+      <div class="brew-step">
+        <div class="bn">2</div>
+        <p><strong>Temperature matters.</strong> Delicate herbs like chamomile and peppermint need water just off the boil — around 90°C. Roots like ginger and liquorice benefit from a full rolling boil to extract their deeper compounds.</p>
+      </div>
+      <div class="brew-step">
+        <div class="bn">3</div>
+        <p><strong>Steep long enough.</strong> Most herbal teas need at least <strong>five to seven minutes</strong> to fully release their medicinal compounds. A quick two-minute steep gives you flavour — a long steep gives you medicine.</p>
+      </div>
+      <div class="brew-step">
+        <div class="bn">4</div>
+        <p><strong>Cover while steeping.</strong> Place a saucer over your mug while the tea steeps. This traps the beneficial volatile oils — particularly important for peppermint and chamomile — that would otherwise escape with the steam.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily habits -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">💚</div>
+      <div class="title-group">
+        <span>Daily Practice</span>
+        <h2>A Cup for Every Moment of Your Day</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>The most beautiful thing about herbal tea is that it fits naturally into every part of your day — morning energy, afternoon focus, evening calm, nighttime rest. Let each cup be intentional and chosen with care.</p>
+    </div>
+    <div class="habits-row">
+      <div class="habit-tile">
+        <div class="ht-icon">🌅</div>
+        <h4>Morning — Green Tea or Ginger</h4>
+        <p>Start your day with green tea for calm, focused energy from L-theanine — or ginger tea to wake up digestion, reduce inflammation, and energise without jitters.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">☀️</div>
+        <h4>Afternoon — Peppermint or Hibiscus</h4>
+        <p>Peppermint sharpens afternoon focus and prevents the post-lunch slump. Hibiscus is a tart, beautiful, caffeine-free choice that protects your heart with every colourful sip.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🌆</div>
+        <h4>Evening — Chamomile or Lavender</h4>
+        <p>Begin your wind-down with chamomile or lavender tea after dinner. Let it signal gently to your nervous system that the busy, demanding part of the day is now beautifully over.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🌙</div>
+        <h4>Night — Valerian or Passionflower</h4>
+        <p>Forty-five minutes before bed — in the quiet, with low light. Let valerian or passionflower prepare your brain for the deep, healing, restorative sleep your body lives for.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <span class="closing-steam">🍵</span>
+    <p>"In every culture, across every century, in times of grief and celebration and ordinary Tuesday afternoons — humans have reached for a cup of hot herbs in water and felt better. That is not coincidence. That is wisdom. Steep slowly. Sip deeply. Heal gently."</p>
+    <small>✦ Steep it · Sip it · Breathe it · Heal with it ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
