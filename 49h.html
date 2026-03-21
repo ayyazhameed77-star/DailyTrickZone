@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Protein Sources for Vegetarians</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum:         #4a1a5e;
+    --deep-plum:    #2d0f3a;
+    --mid-plum:     #6a2a82;
+    --violet:       #8a4aaa;
+    --lavender:     #b888d0;
+    --lav-pale:     #f4eefb;
+    --lav-soft:     #faf6ff;
+    --gold:         #c87820;
+    --warm-gold:    #e89a40;
+    --gold-pale:    #fff8e8;
+    --teal:         #1a8a7a;
+    --teal-soft:    #e8faf8;
+    --coral:        #e06848;
+    --coral-soft:   #fff2ed;
+    --green:        #2a7a3a;
+    --green-soft:   #eaf5ec;
+    --cream:        #faf8fd;
+    --warm-white:   #fdf9ff;
+    --text:         #1e0e2a;
+    --text-mid:     #3a2050;
+    --text-light:   #7a5a90;
+    --white:        #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Rubik', sans-serif;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--deep-plum);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 28px;
+    font-size: 0.79rem;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.7px;
+  }
+  .top-bar strong { color: var(--lavender); }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(148deg, #120620 0%, #2d0f3a 30%, #4a1a5e 58%, #6a2a82 85%, #8a4aaa 100%);
+    padding: 0;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  /* Organic shapes */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -90px; right: -110px;
+    width: 500px; height: 500px;
+    border-radius: 65% 35% 55% 45% / 45% 60% 40% 55%;
+    background: radial-gradient(circle at 50% 50%,
+      rgba(184,136,208,0.1) 0%,
+      rgba(138,74,170,0.06) 45%,
+      transparent 68%);
+    border: 1px solid rgba(184,136,208,0.07);
+    animation: blobfloat 14s ease-in-out infinite alternate;
+  }
+  @keyframes blobfloat {
+    0%   { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.07) rotate(10deg); }
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 52% 50% at 8% 72%,
+        rgba(200,120,32,0.09) 0%, transparent 55%),
+      radial-gradient(ellipse 42% 44% at 90% 22%,
+        rgba(184,136,208,0.1) 0%, transparent 58%),
+      url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.016'%3E%3Ccircle cx='22' cy='22' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-deco {
+    position: absolute;
+    bottom: -40px; right: -10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18vw;
+    color: rgba(255,255,255,0.022);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -4px;
+    font-weight: 900;
+  }
+  .hero-content {
+    position: relative;
+    padding: 86px 32px 62px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(184,136,208,0.15);
+    border: 1px solid rgba(184,136,208,0.3);
+    color: var(--lavender);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 7px 22px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+    color: #fff;
+    line-height: 1.1;
+    max-width: 700px;
+    font-weight: 900;
+  }
+  .hero h1 em {
+    color: var(--warm-gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 1.02rem;
+    font-weight: 300;
+    margin-top: 16px;
+    max-width: 500px;
+    line-height: 1.62;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-stat .hs-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--lavender);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .hero-stat .hs-label {
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.42);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+  .hero-bar {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--plum), var(--violet), var(--lavender),
+      var(--warm-gold), var(--teal), var(--coral), var(--green));
+  }
+
+  /* ── Article wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 24px 90px;
+  }
+
+  /* ── Intro box ── */
+  .intro-box {
+    background: linear-gradient(135deg, var(--lav-pale), var(--lav-soft));
+    border-left: 5px solid var(--violet);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 34px;
+    margin-bottom: 52px;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--plum);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.92;
+  }
+
+  /* ── Protein myth buster ── */
+  .myth-strip {
+    background: linear-gradient(135deg, var(--gold-pale), #fffef8);
+    border: 1px solid #f0d070;
+    border-radius: 18px;
+    padding: 26px 30px;
+    margin-bottom: 48px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .myth-strip .ms-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 2px; }
+  .myth-strip h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .myth-strip p { font-size: 0.93rem; color: #5a3800; line-height: 1.8; }
+  .myth-strip p strong { color: #3a2000; font-weight: 600; }
+
+  /* ── Section ── */
+  .tip-section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--deep-plum), var(--mid-plum));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 22px rgba(45,15,58,0.3);
+  }
+  .title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 3px;
+  }
+  .title-group h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.62rem;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.92;
+  }
+
+  /* ── Action card ── */
+  .action-card {
+    background: var(--white);
+    border: 1px solid #d8b8e8;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 18px rgba(74,26,94,0.07);
+  }
+  .ac-icon { font-size: 1.3rem; margin-top: 1px; flex-shrink: 0; }
+  .ac-text { font-size: 0.94rem; color: var(--text-mid); line-height: 1.78; }
+  .ac-text strong { color: var(--deep-plum); font-weight: 700; }
+
+  /* ── Divider ── */
+  .protein-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .pd-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--lavender), transparent); }
+  .pd-icon { font-size: 1.2rem; }
+
+  /* ── Protein sources grid ── */
+  .protein-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+  @media(max-width:600px){ .protein-grid { grid-template-columns: 1fr 1fr; } }
+  .protein-card {
+    border-radius: 16px;
+    padding: 20px 14px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: transform 0.22s, box-shadow 0.22s;
+    cursor: default;
+  }
+  .protein-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.1);
+  }
+  .protein-card.lentil { background: linear-gradient(135deg,#fdeaea,#fff6f6); border-color:#f0b8b8; }
+  .protein-card.tofu   { background: linear-gradient(135deg,#eef8f0,#f5fdf6); border-color:#a8d8b8; }
+  .protein-card.chick  { background: linear-gradient(135deg,#fff8e8,#fffef4); border-color:#f0d878; }
+  .protein-card.quino  { background: linear-gradient(135deg,var(--lav-pale),var(--lav-soft)); border-color:#d0b8e8; }
+  .protein-card.nuts   { background: linear-gradient(135deg,#fff3e8,#fffaf4); border-color:#f0c098; }
+  .protein-card.greek  { background: linear-gradient(135deg,var(--teal-soft),#f0fdfc); border-color:#a0d8d0; }
+  .protein-card .pc-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .protein-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .protein-card.lentil h4 { color: #8a1818; }
+  .protein-card.tofu   h4 { color: var(--green); }
+  .protein-card.chick  h4 { color: #7a5800; }
+  .protein-card.quino  h4 { color: var(--plum); }
+  .protein-card.nuts   h4 { color: #7a3800; }
+  .protein-card.greek  h4 { color: var(--teal); }
+  .protein-card .pc-grams {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 7px;
+  }
+  .protein-card.lentil .pc-grams { background:#fce0e0; color:#8a1818; }
+  .protein-card.tofu   .pc-grams { background:#d8f0e0; color:var(--green); }
+  .protein-card.chick  .pc-grams { background:#fce8b0; color:#7a5800; }
+  .protein-card.quino  .pc-grams { background:#e8d8f8; color:var(--plum); }
+  .protein-card.nuts   .pc-grams { background:#fcd8b0; color:#7a3800; }
+  .protein-card.greek  .pc-grams { background:#c8ece8; color:var(--teal); }
+  .protein-card p { font-size: 0.76rem; line-height: 1.55; }
+  .protein-card.lentil p { color: #7a2828; }
+  .protein-card.tofu   p { color: #2a5a3a; }
+  .protein-card.chick  p { color: #6a4a00; }
+  .protein-card.quino  p { color: #3a1a5a; }
+  .protein-card.nuts   p { color: #6a3000; }
+  .protein-card.greek  p { color: #1a5a52; }
+
+  /* ── Dark feature block ── */
+  .feature-block {
+    background: linear-gradient(145deg, var(--deep-plum), var(--plum));
+    border-radius: 22px;
+    padding: 40px 34px;
+    margin: 44px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 65% 55% at 88% 8%,
+        rgba(184,136,208,0.14) 0%, transparent 62%),
+      url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.018'%3E%3Ccircle cx='22' cy='22' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .feature-block::after {
+    content: '💪';
+    position: absolute;
+    font-size: 150px;
+    bottom: -15px; right: 20px;
+    pointer-events: none;
+    opacity: 0.1;
+    line-height: 1;
+  }
+  .feature-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--warm-gold);
+    font-style: italic;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .feature-block > p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.87rem;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+  @media(max-width:500px){ .feat-grid { grid-template-columns: 1fr; } }
+  .feat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(184,136,208,0.22);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .feat-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 1px; }
+  .feat-text h5 { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .feat-text p  { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.58; }
+
+  /* ── Combo magic box ── */
+  .combo-box {
+    background: linear-gradient(135deg, var(--teal-soft), #f0fdfc);
+    border: 1px solid #a0d8d0;
+    border-radius: 18px;
+    padding: 28px 32px;
+    margin: 36px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .combo-box .co-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 2px; }
+  .combo-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    color: var(--teal);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .combo-box p { font-size: 0.93rem; color: #0e3a35; line-height: 1.8; }
+  .combo-box p strong { color: var(--teal); }
+
+  /* ── Protein per day visual ── */
+  .protein-meter {
+    background: var(--white);
+    border: 1px solid #d8b8e8;
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin: 36px 0;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .protein-meter h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--plum);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .protein-meter > p {
+    font-size: 0.86rem;
+    color: var(--text-light);
+    margin-bottom: 22px;
+  }
+  .pm-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .pm-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .pm-label {
+    width: 130px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    flex-shrink: 0;
+  }
+  .pm-track {
+    flex: 1;
+    height: 11px;
+    background: #f0eaf8;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .pm-fill {
+    height: 100%;
+    border-radius: 10px;
+  }
+  .pm-fill.p1 { background: linear-gradient(90deg, #c83030, #e87070); }
+  .pm-fill.p2 { background: linear-gradient(90deg, var(--green), #52c27a); }
+  .pm-fill.p3 { background: linear-gradient(90deg, var(--teal), #40c8b8); }
+  .pm-fill.p4 { background: linear-gradient(90deg, var(--violet), #c070e0); }
+  .pm-fill.p5 { background: linear-gradient(90deg, var(--gold), #f0c040); }
+  .pm-fill.p6 { background: linear-gradient(90deg, var(--coral), #f09070); }
+  .pm-value {
+    width: 70px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Meal ideas ── */
+  .meal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media(max-width:560px){ .meal-grid { grid-template-columns: 1fr; } }
+  .meal-tile {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 22px 22px;
+    border: 1px solid #d8b8e8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .meal-tile .mt-icon { font-size: 1.7rem; margin-bottom: 10px; }
+  .meal-tile h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--plum);
+    margin-bottom: 7px;
+  }
+  .meal-tile p { font-size: 0.85rem; color: var(--text-light); line-height: 1.66; }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(145deg, var(--deep-plum), var(--mid-plum));
+    border-radius: 22px;
+    padding: 50px 38px;
+    text-align: center;
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 50%,
+        rgba(184,136,208,0.1) 0%, transparent 65%);
+  }
+  .closing-icon {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    display: block;
+    position: relative;
+    animation: seedgrow 4s ease-in-out infinite;
+  }
+  @keyframes seedgrow {
+    0%,100% { transform: scale(1) rotate(-3deg); }
+    50%      { transform: scale(1.1) rotate(3deg); }
+  }
+  .closing p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.28rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.82;
+    margin-bottom: 16px;
+    max-width: 590px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(184,136,208,0.65);
+    font-weight: 600;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>✦ Plant-Based Nutrition &amp; Wellness</span>
+  <span><strong>~800 Words</strong> · Vegetarian Protein Guide</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-deco">EAT</div>
+  <div class="hero-content">
+    <div class="hero-badge">🌱 Plant Protein Guide</div>
+    <h1>Best Protein Sources<br>for <em>Vegetarians</em></h1>
+    <p class="hero-sub">Everything your body needs to thrive, build, and flourish — beautifully grown from the earth</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-num">50g+</div>
+        <div class="hs-label">Daily protein from plants alone</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">18g</div>
+        <div class="hs-label">Protein in one cup of lentils</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">1.5B</div>
+        <div class="hs-label">Vegetarians worldwide thriving</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bar"></div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    "But where do you get your protein?" It is the question every vegetarian has heard a hundred times — often with genuine concern, sometimes with barely veiled scepticism. And the honest, beautiful answer is this: from the most extraordinary variety of whole, nourishing, deeply satisfying foods that nature has ever produced. Plant protein is not a compromise. It is not a second choice. For the right person, prepared with knowledge and a little love, it is one of the most complete, healthful, and delicious ways to nourish a human body there is.
+  </div>
+
+  <!-- Myth buster strip -->
+  <div class="myth-strip">
+    <div class="ms-icon">💡</div>
+    <div>
+      <h3>The Protein Myth — Let's Clear This Up Once and For All</h3>
+      <p>The idea that only animal foods provide "complete" or sufficient protein is outdated. <strong>Every essential amino acid the human body needs exists in the plant kingdom.</strong> The key is simply variety — eating a range of different plant proteins throughout the day ensures you receive all nine essential amino acids in the quantities your body requires. Soya, quinoa, and hemp seed are even complete proteins entirely on their own. You are not missing anything. You are simply sourcing it differently.</p>
+    </div>
+  </div>
+
+  <!-- 1. Legumes -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🫘</div>
+      <div class="title-group">
+        <span>Source No. 1</span>
+        <h2>Legumes — The Cornerstone of Plant Protein</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Lentils, chickpeas, black beans, kidney beans, edamame, and green peas are the most protein-dense, nutritionally complete, and versatile foods in the vegetarian kitchen. A single cup of cooked lentils delivers eighteen grams of protein — comparable to a medium chicken breast — along with extraordinary amounts of fibre, iron, folate, magnesium, and zinc. They are filling, deeply satisfying, affordable, and available in every corner of the world.</p>
+      <p>What makes legumes particularly special is that they are dual powerhouses — providing both protein and complex carbohydrates simultaneously, in a combination that sustains energy, stabilises blood sugar, and feeds the gut microbiome in ways that no isolated protein powder can replicate. Cultures that eat legumes daily — across the Mediterranean, South Asia, and Latin America — consistently show the best longevity and the lowest rates of chronic disease on earth.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">✨</div>
+      <div class="ac-text"><strong>How to eat more legumes effortlessly:</strong> Add a can of drained chickpeas to any salad, soup, or roasted vegetable dish. Keep a pot of cooked lentils in the fridge all week as a base for dals, soups, and grain bowls. Blend white beans into pasta sauces and dips — they disappear completely while doubling the protein content of every bowl.</div>
+    </div>
+  </div>
+
+  <div class="protein-divider">
+    <div class="pd-line"></div>
+    <div class="pd-icon">🌱</div>
+    <div class="pd-line"></div>
+  </div>
+
+  <!-- Protein grid -->
+  <div class="protein-grid">
+    <div class="protein-card lentil">
+      <div class="pc-icon">🫘</div>
+      <h4>Lentils</h4>
+      <div class="pc-grams">18g / cup</div>
+      <p>Iron, folate, fibre — the most complete plant protein food for daily use</p>
+    </div>
+    <div class="protein-card tofu">
+      <div class="pc-icon">🟩</div>
+      <h4>Tofu & Edamame</h4>
+      <div class="pc-grams">20g / cup</div>
+      <p>Complete soya protein with all 9 amino acids — exceptionally versatile</p>
+    </div>
+    <div class="protein-card chick">
+      <div class="pc-icon">🫙</div>
+      <h4>Chickpeas</h4>
+      <div class="pc-grams">15g / cup</div>
+      <p>Protein plus fibre that feeds gut bacteria and keeps hunger satisfied for hours</p>
+    </div>
+    <div class="protein-card quino">
+      <div class="pc-icon">🌾</div>
+      <h4>Quinoa</h4>
+      <div class="pc-grams">8g / cup</div>
+      <p>The only complete grain protein — all 9 essential amino acids in one seed</p>
+    </div>
+    <div class="protein-card nuts">
+      <div class="pc-icon">🥜</div>
+      <h4>Nuts & Seeds</h4>
+      <div class="pc-grams">5–9g / oz</div>
+      <p>Hemp, pumpkin, almonds — protein plus healthy fats and minerals together</p>
+    </div>
+    <div class="protein-card greek">
+      <div class="pc-icon">🥛</div>
+      <h4>Greek Yoghurt</h4>
+      <div class="pc-grams">17g / cup</div>
+      <p>Complete dairy protein plus probiotics — exceptional for gut and muscle health</p>
+    </div>
+  </div>
+
+  <div class="protein-divider">
+    <div class="pd-line"></div>
+    <div class="pd-icon">🌱</div>
+    <div class="pd-line"></div>
+  </div>
+
+  <!-- 2. Tofu, Tempeh, Soya -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌿</div>
+      <div class="title-group">
+        <span>Source No. 2</span>
+        <h2>Tofu, Tempeh & Soya — The Protein Royalty of Plant Foods</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Soya-based foods — tofu, tempeh, edamame, and soya milk — are the most protein-rich plant foods available and hold a unique position in vegetarian nutrition because they are complete proteins. This means they contain all nine essential amino acids in the proportions the human body needs — something achieved by very few plant foods and by no other legume. A single cup of firm tofu provides around twenty grams of protein, is virtually tasteless on its own, and absorbs the flavour of absolutely anything it is cooked with.</p>
+      <p>Tempeh — tofu's less well-known but even more nutritious cousin — is made from fermented whole soya beans and provides not only more protein than tofu but also probiotics from the fermentation process, making it simultaneously excellent for muscle building and gut health. With a nutty, satisfying texture that holds up beautifully in stir-fries, curries, and grain bowls, tempeh is one of the most underused superfoods in the Western vegetarian kitchen.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🍽️</div>
+      <div class="ac-text"><strong>Getting started with tofu and tempeh:</strong> Press firm tofu for 30 minutes to remove excess water, then marinate in soy sauce, garlic, and ginger before baking or frying — it becomes golden, crispy, and deeply flavourful. Slice tempeh thin, marinate briefly, and fry in olive oil until golden and slightly caramelised. Both transform completely with the right seasoning.</div>
+    </div>
+  </div>
+
+  <!-- Feature block: power combos -->
+  <div class="feature-block">
+    <h3>The Protein Dream Team — Combinations That Complete Each Other</h3>
+    <p>These classic pairings together provide all essential amino acids in perfect balance</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🍚</div>
+        <div class="feat-text">
+          <h5>Rice + Lentils (Dal)</h5>
+          <p>The most ancient and beloved protein combination on earth — used across South Asia for thousands of years. Together they form a complete amino acid profile that rivals any animal protein.</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🫓</div>
+        <div class="feat-text">
+          <h5>Whole Grain Bread + Peanut Butter</h5>
+          <p>The humble peanut butter sandwich is actually a nutritionally complete protein meal. The lysine in wheat complements the methionine in peanuts perfectly and deliciously.</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🫙</div>
+        <div class="feat-text">
+          <h5>Hummus + Wholemeal Pitta</h5>
+          <p>Chickpeas and sesame tahini together with whole grain bread create a beautifully balanced, complete plant protein meal that is also rich in healthy fats and fibre.</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🥗</div>
+        <div class="feat-text">
+          <h5>Quinoa + Black Bean Bowl</h5>
+          <p>Two complete or near-complete proteins together in one bowl — this combination is a nutritional powerhouse that provides every essential amino acid in abundance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Seeds, Nuts, Dairy -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌻</div>
+      <div class="title-group">
+        <span>Source No. 3</span>
+        <h2>Seeds, Nuts & Dairy — The Quietly Powerful Trio</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Hemp seeds are one of the most nutritionally remarkable foods available to vegetarians — three tablespoons provide ten grams of complete protein along with omega-3 and omega-6 fatty acids in the ideal ratio for heart and brain health. They have a gentle, nutty flavour that makes them perfect sprinkled over yoghurt, blended into smoothies, or stirred into oats. Pumpkin seeds deliver nine grams of protein per ounce along with exceptional amounts of zinc, magnesium, and iron. Chia seeds are rich in plant-based omega-3s as well as offering five grams of protein per tablespoon.</p>
+      <p>For vegetarians who include dairy, Greek yoghurt, cottage cheese, and paneer are outstanding protein sources that are convenient, delicious, and versatile. Greek yoghurt provides seventeen grams of complete protein per cup, plus probiotics for gut health and calcium for bones. Cottage cheese — mild and soft — can be eaten sweet or savoury and provides around twenty-five grams of protein per cup, making it one of the highest-protein foods available in any category.</p>
+    </div>
+  </div>
+
+  <!-- Combo magic box -->
+  <div class="combo-box">
+    <div class="co-icon">🧬</div>
+    <div>
+      <h3>You Do Not Need to Combine Proteins at Every Single Meal</h3>
+      <p>An important piece of modern nutritional understanding is that you do not need to eat complementary proteins together in the same meal to receive their full benefit. <strong>Your body maintains an amino acid pool</strong> and draws from it throughout the day. As long as you eat a variety of plant proteins across your daily meals, your body will assemble the complete amino acid profile it needs automatically and intelligently. Simply eat varied, whole plant foods — and trust your body to do the rest.</p>
+    </div>
+  </div>
+
+  <!-- Protein content visual -->
+  <div class="protein-meter">
+    <h3>Protein Content at a Glance — Plant Sources Compared</h3>
+    <p>Per standard serving — showing how vegetarian proteins measure up</p>
+    <div class="pm-bars">
+      <div class="pm-row">
+        <div class="pm-label">Firm Tofu (1 cup)</div>
+        <div class="pm-track"><div class="pm-fill p1" style="width:88%"></div></div>
+        <div class="pm-value">20g</div>
+      </div>
+      <div class="pm-row">
+        <div class="pm-label">Lentils (1 cup)</div>
+        <div class="pm-track"><div class="pm-fill p2" style="width:82%"></div></div>
+        <div class="pm-value">18g</div>
+      </div>
+      <div class="pm-row">
+        <div class="pm-label">Greek Yoghurt</div>
+        <div class="pm-track"><div class="pm-fill p3" style="width:78%"></div></div>
+        <div class="pm-value">17g</div>
+      </div>
+      <div class="pm-row">
+        <div class="pm-label">Chickpeas (1 cup)</div>
+        <div class="pm-track"><div class="pm-fill p4" style="width:68%"></div></div>
+        <div class="pm-value">15g</div>
+      </div>
+      <div class="pm-row">
+        <div class="pm-label">Hemp Seeds (3 tbsp)</div>
+        <div class="pm-track"><div class="pm-fill p5" style="width:50%"></div></div>
+        <div class="pm-value">10g</div>
+      </div>
+      <div class="pm-row">
+        <div class="pm-label">Quinoa (1 cup)</div>
+        <div class="pm-track"><div class="pm-fill p6" style="width:42%"></div></div>
+        <div class="pm-value">8g</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily meal ideas -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🍽️</div>
+      <div class="title-group">
+        <span>Daily Practice</span>
+        <h2>A Full Day of Beautiful Plant Protein</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Getting enough protein as a vegetarian is not about counting and stressing — it is about building meals with intention and variety. These four meal ideas show how effortlessly a full day of plant protein comes together.</p>
+    </div>
+    <div class="meal-grid">
+      <div class="meal-tile">
+        <div class="mt-icon">🌅</div>
+        <h4>Breakfast — Greek Yoghurt Bowl</h4>
+        <p>Full-fat Greek yoghurt topped with hemp seeds, chia seeds, berries, and a drizzle of honey. Over 25 grams of complete protein before 9 AM — creamy, satisfying, and genuinely beautiful.</p>
+      </div>
+      <div class="meal-tile">
+        <div class="mt-icon">☀️</div>
+        <h4>Lunch — Quinoa & Chickpea Bowl</h4>
+        <p>Warm quinoa with roasted chickpeas, avocado, cherry tomatoes, cucumber, and tahini dressing. Over 22 grams of plant protein in a bowl that looks and tastes like a celebration of colour.</p>
+      </div>
+      <div class="meal-tile">
+        <div class="mt-icon">🌆</div>
+        <h4>Dinner — Dal with Brown Rice</h4>
+        <p>A rich, spiced red lentil dal with ginger, turmeric, garlic, and coconut milk served over brown rice. Ancient, warming, deeply nourishing — and over 20 grams of complete protein per bowl.</p>
+      </div>
+      <div class="meal-tile">
+        <div class="mt-icon">🌙</div>
+        <h4>Snack — Edamame or Nut Butter</h4>
+        <p>A cup of warm salted edamame or apple slices with almond butter. Effortless snacks that add 10 to 15 grams of quality protein between meals and keep hunger beautifully at bay.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <span class="closing-icon">🌱</span>
+    <p>"The earth grows everything your body needs to be strong, healthy, and gloriously alive. You do not need to compromise anything to eat plant protein. You only need to discover it — and let it surprise you with how complete it truly is."</p>
+    <small>✦ Eat plants · Build strength · Live fully ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
