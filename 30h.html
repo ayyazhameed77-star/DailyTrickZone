@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natural Remedies for Sore Throat</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #fdf8f2;
+    --ink:       #1e1408;
+    --amber:     #c47c20;
+    --honey:     #e8a030;
+    --ginger:    #a04020;
+    --moss:      #4a6840;
+    --cream:     #f0e8d8;
+    --muted:     #7a6a50;
+    --rule:      #d8c8a8;
+    --warm-box:  #fef5e0;
+    --green-box: #eef5e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.9;
+  }
+
+  /* Decorative top band */
+  .top-band {
+    height: 7px;
+    background: linear-gradient(90deg, var(--ginger), var(--amber), var(--honey), var(--moss), var(--amber));
+  }
+
+  /* Masthead */
+  .masthead {
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+    padding: 18px 20px;
+  }
+  .masthead span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+  }
+
+  /* Eyebrow */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .eyebrow span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ginger);
+  }
+  .eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--ginger);
+    opacity: 0.35;
+  }
+
+  /* Title */
+  h1 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: clamp(2.5rem, 6vw, 3.9rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  /* Sub-deck */
+  .deck {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.18rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.65;
+  }
+
+  /* Byline */
+  .byline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 44px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  /* Body paragraphs */
+  p {
+    margin-bottom: 1.5em;
+    color: #281c08;
+  }
+
+  /* Drop cap on first paragraph */
+  p.lead::first-letter {
+    font-family: 'EB Garamond', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--amber);
+    float: left;
+    line-height: 0.74;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  p.lead {
+    font-size: 1.08rem;
+  }
+
+  /* Section headings */
+  h2 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.6em 0 0.55em;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: var(--amber);
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Pull quote */
+  blockquote {
+    margin: 3em -20px;
+    padding: 32px 40px;
+    background: var(--cream);
+    border-top: 3px solid var(--amber);
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+  }
+  blockquote p {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    color: var(--ginger);
+    line-height: 1.5;
+    margin: 0;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* Remedy highlight box */
+  .remedy-box {
+    background: var(--warm-box);
+    border: 1px solid #e0c880;
+    border-left: 5px solid var(--honey);
+    padding: 22px 26px;
+    margin: 2em 0;
+    border-radius: 3px;
+  }
+  .remedy-box strong {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.77rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 9px;
+  }
+  .remedy-box p { margin: 0; font-size: 0.97rem; color: #50380a; line-height: 1.75; }
+
+  /* Green note box */
+  .note-box {
+    background: var(--green-box);
+    border: 1px solid #b0c8a0;
+    border-left: 5px solid var(--moss);
+    padding: 22px 26px;
+    margin: 2em 0;
+    border-radius: 3px;
+  }
+  .note-box strong {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.77rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: block;
+    margin-bottom: 9px;
+  }
+  .note-box p { margin: 0; font-size: 0.97rem; color: #283818; line-height: 1.75; }
+
+  /* Ornament */
+  .ornament {
+    text-align: center;
+    margin: 38px 0;
+    font-size: 1.05rem;
+    letter-spacing: 0.7em;
+    color: var(--amber);
+    opacity: 0.65;
+  }
+
+  /* Thin rule */
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 28px 0;
+  }
+
+  /* Footer */
+  .footer-bar {
+    margin-top: 56px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bar span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.73rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-bar .badge {
+    background: var(--ginger);
+    color: #fff;
+    padding: 5px 16px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    border-radius: 2px;
+  }
+
+  /* Fade in */
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .wrapper > * {
+    animation: riseIn 0.8s ease both;
+  }
+  .wrapper > *:nth-child(1) { animation-delay: 0.06s; }
+  .wrapper > *:nth-child(2) { animation-delay: 0.14s; }
+  .wrapper > *:nth-child(3) { animation-delay: 0.22s; }
+  .wrapper > *:nth-child(n+4) { animation-delay: 0.30s; }
+
+  @media (max-width: 580px) {
+    .wrapper { padding: 40px 18px 70px; }
+    h1 { font-size: 2.2rem; }
+    blockquote { margin: 2em 0; padding: 24px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-band"></div>
+
+<div class="masthead">
+  <span>Natural Health &nbsp;·&nbsp; Home Remedies &nbsp;·&nbsp; Trusted &amp; Time-Tested</span>
+</div>
+
+<div class="wrapper">
+
+  <div class="eyebrow"><span>Natural Healing</span></div>
+
+  <h1>What Your Grandmother Knew About a <em>Sore Throat</em></h1>
+
+  <p class="deck">
+    Long before pharmacies lined every street corner, kitchens were the first place people turned
+    when their throats burned. Those remedies still work — perhaps better than we ever gave them credit for.
+  </p>
+
+  <div class="byline">Natural Health Desk &nbsp;·&nbsp; 800 Words &nbsp;·&nbsp; Home Remedies Edition</div>
+
+  <p class="lead">
+    A sore throat arrives without warning. One morning you wake up and swallowing feels like
+    dragging sandpaper across raw skin. Your voice drops to a whisper. Your neck aches. Your
+    body is telling you, in the most uncomfortable way possible, that something needs attention.
+    Before you reach for a pill bottle, consider this: nature has been treating sore throats for
+    thousands of years with ingredients that are probably already sitting in your kitchen.
+  </p>
+
+  <p>
+    Sore throats are most often caused by viral infections — the common cold, flu, or similar
+    illnesses — which means antibiotics cannot touch them. What can help is reducing inflammation,
+    soothing the irritated tissue, and supporting your immune system while your body does its work.
+    This is exactly where natural remedies shine. They are not magic. But they are real, they are
+    gentle, and when used consistently, they bring genuine relief.
+  </p>
+
+  <blockquote>
+    <p>"The cure for anything is salt water — sweat, tears, or the sea."</p>
+    <cite>— Isak Dinesen</cite>
+  </blockquote>
+
+  <h2><span class="icon">🧂</span> Salt Water Gargle — The Oldest Remedy of All</h2>
+
+  <p>
+    Dissolve half a teaspoon of salt into a glass of warm water and gargle for thirty seconds.
+    Spit. Repeat every two to three hours. This is the remedy that has survived every era of
+    medicine because it genuinely works. Salt draws fluid out of the swollen, inflamed tissues
+    of your throat, reducing the puffiness that causes so much pain. It also creates an inhospitable
+    environment for bacteria and loosens mucus. Simple, free, and effective within the first
+    gargle — this is always the first thing to reach for.
+  </p>
+
+  <div class="remedy-box">
+    <strong>How to Use It</strong>
+    <p>½ teaspoon of sea salt or table salt in one cup of warm — not scalding — water. Tilt your head back, gargle for 30 seconds, and spit completely. Do this every 2–3 hours throughout the day for best results.</p>
+  </div>
+
+  <h2><span class="icon">🍯</span> Honey — Liquid Gold for a Burning Throat</h2>
+
+  <p>
+    Raw honey is one of the most powerful natural antibacterial substances known to science.
+    It coats the throat in a thick, soothing layer that immediately quiets the burning sensation
+    while its antimicrobial compounds work beneath the surface. A spoonful of honey alone brings
+    real comfort — but stir it into warm water or herbal tea and it becomes something even more
+    therapeutic. Studies have found that honey is more effective at soothing nighttime coughs and
+    throat irritation in children than many over-the-counter syrups. For adults, it is equally
+    impressive. Never give honey to children under one year old, but for everyone else, it is
+    one of the safest and most delicious remedies available.
+  </p>
+
+  <h2><span class="icon">🍋</span> Lemon and Warm Water</h2>
+
+  <p>
+    Lemon is rich in Vitamin C and citric acid — both of which help break down mucus and reduce
+    inflammation. Squeeze half a fresh lemon into a mug of warm water, add a spoonful of honey,
+    and sip it slowly. The warmth relaxes the tightened muscles around your throat. The lemon
+    cuts through congestion. The honey soothes. This combination is the holy trinity of sore
+    throat relief, and it works best when sipped warm, not gulped cold. Three to four mugs
+    throughout the day will make a measurable difference by evening.
+  </p>
+
+  <div class="ornament">— ✦ —</div>
+
+  <h2><span class="icon">🫚</span> Ginger Tea — Warmth That Heals from Within</h2>
+
+  <p>
+    Fresh ginger contains powerful anti-inflammatory compounds called gingerols and shogaols that
+    reduce swelling in the throat tissue and fight the pathogens that cause infection. Slice four
+    or five coins of fresh ginger root, steep them in boiling water for ten minutes, strain, add
+    honey and lemon, and drink slowly. The warmth alone brings immediate relief. The ginger brings
+    something deeper — a kind of internal heat that feels like your body waking up to fight back.
+    Ginger tea three times a day during a sore throat is one of the most effective natural protocols
+    you can follow.
+  </p>
+
+  <h2><span class="icon">💨</span> Steam Inhalation with Eucalyptus</h2>
+
+  <p>
+    Dry, inflamed throat tissue heals faster when kept moist. Boil a pot of water, remove it from
+    heat, add a few drops of eucalyptus oil or simply breathe the plain steam, drape a towel over
+    your head, and inhale slowly for five to ten minutes. The warm, humid air soothes irritated
+    membranes, loosens thick mucus, and makes swallowing noticeably easier. Eucalyptus contains a
+    natural compound called cineole, which has proven antimicrobial and anti-inflammatory properties.
+    Even without the oil, steam inhalation two to three times daily accelerates recovery significantly.
+  </p>
+
+  <h2><span class="icon">🌿</span> Turmeric Milk — The Golden Healer</h2>
+
+  <p>
+    Warm milk with half a teaspoon of turmeric powder has been used in South Asian households for
+    centuries as a first response to any throat illness — and modern research has confirmed why.
+    Curcumin, the active compound in turmeric, is one of the most potent natural anti-inflammatories
+    ever studied. Sipped warm before bed, turmeric milk coats and soothes the throat while curcumin
+    works to calm the underlying inflammation that causes pain. Add a pinch of black pepper to
+    dramatically increase curcumin absorption. Drink it slowly. Let it linger. Sleep well.
+  </p>
+
+  <div class="note-box">
+    <strong>Important Note</strong>
+    <p>Natural remedies work best for mild to moderate sore throats caused by viral infections. If your sore throat is severe, lasts longer than five days, is accompanied by high fever, difficulty breathing, or you cannot swallow at all — please see a doctor. Some throat infections require medical treatment.</p>
+  </div>
+
+  <hr>
+
+  <p>
+    The remedies above are not folklore dressed up as medicine. They are time-tested, scientifically
+    supported, and deeply kind to your body. They ask nothing of you except a little patience and
+    a kettle of warm water. The next time your throat tightens and burns, before you reach for
+    anything else, reach for your kitchen first. Your grandmother already knew the answer.
+    She was right.
+  </p>
+
+  <div class="footer-bar">
+    <span>Natural Health Desk — Home Remedies</span>
+    <span class="badge">~ Words</span>
+  </div>
+
+</div>
+</body>
+</html>
