@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefits of Eating Fruits Daily</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #fff9f2;
+    --ink:          #1a0e06;
+    --orange:       #d4601a;
+    --peach:        #f0a060;
+    --peach-pale:   #fdf4ec;
+    --berry:        #8b3068;
+    --berry-pale:   #fdf0f8;
+    --apple:        #c03838;
+    --apple-pale:   #fdf2f2;
+    --grape:        #5a3898;
+    --grape-pale:   #f4f0fd;
+    --lime:         #3a8830;
+    --lime-pale:    #f0f8ee;
+    --mango:        #c88010;
+    --mango-pale:   #fdf8e8;
+    --cream:        #fdf0e4;
+    --muted:        #7a5840;
+    --rule:         #e0c8a8;
+    --pale:         #fffcf8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.95;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    background: linear-gradient(145deg, #7a1a00 0%, #c03818 30%, #d4601a 60%, #e89030 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Fruit pattern circles */
+  .fruit-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .fruit-bg .fb {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    animation: fruitFloat 7s ease-in-out infinite;
+  }
+  .fruit-bg .fb:nth-child(1){ width:200px; height:200px; top:-40px;  left:-60px;  animation-delay:0s;   }
+  .fruit-bg .fb:nth-child(2){ width:140px; height:140px; top:60%;    right:-30px; animation-delay:2s;   }
+  .fruit-bg .fb:nth-child(3){ width:100px; height:100px; bottom:-20px;left:30%;   animation-delay:4s;   }
+  .fruit-bg .fb:nth-child(4){ width:80px;  height:80px;  top:20%;    right:20%;   animation-delay:1s;   }
+  .fruit-bg .fb:nth-child(5){ width:160px; height:160px; bottom:10%; right:10%;   animation-delay:3s;   }
+  @keyframes fruitFloat {
+    0%,100% { transform: translateY(0) scale(1);    opacity: 1;   }
+    50%      { transform: translateY(-20px) scale(1.05); opacity: 0.7; }
+  }
+
+  /* Wavy bottom */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 50px;
+    background: var(--bg);
+    clip-path: polygon(
+      0 100%, 0 55%, 3% 38%, 6% 55%, 9% 35%,
+      12% 52%, 15% 30%, 18% 50%, 21% 28%,
+      24% 48%, 27% 26%, 30% 46%, 33% 24%,
+      36% 44%, 39% 22%, 42% 42%, 45% 20%,
+      48% 40%, 51% 18%, 54% 38%, 57% 16%,
+      60% 36%, 63% 14%, 66% 34%, 69% 12%,
+      72% 32%, 75% 10%, 78% 30%, 81% 8%,
+      84% 28%, 87% 6%, 90% 26%, 93% 5%,
+      96% 24%, 100% 4%, 100% 100%
+    );
+  }
+
+  .hero-inner {
+    text-align: center;
+    padding: 60px 36px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(255,220,180,0.9);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    animation: fadeUp 0.8s ease both 0.05s;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 44px; height: 1px;
+    background: rgba(255,200,140,0.45);
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.4rem, 6.5vw, 4.1rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease both 0.15s;
+  }
+  .hero h1 em { font-style: italic; color: #ffe090; }
+
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255, 230, 200, 0.88);
+    max-width: 580px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s ease both 0.24s;
+  }
+
+  /* Fruit emoji row */
+  .fruit-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    animation: fadeUp 0.8s ease both 0.33s;
+    flex-wrap: wrap;
+  }
+  .fruit-row .fr-line { width: 40px; height: 1px; background: rgba(255,200,140,0.4); }
+  .fruit-emoji {
+    font-size: 1.8rem;
+    display: inline-block;
+    animation: fruitBounce 2.5s ease-in-out infinite;
+  }
+  .fruit-emoji:nth-child(2) { animation-delay: 0.3s; }
+  .fruit-emoji:nth-child(3) { animation-delay: 0.6s; }
+  .fruit-emoji:nth-child(4) { animation-delay: 0.9s; }
+  .fruit-emoji:nth-child(5) { animation-delay: 1.2s; }
+  @keyframes fruitBounce {
+    0%,100% { transform: translateY(0);   }
+    50%      { transform: translateY(-7px);}
+  }
+
+  /* ══ WRAPPER ══ */
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 34px 110px;
+  }
+
+  /* Byline */
+  .byline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 44px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Body text */
+  p { margin-bottom: 1.55em; color: #1e1008; }
+
+  /* Drop cap */
+  p.lead::first-letter {
+    font-family: 'Lora', serif;
+    font-size: 5.6rem;
+    font-weight: 700;
+    color: var(--orange);
+    float: left;
+    line-height: 0.70;
+    margin-right: 13px;
+    margin-top: 12px;
+    padding-bottom: 6px;
+  }
+  p.lead { font-size: 1.08rem; }
+
+  /* ══ Section headings ══ */
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3em 0 0.6em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .fruit-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+    background: var(--cream);
+    border: 2px solid var(--rule);
+    transition: transform 0.3s ease;
+  }
+  .fruit-badge:hover { transform: rotate(-12deg) scale(1.15); }
+  .h2-txt {
+    flex: 1;
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 7px;
+    line-height: 1.25;
+  }
+
+  /* ══ Pull quote ══ */
+  blockquote {
+    margin: 3.5em 0;
+    padding: 38px 46px;
+    background: linear-gradient(135deg, #7a1a00, #c03818);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  blockquote::before {
+    content: '\201C';
+    font-family: 'Lora', serif;
+    font-size: 10rem;
+    color: rgba(255,200,140,0.12);
+    position: absolute;
+    top: -20px; left: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  blockquote p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.48rem;
+    color: #fff8f0;
+    line-height: 1.55;
+    margin: 0 0 14px;
+    position: relative;
+    z-index: 1;
+  }
+  blockquote p em { color: #ffe090; font-style: normal; }
+  blockquote cite {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,210,160,0.8);
+    font-style: normal;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+
+  /* ══ Call-out boxes ══ */
+  .cbox {
+    padding: 22px 28px;
+    margin: 2.2em 0;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-left: 5px solid transparent;
+  }
+  .cbox strong {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .cbox p { margin: 0; font-size: 0.97rem; line-height: 1.82; }
+
+  .cbox-peach  { background: var(--peach-pale);  border-color: #f0c090; border-left-color: var(--peach);  }
+  .cbox-peach  strong { color: var(--orange); }  .cbox-peach  p { color: #3c1808; }
+
+  .cbox-berry  { background: var(--berry-pale);  border-color: #e0a8c8; border-left-color: var(--berry);  }
+  .cbox-berry  strong { color: var(--berry); }   .cbox-berry  p { color: #300818; }
+
+  .cbox-apple  { background: var(--apple-pale);  border-color: #e8a8a8; border-left-color: var(--apple);  }
+  .cbox-apple  strong { color: var(--apple); }   .cbox-apple  p { color: #380808; }
+
+  .cbox-grape  { background: var(--grape-pale);  border-color: #b8a8e0; border-left-color: var(--grape);  }
+  .cbox-grape  strong { color: var(--grape); }   .cbox-grape  p { color: #180830; }
+
+  .cbox-lime   { background: var(--lime-pale);   border-color: #90c890; border-left-color: var(--lime);   }
+  .cbox-lime   strong { color: var(--lime); }    .cbox-lime   p { color: #0c2008; }
+
+  .cbox-mango  { background: var(--mango-pale);  border-color: #e8c870; border-left-color: var(--mango);  }
+  .cbox-mango  strong { color: var(--mango); }   .cbox-mango  p { color: #3c2000; }
+
+  /* ══ Fruit spotlight cards ══ */
+  .fruit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    gap: 14px;
+    margin: 3em 0;
+  }
+  .f-card {
+    background: var(--pale);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 24px 14px 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .f-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    transition: height 0.3s ease;
+  }
+  .f-card.fc-orange::before { background: var(--orange); }
+  .f-card.fc-berry::before  { background: var(--berry);  }
+  .f-card.fc-apple::before  { background: var(--apple);  }
+  .f-card.fc-grape::before  { background: var(--grape);  }
+  .f-card.fc-lime::before   { background: var(--lime);   }
+  .f-card.fc-mango::before  { background: var(--mango);  }
+
+  .f-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+  .f-card:hover::before { height: 8px; }
+
+  .fc-emoji { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+  .fc-name {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .fc-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.69rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ══ Rainbow banner ══ */
+  .rainbow-banner {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 2.8em 0;
+    min-height: 70px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .rb-seg {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 8px;
+    text-align: center;
+    transition: flex 0.4s ease;
+  }
+  .rb-seg:hover { flex: 1.8; }
+  .rb-seg .rb-emoji { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+  .rb-seg .rb-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .rb-red    { background: #c03838; }
+  .rb-orange { background: #d4601a; }
+  .rb-yellow { background: #c89010; }
+  .rb-green  { background: #3a8830; }
+  .rb-purple { background: #5a3898; }
+  .rb-pink   { background: #8b3068; }
+
+  /* ══ Ornament ══ */
+  .ornament {
+    text-align: center;
+    margin: 38px 0;
+    font-size: 1.05rem;
+    letter-spacing: 0.7em;
+    color: var(--peach);
+    opacity: 0.6;
+  }
+
+  /* ══ Footer ══ */
+  .footer-bar {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bar > span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-badge {
+    background: linear-gradient(135deg, var(--orange), var(--peach));
+    color: #fff8f0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+  }
+
+  /* ══ Animations ══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+
+  .wrapper > * { animation: fadeUp 0.75s ease both; }
+  .wrapper > *:nth-child(1)  { animation-delay: 0.05s; }
+  .wrapper > *:nth-child(2)  { animation-delay: 0.12s; }
+  .wrapper > *:nth-child(3)  { animation-delay: 0.19s; }
+  .wrapper > *:nth-child(n+4){ animation-delay: 0.26s; }
+
+  @media (max-width: 580px) {
+    .wrapper     { padding: 42px 18px 72px; }
+    .hero-inner  { padding: 42px 20px 70px; }
+    blockquote   { padding: 26px 22px; }
+    .fruit-grid  { grid-template-columns: repeat(2, 1fr); }
+    h2           { gap: 12px; }
+    .fruit-badge { min-width: 42px; height: 42px; font-size: 1.3rem; }
+    .rainbow-banner { flex-wrap: wrap; }
+    .rb-seg      { flex: calc(33% - 4px); min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="fruit-bg">
+    <div class="fb"></div><div class="fb"></div>
+    <div class="fb"></div><div class="fb"></div><div class="fb"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Nature's Pharmacy &nbsp;·&nbsp; Daily Nutrition &nbsp;·&nbsp; Whole Food Healing</div>
+    <h1>What Happens When You Eat<br><em>Fruit Every Single Day</em></h1>
+    <p class="hero-sub">
+      Nature spent millions of years perfecting the fruit — wrapping medicine,
+      energy, colour, and joy into one extraordinary, sweet, living package.
+      Here is what it gives you when you eat it daily.
+    </p>
+    <div class="fruit-row">
+      <div class="fr-line"></div>
+      <span class="fruit-emoji">🍎</span>
+      <span class="fruit-emoji">🍊</span>
+      <span class="fruit-emoji">🍇</span>
+      <span class="fruit-emoji">🍋</span>
+      <span class="fruit-emoji">🥝</span>
+      <div class="fr-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ARTICLE BODY ══ -->
+<div class="wrapper">
+
+  <div class="byline">
+    <span>Nutrition &amp; Wellness Desk</span>
+    <span>800 Words &nbsp;·&nbsp; The Daily Fruit Guide</span>
+  </div>
+
+  <p class="lead">
+    There is something almost miraculous about a piece of fruit. It asks
+    nothing of you — no cooking, no preparation, no instruction manual. You
+    simply pick it up, peel it, and eat it. And in that single, uncomplicated
+    act, you receive antioxidants that fight cancer, fibre that feeds your gut,
+    vitamins that protect your eyes, and natural sugars that fuel your brain
+    without the crash that processed food delivers. Fruits are not just food.
+    They are nature's most elegantly designed health delivery system — sweet
+    enough to make you reach for them, and wise enough to give your body
+    exactly what it needs when you do. Eating fruit every single day is one
+    of the simplest, most joyful, and most profoundly beneficial habits
+    a human being can build. Here is the science — and the beauty — of why.
+  </p>
+
+  <blockquote>
+    <p>An apple a day keeps the doctor away. But the <em>whole orchard</em> keeps illness at bay entirely.</p>
+    <cite>— Inspired by Old English Proverb, 1866</cite>
+  </blockquote>
+
+  <!-- 1 -->
+  <h2>
+    <span class="fruit-badge">🛡️</span>
+    <span class="h2-txt">Fruits Flood Your Body with Antioxidants</span>
+  </h2>
+
+  <p>
+    Every day, your body wages a quiet war against free radicals — unstable
+    molecules generated by pollution, stress, processed food, and the normal
+    process of cellular energy production. Left unchecked, free radicals damage
+    DNA, inflame tissues, accelerate ageing, and seed the conditions for cancer
+    and heart disease. Fruits are among the richest sources of antioxidants
+    on earth — polyphenols, flavonoids, carotenoids, and Vitamin C — compounds
+    that neutralise free radicals before they can cause harm. Blueberries
+    contain anthocyanins that protect the brain from oxidative damage.
+    Pomegranates are loaded with punicalagins so powerful that their
+    antioxidant activity outperforms red wine and green tea. Kiwi delivers
+    more Vitamin C per gram than an orange. Every fruit is a different
+    army of protective compounds, and eating a variety daily means your
+    body is defended from every direction — colourfully, deliciously, and
+    without a single side effect.
+  </p>
+
+  <div class="cbox cbox-berry">
+    <strong>The Colour Rule</strong>
+    <p>The colour of a fruit is nature's label for what antioxidants it contains. Red fruits carry lycopene and anthocyanins. Orange and yellow carry beta-carotene and Vitamin C. Purple and blue carry resveratrol and flavonoids. Green carries chlorophyll and folate. Eat the full rainbow every week — each colour protects a different part of you.</p>
+  </div>
+
+  <!-- Rainbow banner -->
+  <div class="rainbow-banner">
+    <div class="rb-seg rb-red">
+      <span class="rb-emoji">🍎</span>
+      <span class="rb-label">Red<br>Lycopene</span>
+    </div>
+    <div class="rb-seg rb-orange">
+      <span class="rb-emoji">🍊</span>
+      <span class="rb-label">Orange<br>Beta-Carotene</span>
+    </div>
+    <div class="rb-seg rb-yellow">
+      <span class="rb-emoji">🍋</span>
+      <span class="rb-label">Yellow<br>Vitamin C</span>
+    </div>
+    <div class="rb-seg rb-green">
+      <span class="rb-emoji">🍈</span>
+      <span class="rb-label">Green<br>Folate</span>
+    </div>
+    <div class="rb-seg rb-purple">
+      <span class="rb-emoji">🍇</span>
+      <span class="rb-label">Purple<br>Resveratrol</span>
+    </div>
+    <div class="rb-seg rb-pink">
+      <span class="rb-emoji">🍓</span>
+      <span class="rb-label">Pink<br>Ellagic Acid</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <h2>
+    <span class="fruit-badge">💚</span>
+    <span class="h2-txt">Fibre from Fruit Heals Your Gut from the Inside</span>
+  </h2>
+
+  <p>
+    The fibre in fruit is not merely a digestive aid — it is one of the most
+    important substances for total human health. Soluble fibre, abundant in
+    apples, pears, berries, and citrus, dissolves in water to form a gentle
+    gel that slows the absorption of sugar and fat, reduces LDL cholesterol,
+    and feeds the beneficial bacteria that make up your gut microbiome.
+    These bacteria ferment the fibre and produce short-chain fatty acids that
+    reduce intestinal inflammation, strengthen the gut lining, and regulate
+    the immune system from the inside out. People who eat two or more
+    servings of fruit daily have measurably more diverse gut microbiomes —
+    and microbiome diversity is one of the strongest predictors of long-term
+    health, mental wellbeing, and resistance to chronic disease. The apple
+    you eat today feeds billions of bacterial allies who will protect you
+    tomorrow — silently, generously, and without a word of thanks.
+  </p>
+
+  <div class="cbox cbox-apple">
+    <strong>An Apple's Hidden Army</strong>
+    <p>A single medium apple contains approximately 4 grams of fibre — including pectin, a soluble fibre that feeds Lactobacillus and Bifidobacterium bacteria in your gut. These bacteria produce butyrate, a fatty acid that reduces colon cancer risk, strengthens the intestinal wall, and reduces systemic inflammation throughout the body. One apple. Four grams. Billions of allies.</p>
+  </div>
+
+  <div class="ornament">— 🍇 —</div>
+
+  <!-- 3 -->
+  <h2>
+    <span class="fruit-badge">❤️</span>
+    <span class="h2-txt">Daily Fruit Dramatically Protects Your Heart</span>
+  </h2>
+
+  <p>
+    Heart disease is the leading cause of death worldwide — and fruit is one
+    of the most powerful dietary weapons against it. The potassium in bananas,
+    oranges, and kiwi lowers blood pressure by counteracting sodium and
+    relaxing blood vessel walls. The flavonoids in berries reduce arterial
+    stiffness and improve endothelial function — the health of the inner lining
+    of blood vessels that determines how freely blood flows. The polyphenols
+    in grapes and pomegranates inhibit LDL cholesterol oxidation, preventing
+    the formation of the arterial plaques that cause heart attacks. A landmark
+    meta-analysis of ninety-five studies found that eating 200 grams of fruit
+    daily — roughly one and a half servings — was associated with a 10%
+    reduction in cardiovascular disease risk. Eating 400 grams daily reduced
+    risk even further. These are not marginal improvements. These are lives
+    saved, one piece of fruit at a time.
+  </p>
+
+  <!-- 4 -->
+  <h2>
+    <span class="fruit-badge">🧠</span>
+    <span class="h2-txt">Fruit Keeps Your Brain Sharp and Your Mood Bright</span>
+  </h2>
+
+  <p>
+    The connection between fruit and mental health is one of nutrition science's
+    most exciting recent discoveries. Flavonoids in blueberries, strawberries,
+    and citrus fruits cross the blood-brain barrier and accumulate in regions
+    of the brain involved in learning, memory, and emotional regulation.
+    Studies show that regular berry consumption slows cognitive decline by
+    up to two and a half years in older adults. The natural folate in tropical
+    fruits like mango, papaya, and avocado supports the production of serotonin
+    and dopamine — the neurotransmitters responsible for mood, motivation, and
+    emotional resilience. And the simple act of eating something colourful,
+    sweet, and fresh has been shown to elevate mood in real time — not because
+    fruit is a luxury, but because the body recognises it as exactly what it
+    has always been designed to receive.
+  </p>
+
+  <div class="cbox cbox-grape">
+    <strong>The Blueberry Brain Study</strong>
+    <p>Research from Harvard's Brigham and Women's Hospital found that women who consumed two or more servings of blueberries and strawberries per week delayed cognitive ageing by up to 2.5 years. The researchers attributed this effect primarily to the flavonoids crossing into the brain and reducing oxidative stress and neuroinflammation — two key drivers of cognitive decline.</p>
+  </div>
+
+  <!-- 5 -->
+  <h2>
+    <span class="fruit-badge">⚖️</span>
+    <span class="h2-txt">Fruit Helps You Manage Weight Naturally</span>
+  </h2>
+
+  <p>
+    The natural sugars in fruit are packaged with fibre, water, and a host
+    of nutrients that transform how your body processes them — completely
+    differently from the refined sugars found in processed foods. Fruit's
+    high water content adds volume without calories. Its fibre slows digestion
+    and prolongs satiety. Its chewing requirement slows your eating pace.
+    Studies consistently show that high fruit consumption is associated with
+    healthy body weight — not weight gain — because fruit satisfies hunger with
+    far fewer calories than the processed snacks it replaces. Reaching for
+    an orange instead of a biscuit, a handful of grapes instead of a handful
+    of crisps — these are not deprivations. They are the most pleasurable
+    possible acts of self-care, wrapped in the colours of a summer garden.
+  </p>
+
+  <div class="cbox cbox-lime">
+    <strong>The Satiety Secret</strong>
+    <p>Watermelon is 92% water. Strawberries are 91% water. Grapefruit is 88% water. These fruits provide extraordinary volume and satiety for remarkably few calories — making them among the most effective natural appetite management foods available. A large bowl of watermelon contains fewer calories than a small handful of potato crisps, and it satisfies far more completely.</p>
+  </div>
+
+  <!-- 6 -->
+  <h2>
+    <span class="fruit-badge">✨</span>
+    <span class="h2-txt">Fruit Makes Your Skin Glow and Slows Ageing</span>
+  </h2>
+
+  <p>
+    Vitamin C — found in extraordinary abundance in kiwi, strawberries,
+    citrus, papaya, and guava — is the single most important nutrient for
+    collagen synthesis. Collagen is the structural protein that gives skin its
+    firmness, elasticity, and that luminous quality that no skincare product
+    can manufacture from the outside in. Without adequate Vitamin C, collagen
+    production slows, skin thins, and fine lines deepen far faster than they
+    should. Lycopene in watermelon and tomatoes acts as an internal sunscreen,
+    protecting skin cells from UV-induced DNA damage. Beta-carotene in mangoes
+    and papayas gives skin a subtle warmth and glow that has been rated as
+    more attractive than a suntan in multiple studies. The most beautiful
+    skin in the world is not painted on — it is grown from the inside, with
+    colour, with sweetness, and with fruit.
+  </p>
+
+  <div class="cbox cbox-mango">
+    <strong>Inner Glow Foods</strong>
+    <p>For the most skin-transforming daily fruit combination: kiwi for collagen-building Vitamin C, mango for beta-carotene glow, watermelon for lycopene protection, and blueberries for anti-ageing anthocyanins. Eaten daily for eight weeks, this combination produces visible improvements in skin elasticity, tone, and radiance — from the inside out, entirely naturally.</p>
+  </div>
+
+  <!-- Fruit spotlight cards -->
+  <div class="fruit-grid">
+    <div class="f-card fc-berry">
+      <span class="fc-emoji">🫐</span>
+      <span class="fc-name">Blueberry</span>
+      <span class="fc-note">Brain & memory protection</span>
+    </div>
+    <div class="f-card fc-apple">
+      <span class="fc-emoji">🍎</span>
+      <span class="fc-name">Apple</span>
+      <span class="fc-note">Gut microbiome & fibre</span>
+    </div>
+    <div class="f-card fc-orange">
+      <span class="fc-emoji">🍊</span>
+      <span class="fc-name">Orange</span>
+      <span class="fc-note">Vitamin C & heart health</span>
+    </div>
+    <div class="f-card fc-grape">
+      <span class="fc-emoji">🍇</span>
+      <span class="fc-name">Grapes</span>
+      <span class="fc-note">Resveratrol & longevity</span>
+    </div>
+    <div class="f-card fc-lime">
+      <span class="fc-emoji">🥝</span>
+      <span class="fc-name">Kiwi</span>
+      <span class="fc-note">Skin glow & immunity</span>
+    </div>
+    <div class="f-card fc-mango">
+      <span class="fc-emoji">🥭</span>
+      <span class="fc-name">Mango</span>
+      <span class="fc-note">Beta-carotene & mood</span>
+    </div>
+  </div>
+
+  <p>
+    Nature did not make fruit beautiful by accident. The colour was designed
+    to attract you. The sweetness was designed to reward you. And the
+    extraordinary cascade of nutrients inside was designed to sustain you —
+    to keep your heart beating steadily, your mind thinking clearly, your
+    gut thriving quietly, and your skin reflecting the vitality within. Eating
+    fruit every day is not a diet. It is not a sacrifice. It is the oldest,
+    most joyful, most deeply nourishing act of self-care available to any
+    human being alive — and it fits, perfectly and beautifully, in the palm
+    of your hand. Reach for it today. And every day after that. Your body
+    has been waiting for exactly this.
+  </p>
+
+  <div class="footer-bar">
+    <span>Nutrition &amp; Wellness Desk — The Daily Fruit Guide</span>
+    <span class="footer-badge">~800 Words</span>
+  </div>
+
+</div>
+</body>
+</html>
