@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefits of Sunlight for Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun-deep:     #c45e00;
+    --sun-mid:      #e07800;
+    --sun-bright:   #f5a623;
+    --sun-pale:     #ffecd0;
+    --sun-cream:    #fff8f0;
+    --sky-blue:     #1a6fa8;
+    --sky-mid:      #2288cc;
+    --sky-soft:     #d6eeff;
+    --sky-pale:     #eef7ff;
+    --gold:         #f0b840;
+    --gold-deep:    #c07a00;
+    --cream:        #fdf9f4;
+    --warm-white:   #fffcf7;
+    --text:         #2a1a08;
+    --text-mid:     #5a3a18;
+    --text-light:   #9a7050;
+    --white:        #ffffff;
+    --green:        #1e6b40;
+    --green-soft:   #e5f5ec;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--sun-deep);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 28px;
+    font-size: 0.79rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.6px;
+  }
+  .top-bar strong { color: #ffe0b0; }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(160deg, #7a3000 0%, #c45e00 35%, #e07800 65%, #f5a623 100%);
+    padding: 0;
+    min-height: 460px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  /* Sun rays background */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-conic-gradient(
+        from 0deg at 100% -10%,
+        rgba(255,255,255,0.03) 0deg,
+        rgba(255,255,255,0.03) 3deg,
+        transparent 3deg,
+        transparent 9deg
+      );
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 70% at 95% 0%,
+        rgba(255,255,255,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 90%,
+        rgba(26,111,168,0.15) 0%, transparent 60%);
+  }
+  /* Giant decorative sun circle */
+  .hero-sun {
+    position: absolute;
+    top: -180px;
+    right: -140px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,210,100,0.1) 40%, transparent 70%);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+      0 0 80px rgba(255,200,80,0.2),
+      0 0 160px rgba(255,160,0,0.1);
+  }
+  .hero-sun-inner {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,230,120,0.15) 50%, transparent 75%);
+    animation: glow 4s ease-in-out infinite alternate;
+  }
+  @keyframes glow {
+    from { opacity: 0.7; transform: scale(1); }
+    to   { opacity: 1;   transform: scale(1.08); }
+  }
+  .hero-content {
+    position: relative;
+    padding: 80px 32px 56px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff7e0;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 7px 22px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+    color: #fff;
+    line-height: 1.12;
+    max-width: 680px;
+    font-weight: 700;
+  }
+  .hero h1 em {
+    color: #ffe599;
+    font-style: italic;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.62);
+    font-size: 1.02rem;
+    font-weight: 300;
+    margin-top: 16px;
+    max-width: 500px;
+  }
+  /* Sunshine stat pills */
+  .hero-pills {
+    display: flex;
+    gap: 14px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .hero-pill strong { color: #ffe599; }
+  .hero-gradient-bar {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg,
+      #fff6e0, #f5a623, #e07800, #c45e00,
+      #1a6fa8, #2288cc, #5bb8f5);
+    position: relative;
+  }
+
+  /* ── Article wrap ── */
+  .article-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 24px 88px;
+  }
+
+  /* ── Intro box ── */
+  .intro-box {
+    background: linear-gradient(135deg, #fff3e0 0%, #fffaf4 100%);
+    border-left: 5px solid var(--sun-bright);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 34px;
+    margin-bottom: 52px;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--sun-deep);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.92;
+  }
+
+  /* ── Tip section ── */
+  .tip-section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--sun-deep), var(--sun-bright));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 22px rgba(196,94,0,0.28);
+  }
+  .title-group span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--sun-mid);
+    margin-bottom: 3px;
+  }
+  .title-group h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1.22;
+  }
+
+  .tip-body p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.92;
+  }
+
+  /* ── Action card ── */
+  .action-card {
+    background: var(--white);
+    border: 1px solid #ffd8a0;
+    border-radius: 14px;
+    padding: 20px 26px;
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 3px 18px rgba(196,94,0,0.08);
+  }
+  .ac-icon { font-size: 1.3rem; margin-top: 1px; flex-shrink: 0; }
+  .ac-text { font-size: 0.94rem; color: var(--text-mid); line-height: 1.78; }
+  .ac-text strong { color: var(--sun-deep); font-weight: 700; }
+
+  /* ── Sun divider ── */
+  .sun-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .sun-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--sun-bright), transparent); }
+  .sun-divider span { font-size: 1.4rem; }
+
+  /* ── Benefits grid ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+  @media(max-width:560px){ .benefits-grid { grid-template-columns: 1fr 1fr; } }
+  .benefit-card {
+    background: var(--white);
+    border: 1px solid #ffd8a0;
+    border-radius: 14px;
+    padding: 20px 14px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(196,94,0,0.12);
+  }
+  .benefit-card .bc-icon { font-size: 2rem; margin-bottom: 10px; }
+  .benefit-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--sun-deep);
+    margin-bottom: 5px;
+  }
+  .benefit-card p { font-size: 0.77rem; color: var(--text-light); line-height: 1.58; }
+
+  /* ── Sunlight science block ── */
+  .science-block {
+    background: linear-gradient(145deg, #7a3000, #c45e00);
+    border-radius: 22px;
+    padding: 40px 34px;
+    margin: 42px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .science-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 90% 5%,
+        rgba(255,230,150,0.15) 0%, transparent 65%),
+      repeating-conic-gradient(
+        from 0deg at 105% -10%,
+        rgba(255,255,255,0.02) 0deg,
+        rgba(255,255,255,0.02) 3deg,
+        transparent 3deg, transparent 9deg
+      );
+  }
+  .science-block::after {
+    content: '☀';
+    position: absolute;
+    font-size: 180px;
+    color: rgba(255,255,255,0.06);
+    bottom: -20px;
+    right: 16px;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .science-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    color: #ffe599;
+    font-style: italic;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .science-block > p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.87rem;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .sci-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+  @media(max-width:500px){ .sci-steps { grid-template-columns: 1fr; } }
+  .sci-step {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,230,150,0.2);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .sci-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 1px; }
+  .sci-text h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .sci-text p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.58;
+  }
+
+  /* ── Blue sky mental health box ── */
+  .sky-box {
+    background: linear-gradient(135deg, var(--sky-pale), #f5fbff);
+    border: 1px solid #a8d8f5;
+    border-radius: 18px;
+    padding: 28px 32px;
+    margin: 36px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .sky-box .sb-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 2px; }
+  .sky-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    color: var(--sky-blue);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .sky-box p { font-size: 0.93rem; color: #1a4a6a; line-height: 1.8; }
+
+  /* ── Safe sun guide ── */
+  .safe-sun {
+    background: linear-gradient(135deg, var(--green-soft), #f2faf5);
+    border: 1px solid #b8dfc4;
+    border-radius: 18px;
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .safe-sun h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--green);
+    font-style: italic;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .safe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media(max-width:500px){ .safe-grid { grid-template-columns: 1fr; } }
+  .safe-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #c8e8d4;
+  }
+  .safe-item .si-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .safe-item p { font-size: 0.86rem; color: #2a5e3a; line-height: 1.65; }
+  .safe-item strong { color: var(--green); font-weight: 700; }
+
+  /* ── Habits row ── */
+  .habits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  @media(max-width:560px){ .habits-row { grid-template-columns: 1fr; } }
+  .habit-tile {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 22px 22px;
+    border: 1px solid #ffd8a0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .habit-tile .ht-icon { font-size: 1.7rem; margin-bottom: 10px; }
+  .habit-tile h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sun-deep);
+    margin-bottom: 6px;
+  }
+  .habit-tile p { font-size: 0.85rem; color: var(--text-light); line-height: 1.66; }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(145deg, #7a3000, #e07800);
+    border-radius: 22px;
+    padding: 48px 38px;
+    text-align: center;
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 65% 60% at 50% 50%,
+        rgba(255,230,100,0.12) 0%, transparent 65%),
+      repeating-conic-gradient(
+        from 0deg at 50% -30%,
+        rgba(255,255,255,0.025) 0deg,
+        rgba(255,255,255,0.025) 3deg,
+        transparent 3deg, transparent 10deg
+      );
+  }
+  .closing-icon {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    display: block;
+    position: relative;
+    animation: sunpulse 3s ease-in-out infinite;
+  }
+  @keyframes sunpulse {
+    0%,100% { transform: scale(1) rotate(0deg); }
+    50%      { transform: scale(1.1) rotate(8deg); }
+  }
+  .closing p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    max-width: 590px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .closing small {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,230,150,0.75);
+    font-weight: 600;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>✦ Natural Health &amp; Wellness</span>
+  <span><strong>~800 Words</strong> · Sunlight Guide</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-sun"></div>
+  <div class="hero-sun-inner"></div>
+  <div class="hero-content">
+    <div class="hero-badge">☀️ Sunshine Wellness Guide</div>
+    <h1>Benefits of <em>Sunlight</em><br>for Your Health</h1>
+    <p class="hero-sub">The oldest, most generous healer on earth — shining freely every single day</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><strong>Vitamin D</strong> — 90% from sun</div>
+      <div class="hero-pill"><strong>Mood</strong> — serotonin booster</div>
+      <div class="hero-pill"><strong>Sleep</strong> — circadian rhythm reset</div>
+      <div class="hero-pill"><strong>15–30 min</strong> daily is enough</div>
+    </div>
+  </div>
+  <div class="hero-gradient-bar"></div>
+</div>
+
+<div class="article-wrap">
+
+  <div class="intro-box">
+    Before there were doctors, pharmacies, or wellness retreats, there was sunlight. Every civilisation on earth has revered the sun — and not merely as a symbol of warmth or beauty, but as a genuine source of health, life, and healing. Modern science is now beginning to understand just how profound that reverence truly was. Sunlight is not simply pleasant. It is one of the most biologically essential inputs the human body receives — and most of us are deeply, quietly starved of it.
+  </div>
+
+  <!-- 1. Vitamin D -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">☀️</div>
+      <div class="title-group">
+        <span>Benefit No. 1</span>
+        <h2>Sunlight Makes the Vitamin Your Body Cannot Live Without</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>Vitamin D is unlike almost every other vitamin — your body cannot get adequate amounts of it from food alone. It is produced almost entirely through a remarkable photochemical reaction that happens when ultraviolet B rays from the sun strike the skin. And its importance to your health is staggering. Vitamin D is not a single nutrient — it behaves more like a master hormone, influencing over two thousand genes in the human body.</p>
+      <p>It is essential for absorbing calcium and building strong bones. Without it, bones soften and fracture — the condition known as osteoporosis. It regulates the immune system, helping it fight infections while preventing it from attacking the body's own tissues. It supports heart health, insulin production, muscle function, and brain development. Deficiency in Vitamin D is now linked to depression, autoimmune diseases, certain cancers, diabetes, and cardiovascular disease. In short, without enough sunlight, your body quietly begins to fail at a cellular level.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🌞</div>
+      <div class="ac-text"><strong>How much sun you need:</strong> Just 15 to 30 minutes of direct sunlight on your arms and face — between 10 AM and 3 PM — is enough for your skin to produce your daily requirement of Vitamin D. Darker skin tones need slightly longer. You do not need to burn — ever. Gentle, consistent daily sun exposure is far more beneficial than occasional intense exposure.</div>
+    </div>
+  </div>
+
+  <div class="sun-divider">
+    <div class="sun-divider-line"></div>
+    <span>☀</span>
+    <div class="sun-divider-line"></div>
+  </div>
+
+  <!-- Benefits grid -->
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="bc-icon">🦴</div>
+      <h4>Strong Bones</h4>
+      <p>Vitamin D from sun enables calcium absorption — the foundation of dense, fracture-resistant bones</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">😊</div>
+      <h4>Better Mood</h4>
+      <p>Sunlight triggers serotonin release — the natural happiness chemical your brain craves daily</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">😴</div>
+      <h4>Deeper Sleep</h4>
+      <p>Morning light sets your body clock, ensuring melatonin rises at the right time each night</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">🛡️</div>
+      <h4>Immune Boost</h4>
+      <p>UV light activates T-cells — your immune army — and reduces chronic inflammatory responses</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">❤️</div>
+      <h4>Heart Health</h4>
+      <p>Sunlight lowers blood pressure by releasing nitric oxide from the skin into the bloodstream</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">🧠</div>
+      <h4>Sharper Mind</h4>
+      <p>Sunlight exposure is linked to reduced dementia risk and sharper cognitive function with age</p>
+    </div>
+  </div>
+
+  <div class="sun-divider">
+    <div class="sun-divider-line"></div>
+    <span>☀</span>
+    <div class="sun-divider-line"></div>
+  </div>
+
+  <!-- 2. Mood and Serotonin -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">😊</div>
+      <div class="title-group">
+        <span>Benefit No. 2</span>
+        <h2>It Lifts Your Mood in Ways Nothing Else Can</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>There is a reason that people instinctively feel happier on sunny days — and it is deeply biological, not merely poetic. When sunlight enters the eye and strikes the retina, it triggers the brain to produce more serotonin — the neurotransmitter most responsible for feelings of wellbeing, calm, confidence, and joy. This is the same chemical targeted by antidepressant medications. Sunlight produces it naturally, freely, and with no side effects.</p>
+      <p>Seasonal Affective Disorder — the very real depression that many people experience during long winters of reduced sunlight — is one of the most powerful demonstrations of how directly the sun affects mental health. Studies show that even brief morning sun exposure produces measurable improvements in mood, energy, and emotional resilience throughout the entire day. The simple act of stepping outside into the morning light can shift your entire inner climate.</p>
+    </div>
+    <div class="action-card">
+      <div class="ac-icon">🌅</div>
+      <div class="ac-text"><strong>The morning sun ritual:</strong> Step outside within the first hour of waking — even on cooler days. Ten to fifteen minutes of natural morning light, without sunglasses, sends a powerful signal to your brain's serotonin system. It also tells your circadian clock exactly what time it is, anchoring your entire day's energy, focus, and mood to a strong biological foundation.</div>
+    </div>
+  </div>
+
+  <!-- Science block -->
+  <div class="science-block">
+    <h3>What Sunlight Does Inside Your Body</h3>
+    <p>The remarkable cascade of biological responses that begin within minutes of sun exposure</p>
+    <div class="sci-steps">
+      <div class="sci-step">
+        <div class="sci-icon">🔬</div>
+        <div class="sci-text">
+          <h5>Skin Produces Vitamin D</h5>
+          <p>UVB rays convert cholesterol in the skin to pre-vitamin D3, which the liver and kidneys transform into active Vitamin D within 24 hours.</p>
+        </div>
+      </div>
+      <div class="sci-step">
+        <div class="sci-icon">🧪</div>
+        <div class="sci-text">
+          <h5>Nitric Oxide Released</h5>
+          <p>UV exposure releases nitric oxide from the skin into blood vessels, relaxing arterial walls and measurably lowering blood pressure within minutes.</p>
+        </div>
+      </div>
+      <div class="sci-step">
+        <div class="sci-icon">⏰</div>
+        <div class="sci-text">
+          <h5>Circadian Clock Set</h5>
+          <p>Light entering the eye resets the suprachiasmatic nucleus — your master body clock — aligning hormones, digestion, and sleep with the natural day.</p>
+        </div>
+      </div>
+      <div class="sci-step">
+        <div class="sci-icon">🧠</div>
+        <div class="sci-text">
+          <h5>Serotonin Synthesis</h5>
+          <p>Bright light stimulates serotonin production in the raphe nuclei of the brain — directly elevating mood, reducing anxiety, and sharpening concentration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sleep and Circadian -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌙</div>
+      <div class="title-group">
+        <span>Benefit No. 3</span>
+        <h2>Morning Light Gives You Better Sleep at Night</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>This connection surprises many people — but it is one of the most well-established facts in sleep science. Your body produces melatonin — the sleep hormone — in the evening darkness. But the timing, quality, and quantity of that melatonin release depends directly on how much bright natural light you received during the day, especially in the morning hours.</p>
+      <p>When you get morning sunlight, your body's internal clock is set precisely. It knows exactly when it is daytime — and therefore exactly when it should be night. People who receive regular morning sun exposure fall asleep faster, sleep more deeply, and wake more refreshed than those who spend their mornings in artificial indoor light. The sun does not just wake you up — it programmes you to sleep better every night.</p>
+    </div>
+  </div>
+
+  <!-- Blue sky mental health box -->
+  <div class="sky-box">
+    <div class="sb-icon">🌤️</div>
+    <div>
+      <h3>Sunlight and Mental Wellbeing — A Deep Connection</h3>
+      <p>Researchers at the University of Alabama found that just one hour of sunlight exposure per day was associated with a significantly lower risk of major depression — even after controlling for physical activity, social interaction, and diet. The sun's influence on mental health is direct, biological, and independent of any other wellness habit. In parts of the world with very limited winter sunlight, light therapy — simply sitting near a bright lamp that mimics sunlight — is a clinically prescribed treatment for depression. This is how real the sun's role in mental health truly is.</p>
+    </div>
+  </div>
+
+  <div class="sun-divider">
+    <div class="sun-divider-line"></div>
+    <span>☀</span>
+    <div class="sun-divider-line"></div>
+  </div>
+
+  <!-- Safe sun -->
+  <div class="safe-sun">
+    <h3>🌿 How to Enjoy Sun Safely — Every Day</h3>
+    <div class="safe-grid">
+      <div class="safe-item">
+        <div class="si-icon">⏰</div>
+        <p><strong>Best window:</strong> Morning sunlight between 7–10 AM is gentlest and most beneficial for circadian health without overexposure risk.</p>
+      </div>
+      <div class="safe-item">
+        <div class="si-icon">⏱️</div>
+        <p><strong>Duration:</strong> 15–30 minutes of direct skin exposure daily is sufficient — more is not always better. Listen to your skin.</p>
+      </div>
+      <div class="safe-item">
+        <div class="si-icon">🧴</div>
+        <p><strong>Sun protection:</strong> For longer outdoor time, apply broad-spectrum SPF 30+ sunscreen after your initial 15–20 minutes of unprotected exposure.</p>
+      </div>
+      <div class="safe-item">
+        <div class="si-icon">💧</div>
+        <p><strong>Stay hydrated:</strong> Sun and warmth increase water loss. Always drink extra water on sunny days to support your skin and overall health.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily habits -->
+  <div class="tip-section">
+    <div class="section-header">
+      <div class="section-icon">🌸</div>
+      <div class="title-group">
+        <span>Daily Practice</span>
+        <h2>Simple Sun Habits That Change Everything</h2>
+      </div>
+    </div>
+    <div class="tip-body">
+      <p>You do not need to rearrange your life to receive the sun's benefits. These small, daily rituals weave sunlight into your routine naturally and joyfully — and their cumulative effect on your health is profound.</p>
+    </div>
+    <div class="habits-row">
+      <div class="habit-tile">
+        <div class="ht-icon">🌅</div>
+        <h4>Morning Sun Walk</h4>
+        <p>Ten to twenty minutes outside within an hour of waking. No sunglasses for this brief window — let the light reach your eyes and skin directly for maximum benefit.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🍽️</div>
+        <h4>Eat Outside When You Can</h4>
+        <p>Taking your breakfast, lunch, or even a morning cup of tea outdoors combines nourishment with natural light in a beautiful, effortless daily ritual.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🪴</div>
+        <h4>Open Your Curtains Early</h4>
+        <p>Natural light flooding your home in the morning sends waking signals to your body even indoors — and keeps your circadian rhythm anchored throughout the day.</p>
+      </div>
+      <div class="habit-tile">
+        <div class="ht-icon">🧘</div>
+        <h4>Outdoor Meditation or Yoga</h4>
+        <p>Combining sunlight with breathwork or gentle movement multiplies the mood, energy, and clarity benefits — a powerful morning practice for body and mind together.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <span class="closing-icon">☀️</span>
+    <p>"The sun rises every morning with the same faithful generosity — offering you warmth, light, Vitamin D, serotonin, and life itself. All it asks is that you step outside and receive it. That is a gift worth saying yes to, every single day."</p>
+    <small>✦ Step outside · Breathe deep · Let it in · Feel alive ✦</small>
+  </div>
+
+</div>
+</body>
+</html>
