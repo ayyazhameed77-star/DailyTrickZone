@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Foods for Muscle Growth: Eat Strong, Build Lean | The Muscle Fuel Kitchen</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #121212;
+      font-family: 'Inter', system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      line-height: 1.68;
+      color: #e0e0e0;
+      padding: 2rem 1rem;
+    }
+
+    .blog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      border-radius: 48px;
+      box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      border: 1px solid #2c2c2c;
+    }
+
+    /* header */
+    .hero {
+      background: linear-gradient(135deg, #1f1f1f 0%, #151515 100%);
+      padding: 2.6rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #2e2e2e;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e09d5e;
+      color: #121212;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.3rem 1.4rem;
+      border-radius: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f0d5b6;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.2px;
+    }
+
+    .hero .subhead {
+      font-size: 1.08rem;
+      color: #bda688;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .byline {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #2f2f2f;
+      color: #a48e72;
+    }
+
+    /* visual */
+    .visual-muscle {
+      background: #131313;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #282828;
+    }
+
+    .muscle-animation {
+      max-width: 300px;
+      margin: 0 auto;
+      animation: gentlePulse 4s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes gentlePulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.02); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.9; }
+    }
+
+    .muscle-svg {
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .caption-muscle {
+      font-size: 0.75rem;
+      color: #c29266;
+      margin-top: 12px;
+    }
+
+    /* content */
+    .content {
+      padding: 2.2rem 2.5rem 2.8rem;
+    }
+
+    .content p {
+      margin-bottom: 1.35rem;
+      font-size: 1.06rem;
+      color: #d6d2cc;
+    }
+
+    .content h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #eab27e;
+      margin: 2rem 0 1rem 0;
+      border-left: 6px solid #e09d5e;
+      padding-left: 1.2rem;
+    }
+
+    .content h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #dc9f6c;
+      margin: 1.5rem 0 0.6rem 0;
+    }
+
+    .food-card {
+      background: #232323;
+      border-radius: 32px;
+      padding: 1.3rem 1.8rem;
+      margin: 1.8rem 0;
+      border-left: 8px solid #e09d5e;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .food-card strong {
+      color: #f0bc8e;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .content ul, .content ol {
+      margin: 0.8rem 0 1.3rem 1.8rem;
+    }
+
+    .content li {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      color: #cbc5bc;
+    }
+
+    .quote-muscle {
+      background: #1e1c1a;
+      padding: 1.3rem 2rem;
+      border-radius: 36px;
+      font-weight: 450;
+      margin: 1.8rem 0;
+      color: #e2bc95;
+      border: 1px solid #3a2e24;
+    }
+
+    .quote-muscle span {
+      font-style: italic;
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, #2c2c2c, #e09d5e, #2c2c2c);
+    }
+
+    .food-list {
+      background: #202020;
+      border-radius: 32px;
+      padding: 1.3rem 1.8rem;
+      margin: 1.6rem 0;
+      border: 1px solid #363636;
+    }
+
+    .footer-muscle {
+      background: #181818;
+      border-radius: 32px;
+      padding: 1.6rem;
+      text-align: center;
+      margin-top: 2.2rem;
+      font-size: 0.95rem;
+      color: #bfa07e;
+    }
+
+    .footer-muscle a {
+      color: #e8ab7a;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #4a3a2c;
+    }
+
+    .footer-muscle a:hover {
+      color: #f5bc8c;
+    }
+
+    @media (max-width: 680px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .content {
+        padding: 1.5rem;
+      }
+      .content h2 {
+        font-size: 1.55rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="blog-container">
+  <div class="hero">
+    <div class="badge">💪 fuel · lift · grow</div>
+    <h1>Foods for Muscle Growth: Eat Your Way to a Stronger Body</h1>
+    <div class="subhead">No gimmicks, no starvation — just real, delicious foods that help you build lean muscle naturally.</div>
+    <div class="byline">
+      <span>✍️ by Jake Morrison — strength coach & whole food advocate</span>
+      <span>📅 April 5, 2026</span>
+      <span>⏱️ 8 min read</span>
+    </div>
+  </div>
+
+  <div class="visual-muscle">
+    <div class="muscle-animation">
+      <svg class="muscle-svg" viewBox="0 0 320 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="muscle growth food illustration">
+        <circle cx="80" cy="65" r="26" fill="#2A2824" stroke="#E09D5E" stroke-width="2" />
+        <path d="M70 60 L80 72 L95 58" stroke="#E09D5E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="195" y="52" width="55" height="50" rx="14" fill="#2A2824" stroke="#E09D5E" stroke-width="2" />
+        <path d="M210 67 L220 78 L235 63" stroke="#E09D5E" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="52" y="112" font-size="9" fill="#EAB27E">🍗 protein first</text>
+        <text x="195" y="112" font-size="9" fill="#EAB27E">🥑 healthy fats</text>
+      </svg>
+    </div>
+    <div class="caption-muscle">
+      ✨ Muscle is built in the kitchen, sculpted in the gym. Eat accordingly.
+    </div>
+  </div>
+
+  <div class="content">
+    <p>Let's cut through the noise. You can lift weights until you're sore for days, but if your plate isn't stacked with the right foods, those gains will stay out of reach. <strong>Muscle growth requires a consistent calorie surplus, high-quality protein, and nutrient-dense carbs and fats.</strong> But that doesn't mean bland chicken and broccoli for every meal. I've spent over a decade helping hardgainers and athletes build lean mass, and these are the foods that actually work — plus tips to make them enjoyable.</p>
+
+    <div class="quote-muscle">
+      <span>💬 “I spent years lifting heavy but eating like a bird. Once I started prioritizing whole foods and protein, my strength skyrocketed in 3 months.” — Chris, 32</span>
+    </div>
+
+    <h2>1. The Protein Powerhouses (Muscle Building Blocks)</h2>
+    <p>Protein provides amino acids, the raw material for muscle repair and growth. Aim for <strong>0.8–1 gram of protein per pound of body weight</strong> daily. Spread it across 3-5 meals. These are your best bets:</p>
+    <div class="food-card">
+      <strong>🥩 Animal Proteins (complete amino profiles):</strong> Chicken breast, lean beef, turkey, eggs, Greek yogurt, cottage cheese, fish (salmon, tuna, cod), and whey or casein protein powder.
+    </div>
+    <div class="food-card">
+      <strong>🌱 Plant Proteins (still effective — combine for completeness):</strong> Lentils, chickpeas, black beans, tofu, tempeh, edamame, seitan, quinoa, and hemp seeds. Combine rice + beans or hummus + whole wheat pita.
+    </div>
+    <ul>
+      <li>🥚 <strong>Eggs:</strong> One large egg = 6g protein + healthy fats. Eat the yolk for vitamins.</li>
+      <li>🐟 <strong>Salmon:</strong> 22g protein per 3oz + omega-3s (reduce inflammation).</li>
+      <li>🥛 <strong>Greek yogurt:</strong> 15-20g protein per serving. Mix with berries and nuts.</li>
+    </ul>
+
+    <h2>2. Complex Carbs: Your Training Fuel</h2>
+    <p>Carbs replenish muscle glycogen (energy stores) and allow you to train harder. Without enough carbs, protein gets used for energy instead of muscle building. Choose <strong>slow-digesting, fiber-rich carbs</strong> for steady energy.</p>
+    <div class="food-list">
+      <p><strong>🍚 Best carb sources for muscle growth:</strong></p>
+      <ul>
+        <li>Oats — great for breakfast or pre-workout</li>
+        <li>Sweet potatoes — loaded with vitamins and slow carbs</li>
+        <li>Brown rice & quinoa — complete protein + carbs</li>
+        <li>Whole grain bread & pasta — easy to add to meals</li>
+        <li>Beans & legumes — carbs + protein + fiber</li>
+        <li>Fruits (bananas, berries, apples) — quick energy before workouts</li>
+      </ul>
+    </div>
+    <div class="quote-muscle">
+      <span>🍌 “Adding a banana and oats to my post-workout shake gave me more energy for my evening training. Carbs aren't the enemy — they're the engine.” — Dana, 27</span>
+    </div>
+
+    <h2>3. Healthy Fats: Hormonal Support & Calories</h2>
+    <p>Fats are crucial for testosterone production (key for muscle growth) and absorbing fat-soluble vitamins. Don't fear them — just choose wisely. Aim for 20-30% of your calories from healthy fats.</p>
+    <ul>
+      <li>🥑 <strong>Avocados:</strong> Creamy, versatile, full of monounsaturated fats.</li>
+      <li>🥜 <strong>Nuts & nut butters:</strong> Almonds, walnuts, peanuts, cashews — calorie-dense and easy to snack.</li>
+      <li>🫒 <strong>Olive oil & coconut oil:</strong> Drizzle on veggies or add to smoothies.</li>
+      <li>🐟 <strong>Fatty fish:</strong> Salmon, mackerel, sardines (omega-3s reduce post-workout inflammation).</li>
+      <li>🌱 <strong>Seeds:</strong> Chia, flax, pumpkin — sprinkle on yogurt or oatmeal.</li>
+    </ul>
+
+    <h2>4. Pre- and Post-Workout Nutrition (Timing Matters)</h2>
+    <p><strong>Pre-workout (1-2 hours before):</strong> Eat a meal with carbs + protein. Example: banana + peanut butter, or oatmeal with whey. This fuels your session and prevents muscle breakdown.</p>
+    <p><strong>Post-workout (within 1-2 hours):</strong> The “anabolic window” is wider than once thought, but eating soon helps recovery. Aim for 20-40g protein + carbs. Classic combo: protein shake + piece of fruit, or grilled chicken with sweet potato.</p>
+    <div class="food-card">
+      <strong>⚡ Quick post-workout meal ideas:</strong><br>
+      • Smoothie: 1 scoop protein powder + 1 banana + 1 cup milk + handful spinach.<br>
+      • Greek yogurt bowl: 1 cup Greek yogurt + berries + granola.<br>
+      • Tuna sandwich: Whole grain bread + canned tuna + avocado.
+    </div>
+
+    <h2>5. Don't Forget Your Micronutrients (Vitamins & Minerals)</h2>
+    <p>Muscle growth isn't just about macros. You need <strong>zinc, magnesium, vitamin D, and iron</strong> for hormone production, recovery, and oxygen transport. Eat a rainbow of vegetables and fruits daily. Leafy greens (spinach, kale), bell peppers, berries, and citrus fruits reduce oxidative stress from training.</p>
+
+    <h2>6. Sample Muscle-Growth Meal Plan (Approx. 2600-2800 calories)</h2>
+    <div class="food-list">
+      <p><strong>🍽️ Eat this to grow:</strong></p>
+      <ul style="margin-bottom: 0;">
+        <li><strong>Breakfast (7 AM):</strong> 3 scrambled eggs + 2 slices whole grain toast + 1 tbsp butter + 1 cup oatmeal with berries.</li>
+        <li><strong>Morning snack (10 AM):</strong> Greek yogurt (150g) + handful of walnuts + drizzle honey.</li>
+        <li><strong>Lunch (1 PM):</strong> 6 oz grilled chicken breast + 1.5 cups brown rice + roasted broccoli with olive oil.</li>
+        <li><strong>Pre-workout snack (4 PM):</strong> Banana + 2 tbsp peanut butter.</li>
+        <li><strong>Dinner (7 PM):</strong> 6 oz salmon + quinoa + asparagus + half avocado.</li>
+        <li><strong>Evening snack (9 PM):</strong> Cottage cheese (1/2 cup) + few dark chocolate chips or protein shake (casein for overnight repair).</li>
+      </ul>
+    </div>
+
+    <h2>7. Hydration & Digestion (Often Overlooked)</h2>
+    <p>Muscles are about 75% water. Dehydration impairs strength and recovery. Drink <strong>3-4 liters of water daily</strong> (more if you sweat a lot). Also, support digestion with fiber from veggies and fermented foods (yogurt, kimchi, sauerkraut). Better digestion = better nutrient absorption = better gains.</p>
+
+    <h2>8. Foods to Limit (Not Eliminate, But Be Aware)</h2>
+    <p>You don't need to be perfect, but certain foods can hinder progress if they dominate your diet:</p>
+    <ul>
+      <li>❌ <strong>Highly processed snacks:</strong> Chips, sugary cereals, fast food — empty calories, low nutrients.</li>
+      <li>❌ <strong>Sugary drinks:</strong> Soda, sweetened teas — spike insulin and add fat without muscle benefit.</li>
+      <li>❌ <strong>Excessive alcohol:</strong> Impairs protein synthesis and recovery. Save for occasional treats.</li>
+    </ul>
+    <div class="quote-muscle">
+      <span>🍺 “Cutting down from 5 drinks a week to 1-2 made a noticeable difference in my gym performance and muscle tightness. Small change, big impact.” — Tyler, 35</span>
+    </div>
+
+    <h2>9. Consistency Over Perfection</h2>
+    <p>You don't need to eat like a bodybuilder 365 days a year. Aim for <strong>80-90% adherence</strong> to these principles. Life happens — pizza with friends won't ruin your gains. But day after day of missing protein or skimping on calories will. Track your food for a week to see where you're falling short. Adjust, and stay patient. Muscle growth is slow (0.25-0.5 lbs per week is great progress).</p>
+
+    <hr>
+
+    <p><strong>Final lift:</strong> Your muscles are waiting for the right fuel. You can lift all the weights in the world, but without proper nutrition, you're leaving gains on the table. Start with one change this week — maybe adding a protein shake post-workout, or swapping white rice for quinoa. Small habits, repeated daily, build the body you want. Eat well, train hard, rest deeply. You've got the tools. Now go build something strong.</p>
+
+    <div class="footer-muscle">
+      💪 <strong>Share this with a gym buddy who needs to dial in their nutrition.</strong> Team gains. <br>
+      📖 <strong>Read next:</strong> <a href="#">The Best High-Protein Snacks for Muscle Growth</a> | <a href="#">How to Bulk Without Getting Fat</a>
+      <div style="margin-top: 0.8rem; font-size: 0.8rem;">🌱 Fuel the machine. Build the life. You're stronger than you know.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
