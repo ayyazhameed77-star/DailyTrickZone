@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises for Neck Pain - Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a4d7a;
+            --secondary: #2a7ab8;
+            --accent: #ff6b6b;
+            --light-bg: #f0f4f8;
+            --dark-text: #2c2c2c;
+            --success: #51cf66;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e3f2fd 100%);
+            color: var(--dark-text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,107,107,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        header h1 {
+            font-size: 3.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            margin: 50px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(26, 77, 122, 0.2);
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Introduction */
+        .intro {
+            background: white;
+            padding: 40px;
+            border-left: 6px solid var(--accent);
+            margin: 50px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            animation: slideInLeft 0.8s ease-out;
+            position: relative;
+        }
+
+        .intro::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #ff8787);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .intro h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 2.2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro p {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Exercise Cards Grid */
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+        }
+
+        .exercise-card:nth-child(1) { animation-delay: 0.1s; }
+        .exercise-card:nth-child(2) { animation-delay: 0.2s; }
+        .exercise-card:nth-child(3) { animation-delay: 0.3s; }
+        .exercise-card:nth-child(4) { animation-delay: 0.4s; }
+        .exercise-card:nth-child(5) { animation-delay: 0.5s; }
+        .exercise-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exercise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: expandWidth 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .exercise-card:nth-child(1)::before { animation-delay: 0.1s; }
+        .exercise-card:nth-child(2)::before { animation-delay: 0.2s; }
+        .exercise-card:nth-child(3)::before { animation-delay: 0.3s; }
+        .exercise-card:nth-child(4)::before { animation-delay: 0.4s; }
+        .exercise-card:nth-child(5)::before { animation-delay: 0.5s; }
+        .exercise-card:nth-child(6)::before { animation-delay: 0.6s; }
+
+        @keyframes expandWidth {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 45px rgba(26, 77, 122, 0.25);
+        }
+
+        .exercise-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .exercise-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin-bottom: 12px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .exercise-card:nth-child(1) .exercise-icon { animation-delay: 0s; }
+        .exercise-card:nth-child(2) .exercise-icon { animation-delay: 0.2s; }
+        .exercise-card:nth-child(3) .exercise-icon { animation-delay: 0.4s; }
+        .exercise-card:nth-child(4) .exercise-icon { animation-delay: 0s; }
+        .exercise-card:nth-child(5) .exercise-icon { animation-delay: 0.2s; }
+        .exercise-card:nth-child(6) .exercise-icon { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .exercise-title {
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .exercise-body {
+            padding: 25px;
+        }
+
+        .exercise-body h4 {
+            color: var(--secondary);
+            margin: 15px 0 8px 0;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .exercise-body p {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+
+        .reps-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #ff8787);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            padding: 45px;
+            margin: 50px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            font-size: 2.3em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-section h2::before {
+            content: '';
+            width: 6px;
+            height: 45px;
+            background: linear-gradient(180deg, var(--accent), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-section li {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            margin-bottom: 8px;
+            color: #444;
+            font-size: 1.02em;
+            line-height: 1.7;
+        }
+
+        .content-section li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3em;
+            animation: slideRight 0.6s ease-out infinite alternate;
+        }
+
+        @keyframes slideRight {
+            from { transform: translateX(0); }
+            to { transform: translateX(5px); }
+        }
+
+        /* Benefits Box */
+        .benefits-box {
+            background: linear-gradient(135deg, rgba(42, 122, 184, 0.08), rgba(81, 207, 102, 0.08));
+            border-left: 5px solid var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 35px 0;
+            animation: slideInLeft 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--success) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .benefits-box h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-box p {
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Statistics */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(26, 77, 122, 0.25);
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.1s; }
+        .stat-box:nth-child(2) { animation-delay: 0.2s; }
+        .stat-box:nth-child(3) { animation-delay: 0.3s; }
+
+        .stat-box .number {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-box .label {
+            font-size: 0.95em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        /* Image with Caption */
+        .image-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 12px 40px rgba(26, 77, 122, 0.15);
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .image-caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(255, 136, 136, 0.08));
+            border-left: 5px solid var(--accent);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 35px 0;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .warning-box strong {
+            color: var(--primary);
+        }
+
+        /* Conclusion */
+        .conclusion {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 55px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 70px 0 40px;
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,107,107,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        .conclusion h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .conclusion p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 35px;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .exercise-card {
+                padding: 0;
+            }
+
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 30px;
+            }
+
+            .content-section h2 {
+                font-size: 1.8em;
+            }
+
+            .conclusion {
+                padding: 35px 20px;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Exercises for Neck Pain</h1>
+        <p>Relief, Recovery & Prevention for a Healthier Neck</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Introduction -->
+        <div class="intro">
+            <h2>Understanding Neck Pain & How Exercise Helps</h2>
+            <p>Neck pain affects millions of people worldwide, often caused by poor posture, stress, muscle tension, or repetitive strain. The good news is that targeted exercises can provide significant relief, strengthen supporting muscles, and prevent future pain. This comprehensive guide showcases evidence-based exercises designed to ease your neck pain and improve mobility. Whether you're recovering from an injury or managing chronic discomfort, these exercises offer practical solutions you can perform at home.</p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80" alt="Person doing neck stretches and exercises">
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="number">70%</div>
+                <div class="label">Of people experience neck pain</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">85%</div>
+                <div class="label">See improvement with exercises</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">15min</div>
+                <div class="label">Daily routine needed</div>
+            </div>
+        </div>
+
+        <!-- Exercise Cards -->
+        <h2 style="text-align: center; color: var(--primary); font-size: 2.6em; margin: 70px 0 50px;">6 Effective Neck Pain Relief Exercises</h2>
+        
+        <div class="exercises-grid">
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-icon">↑</div>
+                    <h3 class="exercise-title">Neck Stretches</h3>
+                </div>
+                <div class="exercise-body">
+                    <h4>Description</h4>
+                    <p>Gently tilt your head toward your shoulder, holding the stretch for 20-30 seconds. Repeat on both sides to release tension and improve flexibility.</p>
+                    <h4>Benefits</h4>
+                    <p>Reduces muscle tightness, improves range of motion, and provides immediate relief.</p>
+                    <span class="reps-badge">3 sets × 2 reps each side</span>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-icon">↻</div>
+                    <h3 class="exercise-title">Neck Rotations</h3>
+                </div>
+                <div class="exercise-body">
+                    <h4>Description</h4>
+                    <p>Slowly turn your head to look over your shoulder. Hold briefly, then rotate to the opposite side. Move smoothly without jerky motions.</p>
+                    <h4>Benefits</h4>
+                    <p>Enhances neck mobility, relieves stiffness, and strengthens rotational muscles.</p>
+                    <span class="reps-badge">3 sets × 8-10 reps</span>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-icon">⬇</div>
+                    <h3 class="exercise-title">Chin Tucks</h3>
+                </div>
+                <div class="exercise-body">
+                    <h4>Description</h4>
+                    <p>While looking straight ahead, gently draw your chin back as if making a double chin. Hold for 5 seconds, then release. Keep shoulders relaxed.</p>
+                    <h4>Benefits</h4>
+                    <p>Strengthens neck muscles, improves posture, and reduces strain from forward head position.</p>
+                    <span class="reps-badge">3 sets × 10-12 reps</span>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-icon">🤲</div>
+                    <h3 class="exercise-title">Shoulder Shrugs</h3>
+                </div>
+                <div class="exercise-body">
+                    <h4>Description</h4>
+                    <p>Raise both shoulders toward your ears, hold for 2-3 seconds, then lower. This simple movement releases tension from neck and shoulder muscles.</p>
+                    <h4>Benefits</h4>
+                    <p>Reduces upper back tension, releases stress, and promotes relaxation throughout the neck area.</p>
+                    <span class="reps-badge">3 sets × 12-15 reps</span>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-icon">↔</div>
+                    <h3 class="exercise-title">Lateral Flexion</h3>
+                </div>
+                <div class="exercise-body">
+                    <h4>Description</h4>
+                    <p>Slowly bend your ear toward your shoulder without rotating. Hold for 20-30 seconds. Keep shoulders still and avoid forcing the stretch.</p>
+                    <h4>Benefits</h4>
+                    <p>Stretches side neck muscles, relieves lateral tension, and improves side-to-side mobility.</p>
+                    <span class="reps-badge">3 sets × 2 reps each side</span>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-icon">💪</div>
+                    <h3 class="exercise-title">Resistance Band Work</h3>
+                </div>
+                <div class="exercise-body">
+                    <h4>Description</h4>
+                    <p>Use a resistance band or your hand to provide gentle resistance while moving your neck in various directions. Hold for 5-10 seconds.</p>
+                    <h4>Benefits</h4>
+                    <p>Builds neck strength, increases muscle endurance, and provides stable support for daily activities.</p>
+                    <span class="reps-badge">3 sets × 8 reps each direction</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits Box -->
+        <div class="benefits-box">
+            <h3>💡 Key Benefits of Regular Neck Exercises</h3>
+            <p><strong>Pain Reduction:</strong> Targeted exercises decrease muscle tension and nerve irritation. <strong>Improved Posture:</strong> Strengthening exercises correct forward head posture. <strong>Better Mobility:</strong> Regular stretching increases range of motion. <strong>Prevention:</strong> Strong neck muscles prevent future pain episodes.</p>
+        </div>
+
+        <!-- Image Section 1 -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=900&q=80" alt="Woman doing neck and shoulder stretches">
+            <p class="image-caption">Consistent stretching exercises provide the best results for neck pain relief</p>
+        </div>
+
+        <!-- Detailed Content Section 1 -->
+        <div class="content-section">
+            <h2>When to Perform These Exercises</h2>
+            <ul>
+                <li><strong>Morning routine:</strong> Start your day with gentle stretches to awaken neck muscles and improve mobility</li>
+                <li><strong>Throughout the day:</strong> Every 1-2 hours, do quick exercises to prevent stiffness from desk work</li>
+                <li><strong>Before bed:</strong> Light stretching helps relax muscles and prepare for sleep</li>
+                <li><strong>Post-activity:</strong> After intense activities, perform stretches to maintain flexibility</li>
+                <li><strong>As needed:</strong> Do exercises whenever you feel tension building in your neck</li>
+            </ul>
+        </div>
+
+        <!-- Warning Box -->
+        <div class="warning-box">
+            <p><strong>⚠️ Important:</strong> If you experience sharp pain, numbness, tingling, or weakness, stop exercising and consult a healthcare professional. These could indicate nerve compression or serious injury requiring medical attention.</p>
+        </div>
+
+        <!-- Image Section 2 -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dab7d5a5f?w=900&q=80" alt="Person doing physical therapy for neck pain">
+            <p class="image-caption">Physical therapy exercises are most effective when done consistently</p>
+        </div>
+
+        <!-- Detailed Content Section 2 -->
+        <div class="content-section">
+            <h2>Tips for Maximum Results</h2>
+            <ul>
+                <li><strong>Be consistent:</strong> Perform exercises daily for best results; consistency matters more than intensity</li>
+                <li><strong>Move slowly:</strong> Avoid rapid or jerky movements that can aggravate neck pain further</li>
+                <li><strong>No pain policy:</strong> You should feel gentle stretching, never sharp pain; stop if you hurt</li>
+                <li><strong>Proper posture:</strong> Maintain good posture during exercises and throughout daily activities</li>
+                <li><strong>Stay hydrated:</strong> Drink plenty of water to keep muscles hydrated and functioning optimally</li>
+                <li><strong>Combine methods:</strong> Pair exercises with ice/heat therapy and ergonomic adjustments for better relief</li>
+            </ul>
+        </div>
+
+        <!-- Image Section 3 -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1574018528207-e1ccf4a1a8b3?w=900&q=80" alt="Person in good posture at work desk">
+            <p class="image-caption">Maintaining proper ergonomics enhances the effectiveness of exercise</p>
+        </div>
+
+        <!-- Detailed Content Section 3 -->
+        <div class="content-section">
+            <h2>Preventing Neck Pain in the Future</h2>
+            <ul>
+                <li><strong>Optimize workspace:</strong> Position your monitor at eye level, keyboard at elbow height, and maintain neutral spine</li>
+                <li><strong>Take frequent breaks:</strong> Every 30 minutes, step away and stretch your neck and shoulders</li>
+                <li><strong>Sleep properly:</strong> Use a supportive pillow that maintains neutral cervical spine alignment</li>
+                <li><strong>Manage stress:</strong> Stress causes muscle tension; practice relaxation techniques daily</li>
+                <li><strong>Stay active:</strong> Regular general exercise strengthens overall body support for your neck</li>
+                <li><strong>Use proper techniques:</strong> Avoid cradling phones on shoulders; use hands-free devices instead</li>
+            </ul>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="conclusion">
+            <h2>Start Your Journey to a Pain-Free Neck Today</h2>
+            <p>Neck pain doesn't have to be a permanent part of your life. These six exercises, combined with proper posture and lifestyle adjustments, can dramatically reduce pain and improve your quality of life. The key is consistency—perform these exercises daily and watch as your flexibility, strength, and comfort improve over weeks and months.</p>
+            <p><strong>Remember:</strong> Everyone's body is different. If you have chronic pain, work with a physical therapist to customize these exercises for your specific condition.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Neck Pain Relief Exercise Guide. Always consult with a healthcare professional before starting any new exercise program.</p>
+    </footer>
+</body>
+</html>
