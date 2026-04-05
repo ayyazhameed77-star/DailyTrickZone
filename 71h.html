@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foods to Avoid During Pregnancy | Health Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --coral: #FF6B6B;
+            --mint: #4ECDC4;
+            --cream: #FFF8F3;
+            --gold: #FFD93D;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 60px rgba(0,0,0,0.05);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #2c3e50 100%);
+            color: white;
+            padding: 80px 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .category {
+            display: inline-block;
+            background: var(--coral);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .meta {
+            font-size: 1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        article {
+            padding: 60px;
+        }
+
+        .lead {
+            font-size: 1.3em;
+            line-height: 1.7;
+            color: var(--navy);
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--gold);
+            font-weight: 300;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: var(--navy);
+            margin: 50px 0 25px 0;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral) 0%, var(--mint) 100%);
+            border-radius: 2px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            border-left: 5px solid var(--coral);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .warning-card::before {
+            content: '⚠';
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2em;
+            opacity: 0.3;
+        }
+
+        .warning-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--coral);
+            font-size: 1.4em;
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 100%);
+            border-left: 5px solid var(--mint);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: var(--mint);
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 20px 0 20px 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            padding-left: 35px;
+            position: relative;
+            font-weight: 300;
+        }
+
+        li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .food-category {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .food-category:hover {
+            border-color: var(--mint);
+            box-shadow: 0 5px 20px rgba(78, 205, 196, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .food-category h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon {
+            font-size: 1.8em;
+        }
+
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        footer p {
+            font-size: 0.95em;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            header, article, footer {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .food-category {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <span class="category">Pregnancy Nutrition</span>
+            <h1>Foods to Avoid During Pregnancy</h1>
+            <p class="meta">Essential Safety Guidelines for Expectant Mothers</p>
+        </header>
+
+        <article>
+            <p class="lead">
+                During pregnancy, your diet plays a crucial role in your baby's development and your own health. While most foods are safe to enjoy, certain items pose potential risks and should be avoided to protect both you and your growing baby. Understanding what to skip can help you make informed choices throughout your pregnancy journey.
+            </p>
+
+            <div class="warning-card">
+                <h3>Why Food Safety Matters</h3>
+                <p>
+                    Pregnancy weakens your immune system, making you more susceptible to foodborne illnesses. Additionally, certain foods contain substances that can harm fetal development. The following guidelines will help you navigate what to avoid during these crucial nine months.
+                </p>
+            </div>
+
+            <div class="food-category">
+                <h3><span class="icon">🐟</span>High-Mercury Fish</h3>
+                <p>
+                    Mercury is a toxic metal that can damage your baby's developing nervous system and brain. Large predatory fish accumulate high levels of mercury in their tissues over time. Completely avoid shark, swordfish, king mackerel, tilefish, and bigeye tuna. These fish can contain dangerous mercury levels that persist in your body and cross the placental barrier.
+                </p>
+                <p>
+                    However, fish remains an excellent source of omega-3 fatty acids essential for brain development. You can safely enjoy low-mercury options like salmon, sardines, anchovies, and skipjack tuna in moderation—about 8-12 ounces per week.
+                </p>
+            </div>
+
+            <div class="food-category">
+                <h3><span class="icon">🥩</span>Raw or Undercooked Meat, Poultry, and Eggs</h3>
+                <p>
+                    Raw or undercooked animal products can harbor harmful bacteria such as Salmonella, E. coli, Listeria, and Toxoplasma. These pathogens can cause serious infections that may lead to miscarriage, premature birth, or severe illness in newborns.
+                </p>
+                <p>
+                    Always cook meat and poultry to safe internal temperatures: beef, pork, and lamb should reach 145°F (with a 3-minute rest), ground meats 160°F, and poultry 165°F. Avoid rare steaks, raw seafood like sushi and ceviche, and dishes containing raw eggs such as homemade mayonnaise, hollandaise sauce, raw cookie dough, and soft-scrambled eggs. Restaurant eggs should be cooked until both yolk and white are firm.
+                </p>
+            </div>
+
+            <div class="food-category">
+                <h3><span class="icon">🧀</span>Unpasteurized Dairy Products</h3>
+                <p>
+                    Unpasteurized milk and cheeses made from raw milk can contain Listeria, a dangerous bacterium particularly harmful during pregnancy. Listeriosis can cause miscarriage, stillbirth, premature delivery, or life-threatening infections in newborns.
+                </p>
+                <p>
+                    Avoid soft cheeses like Brie, Camembert, feta, blue cheese, queso fresco, and queso blanco unless the label explicitly states they're made with pasteurized milk. Hard cheeses like cheddar, Swiss, and parmesan are generally safe, as are processed cheeses, cream cheese, and cottage cheese made from pasteurized milk.
+                </p>
+            </div>
+
+            <div class="food-category">
+                <h3><span class="icon">🥤</span>Alcohol and Excessive Caffeine</h3>
+                <p>
+                    No amount of alcohol is considered safe during pregnancy. Alcohol consumption can lead to fetal alcohol spectrum disorders (FASDs), causing physical abnormalities, learning disabilities, and behavioral problems that last a lifetime. Wine, beer, and spirits all carry these risks—there is no safe type or amount.
+                </p>
+                <p>
+                    While small amounts of caffeine are generally considered safe, limit your intake to 200mg per day (roughly one 12-oz cup of coffee). Excessive caffeine has been linked to increased miscarriage risk and low birth weight. Remember that caffeine is also found in tea, chocolate, energy drinks, and some medications.
+                </p>
+            </div>
+
+            <div class="food-category">
+                <h3><span class="icon">🥗</span>Unwashed Produce and Raw Sprouts</h3>
+                <p>
+                    Thoroughly wash all fruits and vegetables under running water to remove harmful bacteria, pesticides, and soil. Raw sprouts including alfalfa, clover, radish, and mung bean sprouts are particularly risky because bacteria can enter seeds before sprouting, making them impossible to wash away. Cook sprouts thoroughly if you choose to eat them.
+                </p>
+            </div>
+
+            <div class="food-category">
+                <h3><span class="icon">🍖</span>Deli Meats and Hot Dogs</h3>
+                <p>
+                    Pre-packaged deli meats, lunch meats, and hot dogs can be contaminated with Listeria, which can grow even under refrigeration. If you crave these foods, heat them until steaming hot (165°F) to kill any potential bacteria. This includes deli turkey, ham, salami, and other processed meats from the refrigerated section.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Safe Food Handling Tips:</strong> Always wash your hands before handling food, clean cutting boards and utensils thoroughly, refrigerate leftovers promptly, keep raw and cooked foods separate, and when in doubt, throw it out. Check expiration dates and avoid foods that smell or look questionable.</p>
+            </div>
+
+            <h2>Additional Precautions</h2>
+            <p>
+                Be cautious with herbal teas and supplements, as many haven't been tested for safety during pregnancy. Avoid liver and liver products due to high vitamin A content, which can harm fetal development in large amounts. Stay away from pre-made salads from delis and buffets, as these are high-risk foods for Listeria contamination.
+            </p>
+            <p>
+                Some fish like king mackerel should be avoided entirely, while others like canned light tuna can be consumed in limited quantities. Always check current advisories for fish caught in local waters, as contamination levels vary by location.
+            </p>
+
+            <h2>Trust Your Instincts</h2>
+            <p>
+                If you accidentally consume a food on this list, don't panic—a single exposure is unlikely to cause harm. However, contact your healthcare provider if you experience symptoms like fever, muscle aches, nausea, or diarrhea after eating. Prevention is key, but your healthcare team is there to support you if concerns arise.
+            </p>
+
+            <p style="margin-top: 40px; font-size: 1.2em; color: var(--navy); font-weight: 400;">
+                Making safe food choices doesn't mean sacrificing enjoyment. Focus on the abundance of nutritious, delicious foods you can eat, and remember that these temporary restrictions are protecting your precious baby's health and development.
+            </p>
+        </article>
+
+        <footer>
+            <p>Always consult your healthcare provider for personalized dietary advice during pregnancy</p>
+        </footer>
+    </div>
+</body>
+</html>
