@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips to Avoid Back Pain - Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d5016;
+            --secondary: #5a8c3a;
+            --accent: #d4a574;
+            --light-bg: #f8f6f1;
+            --dark-text: #2c2c2c;
+            --border: #e0dcd3;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f0ebe3 100%);
+            color: var(--dark-text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Introduction */
+        .intro {
+            background: white;
+            padding: 35px;
+            border-left: 5px solid var(--secondary);
+            margin: 50px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .intro h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .tip-card:nth-child(1) { animation-delay: 0.1s; }
+        .tip-card:nth-child(2) { animation-delay: 0.2s; }
+        .tip-card:nth-child(3) { animation-delay: 0.3s; }
+        .tip-card:nth-child(4) { animation-delay: 0.4s; }
+        .tip-card:nth-child(5) { animation-delay: 0.5s; }
+        .tip-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .tip-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .tip-card h3 {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-bottom: 12px;
+        }
+
+        .tip-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Full-width content sections */
+        .content-section {
+            background: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-section h2::before {
+            content: '';
+            width: 8px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-section li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .content-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, rgba(92, 140, 58, 0.08), rgba(212, 165, 116, 0.08));
+            border-left: 4px solid var(--secondary);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        /* Statistics */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.2);
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stat-box .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        /* Image with Caption */
+        .image-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .image-caption {
+            margin-top: 12px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Conclusion */
+        .conclusion {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 60px 0 40px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .conclusion h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .conclusion p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .tip-card {
+                padding: 25px;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .conclusion {
+                padding: 35px 25px;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Tips to Avoid Back Pain</h1>
+        <p>A Comprehensive Guide to Maintaining a Healthy Spine</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Introduction -->
+        <div class="intro">
+            <h2>Why Back Pain Prevention Matters</h2>
+            <p>Back pain affects millions of people worldwide, impacting their daily activities, work productivity, and overall quality of life. The good news? Many cases of back pain are preventable through proper habits, ergonomics, and lifestyle choices. This comprehensive guide shares evidence-based strategies to keep your spine healthy and pain-free.</p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1599447421216-a0f7d2b4f0eb?w=900&q=80" alt="Person practicing good posture at desk">
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="number">80%</div>
+                <div class="label">Experience back pain at some point</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">50%</div>
+                <div class="label">Could be prevented with proper habits</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">30min</div>
+                <div class="label">Daily exercise reduces risk</div>
+            </div>
+        </div>
+
+        <!-- Tips Grid -->
+        <h2 style="text-align: center; color: var(--primary); font-size: 2.5em; margin: 60px 0 40px;">Key Tips to Prevent Back Pain</h2>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">💪</div>
+                <h3>Strengthen Your Core</h3>
+                <p>A strong core supports your spine and reduces strain. Include planks, bridges, and abdominal exercises in your weekly routine. A robust core provides stability and protects your back during daily activities.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">🪑</div>
+                <h3>Perfect Your Posture</h3>
+                <p>Maintain an upright position when sitting, standing, or walking. Keep your shoulders relaxed, chest open, and ears aligned with your shoulders. Poor posture is a leading cause of chronic back pain.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">🏃</div>
+                <h3>Stay Physically Active</h3>
+                <p>Regular movement strengthens muscles, improves flexibility, and maintains a healthy weight. Exercise 30 minutes daily with a mix of cardio, strength training, and stretching for optimal spinal health.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">🛏️</div>
+                <h3>Choose the Right Mattress</h3>
+                <p>Your mattress plays a crucial role in spinal alignment during sleep. Choose one that provides proper support and maintains the natural curve of your spine. Replace it every 8-10 years.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">💼</div>
+                <h3>Optimize Your Workspace</h3>
+                <p>Set up an ergonomic workstation with your monitor at eye level, feet flat, and elbows at 90 degrees. Take regular breaks to stretch and move around every hour during work.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon">🏋️</div>
+                <h3>Lift Correctly</h3>
+                <p>Bend at your knees, keep objects close to your body, and avoid twisting your spine. Never lift heavy items with your back; always engage your legs and core muscles for support.</p>
+            </div>
+        </div>
+
+        <!-- Detailed Content Section 1 -->
+        <div class="content-section">
+            <h2>Essential Daily Habits</h2>
+            <p>Building healthy daily habits is the foundation of back pain prevention. Here are the most impactful practices:</p>
+            <ul>
+                <li><strong>Stretch regularly:</strong> Spend 10 minutes daily stretching your hamstrings, hip flexors, and lower back to maintain flexibility</li>
+                <li><strong>Stay hydrated:</strong> Proper hydration keeps spinal discs healthy and plump, reducing pressure on nerves</li>
+                <li><strong>Maintain healthy weight:</strong> Extra weight strains your lower back; aim for a balanced diet and regular exercise</li>
+                <li><strong>Wear supportive shoes:</strong> Proper footwear aligns your spine and reduces stress throughout your body</li>
+                <li><strong>Manage stress:</strong> Stress causes muscle tension; practice meditation, yoga, or deep breathing exercises</li>
+            </ul>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <p><strong>⚡ Pro Tip:</strong> If you spend 8+ hours daily at a desk, invest in an ergonomic chair, standing desk converter, or lumbar support pillow. Your future back will thank you!</p>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=900&q=80" alt="Person doing yoga and stretching exercises">
+            <p class="image-caption">Regular stretching and yoga are excellent for maintaining spinal flexibility</p>
+        </div>
+
+        <!-- Detailed Content Section 2 -->
+        <div class="content-section">
+            <h2>When to Seek Professional Help</h2>
+            <p>While prevention is ideal, some situations require professional evaluation:</p>
+            <ul>
+                <li><strong>Persistent pain:</strong> If back pain lasts more than 6 weeks despite preventive measures</li>
+                <li><strong>Severe discomfort:</strong> Sudden, intense pain that limits movement or daily activities</li>
+                <li><strong>Radiating pain:</strong> Pain that travels down your legs or arms may indicate nerve involvement</li>
+                <li><strong>Numbness or weakness:</strong> Loss of sensation or muscle strength requires immediate evaluation</li>
+                <li><strong>Postural concerns:</strong> Physical therapy can address underlying alignment issues</li>
+            </ul>
+        </div>
+
+        <!-- Final Tips Image -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dab7d5a5f?w=900&q=80" alt="Woman exercising and maintaining healthy lifestyle">
+            <p class="image-caption">Consistent exercise and healthy habits are your best defense against back pain</p>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="conclusion">
+            <h2>Take Control of Your Spinal Health Today</h2>
+            <p>Back pain doesn't have to be a permanent part of your life. By implementing these evidence-based strategies—strengthening your core, maintaining proper posture, staying active, optimizing your workspace, and making smart lifestyle choices—you can significantly reduce your risk of back pain.</p>
+            <p><strong>Remember:</strong> Prevention is always easier and more cost-effective than treatment. Start with small changes today and build healthier habits for a pain-free tomorrow.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Back Pain Prevention Guide. Always consult with a healthcare professional before starting any new exercise program.</p>
+    </footer>
+</body>
+</html>
