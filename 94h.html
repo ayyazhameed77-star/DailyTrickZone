@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Home Gym Setup Guide: Build Your Dream Workout Space | The DIY Fit Life</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fdfbf7 0%, #f9f3e8 100%);
+      font-family: 'Inter', system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      line-height: 1.68;
+      color: #2c2b28;
+      padding: 2rem 1rem;
+    }
+
+    .blog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 56px;
+      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    /* multi-color gradient header */
+    .hero {
+      background: linear-gradient(125deg, #FF6B6B, #FF8E53, #FFC371, #6C63FF, #9B59B6);
+      background-size: 200% 200%;
+      animation: gradientFlow 8s ease infinite;
+      padding: 2.6rem 2rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.3rem 1.4rem;
+      border-radius: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .hero .subhead {
+      font-size: 1.08rem;
+      opacity: 0.95;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .byline {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      color: #fff8e7;
+    }
+
+    /* illustration */
+    .visual-gym {
+      background: #fefcf9;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #ffebd2;
+    }
+
+    .gym-animation {
+      max-width: 300px;
+      margin: 0 auto;
+      animation: floatSoft 4s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes floatSoft {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .gym-svg {
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .caption-gym {
+      font-size: 0.75rem;
+      color: #e28b5e;
+      margin-top: 12px;
+    }
+
+    .content {
+      padding: 2.2rem 2.5rem 2.8rem;
+    }
+
+    .content p {
+      margin-bottom: 1.35rem;
+      font-size: 1.06rem;
+      color: #3a3834;
+    }
+
+    .content h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      background: linear-gradient(120deg, #FF6B6B, #FF8E53, #6C63FF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 2rem 0 1rem 0;
+      border-left: 6px solid #FF9F6E;
+      padding-left: 1.2rem;
+    }
+
+    .content h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #E07A4F;
+      margin: 1.5rem 0 0.6rem 0;
+    }
+
+    .step-card {
+      background: linear-gradient(105deg, #FFF8F0 0%, #FFF2E6 100%);
+      border-radius: 36px;
+      padding: 1.3rem 1.8rem;
+      margin: 1.8rem 0;
+      border-left: 8px solid #FFB347;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    .step-card strong {
+      color: #E25C3A;
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .content ul, .content ol {
+      margin: 0.8rem 0 1.3rem 1.8rem;
+    }
+
+    .content li {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      color: #4b4740;
+    }
+
+    .quote-gym {
+      background: #FFF3E8;
+      padding: 1.3rem 2rem;
+      border-radius: 36px;
+      font-weight: 450;
+      margin: 1.8rem 0;
+      color: #C4653F;
+      border-left: 5px solid #FFB347;
+    }
+
+    .quote-gym span {
+      font-style: italic;
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, #FFD9B5, #FF9F6E, #6C63FF, #FFB347);
+    }
+
+    .budget-box {
+      background: #FFF8F2;
+      border-radius: 32px;
+      padding: 1.3rem 1.8rem;
+      margin: 1.6rem 0;
+      border: 1px solid #FFD9BC;
+    }
+
+    .footer-gym {
+      background: #FFF4EA;
+      border-radius: 32px;
+      padding: 1.6rem;
+      text-align: center;
+      margin-top: 2.2rem;
+      font-size: 0.95rem;
+      color: #B45E3A;
+    }
+
+    .footer-gym a {
+      color: #E26942;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #FFD0AE;
+    }
+
+    .footer-gym a:hover {
+      color: #C04E2A;
+    }
+
+    @media (max-width: 680px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .content {
+        padding: 1.5rem;
+      }
+      .content h2 {
+        font-size: 1.55rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="blog-container">
+  <div class="hero">
+    <div class="badge">🏠 sweat at home · save time</div>
+    <h1>Home Gym Setup Guide: Create Your Dream Workout Space</h1>
+    <div class="subhead">No garage? No problem. Budget, small spaces, and smart picks — your ultimate guide to building a gym that actually gets used.</div>
+    <div class="byline">
+      <span>✍️ by Marcus "Gear Guy" Rivera — home gym enthusiast & space hacker</span>
+      <span>📅 April 5, 2026</span>
+      <span>⏱️ 9 min read</span>
+    </div>
+  </div>
+
+  <div class="visual-gym">
+    <div class="gym-animation">
+      <svg class="gym-svg" viewBox="0 0 320 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="home gym illustration">
+        <rect x="50" y="45" width="60" height="60" rx="12" fill="#FFEDE1" stroke="#FFB347" stroke-width="2" />
+        <circle cx="80" cy="75" r="14" fill="#FFE0C6" stroke="#FFB347" stroke-width="1.5" />
+        <rect x="195" y="45" width="60" height="60" rx="12" fill="#FFEDE1" stroke="#6C63FF" stroke-width="2" />
+        <path d="M210 65 L220 78 L235 63" stroke="#6C63FF" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="55" y="118" font-size="8" fill="#E47C4A">🏋️ weights</text>
+        <text x="205" y="118" font-size="8" fill="#6C63FF">🎯 smart gear</text>
+      </svg>
+    </div>
+    <div class="caption-gym">
+      ✨ Your home gym doesn't need to be fancy — just functional and inviting.
+    </div>
+  </div>
+
+  <div class="content">
+    <p>Let's be real: gym memberships are expensive, commuting takes time, and sometimes you just want to work out in your underwear (no judgment). A home gym fixes all that. But where do you start? Do you need a squat rack? What if you only have a tiny apartment corner? I've built three home gyms over the years — from a spare bedroom to a garage — and I've made every mistake possible. This guide will save you money, space, and frustration. Let's build your perfect home workout space, step by step.</p>
+
+    <div class="quote-gym">
+      <span>💬 “My home gym cost less than a year of gym membership. Now I work out 5x a week because there's zero friction. Best decision ever.” — Jenna, 29</span>
+    </div>
+
+    <h2>Step 1: Find Your Space (Any Space Works)</h2>
+    <p>You don't need a dedicated room. A corner of the living room, a balcony, a garage bay, or even a hallway can work. Measure your space (at least 6x6 feet is comfortable for bodyweight workouts; 8x8 for weights). Clear the area of clutter. Good lighting and a mirror help with form. If you're tight on space, prioritize foldable or stackable equipment.</p>
+    <div class="step-card">
+      <strong>📍 Space hacks:</strong>
+      • Use a yoga mat as your "home base" — roll it up when done.<br>
+      • Wall-mounted racks save floor space.<br>
+      • Under-bed storage for resistance bands and small gear.<br>
+      • A doorframe pull-up bar takes zero floor space.
+    </div>
+
+    <h2>Step 2: Flooring — Protect Your Joints & Your Floor</h2>
+    <p>If you're dropping weights or jumping, invest in proper flooring. Interlocking rubber mats (1/2 inch or thicker) are affordable and protect concrete or wood floors. For yoga or bodyweight, a thick yoga mat or foam tiles work. Avoid carpet — it traps sweat and odors.</p>
+    <ul>
+      <li>💡 <strong>Budget pick:</strong> Horse stall mats from a farm supply store (cheap, durable, but heavy).</li>
+      <li>🎨 <strong>Style tip:</strong> Puzzle mats come in colors — make your gym feel fun.</li>
+    </ul>
+
+    <h2>Step 3: Essential Equipment (Start Small, Add Later)</h2>
+    <p>You don't need a full commercial gym. These 5-7 items give you hundreds of workout options:</p>
+    <div class="step-card">
+      <strong>🔥 The Core 5 (Budget-friendly starter kit):</strong><br>
+      1️⃣ <strong>Resistance bands</strong> (loop bands or tube with handles) — $15-30. Whole body workouts, portable.<br>
+      2️⃣ <strong>Adjustable dumbbells</strong> or a few fixed pairs (5, 10, 15 lbs) — $50-150. Curls, presses, rows.<br>
+      3️⃣ <strong>Yoga mat</strong> — $15-40. Floor work, stretching, abs.<br>
+      4️⃣ <strong>Pull-up bar</strong> (doorframe) — $20-40. Upper body strength.<br>
+      5️⃣ <strong>Jump rope</strong> — $10. Best cardio in small space.
+    </div>
+
+    <h2>Step 4: Level Up (When You're Ready)</h2>
+    <p>Once you've outgrown the basics, consider these additions (buy used on Facebook Marketplace or Craigslist to save 50-70%):</p>
+    <ul>
+      <li>🏋️ <strong>Adjustable bench</strong> — for incline presses, step-ups, seated curls.</li>
+      <li>🏋️‍♂️ <strong>Kettlebells</strong> (12-20 kg) — swings, goblet squats, Turkish get-ups.</li>
+      <li>📦 <strong>Plyo box</strong> — box jumps, step-ups, triceps dips.</li>
+      <li>🏋️ <strong>Barbell + weight plates + squat stand</strong> — for serious strength training (needs space).</li>
+      <li>📱 <strong>Smart gear:</strong> Mirror, Tempo, or Peloton Guide (expensive, but immersive).</li>
+    </ul>
+    <div class="quote-gym">
+      <span>🛒 “I bought my squat rack and 300 lbs of plates for $200 from a guy who was moving. Deals are out there — just be patient.” — Tom, 41</span>
+    </div>
+
+    <h2>Step 5: Don't Forget Accessories (Small But Mighty)</h2>
+    <ul>
+      <li>🧘 <strong>Foam roller</strong> — recovery is part of fitness ($15-30).</li>
+      <li>🪢 <strong>Ab wheel</strong> — killer core workout ($10-20).</li>
+      <li>📊 <strong>Whiteboard or notebook</strong> — track your workouts, celebrate PRs.</li>
+      <li>🔊 <strong>Bluetooth speaker</strong> — music = motivation.</li>
+      <li>💧 <strong>Water bottle + towel holder</strong> — keep it tidy.</li>
+    </ul>
+
+    <h2>Step 6: Organize & Make It Inviting</h2>
+    <p>A messy gym is a gym you won't use. Use wall hooks for bands and jump ropes. Shelving for dumbbells. A small bin for chalk, straps, and small gear. Add personality: posters, string lights, a mirror, or even a plant. If it feels like a place you want to be, you'll show up.</p>
+    <div class="budget-box">
+      <p><strong>💰 Sample budgets for different scenarios:</strong></p>
+      <p><strong>Absolute beginner (under $100):</strong> Yoga mat + resistance bands + jump rope.</p>
+      <p><strong>Solid home gym ($300-500):</strong> Adjustable dumbbells + pull-up bar + bench + mats + foam roller.</p>
+      <p><strong>Power lifter setup ($800-1500 used):</strong> Barbell, plates, squat stand, bench, rubber flooring.</p>
+    </div>
+
+    <h2>Step 7: Workout Routine Tips for Home</h2>
+    <p>Having equipment is one thing — using it is another. Schedule your workouts like appointments. Start with 20-minute full-body sessions 3x a week. Use apps (Nike Training Club, FitOn) or YouTube (Fitness Blender, Caroline Girvan). Keep a log to see progress. And remember: a 10-minute workout is infinitely better than a skipped one.</p>
+    <ul>
+      <li>📅 <strong>Sample beginner home workout (bodyweight + bands):</strong><br>
+      • Bodyweight squats: 3x12<br>
+      • Push-ups (knee or regular): 3x8-10<br>
+      • Band rows: 3x12<br>
+      • Lunges: 3x10 per leg<br>
+      • Plank: 3x20 seconds<br>
+      • Jump rope: 2 minutes</li>
+    </ul>
+
+    <h2>Common Home Gym Mistakes to Avoid</h2>
+    <ul>
+      <li>❌ <strong>Buying everything at once.</strong> Start minimal, add as you need.</li>
+      <li>❌ <strong>Ignoring flooring.</strong> Your concrete floor will crack, and your knees will hurt.</li>
+      <li>❌ <strong>Cluttering the space.</strong> If you have to move furniture every time, you won't work out.</li>
+      <li>❌ <strong>Going too cheap on safety items.</strong> A flimsy pull-up bar or bench can cause injury.</li>
+      <li>❌ <strong>Forgetting ventilation.</strong> A fan or open window makes a huge difference.</li>
+    </ul>
+
+    <div class="quote-gym">
+      <span>🧹 “I bought a squat rack before I could even do a push-up. Don't be me. Master the basics first, then expand.” — Alex, 33</span>
+    </div>
+
+    <hr>
+
+    <p><strong>Final rep:</strong> Your home gym doesn't need to look like an Instagram influencer's setup. It needs to be <em>functional for you</em>. Start with one corner, one mat, one pair of dumbbells. The best equipment is the one you actually use. Over time, you'll learn what you love and what gathers dust. Be patient, be consistent, and celebrate every workout you do at home. You're saving time, money, and building a habit that lasts. Now go break a sweat — in your favorite shorts, with your own music, no waiting for a squat rack. Welcome to the home gym life.</p>
+
+    <div class="footer-gym">
+      🧡 <strong>Share this guide with a friend who's thinking about building a home gym.</strong> Save them money and hassle. <br>
+      📖 <strong>Read next:</strong> <a href="#">The Best Resistance Band Workouts for Small Spaces</a> | <a href="#">How to Stay Motivated Working Out Alone</a>
+      <div style="margin-top: 0.8rem; font-size: 0.8rem;">🏡 Your dream gym is closer than you think — start today.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
