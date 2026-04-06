@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Travel Guide: Discover the Land of the Rising Sun</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #BC002D 0%, #8B0000 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .flag {
+            width: 120px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            background: white;
+            padding: 5px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .intro {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #BC002D;
+        }
+        .city-card {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .city-content {
+            padding: 25px;
+        }
+        .city-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .city-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #BC002D;
+        }
+        h2 {
+            color: #8B0000;
+            margin: 0;
+            font-size: 1.8em;
+        }
+        .location {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .location::before {
+            content: "📍";
+            margin-right: 5px;
+        }
+        .description {
+            text-align: justify;
+            margin-top: 15px;
+            font-size: 1.05em;
+        }
+        .highlight {
+            background-color: #fce4ec;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #880e4f;
+        }
+        
+        /* Comment Section Styles */
+        .comments-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        .comments-title {
+            color: #BC002D;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #fce4ec;
+            padding-bottom: 10px;
+        }
+        .comment-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background: #BC002D;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #8B0000;
+        }
+        .comment-list {
+            margin-top: 30px;
+        }
+        .comment {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #BC002D;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .comment-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+            border-top: 2px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.8em; }
+            .city-image { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.japan.go.jp/44b70123eadffa3b8af8357e7f9c9af156574524.jpg" alt="Japan Flag" class="flag">
+    <h1>Japan Travel Guide</h1>
+    <div class="subtitle">The Land of the Rising Sun & Endless Wonder</div>
+</div>
+
+<div class="intro">
+    <p><strong>Japan</strong>, known as Nippon or Nihon in Japanese, is an island nation in East Asia that seamlessly blends ancient traditions with cutting-edge modernity. Often called the "Land of the Rising Sun" because its name literally means "origin of the sun," Japan is where timeless temples stand in the shadow of neon-lit skyscrapers, where ancient tea ceremonies coexist with futuristic technology, and where the cherry blossom's fleeting beauty teaches the philosophy of mono no aware—the pathos of things.</p>
+    
+    <p>Comprising four main islands—Honshu, Hokkaido, Kyushu, and Shikoku—plus thousands of smaller islands, Japan offers an incredible diversity of experiences. From the bustling streets of Tokyo to the serene temples of Kyoto, from the snow-capped peak of Mount Fuji to the tropical beaches of Okinawa, this archipelago captivates travelers with its unique culture, exquisite cuisine, and unparalleled hospitality known as <em>omotenashi</em>. Whether you're seeking spiritual enlightenment, culinary adventures, or urban exploration, Japan promises a journey that will transform your perspective on beauty, precision, and harmony.</p>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/images.photowall.com/6a05c4163dc66c7689f8e89b86240c8a4e37aee4.jpg" alt="Tokyo Skyline with Mount Fuji" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🗼</span>
+            <div>
+                <h2>Tokyo</h2>
+                <div class="location">Kanto Region, Honshu Island (35.6762° N, 139.6503° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>The world's largest metropolis and Japan's vibrant capital, <span class="highlight">Tokyo</span> is a city of delightful contradictions where the ultramodern and traditional coexist in perfect harmony. With over 37 million residents in the greater area, this sprawling megalopolis offers infinite layers of discovery—from the organized chaos of Shibuya Crossing, where thousands of pedestrians converge in a mesmerizing dance, to the tranquil Meiji Shrine, an oasis of calm nestled within a 100-year-old forest in the heart of the city.</p>
+            
+            <p>Explore the historic Asakusa district, home to Senso-ji, Tokyo's oldest Buddhist temple, where the scent of incense mingles with the buzz of Nakamise shopping street's traditional stalls. Experience the future in Odaiba, where the life-sized Gundam statue stands guard over a neon-lit bay, or ascend the Tokyo Skytree for panoramic views that stretch to Mount Fuji on clear days. As night falls, dive into the city's legendary food scene—whether it's world-class sushi at Tsukiji Outer Market, steaming bowls of ramen in tiny alleyway shops, or Michelin-starred cuisine that pushes culinary boundaries. Tokyo isn't just a destination; it's an immersive experience that engages all five senses and leaves you craving more.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.jrailpass.com/423f61c40d983ddaf10dd07184e183470b71baf9.jpg" alt="Arashiyama Bamboo Grove Kyoto" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">⛩️</span>
+            <div>
+                <h2>Kyoto</h2>
+                <div class="location">Kansai Region, Honshu Island (35.0116° N, 135.7681° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>For over a thousand years, <span class="highlight">Kyoto</span> served as Japan's imperial capital, and today it remains the country's cultural and spiritual heart. With over 2,000 temples and shrines, 17 UNESCO World Heritage sites, and the best-preserved traditional architecture in Japan, Kyoto offers a window into the Japan of your imagination—where geishas glide through lantern-lit alleys in Gion, bamboo groves sway in the mountain breeze at Arashiyama, and golden temples reflect perfectly in mirror-like ponds.</p>
+            
+            <p>Begin your journey at Kinkaku-ji, the Golden Pavilion, whose top two floors are covered in pure gold leaf and seem to float above the surrounding pond. Wander through the thousands of vermillion torii gates at Fushimi Inari Taisha, a shrine dedicated to the god of rice and sake that winds up the mountainside in a mesmerizing tunnel of color. Experience the meditative art of the tea ceremony in a traditional teahouse, or stroll along the Philosopher's Path during cherry blossom season when the canal is framed by clouds of pink petals. As dusk settles, keep your eyes peeled for geiko (Kyoto dialect for geisha) and maiko (apprentices) hurrying to evening appointments, their silk kimonos rustling like whispers of history. Kyoto is not merely a city; it is a living museum where every stone, garden, and structure tells a story of centuries past.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/osakacastle.org/e599b04028fe4ce4db4527a1a7df76b79d67a7f9.jpg" alt="Osaka Castle with Cherry Blossoms" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏯</span>
+            <div>
+                <h2>Osaka</h2>
+                <div class="location">Kansai Region, Honshu Island (34.6937° N, 135.5023° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Often called Japan's kitchen, <span class="highlight">Osaka</span> is a city that lives to eat, where the motto <em>"kuidaore"</em> (eat until you drop) is taken seriously by locals and visitors alike. Japan's third-largest city has a reputation for being more laid-back and friendly than its eastern rival Tokyo, with a distinct dialect and culture that reflects its history as a merchant city and economic powerhouse. The imposing Osaka Castle, surrounded by moats and cherry trees, stands as a testament to the city's samurai heritage and offers panoramic views of the modern skyline from its observation deck.</p>
+            
+            <p>But the true heart of Osaka beats in its food. Dotonbori, the city's entertainment district, is a sensory overload of neon signs, giant mechanical crabs, and the irresistible aroma of street food. Sample <em>takoyaki</em> (octopus balls), <em>okonomiyaki</em> (savory pancakes), and <em>kushikatsu</em> (deep-fried skewers) as you wander the canal-side streets. For a unique experience, visit Kuromon Market, known as "Osaka's Kitchen," where vendors sell everything from fresh seafood to blowtorched wagyu beef. Beyond the food, Universal Studios Japan offers world-class entertainment, including the Wizarding World of Harry Potter, while the nearby ancient capital of Nara with its friendly bowing deer makes for a perfect day trip. Osaka proves that in Japan, pleasure and hospitality go hand in hand.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/baf651b0e2593b8ee4c55e9ee322c37bc83dc41e.jpg" alt="Mount Fuji" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🗻</span>
+            <div>
+                <h2>Mount Fuji</h2>
+                <div class="location">Honshu Island, straddling Yamanashi and Shizuoka Prefectures (35.3606° N, 138.7274° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Standing at 3,776 meters, <span class="highlight">Mount Fuji</span> (Fuji-san) is Japan's highest peak and most iconic symbol—a perfectly symmetrical volcanic cone that has inspired artists, poets, and pilgrims for centuries. This UNESCO World Heritage site is considered one of Japan's Three Holy Mountains and holds deep spiritual significance in both Shinto and Buddhist traditions. Whether viewed from a speeding Shinkansen train, reflected in the tranquil waters of the Fuji Five Lakes, or climbed under the stars to greet the sunrise from its summit, Fuji-san commands reverence and awe.</p>
+            
+            <p>The official climbing season runs from early July to mid-September when the snow melts and mountain huts open to accommodate hikers attempting the overnight trek to the summit. For those who prefer to admire from below, the Fuji Five Lakes region offers countless vantage points, hot springs (<em>onsen</em>), and the famous Chureito Pagoda where cherry blossoms frame the mountain in a quintessentially Japanese scene. In spring, the Shibazakura Festival carpets the ground in pink moss phlox with Fuji as the backdrop, while autumn transforms the surrounding forests into fiery hues. Whether you're challenging yourself to reach the top or simply soaking in an outdoor hot bath with views of the sacred peak, Mount Fuji represents the eternal beauty and spiritual depth of Japan.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Comments Section -->
+<div class="comments-section">
+    <h3 class="comments-title">💬 Traveler Comments</h3>
+    
+    <div class="comment-form">
+        <h4 style="margin-top: 0; color: #333;">Leave a Comment</h4>
+        <form onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be posted after moderation.');">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea id="comment" name="comment" placeholder="Share your thoughts about Japan or ask a question..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+        </form>
+    </div>
+
+    <div class="comment-list">
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🌸 Sarah Johnson</span>
+                <span class="comment-date">April 5, 2026</span>
+            </div>
+            <div class="comment-text">
+                Just returned from my second trip to Japan and I'm already planning my third! Kyoto in autumn was absolutely magical—the colors at Kiyomizu-dera were breathtaking. Don't miss the early morning visit to Fushimi Inari to avoid crowds!
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🍜 Mike Chen</span>
+                <span class="comment-date">April 3, 2026</span>
+            </div>
+            <div class="comment-text">
+                The food in Osaka is incredible! I tried takoyaki from a street vendor in Dotonbori and it was the best I've ever had. Also, the Shinkansen (bullet train) between Tokyo and Kyoto is an experience in itself. So fast and comfortable!
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🏔️ Emma Wilson</span>
+                <span class="comment-date">March 28, 2026</span>
+            </div>
+            <div class="comment-text">
+                I climbed Mount Fuji last summer and watching the sunrise from the summit was a life-changing experience. Definitely challenging but worth every step. Pro tip: bring plenty of cash as the mountain huts don't accept cards!
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>✨ Japan awaits with ancient temples, futuristic cities, and the warmest hospitality. Your adventure in the Land of the Rising Sun begins now! 🗾✨</p>
+    <p><small>Flag image courtesy of JapanGov | City images from PhotoWall, JRailPass, Osaka Castle Org, and Dreamstime</small></p>
+</div>
+
+</body>
+</html>
