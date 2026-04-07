@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambodia Travel Guide: Kingdom of Wonder</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #032ea1 0%, #e41837 50%, #032ea1 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .flag {
+            width: 120px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .intro {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #e41837;
+        }
+        .city-card {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .city-content {
+            padding: 25px;
+        }
+        .city-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .city-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #e41837;
+        }
+        h2 {
+            color: #032ea1;
+            margin: 0;
+            font-size: 1.8em;
+        }
+        .location {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .location::before {
+            content: "📍";
+            margin-right: 5px;
+        }
+        .description {
+            text-align: justify;
+            margin-top: 15px;
+            font-size: 1.05em;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #856404;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+            border-top: 2px solid #ddd;
+        }
+        
+        /* Comments Section Styles */
+        .comments-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            border-top: 4px solid #e41837;
+        }
+        .comments-section h3 {
+            color: #032ea1;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .comments-section h3::before {
+            content: "💬";
+            margin-right: 10px;
+        }
+        .comment-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #032ea1 0%, #e41837 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+        .comments-list {
+            margin-top: 30px;
+        }
+        .comment {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #032ea1;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #032ea1;
+            display: flex;
+            align-items: center;
+        }
+        .comment-author::before {
+            content: "👤";
+            margin-right: 8px;
+        }
+        .comment-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.8em; }
+            .city-image { height: 200px; }
+            .comments-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/06d5469d0076412f3c02efb703e14623f2c322f5.jpg" alt="Cambodia Flag" class="flag">
+    <h1>Cambodia Travel Guide</h1>
+    <div class="subtitle">Kingdom of Wonder & Ancient Mysteries</div>
+</div>
+
+<div class="intro">
+    <p><strong>Cambodia</strong>, officially the Kingdom of Cambodia, is a captivating Southeast Asian nation that beckons travelers with its mystical temples, resilient spirit, and warm hospitality. Home to over 16 million people, this country carries the legacy of the mighty Khmer Empire that once ruled much of Southeast Asia from the 9th to 15th centuries. From the world-famous Angkor Wat to the tranquil beaches of the south, Cambodia offers a journey through time that touches the soul and ignites the imagination.</p>
+    
+    <p>The name "Cambodia" derives from the Sanskrit word "Kambuja," meaning "the land of Kambu," and today it stands as a testament to human creativity and endurance. Whether you're watching the sunrise over ancient temple spires, cruising along the mighty Mekong River, or sharing stories with locals over a bowl of fish amok, Cambodia delivers experiences that are both humbling and exhilarating. This is a land where ancient history meets vibrant contemporary culture, where every smile tells a story of resilience, and where the wonders of the past await your discovery.</p>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.visitsoutheastasia.travel/005b13853a6501b76cc2f2db34cde763bf7ec075.jpg" alt="Royal Palace Phnom Penh" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏛️</span>
+            <div>
+                <h2>Phnom Penh</h2>
+                <div class="location">South-Central Cambodia (11.5564° N, 104.9282° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Situated at the confluence of the Mekong, Bassac, and Tonle Sap rivers, <span class="highlight">Phnom Penh</span> is Cambodia's vibrant capital—a city of striking contrasts where French colonial architecture stands alongside glittering pagodas and bustling markets. The magnificent Royal Palace, with its golden spires and Silver Pagoda housing a Buddha statue adorned with thousands of diamonds, showcases the grandeur of Khmer royalty. Nearby, the National Museum houses the world's finest collection of Khmer sculpture, offering a profound introduction to the country's artistic heritage.</p>
+            
+            <p>But Phnom Penh is more than its monuments; it's a city pulsing with life. Stroll along the riverside promenade at sunset, when locals gather for exercise and street food vendors serve up delicacies like num pang (Cambodian sandwiches) and fresh sugar cane juice. The Russian Market offers treasure hunters everything from silk scarves to vintage curios, while the burgeoning arts scene in the Bong Kak neighborhood reveals Cambodia's creative renaissance. For a poignant understanding of the country's recent history, visit the Tuol Sleng Genocide Museum and Choeung Ek Killing Fields—difficult but essential experiences that honor the resilience of the Cambodian people.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.voyagecambodge.com/258490f4debce708425be464d8ea27882bab9138.jpg" alt="Angkor Wat Sunrise" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🕌</span>
+            <div>
+                <h2>Siem Reap</h2>
+                <div class="location">Northwestern Cambodia (13.3633° N, 103.8560° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>No journey to Cambodia is complete without experiencing <span class="highlight">Siem Reap</span>, the gateway to the legendary Angkor Archaeological Park. While the town itself has transformed from a sleepy village into a cosmopolitan hub with world-class dining and boutique hotels, the real magic lies just beyond its borders. Angkor Wat, the largest religious monument in the world, stands as the crown jewel—a masterpiece of Khmer architecture that appears on Cambodia's flag. Arrive before dawn to watch the sun rise behind its iconic lotus-bud towers, their reflection shimmering in the surrounding moat.</p>
+            
+            <p>Beyond Angkor Wat, the ancient city of Angkor Thom houses the enigmatic Bayon Temple, where 216 stone faces of Avalokiteshvara smile mysteriously from every tower. Ta Prohm, left largely as discovered with massive tree roots strangling ancient walls, creates an atmosphere reminiscent of an Indiana Jones adventure. After temple-hopping, Siem Reap offers respite in the form of traditional Khmer massages, cooking classes where you'll learn to make fish amok, and the vibrant Pub Street where travelers share stories over Angkor Beer. The nearby Tonle Sap Lake, Southeast Asia's largest freshwater lake, provides insight into floating village life.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/blog.straytravel.com/fb622bb383aa8f85c208b5bb52864e719a003645.jpg" alt="Sihanoukville Beach" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏖️</span>
+            <div>
+                <h2>Sihanoukville</h2>
+                <div class="location">Southwestern Cambodia (10.6253° N, 103.5234° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Named after King Norodom Sihanouk, this coastal city serves as Cambodia's premier beach destination, offering sandy shores along the Gulf of Thailand. <span class="highlight">Sihanoukville</span> (locally known as Kampong Som) has undergone rapid development, yet it remains the jumping-off point for some of Southeast Asia's most pristine island escapes. The nearby islands of Koh Rong and Koh Rong Sanloem boast powder-white beaches and crystal-clear waters that rival any tropical paradise, with bioluminescent plankton lighting up the night waters like stars fallen to earth.</p>
+            
+            <p>On the mainland, Otres Beach maintains a more laid-back vibe than the bustling Serendipity Beach, with beachfront bungalows and reggae bars creating a backpacker haven. For diving enthusiasts, the waters around Sihanoukville offer coral reefs teeming with marine life. The city also serves as a gateway to Ream National Park, where mangrove forests shelter monkeys, dolphins, and over 150 bird species. As the sun sets, seafood restaurants along the shore serve the day's catch—grilled squid, prawns, and Kampot crab—best enjoyed with your toes in the sand and a tropical cocktail in hand.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/khiri.com/cda831eebfd0ddcb6c82e7262db8340cd7897ab9.jpg" alt="Battambang Colonial Architecture" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🎭</span>
+            <div>
+                <h2>Battambang</h2>
+                <div class="location">Northwestern Cambodia (13.0957° N, 103.2022° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Often overlooked by tourists rushing to Angkor, <span class="highlight">Battambang</span> is Cambodia's second-largest city and its cultural heart, preserving the finest collection of French colonial architecture in the country. Tree-lined streets showcase elegant shophouses and the distinctive Governor's Residence, while the surrounding countryside offers a glimpse into traditional Cambodian rural life that has remained largely unchanged for centuries. This is the birthplace of Cambodian modern art, home to Phare Ponleu Selpak, an NGO circus school where disadvantaged youth train in acrobatics and performing arts.</p>
+            
+            <p>The real magic of Battambang lies in its countryside. Take a ride on the unique bamboo train—a platform on wheels powered by a small engine—speeding through rice paddies and villages at exhilarating speeds. Visit the ancient Phnom Banan temple, perched atop a mountain with panoramic views, or explore the killing caves of Phnom Sampeau, where macaque monkeys play in the shadow of a sobering history. As evening falls, sample the region's famous rice noodles and sticky rice cooked in bamboo, then catch a performance at the circus—an explosion of color, music, and athleticism that showcases the incredible talent and spirit of Cambodia's youth.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.ourtravelsoup.com/c863ee77f4bb7e49bf18823865718787e377da1d.jpg" alt="Kampot River Sunset" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🌶️</span>
+            <div>
+                <h2>Kampot</h2>
+                <div class="location">Southwestern Cambodia (10.5942° N, 104.1640° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Sleepy, charming, and utterly captivating, <span class="highlight">Kampot</span> sits along the banks of the Praek Tuek Chhu River, surrounded by emerald-green countryside and the misty silhouette of Bokor Mountain. This provincial capital is famous worldwide for its pepper—Kampot pepper is the first Cambodian product to receive Protected Geographical Indication status from the EU, prized by chefs from Paris to Tokyo. Visit pepper plantations where you can learn about the cultivation of black, white, and red peppercorns, tasting the subtle differences that make this spice so coveted.</p>
+            
+            <p>The town itself exudes a relaxed atmosphere with its crumbling French colonial buildings, riverside promenade, and growing community of expats and artists. Rent a bicycle to explore the surrounding salt flats and caves, or take a river cruise at sunset when the water turns golden and fireflies begin their evening dance. Nearby Kep, once a glamorous resort for French colonialists, offers fresh crab markets where you can enjoy pepper crab right on the water's edge. For the adventurous, Bokor National Park provides hiking trails through cloud forests to abandoned French hill stations, offering eerie yet beautiful glimpses into Cambodia's colonial past.</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>✨ Cambodia awaits with ancient temples, warm smiles, and unforgettable adventures. Pack your curiosity, bring your respect, and prepare to be transformed by the Kingdom of Wonder. Safe travels! ✨</p>
+    <p><small>Flag image courtesy of Britannica | City images from various travel sources</small></p>
+</div>
+
+<!-- Comments Section -->
+<div class="comments-section">
+    <h3>Leave a Comment</h3>
+    <p style="color: #666; margin-bottom: 20px;">Share your thoughts about Cambodia or ask questions for fellow travelers!</p>
+    
+    <div class="comment-form">
+        <form id="commentForm" onsubmit="handleComment(event)">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email (will not be published)</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Your Comment</label>
+                <textarea id="comment" name="comment" placeholder="Share your experience or thoughts about Cambodia..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+        </form>
+    </div>
+    
+    <div class="comments-list" id="commentsList">
+        <h3 style="color: #032ea1; margin-bottom: 20px;">Recent Comments</h3>
+        
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">Sarah Mitchell</span>
+                <span class="comment-date">April 5, 2026</span>
+            </div>
+            <div class="comment-text">
+                Just returned from a 2-week trip to Cambodia and I'm already planning my return! Angkor Wat at sunrise was absolutely magical—definitely worth waking up at 4 AM. The people were so welcoming and the food was incredible. Don't miss the fish amok in Siem Reap! 🌅
+            </div>
+        </div>
+        
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">James Chen</span>
+                <span class="comment-date">April 2, 2026</span>
+            </div>
+            <div class="comment-text">
+                Battambang was the highlight of my trip. The bamboo train was such a unique experience, and the Phare Circus performance moved me to tears. Cambodia is so much more than just Angkor Wat—definitely spend time exploring the countryside and smaller towns.
+            </div>
+        </div>
+        
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">Emma Rodriguez</span>
+                <span class="comment-date">March 28, 2026</span>
+            </div>
+            <div class="comment-text">
+                Has anyone visited Koh Rong recently? I'm planning a trip in June and wondering about the best place to stay. Looking for a quiet beach away from the party scene. Any recommendations would be appreciated! 🏝️
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleComment(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const comment = document.getElementById('comment').value;
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        
+        const newComment = document.createElement('div');
+        newComment.className = 'comment';
+        newComment.innerHTML = `
+            <div class="comment-header">
+                <span class="comment-author">${name}</span>
+                <span class="comment-date">${date}</span>
+            </div>
+            <div class="comment-text">${comment}</div>
+        `;
+        
+        const commentsList = document.getElementById('commentsList');
+        commentsList.insertBefore(newComment, commentsList.children[1]);
+        
+        document.getElementById('commentForm').reset();
+        alert('Thank you for your comment! It has been posted successfully.');
+    }
+</script>
+
+</body>
+</html>
