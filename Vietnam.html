@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnam Travel Guide: A Journey Through Timeless Beauty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vietnam-red: #DA0202;
+            --vietnam-gold: #FFCD00;
+            --text-dark: #2C3E50;
+            --text-light: #5D6D7E;
+            --bg-cream: #FDFCF8;
+            --bg-warm: #F5F1E8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(218, 2, 2, 0.85), rgba(0,0,0,0.6)), 
+                        url('https://kimi-web-img.moonshot.cn/img/hoiancreativecity.com/8695aa3441743685b3cb05142de352a5acc09a57.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,205,0,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .flag-container {
+            margin-bottom: 2rem;
+            animation: wave 3s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        .flag {
+            width: 120px;
+            height: 80px;
+            background: var(--vietnam-red);
+            position: relative;
+            display: inline-block;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .flag::before {
+            content: '★';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--vietnam-gold);
+            font-size: 48px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--vietnam-red);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--vietnam-red);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--vietnam-red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 2;
+        }
+        
+        /* City Cards */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .city-card:hover .city-image {
+            transform: scale(1.05);
+        }
+        
+        .city-content {
+            padding: 2rem;
+        }
+        
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-warm);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--vietnam-red);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .city-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .city-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        /* Special Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--vietnam-red), #B80000);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '★';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+            color: var(--vietnam-gold);
+        }
+        
+        .highlight-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 5rem;
+        }
+        
+        .comments-header {
+            border-bottom: 3px solid var(--vietnam-gold);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .comments-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .comment-form {
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--vietnam-red);
+        }
+        
+        .submit-btn {
+            background: var(--vietnam-red);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: #B80000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(218, 2, 2, 0.3);
+        }
+        
+        .comments-list {
+            space-y: 2rem;
+        }
+        
+        .comment {
+            background: var(--bg-cream);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--vietnam-gold);
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+        
+        .comment-author {
+            font-weight: 700;
+            color: var(--vietnam-red);
+            font-size: 1.1rem;
+        }
+        
+        .comment-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .comment-text {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: var(--text-light);
+            padding: 3rem;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--vietnam-gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .cities-grid { grid-template-columns: 1fr; }
+            nav ul { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="flag-container">
+                <div class="flag"></div>
+            </div>
+            <h1>Vietnam</h1>
+            <p class="subtitle">The Land of the Ascending Dragon</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#hanoi">Hanoi</a></li>
+            <li><a href="#saigon">Saigon</a></li>
+            <li><a href="#hoian">Hoi An</a></li>
+            <li><a href="#danang">Da Nang</a></li>
+            <li><a href="#halong">Ha Long</a></li>
+            <li><a href="#comments">Comments</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Introduction -->
+        <section id="about" class="intro">
+            <h2>A Tapestry of Resilience and Grace</h2>
+            <p>
+                Vietnam, officially the Socialist Republic of Vietnam, stretches like a dragon along the eastern edge of the Indochinese Peninsula. This is a nation that has weathered centuries of foreign domination, brutal wars, and profound social transformation, yet emerges with its soul remarkably intact. From the mist-shrouded rice terraces of Sapa to the turquoise waters of the South China Sea, Vietnam offers travelers an intoxicating blend of natural splendor, imperial history, and forward-looking energy.
+                
+                What strikes you first is the contrast—the timeless patience of farmers knee-deep in emerald paddies against the kinetic frenzy of motorbikes streaming through Ho Chi Minh City. The Vietnamese flag, a crimson canvas with a golden star at its heart, symbolizes the blood shed for independence and the five classes of society united under one roof. But beyond politics, this is a country of supreme hospitality, where strangers become family over a steaming bowl of phở, and every alleyway holds secrets waiting to be discovered.
+            </p>
+        </section>
+
+        <!-- Cities Grid -->
+        <div class="cities-grid">
+            <!-- Hanoi -->
+            <article id="hanoi" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/statics.vinpearl.com/dfdf19f8f37169dcf028734d6c7faea00af7eb2b.jpg" alt="Hanoi Old Quarter Railway Street" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 21.0278° N, 105.8342° E
+                    </div>
+                    <h3>Hanoi</h3>
+                    <p>
+                        The capital city breathes with a thousand years of history. In the Old Quarter, trains thunder past mere inches from doorsteps where families sip egg coffee. Wake before dawn to join locals practicing tai chi beside Hoan Kiem Lake, where a legendary turtle once returned a divine sword to a Vietnamese emperor. Hanoi doesn't rush; it rewards the slow wanderer with French colonial architecture fading into shadowy tube houses, and the world's best street food hidden on plastic stools.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Ho Chi Minh City -->
+            <article id="saigon" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/statics.vinpearl.com/7e98258dfed1f69d1809b0a329fa60e48ebf756b.jpg" alt="Ho Chi Minh City Landmark 81" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 10.8231° N, 106.6297° E
+                    </div>
+                    <h3>Ho Chi Minh City</h3>
+                    <p>
+                        Still called "Saigon" by locals, this southern powerhouse thrums with entrepreneurial electricity. The city's skyline, crowned by the 81-story Landmark 81, rises from streets where flower markets overflow with apricot blossoms and incense smoke curls from pagoda roofs. Here, history weighs heavy at the War Remnants Museum, but the future pulls harder—trendy rooftop bars pour craft cocktails while below, families feast on bánh mì that costs less than a dollar. Saigon is chaos made beautiful.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Hoi An -->
+            <article id="hoian" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/worldmatetravel.com/68e03c98ad90c9b8493140d17d036e6ecb410ab7.jpg" alt="Hoi An Lantern Festival" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 15.8801° N, 108.3380° E
+                    </div>
+                    <h3>Hoi An</h3>
+                    <p>
+                        If Vietnam has a fairy-tale setting, this is it. By day, Hoi An Ancient Town is a living museum of Japanese merchant houses, Chinese assembly halls, and French colonial shophouses painted in sun-bleached yellow. But when the sun sets, the Thu Bon River transforms into a galaxy of floating candles and silk lanterns. Motor vehicles are banned here, replaced by the clip-clop of bicycle bells and the soft padding of feet on centuries-old cobblestones. It's romance distilled into architecture.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Da Nang -->
+            <article id="danang" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/f0f87a9eae1ff51369a9e6453a6070393dfd4b89.jpg" alt="Da Nang Dragon Bridge at night" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 16.0544° N, 108.2022° E
+                    </div>
+                    <h3>Da Nang</h3>
+                    <p>
+                        Vietnam's most livable city strikes a perfect balance between urban comfort and natural wonder. The Dragon Bridge, a golden beast that literally breathes fire and water every weekend, spans the Han River while the Marble Mountains rise mysteriously from the flat coastal plain. Just minutes away, My Khe Beach offers miles of soft sand where fishermen still launch coracle boats at dawn. Da Nang serves as the gateway to both Hoi An and the imperial city of Hue, making it the perfect hub for central Vietnam exploration.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Ha Long Bay -->
+            <article id="halong" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/4b338db4acdc8e7875d42f6f2ad19956a74c7e74.jpg" alt="Ha Long Bay Limestone Karsts" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 20.9101° N, 107.1839° E
+                    </div>
+                    <h3>Ha Long Bay</h3>
+                    <p>
+                        A UNESCO World Heritage site that defies photography, Ha Long Bay scatters nearly 2,000 limestone karsts across jade-green waters like the droppings of some primordial dragon. Spending a night aboard a traditional junk boat, watching the moonrise between these cathedral-like formations, ranks among Asia's essential experiences. Kayak into hidden lagoons where monkeys watch from cliffs, or explore the vast caves of Sung Sot, where stalactites form impossible shapes. This is nature's art gallery, carved by 500 million years of wind and water.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+            <h3>Traveler's Wisdom</h3>
+            <p>Visit during February to April for the kindest weather. Learn to say "cảm ơn" (thank you)—gratitude transcends all language barriers. And always, always trust the street food.</p>
+        </div>
+
+        <!-- Comments Section -->
+        <section id="comments" class="comments-section">
+            <div class="comments-header">
+                <h2>Traveler Stories 💬</h2>
+                <p style="color: var(--text-light); margin-top: 0.5rem;">Share your Vietnam memories or ask fellow travelers</p>
+            </div>
+
+            <form class="comment-form" id="commentForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Story</label>
+                    <textarea id="message" rows="4" required placeholder="Share your experience or ask a question..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <div id="commentsList" class="comments-list">
+                <div class="empty-state">No comments yet. Be the first to share your Vietnam story!</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Vietnam Travel Guide. Crafted with ❤️ for wanderers.</p>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">Pinterest</a>
+        </div>
+    </footer>
+
+    <script>
+        // Comments functionality using localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('commentForm');
+            const commentsList = document.getElementById('commentsList');
+            
+            // Load existing comments
+            let comments = JSON.parse(localStorage.getItem('vietnamComments')) || [];
+            if (comments.length > 0) {
+                renderComments();
+            }
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const message = document.getElementById('message').value;
+                const date = new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                const newComment = {
+                    id: Date.now(),
+                    name,
+                    message,
+                    date
+                };
+                
+                comments.unshift(newComment);
+                localStorage.setItem('vietnamComments', JSON.stringify(comments));
+                
+                renderComments();
+                form.reset();
+                
+                // Visual feedback
+                const btn = form.querySelector('.submit-btn');
+                btn.textContent = 'Posted! ✓';
+                btn.style.background = '#27AE60';
+                setTimeout(() => {
+                    btn.textContent = 'Post Comment';
+                    btn.style.background = '';
+                }, 2000);
+            });
+            
+            function renderComments() {
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<div class="empty-state">No comments yet. Be the first to share your Vietnam story!</div>';
+                    return;
+                }
+                
+                commentsList.innerHTML = comments.map(comment => `
+                    <div class="comment" data-id="${comment.id}">
+                        <div class="comment-header">
+                            <span class="comment-author">${escapeHtml(comment.name)}</span>
+                            <span class="comment-date">${comment.date}</span>
+                        </div>
+                        <p class="comment-text">${escapeHtml(comment.message)}</p>
+                    </div>
+                `).join('');
+            }
+            
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
