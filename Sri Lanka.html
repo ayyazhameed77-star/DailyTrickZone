@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Travel Guide: The Pearl of the Indian Ocean</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sl-gold: #FFB700;
+            --sl-maroon: #8B0000;
+            --sl-green: #00543C;
+            --sl-orange: #FF6B00;
+            --sl-yellow: #FFD700;
+            --text-dark: #2C241B;
+            --text-light: #6B5B4F;
+            --bg-cream: #FFFBF0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.85), rgba(255, 107, 0, 0.8)), 
+                        url('https://kimi-web-img.moonshot.cn/img/www.ceylankatours.com/769e2e1cc120bd8c1d092c54c0d97ba3d4eb9e9d');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,183,0,0.1)" stroke-width="1"/></svg>');
+            background-size: 400px;
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        .flag-container {
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .flag {
+            width: 160px;
+            height: 100px;
+            background: var(--sl-gold);
+            position: relative;
+            display: inline-block;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .flag-stripes {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25%;
+            height: 100%;
+            background: linear-gradient(to right, var(--sl-green) 50%, var(--sl-orange) 50%);
+        }
+        
+        .flag-main {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 75%;
+            height: 100%;
+            background: var(--sl-maroon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lion {
+            font-size: 60px;
+            color: var(--sl-gold);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            letter-spacing: 3px;
+        }
+        
+        .subtitle {
+            font-size: 1.6rem;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--sl-gold);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--sl-maroon);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--sl-maroon);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 6rem;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--sl-maroon);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro h2::after {
+            content: '◆';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--sl-gold);
+            font-size: 1.2rem;
+        }
+        
+        .intro p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 2;
+            text-align: justify;
+            text-align-last: center;
+            margin-top: 2rem;
+        }
+        
+        /* City Cards */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid #eee;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(139, 0, 0, 0.15);
+            border-color: var(--sl-gold);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .city-card:hover .city-image {
+            transform: scale(1.08);
+        }
+        
+        .city-content {
+            padding: 2rem;
+        }
+        
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 183, 0, 0.15);
+            color: var(--sl-maroon);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 183, 0, 0.3);
+        }
+        
+        .city-content h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.9rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .city-content p {
+            color: var(--text-light);
+            line-height: 1.9;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--sl-maroon), #6B0000);
+            color: white;
+            padding: 3.5rem;
+            border-radius: 16px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '🦁';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .highlight-box h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-box p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            background: white;
+            padding: 3.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 5rem;
+            border-top: 5px solid var(--sl-gold);
+        }
+        
+        .comments-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .comments-header h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            color: var(--sl-maroon);
+            margin-bottom: 0.5rem;
+        }
+        
+        .comments-header p {
+            color: var(--text-light);
+        }
+        
+        .comment-form {
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            color: var(--sl-maroon);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sl-gold);
+            box-shadow: 0 0 0 3px rgba(255, 183, 0, 0.2);
+        }
+        
+        .submit-btn {
+            background: var(--sl-maroon);
+            color: white;
+            border: none;
+            padding: 1.1rem 3rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+        
+        .submit-btn:hover {
+            background: #6B0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+        }
+        
+        .comments-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .comment {
+            background: var(--bg-cream);
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--sl-gold);
+            animation: slideIn 0.5s ease-out;
+            transition: transform 0.2s;
+        }
+        
+        .comment:hover {
+            transform: translateX(5px);
+            background: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .comment-author {
+            font-weight: 700;
+            color: var(--sl-maroon);
+            font-size: 1.15rem;
+        }
+        
+        .comment-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .comment-text {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: var(--text-light);
+            padding: 3rem;
+            font-style: italic;
+            background: var(--bg-cream);
+            border-radius: 12px;
+            border: 2px dashed #ddd;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--sl-maroon);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--sl-gold);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .cities-grid { grid-template-columns: 1fr; }
+            .intro h2 { font-size: 2rem; }
+            nav ul { gap: 1.5rem; }
+            .comments-section { padding: 2rem; }
+            .flag { width: 120px; height: 75px; }
+            .lion { font-size: 45px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="flag-container">
+                <div class="flag">
+                    <div class="flag-stripes"></div>
+                    <div class="flag-main">
+                        <span class="lion">🦁</span>
+                    </div>
+                </div>
+            </div>
+            <h1>Sri Lanka</h1>
+            <p class="subtitle">The Pearl of the Indian Ocean</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">History</a></li>
+            <li><a href="#colombo">Colombo</a></li>
+            <li><a href="#kandy">Kandy</a></li>
+            <li><a href="#sigiriya">Sigiriya</a></li>
+            <li><a href="#galle">Galle</a></li>
+            <li><a href="#nuwara">Nuwara Eliya</a></li>
+            <li><a href="#comments">Stories</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Introduction -->
+        <section id="about" class="intro">
+            <h2>An Island Where Time Stands Still</h2>
+            <p>
+                Sri Lanka hangs like a teardrop off the southern tip of India, a tropical jewel that has seduced travelers for millennia. Marco Polo called it "the finest island of its size in all the world," and 800 years later, that claim still holds. Here is a land where ancient Buddhist temples coexist with Dutch forts, where tea plantations carpet misty mountainsides, and where the warm waters of the Indian Ocean wash against beaches of powder-white sand. The flag tells the story: a golden lion holding a sword represents the Sinhala people and their sovereignty, while the four bo leaves in the corners symbolize the four cardinal virtues of Buddhism—loving-kindness, compassion, joy, and equanimity.
+                
+                But Sri Lanka is more than its symbols. It's the scent of cinnamon drifting from spice gardens in Matale, the sound of temple drums echoing across Kandy's lake at sunset, the taste of fresh coconut sambol eaten with string hoppers on a beachside shack. This is an island that has weathered Portuguese, Dutch, and British colonization, a brutal civil war, and the devastating 2004 tsunami, yet emerges with a resilience wrapped in genuine warmth. The people here greet you with "Ayubowan"—may you live long—with palms pressed together and a smile that reaches their eyes.
+                
+                What strikes you first is the diversity packed into this compact island. In one morning, you can climb the 5th-century rock fortress of Sigiriya, have lunch at a spice garden, and watch elephants bathe in a river by afternoon. The central highlands offer cool respite with rolling hills of tea that produce some of the world's finest brews, while the south coast draws surfers to world-class breaks at Arugam Bay and Weligama. Ancient cities like Anuradhapura and Polonnaruwa reveal sophisticated civilizations that built enormous stupas and intricate irrigation systems over a thousand years ago.
+                
+                Yet it's the intangible qualities that stay with you longest. It's the gentle sway of a train journey through the hill country, past waterfalls and villages where children run to wave at carriages. It's the ritual of tea at four o'clock, poured from pot to cup in a high arc to cool and aerate the amber liquid. It's the sight of fishermen on stilts at dawn in Weligama, silhouetted against the rising sun like sentinels of the sea. Sri Lanka doesn't just offer a vacation; it offers a remembering—a return to a pace of life where minutes matter less than moments, and where hospitality isn't an industry but a way of being.
+            </p>
+        </section>
+
+        <!-- Cities Grid -->
+        <div class="cities-grid">
+            <!-- Colombo -->
+            <article id="colombo" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/99f321cc39fd4ae066194405a9fd8367c6699719.jpg" alt="Colombo Skyline" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 6.9271° N, 79.8612° E
+                    </div>
+                    <h3>Colombo</h3>
+                    <p>
+                        The commercial capital is a sensory carnival where colonial architecture crumbles gracefully beside modern glass towers. In the Pettah market district, narrow alleys overflow with textiles, spices, and gold jewelry, while the Gangaramaya Temple offers zen calm amid the chaos. Galle Face Green is the city's living room, where families fly kites at sunset and street vendors sell isso wade—shrimp fritters—hot from the oil. Don't miss the National Museum to see the throne and crown of the last Kandyan kings, or take a tuk-tuk tour at dusk when the city glows in hues of amber and the Indian Ocean crashes against the seawall.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Kandy -->
+            <article id="kandy" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/simpsonsforest.com/f51574a1461a4fda8bd827f13cb3d95f4a6e01fe.jpg" alt="Temple of the Tooth Kandy" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 7.2906° N, 80.6337° E
+                    </div>
+                    <h3>Kandy</h3>
+                    <p>
+                        The last capital of the ancient kings sits around a tranquil lake, guarded by hills and spiritual tradition. The Temple of the Sacred Tooth Relic houses Buddhism's most precious treasure—a tooth of the Buddha—and the daily rituals here have continued for centuries. Time your visit with the Esala Perahera festival (July/August) when elephants draped in embroidered silks parade through torch-lit streets to the sound of drums and flutes. The Royal Botanical Gardens at Peradeniya display 4,000 species of plants, including giant Javan fig trees that create cathedrals of roots. Kandy is where Sri Lanka's soul lives, unhurried and deeply devout.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Sigiriya -->
+            <article id="sigiriya" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.ceylankatours.com/769e2e1cc120bd8c1d092c54c0d97ba3d4eb9e9d" alt="Sigiriya Rock Fortress" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 7.9570° N, 80.7603° E
+                    </div>
+                    <h3>Sigiriya</h3>
+                    <p>
+                        Rising 660 feet from the jungle floor, this ancient rock fortress defies imagination. Built in the 5th century by King Kasyapa as his palace and fortress, Sigiriya is Sri Lanka's single most dramatic sight. Climb the spiral staircases bolted to the rock face to see the famous frescoes— paintings of celestial nymphs that have survived 1,500 years of tropical weather. The Lion's Paw entrance, where giant stone paws once framed a lion's head, leads to the summit where palace ruins and water gardens reveal sophisticated hydraulic engineering. From the top, the view extends across forests and lakes where elephants still roam wild.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Galle -->
+            <article id="galle" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/fernandotravels.com.au/2a8c93701f26c005826f52a229b3581b58eeb9a8" alt="Galle Fort" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 6.0329° N, 80.2170° E
+                    </div>
+                    <h3>Galle</h3>
+                    <p>
+                        The Dutch-built fort town on the southwest coast feels like a slice of 17th-century Europe transplanted to the tropics. Within the UNESCO-protected ramparts, cobblestone streets lined with colonial villas house boutique hotels, art galleries, and cafes serving the island's best coffee. Walk the sea walls at sunset when the lighthouse glows golden and local boys dive into the waves below. The Dutch Reformed Church and the National Maritime Museum tell stories of spice trade and empire, while the nearby beaches of Unawatuna offer swimming in protected bays. Galle is sophistication meets colonial nostalgia, with a sea breeze that smells of salt and frangipani.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Nuwara Eliya -->
+            <article id="nuwara" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn.audleytravel.com/fbd2cdd3090d45012865fbcd3124f0d3309a27d9.webp" alt="Nuwara Eliya Tea Plantations" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 6.9497° N, 80.7891° E
+                    </div>
+                    <h3>Nuwara Eliya</h3>
+                    <p>
+                        At 6,000 feet above sea level, "Little England" offers cool relief from coastal heat with misty mornings and Tudor-style bungalows. The rolling hills are carpeted in emerald tea plantations that produce Ceylon's finest orange pekoe. Visit a working tea factory to watch leaves wither, roll, ferment, and dry before tasting the result on a veranda overlooking the fields. Horton Plains National Park offers the famous World's End viewpoint where the plateau drops 880 meters into the valley below. The Hakgala Botanical Gardens burst with roses and orchids, while Victorian-era hotels serve high tea with scones—a legacy of the British planters who once ruled these misty heights.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+            <h3>Island Wisdom</h3>
+            <p>Travel by train between Kandy and Ella for the world's most scenic rail journey. Eat with your hands—it's not just acceptable, it's preferred. Visit during the dry season (December to March) for the west and south coasts, or (May to September) for the east. And always accept the tea; refusing is nearly impossible and would miss the point entirely.</p>
+        </div>
+
+        <!-- Comments Section -->
+        <section id="comments" class="comments-section">
+            <div class="comments-header">
+                <h2>Traveler Chronicles 💬</h2>
+                <p>Share your Sri Lanka memories or seek advice from fellow island explorers</p>
+            </div>
+
+            <form class="comment-form" id="commentForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Experience</label>
+                    <textarea id="message" rows="5" required placeholder="Share your favorite tea estate, your tuk-tuk adventure, or ask about the best beaches..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Share Story</button>
+            </form>
+
+            <div id="commentsList" class="comments-list">
+                <div class="empty-state">No stories yet. Be the first to share your Sri Lankan adventure!</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sri Lanka Travel Guide. Ayubowan 🙏</p>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+        </div>
+    </footer>
+
+    <script>
+        // Comments functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('commentForm');
+            const commentsList = document.getElementById('commentsList');
+            const STORAGE_KEY = 'srilankaTravelComments';
+            
+            // Load existing comments
+            let comments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            renderComments();
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const date = new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const newComment = {
+                    id: Date.now(),
+                    name,
+                    message,
+                    date
+                };
+                
+                comments.unshift(newComment);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+                
+                renderComments();
+                form.reset();
+                
+                // Success feedback
+                const btn = form.querySelector('.submit-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Posted! ✓';
+                btn.style.background = '#27ae60';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+            
+            function renderComments() {
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<div class="empty-state">No stories yet. Be the first to share your Sri Lankan adventure!</div>';
+                    return;
+                }
+                
+                commentsList.innerHTML = comments.map(comment => `
+                    <div class="comment" data-id="${comment.id}">
+                        <div class="comment-header">
+                            <span class="comment-author">${escapeHtml(comment.name)}</span>
+                            <span class="comment-date">${comment.date}</span>
+                        </div>
+                        <p class="comment-text">${escapeHtml(comment.message)}</p>
+                    </div>
+                `).join('');
+            }
+            
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
