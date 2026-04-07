@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaysia Travel Guide: Discover Truly Asia</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #010066 0%, #CC0000 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .flag {
+            width: 120px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .intro {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #010066;
+        }
+        .city-card {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .city-content {
+            padding: 25px;
+        }
+        .city-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .city-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #CC0000;
+        }
+        h2 {
+            color: #010066;
+            margin: 0;
+            font-size: 1.8em;
+        }
+        .location {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .location::before {
+            content: "📍";
+            margin-right: 5px;
+        }
+        .description {
+            text-align: justify;
+            margin-top: 15px;
+            font-size: 1.05em;
+        }
+        .highlight {
+            background-color: #e8eaf6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        /* Comment Section Styles */
+        .comments-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        .comments-title {
+            color: #010066;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #e8eaf6;
+            padding-bottom: 10px;
+        }
+        .comment-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background: #CC0000;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #010066;
+        }
+        .comment-list {
+            margin-top: 30px;
+        }
+        .comment {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #CC0000;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .comment-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+            border-top: 2px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.8em; }
+            .city-image { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/cd6899385a38ea3e914981134936c8527e4b4177.png" alt="Malaysia Flag" class="flag">
+    <h1>Malaysia Travel Guide</h1>
+    <div class="subtitle">Truly Asia - Where Cultures Converge</div>
+</div>
+
+<div class="intro">
+    <p><strong>Malaysia</strong> is a Southeast Asian gem that lives up to its tourism slogan "Truly Asia" by offering an intoxicating blend of Malay, Chinese, Indian, and indigenous cultures. This federation of 13 states and three federal territories stretches from the Malay Peninsula to the northern third of Borneo, encompassing bustling cities, colonial architecture, pristine beaches, and ancient rainforests that are among the world's oldest. With a history shaped by Portuguese, Dutch, and British colonial rule, Malaysia has emerged as a modern, multicultural nation where mosques, temples, and churches stand side by side in harmony.</p>
+    
+    <p>What makes Malaysia extraordinary is its diversity—both cultural and natural. In a single day, you can savor dim sum for breakfast, nasi lemak for lunch, and banana leaf curry for dinner. You can wander through the futuristic skyscrapers of Kuala Lumpur, explore UNESCO World Heritage sites in George Town and Malacca, trek through 130-million-year-old rainforests in Taman Negara, and relax on powder-white beaches in Langkawi or the Perhentian Islands. Whether you're a foodie, history buff, nature lover, or beach enthusiast, Malaysia delivers an unforgettable Southeast Asian experience.</p>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/skyscraper.org/39f7c9857b69bc186ec50bae3444fae8b3a24453.jpg" alt="Petronas Towers Kuala Lumpur" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏙️</span>
+            <div>
+                <h2>Kuala Lumpur</h2>
+                <div class="location">Central Peninsular Malaysia, Capital City (3.1390° N, 101.6869° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>The vibrant capital of Malaysia, <span class="highlight">Kuala Lumpur</span> (KL) is a dazzling metropolis where futuristic skyscrapers rise alongside colonial architecture and traditional markets. Dominating the skyline are the iconic <strong>Petronas Twin Towers</strong>, once the world's tallest buildings and still the tallest twin towers on Earth at 452 meters. The skybridge connecting the two towers offers breathtaking views of the city, especially magical at sunset when the towers illuminate the night sky.</p>
+            
+            <p>Beyond the towers, KL reveals its multicultural soul. The colorful <strong>Batu Caves</strong>, just 13 kilometers north of the city, feature a massive golden statue of Lord Murugan guarding a 272-step staircase leading to limestone caverns with Hindu temples inside. Watch out for the playful macaque monkeys! Back in the city center, explore the bustling markets of Chinatown (Petaling Street), the aromatic Little India (Brickfields), and the majestic Sultan Abdul Samad Building with its distinctive Moorish architecture. Food is KL's obsession—sample street food at Jalan Alor, where hawkers serve everything from satay and char kway teow to durian and cendol. With world-class shopping malls, rooftop bars with panoramic views, and a metro system that makes getting around easy, Kuala Lumpur is the perfect introduction to Malaysia's wonders.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/velvetescape.com/a1d9416407ef12e7b1efeed8d90e68fd73a124ef.jpeg" alt="George Town Street Art" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🎨</span>
+            <div>
+                <h2>George Town, Penang</h2>
+                <div class="location">Penang Island, Northwest Malaysia (5.4141° N, 100.3288° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Known as the "Pearl of the Orient," <span class="highlight">George Town</span> is Malaysia's cultural capital and a UNESCO World Heritage site that captivates visitors with its colorful colonial architecture, vibrant street art, and legendary food scene. Founded by the British East India Company in 1786, the city showcases a unique blend of British colonial, Chinese, Indian, and Malay influences that have created one of Southeast Asia's most distinctive urban landscapes.</p>
+            
+            <p>Wander through the narrow streets of the old town to discover world-famous street art—interactive murals like "Children on a Bicycle" and "Boy on a Motorcycle" that have turned the city into an open-air gallery. Visit the stunning <strong>Cheong Fatt Tze Mansion</strong> (The Blue Mansion), an indigo-colored architectural masterpiece featured in "Crazy Rich Asians," or explore the intricate Khoo Kongsi clan house with its elaborate carvings. But the true star of Penang is its food—often considered the best street food in Asia. Head to Gurney Drive Hawker Centre for char kway teow (stir-fried noodles), Penang laksa (spicy fish soup), and nasi kandar (rice with curries). Ride the funicular up Penang Hill for panoramic views, or escape to Batu Ferringhi Beach for golden sands and water sports. George Town proves that culture and cuisine are inseparable in Malaysia.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.malaysia.travel/d31cb7406a06f940a22dae494e942f1f82f1a7bf.jpg" alt="Malacca Dutch Square" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏛️</span>
+            <div>
+                <h2>Malacca (Melaka)</h2>
+                <div class="location">Southwest Peninsular Malaysia (2.2008° N, 102.2432° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Just two hours from Kuala Lumpur lies <span class="highlight">Malacca</span>, Malaysia's second UNESCO World Heritage site and a living museum of the country's colonial past. This historic port city has been ruled by the Portuguese, Dutch, and British, each leaving their architectural and cultural mark on what was once one of the world's most important trading hubs. The result is a charming city where red colonial buildings stand alongside ancient Chinese temples, Malay mosques, and Peranakan (Straits Chinese) mansions.</p>
+            
+            <p>The heart of Malacca is Dutch Square, dominated by the salmon-pink <strong>Christ Church</strong> (built in 1753) and the Stadthuys, which now houses history museums. Nearby, Jonker Street comes alive every weekend with a night market featuring street food, antiques, and live performances. Take a romantic cruise along the Malacca River, lined with colorful murals and historic buildings, or visit the Baba-Nyonya Heritage Museum to learn about the unique Peranakan culture. Don't miss sampling chicken rice balls, Nyonya laksa, and cendol from street vendors. The city's famous flower-decorated trishaws, blasting music and LED lights, offer a uniquely Malaccan way to tour the historic center. With its compact size and walkable streets, Malacca offers a perfect weekend escape into Malaysia's rich history.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/res.klook.com/b6ce5ee9838896f0bf78ccb627de5a1e5ff4dc34.jpg" alt="Langkawi Beach" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏝️</span>
+            <div>
+                <h2>Langkawi</h2>
+                <div class="location">Northwest Peninsular Malaysia, Andaman Sea (6.3500° N, 99.8000° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Known as the "Jewel of Kedah," <span class="highlight">Langkawi</span> is an archipelago of 99 islands that offers Malaysia's most idyllic beach escape. Located just 30 kilometers off the northwest coast, Langkawi combines pristine beaches with lush rainforests, dramatic limestone formations, and duty-free shopping. The main island, Pulau Langkawi, features powdery white sands, crystal-clear waters, and luxury resorts that cater to every type of traveler—from honeymooners to families to adventure seekers.</p>
+            
+            <p>Pantai Cenang is the island's most popular beach, offering water sports, beach bars, and spectacular sunsets, while Tanjung Rhu on the northern coast provides a more secluded experience with its pristine sands and mangrove forests. Take the cable car up to the Langkawi Sky Bridge, a curved pedestrian bridge suspended 700 meters above sea level, for breathtaking views of the surrounding islands and Thailand in the distance. Explore the Kilim Karst Geoforest Park by boat, navigating through mangrove forests, limestone caves, and eagle-watching areas. Visit the Underwater World aquarium, or take a sunset dinner cruise around the islands. With its laid-back atmosphere, stunning natural beauty, and tax-free status that makes shopping a bargain, Langkawi is the perfect tropical paradise to end your Malaysian adventure.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Comments Section -->
+<div class="comments-section">
+    <h3 class="comments-title">💬 Traveler Comments</h3>
+    
+    <div class="comment-form">
+        <h4 style="margin-top: 0; color: #333;">Leave a Comment</h4>
+        <form onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be posted after moderation.');">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea id="comment" name="comment" placeholder="Share your thoughts about Malaysia or ask a question..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+        </form>
+    </div>
+
+    <div class="comment-list">
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🍜 Sarah Lim</span>
+                <span class="comment-date">April 7, 2026</span>
+            </div>
+            <div class="comment-text">
+                Just came back from a week in Malaysia and I'm obsessed! George Town was my favorite - the street food at Gurney Drive was incredible. I tried char kway teow, asam laksa, and cendol. The street art hunt was so fun too! Make sure to visit the Blue Mansion, it's stunning. Can't wait to go back and explore more!
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🏝️ James Wilson</span>
+                <span class="comment-date">April 5, 2026</span>
+            </div>
+            <div class="comment-text">
+                Langkawi was paradise! We stayed at Pantai Cenang and the sunsets were breathtaking. The cable car to Sky Bridge is a must-do but go early to avoid queues. Also visited Batu Caves in KL - those 272 steps were worth it for the view and the temples inside. Malaysia is so diverse, I loved every minute!
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🏛️ Emma Chen</span>
+                <span class="comment-date">April 3, 2026</span>
+            </div>
+            <div class="comment-text">
+                Malacca was such a charming surprise! The Dutch Square with its red buildings is so photogenic. I loved the Jonker Street night market - bought so many souvenirs and tried chicken rice balls. The river cruise at sunset was magical. It's only 2 hours from KL by bus, perfect for a day trip or weekend getaway!
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>✨ Malaysia awaits with diverse cultures, mouthwatering cuisine, and stunning landscapes. Selamat Datang! 🇲🇾✨</p>
+    <p><small>Flag image courtesy of Wikimedia Commons | City images from Skyscraper Museum, Velvet Escape, Malaysia Travel, and Klook</small></p>
+</div>
+
+</body>
+</html>
