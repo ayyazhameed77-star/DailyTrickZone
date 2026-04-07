@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Travel Guide: The Roof of the World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nepal-crimson: #DC143C;
+            --nepal-blue: #003893;
+            --nepal-gold: #FFD700;
+            --mountain-gray: #4A5568;
+            --snow-white: #FAFAFA;
+            --earth-brown: #8B4513;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.8;
+            color: var(--mountain-gray);
+            background-color: var(--snow-white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.8), rgba(0, 56, 147, 0.8)), 
+                        url('https://kimi-web-img.moonshot.cn/img/i.natgeofe.com/3f8caad7e5f9099c3cae080f59d02d63105437ad.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        .flag-container {
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        .flag {
+            width: 120px;
+            height: 140px;
+            background: var(--nepal-crimson);
+            position: relative;
+            display: inline-block;
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 35%, 50% 65%, 100% 50%, 100% 100%, 0 100%);
+            border-radius: 2px;
+        }
+        
+        .flag::before {
+            content: '☀';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 32px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .flag::after {
+            content: '☽';
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 28px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 3px;
+            font-style: italic;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--nepal-crimson);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--mountain-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--nepal-blue);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--nepal-crimson);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 6rem;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--nepal-crimson);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro h2::after {
+            content: '❖';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--nepal-gold);
+            font-size: 1.5rem;
+        }
+        
+        .intro p {
+            font-size: 1.15rem;
+            color: var(--mountain-gray);
+            line-height: 2;
+            text-align: justify;
+            text-align-last: center;
+            margin-top: 2rem;
+        }
+        
+        /* City Cards */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid #eee;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(220, 20, 60, 0.15);
+            border-color: var(--nepal-crimson);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .city-card:hover .city-image {
+            transform: scale(1.08);
+        }
+        
+        .city-content {
+            padding: 2rem;
+        }
+        
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(220, 20, 60, 0.1);
+            color: var(--nepal-crimson);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+        }
+        
+        .city-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--nepal-blue);
+        }
+        
+        .city-content p {
+            color: var(--mountain-gray);
+            line-height: 1.9;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--nepal-blue), #002a6e);
+            color: white;
+            padding: 3.5rem;
+            border-radius: 16px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '🏔️';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            top: -60px;
+            right: -60px;
+        }
+        
+        .highlight-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-box p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            background: white;
+            padding: 3.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 5rem;
+            border-top: 5px solid var(--nepal-crimson);
+        }
+        
+        .comments-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .comments-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--nepal-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .comments-header p {
+            color: var(--mountain-gray);
+        }
+        
+        .comment-form {
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            color: var(--nepal-blue);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--nepal-crimson);
+            box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+        }
+        
+        .submit-btn {
+            background: var(--nepal-crimson);
+            color: white;
+            border: none;
+            padding: 1.1rem 3rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+        }
+        
+        .submit-btn:hover {
+            background: #b01030;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+        }
+        
+        .comments-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .comment {
+            background: var(--snow-white);
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--nepal-blue);
+            animation: slideIn 0.5s ease-out;
+            transition: transform 0.2s;
+        }
+        
+        .comment:hover {
+            transform: translateX(5px);
+            background: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .comment-author {
+            font-weight: 700;
+            color: var(--nepal-crimson);
+            font-size: 1.15rem;
+        }
+        
+        .comment-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .comment-text {
+            color: var(--mountain-gray);
+            line-height: 1.7;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: var(--mountain-gray);
+            padding: 3rem;
+            font-style: italic;
+            background: var(--snow-white);
+            border-radius: 12px;
+            border: 2px dashed #ddd;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--nepal-blue);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--nepal-gold);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .cities-grid { grid-template-columns: 1fr; }
+            .intro h2 { font-size: 2rem; }
+            nav ul { gap: 1.5rem; }
+            .comments-section { padding: 2rem; }
+            .flag { width: 100px; height: 115px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="flag-container">
+                <div class="flag"></div>
+            </div>
+            <h1>Nepal</h1>
+            <p class="subtitle">The Roof of the World • Land of the Himalayas</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">History</a></li>
+            <li><a href="#kathmandu">Kathmandu</a></li>
+            <li><a href="#pokhara">Pokhara</a></li>
+            <li><a href="#bhaktapur">Bhaktapur</a></li>
+            <li><a href="#patan">Patan</a></li>
+            <li><a href="#everest">Everest</a></li>
+            <li><a href="#comments">Stories</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Introduction -->
+        <section id="about" class="intro">
+            <h2>Where Mountains Touch the Sky</h2>
+            <p>
+                Nepal is unlike anywhere else on Earth. Here, the horizon isn't a line—it's a wall of snow-capped peaks that pierces the sky at 29,000 feet. This is the only country in the world with a non-rectangular flag, two stacked triangles bearing the sun and moon, symbols of the hope that Nepal will endure as long as these celestial bodies. Sandwiched between India and Tibet, this small Himalayan kingdom has always been a crossroads of civilizations, a place where Hinduism and Buddhism don't just coexist—they dance together in ancient temples and remote mountain monasteries.
+                
+                What strikes you immediately is the verticality of life. In Nepal, you don't measure distance in miles but in altitude gain, in the burning of your calves as you climb stone steps carved centuries ago. The air tastes different here—thin, yes, at high elevation, but infused with the scent of juniper incense, of freshly baked roti from clay ovens, of rhododendron forests that explode in crimson blooms each spring. This is a country where prayer flags flutter from every ridge, sending mantras to the wind, and where the eyes of Buddha gaze serenely from 500-year-old stupas.
+                
+                But Nepal is more than its geography. It's the warmth of a teahouse owner in Namche Bazaar who remembers your name after three years. It's the sound of bells ringing from a thousand temples at dawn in the Kathmandu Valley. It's the taste of momos—steam-hot dumplings dipped in fiery tomato chutney—eaten at a plastic table while rain drums on a tin roof. The Nepali people possess a resilience forged by living in one of Earth's most challenging environments, yet they greet strangers with "Namaste"—a word that means "I bow to the divine in you"—accompanied by hands pressed together in reverence.
+                
+                Whether you're here to trek to Everest Base Camp, to meditate in a monastery, or simply to wander medieval cities where time moves to the rhythm of temple bells, Nepal changes you. It strips away the unnecessary, leaving only the essential: breath, stone, sky, and the profound silence of mountains that remember when humans were not yet born.
+            </p>
+        </section>
+
+        <!-- Cities Grid -->
+        <div class="cities-grid">
+            <!-- Kathmandu -->
+            <article id="kathmandu" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/media.gettyimages.com/69d44e807fa5ba1da479680fec367b1ed9b3a014.jpg" alt="Kathmandu Cityscape with Temple" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 27.7172° N, 85.3240° E
+                    </div>
+                    <h3>Kathmandu</h3>
+                    <p>
+                        The capital is a sensory assault in the best possible way. In the labyrinthine alleys of Thamel, the air smells of sandalwood and diesel, and the narrow streets overflow with trekking gear shops, rooftop cafes, and ancient shrines that predate Columbus. Durbar Square, despite earthquake damage, remains a masterpiece of Newar architecture—wooden temples intricately carved with erotic figures and deities, where sadhus with painted faces sit contemplating eternity. Visit the Swayambhunath Stupa (Monkey Temple) at sunset, when the eyes of Buddha—painted on all four sides of the white dome—seem to watch the valley turn gold.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Pokhara -->
+            <article id="pokhara" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.wendywutours.com/d8e2df647d0785e354c29734867dcdc1573ff1d2.jpg" alt="Phewa Lake Pokhara" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 28.2096° N, 83.9856° E
+                    </div>
+                    <h3>Pokhara</h3>
+                    <p>
+                        If Kathmandu is chaotic energy, Pokhara is serene grace. Lying beside the mirror-still Phewa Lake, this lakeside town offers the most spectacular mountain view in the world—the Annapurna range reflected perfectly in the water at dawn. Rent a boat and paddle to the Tal Barahi Temple, a pagoda sitting on an island where pigeons flutter like prayers. The old bazaar retains its Newari charm, but Lakeside is where trekkers recover from the Annapurna Circuit, swapping stories over apple pie and hot chocolate. Paragliders drift like eagles above, and on clear mornings, you can see Machhapuchhre (Fishtail Mountain), a peak so sacred it has never been climbed.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Bhaktapur -->
+            <article id="bhaktapur" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/df50dca0ec1f26c305b64ed53b27eb7429832388.jpg" alt="Bhaktapur Durbar Square" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 27.6710° N, 85.4298° E
+                    </div>
+                    <h3>Bhaktapur</h3>
+                    <p>
+                        Step through the city gates and enter the 15th century. Bhaktapur is the best-preserved medieval city in the Himalayas, a UNESCO treasure where potters still shape clay on squares, and women in traditional black and red saris carry offerings to temples unchanged for centuries. The 55-Window Palace and Nyatapola Temple—five tiers rising 30 meters into the sky—represent the pinnacle of Newar craftsmanship. Try the famous king curd (juju dhau), baked in clay pots and sweet as custard, while watching the sun set behind the Himalayas from a rooftop restaurant. Here, time moves slowly, respectfully.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Patan -->
+            <article id="patan" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.thepinnaclelist.com/20f323a09145622a68081f1ca7c886a1f02e772a.jpg" alt="Patan Ancient City Temples" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 27.6667° N, 85.3167° E
+                    </div>
+                    <h3>Patan (Lalitpur)</h3>
+                    <p>
+                        Across the Bagmati River from Kathmandu lies the "City of Fine Arts," where Newar artisans have created bronze statues and thangka paintings for centuries. Patan Durbar Square is arguably the most beautiful in the valley—a compact masterpiece of stone and wood where the Krishna Mandir stands as a testament to Hindu architecture. The Golden Temple (Kwa Bahal) is a hidden courtyard monastery where monks maintain ancient traditions, and the surrounding streets offer the best metalwork shopping in Nepal. Less crowded than Kathmandu, Patan rewards the wanderer with hidden courtyards where children play and old men spin prayer wheels.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Everest Region -->
+            <article id="everest" class="city-card">
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn.kimkim.com/a39bb5e9cb91458541cfa911b829ecc1ec4581e5.jpg" alt="Everest Base Camp" class="city-image">
+                <div class="city-content">
+                    <div class="location-badge">
+                        <span>📍</span> 28.0024° N, 86.8525° E
+                    </div>
+                    <h3>Everest Region</h3>
+                    <p>
+                        You don't need to summit to understand the mountain. The trek to Everest Base Camp is a pilgrimage through Sherpa country, where villages like Namche Bazaar and Tengboche nestle against impossible slopes, and monastery walls are painted with intricate mandalas. The trail crosses suspension bridges draped in prayer flags, passes mani walls carved with om mani padme hum, and climbs gradually through rhododendron forests to the high-altitude desert of the Khumbu. When you finally stand at Base Camp, surrounded by the Lhotse-Nuptse wall and the Khumbu Icefall, you understand why the Sherpas call Everest "Chomolungma"—Goddess Mother of the World.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+            <h3>Mountain Wisdom</h3>
+            <p>Visit during October-November for clearest skies. Always walk clockwise around stupas. Try dal bhat (lentils and rice) for authentic sustenance. And remember: in the Himalayas, the journey is always more important than the destination.</p>
+        </div>
+
+        <!-- Comments Section -->
+        <section id="comments" class="comments-section">
+            <div class="comments-header">
+                <h2>Traveler Chronicles 💬</h2>
+                <p>Share your Nepal stories or seek advice from fellow trekkers</p>
+            </div>
+
+            <form class="comment-form" id="commentForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Experience</label>
+                    <textarea id="message" rows="5" required placeholder="Share your Himalayan adventure, your favorite tea house, or ask about trekking permits..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Share Story</button>
+            </form>
+
+            <div id="commentsList" class="comments-list">
+                <div class="empty-state">No stories yet. Be the first to share your Nepal adventure!</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nepal Travel Guide. Namaste 🙏</p>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+        </div>
+    </footer>
+
+    <script>
+        // Comments functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('commentForm');
+            const commentsList = document.getElementById('commentsList');
+            const STORAGE_KEY = 'nepalTravelComments';
+            
+            // Load existing comments
+            let comments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            renderComments();
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const date = new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const newComment = {
+                    id: Date.now(),
+                    name,
+                    message,
+                    date
+                };
+                
+                comments.unshift(newComment);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+                
+                renderComments();
+                form.reset();
+                
+                // Success feedback
+                const btn = form.querySelector('.submit-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Posted! ✓';
+                btn.style.background = '#27ae60';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+            
+            function renderComments() {
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<div class="empty-state">No stories yet. Be the first to share your Nepal adventure!</div>';
+                    return;
+                }
+                
+                commentsList.innerHTML = comments.map(comment => `
+                    <div class="comment" data-id="${comment.id}">
+                        <div class="comment-header">
+                            <span class="comment-author">${escapeHtml(comment.name)}</span>
+                            <span class="comment-date">${comment.date}</span>
+                        </div>
+                        <p class="comment-text">${escapeHtml(comment.message)}</p>
+                    </div>
+                `).join('');
+            }
+            
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
