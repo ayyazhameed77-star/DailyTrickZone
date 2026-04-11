@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuwait Travel Guide: Discover the Pearl of the Gulf</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #007A3D 0%, #CE1126 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .flag {
+            width: 120px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .intro {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #007A3D;
+        }
+        .city-card {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .city-content {
+            padding: 25px;
+        }
+        .city-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .city-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #CE1126;
+        }
+        h2 {
+            color: #007A3D;
+            margin: 0;
+            font-size: 1.8em;
+        }
+        .location {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .location::before {
+            content: "📍";
+            margin-right: 5px;
+        }
+        .description {
+            text-align: justify;
+            margin-top: 15px;
+            font-size: 1.05em;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #007A3D;
+        }
+        
+        /* Comment Section Styles */
+        .comments-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        .comments-title {
+            color: #CE1126;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #e8f5e9;
+            padding-bottom: 10px;
+        }
+        .comment-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background: #CE1126;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #007A3D;
+        }
+        .comment-list {
+            margin-top: 30px;
+        }
+        .comment {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007A3D;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .comment-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+            border-top: 2px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.8em; }
+            .city-image { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/6fbc386f8bef41045dd1333d72bcf218853fb383.jpg" alt="Kuwait Flag" class="flag">
+    <h1>Kuwait Travel Guide</h1>
+    <div class="subtitle">Discover the Pearl of the Gulf & Arabian Heritage</div>
+</div>
+
+<div class="intro">
+    <p><strong>Kuwait</strong>, officially the State of Kuwait, is a captivating gem nestled at the northern tip of the Arabian Gulf, where rich Bedouin traditions blend seamlessly with cosmopolitan modernity. Though modest in size, this oil-rich emirate packs an impressive array of experiences into its compact territory—from glittering skyscrapers and luxury shopping malls to ancient archaeological sites and pristine island retreats. Unlike its flashier Gulf neighbors, Kuwait maintains an authentic Arabian atmosphere where traditional dhows still sail past futuristic towers, and ancient souks thrive alongside contemporary art galleries.</p>
+    
+    <p>With a history stretching back to ancient Mesopotamian trade routes, Kuwait rose to prominence in the 18th century as a bustling pearl-diving and trading port. Today, the country welcomes visitors with genuine Arabian hospitality, world-class museums, and a vibrant cultural scene that reflects its position as a historic crossroads between East and West. Whether you're marveling at the iconic Kuwait Towers, exploring the labyrinthine alleys of Souk Al-Mubarakiya, or escaping to the tranquil beaches of the offshore islands, Kuwait offers a sophisticated Gulf experience steeped in authenticity and tradition.</p>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/t4.ftcdn.net/1b13e7669fd22076b70c72d5a571ce11eed291c6.jpg" alt="Kuwait City Skyline" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏙️</span>
+            <div>
+                <h2>Kuwait City</h2>
+                <div class="location">Capital City, Kuwait Bay (29.3759° N, 47.9774° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>The dynamic capital of Kuwait, <span class="highlight">Kuwait City</span> stands as a striking testament to the country's remarkable transformation from humble fishing village to modern metropolis. The skyline is dominated by the iconic <strong>Kuwait Towers</strong>, three sleek structures featuring distinctive blue-green spheres that house viewing decks and restaurants offering panoramic views of the azure Gulf waters. These architectural marvels have become the symbol of modern Kuwait since their completion in 1979, with the main tower's rotating observation deck providing a 360-degree perspective of the city's impressive urban landscape.</p>
+            
+            <p>Beyond the towers, the city reveals layers of cultural richness. The <strong>Grand Mosque</strong>, the largest mosque in Kuwait, welcomes visitors to admire its stunning Andalusian-inspired architecture and intricate Islamic calligraphy, accommodating up to 10,000 worshippers. For a taste of authentic Kuwaiti commerce, wander through <strong>Souk Al-Mubarakiya</strong>, a traditional marketplace dating back over 200 years where the aroma of spices, oud perfume, and Arabic coffee fills the air. Here, merchants sell everything from hand-woven textiles and traditional daggers to gold jewelry and fresh dates. The nearby <strong>Kuwait National Museum</strong> and the stunning <strong>Sheikh Jaber Al-Ahmad Cultural Centre</strong> showcase the country's commitment to preserving and celebrating its heritage while embracing contemporary artistic expression.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/8ceac92a58622f895806ecfb47b332800cebf7d7.jpg" alt="Al Jahra City" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏛️</span>
+            <div>
+                <h2>Al Jahra</h2>
+                <div class="location">Al Jahra Governorate, Western Kuwait (29.3375° N, 47.6581° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Located 32 kilometers west of the capital, <span class="highlight">Al Jahra</span> offers visitors a glimpse into Kuwait's traditional desert heritage and agricultural roots. Historically a vital trading post on the caravan routes between the Arabian interior and the coast, this ancient settlement is most famously associated with the 1920 Battle of Jahra, a pivotal moment in Kuwaiti history celebrated as a testament to the nation's resilience. Today, the city serves as the capital of the Al Jahra Governorate and remains an important cultural center where Bedouin traditions remain strong.</p>
+            
+            <p>The city is surrounded by fertile agricultural lands made possible by extensive groundwater reserves, creating a surprising patchwork of green farms and date palm groves against the desert backdrop. The <strong>Red Fort (Qasr Al-Ahmar)</strong>, a historic fortress that played a crucial role in the 1920 battle, stands as a monument to Kuwaiti courage and independence. Visitors can also explore the vibrant <strong>Al Jahra Traditional Market</strong>, famous for its livestock auctions and traditional crafts. Nearby, the <strong>Kazma Desert</strong> offers thrilling dune bashing experiences and desert camping under star-filled skies, while the area's traditional mud-brick architecture provides a stark contrast to Kuwait City's modern skyscrapers, making Al Jahra essential for understanding the country's deeper cultural foundations.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/43c4b39728a856ff8a037fbb8c2764acebde8bb3.jpg" alt="Al Ahmadi Oil City" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">⛽</span>
+            <div>
+                <h2>Al Ahmadi</h2>
+                <div class="location">Al Ahmadi Governorate, Southern Kuwait (29.0859° N, 48.0687° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Situated south of Kuwait City along the azure coastline, <span class="highlight">Al Ahmadi</span> represents the heartbeat of Kuwait's petroleum industry and the source of the nation's prosperity. Established in 1946 by the Kuwait Oil Company, this planned city was named after the late Sheikh Ahmad Al-Jaber Al-Sabah and was designed with wide streets, abundant green spaces, and distinctive red-roofed residential buildings that give the city its unique character. Unlike the dense urban core of the capital, Al Ahmadi offers a relaxed, suburban atmosphere with well-maintained parks and coastal promenades.</p>
+            
+            <p>The <strong>Al Ahmadi Oil Town</strong> itself is a fascinating example of mid-20th century urban planning, with its tree-lined boulevards and charming British-influenced architecture reflecting the international partnerships that developed Kuwait's oil sector. Visitors can explore the <strong>KOC Showrooms</strong> to learn about the petroleum industry that transformed this nation, while the nearby <strong>Ahmadi Park</strong> offers a pleasant retreat with its lush gardens and family-friendly facilities. The city's coastal location provides access to beautiful beaches along the Gulf Road, where locals gather for evening picnics and seaside strolls. Al Ahmadi also serves as the gateway to southern Kuwait's attractions, including the <strong>Al Zour</strong> beaches and the border region where the desert meets the sea in dramatic fashion.</p>
+        </div>
+    </div>
+</div>
+
+<div class="city-card">
+    <img src="https://kimi-web-img.moonshot.cn/img/www.driftwoodjournals.com/76f9959f081d9ef115b000ea74b5f902e6d9db29.jpg" alt="Failaka Island" class="city-image">
+    <div class="city-content">
+        <div class="city-header">
+            <span class="city-icon">🏝️</span>
+            <div>
+                <h2>Failaka Island</h2>
+                <div class="location">Kuwait Bay, Persian Gulf (29.4406° N, 48.2763° E)</div>
+            </div>
+        </div>
+        <div class="description">
+            <p>Just a 30-minute ferry ride from the mainland, <span class="highlight">Failaka Island</span> offers a fascinating journey through time and a peaceful escape from urban life. This enchanting island bears the traces of 4,000 years of continuous human habitation, from the Bronze Age Dilmun civilization through Greek colonization in the 4th century BCE to modern Kuwaiti settlement. The island's name derives from the ancient Greek word for "outpost," and visitors can still explore remarkably preserved <strong>Greek temple ruins</strong>, bronze age archaeological sites, and traditional Kuwaiti houses that tell the story of this strategic outpost on ancient maritime trade routes.</p>
+            
+            <p>Beyond its rich archaeological significance, Failaka captivates visitors with its serene beaches, traditional fishing villages, and rustic charm. The island was heavily fortified during the Iraqi invasion in 1990, and visitors can see remnants of the conflict alongside ancient ruins—a poignant reminder of Kuwait's recent history. Today, the <strong>Failaka Heritage Village</strong> offers authentic cultural experiences including traditional Kuwaiti cuisine, camel rides, and overnight stays in traditional lodgings. The island's clear waters make it ideal for swimming and snorkeling, while its unspoiled landscapes provide excellent opportunities for photography and nature watching. Whether you're exploring the <strong>Al-Qusur</strong> archaeological site or simply enjoying fresh fish by the seaside, Failaka offers a unique blend of history and tranquility that captures the essence of old Kuwait.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Comments Section -->
+<div class="comments-section">
+    <h3 class="comments-title">💬 Traveler Comments</h3>
+    
+    <div class="comment-form">
+        <h4 style="margin-top: 0; color: #333;">Leave a Comment</h4>
+        <form onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be posted after moderation.');">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea id="comment" name="comment" placeholder="Share your thoughts about Kuwait or ask a question..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+        </form>
+    </div>
+
+    <div class="comment-list">
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🏙️ Ahmed Hassan</span>
+                <span class="comment-date">April 10, 2026</span>
+            </div>
+            <div class="comment-text">
+                Just returned from Kuwait and I'm amazed by the blend of tradition and modernity! The Kuwait Towers are absolutely stunning at sunset. Souk Al-Mubarakiya has such authentic atmosphere - loved the dates and Arabic coffee. Failaka Island was the highlight - walking through 4,000-year-old ruins while hearing the waves crash was magical. Kuwaiti hospitality is truly world-class!
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">⛽ Sarah Mitchell</span>
+                <span class="comment-date">April 8, 2026</span>
+            </div>
+            <div class="comment-text">
+                The Grand Mosque took my breath away - the architecture is incredible! We spent a day in Al Jahra exploring the Red Fort and the desert landscape. The contrast between the modern capital and traditional areas is fascinating. Don't miss the seafood on Failaka Island - freshest fish I've ever tasted. Kuwait exceeded my expectations in every way!
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-author">🏝️ Mohammed Al-Rashid</span>
+                <span class="comment-date">April 5, 2026</span>
+            </div>
+            <div class="comment-text">
+                Kuwait is so underrated! The Sheikh Jaber Cultural Centre is an architectural masterpiece. I loved wandering through the old souks and smelling the traditional oud perfumes. Al Ahmadi has such a unique charm with those red roofs. The coastal promenades are perfect for evening walks. This country beautifully preserves its heritage while embracing the future!
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>✨ Kuwait awaits with golden deserts, azure waters, ancient ruins, and legendary Arabian hospitality. Ahlan wa Sahlan! 🇰🇼✨</p>
+    <p><small>Flag image courtesy of Britannica | City images from Adobe Stock, Britannica, and Driftwood Journals</small></p>
+</div>
+
+</body>
+</html>
