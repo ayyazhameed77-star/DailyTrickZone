@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukraine Travel Guide - Discover the Heart of Europe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #0057B8;
+        }
+        
+        .flag-container {
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .flag-container img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+        
+        .flag-emoji {
+            font-size: 4em;
+            margin: 10px 0;
+        }
+        
+        h1 {
+            color: #0057B8;
+            font-size: 3em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #FFDD00;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            color: #0057B8;
+            font-size: 2em;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FFDD00;
+        }
+        
+        h3 {
+            color: #FFDD00;
+            font-size: 1.5em;
+            margin: 25px 0 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        
+        .city-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border-left: 5px solid #0057B8;
+        }
+        
+        .city-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .location-badge {
+            display: inline-block;
+            background: #0057B8;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0057B8 0%, #FFDD00 100%);
+            color: #000;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-style: italic;
+            font-weight: 600;
+        }
+        
+        .comment-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f0f4f8;
+            border-radius: 15px;
+            border-top: 4px solid #0057B8;
+        }
+        
+        .comment-section h2 {
+            color: #0057B8;
+            border-bottom: none;
+        }
+        
+        .comment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #0057B8;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #0057B8 0%, #004494 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 87, 184, 0.3);
+        }
+        
+        .existing-comments {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #0057B8;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .comment-text {
+            color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+        }
+        
+        .flag-info {
+            background: linear-gradient(135deg, #0057B8 0%, #FFDD00 100%);
+            border: 3px solid #0057B8;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .flag-colors {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .color-box {
+            width: 80px;
+            height: 60px;
+            border-radius: 5px;
+            border: 3px solid #333;
+        }
+        
+        .blue { background: #0057B8; }
+        .yellow { background: #FFDD00; }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .flag-container img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="flag-emoji">🇺🇦</div>
+            <div class="flag-container">
+                <img src="https://flagcdn.com/w640/ua.png" alt="Ukraine Flag - Blue and Yellow">
+            </div>
+            
+            <div class="flag-info">
+                <h3>🇺🇦 The Ukrainian Flag</h3>
+                <p><strong>Blue</strong> - The sky and peaceful waters<br>
+                <strong>Yellow</strong> - Wheat fields and prosperity<br>
+                Together symbolizing peace and the richness of Ukrainian land</p>
+                <div class="flag-colors">
+                    <div class="color-box blue"></div>
+                    <div class="color-box yellow"></div>
+                </div>
+            </div>
+            
+            <h1>Ukraine</h1>
+            <p class="subtitle">The Heart of Europe - Land of Courage and Beauty</p>
+        </header>
+
+        <section>
+            <h2>🇺🇦 Discover Europe's Hidden Gem</h2>
+            <p>
+                Welcome to <strong>Ukraine</strong> 🇺🇦, the largest country entirely within Europe, a land of breathtaking beauty, rich history, and resilient spirit. From the golden domes of Kyiv to the Carpathian Mountains, from the Black Sea coast to the ancient cities of Lviv, Ukraine offers travelers an authentic European experience filled with warmth, culture, and unforgettable moments.
+            </p>
+            
+            <div class="highlight-box">
+                <p>"Ukraine is a country where every street tells a story, every meal is a celebration, and every person welcomes you with open arms and a heart full of hospitality."</p>
+            </div>
+
+            <h3>Country Background</h3>
+            <p>
+                Ukraine's history spans thousands of years, from the ancient Trypillian civilization to Kyivan Rus, the Cossack Hetmanate, and modern independence. This crossroads of Europe has been shaped by diverse cultures, creating a unique blend of Eastern and Western traditions. The Ukrainian flag's blue and yellow colors represent the endless sky above golden wheat fields, symbolizing peace and prosperity.
+            </p>
+            <p>
+                Ukraine is known as the "breadbasket of Europe" for its fertile black soil, produces some of the world's best sunflower oil, and has given the world renowned writers like Taras Shevchenko, composers like Mykola Lysenko, and innovative minds in science and technology.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏛️ Kyiv - The Mother of Rus Cities 🇺</h2>
+            <span class="location-badge">📍 Location: North-Central Ukraine, Dnipro River</span>
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800" alt="Kyiv Saint Sophia Cathedral and golden domes" class="city-image">
+            <p>
+                <strong>Kyiv</strong> 🇺🇦, Ukraine's magnificent capital and one of Eastern Europe's oldest cities, stands proudly on the banks of the Dnipro River. With over 1,500 years of history, Kyiv is a city where ancient traditions meet modern vitality. The city's skyline is dominated by the golden domes of its countless churches and monasteries, earning it the nickname "City of Domes."
+            </p>
+            <p>
+                The UNESCO World Heritage Site of Saint Sophia Cathedral, with its stunning 11th-century mosaics and frescoes, showcases Kyiv's Byzantine heritage. Nearby, the Kyiv Pechersk Lavra (Monastery of the Caves) is a spiritual center featuring underground cave monasteries and beautiful baroque churches. The Motherland Monument, towering 62 meters above the Dnipro, offers panoramic views of the city.
+            </p>
+            <p>
+                Stroll through Andriyivskyy Descent, Kyiv's artistic quarter filled with galleries, souvenir shops, and street performers. The vibrant Khreshchatyk Street and Independence Square (Maidan Nezalezhnosti) pulse with energy, while the charming Podil district offers cobblestone streets and historic architecture. Kyiv's world-class museums, theaters, and restaurants make it a cultural powerhouse.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏰 Lviv - The Cultural Capital 🇺</h2>
+            <span class="location-badge">📍 Location: Western Ukraine, near Polish border</span>
+            <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800" alt="Lviv Old Town and Rynok Square" class="city-image">
+            <p>
+                <strong>Lviv</strong> 🇺, often called the most European city in Ukraine, is a treasure trove of architecture, culture, and coffeehouse charm. This UNESCO World Heritage city in western Ukraine has preserved its medieval Old Town, featuring a stunning blend of Renaissance, Baroque, and Art Nouveau architecture. Lviv's cobblestone streets and hidden courtyards create an atmosphere reminiscent of Vienna or Prague.
+            </p>
+            <p>
+                The heart of Lviv is Rynok Square, surrounded by colorful historic buildings and dominated by the impressive Town Hall tower. The Lviv Opera House, one of Europe's most beautiful theaters, hosts world-class ballet and opera performances. The city's Armenian Cathedral, Latin Cathedral, and numerous churches reflect Lviv's multicultural heritage.
+            </p>
+            <p>
+                Lviv is Ukraine's coffee capital, with charming cafes serving traditional Viennese-style coffee and delicious pastries. The city's vibrant cultural scene includes numerous festivals, from the prestigious LvivMozArt music festival to the Chocolate Festival. Don't miss trying Lviv's famous chocolate, local beer, and traditional dishes like varenyky (dumplings) and borscht.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🌊 Odesa - The Pearl of the Black Sea 🇺</h2>
+            <span class="location-badge">📍 Location: Southern Ukraine, Black Sea coast</span>
+            <img src="https://images.unsplash.com/photo-1570077188287-c34681d6cdc2?w=800" alt="Odesa Opera Theater and Black Sea" class="city-image">
+            <p>
+                <strong>Odesa</strong> 🇺🇦, Ukraine's vibrant port city on the Black Sea, is a cosmopolitan gem known for its unique humor, multicultural heritage, and Mediterranean atmosphere. Founded by Catherine the Great in 1794, Odesa has always been a city of traders, artists, and free spirits, creating a distinctive character unlike any other Ukrainian city.
+            </p>
+            <p>
+                The famous Potemkin Stairs, immortalized in Eisenstein's film, lead down to the bustling seaport. The magnificent Odesa Opera and Ballet Theater is one of the most beautiful in Europe, featuring stunning architecture and world-class performances. Deribasivska Street, the city's main pedestrian thoroughfare, buzzes with cafes, restaurants, and street musicians.
+            </p>
+            <p>
+                Odesa's beaches offer relaxation during warm summers, while the city's catacombs provide fascinating underground exploration. The vibrant Privoz Market showcases local produce, fresh seafood, and the famous Odesa humor. Experience the city's unique blend of Ukrainian, Russian, Jewish, Greek, and Bulgarian influences in its architecture, cuisine, and lively street life.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏔️ Chernivtsi - The Vienna of Eastern Europe 🇺🇦</h2>
+            <span class="location-badge">📍 Location: Southwestern Ukraine, Bukovina region</span>
+            <img src="https://images.unsplash.com/photo-1533591380369-604d2c4b8dde?w=800" alt="Chernivtsi University and historic architecture" class="city-image">
+            <p>
+                <strong>Chernivtsi</strong> 🇺🇦, a hidden gem in western Ukraine's Bukovina region, is a city of remarkable architectural beauty and multicultural heritage. This charming city, once part of the Austro-Hungarian Empire, features stunning Habsburg-era architecture and is home to the UNESCO World Heritage Site of Chernivtsi National University's Residence of Bukovinian and Dalmatian Metropolitans.
+            </p>
+            <p>
+                The university complex, designed by Czech architect Josef Hlávka, is a masterpiece of eclectic architecture featuring Byzantine, Romanesque, and Gothic elements. The city center boasts beautiful pedestrian streets, elegant cafes, and well-preserved 19th-century buildings that create a distinctly Central European atmosphere.
+            </p>
+            <p>
+                Chernivtsi's cultural diversity is reflected in its churches, synagogues, and the famous Poetry House, celebrating the city's most famous resident, Nobel Prize-winning poet Paul Celan. The surrounding Bukovina region offers beautiful monasteries, traditional villages, and the breathtaking Carpathian Mountains, making Chernivtsi an ideal base for exploring western Ukraine's natural and cultural treasures.
+            </p>
+        </section>
+
+        <section>
+            <h2>🇺🇦 Why Visit Ukraine?</h2>
+            <p>
+                Ukraine offers travelers an authentic, unfiltered European experience away from mass tourism. The country's rich cultural heritage, from ancient Kyivan Rus to Cossack traditions, is preserved in magnificent churches, museums, and living traditions. Ukrainian hospitality is legendary—guests are treated like family, welcomed with bread and salt, and invited to share meals featuring delicious borscht, varenyky, and homemade horilka.
+            </p>
+            <p>
+                The natural beauty is spectacular: the Carpathian Mountains offer hiking and traditional Hutsul culture, the Black Sea coast provides beaches and resorts, and the vast steppes create endless horizons. Ukraine's cities each have distinct personalities—from Kyiv's grandeur to Lviv's charm, Odesa's wit to Chernivtsi's elegance.
+            </p>
+            <p>
+                Experience vibrant festivals, world-class ballet and opera, traditional music and dance, and a burgeoning contemporary arts scene. Ukraine's resilience and spirit shine through in every interaction, making a visit not just a journey through beautiful landscapes and historic sites, but an encounter with one of Europe's most courageous and welcoming peoples. 🇺🇦
+            </p>
+        </section>
+
+        <footer>
+            <div style="font-size: 3em; margin: 20px 0;">🇺🇦</div>
+            <p><em>Thank you for reading our Ukraine Travel Guide! Glory to Ukraine—may its beauty and spirit inspire your journey.</em></p>
+            <p style="margin-top: 15px; font-size: 0.9em;">© 2026 Ukraine Travel Guide | Written with ❤️ for brave travelers</p>
+        </footer>
+
+        <section class="comment-section">
+            <h2>💬 Share Your Thoughts</h2>
+            <p>Have you visited Ukraine or wish to? We'd love to hear your story! Leave a comment below:</p>
+            
+            <form class="comment-form" onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be published after moderation.');">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email (will not be published)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Your Comment *</label>
+                    <textarea id="comment" name="comment" required placeholder="Share your thoughts, experiences, or questions about Ukraine..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <div class="existing-comments">
+                <h3>Comments (3)</h3>
+                
+                <div class="comment">
+                    <div class="comment-author">Olena Kovalenko</div>
+                    <div class="comment-date">April 10, 2026</div>
+                    <div class="comment-text">
+                        As a Ukrainian, I'm so grateful to see our beautiful country showcased! Lviv will always hold a special place in my heart—the coffee culture, the architecture, the warmth of the people. To visitors: come with an open heart, try our food, and you'll leave with lifelong friends. Слава Україні! 🇺🇦💙
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">David Martinez</div>
+                    <div class="comment-date">April 3, 2026</div>
+                    <div class="comment-text">
+                        I visited Kyiv and Lviv in 2023 and it was the trip of a lifetime. The beauty of Saint Sophia Cathedral brought tears to my eyes, and the people's hospitality was overwhelming. Ukrainian borscht is the best I've ever tasted! Already planning my return to explore Odesa and the Carpathians.
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Anna Schmidt</div>
+                    <div class="comment-date">March 28, 2026</div>
+                    <div class="comment-text">
+                        This guide is wonderful! I'm planning my first visit to Ukraine this summer. The photos of Chernivtsi University are absolutely stunning—I had no idea such architectural treasures existed. Can anyone recommend the best time to visit the Carpathian Mountains for hiking? Thank you for this inspiring guide!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
