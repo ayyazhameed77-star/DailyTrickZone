@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iran Travel Guide: Discover Persia's Timeless Beauty</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flag-section {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .iran-flag {
+            width: 300px;
+            height: 180px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 3px solid #ddd;
+        }
+
+        .flag-stripe {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .green { background: #239f40; }
+        .white { 
+            background: white; 
+            position: relative;
+        }
+        .red { background: #da0000; }
+
+        .emblem {
+            position: absolute;
+            color: #da0000;
+            font-size: 60px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.8;
+        }
+
+        .city-section {
+            background: white;
+            margin: 40px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .city-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .city-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .city-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .city-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .city-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .city-image:hover {
+            transform: scale(1.02);
+        }
+
+        .city-description {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        .highlights {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .highlights h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlights li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .highlights li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .isfahan-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        .shiraz-header { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .tehran-header { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .yazd-header { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        .tips-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .tips-section h2 {
+            color: #d35400;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tip-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .comment-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .comment-section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .comment-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .comment-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .comments-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .comment {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .comment-date {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 50px 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .city-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .city-header h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🇮🇷 Iran Travel Guide</h1>
+        <p class="subtitle">Discover the Land of Persia's Ancient Splendor and Warm Hospitality</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Country Overview -->
+        <div class="flag-section">
+            <h2 style="color: #2c3e50; margin-bottom: 20px; font-size: 2em;">The Islamic Republic of Iran</h2>
+            
+            <div class="iran-flag">
+                <div class="flag-stripe green"></div>
+                <div class="flag-stripe white">
+                    <div class="emblem">☫</div>
+                </div>
+                <div class="flag-stripe red"></div>
+            </div>
+            
+            <div class="intro-text">
+                <p><strong>Iran</strong>, historically known as Persia, is a country of extraordinary contrasts and timeless beauty. Nestled between the Gulf of Oman, the Persian Gulf, and the Caspian Sea, this ancient land boasts one of the world's oldest continuous civilizations, dating back over 5,000 years. From the snow-capped peaks of the Alborz mountains to the sun-baked deserts of Dasht-e Kavir, Iran's diverse landscapes are matched only by the warmth of its people and the richness of its cultural heritage.</p>
+                
+                <p>Once the heart of the mighty Persian Empire, modern Iran preserves an astonishing array of architectural wonders, from the ancient ruins of Persepolis to the intricate blue-tiled mosques of Isfahan. The country's strategic position on the Silk Road has blessed it with a unique fusion of cultures, traditions, and artistic expressions that continue to captivate travelers seeking authentic experiences.</p>
+                
+                <p>Beyond the headlines lies a nation of poets, gardens, and hospitality—a place where strangers are welcomed as friends and where every cup of tea comes with a side of genuine conversation. Whether you're wandering through the labyrinthine bazaars, marveling at Islamic architecture, or sharing stories with locals over traditional kebabs, Iran promises a journey that will challenge your perceptions and steal your heart.</p>
+            </div>
+        </div>
+
+        <!-- Isfahan -->
+        <div class="city-section">
+            <div class="city-header isfahan-header">
+                <h2>Isfahan</h2>
+                <span class="location-tag">📍 Central Iran | 32.6546° N, 51.6680° E</span>
+            </div>
+            <div class="city-content">
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/a16ce534b43ca7d5ffb6e29b2eab6b87f9ea3dd6.jpg" alt="Naqsh-e Jahan Square Isfahan" class="city-image">
+                </div>
+                <div class="city-description">
+                    <p>Known as <strong>"Nesf-e Jahan"</strong> (Half of the World), Isfahan stands as Iran's crown jewel of architecture and urban planning. This UNESCO World Heritage city served as the capital during the Safavid dynasty (16th-18th centuries), when Shah Abbas the Great transformed it into one of the world's most magnificent cities. The result is a masterpiece of Persian-Islamic architecture that continues to leave visitors breathless.</p>
+                    
+                    <p>At the heart of Isfahan lies the <strong>Naqsh-e Jahan Square</strong> (Imam Square), the second-largest square in the world after Tiananmen. Surrounded by stunning turquoise-tiled mosques, the elegant Ali Qapu Palace, and the labyrinthine Grand Bazaar, this square represents the pinnacle of Safavid urban design. As the sun sets, locals gather to picnic, sing traditional songs under the Khaju Bridge's arches, and celebrate life in this living museum.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Naqsh-e Jahan Square & Imam Mosque (blue-tiled masterpiece)</li>
+                            <li>Sheikh Lotfollah Mosque (the "peacock dome")</li>
+                            <li>Si-o-se-pol Bridge (33 arches of elegance)</li>
+                            <li>Chehel Sotoun Palace (Forty Columns)</li>
+                            <li>Vank Cathedral in the Armenian Quarter</li>
+                            <li>Traditional handicrafts: minakari enamelwork & khatam marquetry</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shiraz -->
+        <div class="city-section">
+            <div class="city-header shiraz-header">
+                <h2>Shiraz</h2>
+                <span class="location-tag">📍 Fars Province | 29.5926° N, 52.5836° E</span>
+            </div>
+            <div class="city-content">
+                <div class="city-description">
+                    <p>The city of <strong>poets, gardens, and nightingales</strong>, Shiraz has been Iran's cultural capital for over 2,000 years. This is the land of Hafez and Saadi, whose verses are still recited in homes across the Persian-speaking world. Shiraz embodies the Persian aesthetic ideal—a place of rose gardens, citrus-scented air, and a laid-back atmosphere that encourages contemplation and creativity.</p>
+                    
+                    <p>Shiraz's most iconic treasure is the <strong>Nasir al-Mulk Mosque</strong>, affectionately known as the "Pink Mosque." Built in 1888, this architectural gem comes alive at sunrise when colored light streams through its stained-glass windows, painting the Persian carpets with kaleidoscopic patterns. But Shiraz is also the gateway to <strong>Persepolis</strong>, the ceremonial capital of the Achaemenid Empire, where towering columns and intricate bas-reliefs tell stories of ancient glory.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Nasir al-Mulk Mosque (Pink Mosque) at sunrise</li>
+                            <li>Persepolis (UNESCO World Heritage ancient ruins)</li>
+                            <li>Tomb of Hafez (poet's shrine and garden)</li>
+                            <li>Eram Garden (Persian paradise garden)</li>
+                            <li>Vakil Bazaar & Mosque</li>
+                            <li>Shah-e Cheragh Shrine (mirror-work masterpiece)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/d44d2b7a12a090fd4f071b4c2f4d3d2ffae3f415.jpg" alt="Nasir al-Mulk Mosque Shiraz" class="city-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tehran -->
+        <div class="city-section">
+            <div class="city-header tehran-header">
+                <h2>Tehran</h2>
+                <span class="location-tag">📍 Northern Iran | 35.6892° N, 51.3890° E</span>
+            </div>
+            <div class="city-content">
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.eligasht.co.uk/cbd8c9fa036a3cbf6f6a8af0aa7aea3bffd8be5d.webp" alt="Azadi Tower Tehran" class="city-image">
+                </div>
+                <div class="city-description">
+                    <p>Bustling, chaotic, and utterly captivating, <strong>Tehran</strong> is Iran's beating heart—a megacity of 15 million people nestled against the dramatic backdrop of the Alborz Mountains. While often overlooked by travelers rushing to historical cities, Tehran offers a fascinating glimpse into modern Iran, where traditional tea houses coexist with contemporary art galleries and bustling bazaars neighbor sleek cafes.</p>
+                    
+                    <p>The iconic <strong>Azadi Tower</strong> (Freedom Tower) stands as the symbol of the city, its modernist architecture inspired by pre-Islamic and Islamic motifs. Tehran is home to world-class museums including the National Museum of Iran, the Crown Jewels Museum (housing the world's largest uncut diamond), and the contemporary Tehran Museum of Contemporary Art. The city's northern districts offer mountain retreats, while the Grand Bazaar remains one of the Middle East's largest covered markets.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Azadi Tower (landmark monument)</li>
+                            <li>Golestan Palace (UNESCO Qajar-era complex)</li>
+                            <li>National Museum of Iran</li>
+                            <li>Treasury of National Jewels</li>
+                            <li>Darband Mountain Resort (hiking & dining)</li>
+                            <li>Tabiat Bridge (modern architectural marvel)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yazd -->
+        <div class="city-section">
+            <div class="city-header yazd-header">
+                <h2>Yazd</h2>
+                <span class="location-tag">📍 Central Desert | 31.8974° N, 54.3560° E</span>
+            </div>
+            <div class="city-content">
+                <div class="city-description">
+                    <p>Rising from the desert like a sandcastle, <strong>Yazd</strong> is one of the oldest continuously inhabited cities on Earth and a testament to human ingenuity in harsh environments. This UNESCO World Heritage city is famous for its unique windcatchers (<strong>badgirs</strong>)—towering structures that capture cool breezes and funnel them into homes, creating natural air conditioning in the scorching desert heat.</p>
+                    
+                    <p>Yazd's old city is a labyrinth of narrow lanes, mud-brick houses, and hidden courtyards that transport visitors back centuries. The city is also the center of Zoroastrian culture in Iran, home to the <strong>Towers of Silence</strong> and the eternal flame at the Fire Temple, burning for over 1,500 years. As the sun sets over the desert, Yazd's adobe buildings glow golden, creating one of Iran's most magical atmospheres.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Old City (windcatchers & mud-brick architecture)</li>
+                            <li>Jameh Mosque (tallest minarets in Iran)</li>
+                            <li>Amir Chakhmaq Complex</li>
+                            <li>Zoroastrian Fire Temple & Towers of Silence</li>
+                            <li>Dolat Abad Garden (tallest windcatcher)</li>
+                            <li>Desert camping & stargazing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/orienttrips.com/685b44f9d502f4c0d8da198ad99c2a71f816e364.jpg" alt="Yazd Old City Windcatchers" class="city-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Tips -->
+        <div class="tips-section">
+            <h2>Essential Travel Tips for Iran</h2>
+            <p style="font-size: 1.1em; color: #555; margin-bottom: 20px;">Prepare for your Persian adventure with these insider recommendations</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🧕</div>
+                    <h3>Dress Code</h3>
+                    <p>Women must wear headscarves and loose-fitting clothing covering arms and legs. Men should avoid shorts. Bring a light manteau (long coat) and colorful scarves for comfort and style.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">💰</div>
+                    <h3>Money Matters</h3>
+                    <p>International cards don't work in Iran. Bring cash (USD or Euros) to exchange at official exchange offices (sarafi). Iranians are famously honest—count your change but trust the process.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🍽️</div>
+                    <h3>Culinary Delights</h3>
+                    <p>Don't miss chelo kebab, ghormeh sabzi (herb stew), fesenjan (pomegranate walnut chicken), and saffron ice cream. Vegetarians can enjoy kashk-e bademjan and various rice dishes.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🤝</div>
+                    <h3>Tarof Culture</h3>
+                    <p>Learn the art of "tarof"—ritual politeness where offers are made out of courtesy. When offered tea or food, initially decline politely before accepting. It's a beautiful dance of hospitality.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Connectivity</h3>
+                    <p>Buy a local SIM card (Irancell or Hamrah-e Aval) at the airport. VPNs are essential for accessing social media. WhatsApp works, but bring backup communication methods.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🌸</div>
+                    <h3>Best Time to Visit</h3>
+                    <p>Spring (March-May) and Autumn (September-November) offer perfect weather. Nowruz (Persian New Year, March 21) is magical but crowded. Avoid summer desert heat and winter mountain snow.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comment-section">
+            <h2>Traveler Stories & Comments</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Share your Iran experiences or ask questions below!</p>
+            
+            <div class="comment-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (not published)</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Your Comment</label>
+                    <textarea id="comment" rows="4" placeholder="Share your thoughts about Iran or ask a question..." required></textarea>
+                </div>
+                <button class="submit-btn" onclick="addComment()">Post Comment</button>
+            </div>
+
+            <div class="comments-list" id="commentsList">
+                <!-- Sample comments -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Sarah Johnson</span>
+                        <div>
+                            <span class="comment-date">April 5, 2026</span>
+                            <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                        </div>
+                    </div>
+                    <p class="comment-text">Just returned from a 2-week trip to Iran and I'm still speechless! Isfahan truly lives up to its name as "Half of the World." The people were incredibly welcoming—inviting us into their homes for tea everywhere we went. The Pink Mosque at sunrise is a must!</p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Marco Rossi</span>
+                        <div>
+                            <span class="comment-date">March 28, 2026</span>
+                            <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                        </div>
+                    </div>
+                    <p class="comment-text">Can anyone recommend a good guide for Persepolis? I'm planning to visit in October and want to make sure I understand the historical context. Also, is Yazd worth adding to a 10-day itinerary?</p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Yuki Tanaka</span>
+                        <div>
+                            <span class="comment-date">March 15, 2026</span>
+                            <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                        </div>
+                    </div>
+                    <p class="comment-text">The food in Iran is incredible! Don't miss trying Faloodeh (rosewater noodle ice cream) in Shiraz. Also, the carpet shopping in Tehran's Grand Bazaar is an experience in itself—even if you don't buy, the tea and conversation with shopkeepers is unforgettable.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <footer>
+        <p style="font-size: 1.2em; margin-bottom: 10px;">Iran Travel Guide 2026</p>
+        <p>Discover the beauty, history, and hospitality of Persia</p>
+        <div class="social-links">
+            <a href="#">📧</a>
+            <a href="#">📘</a>
+            <a href="#">📸</a>
+            <a href="#">🐦</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">© 2026 Iran Travel Blog. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll to top functionality
+        window.onscroll = function() {
+            const scrollBtn = document.querySelector('.scroll-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Comment functionality
+        function addComment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const commentText = document.getElementById('comment').value;
+
+            if (!name || !email || !commentText) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const commentsList = document.getElementById('commentsList');
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            
+            const date = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            newComment.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${escapeHtml(name)}</span>
+                    <div>
+                        <span class="comment-date">${date}</span>
+                        <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                    </div>
+                </div>
+                <p class="comment-text">${escapeHtml(commentText)}</p>
+            `;
+
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('comment').value = '';
+
+            // Animation
+            newComment.style.animation = 'none';
+            setTimeout(() => {
+                newComment.style.animation = 'slideIn 0.5s ease';
+            }, 10);
+        }
+
+        function deleteComment(btn) {
+            if (confirm('Are you sure you want to delete this comment?')) {
+                const comment = btn.closest('.comment');
+                comment.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    comment.remove();
+                }, 300);
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Add slideOut animation dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideOut {
+                to {
+                    opacity: 0;
+                    transform: translateX(20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
