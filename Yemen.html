@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemen Travel Guide - Discover Arabia Felix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #CE1126;
+        }
+        
+        .flag-container {
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .flag-container img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+        
+        .flag-emoji {
+            font-size: 4em;
+            margin: 10px 0;
+        }
+        
+        h1 {
+            color: #CE1126;
+            font-size: 3em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #000000;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #007A3D;
+            font-size: 2em;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #CE1126;
+        }
+        
+        h3 {
+            color: #CE1126;
+            font-size: 1.5em;
+            margin: 25px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        
+        .city-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border-left: 5px solid #CE1126;
+        }
+        
+        .city-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .location-badge {
+            display: inline-block;
+            background: #007A3D;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        .comment-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f0f4f8;
+            border-radius: 15px;
+            border-top: 4px solid #007A3D;
+        }
+        
+        .comment-section h2 {
+            color: #007A3D;
+            border-bottom: none;
+        }
+        
+        .comment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007A3D;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #CE1126 0%, #a00d1a 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(206, 17, 38, 0.3);
+        }
+        
+        .existing-comments {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #007A3D;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .comment-text {
+            color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+        }
+        
+        .flag-info {
+            background: #fff3cd;
+            border: 2px solid #CE1126;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .flag-colors {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+        
+        .red { background: #CE1126; }
+        .white { background: #FFFFFF; }
+        .black { background: #000000; }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .flag-container img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="flag-emoji">🇾🇪</div>
+            <div class="flag-container">
+                <img src="https://flagcdn.com/w640/ye.png" alt="Yemen Flag - Red, White, Black">
+            </div>
+            
+            <div class="flag-info">
+                <h3>🇾 The Yemeni Flag</h3>
+                <p><strong>Red</strong> - The blood of martyrs and unity<br>
+                <strong>White</strong> - A bright future and peace<br>
+                <strong>Black</strong> - The dark past and independence</p>
+                <div class="flag-colors">
+                    <div class="color-box red"></div>
+                    <div class="color-box white"></div>
+                    <div class="color-box black"></div>
+                </div>
+            </div>
+            
+            <h1>Yemen</h1>
+            <p class="subtitle">Arabia Felix - The Land of Ancient Civilizations</p>
+        </header>
+
+        <section>
+            <h2>🇾🇪 Discover the Soul of Arabia</h2>
+            <p>
+                Welcome to <strong>Yemen</strong> 🇾🇪, a land steeped in millennia of history, where ancient trading routes once flourished and legendary kingdoms rose to power. Known to the Romans as "Arabia Felix" (Happy Arabia) due to its fertile lands and wealth from the frankincense and spice trade, Yemen remains one of the most culturally rich and historically significant countries on the Arabian Peninsula.
+            </p>
+            
+            <div class="highlight-box">
+                <p>"Yemen is a treasure trove of human civilization, where every stone tells a story, every mountain holds a secret, and every city is a living museum of architectural brilliance."</p>
+            </div>
+
+            <h3>Country Background</h3>
+            <p>
+                Yemen's history stretches back over 3,000 years, making it one of the oldest centers of civilization in the Middle East. The ancient Sabaean Kingdom (Sheba), mentioned in the Quran and Bible, controlled the lucrative incense trade routes. Yemen was among the first countries to adopt Islam in the 7th century and has preserved its unique Islamic architectural heritage like nowhere else.
+            </p>
+            <p>
+                The country's flag, with its bold red, white, and black horizontal stripes, represents the unity of the Yemeni people and their struggle for independence. Yemen is home to some of the world's most spectacular architecture, including the iconic skyscraper-like tower houses of Sana'a and the remarkable mud-brick city of Shibam, often called the "Manhattan of the Desert."
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏛️ Sana'a - The Ancient Capital 🇾🇪</h2>
+            <span class="location-badge">📍 Location: Western Yemen, 2,300m altitude</span>
+            <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800" alt="Sana'a Old City with distinctive tower houses" class="city-image">
+            <p>
+                <strong>Sana'a</strong> 🇾, one of the oldest continuously inhabited cities in the world and a UNESCO World Heritage Site, sits majestically in the Yemeni highlands at over 2,300 meters above sea level. The Old City of Sana'a is an architectural marvel, featuring distinctive multi-story tower houses built of rammed earth and burnt brick, decorated with stunning white gypsum friezes and intricate stained-glass windows called "qamariya."
+            </p>
+            <p>
+                The city has been inhabited for more than 2,500 years and served as an important center for trade and Islamic scholarship. The Great Mosque of Sana'a, believed to be over 1,400 years old, houses some of the oldest Quranic manuscripts in existence. Wander through the bustling souqs, where you'll find everything from traditional Yemeni daggers (jambiya) to aromatic spices, honey, and the famous Yemeni coffee.
+            </p>
+            <p>
+                Sana'a's unique architecture, with buildings soaring 6-9 stories high, created a medieval Manhattan skyline centuries before modern skyscrapers. The city's old quarter contains over 100 mosques, 14 hammams (traditional baths), and more than 6,000 houses built before the 11th century.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏙️ Shibam - Manhattan of the Desert 🇾🇪</h2>
+            <span class="location-badge">📍 Location: Hadhramaut Valley, Eastern Yemen</span>
+            <img src="https://images.unsplash.com/photo-1533591380369-604d2c4b8dde?w=800" alt="Shibam tower houses" class="city-image">
+            <p>
+                <strong>Shibam</strong> 🇾🇪 is one of the world's most extraordinary architectural achievements and a UNESCO World Heritage Site. This 16th-century walled city in the Hadhramaut region features over 500 tower houses, some rising 30 meters (100 feet) high, making them among the tallest mud-brick buildings in the world. Often called the "Manhattan of the Desert," Shibam's vertical cityscape is truly breathtaking.
+            </p>
+            <p>
+                Built entirely of mud brick, these remarkable structures were designed to protect residents from Bedouin attacks while maximizing limited space within the city walls. The buildings require constant maintenance, with fresh layers of mud plaster applied regularly to protect them from erosion. The city's ingenious construction techniques and urban planning represent a masterpiece of human creative genius.
+            </p>
+            <p>
+                Shibam has been continuously inhabited for over 500 years, though the site itself has been settled for nearly 2,000 years. The city served as the capital of the Hadhramaut Kingdom and remains a testament to Yemen's remarkable architectural heritage and the ingenuity of its people in adapting to their environment.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🌊 Aden - The Port City 🇾🇪</h2>
+            <span class="location-badge">📍 Location: Southern Coast, Gulf of Aden</span>
+            <img src="https://images.unsplash.com/photo-1572295744653-36b9d808817e?w=800" alt="Aden Port and coastline" class="city-image">
+            <p>
+                <strong>Aden</strong> 🇾🇪, Yemen's main port and former capital, occupies a spectacular natural harbor formed by the crater of an extinct volcano. This strategic location at the crossroads of major shipping routes has made Aden one of the world's most important ports for over 2,000 years. The city's dramatic setting, surrounded by volcanic hills and the Arabian Sea, creates a stunning coastal landscape.
+            </p>
+            <p>
+                Aden's history as a trading hub dates back to the 1st century CE, when it was described by Greek historians as a major emporium. The city flourished under various rulers, including the British, who controlled it from 1839 to 1967, leaving behind colonial architecture that blends with traditional Yemeni buildings. Visit the Aden Cisterns, ancient water storage systems carved into rock over 2,000 years ago, and explore the bustling Crater district.
+            </p>
+            <p>
+                The city offers beautiful beaches, fresh seafood, and a more relaxed atmosphere than the highland cities. Aden's multicultural heritage, influenced by African, Indian, and Arab cultures, is reflected in its cuisine, architecture, and the warm hospitality of its people.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>⛰️ Taiz - The Bride of Yemen 🇾🇪</h2>
+            <span class="location-badge">📍 Location: Southern Highlands, 1,400m altitude</span>
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" alt="Taiz city and mountains" class="city-image">
+            <p>
+                <strong>Taiz</strong> 🇾🇪, known as the "Bride of Yemen" for its exceptional beauty, nestles in the country's southern highlands between the Red Sea coast and the interior. This vibrant city, Yemen's third-largest, is surrounded by fertile mountains and famous for producing some of the world's finest coffee. Taiz has been an important center of trade, culture, and learning for centuries.
+            </p>
+            <p>
+                The city's crown jewel is the magnificent Al-Qahira Castle, perched dramatically atop a mountain overlooking Taiz. Built in the 13th century, this fortress offers panoramic views of the city and surrounding valleys. The old city features traditional Yemeni architecture, bustling souqs, and historic mosques, including the Great Mosque with its distinctive minaret.
+            </p>
+            <p>
+                Taiz is renowned for its agricultural wealth, with terraced mountainsides producing coffee, qat, fruits, and vegetables using ancient irrigation techniques. The city's cultural scene is vibrant, with a strong tradition of poetry, music, and crafts. Taiz's moderate climate, stunning scenery, and rich cultural heritage make it one of Yemen's most captivating destinations.
+            </p>
+        </section>
+
+        <section>
+            <h2>🇾🇪 Why Visit Yemen?</h2>
+            <p>
+                Yemen offers an unparalleled journey into the heart of Arabian culture and history. This is a land where ancient traditions thrive, where hospitality is sacred, and where every corner reveals architectural wonders that have stood for centuries. From the vertiginous tower houses of Sana'a to the desert skyscrapers of Shibam, Yemen's built environment is unlike anywhere else on Earth.
+            </p>
+            <p>
+                The country's natural beauty is equally spectacular, with terraced mountains, pristine islands in the Red Sea, vast deserts, and fertile highlands. Yemen is the birthplace of coffee cultivation, and tasting authentic Yemeni coffee in its homeland is a transcendent experience. The cuisine, featuring dishes like saltah, mandi, and fresh seafood, showcases the rich flavors of Arabian cooking.
+            </p>
+            <p>
+                Yemeni people are known throughout the Arab world for their generosity and warmth. Visitors are treated as honored guests, invited to share meals, participate in traditional qat sessions (a social custom), and experience authentic Arabian hospitality. For adventurous travelers seeking to explore one of the world's most culturally rich and least-visited destinations, Yemen offers an unforgettable journey into the soul of Arabia. 🇾🇪
+            </p>
+        </section>
+
+        <footer>
+            <div style="font-size: 3em; margin: 20px 0;">🇾🇪</div>
+            <p><em>Thank you for reading our Yemen Travel Guide! This ancient land awaits those who seek authentic Arabian adventures.</em></p>
+            <p style="margin-top: 15px; font-size: 0.9em;">© 2026 Yemen Travel Guide | Written with ❤️ for fellow explorers</p>
+        </footer>
+
+        <section class="comment-section">
+            <h2>💬 Share Your Thoughts</h2>
+            <p>Have you visited Yemen or would you like to? We'd love to hear your thoughts! Leave a comment below:</p>
+            
+            <form class="comment-form" onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be published after moderation.');">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email (will not be published)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Your Comment *</label>
+                    <textarea id="comment" name="comment" required placeholder="Share your thoughts, experiences, or questions about Yemen..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <div class="existing-comments">
+                <h3>Comments (3)</h3>
+                
+                <div class="comment">
+                    <div class="comment-author">Mohammed Al-Rashid</div>
+                    <div class="comment-date">April 8, 2026</div>
+                    <div class="comment-text">
+                        I visited Sana'a in 2019 and it was absolutely magical. The old city is like stepping back in time. The architecture is breathtaking, and the people were incredibly welcoming. I hope peace returns soon so more travelers can experience this beautiful country. 🇾🇪
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Jennifer Walsh</div>
+                    <div class="comment-date">March 30, 2026</div>
+                    <div class="comment-text">
+                        Yemen has been on my bucket list for years! The images of Shibam are absolutely incredible - those mud skyscrapers are unlike anything else in the world. I'm hoping to visit when it's safer. This guide is wonderful and informative.
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Khalid Ibrahim</div>
+                    <div class="comment-date">March 22, 2026</div>
+                    <div class="comment-text">
+                        As a Yemeni living abroad, reading this brings back so many memories. Taiz will always be home - the view from Al-Qahira Castle, the taste of fresh Yemeni coffee, the warmth of our people. Thank you for showcasing our beautiful heritage to the world.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
