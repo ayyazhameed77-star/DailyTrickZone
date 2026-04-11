@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebanon Travel Guide - Discover the Pearl of the Middle East</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #ED1C24;
+        }
+        
+        .flag-container {
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .flag-container img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+        
+        .flag-emoji {
+            font-size: 4em;
+            margin: 10px 0;
+        }
+        
+        h1 {
+            color: #ED1C24;
+            font-size: 3em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #007A3D;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #007A3D;
+            font-size: 2em;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ED1C24;
+        }
+        
+        h3 {
+            color: #ED1C24;
+            font-size: 1.5em;
+            margin: 25px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        
+        .city-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border-left: 5px solid #ED1C24;
+        }
+        
+        .city-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .location-badge {
+            display: inline-block;
+            background: #007A3D;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        .comment-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f0f4f8;
+            border-radius: 15px;
+            border-top: 4px solid #007A3D;
+        }
+        
+        .comment-section h2 {
+            color: #007A3D;
+            border-bottom: none;
+        }
+        
+        .comment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007A3D;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #ED1C24 0%, #c4121a 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(237, 28, 36, 0.3);
+        }
+        
+        .existing-comments {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #007A3D;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .comment-text {
+            color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+        }
+        
+        .flag-info {
+            background: #fff3cd;
+            border: 2px solid #ED1C24;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .flag-colors {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+        
+        .red { background: #ED1C24; }
+        .white { background: #FFFFFF; }
+        .green { background: #007A3D; }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .flag-container img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="flag-emoji">🇱🇧</div>
+            <div class="flag-container">
+                <img src="https://flagcdn.com/w640/lb.png" alt="Lebanon Flag - Red, White, Green with Cedar Tree">
+            </div>
+            
+            <div class="flag-info">
+                <h3>🇱🇧 The Lebanese Flag</h3>
+                <p><strong>Red</strong> - Sacrifice and blood shed for independence<br>
+                <strong>White</strong> - Peace and snow-capped mountains<br>
+                <strong>Green Cedar</strong> - Eternity, steadiness, and resilience</p>
+                <div class="flag-colors">
+                    <div class="color-box red"></div>
+                    <div class="color-box white"></div>
+                    <div class="color-box green"></div>
+                </div>
+            </div>
+            
+            <h1>Lebanon</h1>
+            <p class="subtitle">Where Ancient History Meets Mediterranean Beauty</p>
+        </header>
+
+        <section>
+            <h2>🇱🇧 Discover the Enchanting Land of the Cedars</h2>
+            <p>
+                Welcome to <strong>Lebanon</strong> 🇱, a small yet incredibly rich country nestled on the eastern shore of the Mediterranean Sea. Despite its compact size, Lebanon boasts an extraordinary tapestry of history, culture, and natural beauty that has captivated travelers for millennia. Known as the "Pearl of the Middle East," this remarkable destination offers everything from pristine beaches and snow-capped mountains to some of the world's oldest continuously inhabited cities.
+            </p>
+            
+            <div class="highlight-box">
+                <p>"Lebanon is not just a destination; it's an experience that touches your soul. From the moment you arrive, you'll be enchanted by the warmth of its people, the richness of its cuisine, and the breathtaking beauty of its landscapes."</p>
+            </div>
+
+            <h3>Country Background</h3>
+            <p>
+                Lebanon's history stretches back over 7,000 years, making it one of the cradles of civilization. The Phoenicians, ancient maritime traders, called this land home and gave the world the alphabet. Through centuries of Roman rule, Byzantine influence, Islamic caliphates, Crusader kingdoms, and Ottoman administration, Lebanon has maintained its unique cultural identity and religious diversity.
+            </p>
+            <p>
+                Today, Lebanon is a vibrant mosaic of cultures, religions, and traditions coexisting in harmony. The country's flag, featuring the iconic cedar tree between red and white stripes, symbolizes resilience, peace, and eternal beauty. The cedar tree, mentioned 75 times in the Bible, has been Lebanon's emblem for thousands of years.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏛️ Beirut - The Capital of Culture 🇱🇧</h2>
+            <span class="location-badge">📍 Location: Central Coast, Mediterranean Sea</span>
+            <img src="https://images.unsplash.com/photo-1572295744653-36b9d808817e?w=800" alt="Beirut Cityscape with Lebanese Flag" class="city-image">
+            <p>
+                <strong>Beirut</strong> 🇱, Lebanon's pulsating capital, is a city of contrasts where ancient history dances with modern sophistication. Perched on a peninsula along the Mediterranean coast, Beirut has earned its reputation as the "Paris of the Middle East" with its chic cafes, vibrant nightlife, and cosmopolitan atmosphere.
+            </p>
+            <p>
+                Wander through the reconstructed downtown area, where Ottoman and French Mandate architecture stands alongside contemporary buildings. Visit the National Museum to discover artifacts spanning 7,000 years of history, or explore the colorful streets of Gemmayzeh and Mar Mikhael, neighborhoods brimming with art galleries, boutique shops, and trendy bars.
+            </p>
+            <p>
+                The Beirut Corniche, a scenic seaside promenade, offers stunning sunset views and a glimpse into local life. Don't miss the Pigeon Rocks (Raouché), natural limestone formations that have become an iconic symbol of the city. Beirut's culinary scene is legendary—indulge in mezze, fresh seafood, and the world's finest Lebanese wine.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏺 Byblos (Jbeil) - The Ancient Port City 🇱🇧</h2>
+            <span class="location-badge">📍 Location: 42 km North of Beirut</span>
+            <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800" alt="Byblos Ancient Ruins and Lebanese Flag" class="city-image">
+            <p>
+                <strong>Byblos</strong> 🇱 is one of the oldest continuously inhabited cities in the world, with a history spanning over 7,000 years. This UNESCO World Heritage Site is where the Phoenician alphabet was born, and it's from this city's name that we get the word "Bible."
+            </p>
+            <p>
+                Today, Byblos seamlessly blends its ancient past with a charming present. Explore the archaeological site featuring Phoenician temples, Roman colonnades, and Crusader castles. The medieval souk (market) invites you to wander through narrow stone alleyways lined with artisan shops selling traditional crafts, jewelry, and local delicacies.
+            </p>
+            <p>
+                The old harbor, still active after millennia, offers fresh seafood restaurants with breathtaking Mediterranean views. Byblos's timeless beauty and archaeological significance make it an absolute must-visit for history enthusiasts and casual travelers alike.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏛️ Baalbek - The City of Roman Grandeur 🇱🇧</h2>
+            <span class="location-badge">📍 Location: Bekaa Valley, 85 km East of Beirut</span>
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" alt="Baalbek Roman Temples with Lebanese Flag" class="city-image">
+            <p>
+                <strong>Baalbek</strong> 🇱🇧 houses some of the most impressive Roman ruins anywhere in the world. Located in the fertile Bekaa Valley, this ancient city was once known as Heliopolis, the "City of the Sun." The temple complex here is a UNESCO World Heritage Site and represents the pinnacle of Roman architectural achievement.
+            </p>
+            <p>
+                Marvel at the Temple of Bacchus, one of the best-preserved Roman temples in existence, with its intricate carvings and towering columns reaching 19 meters high. The Temple of Jupiter, though mostly in ruins, still features six massive columns that once stood 22 meters tall, supported by the famous Trilithon—three stone blocks weighing over 800 tons each.
+            </p>
+            <p>
+                Baalbek also hosts an annual international festival celebrating music, dance, and theater against the backdrop of these magnificent ruins—a truly unforgettable experience that bridges ancient and modern culture.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🕌 Tripoli - The Ottoman Treasure 🇱🇧</h2>
+            <span class="location-badge">📍 Location: 85 km North of Beirut</span>
+            <img src="https://images.unsplash.com/photo-1533591380369-604d2c4b8dde?w=800" alt="Tripoli Old Town with Lebanese Flag" class="city-image">
+            <p>
+                <strong>Tripoli</strong> 🇱🇧 is Lebanon's second-largest city and a hidden gem that offers an authentic glimpse into the country's Islamic heritage. Unlike Beirut, Tripoli has retained much of its medieval character, with one of the best-preserved medieval cities in the region.
+            </p>
+            <p>
+                Get lost in the labyrinthine old city, where Mamluk architecture dominates the landscape. Visit the Citadel of Raymond de Saint-Gilles, a massive Crusader fortress offering panoramic city views. Explore the covered souks, where the scent of spices fills the air and artisans practice centuries-old crafts.
+            </p>
+            <p>
+                Tripoli is famous for its sweets, particularly knafeh and baklava. The city's culinary scene reflects its rich history, blending Arab, Ottoman, and Mediterranean influences. Don't miss the Taha Palace and the Great Al-Omari Mosque, architectural masterpieces that showcase the city's glorious past.
+            </p>
+        </section>
+
+        <section>
+            <h2>🇱🇧 Why Visit Lebanon?</h2>
+            <p>
+                Lebanon offers an unparalleled travel experience. In a single day, you can ski in the morning and swim in the Mediterranean afternoon. The country's culinary scene is world-renowned, with Lebanese cuisine consistently ranked among the healthiest and most delicious globally. From hummus and tabbouleh to grilled meats and fresh seafood, every meal is a celebration.
+            </p>
+            <p>
+                The Lebanese people are famous for their hospitality. You'll be welcomed with open arms, invited to share meals, and treated like family. The country's religious diversity creates a unique cultural richness, visible in its churches, mosques, festivals, and daily life.
+            </p>
+            <p>
+                Whether you're exploring ancient ruins, hiking in cedar forests, partying in Beirut's clubs, or relaxing by the sea, Lebanon promises memories that will last a lifetime. This small country packs an extraordinary punch, offering more diversity, history, and beauty per square kilometer than almost anywhere else on Earth. 🇱🇧
+            </p>
+        </section>
+
+        <footer>
+            <div style="font-size: 3em; margin: 20px 0;">🇱🇧</div>
+            <p><em>Thank you for reading our Lebanon Travel Guide! Start planning your adventure to this magnificent country today.</em></p>
+            <p style="margin-top: 15px; font-size: 0.9em;">© 2026 Lebanon Travel Guide | Written with ❤️ for fellow travelers</p>
+        </footer>
+
+        <section class="comment-section">
+            <h2>💬 Share Your Thoughts</h2>
+            <p>Have you visited Lebanon? We'd love to hear about your experience! Leave a comment below:</p>
+            
+            <form class="comment-form" onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be published after moderation.');">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email (will not be published)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Your Comment *</label>
+                    <textarea id="comment" name="comment" required placeholder="Share your thoughts, experiences, or questions about Lebanon..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <div class="existing-comments">
+                <h3>Comments (3)</h3>
+                
+                <div class="comment">
+                    <div class="comment-author">Sarah Mitchell</div>
+                    <div class="comment-date">April 5, 2026</div>
+                    <div class="comment-text">
+                        Just returned from two weeks in Lebanon and it exceeded all expectations! Beirut's energy is incredible, and Byblos was absolutely magical. The people were so welcoming, and the food... I'm still dreaming about the mezze! Can't wait to go back and explore more of the country. 🇱🇧
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Ahmed Hassan</div>
+                    <div class="comment-date">March 28, 2026</div>
+                    <div class="comment-text">
+                        As someone who has traveled extensively through the Middle East, Lebanon holds a special place in my heart. Baalbek's temples are truly awe-inspiring - photos don't do them justice. Tripoli's old city is also a hidden gem that more tourists should discover. Great guide!
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Emma Richardson</div>
+                    <div class="comment-date">March 15, 2026</div>
+                    <div class="comment-text">
+                        This is such a helpful guide! Planning my first trip to Lebanon for summer 2026. The combination of history, culture, and natural beauty sounds perfect. Question: What's the best time of year to visit for someone interested in both beach and mountain activities?
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
