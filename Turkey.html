@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkey Travel Guide: Where East Meets West</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flag-section {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .turkey-flag {
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            background: #e30a17;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #ddd;
+        }
+
+        .crescent {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: -20px 0 0 15px white;
+            position: absolute;
+            left: 60px;
+        }
+
+        .star {
+            position: absolute;
+            right: 70px;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 18px solid white;
+            transform: rotate(15deg);
+        }
+
+        .star::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 18px solid white;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.8;
+        }
+
+        .city-section {
+            background: white;
+            margin: 40px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .city-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .city-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .city-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .city-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .city-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .city-image:hover {
+            transform: scale(1.02);
+        }
+
+        .city-description {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        .highlights {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .highlights h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlights li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .highlights li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .istanbul-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        .cappadocia-header { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .antalya-header { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .ephesus-header { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        .tips-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .tips-section h2 {
+            color: #d35400;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tip-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .comment-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .comment-section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .comment-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .comment-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .comments-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .comment {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .comment-date {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 50px 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .city-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .city-header h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🇹🇷 Turkey Travel Guide</h1>
+        <p class="subtitle">Discover the Magic Where East Meets West</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Country Overview -->
+        <div class="flag-section">
+            <h2 style="color: #2c3e50; margin-bottom: 20px; font-size: 2em;">The Republic of Türkiye</h2>
+            
+            <div class="turkey-flag">
+                <div class="crescent"></div>
+                <div class="star"></div>
+            </div>
+            
+            <div class="intro-text">
+                <p><strong>Turkey</strong> (officially Türkiye) stands as one of the world's most captivating destinations, bridging two continents and countless civilizations. Straddling Europe and Asia across the Bosphorus Strait, this transcontinental nation offers an extraordinary fusion of ancient history, vibrant culture, and breathtaking natural beauty. From the bustling bazaars of Istanbul to the surreal landscapes of Cappadocia, Turkey promises a sensory journey unlike any other.</p>
+                
+                <p>Historically known as Anatolia, this land has been the cradle of empires—Hittite, Greek, Roman, Byzantine, and Ottoman—each leaving indelible marks on the landscape and culture. Today, Turkey welcomes over 50 million visitors annually, drawn by its UNESCO World Heritage sites, turquoise coastlines, and legendary hospitality. The country's unique position at the crossroads of East and West creates a cultural tapestry where modern sophistication meets timeless tradition.</p>
+                
+                <p>Whether you're floating above fairy chimneys in a hot air balloon, exploring ancient ruins that rival Rome's, or savoring world-renowned cuisine that blends Mediterranean and Middle Eastern flavors, Turkey offers experiences that linger in memory long after you've returned home. This is a land where the call to prayer echoes across millennia-old streets, where tea is served with genuine warmth, and where every sunset over the Aegean feels like a blessing.</p>
+            </div>
+        </div>
+
+        <!-- Istanbul -->
+        <div class="city-section">
+            <div class="city-header istanbul-header">
+                <h2>Istanbul</h2>
+                <span class="location-tag">📍 Marmara Region | 41.0082° N, 28.9784° E</span>
+            </div>
+            <div class="city-content">
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/ptimages.s3.eu-west-2.amazonaws.com/384cd10750267430170908ea3dd2a52572837b17.webp" alt="Blue Mosque Istanbul" class="city-image">
+                </div>
+                <div class="city-description">
+                    <p><strong>Istanbul</strong>, the city that needs no introduction, stands as Turkey's crown jewel and one of the world's most mesmerizing metropolises. Formerly known as Constantinople and Byzantium, this city of 15 million people straddles two continents, serving as a living bridge between Europe and Asia. With over 23 million annual visitors, Istanbul tops Turkey's tourism charts, offering an unparalleled blend of ancient heritage and modern sophistication.</p>
+                    
+                    <p>The city's skyline is dominated by architectural masterpieces like the <strong>Hagia Sophia</strong>, a 6th-century marvel that has served as both church and mosque, and the iconic <strong>Blue Mosque</strong> with its six minarets and 20,000 handmade ceramic tiles. The <strong>Grand Bazaar</strong>, one of the world's oldest and largest covered markets, houses over 4,000 shops where the art of haggling is elevated to performance art. Take a sunset cruise on the <strong>Bosphorus</strong>, where Europe and Asia gaze at each other across waters that have carried empires, or lose yourself in the aromatic labyrinth of the <strong>Spice Bazaar</strong>. Istanbul is not just a destination—it's an experience that redefines the meaning of cultural richness.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Hagia Sophia Grand Mosque (architectural masterpiece)</li>
+                            <li>Blue Mosque (Sultan Ahmed Mosque)</li>
+                            <li>Topkapi Palace (Ottoman imperial residence)</li>
+                            <li>Grand Bazaar (world's oldest covered market)</li>
+                            <li>Bosphorus Strait cruise (Europe to Asia crossing)</li>
+                            <li>Basilica Cistern (underground ancient wonder)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cappadocia -->
+        <div class="city-section">
+            <div class="city-header cappadocia-header">
+                <h2>Cappadocia</h2>
+                <span class="location-tag">📍 Central Anatolia | 38.6431° N, 34.8289° E</span>
+            </div>
+            <div class="city-content">
+                <div class="city-description">
+                    <p>Imagine waking up at dawn to a sky filled with hundreds of colorful hot air balloons floating above a landscape that looks like it belongs on another planet. Welcome to <strong>Cappadocia</strong>, Turkey's most surreal destination and a UNESCO World Heritage site that draws 4.8 million visitors annually. This otherworldly region in central Anatolia is famous for its "fairy chimneys"—tall, cone-shaped rock formations created by millions of years of volcanic eruptions and erosion.</p>
+                    
+                    <p>Beyond the iconic balloon rides, Cappadocia offers a journey deep into history. The <strong>Göreme Open-Air Museum</strong> features rock-cut churches adorned with Byzantine frescoes dating back to the 10th century. Descend into the <strong>underground cities</strong> of Derinkuyu and Kaymaklı, where early Christians carved out multi-level subterranean dwellings capable of housing thousands. Stay in a <strong>cave hotel</strong> for the ultimate experience, where modern luxury meets ancient stone. The town of Göreme serves as the region's hub, offering stunning viewpoints like <strong>Sunset Point</strong> and access to hiking trails through the Rose and Red Valleys. Whether you're sipping Turkish wine as balloons drift overhead or exploring hidden churches carved into cliffs, Cappadocia is pure magic.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Hot air balloon ride at sunrise (iconic experience)</li>
+                            <li>Göreme Open-Air Museum (rock-cut churches)</li>
+                            <li>Underground cities (Derinkuyu & Kaymaklı)</li>
+                            <li>Fairy chimneys at Paşabağ Valley</li>
+                            <li>Uçhisar Castle (panoramic views)</li>
+                            <li>Cave hotels and traditional pottery in Avanos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.tacdn.com/1b54991b26383594efc8f8a647e062ce3a2a39d1.jpg" alt="Cappadocia Hot Air Balloons" class="city-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Antalya -->
+        <div class="city-section">
+            <div class="city-header antalya-header">
+                <h2>Antalya</h2>
+                <span class="location-tag">📍 Mediterranean Coast | 36.8969° N, 30.7133° E</span>
+            </div>
+            <div class="city-content">
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/2d8b37931bd3c6cc9a95f62d21908a6a44e656e1.jpg" alt="Antalya Old Town Harbor" class="city-image">
+                </div>
+                <div class="city-description">
+                    <p>Dubbed the <strong>"Turkish Riviera,"</strong> Antalya is Turkey's sun-soaked playground on the Mediterranean coast, attracting 19.3 million visitors annually with its pristine beaches, ancient ruins, and year-round sunshine. This coastal gem perfectly balances natural beauty with historical depth, offering crystal-clear turquoise waters framed by the dramatic Taurus Mountains. The city's heart is <strong>Kaleiçi</strong> (Old Town), a charming maze of narrow cobblestone streets lined with Ottoman-era houses, boutique hotels, and waterfront restaurants.</p>
+                    
+                    <p>Antalya serves as the gateway to some of Turkey's most impressive ancient sites. The nearby ruins of <strong>Perge</strong>, <strong>Aspendos</strong> (with its remarkably preserved Roman theater), and <strong>Termessos</strong> offer glimpses into the region's rich classical past. Nature lovers will be enchanted by the <strong>Düden Waterfalls</strong>, where cascades plunge directly into the Mediterranean, and the <strong>Köprülü Canyon</strong>, perfect for white-water rafting. Whether you're lounging on the famous <strong>Konyaaltı</strong> or <strong>Lara Beach</strong>, exploring the ancient harbor that once welcomed St. Paul, or enjoying fresh seafood as the sun sets over the Mediterranean, Antalya embodies the perfect Turkish coastal escape.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Kaleiçi Old Town (historic harbor district)</li>
+                            <li>Aspendos Ancient Theater (best-preserved Roman theater)</li>
+                            <li>Düden Waterfalls (cascading into the sea)</li>
+                            <li>Konyaaltı & Lara Beaches (turquoise waters)</li>
+                            <li>Perge Ancient City (Roman ruins)</li>
+                            <li>Köprülü Canyon National Park (rafting & nature)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ephesus -->
+        <div class="city-section">
+            <div class="city-header ephesus-header">
+                <h2>Ephesus</h2>
+                <span class="location-tag">📍 Aegean Region | 37.9490° N, 27.3640° E</span>
+            </div>
+            <div class="city-content">
+                <div class="city-description">
+                    <p>Step back over 2,000 years as you walk the marble streets of <strong>Ephesus</strong>, the best-preserved ancient city in the Mediterranean and one of the most significant archaeological sites on Earth. Once a thriving Greek and later Roman metropolis of 250,000 people, Ephesus was home to the Temple of Artemis—one of the Seven Wonders of the Ancient World—and played a crucial role in early Christianity as a center where St. Paul preached and the Virgin Mary is believed to have spent her final days.</p>
+                    
+                    <p>The crown jewel of Ephesus is the <strong>Library of Celsus</strong>, a stunningly reconstructed Roman library that once held 12,000 scrolls and today stands as one of the most photographed ancient facades in the world. The <strong>Great Theatre</strong>, capable of seating 25,000 spectators, still hosts concerts thanks to its remarkable acoustics. Walk down <strong>Curetes Street</strong>, where chariot wheels once carved grooves into the marble, past the Temple of Hadrian and the elaborate terraced houses that reveal the luxurious lifestyles of Ephesus's elite. Located near the modern town of Selçuk and the port city of Kuşadası, Ephesus is more than ruins—it's a portal to the ancient world that will leave you in awe of human achievement.</p>
+                    
+                    <div class="highlights">
+                        <h3>Must-See Highlights</h3>
+                        <ul>
+                            <li>Library of Celsus (iconic ancient library facade)</li>
+                            <li>Great Theatre (25,000-seat Roman amphitheater)</li>
+                            <li>Terrace Houses (ancient Roman villas with frescoes)</li>
+                            <li>Temple of Hadrian (intricate archway)</li>
+                            <li>House of the Virgin Mary (sacred pilgrimage site)</li>
+                            <li>St. John's Basilica (Byzantine ruins)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/idsb.tmgrup.com.tr/7b5e86df2d4ad80fb676a4051662ef4a3a0cd22e.jpg" alt="Library of Celsus Ephesus" class="city-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Tips -->
+        <div class="tips-section">
+            <h2>Essential Travel Tips for Turkey</h2>
+            <p style="font-size: 1.1em; color: #555; margin-bottom: 20px;">Navigate the land of the crescent moon with confidence</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🕌</div>
+                    <h3>Cultural Etiquette</h3>
+                    <p>Dress modestly when visiting mosques (cover shoulders and knees). Remove shoes before entering homes and mosques. Learn basic Turkish greetings—"Merhaba" (hello) and "Teşekkür ederim" (thank you) go a long way.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">💰</div>
+                    <h3>Money Matters</h3>
+                    <p>Turkish Lira (TRY) is the currency. Credit cards are widely accepted in cities, but carry cash for bazaars and rural areas. Bargaining is expected in markets—start at 50% of the asking price and enjoy the friendly negotiation.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🍽️</div>
+                    <h3>Culinary Delights</h3>
+                    <p>Don't miss kebabs, meze platters, baklava, and Turkish tea (çay). Try "kahvaltı" (Turkish breakfast) for a feast of cheeses, olives, and pastries. Street food like simit (sesame bread) and balık ekmek (fish sandwich) are delicious and affordable.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🚇</div>
+                    <h3>Getting Around</h3>
+                    <p>Istanbul has an excellent metro and tram system. Domestic flights are cheap and efficient for long distances (Turkish Airlines). Buses connect all major cities. Rent a car to explore the Turquoise Coast at your own pace.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🛁</div>
+                    <h3>Hamam Experience</h3>
+                    <p>Visit a traditional Turkish bath (hamam) for an authentic experience. Historic options include Çemberlitaş Hamamı (1584) in Istanbul. Go for the full treatment—steam, scrub (kese), and foam massage. It's both cleansing and cultural.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🌸</div>
+                    <h3>Best Time to Visit</h3>
+                    <p>Spring (April-May) and Autumn (September-October) offer ideal weather. Summer (June-August) is hot but perfect for beaches. Winter brings snow to Cappadocia (magical for photos) and lower prices in Istanbul.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comment-section">
+            <h2>Traveler Stories & Comments</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Share your Turkey experiences or ask questions below!</p>
+            
+            <div class="comment-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (not published)</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Your Comment</label>
+                    <textarea id="comment" rows="4" placeholder="Share your thoughts about Turkey or ask a question..." required></textarea>
+                </div>
+                <button class="submit-btn" onclick="addComment()">Post Comment</button>
+            </div>
+
+            <div class="comments-list" id="commentsList">
+                <!-- Sample comments -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Emma Richardson</span>
+                        <div>
+                            <span class="comment-date">April 9, 2026</span>
+                            <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                        </div>
+                    </div>
+                    <p class="comment-text">Just returned from a magical week in Cappadocia and Istanbul! The hot air balloon ride at sunrise was worth every penny—absolutely breathtaking. Pro tip: book your balloon ride for your first morning in case weather cancels it. We had to reschedule and were glad we had buffer days!</p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Carlos Mendez</span>
+                        <div>
+                            <span class="comment-date">March 28, 2026</span>
+                            <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                        </div>
+                    </div>
+                    <p class="comment-text">Planning a family trip to Turkey this summer. Is Ephesus manageable with young children (ages 6 and 8)? Also, would you recommend staying in Selçuk or Kuşadası? Any family-friendly beaches near Antalya would be appreciated too!</p>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Yuki Tanaka</span>
+                        <div>
+                            <span class="comment-date">March 15, 2026</span>
+                            <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                        </div>
+                    </div>
+                    <p class="comment-text">The food in Turkey is incredible! Don't miss trying Cag Kebab in Istanbul—it's different from regular doner and so flavorful. Also, the Turkish breakfast (kahvaltı) is a feast for the senses. I recommend Van Kahvaltı Evi in Istanbul for an authentic experience.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <footer>
+        <p style="font-size: 1.2em; margin-bottom: 10px;">Turkey Travel Guide 2026</p>
+        <p>Discover the magic where continents and cultures converge</p>
+        <div class="social-links">
+            <a href="#">📧</a>
+            <a href="#">📘</a>
+            <a href="#">📸</a>
+            <a href="#">🐦</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">© 2026 Turkey Travel Blog. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll to top functionality
+        window.onscroll = function() {
+            const scrollBtn = document.querySelector('.scroll-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Comment functionality
+        function addComment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const commentText = document.getElementById('comment').value;
+
+            if (!name || !email || !commentText) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const commentsList = document.getElementById('commentsList');
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            
+            const date = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            newComment.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${escapeHtml(name)}</span>
+                    <div>
+                        <span class="comment-date">${date}</span>
+                        <button class="delete-btn" onclick="deleteComment(this)">Delete</button>
+                    </div>
+                </div>
+                <p class="comment-text">${escapeHtml(commentText)}</p>
+            `;
+
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('comment').value = '';
+
+            // Animation
+            newComment.style.animation = 'none';
+            setTimeout(() => {
+                newComment.style.animation = 'slideIn 0.5s ease';
+            }, 10);
+        }
+
+        function deleteComment(btn) {
+            if (confirm('Are you sure you want to delete this comment?')) {
+                const comment = btn.closest('.comment');
+                comment.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    comment.remove();
+                }, 300);
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Add slideOut animation dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideOut {
+                to {
+                    opacity: 0;
+                    transform: translateX(20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
