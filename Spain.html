@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spain Travel Guide - Discover the Magic of España</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #c0392b, #e74c3c, #f1c40f);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+        .flag {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+        .header .subtitle {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.95;
+        }
+        .content {
+            padding: 50px 40px;
+        }
+        .intro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            font-size: 1.15em;
+            line-height: 1.9;
+        }
+        .intro h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .city-section {
+            margin-bottom: 50px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .city-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .city-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .city-content {
+            padding: 35px;
+        }
+        .city-content h2 {
+            color: #c0392b;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .location {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .city-content p {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .highlights-box {
+            background: white;
+            border-left: 5px solid #e74c3c;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .highlights-box h3 {
+            color: #c0392b;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+        }
+        .highlights-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .highlights-box li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+        .highlights-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 1.1em;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .city-image {
+                height: 250px;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="flag">🇪🇸</span>
+            <h1>SPAIN</h1>
+            <p class="subtitle">"Where Passion Meets Tradition, and Every Corner Tells a Story"</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>🌟 Welcome to España!</h2>
+                <p>
+                    Spain is a vibrant tapestry of cultures, flavors, and breathtaking landscapes that stretches across the Iberian Peninsula. 
+                    From the sun-drenched beaches of the Mediterranean to the snow-capped peaks of the Pyrenees, from ancient Moorish palaces 
+                    to cutting-edge modernist architecture, Spain offers an unforgettable journey through time and culture. With over 
+                    <span class="highlight">50 UNESCO World Heritage Sites</span>, world-renowned cuisine, passionate flamenco, and some of 
+                    the most festive celebrations on Earth, Spain isn't just a destination—it's an experience that awakens all your senses.
+                </p>
+            </div>
+
+            <div class="city-section">
+                <img src="https://image.qwenlm.ai/public_source/6e2d1797-2718-403b-8744-9791e49a533f/793c124c5-5b54-4a13-a188-526364dd3a257885.png" alt="Madrid Cityscape" class="city-image">
+                <div class="city-content">
+                    <h2>Madrid <span class="location">📍 Central Spain</span></h2>
+                    <p>
+                        Spain's magnificent capital pulses with energy day and night. Madrid seamlessly blends royal heritage with contemporary 
+                        cool, offering world-class museums like the <span class="highlight">Prado and Reina Sofía</span>, elegant boulevards, 
+                        and some of Europe's liveliest neighborhoods. The city's heart beats in the bustling Puerta del Sol and the grand 
+                        Plaza Mayor, where history whispers from every corner.
+                    </p>
+                    <p>
+                        Don't miss the opulent Royal Palace, stroll through the romantic Retiro Park, and experience the legendary nightlife 
+                        that keeps Madrid awake until dawn. The local cuisine—from traditional cocido madrileño to innovative tapas—will 
+                        delight your palate at every turn.
+                    </p>
+                    <div class="highlights-box">
+                        <h3>✨ Must-See Attractions:</h3>
+                        <ul>
+                            <li>Prado Museum - Home to masterpieces by Velázquez and Goya</li>
+                            <li>Royal Palace - Europe's largest royal palace by rooms</li>
+                            <li>Retiro Park - Madrid's green oasis</li>
+                            <li>Gran Vía - The Spanish Broadway</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-section">
+                <img src="https://image.qwenlm.ai/public_source/6e2d1797-2718-403b-8744-9791e49a533f/493c124c5-5b54-4a13-a188-526364dd3a259145.png" alt="Barcelona Sagrada Familia" class="city-image">
+                <div class="city-content">
+                    <h2>Barcelona <span class="location">📍 Catalonia, Northeast Spain</span></h2>
+                    <p>
+                        Barcelona is a city where art breathes through every street. The visionary architecture of Antoni Gaudí dominates the 
+                        skyline, with the awe-inspiring <span class="highlight">Sagrada Família</span> standing as a testament to human 
+                        creativity. This basilica, under construction since 1882, continues to mesmerize millions with its organic forms 
+                        and spiritual symbolism.
+                    </p>
+                    <p>
+                        Beyond Gaudí's wonders, Barcelona boasts the Gothic Quarter's medieval charm, the vibrant La Boqueria market, and 
+                        beautiful Mediterranean beaches. The city's creative spirit, innovative cuisine, and unique Catalan culture make it 
+                        one of Europe's most captivating destinations.
+                    </p>
+                    <div class="highlights-box">
+                        <h3>✨ Must-See Attractions:</h3>
+                        <ul>
+                            <li>Sagrada Família - Gaudí's unfinished masterpiece</li>
+                            <li>Park Güell - Whimsical mosaic wonderland</li>
+                            <li>Gothic Quarter - Medieval Barcelona</li>
+                            <li>Las Ramblas - The city's famous pedestrian boulevard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-section">
+                <img src="https://image.qwenlm.ai/public_source/6e2d1797-2718-403b-8744-9791e49a533f/693c124c5-5b54-4a13-a188-526364dd3a258722.png" alt="Seville Plaza de España" class="city-image">
+                <div class="city-content">
+                    <h2>Seville <span class="location">📍 Andalusia, Southern Spain</span></h2>
+                    <p>
+                        Seville is the soul of Andalusia, where flamenco dancers' feet echo through cobblestone streets and the scent of 
+                        orange blossoms fills the air. The magnificent <span class="highlight">Plaza de España</span>, with its stunning 
+                        ceramic tiles and romantic canal, represents Spain's architectural grandeur at its finest.
+                    </p>
+                    <p>
+                        The city's Alcázar palace showcases exquisite Moorish craftsmanship, while the massive Seville Cathedral houses 
+                        Christopher Columbus's tomb. As the birthplace of flamenco and home to passionate ferias, Seville embodies the 
+                        fiery spirit of southern Spain.
+                    </p>
+                    <div class="highlights-box">
+                        <h3>✨ Must-See Attractions:</h3>
+                        <ul>
+                            <li>Plaza de España - Spain's most beautiful square</li>
+                            <li>Royal Alcázar - Stunning Moorish palace complex</li>
+                            <li>Seville Cathedral - The world's largest Gothic cathedral</li>
+                            <li>Barrio Santa Cruz - Charming Jewish quarter</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-section">
+                <img src="https://image.qwenlm.ai/public_source/6e2d1797-2718-403b-8744-9791e49a533f/293c124c5-5b54-4a13-a188-526364dd3a253819.png" alt="Granada Alhambra" class="city-image">
+                <div class="city-content">
+                    <h2>Granada <span class="location">📍 Andalusia, Southern Spain</span></h2>
+                    <p>
+                        Nestled at the foot of the Sierra Nevada mountains, Granada holds one of the world's most extraordinary treasures: 
+                        the <span class="highlight">Alhambra</span>. This breathtaking palace and fortress complex represents the pinnacle 
+                        of Islamic art and architecture in Europe, with its intricate stucco work, serene courtyards, and panoramic views.
+                    </p>
+                    <p>
+                        The Albaicín neighborhood's winding streets reveal hidden cármenes (traditional houses with gardens), while the 
+                        Sacromonte caves tell the story of Granada's gypsy heritage. As sunset paints the Alhambra golden, Granada reveals 
+                        its timeless magic.
+                    </p>
+                    <div class="highlights-box">
+                        <h3>✨ Must-See Attractions:</h3>
+                        <ul>
+                            <li>The Alhambra - Moorish palace and fortress</li>
+                            <li>Generalife Gardens - Royal summer retreat</li>
+                            <li>Albaicín - Historic Moorish quarter</li>
+                            <li>Granada Cathedral - Renaissance masterpiece</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-section">
+                <img src="https://image.qwenlm.ai/public_source/6e2d1797-2718-403b-8744-9791e49a533f/593c124c5-5b54-4a13-a188-526364dd3a251005.png" alt="Valencia City of Arts and Sciences" class="city-image">
+                <div class="city-content">
+                    <h2>Valencia <span class="location">📍 Eastern Spain, Mediterranean Coast</span></h2>
+                    <p>
+                        Valencia perfectly balances tradition and innovation. The futuristic <span class="highlight">City of Arts and Sciences</span>, 
+                        designed by Santiago Calatrava, showcases avant-garde architecture that seems to float on turquoise waters. This 
+                        cultural complex is one of Europe's most striking modern landmarks.
+                    </p>
+                    <p>
+                        Yet Valencia remains deeply connected to its roots as the birthplace of paella. The historic center boasts the 
+                        Silk Exchange, a UNESCO site, while the Turia Gardens—a former riverbed turned park—offers 9 kilometers of green 
+                        space. With beautiful beaches and the vibrant Las Fallas festival, Valencia is Spain's hidden gem.
+                    </p>
+                    <div class="highlights-box">
+                        <h3>✨ Must-See Attractions:</h3>
+                        <ul>
+                            <li>City of Arts and Sciences - Futuristic architectural complex</li>
+                            <li>Valencia Cathedral - Home to the Holy Grail</li>
+                            <li>Central Market - One of Europe's oldest food markets</li>
+                            <li>Albufera Natural Park - Birthplace of paella</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); padding: 40px; border-radius: 15px; margin-top: 40px;">
+                <h2 style="color: #d63031; margin-bottom: 20px; font-size: 2em;">🎉 Why Spain Captivates Millions</h2>
+                <p style="font-size: 1.15em; line-height: 1.9; color: #2d3436;">
+                    Spain isn't just about sightseeing—it's about living life to the fullest. Whether you're sharing tapas with friends, 
+                    dancing until dawn at a local fiesta, watching the sunset over the Mediterranean, or simply savoring a perfectly 
+                    prepared paella, Spain teaches you the art of enjoying life. From the rugged Atlantic coast to the Balearic Islands, 
+                    from the wine regions of La Rioja to the ski slopes of the Pyrenees, Spain offers endless adventures. 
+                    <span class="highlight">¡España te espera!</span> (Spain awaits you!)
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><span class="emoji">🌍</span> Ready to explore Spain? Start planning your adventure today! <span class="emoji">✈️</span></p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">© 2026 Spain Travel Guide - Your Journey Begins Here</p>
+        </div>
+    </div>
+</body>
+</html>
