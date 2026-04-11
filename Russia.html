@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russia Travel Guide - Discover the World's Largest Country</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #0039A6;
+        }
+        
+        .flag-container {
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .flag-container img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+        
+        .flag-emoji {
+            font-size: 4em;
+            margin: 10px 0;
+        }
+        
+        h1 {
+            color: #D52B1E;
+            font-size: 3em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #0039A6;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #0039A6;
+            font-size: 2em;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D52B1E;
+        }
+        
+        h3 {
+            color: #D52B1E;
+            font-size: 1.5em;
+            margin: 25px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        
+        .city-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border-left: 5px solid #D52B1E;
+        }
+        
+        .city-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .location-badge {
+            display: inline-block;
+            background: #0039A6;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        .comment-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f0f4f8;
+            border-radius: 15px;
+            border-top: 4px solid #0039A6;
+        }
+        
+        .comment-section h2 {
+            color: #0039A6;
+            border-bottom: none;
+        }
+        
+        .comment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #0039A6;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #D52B1E 0%, #b01f14 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(213, 43, 30, 0.3);
+        }
+        
+        .existing-comments {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #0039A6;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .comment-text {
+            color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+        }
+        
+        .flag-info {
+            background: #fff3cd;
+            border: 2px solid #0039A6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .flag-colors {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+        
+        .white { background: #FFFFFF; }
+        .blue { background: #0039A6; }
+        .red { background: #D52B1E; }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .flag-container img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="flag-emoji">🇷🇺</div>
+            <div class="flag-container">
+                <img src="https://flagcdn.com/w640/ru.png" alt="Russia Flag - White, Blue, Red">
+            </div>
+            
+            <div class="flag-info">
+                <h3>🇷 The Russian Flag</h3>
+                <p><strong>White</strong> - Nobility, frankness, and snow-covered landscapes<br>
+                <strong>Blue</strong> - Faithfulness, honesty, and vast skies<br>
+                <strong>Red</strong> - Courage, generosity, and the beauty of the people</p>
+                <div class="flag-colors">
+                    <div class="color-box white"></div>
+                    <div class="color-box blue"></div>
+                    <div class="color-box red"></div>
+                </div>
+            </div>
+            
+            <h1>Russia</h1>
+            <p class="subtitle">From Moscow's Grandeur to Siberia's Wilderness</p>
+        </header>
+
+        <section>
+            <h2>🇷🇺 Discover the World's Largest Country</h2>
+            <p>
+                Welcome to <strong>Russia</strong> 🇷🇺, a land of staggering contrasts and epic proportions that spans eleven time zones across Eastern Europe and Northern Asia. As the world's largest country, Russia encompasses an incredible diversity of landscapes, cultures, and experiences—from the glittering domes of Moscow and the imperial grandeur of St. Petersburg to the pristine wilderness of Siberia and the volcanic peaks of Kamchatka.
+            </p>
+            
+            <div class="highlight-box">
+                <p>"Russia is not just a country; it's a universe unto itself, where European elegance meets Asian mystique, where ancient traditions coexist with modern ambition, and where every horizon promises a new adventure."</p>
+            </div>
+
+            <h3>Country Background</h3>
+            <p>
+                Russia's rich tapestry of history stretches back over a millennium, from the medieval principalities of Kievan Rus through the mighty Russian Empire, the Soviet era, to the modern Russian Federation. This vast nation has given the world literary giants like Tolstoy and Dostoevsky, composers like Tchaikovsky and Stravinsky, and groundbreaking achievements in science, space exploration, and the arts.
+            </p>
+            <p>
+                The Russian flag's tricolor of white, blue, and red has flown over this immense territory since the 17th century, symbolizing the nation's enduring spirit. Russia's cultural heritage is reflected in its UNESCO World Heritage Sites, from the colorful onion domes of St. Basil's Cathedral to the Trans-Siberian Railway, the longest railway line in the world.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏛️ Moscow - The Heart of Russia 🇷🇺</h2>
+            <span class="location-badge">📍 Location: Western Russia, 1,000 km west of Ural Mountains</span>
+            <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=800" alt="Moscow Red Square and St. Basil's Cathedral" class="city-image">
+            <p>
+                <strong>Moscow</strong> 🇷🇺, Russia's vibrant capital and largest city, is a mesmerizing blend of old-world charm and contemporary energy. At its heart lies the iconic Red Square, a UNESCO World Heritage Site surrounded by architectural masterpieces including the colorful, onion-domed St. Basil's Cathedral, the imposing Kremlin walls, and the historic GUM department store. The Kremlin, Moscow's ancient fortified complex, serves as the official residence of the Russian President and houses magnificent cathedrals, palaces, and the famous Tsar Bell and Tsar Cannon.
+            </p>
+            <p>
+                Beyond Red Square, Moscow offers world-class cultural experiences. The Bolshoi Theatre presents legendary ballet and opera performances, while the Tretyakov Gallery showcases the finest collection of Russian art. The Moscow Metro itself is a work of art, with stations featuring chandeliers, mosaics, and marble columns that rival any palace. Modern Moscow pulses with trendy restaurants, rooftop bars, and a dynamic nightlife scene.
+            </p>
+            <p>
+                The city's golden ring of historic towns—Suzdal, Vladimir, and Sergiev Posad—make perfect day trips, offering glimpses into medieval Russia with their white-stone churches, ancient monasteries, and traditional wooden architecture. Moscow seamlessly blends its imperial past with 21st-century sophistication, creating an unforgettable urban experience.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🎭 St. Petersburg - The Venice of the North 🇷🇺</h2>
+            <span class="location-badge">📍 Location: Northwestern Russia, Baltic Sea coast</span>
+            <img src="https://images.unsplash.com/photo-1570077188287-c34681d6cdc2?w=800" alt="St. Petersburg Church of the Savior on Spilled Blood" class="city-image">
+            <p>
+                <strong>St. Petersburg</strong> 🇷🇺, Russia's cultural capital and former imperial residence, is a city of breathtaking beauty and artistic splendor. Founded by Peter the Great in 1703 as a "window to Europe," this magnificent city showcases baroque and neoclassical architecture along its 65 rivers and canals, earning it the nickname "Venice of the North." The city's historic center is a UNESCO World Heritage Site, featuring palatial buildings, grand squares, and ornate bridges.
+            </p>
+            <p>
+                The State Hermitage Museum, housed in the opulent Winter Palace, is one of the world's largest and most prestigious art museums, with over three million items spanning from ancient civilizations to modern art. The Church of the Savior on Spilled Blood dazzles with its intricate mosaics and colorful domes, while Peter and Paul Fortress, the city's original citadel, contains the tombs of Russian tsars.
+            </p>
+            <p>
+                Experience the magical "White Nights" from late May to mid-July, when the sun barely sets and the city comes alive with festivals, open drawbridges, and all-night celebrations. St. Petersburg's literary heritage, connection to the Romanov dynasty, and unparalleled artistic treasures make it an essential destination for any traveler to Russia.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🏔️ Kazan - Where East Meets West 🇷🇺</h2>
+            <span class="location-badge">📍 Location: Eastern European Russia, Volga River</span>
+            <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800" alt="Kazan Kremlin and Kul Sharif Mosque" class="city-image">
+            <p>
+                <strong>Kazan</strong> 🇷🇺, the capital of the Republic of Tatarstan, is a fascinating city where Russian Orthodox and Muslim Tatar cultures have coexisted harmoniously for centuries. Located on the Volga River, Kazan is over 1,000 years old and serves as a perfect example of Russia's multicultural diversity. The city's unique blend of European and Asian influences creates an atmosphere unlike anywhere else in Russia.
+            </p>
+            <p>
+                The Kazan Kremlin, a UNESCO World Heritage Site, showcases this cultural fusion beautifully. Within its walls stand the magnificent Kul Sharif Mosque, one of the largest in Russia, alongside the Annunciation Cathedral, a Russian Orthodox church dating back to the 16th century. The leaning Söyembikä Tower adds mystery to this historic complex.
+            </p>
+            <p>
+                Kazan's vibrant Bauman Street, a pedestrian thoroughfare, offers shopping, dining, and street performances. The city is famous for its distinctive Tatar cuisine, including echpochmak (triangular pastries) and chak-chak (honey dessert). With its modern infrastructure, rich history, and welcoming atmosphere, Kazan demonstrates the beautiful diversity of the Russian Federation.
+            </p>
+        </section>
+
+        <section class="city-section">
+            <h2>🌊 Sochi - Russia's Riviera 🇷🇺</h2>
+            <span class="location-badge">📍 Location: Southern Russia, Black Sea coast, Caucasus Mountains</span>
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" alt="Sochi Black Sea coast and mountains" class="city-image">
+            <p>
+                <strong>Sochi</strong> 🇷🇺, Russia's premier resort city, offers a unique combination of subtropical beaches and snow-capped Caucasus Mountains. Stretching 145 kilometers along the Black Sea coast, Sochi hosted the 2014 Winter Olympics and has since become a year-round destination for both beach lovers and winter sports enthusiasts. The city's mild climate makes it Russia's warmest destination, with palm trees lining the seaside promenade.
+            </p>
+            <p>
+                In winter, the nearby Rosa Khutor and Krasnaya Polyana ski resorts offer world-class skiing and snowboarding just hours from the beach. In summer, visitors can enjoy swimming in the Black Sea, exploring the stunning Dendrary Park with its exotic plant collection, or hiking in the Sochi National Park to discover waterfalls, caves, and mountain lakes.
+            </p>
+            <p>
+                Sochi's Olympic legacy includes modern sports facilities, the impressive Fisht Olympic Stadium, and the scenic Olympic Park along the coast. The city's blend of resort amenities, natural beauty, and outdoor activities makes it a perfect destination for travelers seeking both relaxation and adventure in one location.
+            </p>
+        </section>
+
+        <section>
+            <h2>🇷🇺 Why Visit Russia?</h2>
+            <p>
+                Russia offers an unparalleled journey through one of the world's most fascinating and diverse countries. From the architectural splendor of its imperial cities to the raw beauty of its untouched wilderness, Russia provides experiences that will transform your understanding of this vast nation. The Trans-Siberian Railway offers the ultimate adventure, crossing eight time zones and revealing the heart of Russia from your window seat.
+            </p>
+            <p>
+                Russian hospitality, known as "хлебосольство" (khlebosolstvo), means guests are treated with extraordinary generosity and warmth. Share tea from a traditional samovar, taste authentic borscht and blini, experience a traditional banya (sauna), and witness world-class ballet, theater, and classical music performances that Russia is famous for worldwide.
+            </p>
+            <p>
+                Whether you're exploring the Golden Ring's medieval towns, cruising the Volga River, witnessing the Northern Lights in Murmansk, or hiking in the Altai Mountains, Russia rewards curious travelers with unforgettable memories. This is a land where every region tells its own story, where history lives in every stone, and where adventure awaits around every corner. 🇷🇺
+            </p>
+        </section>
+
+        <footer>
+            <div style="font-size: 3em; margin: 20px 0;">🇷</div>
+            <p><em>Thank you for reading our Russia Travel Guide! From the Baltic to the Pacific, Russia awaits your exploration.</em></p>
+            <p style="margin-top: 15px; font-size: 0.9em;">© 2026 Russia Travel Guide | Written with ❤️ for adventurous travelers</p>
+        </footer>
+
+        <section class="comment-section">
+            <h2>💬 Share Your Thoughts</h2>
+            <p>Have you visited Russia or planning a trip? We'd love to hear from you! Leave a comment below:</p>
+            
+            <form class="comment-form" onsubmit="event.preventDefault(); alert('Thank you for your comment! It will be published after moderation.');">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email (will not be published)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Your Comment *</label>
+                    <textarea id="comment" name="comment" required placeholder="Share your thoughts, experiences, or questions about Russia..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <div class="existing-comments">
+                <h3>Comments (3)</h3>
+                
+                <div class="comment">
+                    <div class="comment-author">Alexandra Petrova</div>
+                    <div class="comment-date">April 9, 2026</div>
+                    <div class="comment-text">
+                        I grew up in St. Petersburg and reading this brings back wonderful memories! The Hermitage is even more spectacular in person. For first-time visitors, I recommend spending at least 3 days in each major city. The metro systems in Moscow and St. Petersburg are works of art themselves! 🇷🇺
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Michael Thompson</div>
+                    <div class="comment-date">April 2, 2026</div>
+                    <div class="comment-text">
+                        Just returned from the Trans-Siberian Railway journey - absolutely life-changing! Moscow and St. Petersburg exceeded all expectations. The architecture, the culture, the food - everything was incredible. Already planning my next trip to explore Siberia and Lake Baikal. This guide is spot-on!
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-author">Yuki Tanaka</div>
+                    <div class="comment-date">March 25, 2026</div>
+                    <div class="comment-text">
+                        Planning my first visit to Russia this summer! This guide is so helpful. I'm most excited to see the White Nights in St. Petersburg and explore Kazan's unique culture. Any tips on the best time to visit the Golden Ring cities? Thank you for this comprehensive guide!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
