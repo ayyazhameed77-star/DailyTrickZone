@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denmark Travel Guide: Where Hygge Meets Happiness</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flag-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .denmark-flag {
+            width: 200px;
+            height: 130px;
+            background: #c62828;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .denmark-flag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 25%, #ffffff 25%, #ffffff 35%, transparent 35%),
+                        linear-gradient(to bottom, transparent 40%, #ffffff 40%, #ffffff 55%, transparent 55%);
+        }
+        
+        .intro-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-left: 5px solid #c62828;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #b71c1c;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #c62828;
+            transition: width 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.2);
+        }
+        
+        .city-image-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .city-card:hover .city-image {
+            transform: scale(1.1);
+        }
+        
+        .location-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(198, 40, 40, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .city-content {
+            padding: 35px;
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(120deg, #ffebee 0%, #ffebee 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.4em;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: 600;
+        }
+        
+        .fact-box {
+            background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fact-box::before {
+            content: '🇩🇰';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+        }
+        
+        .fact-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tips-list li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            border-bottom: 1px dashed rgba(255,255,255,0.3);
+        }
+        
+        .tips-list li::before {
+            content: '🏰';
+            position: absolute;
+            left: 0;
+        }
+        
+        .footer-section {
+            text-align: center;
+            padding: 40px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: #c62828;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
+        }
+        
+        .cta-button:hover {
+            background: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(198, 40, 40, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .city-image-container { height: 250px; }
+            .intro-section, .city-content { padding: 25px; }
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Discover Denmark</h1>
+            <p class="subtitle">Where Hygge Meets Happiness</p>
+            <div class="flag-container">
+                <div class="denmark-flag"></div>
+                <p style="margin-top: 15px; font-size: 0.9em;">🇩🇰 Kingdom of Denmark</p>
+            </div>
+        </header>
+
+        <section class="intro-section scroll-reveal">
+            <h2>The Land of Vikings and Fairy Tales</h2>
+            <p>Denmark, officially the Kingdom of Denmark, stands as one of Europe's most enchanting destinations—a small nation that consistently punches above its weight in happiness, design, and quality of life. Covering just 42,434 square kilometers (about the size of Massachusetts), this Nordic gem of 5.97 million people holds the distinction of being <span class="highlight-text">Europe's oldest continuous monarchy</span>, with a royal lineage stretching back over 1,000 years to King Gorm the Elder in the early 10th century [^38^][^46^].</p>
+            
+            <p style="margin-top: 20px;">What makes Denmark truly special is its concept of "hygge"—that untranslatable Danish word describing coziness, warmth, and contentment in life's simple pleasures. Whether it's candlelit dinners with friends, cycling through Copenhagen's bike-friendly streets, or enjoying a pastry in a cozy café, hygge permeates Danish culture. Yet beyond this comforting philosophy lies a country of remarkable contrasts: Viking heritage meets cutting-edge modern architecture, fairy-tale castles stand alongside innovative sustainable design, and a thousand years of royal history coexist with some of the world's most progressive social policies. Denmark isn't just a destination—it's a masterclass in living well.</p>
+        </section>
+
+        <div class="fact-box scroll-reveal">
+            <h3>🇩🇰 Quick Facts</h3>
+            <ul class="tips-list">
+                <li><strong>Capital:</strong> Copenhagen (population ~800,000)</li>
+                <li><strong>Population:</strong> 5.97 million</li>
+                <li><strong>Official Language:</strong> Danish</li>
+                <li><strong>Currency:</strong> Danish Krone (DKK)</li>
+                <li><strong>Famous For:</strong> Hygge, LEGO, Hans Christian Andersen, design</li>
+                <li><strong>Government:</strong> Constitutional monarchy (King Frederik X since 2024)</li>
+            </ul>
+        </div>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/files.guidedanmark.org/38658cd6ac33d902179fc4d3882aa2b2a8f0e3f8.jpg" alt="Copenhagen Nyhavn Harbor" class="city-image">
+                <div class="location-badge">📍 55.6761° N, 12.5683° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Copenhagen: The Happiest Capital</h3>
+                <p>Copenhagen consistently ranks among the world's most livable cities, and it's easy to see why. The iconic <span class="highlight-text">Nyhavn harbor</span>, with its row of 17th-century townhouses painted in vibrant yellows, reds, and blues, creates one of Europe's most photogenic waterfronts [^34^][^36^]. Once home to Hans Christian Andersen (who lived in three different houses along the canal), this historic port now buzzes with outdoor cafes, jazz music, and boats bobbing gently in the water.</p>
+                
+                <p style="margin-top: 15px;">But Copenhagen offers far more than postcard views. The city is a cyclist's paradise, with more bikes than cars and dedicated infrastructure that makes two-wheeled exploration a joy. Tivoli Gardens, the world's second-oldest amusement park, enchants visitors with its mix of historic charm and modern thrills. The city's commitment to sustainability shines through in its architecture—from the innovative Copenhill ski slope built atop a waste-to-energy plant to the floating neighborhoods of Ørestad. Don't miss Rosenborg Castle, a Renaissance jewel housing the Danish crown jewels, or the changing of the guard at Amalienborg Palace, where the royal family still resides. With world-class restaurants (including multiple Michelin stars), a thriving craft beer scene, and the concept of "hygge" palpable in every candlelit corner, Copenhagen embodies the art of Danish living.</p>
+            </div>
+        </section>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/files.guidedanmark.org/09361498c0669fa288212cf9269196f23c9cd4f5.jpg" alt="Aarhus ARoS Rainbow Panorama" class="city-image">
+                <div class="location-badge">📍 56.1629° N, 10.2039° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Aarhus: Denmark's Cultural Capital</h3>
+                <p>Denmark's second-largest city has transformed itself into a powerhouse of culture and innovation. At the heart of this renaissance stands <span class="highlight-text">ARoS Aarhus Art Museum</span>, crowned by Olafur Eliasson's "Your Rainbow Panorama"—a circular glass walkway in every color of the spectrum that offers 360-degree views of the city [^34^][^37^]. This iconic installation symbolizes Aarhus perfectly: colorful, creative, and forward-looking while remaining deeply connected to its surroundings.</p>
+                
+                <p style="margin-top: 15px;">Aarhus balances its modern edge with deep historical roots. Den Gamle By (The Old Town) is an open-air museum where visitors can walk through Danish history, from the 1500s to the 1970s, in perfectly preserved buildings staffed by actors in period costume. The city's Latin Quarter charms with cobblestone streets, independent boutiques, and cozy cafes. As a university city with over 50,000 students, Aarhus pulses with youthful energy, evident in its thriving music scene, innovative restaurants, and vibrant nightlife. The nearby Marselisborg Deer Park allows visitors to feed free-roaming deer, while the beaches of the Djursland peninsula are just a short drive away. Aarhus proves that Denmark's cultural riches extend far beyond Copenhagen.</p>
+            </div>
+        </section>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/files.guidedanmark.org/e6b8fc9774bdba7688d5f3a96d95debe2a04b4b2.jpg" alt="Odense Hans Christian Andersen House" class="city-image">
+                <div class="location-badge">📍 55.4038° N, 10.4024° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Odense: The Fairy Tale City</h3>
+                <p>On the island of Funen, Denmark's third-largest city enchants visitors as the birthplace of Hans Christian Andersen. The <span class="highlight-text">Hans Christian Andersen House</span> has been reimagined as a stunning architectural experience, with modern, curved buildings that seem to emerge from the earth like something from one of his stories [^41^][^44^]. This isn't just a museum—it's an immersive journey into the mind of the master storyteller who gave us "The Little Mermaid," "The Ugly Duckling," and "The Emperor's New Clothes."</p>
+                
+                <p style="margin-top: 15px;">Odense rewards exploration beyond the Andersen trail. The city's historic center features some of Denmark's best-preserved medieval streets, while the Funen Village open-air museum showcases rural Danish life from the 18th and 19th centuries. Funen is known as Denmark's "garden island," and Odense reflects this with abundant green spaces and a relaxed, provincial atmosphere. The city is also home to one of Denmark's most vibrant food scenes, with innovative restaurants making the most of local produce. For castle enthusiasts, Funen boasts 123 castles and manor houses—the highest density in Denmark—including the magnificent Egeskov Castle, Europe's best-preserved Renaissance water castle with its elaborate hedge mazes and vintage car museum. Odense offers a perfect blend of literary pilgrimage, historical charm, and Danish small-city hospitality.</p>
+            </div>
+        </section>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/landezine-award.com/e76c3a5c1254cc97efc2f85ffe9c38707ed19ef1.jpg" alt="Aalborg Waterfront" class="city-image">
+                <div class="location-badge">📍 57.0488° N, 9.9217° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Aalborg: The Phoenix of the North</h3>
+                <p>Aalborg has undergone one of Europe's most remarkable urban transformations. Once an industrial powerhouse dominated by a cement factory and shipyard, the city has reinvented itself as a cultural and architectural destination. The <span class="highlight-text">Aalborg Waterfront</span> showcases this rebirth perfectly—where industrial wasteland once stood, you'll now find award-winning architecture, including the striking Utzon Center (designed by the son of Sydney Opera House architect Jørn Utzon) and the House of Music, a stunning performance venue that seems to float above the Limfjord [^34^][^48^].</p>
+                
+                <p style="margin-top: 15px;">Aalborg's Viking heritage runs deep—the city was founded by Vikings over 1,000 years ago, and the nearby Lindholm Høje offers one of Scandinavia's most important Viking burial sites, with over 700 graves and a fascinating museum. The city's historic center features Denmark's best-preserved Renaissance architecture along Jomfru Ane Gade, the country's longest continuous stretch of bars and restaurants. Aalborg is also the gateway to North Jutland's dramatic landscapes, including the shifting sands of Råbjerg Mile and the windswept beaches of Skagen, where the North and Baltic Seas meet. The annual Aalborg Carnival, Scandinavia's largest, transforms the city into a riot of color and music each May. With its mix of industrial heritage, cutting-edge design, and Viking history, Aalborg represents Denmark's ability to honor the past while embracing the future.</p>
+            </div>
+        </section>
+
+        <section class="intro-section scroll-reveal">
+            <h2>Beyond the Cities</h2>
+            <p>Denmark's true magic often lies in its landscapes and smaller towns. North Zealand, just 45 minutes from Copenhagen, is home to <span class="highlight-text">Frederiksborg Castle</span>—Denmark's most magnificent Renaissance palace—and Kronborg Castle, immortalized as Elsinore in Shakespeare's Hamlet [^35^][^39^]. The white cliffs of Møn and the Wadden Sea National Park offer dramatic natural beauty, while the island of Bornholm in the Baltic Sea charms with its round churches and smoked herring.</p>
+            
+            <p style="margin-top: 20px;">Danish design is everywhere—from the streets of Copenhagen to remote fishing villages. The country's commitment to sustainability is evident in its wind farms, organic farming, and bike culture. Whether you're exploring Viking ruins, touring royal castles, or simply enjoying a Danish pastry in a cozy café, you'll experience hygge—the Danish art of cozy contentment that has captured the world's imagination. Denmark may be small, but it offers a complete package: history, culture, natural beauty, and that intangible quality of life that makes it consistently one of the world's happiest countries. Come for the fairy tales, stay for the lifestyle.</p>
+        </section>
+
+        <footer class="footer-section scroll-reveal">
+            <h2 style="color: white; border: none;">Ready to Discover Denmark?</h2>
+            <p style="margin: 20px 0; font-size: 1.1em;">Pack your coziest sweater, bring your sense of wonder, and prepare for hygge.</p>
+            <a href="#" class="cta-button">Start Planning Your Trip</a>
+            <p style="margin-top: 30px; opacity: 0.7; font-size: 0.9em;">🇩🇰 Denmark awaits • Velkommen! • God rejse!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
