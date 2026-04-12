@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austria Travel Guide: Alpine Dreams and Imperial Elegance</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flag-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .austria-flag {
+            width: 200px;
+            height: 130px;
+            background: linear-gradient(to bottom, #ed2939 33.33%, #ffffff 33.33%, #ffffff 66.66%, #ed2939 66.66%);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .intro-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-left: 5px solid #c41e3a;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #8b0000;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #c41e3a;
+            transition: width 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.2);
+        }
+        
+        .city-image-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .city-card:hover .city-image {
+            transform: scale(1.1);
+        }
+        
+        .location-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(196, 30, 58, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .city-content {
+            padding: 35px;
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(120deg, #ffebee 0%, #ffebee 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.4em;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: 600;
+        }
+        
+        .fact-box {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fact-box::before {
+            content: '🇦🇹';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+        }
+        
+        .fact-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tips-list li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            border-bottom: 1px dashed rgba(255,255,255,0.3);
+        }
+        
+        .tips-list li::before {
+            content: '⛰️';
+            position: absolute;
+            left: 0;
+        }
+        
+        .footer-section {
+            text-align: center;
+            padding: 40px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: #c41e3a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.4);
+        }
+        
+        .cta-button:hover {
+            background: #8b0000;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .city-image-container { height: 250px; }
+            .intro-section, .city-content { padding: 25px; }
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Discover Austria</h1>
+            <p class="subtitle">Where Alpine Majesty Meets Imperial Grandeur</p>
+            <div class="flag-container">
+                <div class="austria-flag"></div>
+                <p style="margin-top: 15px; font-size: 0.9em;">🇦🇹 Republic of Austria</p>
+            </div>
+        </header>
+
+        <section class="intro-section scroll-reveal">
+            <h2>The Empire of Mountains and Music</h2>
+            <p>Austria, a landlocked jewel in the heart of Central Europe, captivates travelers with its dramatic Alpine landscapes and rich imperial heritage. Covering 83,871 square kilometers—roughly the size of South Carolina—this nation of 9 million people punches far above its weight in cultural influence. <span class="highlight-text">Once the center of the powerful Austro-Hungarian Empire</span>, Austria emerged from the aftermath of World War I as a small republic, weathered annexation by Nazi Germany in 1938, and reclaimed its independence in 1955 with a declaration of perpetual neutrality that still defines its diplomatic stance today [^6^].</p>
+            
+            <p style="margin-top: 20px;">What makes Austria truly extraordinary is its geographical diversity. Over 60% of the country is covered by the Eastern Alps, creating a playground for outdoor enthusiasts year-round [^10^]. Yet beyond the snow-capped peaks lie elegant cities where Habsburg palaces stand testament to centuries of imperial power, and where the world's greatest composers—Mozart, Beethoven, Haydn, and Schubert—created their masterpieces. This is a country where you can breakfast on Viennese coffee and Sachertorte, lunch on Tyrolean dumplings in a mountain hut, and dinner on fresh lake fish from the Salzkammergut region, all while surrounded by some of Europe's most breathtaking scenery.</p>
+        </section>
+
+        <div class="fact-box scroll-reveal">
+            <h3>🇦🇹 Quick Facts</h3>
+            <ul class="tips-list">
+                <li><strong>Capital:</strong> Vienna (population ~2 million)</li>
+                <li><strong>Population:</strong> 9 million</li>
+                <li><strong>Official Language:</strong> German</li>
+                <li><strong>Currency:</strong> Euro (€)</li>
+                <li><strong>Famous For:</strong> Alpine skiing, classical music, coffee culture, Sacher Torte</li>
+                <li><strong>UNESCO Sites:</strong> 12 World Heritage Sites including historic centers of Vienna, Salzburg, and Graz</li>
+            </ul>
+        </div>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn-imgix.headout.com/9f958e33ce86668cedb138de9cc75794e6f8ae53.jpg" alt="Vienna Schönbrunn Palace" class="city-image">
+                <div class="location-badge">📍 48.2082° N, 16.3738° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Vienna: The Imperial Capital</h3>
+                <p>Vienna stands as one of Europe's most elegant capitals, a city where imperial grandeur meets contemporary sophistication. The Habsburg dynasty ruled from here for over 600 years, leaving behind an architectural legacy that includes the <span class="highlight-text">magnificent Schönbrunn Palace</span>—their summer residence with 1,441 rooms—and the Hofburg Imperial Palace in the city center. But Vienna is far from a museum piece; it consistently ranks among the world's most livable cities, with a vibrant coffee house culture that UNESCO has recognized as Intangible Cultural Heritage.</p>
+                
+                <p style="margin-top: 15px;">Music flows through Vienna's veins like the Danube River that bisects the city. This is where Mozart composed, where Beethoven premiered his symphonies, and where the Vienna Boys' Choir still performs in the Hofburg Chapel. Beyond the palaces and concert halls, Vienna delights with its Naschmarkt—a sprawling food market operating since the 16th century—and the Prater amusement park, home to the iconic Riesenrad Ferris wheel. Whether you're waltzing at a New Year's concert or sipping Melange coffee in a historic café, Vienna embodies the art of refined living.</p>
+            </div>
+        </section>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/fuutazbsb.filerobot.com/39d939b9fa6b1a4eaeea58f560b7437c45c25479.jpeg" alt="Salzburg Fortress and Old Town" class="city-image">
+                <div class="location-badge">📍 47.8095° N, 13.0550° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Salzburg: The Baroque Jewel</h3>
+                <p>Sprawling beneath the imposing Hohensalzburg Fortress, Salzburg enchants visitors with its perfectly preserved baroque old town—a UNESCO World Heritage site that feels like stepping onto a film set. And indeed it is: <span class="highlight-text">The Sound of Music was filmed here</span>, bringing global fame to the city's gardens, fountains, and surrounding Alpine vistas [^8^]. But Salzburg's true genius lies in being the birthplace of Wolfgang Amadeus Mozart, and the city celebrates its musical son with museums, concerts, and chocolate marzipan balls bearing his name.</p>
+                
+                <p style="margin-top: 15px;">The Salzach River divides the city into two distinct personalities: the historic left bank with its cathedral and Getreidegasse shopping street, and the 19th-century New Town on the right. The annual Salzburg Festival, founded in 1920, remains one of the world's most prestigious classical music events, transforming the city into a global cultural hub each summer. Beyond the city limits, the Salzkammergut lake district offers crystal-clear waters and mountain retreats that have attracted emperors and artists for centuries. Salzburg proves that a city can be simultaneously intimate and grand, traditional and dynamic.</p>
+            </div>
+        </section>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/static1.squarespace.com/eda1ceb87cdd690f716fcfac3529ad393f36cdc0.jpg" alt="Innsbruck Golden Roof" class="city-image">
+                <div class="location-badge">📍 47.2692° N, 11.4041° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Innsbruck: Alpine Urban Adventure</h3>
+                <p>Innsbruck offers the rare combination of a vibrant city center and immediate mountain access, making it the ultimate destination for those who want culture and adventure in equal measure. Nestled in the Inn Valley and surrounded by the Nordkette mountain range, this Tyrolean capital hosted the Winter Olympics twice (1964 and 1976) and remains a premier ski destination. The city's symbol is the <span class="highlight-text">Goldenes Dachl (Golden Roof)</span>—a glittering balcony with 2,657 gilded copper tiles built by Emperor Maximilian I in the 15th century [^7^].</p>
+                
+                <p style="margin-top: 15px;">What sets Innsbruck apart is its accessibility. The Nordkette Cable Car whisks visitors from the city center to 2,000 meters above sea level in just 20 minutes, offering hiking in summer and skiing in winter. The old town features colorful medieval houses, the Imperial Palace, and the Hofkirche with its elaborate black marble memorial to Maximilian I. Meanwhile, the modern Bergisel Ski Jump—designed by Zaha Hadid—showcases contemporary architecture against an Alpine backdrop. Innsbruck perfectly balances its role as a historic imperial residence and a modern outdoor sports capital.</p>
+            </div>
+        </section>
+
+        <section class="city-card scroll-reveal">
+            <div class="city-image-container">
+                <img src="https://kimi-web-img.moonshot.cn/img/media.tourispo.com/60348c7e1530ce13ea3f8fc43924c6244d042771.jpg" alt="Graz Clock Tower" class="city-image">
+                <div class="location-badge">📍 47.0707° N, 15.4395° E</div>
+            </div>
+            <div class="city-content">
+                <h3>Graz: Where Tradition Meets Innovation</h3>
+                <p>Austria's second-largest city surprises visitors with its youthful energy and architectural daring. Located in the southeast along the Mur River, Graz boasts a beautifully preserved UNESCO-listed old town dominated by the Schlossberg—a hilltop fortress with the iconic <span class="highlight-text">Uhrturm (Clock Tower)</span> that has become the city's symbol. But Graz isn't stuck in the past: the Kunsthaus Graz, affectionately known as the "Friendly Alien" for its biomorphic blue form, showcases contemporary art and represents the city's forward-thinking spirit [^8^].</p>
+                
+                <p style="margin-top: 15px;">Home to six universities and 50,000 students, Graz pulses with creative energy. The city's culinary scene blends Styrian traditions—think pumpkin seed oil and wine from surrounding vineyards—with innovative gastronomy. The Eggenberg Palace, with its elaborate gardens and peacocks roaming the grounds, offers a glimpse into baroque aristocratic life, while the Murinsel—a floating café shaped like a giant sea shell—demonstrates modern architectural ambition. Graz proves that Austria's cultural richness extends far beyond Vienna, offering a more relaxed, student-friendly atmosphere without sacrificing historical depth or artistic excellence.</p>
+            </div>
+        </section>
+
+        <section class="intro-section scroll-reveal">
+            <h2>Beyond the Cities</h2>
+            <p>While Austria's urban centers captivate, the country's true magic lies in its Alpine landscapes. The Grossglockner High Alpine Road winds through Hohe Tauern National Park to Austria's highest peak, while the picturesque village of Hallstatt—perched between mountains and lake—looks like a postcard come to life. In winter, world-class ski resorts like Kitzbühel, St. Anton, and Zell am See draw snow enthusiasts from across the globe. In summer, these same mountains transform into hiking and cycling paradises, with traditional mountain huts (Almhütten) serving hearty dumplings and cold beer to fuel your adventures.</p>
+            
+            <p style="margin-top: 20px;">Austria's efficient rail network makes multi-city itineraries effortless—the Railjet connects Vienna to Salzburg in under three hours, Graz in two and a half, and Innsbruck in four. Whether you're attending a Mozart concert in Salzburg, skiing the Nordkette above Innsbruck, exploring vineyards in Styria, or simply soaking in a thermal spa with mountain views, Austria delivers an experience that harmonizes natural beauty with cultural sophistication. This is a country that understands the art of living well—Gemütlichkeit isn't just a word here, it's a way of life.</p>
+        </section>
+
+        <footer class="footer-section scroll-reveal">
+            <h2 style="color: white; border: none;">Ready to Explore Austria?</h2>
+            <p style="margin: 20px 0; font-size: 1.1em;">Pack your hiking boots, bring your appetite for culture, and prepare for Alpine magic.</p>
+            <a href="#" class="cta-button">Start Planning Your Trip</a>
+            <p style="margin-top: 30px; opacity: 0.7; font-size: 0.9em;">🇦🇹 Austria awaits • Grüß Gott! • Willkommen!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
