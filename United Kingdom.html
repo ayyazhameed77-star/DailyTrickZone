@@ -1,0 +1,1542 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Kingdom Travel Guide - Discover Great Britain</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #f8f6f1;
+            color: #2c2c2c;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, #1a1a4e 0%, #1b2a6b 25%, #c8102e 50%, #1b2a6b 75%, #1a1a4e 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600') center/cover no-repeat;
+            opacity: 0.25;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(transparent, #f8f6f1);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            padding: 20px;
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .hero-content .hero-sub {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .hero-content .tagline {
+            font-family: 'Merriweather', serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            opacity: 0.85;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* ===== FLAG SECTION ===== */
+        .flag-section {
+            background: #ffffff;
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #c8102e;
+            margin-bottom: 10px;
+        }
+
+        .flag-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #1b2a6b;
+            margin-bottom: 35px;
+        }
+
+        .union-jack-container {
+            position: relative;
+            width: 420px;
+            height: 260px;
+            margin: 0 auto 40px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .union-jack-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flag-css {
+            width: 420px;
+            height: 260px;
+            background:
+                linear-gradient(to right, transparent 44.5%, white 44.5%, white 55.5%, transparent 55.5%),
+                linear-gradient(to bottom, transparent 40%, white 40%, white 60%, transparent 60%),
+                linear-gradient(to right, transparent 47%, #c8102e 47%, #c8102e 53%, transparent 53%),
+                linear-gradient(to bottom, transparent 43%, #c8102e 43%, #c8102e 57%, transparent 57%),
+                linear-gradient(27deg, transparent 46%, white 46%, white 48%, transparent 48%, transparent 52%, white 52%, white 54%, transparent 54%),
+                linear-gradient(153deg, transparent 46%, white 46%, white 48%, transparent 48%, transparent 52%, white 52%, white 54%, transparent 54%),
+                linear-gradient(27deg, transparent 47%, #c8102e 47%, #c8102e 49%, transparent 49%, transparent 51%, #c8102e 51%, #c8102e 53%, transparent 53%),
+                linear-gradient(153deg, transparent 47%, #c8102e 47%, #c8102e 49%, transparent 49%, transparent 51%, #c8102e 51%, #c8102e 53%, transparent 53%),
+                #012169;
+            border-radius: 14px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            margin: 0 auto 40px;
+        }
+
+        .flag-description {
+            max-width: 750px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .flag-color-card {
+            padding: 25px 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .flag-color-card .color-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .flag-color-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .flag-color-card p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .flag-meaning {
+            max-width: 750px;
+            margin: 35px auto 0;
+            background: #f0f4ff;
+            padding: 30px;
+            border-radius: 14px;
+            border-left: 5px solid #1b2a6b;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.9;
+        }
+
+        /* ===== COUNTRY BACKGROUND ===== */
+        .country-bg {
+            background: linear-gradient(160deg, #012169 0%, #1b2a6b 40%, #2a3d80 70%, #012169 100%);
+            color: white;
+            padding: 90px 20px;
+            position: relative;
+        }
+
+        .country-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="80" opacity="0.03">🇬🇧</text></svg>') repeat;
+            background-size: 200px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .country-bg h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .country-bg .section-label {
+            color: #ffd700;
+            text-align: center;
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .country-bg p {
+            font-size: 1.08rem;
+            line-height: 2;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 55px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.14);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            opacity: 0.7;
+        }
+
+        .info-card p {
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* ===== BLOG CONTENT ===== */
+        .blog-content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 90px 20px;
+        }
+
+        .blog-content .section-label {
+            text-align: center;
+            display: block;
+        }
+
+        .blog-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1b2a6b;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .blog-content p {
+            font-size: 1.08rem;
+            line-height: 2;
+            margin-bottom: 22px;
+            color: #3a3a3a;
+            text-align: justify;
+        }
+
+        .blog-content .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.75;
+            margin-right: 12px;
+            margin-top: 5px;
+            color: #c8102e;
+            font-weight: 900;
+        }
+
+        .quote-block {
+            background: linear-gradient(135deg, #f0f4ff, #e8ecf8);
+            padding: 35px 40px;
+            border-radius: 16px;
+            margin: 35px 0;
+            border-left: 6px solid #1b2a6b;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: #1b2a6b;
+            opacity: 0.15;
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #2c2c2c;
+            text-align: left;
+            margin-bottom: 8px;
+        }
+
+        .quote-block .quote-author {
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* ===== FAMOUS CITIES ===== */
+        .cities-section {
+            padding: 90px 20px;
+            background: #efeae2;
+        }
+
+        .cities-section .section-label {
+            text-align: center;
+            display: block;
+        }
+
+        .cities-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            color: #1b2a6b;
+            margin-bottom: 10px;
+        }
+
+        .cities-section .section-subtitle {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+
+        .city-card {
+            max-width: 1050px;
+            margin: 0 auto 55px;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            transition: all 0.4s ease;
+        }
+
+        .city-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .city-card.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .city-card.reverse .city-image-container {
+            order: 2;
+        }
+
+        .city-card.reverse .city-content {
+            order: 1;
+        }
+
+        .city-image-container {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+        }
+
+        .city-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .city-card:hover .city-image-container img {
+            transform: scale(1.06);
+        }
+
+        .city-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #c8102e;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(200, 16, 46, 0.4);
+            z-index: 2;
+        }
+
+        .location-badge {
+            position: absolute;
+            bottom: 18px;
+            left: 18px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #1b2a6b;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            z-index: 2;
+        }
+
+        .location-badge::before {
+            content: '📍 ';
+        }
+
+        .city-content {
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .city-content .city-region {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c8102e;
+            margin-bottom: 5px;
+        }
+
+        .city-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #1b2a6b;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .city-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .city-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .highlight-tag {
+            background: #f0f4ff;
+            color: #1b2a6b;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid #dde4f5;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-tag:hover {
+            background: #1b2a6b;
+            color: white;
+        }
+
+        /* ===== BEAUTIFUL PLACES ===== */
+        .beautiful-section {
+            background: #ffffff;
+            padding: 90px 20px;
+        }
+
+        .beautiful-section .section-label {
+            text-align: center;
+            display: block;
+        }
+
+        .beautiful-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            color: #1b2a6b;
+            margin-bottom: 10px;
+        }
+
+        .beautiful-section .section-subtitle {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 60px;
+        }
+
+        .beauty-grid {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 25px;
+        }
+
+        .beauty-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+        }
+
+        .beauty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .beauty-card.large {
+            grid-column: span 2;
+            height: 450px;
+        }
+
+        .beauty-card.small {
+            height: 450px;
+        }
+
+        .beauty-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .beauty-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .beauty-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 50px 25px 28px;
+            color: white;
+            transition: padding 0.3s ease;
+        }
+
+        .beauty-card:hover .beauty-overlay {
+            padding-bottom: 35px;
+        }
+
+        .beauty-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .beauty-overlay .beauty-location {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            opacity: 0.75;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .beauty-overlay p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.88;
+        }
+
+        /* ===== TRAVEL TIPS ===== */
+        .tips-section {
+            background: linear-gradient(160deg, #c8102e, #a00d25, #8b0a1f);
+            color: white;
+            padding: 90px 20px;
+            position: relative;
+        }
+
+        .tips-section .section-label {
+            color: #ffd700;
+            text-align: center;
+            display: block;
+        }
+
+        .tips-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .tips-grid {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 22px;
+        }
+
+        .tip-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 32px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.18);
+        }
+
+        .tip-card .tip-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .tip-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .tip-card p {
+            font-size: 0.92rem;
+            line-height: 1.75;
+            opacity: 0.85;
+        }
+
+        /* ===== FOUR NATIONS ===== */
+        .nations-section {
+            background: #f8f6f1;
+            padding: 90px 20px;
+        }
+
+        .nations-section .section-label {
+            text-align: center;
+            display: block;
+        }
+
+        .nations-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #1b2a6b;
+            margin-bottom: 50px;
+        }
+
+        .nations-grid {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .nation-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .nation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+        }
+
+        .nation-card .nation-flag {
+            font-size: 3.5rem;
+            padding: 30px 15px 15px;
+        }
+
+        .nation-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #1b2a6b;
+            margin-bottom: 5px;
+            padding: 0 15px;
+        }
+
+        .nation-card .nation-capital {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #c8102e;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .nation-card p {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.6;
+            padding: 0 18px 25px;
+        }
+
+        /* ===== MAP SECTION ===== */
+        .map-section {
+            background: white;
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .map-section .section-label {
+            display: block;
+        }
+
+        .map-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1b2a6b;
+            margin-bottom: 35px;
+        }
+
+        .map-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+            border: 3px solid #e8e4dc;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0a0a1a;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .footer .crown-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 6px;
+        }
+
+        .footer .british-quote {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            margin: 25px auto;
+            max-width: 500px;
+            color: #ffd700;
+            line-height: 1.7;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: #c8102e;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #1b2a6b, #012169);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top:hover {
+            background: linear-gradient(135deg, #c8102e, #a00d25);
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .nations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .beauty-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .beauty-card.large {
+                grid-column: span 2;
+                height: 380px;
+            }
+
+            .beauty-card.small {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content .hero-sub {
+                font-size: 1.2rem;
+            }
+
+            .city-card {
+                grid-template-columns: 1fr !important;
+            }
+
+            .city-card.reverse .city-image-container {
+                order: 0;
+            }
+
+            .city-card.reverse .city-content {
+                order: 0;
+            }
+
+            .city-image-container {
+                min-height: 300px;
+            }
+
+            .city-content {
+                padding: 30px 25px;
+            }
+
+            .city-content h3 {
+                font-size: 1.7rem;
+            }
+
+            .beauty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .beauty-card.large {
+                grid-column: span 1;
+                height: 350px;
+            }
+
+            .beauty-card.small {
+                height: 350px;
+            }
+
+            .nations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .flag-css,
+            .union-jack-container {
+                width: 300px;
+                height: 186px;
+            }
+
+            .flag-description {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .blog-content h2,
+            .cities-section h2,
+            .beautiful-section h2,
+            .country-bg h2 {
+                font-size: 2rem;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .nations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✦ Complete Travel Guide 2024 ✦</div>
+            <h1>United Kingdom</h1>
+            <p class="hero-sub">Great Britain & Northern Ireland</p>
+            <p class="tagline">
+                From the iconic streets of London to the misty highlands of Scotland, the rolling hills of Wales to the vibrant shores of Northern Ireland — discover a kingdom where history, culture, and beauty unite in extraordinary ways.
+            </p>
+        </div>
+        <div class="hero-scroll">↓ Scroll to Explore ↓</div>
+    </section>
+
+    <!-- ===== FLAG ===== -->
+    <section class="flag-section">
+        <div class="section-label">National Symbol</div>
+        <h2>🇬🇧 The Union Jack</h2>
+
+        <div class="union-jack-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png" alt="Union Jack - Flag of the United Kingdom">
+        </div>
+
+        <div class="flag-description">
+            <div class="flag-color-card">
+                <div class="color-dot" style="background: #012169;"></div>
+                <h4>Royal Blue</h4>
+                <p>Represents Scotland's St. Andrew's Cross (Saltire)</p>
+            </div>
+            <div class="flag-color-card">
+                <div class="color-dot" style="background: #c8102e;"></div>
+                <h4>Royal Red</h4>
+                <p>Represents England's St. George's Cross & Ireland's St. Patrick's Cross</p>
+            </div>
+            <div class="flag-color-card">
+                <div class="color-dot" style="background: #ffffff; border: 2px solid #ddd;"></div>
+                <h4>White</h4>
+                <p>Background of the crosses, symbolizing peace and unity</p>
+            </div>
+        </div>
+
+        <div class="flag-meaning">
+            <strong>The Union Jack</strong> is one of the most recognizable flags in the world. It combines three crosses: the red cross of <strong>St. George</strong> (England), the white diagonal cross of <strong>St. Andrew</strong> (Scotland), and the red diagonal cross of <strong>St. Patrick</strong> (Ireland). Together, they symbolize the union of these nations under one sovereign kingdom. The flag has been in use since 1801 and represents a rich tapestry of shared history and identity.
+        </div>
+    </section>
+
+    <!-- ===== COUNTRY BACKGROUND ===== -->
+    <section class="country-bg">
+        <div class="container">
+            <div class="section-label">Country Overview</div>
+            <h2>🏰 About the United Kingdom</h2>
+            <p>
+                The <strong>United Kingdom of Great Britain and Northern Ireland</strong> is a sovereign island nation located off the northwestern coast of mainland Europe. Comprising four distinct nations — <strong>England, Scotland, Wales, and Northern Ireland</strong> — the UK is a land of remarkable diversity, deep history, and enduring global influence. From the Roman walls of Hadrian to the cutting-edge skyscrapers of London's skyline, the UK tells a story that spans over two millennia.
+            </p>
+            <p>
+                As the birthplace of the Industrial Revolution, parliamentary democracy, and the English language, the UK has shaped the modern world in profound ways. It has given humanity Shakespeare, Newton, Darwin, the Beatles, the BBC, Harry Potter, and afternoon tea. With world-class museums, legendary universities like Oxford and Cambridge, stunning national parks, and a cultural scene that never sleeps, the United Kingdom continues to be one of the most visited and admired nations on Earth.
+            </p>
+            <p>
+                The UK's landscape is astonishingly varied: the chalk cliffs of Dover, the Lake District's serene waters, Scotland's dramatic Highlands, the lush valleys of Wales, and the rugged coastline of Northern Ireland. Each corner of the kingdom offers its own unique character, traditions, accent, and charm — all united under the iconic Union Jack.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">🏛️</div>
+                    <h3>Capital</h3>
+                    <p>London</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🗣️</div>
+                    <h3>Language</h3>
+                    <p>English</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">👥</div>
+                    <h3>Population</h3>
+                    <p>~67.7 Million</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">💷</div>
+                    <h3>Currency</h3>
+                    <p>Pound Sterling (£)</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">👑</div>
+                    <h3>Monarch</h3>
+                    <p>King Charles III</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🌍</div>
+                    <h3>Continent</h3>
+                    <p>Europe</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">📏</div>
+                    <h3>Area</h3>
+                    <p>243,610 km²</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🕐</div>
+                    <h3>Time Zone</h3>
+                    <p>GMT (UTC+0/+1)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOUR NATIONS ===== -->
+    <section class="nations-section">
+        <div class="section-label">Four Nations, One Kingdom</div>
+        <h2>🏴 The Countries of the UK</h2>
+
+        <div class="nations-grid">
+            <div class="nation-card">
+                <div class="nation-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+                <h3>England</h3>
+                <p class="nation-capital">Capital: London</p>
+                <p>The largest and most populous nation, home to iconic landmarks, royal palaces, and the world-famous Premier League.</p>
+            </div>
+            <div class="nation-card">
+                <div class="nation-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+                <h3>Scotland</h3>
+                <p class="nation-capital">Capital: Edinburgh</p>
+                <p>Land of castles, whisky, and dramatic highlands. Known for its fierce independence, warm hospitality, and haggis.</p>
+            </div>
+            <div class="nation-card">
+                <div class="nation-flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</div>
+                <h3>Wales</h3>
+                <p class="nation-capital">Capital: Cardiff</p>
+                <p>A land of song, ancient castles, and breathtaking coastlines. Wales has more castles per square mile than any country.</p>
+            </div>
+            <div class="nation-card">
+                <div class="nation-flag">🇬🇧</div>
+                <h3>N. Ireland</h3>
+                <p class="nation-capital">Capital: Belfast</p>
+                <p>Home to the Giant's Causeway, vibrant Belfast, and landscapes made famous by Game of Thrones filming locations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG CONTENT ===== -->
+    <section class="blog-content">
+        <div class="section-label">Travel Blog</div>
+        <h2>👑 Why the United Kingdom Should Be Your Next Great Adventure</h2>
+
+        <p class="drop-cap">
+            There's something undeniably magnetic about the United Kingdom. Perhaps it's the way centuries of history are woven seamlessly into everyday life — where a morning coffee might be sipped in the shadow of a medieval cathedral, and an evening stroll leads past a Georgian townhouse where literary legends once lived. The UK is not just a destination; it's a living, breathing story that invites you to become part of its latest chapter.
+        </p>
+
+        <p>
+            London, the magnificent capital, needs little introduction. It's a city where Buckingham Palace stands as a symbol of enduring monarchy, where the Tower of London guards 900 years of secrets, and where the British Museum holds treasures from every corner of the ancient world — all free to visit. Walk along the South Bank of the Thames at sunset and you'll understand why millions fall in love with this city every year. From the electric energy of Soho to the peaceful greenery of Hyde Park, London is a city of infinite variety and endless discovery.
+        </p>
+
+        <div class="quote-block">
+            <p>"When a man is tired of London, he is tired of life; for there is in London all that life can afford."</p>
+            <span class="quote-author">— Samuel Johnson</span>
+        </div>
+
+        <p>
+            But the United Kingdom extends far beyond its capital. Venture north to Edinburgh, Scotland's stunning capital, where a medieval Old Town and an elegant Georgian New Town coexist in perfect harmony, both designated a UNESCO World Heritage Site. Climb Arthur's Seat for panoramic views, explore the mysterious Edinburgh Castle perched on its volcanic rock, and in August, immerse yourself in the world's largest arts festival — the Edinburgh Fringe. Continue further into the Scottish Highlands and you'll find landscapes of heart-stopping beauty: misty lochs, towering mountains, ancient castles reflected in still waters, and perhaps even a glimpse of Nessie in Loch Ness.
+        </p>
+
+        <p>
+            In the west, Wales offers its own brand of magic. Snowdonia National Park is a paradise for hikers, with Mount Snowdon rising to 1,085 metres. The Pembrokeshire Coast National Park boasts some of the most beautiful coastal walking in Europe. Cardiff, the Welsh capital, has transformed into a vibrant modern city while celebrating its Celtic heritage. And scattered across the Welsh landscape are over 600 castles — from the imposing Caernarfon to the fairy-tale Castell Coch — more castles per square mile than anywhere else in the world.
+        </p>
+
+        <div class="quote-block">
+            <p>"The United Kingdom is a treasure chest of experiences — you need only lift the lid and reach inside to find something extraordinary."</p>
+            <span class="quote-author">— A Traveler's Journal</span>
+        </div>
+
+        <p>
+            Northern Ireland, often the hidden gem of the UK, rewards every visitor with its raw, untamed beauty. The Giant's Causeway — a UNESCO World Heritage Site of 40,000 basalt columns — is a geological wonder that must be seen to be believed. Belfast, once known for building the Titanic, has reinvented itself into one of Europe's most exciting cities, with the Titanic Belfast museum, vibrant street art, and a buzzing food scene. The Dark Hedges, the Carrick-a-Rede rope bridge, and the Mourne Mountains offer experiences that linger in your memory long after you return home.
+        </p>
+
+        <p>
+            The cultural richness of the UK is staggering. This is the land that gave the world Shakespeare's plays at the Globe Theatre, The Beatles' music from Liverpool's Cavern Club, the literary worlds of Jane Austen, Charles Dickens, and J.K. Rowling, and the groundbreaking science of Stephen Hawking and Tim Berners-Lee. Every city, town, and village has its own story to tell, its own pub serving real ales, its own traditions kept alive by proud local communities.
+        </p>
+
+        <p>
+            The British countryside is a masterwork of natural beauty. The Cotswolds enchant with honey-stone villages and rolling hills. The Lake District inspired Wordsworth's poetry and Beatrix Potter's tales. Cornwall's dramatic coastline rivals anywhere in the Mediterranean. The Yorkshire Dales offer solitude and splendour in equal measure. Whether you're hiking Hadrian's Wall, cycling through the Scottish Borders, or simply enjoying cream tea in a Devon garden, the UK countryside offers a pace of life that nourishes the soul.
+        </p>
+
+        <div class="quote-block">
+            <p>"From royal pageantry to punk rock, ancient stone circles to space-age architecture, the United Kingdom is a land of magnificent contradictions that somehow all make perfect sense together."</p>
+            <span class="quote-author">— British Heritage Magazine</span>
+        </div>
+    </section>
+
+    <!-- ===== FAMOUS CITIES ===== -->
+    <section class="cities-section">
+        <div class="section-label">Must-Visit Destinations</div>
+        <h2>🏙️ Famous Cities of the United Kingdom</h2>
+        <p class="section-subtitle">Explore the most captivating cities across England, Scotland, Wales & Northern Ireland</p>
+
+        <!-- London -->
+        <div class="city-card">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200" alt="London - Tower Bridge at Sunset">
+                <div class="city-number">1</div>
+                <div class="location-badge">England — 51.5074° N, 0.1278° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">England • Capital of the UK</div>
+                <h3>London</h3>
+                <p>
+                    London, the magnificent capital of the United Kingdom, is one of the world's greatest cities. Home to nearly 9 million people from every corner of the globe, London is a dazzling mosaic of history, culture, art, and innovation. From the iconic Big Ben and the Houses of Parliament along the Thames to the modern majesty of The Shard, London seamlessly blends the ancient with the contemporary. With over 170 museums (many free), world-class theatre in the West End, royal parks, legendary markets like Borough and Camden, and a culinary scene representing every cuisine imaginable, London offers a lifetime of discovery in a single city.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">🏰 Tower of London</span>
+                    <span class="highlight-tag">👑 Buckingham Palace</span>
+                    <span class="highlight-tag">🎭 West End</span>
+                    <span class="highlight-tag">🏛️ British Museum</span>
+                    <span class="highlight-tag">🎡 London Eye</span>
+                    <span class="highlight-tag">🌳 Hyde Park</span>
+                    <span class="highlight-tag">🛍️ Oxford Street</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edinburgh -->
+        <div class="city-card reverse">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=1200" alt="Edinburgh - Castle and Old Town">
+                <div class="city-number">2</div>
+                <div class="location-badge">Scotland — 55.9533° N, 3.1883° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">Scotland • Capital of Scotland</div>
+                <h3>Edinburgh</h3>
+                <p>
+                    Edinburgh is one of Europe's most beautiful and atmospheric cities. Dominated by its ancient castle perched dramatically atop an extinct volcano, Edinburgh's skyline is like something from a fairy tale. The Royal Mile connects the castle to the Palace of Holyroodhouse, the monarch's official Scottish residence. The city's medieval Old Town and elegant Georgian New Town are together a UNESCO World Heritage Site. Every August, Edinburgh transforms into the world's cultural capital during the Edinburgh Festival Fringe — the largest arts festival on Earth, featuring thousands of performances across the city.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">🏰 Edinburgh Castle</span>
+                    <span class="highlight-tag">🎭 Festival Fringe</span>
+                    <span class="highlight-tag">⛰️ Arthur's Seat</span>
+                    <span class="highlight-tag">🏛️ Royal Mile</span>
+                    <span class="highlight-tag">🥃 Scotch Whisky</span>
+                    <span class="highlight-tag">📚 Writers' Museum</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manchester -->
+        <div class="city-card">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1605283176568-9b41fde3672e?w=1200" alt="Manchester City Centre">
+                <div class="city-number">3</div>
+                <div class="location-badge">England — 53.4808° N, 2.2426° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">England • North West</div>
+                <h3>Manchester</h3>
+                <p>
+                    Manchester is the beating heart of northern England — a city that revolutionized the world through the Industrial Revolution and continues to innovate today. Known globally for its two Premier League football clubs (Manchester United and Manchester City), Manchester is equally celebrated for its music scene that produced Oasis, The Smiths, Joy Division, and The Stone Roses. The Northern Quarter buzzes with independent shops, street art, and craft beer bars. The city boasts outstanding museums including the Imperial War Museum North and the Science and Industry Museum, plus a thriving food scene that reflects its incredible cultural diversity.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">⚽ Old Trafford</span>
+                    <span class="highlight-tag">🎵 Music Scene</span>
+                    <span class="highlight-tag">🏛️ Science Museum</span>
+                    <span class="highlight-tag">🎨 Northern Quarter</span>
+                    <span class="highlight-tag">📺 MediaCityUK</span>
+                    <span class="highlight-tag">🍻 Craft Beer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bath -->
+        <div class="city-card reverse">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1200" alt="Bath - Roman Baths and Georgian Architecture">
+                <div class="city-number">4</div>
+                <div class="location-badge">England — 51.3811° N, 2.3590° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">England • South West</div>
+                <h3>Bath</h3>
+                <p>
+                    Bath is a jewel of Georgian architecture and one of the most elegant cities in Europe. Founded by the Romans who built magnificent bathing complexes around its natural hot springs, Bath has been a destination for relaxation and culture for two thousand years. The stunning Royal Crescent, the Circus, Pulteney Bridge, and Bath Abbey create one of the most harmonious cityscapes in the world. The entire city is a UNESCO World Heritage Site. Jane Austen lived and set novels here, and the Thermae Bath Spa allows you to bathe in the same naturally warm waters the Romans enjoyed, with rooftop pools offering stunning city views.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">🏛️ Roman Baths</span>
+                    <span class="highlight-tag">♨️ Thermae Spa</span>
+                    <span class="highlight-tag">📖 Jane Austen</span>
+                    <span class="highlight-tag">🏘️ Royal Crescent</span>
+                    <span class="highlight-tag">⛪ Bath Abbey</span>
+                    <span class="highlight-tag">🌉 Pulteney Bridge</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liverpool -->
+        <div class="city-card">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1564594326930-f056f3e5cabd?w=1200" alt="Liverpool Waterfront - Royal Albert Dock">
+                <div class="city-number">5</div>
+                <div class="location-badge">England — 53.4084° N, 2.9916° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">England • North West</div>
+                <h3>Liverpool</h3>
+                <p>
+                    Liverpool is a city that punches far above its weight in terms of global cultural impact. As the birthplace of The Beatles — the most influential band in music history — Liverpool draws music fans from every corner of the world to sites like the Cavern Club, Penny Lane, and Strawberry Fields. The city's magnificent waterfront, including the Royal Albert Dock and the iconic Three Graces, is a UNESCO World Heritage Site. Liverpool also boasts more museums and galleries than any UK city outside London, two grand cathedrals, a passionate football culture, and some of the friendliest, wittiest people you'll ever meet.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">🎸 The Beatles</span>
+                    <span class="highlight-tag">⚽ Anfield</span>
+                    <span class="highlight-tag">🏛️ Albert Dock</span>
+                    <span class="highlight-tag">⛪ Two Cathedrals</span>
+                    <span class="highlight-tag">🎵 Cavern Club</span>
+                    <span class="highlight-tag">🖼️ Tate Liverpool</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cardiff -->
+        <div class="city-card reverse">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1572883454114-efb8ff978ba2?w=1200" alt="Cardiff - Cardiff Castle and City Centre">
+                <div class="city-number">6</div>
+                <div class="location-badge">Wales — 51.4816° N, 3.1791° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">Wales • Capital of Wales</div>
+                <h3>Cardiff</h3>
+                <p>
+                    Cardiff, the vibrant capital of Wales, is a city that brilliantly combines Celtic heritage with cosmopolitan energy. At its heart stands Cardiff Castle — a remarkable site that has been a Roman fort, Norman stronghold, and Victorian Gothic fantasy. The Cardiff Bay waterfront has been transformed into a stunning leisure and entertainment district, home to the Wales Millennium Centre and the Senedd (Welsh Parliament). The city is passionate about rugby — the Principality Stadium creates an electric atmosphere on match days. With beautiful Bute Park, excellent shopping arcades, and a thriving food scene, Cardiff is Wales's dynamic jewel.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">🏰 Cardiff Castle</span>
+                    <span class="highlight-tag">🏉 Principality Stadium</span>
+                    <span class="highlight-tag">🎭 Millennium Centre</span>
+                    <span class="highlight-tag">🌊 Cardiff Bay</span>
+                    <span class="highlight-tag">🌳 Bute Park</span>
+                    <span class="highlight-tag">🛍️ Victorian Arcades</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Belfast -->
+        <div class="city-card">
+            <div class="city-image-container">
+                <img src="https://images.unsplash.com/photo-1602087594298-706d8e136fee?w=1200" alt="Belfast - Titanic Museum and City">
+                <div class="city-number">7</div>
+                <div class="location-badge">Northern Ireland — 54.5973° N, 5.9301° W</div>
+            </div>
+            <div class="city-content">
+                <div class="city-region">Northern Ireland • Capital of N. Ireland</div>
+                <h3>Belfast</h3>
+                <p>
+                    Belfast, the capital of Northern Ireland, has undergone one of the most remarkable urban transformations in Europe. Once defined by its troubled past, Belfast has emerged as a confident, creative, and welcoming city. The stunning Titanic Belfast museum — built on the very spot where the ill-fated ship was constructed — is one of the world's greatest visitor experiences. The Cathedral Quarter buzzes with pubs, restaurants, and street art. St. George's Market is a foodie paradise. Beyond the city, the Causeway Coastal Route leads to some of the most breathtaking scenery in the British Isles.
+                </p>
+                <div class="city-highlights">
+                    <span class="highlight-tag">🚢 Titanic Belfast</span>
+                    <span class="highlight-tag">🎨 Cathedral Quarter</span>
+                    <span class="highlight-tag">🥘 St. George's Market</span>
+                    <span class="highlight-tag">🏛️ Stormont</span>
+                    <span class="highlight-tag">🎭 Grand Opera House</span>
+                    <span class="highlight-tag">🌿 Botanic Gardens</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BEAUTIFUL PLACES ===== -->
+    <section class="beautiful-section">
+        <div class="section-label">Natural Wonders</div>
+        <h2>✨ Beautiful Places in the United Kingdom</h2>
+        <p class="section-subtitle">Breathtaking landscapes from coast to highland, moor to meadow</p>
+
+        <div class="beauty-grid">
+            <!-- Stonehenge -->
+            <div class="beauty-card large">
+                <img src="https://images.unsplash.com/photo-1599833975787-5c143f373c30?w=1200" alt="Stonehenge at Sunset">
+                <div class="beauty-overlay">
+                    <h3>Stonehenge</h3>
+                    <div class="beauty-location">📍 Wiltshire, England</div>
+                    <p>A prehistoric monument shrouded in mystery — 5,000 years old, aligned with celestial events, and one of humanity's greatest ancient achievements.</p>
+                </div>
+            </div>
+
+            <!-- Lake District -->
+            <div class="beauty-card small">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" alt="Lake District Mountains and Lake">
+                <div class="beauty-overlay">
+                    <h3>Lake District</h3>
+                    <div class="beauty-location">📍 Cumbria, England</div>
+                    <p>England's largest national park — stunning lakes, soaring fells, and the landscapes that inspired Wordsworth's greatest poetry.</p>
+                </div>
+            </div>
+
+            <!-- Scottish Highlands -->
+            <div class="beauty-card small">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Scottish Highlands Landscape">
+                <div class="beauty-overlay">
+                    <h3>Scottish Highlands</h3>
+                    <div class="beauty-location">📍 Highlands, Scotland</div>
+                    <p>Dramatic mountains, misty glens, ancient castles, and the legendary Loch Ness — Scotland's wild heart at its most magnificent.</p>
+                </div>
+            </div>
+
+            <!-- Cotswolds -->
+            <div class="beauty-card large">
+                <img src="https://images.unsplash.com/photo-1590167409810-a474312b441b?w=1200" alt="Cotswolds Village with Honey Stone Houses">
+                <div class="beauty-overlay">
+                    <h3>The Cotswolds</h3>
+                    <div class="beauty-location">📍 Central England</div>
+                    <p>Quintessential English countryside — honey-stone villages, thatched cottages, rolling hills, and gardens straight from a storybook.</p>
+                </div>
+            </div>
+
+            <!-- Giant's Causeway -->
+            <div class="beauty-card small">
+                <img src="https://images.unsplash.com/photo-1604515043643-1e0a1b860684?w=800" alt="Giant's Causeway Basalt Columns">
+                <div class="beauty-overlay">
+                    <h3>Giant's Causeway</h3>
+                    <div class="beauty-location">📍 County Antrim, N. Ireland</div>
+                    <p>40,000 interlocking basalt columns rising from the sea — a UNESCO World Heritage Site born of ancient volcanic fury and Celtic legend.</p>
+                </div>
+            </div>
+
+            <!-- Snowdonia -->
+            <div class="beauty-card small">
+                <img src="https://images.unsplash.com/photo-1571074635691-1c47b9e27376?w=800" alt="Snowdonia Mountains Wales">
+                <div class="beauty-overlay">
+                    <h3>Snowdonia</h3>
+                    <div class="beauty-location">📍 Gwynedd, Wales</div>
+                    <p>Rugged mountains, pristine lakes, and ancient forests — home to Mount Snowdon, the highest peak in Wales at 1,085 metres.</p>
+                </div>
+            </div>
+
+            <!-- Cliffs of Dover -->
+            <div class="beauty-card large">
+                <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=1200" alt="White Cliffs of Dover">
+                <div class="beauty-overlay">
+                    <h3>White Cliffs of Dover</h3>
+                    <div class="beauty-location">📍 Kent, England</div>
+                    <p>The iconic chalk cliffs rising 350 feet above the English Channel — a symbol of Britain, welcoming travelers for thousands of years.</p>
+                </div>
+            </div>
+
+            <!-- Isle of Skye -->
+            <div class="beauty-card small">
+                <img src="https://images.unsplash.com/photo-1520466809213-7b9a56adcd45?w=800" alt="Isle of Skye Fairy Pools">
+                <div class="beauty-overlay">
+                    <h3>Isle of Skye</h3>
+                    <div class="beauty-location">📍 Inner Hebrides, Scotland</div>
+                    <p>A magical island of fairy pools, dramatic sea cliffs, medieval castles, and some of the most otherworldly landscapes in Europe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRAVEL TIPS ===== -->
+    <section class="tips-section">
+        <div class="section-label">Traveler's Handbook</div>
+        <h2>💡 Essential Travel Tips for the UK</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🌧️</div>
+                <h3>Pack for British Weather</h3>
+                <p>The UK is famous for its unpredictable weather. Always carry a waterproof jacket and dress in layers. Summers are mild (15-25°C) and winters are cool (0-8°C). An umbrella is your best companion!</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🚂</div>
+                <h3>Use the Rail Network</h3>
+                <p>The UK has an excellent rail system. Book advance tickets for significant savings. A BritRail Pass can offer unlimited travel. The train from London to Edinburgh takes just 4.5 hours and offers stunning views.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🚗</div>
+                <h3>Drive on the Left</h3>
+                <p>If renting a car, remember: the UK drives on the left side of the road. Roundabouts are everywhere! Driving is the best way to explore the countryside, Scottish Highlands, and Welsh valleys.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">💷</div>
+                <h3>Budget Wisely</h3>
+                <p>The UK uses Pound Sterling (£), not the Euro. London is expensive, but many world-class museums are free. Look for "meal deals" at supermarkets and use the Oyster card for London transport savings.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">☕</div>
+                <h3>Embrace Tea Culture</h3>
+                <p>The British take tea seriously. Afternoon tea is a wonderful experience — scones with clotted cream and jam, finger sandwiches, and fine teas. Don't forget: milk goes in after the tea (usually!).</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🍺</div>
+                <h3>Visit a Traditional Pub</h3>
+                <p>The pub is the heart of British social life. Try a real ale, a ploughman's lunch, or a Sunday roast. Most pubs serve food and are welcoming to all ages. Order at the bar — no table service in traditional pubs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAP SECTION ===== -->
+    <section class="map-section">
+        <div class="section-label">Explore the Map</div>
+        <h2>🗺️ Discover the United Kingdom</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4943981.367498401!2d-5.429205699999999!3d54.23312839999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited%20Kingdom!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <section class="footer">
+        <div class="crown-icon">👑</div>
+        <h3>United Kingdom Travel Guide</h3>
+        <div class="british-quote">
+            "The world is a book, and those who do not travel read only one page."<br>
+            — St. Augustine
+        </div>
+        <div class="footer-divider"></div>
+        <p>© 2024 United Kingdom Travel Guide Blog | Crafted with ❤️ for the British Isles</p>
+        <p>All images sourced from Unsplash & Wikimedia Commons. Travel information is for guidance only.</p>
+        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.5;">God Save the King 🇬🇧 • Dieu et mon droit</p>
+    </section>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+</body>
+</html>
+```
