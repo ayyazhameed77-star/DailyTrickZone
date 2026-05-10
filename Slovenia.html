@@ -1,0 +1,328 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slovenia Travel Guide - Europe's Green Heart Awaits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f0f4f8;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #0056b3;
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: #c8102e;
+        }
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .flag-section {
+            padding: 40px;
+            background: #fafafa;
+            border-bottom: 1px solid #eee;
+        }
+        .flag-section h2 {
+            color: #0056b3;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .flag-box {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .flag-img {
+            width: 320px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .flag-info {
+            max-width: 450px;
+        }
+        .flag-info h3 {
+            color: #c8102e;
+            margin-bottom: 10px;
+        }
+        .flag-info p {
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 40px;
+        }
+        .content h2 {
+            color: #0056b3;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8102e;
+        }
+        .content h3 {
+            color: #c8102e;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        .city-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #0056b3;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .city-card h3 {
+            color: #0056b3;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .city-img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .location-tag {
+            display: inline-block;
+            background: #c8102e;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+        .highlight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-item {
+            background: #0056b3;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+        .stat-item .label {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #87ceeb;
+        }
+        .intro-text {
+            font-size: 1.15em;
+            color: #555;
+            font-style: italic;
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px dashed #ccc;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2em; }
+            .content { padding: 20px; }
+            .flag-box { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🇸🇮 Slovenia Travel Guide</h1>
+            <p class="subtitle">Europe's Green Heart Awaits You</p>
+        </div>
+
+        <!-- Flag Section -->
+        <div class="flag-section">
+            <h2>🚩 The National Flag of Slovenia</h2>
+            <div class="flag-box">
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/92ea85c150bbde8ba426c9fb325c999dcb4cb66c.jpg" alt="Slovenia Flag" class="flag-img">
+                <div class="flag-info">
+                    <h3>Symbolism & Meaning</h3>
+                    <p><strong>White</strong> – represents the snowy peaks of the Alps and the purity of the Slovenian people.</p>
+                    <p><strong>Blue</strong> – symbolizes the Adriatic Sea, the sky, and the rivers that flow through the country.</p>
+                    <p><strong>Red</strong> – stands for courage, strength, and the blood shed for freedom.</p>
+                    <p>The <strong>Coat of Arms</strong> in the upper left corner features three golden stars (from the Counts of Celje), three white mountain peaks representing Triglav (Slovenia's highest peak), and two wavy blue lines symbolizing the Adriatic Sea and Slovenia's rivers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="intro-text">
+                "Slovenia is the only country with 'love' in its name — and once you visit, you'll understand why."
+            </div>
+
+            <h2>📍 Country Overview</h2>
+            <p>Slovenia, officially the Republic of Slovenia, is a small but breathtakingly beautiful country nestled in Central Europe. Bordered by Italy to the west, Austria to the north, Hungary to the northeast, and Croatia to the south, Slovenia sits at the crossroads of the Alps, the Mediterranean, and the Pannonian Plain. With a population of just over 2 million people and covering only 20,273 square kilometers, it is one of the smallest countries in Europe — yet it packs an incredible diversity of landscapes into its compact territory.</p>
+
+            <p>The name "Slovenia" comes from the word "Slovene," which refers to the Slavic people who settled the region in the 6th century. For centuries, the Slovene lands were part of the Holy Roman Empire, the Habsburg Monarchy, and later Yugoslavia. Slovenia declared independence on June 25, 1991, following a brief Ten-Day War — the shortest war in modern European history. Today, it is a member of the European Union, NATO, and the Eurozone, and consistently ranks among the safest, greenest, and most sustainable countries in the world.</p>
+
+            <p>What makes Slovenia truly special is its remarkable natural diversity. Over 60% of the country is covered in forest, making it one of the greenest nations on Earth. In a single day, you can ski in the Julian Alps, swim in the Adriatic Sea, explore underground caves, and sip world-class wine in rolling vineyards. It's no wonder Slovenia was named the first-ever Green Destination of the World.</p>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="number">2.1M</div>
+                    <div class="label">Population</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">20,273</div>
+                    <div class="label">km² Area</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">60%+</div>
+                    <div class="label">Forest Cover</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">Ljubljana</div>
+                    <div class="label">Capital City</div>
+                </div>
+            </div>
+
+            <h2>🏙️ Famous Cities & Destinations</h2>
+
+            <!-- Ljubljana -->
+            <div class="city-card">
+                <span class="location-tag">📍 Capital City — Central Slovenia</span>
+                <h3>1. Ljubljana — The Fairytale Capital</h3>
+                <img src="https://kimi-web-img.moonshot.cn/img/www.civitatis.com/c084c61ebb8af96223238f31a08c14d25b756e3f.jpg" alt="Ljubljana City with River and Castle" class="city-img">
+                <p>Ljubljana is one of the most charming and underrated capitals in Europe. With a population of just under 300,000, it feels more like a cozy town than a bustling metropolis — and that's exactly what makes it so magical. The city is bisected by the emerald-green Ljubljanica River, lined with outdoor cafés, colorful buildings, and graceful bridges.</p>
+                <p>The centerpiece of the city is the <strong>Ljubljana Castle</strong>, perched atop Castle Hill and offering panoramic views of the red-tiled rooftops below. Take the funicular up, or enjoy a scenic walk through the forested slopes. The castle hosts exhibitions, concerts, and a charming open-air cinema during summer.</p>
+                <p>Don't miss the <strong>Triple Bridge (Tromostovje)</strong>, a unique architectural masterpiece designed by the legendary Slovenian architect Jože Plečnik. Stroll through the <strong>Old Town</strong>, where baroque and art nouveau buildings line cobblestone streets, and visit the bustling <strong>Central Market</strong> for fresh produce, local cheeses, and honey.</p>
+                <p>Ljubljana was awarded the title of <strong>European Green Capital 2016</strong> for its pedestrian-friendly center, extensive cycling paths, and commitment to sustainability. The city center is completely car-free, making it a joy to explore on foot.</p>
+                <div class="highlight-box">
+                    <strong>💡 Travel Tip:</strong> Take a boat cruise along the Ljubljanica River at sunset — the golden light reflecting off the water and the castle above is pure magic.
+                </div>
+            </div>
+
+            <!-- Lake Bled -->
+            <div class="city-card">
+                <span class="location-tag">📍 Northwestern Slovenia — Julian Alps</span>
+                <h3>2. Lake Bled — A Fairytale Come to Life</h3>
+                <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/601ebc5c1040be21a136a3ba22401149d3c03b83.jpg" alt="Lake Bled with Island Church" class="city-img">
+                <p>If Slovenia has a postcard-perfect destination, it is Lake Bled. This glacial lake in the Julian Alps is one of the most photographed spots in Europe, and one look will tell you why. At the center of the lake sits a tiny island crowned by the <strong>Church of the Assumption</strong>, its bell tower rising above the turquoise waters like something from a dream.</p>
+                <p>Overlooking the lake from a cliff is <strong>Bled Castle</strong>, the oldest castle in Slovenia, dating back to 1011 AD. From its terrace, you can enjoy what many consider the most beautiful view in the country — the lake, the island, and the snow-capped peaks of the Julian Alps in the background.</p>
+                <p>Take a traditional <strong>pletna boat</strong> (a wooden gondola-like vessel) to the island, where tradition says ringing the church bell three times will make your wish come true. For the adventurous, hike up to <strong>Ojstrica Viewpoint</strong> for a breathtaking sunrise over the lake, or cycle the 6-kilometer path around the shore.</p>
+                <p>No visit to Bled is complete without trying the famous <strong>Bled Cream Cake (kremšnita)</strong> — a heavenly combination of vanilla custard, whipped cream, and flaky pastry that has been a local specialty since 1953.</p>
+                <div class="highlight-box">
+                    <strong>💡 Travel Tip:</strong> Visit early in the morning or late afternoon to avoid crowds. The lake is stunning year-round, but autumn brings golden foliage that makes it even more enchanting.
+                </div>
+            </div>
+
+            <!-- Piran -->
+            <div class="city-card">
+                <span class="location-tag">📍 Southwestern Slovenia — Adriatic Coast</span>
+                <h3>3. Piran — The Pearl of the Adriatic</h3>
+                <img src="https://kimi-web-img.moonshot.cn/img/slovenia.si/37245b3089ed4f2d4320de7589dbc91dbb788279.jpg" alt="Piran City Aerial View" class="city-img">
+                <p>Piran is Slovenia's most beautiful coastal town — a Venetian-style gem perched on a narrow peninsula jutting into the Adriatic Sea. With its red-tiled rooftops, narrow medieval alleys, and sparkling turquoise waters, Piran feels like a slice of Italy magically transported to the Slovenian coast.</p>
+                <p>The heart of Piran is <strong>Tartini Square</strong>, named after the famous violinist Giuseppe Tartini, who was born here. The square is surrounded by pastel-colored buildings and opens up to the harbor, where fishing boats bob gently in the water. Climb the <strong>bell tower of St. George's Church</strong> for panoramic views of the town, the sea, and the Croatian coastline across the bay.</p>
+                <p>Wander through the labyrinth of narrow streets, discover hidden courtyards, and enjoy fresh seafood at waterfront restaurants. The town is completely car-free in the center, preserving its old-world charm. At sunset, the warm light bathes the stone walls in gold, creating an atmosphere that feels almost unreal.</p>
+                <p>Piran's proximity to the salt pans of <strong>Sečovlje</strong> adds another layer of uniqueness — these traditional salt flats have been producing sea salt for over 700 years using the same methods.</p>
+                <div class="highlight-box">
+                    <strong>💡 Travel Tip:</strong> Walk along the city walls at sunset for the most spectacular views. Pair your visit with a trip to nearby Portorož for a beach day, or explore the Sečovlje Salt Pans Nature Park.
+                </div>
+            </div>
+
+            <!-- Nature -->
+            <div class="city-card">
+                <span class="location-tag">📍 Nationwide — Alps, Caves & Forests</span>
+                <h3>4. Slovenian Nature — Europe's Best-Kept Secret</h3>
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn.kimkim.com/f4003c687c6829fa717a290f8348dfc941147562.jpg" alt="Slovenia Beautiful Mountain Landscape" class="city-img">
+                <p>Slovenia's natural beauty is nothing short of extraordinary. The <strong>Triglav National Park</strong>, covering 4% of the country, is a paradise for hikers, climbers, and nature lovers. Mount Triglav, at 2,864 meters, is Slovenia's highest peak and a national symbol — every true Slovene is expected to climb it at least once in their lifetime.</p>
+                <p>The <strong>Škocjan Caves</strong>, a UNESCO World Heritage Site, feature one of the largest known underground canyons in the world, with the Reka River carving through limestone chambers hundreds of meters below the surface. The <strong>Postojna Cave</strong> is equally impressive, with its 24-kilometer network of passages and the unique olm ("human fish"), a blind salamander that can live up to 100 years.</p>
+                <p>In the north, the <strong>Soča Valley</strong> dazzles with its emerald-green river, perfect for kayaking, rafting, and fly-fishing. The <strong>Logar Valley</strong> is often called one of the most beautiful glacial valleys in Europe, surrounded by towering peaks and dotted with traditional alpine farms.</p>
+            </div>
+
+            <h2>🍽️ Food & Culture</h2>
+            <p>Slovenian cuisine is a delicious reflection of its geographic diversity. In the mountains, you'll find hearty dishes like <strong>žganci</strong> (buckwheat spoonbread) and <strong>kranjska klobasa</strong> (Carniolan sausage). Along the coast, Italian influences shine through in fresh seafood pasta and risotto. And everywhere, you'll find <strong>potica</strong>, a traditional nut roll that's a staple at every celebration.</p>
+
+            <p>Slovenia is also a rising star in the wine world, with three distinct wine regions producing everything from crisp whites in the Vipava Valley to bold reds in the Primorska region. The country has the world's oldest grapevine still producing fruit — the 400-year-old vine in Maribor.</p>
+
+            <h2>✈️ Why Visit Slovenia?</h2>
+            <p>Slovenia is the perfect destination for travelers who want it all — mountains, sea, lakes, caves, castles, and charming cities — without the crowds or high costs of more famous European destinations. It's safe, clean, affordable, and incredibly welcoming.</p>
+
+            <p>Whether you're sipping coffee by the Ljubljanica River, rowing to an island church on a turquoise lake, or watching the sunset from a medieval coastal town, Slovenia will steal your heart. This is a country that proves the best things really do come in small packages.</p>
+
+            <div class="highlight-box" style="background: #e8f5e9; border-left-color: #2e7d32;">
+                <strong>🌟 Final Thought:</strong> Slovenia isn't just a destination — it's an experience. Come discover why this tiny green country is quietly becoming one of Europe's most beloved travel secrets.
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>🇸🇮 Slovenia Travel Guide | Written for curious travelers everywhere</p>
+            <p style="margin-top:10px; opacity:0.7;">Images sourced from official tourism channels and travel photography.</p>
+        </div>
+    </div>
+</body>
+</html>'''
+
+# Save to file
+with open('/mnt/agents/output/slovenia_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("HTML file saved successfully!")
+print(f"File size: {len(html_content)} characters")
