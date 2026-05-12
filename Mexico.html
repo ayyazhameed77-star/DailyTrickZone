@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexico Travel Guide - Land of Ancient Wonders & Vibrant Colors</title>
+    <style>
+        :root {
+            --primary: #006847;
+            --accent: #ce1126;
+            --bg: #f8f9fa;
+            --text: #2c3e50;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg);
+        }
+        .lang-bar {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .lang-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            margin: 4px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .lang-bar button:hover, .lang-bar button.active {
+            background: var(--accent);
+        }
+        h1 {
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary);
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .flag-img {
+            width: 180px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .city-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .city-img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        .urdu, .hindi {
+            display: none;
+        }
+        .urdu {
+            direction: rtl;
+            font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', sans-serif;
+        }
+        .hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        @media (max-width: 600px) {
+            .flag-section { flex-direction: column; text-align: center; }
+            .flag-img { width: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Translator -->
+    <div class="lang-bar">
+        <strong>🌐 Translate / ترجم / अनुवाद:</strong><br>
+        <button onclick="setLang('en')" class="active" id="btn-en">English</button>
+        <button onclick="setLang('ur')" id="btn-ur">اردو (Urdu)</button>
+        <button onclick="setLang('hi')" id="btn-hi">हिन्दी (Hindi)</button>
+    </div>
+
+    <!-- ENGLISH CONTENT -->
+    <div class="content en">
+        <h1>🇲🇽 Mexico Travel Guide: Land of Ancient Wonders & Vibrant Colors</h1>
+        
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn.sanity.io/976deea3f74e14fbbbb657320eabf8e35585c404.webp" alt="Cancun Beach Aerial View" class="hero-img">
+        <p style="text-align:center;font-size:0.9em;color:#666;">The breathtaking turquoise waters of Cancun — where Caribbean paradise meets Mexican soul.</p>
+
+        <div class="info-box">
+            <h2>🗺️ Country Background</h2>
+            <p>Mexico, officially the <span class="highlight">United Mexican States</span>, is a country of extraordinary depth and diversity in the southern part of North America. With a population of over <strong>130 million</strong>, it is the 10th most populous country in the world and the largest Spanish-speaking nation on Earth. The capital and largest city is <strong>Mexico City (Ciudad de México)</strong>, one of the most populous metropolitan areas globally.</p>
+            <p>Mexico is the site of ancient advanced civilizations including the <strong>Olmec, Maya, and Aztec</strong>, whose pyramids and temples still stand today. Spanish colonization began in 1519, and Mexico gained independence on <strong>September 16, 1810</strong>, following a war led by figures like Miguel Hidalgo. Today, Mexico is a federal republic with 31 states, blending indigenous traditions with Spanish colonial heritage into a unique cultural tapestry. Its currency is the <strong>Mexican Peso (MXN)</strong>.</p>
+        </div>
+
+        <div class="flag-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1200px-Flag_of_Mexico.svg.png" alt="Mexico Flag" class="flag-img">
+            <div>
+                <h2>🏳️ The Flag of Mexico</h2>
+                <p>The Mexican flag is one of the most recognizable and meaningful national symbols in the world. It features three vertical stripes — <strong>green, white, and red</strong> — with the national <strong>coat of arms</strong> at the center. The green represents <strong>hope</strong>, white symbolizes <strong>unity and purity</strong>, and red commemorates the <strong>blood of national heroes</strong> who fought for independence.</p>
+                <p>The central emblem depicts an <strong>eagle perched on a prickly pear cactus, devouring a snake</strong> — an image rooted in the ancient Aztec legend of Tenochtitlán's founding. This prophecy guided the Mexica people to build their great city where they saw this sign, which became modern-day Mexico City. The current flag design was officially adopted on <strong>September 16, 1968</strong>, and confirmed by law on February 24, 1984. Flag Day is celebrated annually on February 24.</p>
+            </div>
+        </div>
+
+        <h2>🏙️ Famous Cities You Must Visit</h2>
+
+        <div class="city-card">
+            <h3>1. Mexico City — The Heart of a Nation</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/e4d12f9b5bf55650b35972d7ad05848acad7b4b8.jpg" alt="Mexico City Metropolitan Cathedral" class="city-img">
+            <p>Mexico City is a sprawling metropolis of over <strong>12 million people</strong>, built atop the ancient Aztec capital of Tenochtitlán. The <strong>Zócalo</strong> — one of the largest public squares in the world — is dominated by the magnificent <strong>Metropolitan Cathedral</strong> and the National Palace, home to Diego Rivera's epic murals. Wander through the trendy neighborhoods of <strong>Condesa and Roma</strong>, filled with art galleries, boutique cafés, and vibrant street art.</p>
+            <p>Don't miss the <strong>Museo Frida Kahlo (La Casa Azul)</strong> in Coyoacán, the ancient pyramids of <strong>Teotihuacán</strong> just outside the city, and the colorful floating gardens of <strong>Xochimilco</strong>. The city's street food scene is legendary — tacos al pastor, tamales, and elotes are just the beginning!</p>
+        </div>
+
+        <div class="city-card">
+            <h3>2. Cancún & Riviera Maya — Caribbean Paradise</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/travelways.com/3bd7f9bd376d211cf0097d00257a0b13644e1e26.jpg" alt="Cancun Beach" class="city-img">
+            <p>Cancún is Mexico's most famous beach destination, perched on the Yucatán Peninsula overlooking the Caribbean Sea. The <strong>Hotel Zone</strong> offers powder-white sand beaches, luxury resorts, and electric nightlife, while downtown Cancún provides authentic Mexican markets and local cuisine. Beyond the beaches, explore the <strong>Great Mayan Reef</strong> — the world's second-largest coral reef system — through snorkeling or scuba diving.</p>
+            <p>Take day trips to the iconic <strong>Chichén Itzá</strong> (one of the New Seven Wonders of the World), the cliffside ruins of <strong>Tulum</strong>, and the sacred <strong>cenotes</strong> — crystal-clear underground pools that the Maya considered gateways to the underworld.</p>
+        </div>
+
+        <div class="city-card">
+            <h3>3. Guadalajara — The Soul of Jalisco</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/cdn.getyourguide.com/0b94f1862d091bd786252c31e391a484541ca093.jpg" alt="Guadalajara Cathedral and Plaza" class="city-img">
+            <p>Guadalajara, capital of Jalisco state, is the birthplace of <strong>mariachi music, tequila, and charreada</strong> (Mexican rodeo). The historic center features the stunning twin-spired <strong>Guadalajara Cathedral</strong> and the grand <strong>Teatro Degollado</strong>. Explore the nearby town of <strong>Tequila</strong>, a UNESCO World Heritage Site, where you can tour agave fields and distilleries. The city's vibrant plazas come alive with music, dance, and some of the best birria (spicy goat stew) in Mexico.</p>
+            <div class="quote">"Guadalajara is where Mexico's heart beats loudest — through song, spirit, and the clink of tequila glasses."</div>
+        </div>
+
+        <div class="city-card">
+            <h3>4. Oaxaca — A Cultural Tapestry</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/www.otherwayround.travel/5fff7b64cff0aee7a93068de0627609e89d0b316.jpg" alt="Oaxaca Colorful Streets" class="city-img">
+            <p>Oaxaca is Mexico's cultural capital, a UNESCO World Heritage city renowned for its indigenous traditions, vibrant markets, and extraordinary cuisine. The streets explode with color during festivals, especially <strong>Día de los Muertos (Day of the Dead)</strong>, when altars, marigolds, and candlelit processions transform the city. Visit the ancient <strong>Monte Albán</strong> ruins, sample seven varieties of mole sauce, and browse the famous <strong>alebrijes</strong> — fantastical carved wooden creatures. Oaxaca is also the spiritual home of mezcal, Mexico's smoky agave spirit.</p>
+        </div>
+
+        <div class="info-box">
+            <h2>💡 Travel Tips</h2>
+            <ul>
+                <li><strong>Best Time to Visit:</strong> November to April for dry, pleasant weather. Avoid hurricane season (June-October) on the coast.</li>
+                <li><strong>Getting Around:</strong> Domestic flights connect major cities. Buses (ADO, ETN) are comfortable and affordable for intercity travel.</li>
+                <li><strong>Budget:</strong> Mexico is budget-friendly. Street food costs $1-3 USD, mid-range hotels $40-80 USD/night.</li>
+                <li><strong>Safety:</strong> Stick to tourist areas, avoid isolated spots at night, and use official taxis or Uber.</li>
+                <li><strong>Must-Try Foods:</strong> Tacos al pastor, mole, chiles en nogada, tamales, churros, and fresh guacamole!</li>
+            </ul>
+        </div>
+
+        <div class="tags">
+            <span class="tag">#MexicoTravel</span>
+            <span class="tag">#Cancun</span>
+            <span class="tag">#MexicoCity</span>
+            <span class="tag">#Oaxaca</span>
+            <span class="tag">#Guadalajara</span>
+            <span class="tag">#TravelBlog</span>
+        </div>
+
+        <p style="margin-top:30px;text-align:center;color:#888;font-size:0.9em;">✍️ Written for travelers, by a traveler. ¡Buen viaje!</p>
+    </div>
+
+    <!-- URDU CONTENT -->
+    <div class="content ur urdu">
+        <h1>🇲🇽 میکسیکو ٹریول گائیڈ: قدیم عجائب اور زندہ رنگوں کا ملک</h1>
+        
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn.sanity.io/976deea3f74e14fbbbb657320eabf8e35585c404.webp" alt="Cancun Beach" class="hero-img">
+        <p style="text-align:center;font-size:0.9em;color:#666;">کینکن کے حیرت انگیز فیروزیہ پانی — جہاں کیریبین جنت میکسیکی روح سے ملتی ہے۔</p>
+
+        <div class="info-box">
+            <h2>🗺️ ملک کی تاریخ</h2>
+            <p>میکسیکو، سرکاری طور پر <span class="highlight">متحدہ میکسیکی ریاستیں</span>، شمالی امریکہ کے جنوبی حصے میں غیر معمولی گہرائی اور تنوع کا حامل ملک ہے۔ اس کی آبادی <strong>130 ملین سے زیادہ</strong> ہے، جو اسے دنیا کا دسواں سب سے آبادی والا ملک بناتا ہے۔ دارالحکومت اور سب سے بڑا شہر <strong>میکسیکو سٹی (سیوداد دے میکسیکو)</strong> ہے۔</p>
+            <p>میکسیکو <strong>اولمیک، مایا، اور ایزٹیک</strong> جیسی قدیم ترقی یافتہ تہذیبوں کا مقام ہے۔ 1519 میں ہسپانوی کالونیائزیشن شروع ہوئی، اور <strong>16 ستمبر 1810</strong> کو میکسیکو نے آزادی حاصل کی۔ آج میکسیکو 31 ریاستوں کا وفاقی جمہوریہ ہے۔ اس کی کرنسی <strong>میکسیکی پیسو (MXN)</strong> ہے۔</p>
+        </div>
+
+        <div class="flag-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1200px-Flag_of_Mexico.svg.png" alt="Mexico Flag" class="flag-img">
+            <div>
+                <h2>🏳️ میکسیکو کا پرچم</h2>
+                <p>میکسیکو کا پرچم دنیا کے سب سے قابل شناخت قومی نشانات میں سے ایک ہے۔ اس میں تین عمودی دھاریاں — <strong>سبز، سفید، اور سرخ</strong> — ہیں، جن کے مرکز میں <strong>قومی کوٹ آف آرمس</strong> ہے۔ سبز <strong>امید</strong> کی نمائندگی کرتا ہے، سفید <strong>اتحاد اور پاکیزگی</strong> کی علامت ہے، اور سرخ آزادی کے لیے لڑنے والے <strong>قومی ہیروز کے خون</strong> کی یاد دلاتا ہے۔</p>
+                <p>مرکزی نشان میں ایک <strong>عقاب ناشپاتی کیکٹس پر بیٹھا ہوا، سانپ کھا رہا ہے</strong> — یہ قدیم ایزٹیک داستان ٹینوچٹیتلان کی بنیاد سے جڑا ہوا ہے۔ موجودہ ڈیزائن <strong>16 ستمبر 1968</strong> کو سرکاری طور پر اپنایا گیا۔</p>
+            </div>
+        </div>
+
+        <h2>🏙️ مشہور شہر جو آپ کو ضرور دیکھنے چاہئیں</h2>
+
+        <div class="city-card">
+            <h3>1. میکسیکو سٹی — قوم کا دل</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/e4d12f9b5bf55650b35972d7ad05848acad7b4b8.jpg" alt="Mexico City Cathedral" class="city-img">
+            <p>میکسیکو سٹی <strong>12 ملین سے زیادہ</strong> افراد کا پھیلا ہوا میٹروپولیس ہے، جو قدیم ایزٹیک دارالحکومت ٹینوچٹیتلان کے اوپر بنا ہے۔ <strong>زوکالو</strong> — دنیا کے سب سے بڑے عوامی چوکوں میں سے ایک — شاندار <strong>میٹروپولیٹن کیتھیڈرل</strong> سے چھایا ہوا ہے۔ <strong>کونڈیسا اور روما</strong> کے ٹرینڈی محلوں میں آرٹ گیلریز اور کیفے ہیں۔</p>
+            <p><strong>میوزو فریڈا کالو (لا کاسا ازل)</strong>، قدیم <strong>ٹیوٹیہواکان</strong> کے اہرام، اور رنگین <strong>زوچیملکو</strong> کے تیرتے باغات نہ miss کریں!</p>
+        </div>
+
+        <div class="city-card">
+            <h3>2. کینکن اور ریویرا مایا — کیریبین جنت</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/travelways.com/3bd7f9bd376d211cf0097d00257a0b13644e1e26.jpg" alt="Cancun" class="city-img">
+            <p>کینکن میکسیکو کا سب سے مشہور ساحلی مقام ہے، جو یوکاٹان جزیرہ نما پر کیریبین سمندر کے سامنے واقع ہے۔ <strong>ہوٹل زون</strong> میں سفید ریت والے ساحل، لگژری ریزورٹس، اور برقی نائٹ لائف ہے۔ <strong>گریٹ مایان ریف</strong> — دنیا کا دوسرا سب سے بڑا مرجان ریف — سنوکلنگ اور scuba diving کے لیے بہترین ہے۔</p>
+            <p><strong>چیچن ایزا</strong> (دنیا کے نئے سات عجائبات میں سے ایک)، <strong>تولوم</strong> کے چٹانوں پر واقع کھنڈر، اور مقدس <strong>سینوٹس</strong> — کرسٹل صاف زیر زمین تالاب جو مایا کے لیے دیگر دنیا کے دروازے سمجھے جاتے تھے۔</p>
+        </div>
+
+        <div class="city-card">
+            <h3>3. گوادالہارا — خالیسکو کی روح</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/cdn.getyourguide.com/0b94f1862d091bd786252c31e391a484541ca093.jpg" alt="Guadalajara" class="city-img">
+            <p>گوادالہارا، خالیسکو ریاست کا دارالحکومت، <strong>ماریachi موسیقی، ٹکیلا، اور چارریڈا</strong> (میکسیکی رودیو) کی جائے پیدائش ہے۔ تاریخی مرکز میں جڑواں میناروں والی شاندار <strong>گوادالہارا کیتھیڈرل</strong> ہے۔ قریب کے <strong>ٹکیلا</strong> شہر میں ایگوے کے کھیت اور ڈسٹلریز کا دورہ کریں۔</p>
+        </div>
+
+        <div class="city-card">
+            <h3>4. اوآخاکا — ایک ثقافتی نمونہ</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/www.otherwayround.travel/5fff7b64cff0aee7a93068de0627609e89d0b316.jpg" alt="Oaxaca" class="city-img">
+            <p>اوآخاکا میکسیکو کا ثقافتی دارالحکومت ہے، ایک یونیسکو ورلڈ ہeritage شہر جو اپنی مقامی روایات، زندہ بازاروں، اور غیر معمولی پکوان کے لیے مشہور ہے۔ <strong>دیا دے لوس مورٹوس (مردوں کا دن)</strong> کے دوران سڑکیں رنگوں سے پھٹ پڑتی ہیں۔ قدیم <strong>مونٹی البان</strong> کے کھنڈر دیکھیں، سات اقسام کے مولے ساؤس چکھیں، اور مشہور <strong>الیbrijes</strong> — fantastical لکڑی کے تراشے ہوئے مخلوق — browse کریں۔</p>
+        </div>
+
+        <div class="info-box">
+            <h2>💡 سفر کے نکات</h2>
+            <ul>
+                <li><strong>بہترین وقت:</strong> خشک، خوشگوار موسم کے لیے نومبر سے اپریل۔ ساحل پر ہریکین موسم (جون-اکتوبر) سے بچیں۔</li>
+                <li><strong>آمد و رفت:</strong> مقامی پروازیں بڑے شہروں کو جوڑتی ہیں۔ بسیں (ADO, ETN) بین الشہری سفر کے لیے آرام دہ اور سستی ہیں۔</li>
+                <li><strong>بجٹ:</strong> میکسیکو بجٹ دوست ہے۔ سڑک کا کھانا $1-3 USD، درمیانی درجے کے ہوٹل $40-80 USD/رات۔</li>
+                <li><strong>لازمی کھانے:</strong> tacos al pastor, mole, chiles en nogada, tamales, churros, اور تازہ guacamole!</li>
+            </ul>
+        </div>
+
+        <p style="margin-top:30px;text-align:center;color:#888;font-size:0.9em;">✍️ مسافروں کے لیے، ایک مسافر کی طرف سے۔ ¡Buen viaje!</p>
+    </div>
+
+    <!-- HINDI CONTENT -->
+    <div class="content hi hindi">
+        <h1>🇲🇽 मेक्सिको ट्रैवल गाइड: प्राचीन आश्चर्यों और जीवंत रंगों की भूमि</h1>
+        
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn.sanity.io/976deea3f74e14fbbbb657320eabf8e35585c404.webp" alt="Cancun Beach" class="hero-img">
+        <p style="text-align:center;font-size:0.9em;color:#666;">कैंकन की सुंदर फ़िरोज़ी पानी — जहाँ कैरेबियन जन्नत मेक्सिकन आत्मा से मिलती है।</p>
+
+        <div class="info-box">
+            <h2>🗺️ देश का परिचय</h2>
+            <p>मेक्सिको, आधिकारिक तौर पर <span class="highlight">संयुक्त मेक्सिकी राज्य</span>, उत्तरी अमेरिका के दक्षिणी हिस्से में असाधारण गहराई और विविधता वाला देश है। इसकी जनसंख्या <strong>130 मिलियन से अधिक</strong> है, जो इसे दुनिया का दसवां सबसे अधिक आबादी वाला देश बनाता है। राजधानी और सबसे बड़ा शहर <strong>मेक्सिको सिटी (सिउदाद दे मेक्सिको)</strong> है।</p>
+            <p>मेक्सिको <strong>ओल्मेक, माया, और एज़्टेक</strong> जैसी उन्नत प्राचीन सभ्यताओं का स्थल है। 1519 में स्पेनिश उपनिवेशवाद शुरू हुआ, और <strong>16 सितंबर 1810</strong> को मेक्सिको ने आज़ादी हासिल की। आज मेक्सिको 31 राज्यों का संघीय गणराज्य है। इसकी मुद्रा <strong>मेक्सिकन पेसो (MXN)</strong> है।</p>
+        </div>
+
+        <div class="flag-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1200px-Flag_of_Mexico.svg.png" alt="Mexico Flag" class="flag-img">
+            <div>
+                <h2>🏳️ मेक्सिको का ध्वज</h2>
+                <p>मेक्सिको का ध्वज दुनिया के सबसे पहचानने योग्य राष्ट्रीय प्रतीकों में से एक है। इसमें तीन ऊर्ध्वाधर धारियाँ — <strong>हरी, सफेद, और लाल</strong> — हैं, जिनके केंद्र में <strong>राष्ट्रीय कोट ऑफ आर्म्स</strong> है। हरा <strong>आशा</strong> का प्रतिनिधित्व करता है, सफेद <strong>एकता और पवित्रता</strong> का प्रतीक है, और लाल आज़ादी के लिए लड़ने वाले <strong>राष्ट्रीय नायकों के खून</strong> की याद दिलाता है।</p>
+                <p>केंद्रीय प्रतीक में एक <strong>चील नाशपाती कैक्टस पर बैठी हुई, साँप खा रही है</strong> — यह प्राचीन एज़्टेक कथा टेनोच्टिटलान की स्थापना से जुड़ा हुआ है। वर्तमान डिज़ाइन <strong>16 सितंबर 1968</strong> को आधिकारिक रूप से अपनाया गया।</p>
+            </div>
+        </div>
+
+        <h2>🏙️ प्रसिद्ध शहर जो आपको अवश्य देखने चाहिए</h2>
+
+        <div class="city-card">
+            <h3>1. मेक्सिको सिटी — राष्ट्र का हृदय</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/e4d12f9b5bf55650b35972d7ad05848acad7b4b8.jpg" alt="Mexico City Cathedral" class="city-img">
+            <p>मेक्सिको सिटी <strong>12 मिलियन से अधिक</strong> लोगों का फैला हुआ महानगर है, जो प्राचीन एज़्टेक राजधानी टेनोच्टिटलान के ऊपर बसा है। <strong>ज़ोकोलो</strong> — दुनिया के सबसे बड़े सार्वजनिक चौकों में से एक — भव्य <strong>मेट्रोपॉलिटन कैथेड्रल</strong> से छाया हुआ है। <strong>कोंडेसा और रोमा</strong> के ट्रेंडी पड़ोस में कला गैलरी और कैफे हैं।</p>
+            <p><strong>म्यूज़ियो फ्रिडा काहलो (ला कासा आज़ुल)</strong>, प्राचीन <strong>टियोतिहुआकान</strong> के पिरामिड, और रंगीन <strong>ज़ोचीमिल्को</strong> के तैरते बगीचे न भूलें!</p>
+        </div>
+
+        <div class="city-card">
+            <h3>2. कैंकन और रिविएरा माया — कैरेबियन जन्नत</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/travelways.com/3bd7f9bd376d211cf0097d00257a0b13644e1e26.jpg" alt="Cancun" class="city-img">
+            <p>कैंकन मेक्सिको का सबसे प्रसिद्ध बीच गंतव्य है, जो युकाटान प्रायद्वीप पर कैरेबियन सागर के सामने स्थित है। <strong>होटल ज़ोन</strong> में सफेद रेत वाले समुद्र तट, लक्ज़री रिज़ॉर्ट्स, और इलेक्ट्रिक नाइटलाइफ़ है। <strong>ग्रेट मायन रीफ</strong> — दुनिया की दूसरी सबसे बड़ी कोरल रीफ प्रणाली — स्नॉर्कलिंग और स्कूबा डाइविंग के लिए बेहतरीन है।</p>
+            <p><strong>चिचén इत्ज़ा</strong> (दुनिया के नए सात आश्चर्यों में से एक), <strong>तुलुम</strong> के चट्टानी खंडहर, और पवित्र <strong>सेनोट्स</strong> — क्रिस्टल साफ़ भूमिगत पूल जिन्हें माया अंडरवर्ल्ड के प्रवेश द्वार मानते थे।</p>
+        </div>
+
+        <div class="city-card">
+            <h3>3. ग्वाडालाहारा — खालिस्को की आत्मा</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/cdn.getyourguide.com/0b94f1862d091bd786252c31e391a484541ca093.jpg" alt="Guadalajara" class="city-img">
+            <p>ग्वाडालाहारा, खालिस्को राज्य की राजधानी, <strong>मारियाची संगीत, टकीला, और चार्रेडा</strong> (मेक्सिकन रोडियो) का जन्मस्थान है। ऐतिहासिक केंद्र में जुड़वां मीनारों वाली शानदार <strong>ग्वाडालाहारा कैथेड्रल</strong> है। पास के <strong>टकीला</strong> शहर में एगेव के खेतों और डिस्टिलरी का दौरा करें।</p>
+        </div>
+
+        <div class="city-card">
+            <h3>4. ओअक्साका — एक सांस्कृतिक टेपेस्ट्री</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/www.otherwayround.travel/5fff7b64cff0aee7a93068de0627609e89d0b316.jpg" alt="Oaxaca" class="city-img">
+            <p>ओअक्साका मेक्सिको की सांस्कृतिक राजधानी है, एक यूनेस्को विश्व धरोहर शहर जो अपनी स्वदेशी परंपराओं, जीवंत बाजारों, और असाधारण व्यंजनों के लिए प्रसिद्ध है। <strong>दिया दे लोस मुएर्टोस (डेड ऑफ़ द डेड)</strong> के दौरान सड़कें रंगों से भर जाती हैं। प्राचीन <strong>मोंटे अल्बान</strong> के खंडहर देखें, सात प्रकार के मोले सॉस चखें, और प्रसिद्ध <strong>अलेब्रिजेस</strong> — अद्भुत नक्काशीदार लकड़ी के प्राणी — ब्राउज़ करें।</p>
+        </div>
+
+        <div class="info-box">
+            <h2>💡 यात्रा सुझाव</h2>
+            <ul>
+                <li><strong>सबसे अच्छा समय:</strong> सूखे, सुखद मौसम के लिए नवंबर से अप्रैल। तट पर तूफान का मौसम (जून-अक्टूबर) से बचें।</li>
+                <li><strong>यातायात:</strong> घरेलू उड़ानें बड़े शहरों को जोड़ती हैं। बसें (ADO, ETN) अंतर-शहर यात्रा के लिए आरामदायक और सस्ती हैं।</li>
+                <li><strong>बजट:</strong> मेक्सिको बजट-अनुकूल है। स्ट्रीट फूड $1-3 USD, मध्यम श्रेणी के होटल $40-80 USD/रात।</li>
+                <li><strong>अवश्य खाएं:</strong> tacos al pastor, mole, chiles en nogada, tamales, churros, और ताज़ा guacamole!</li>
+            </ul>
+        </div>
+
+        <p style="margin-top:30px;text-align:center;color:#888;font-size:0.9em;">✍️ यात्रियों के लिए, एक यात्री द्वारा। ¡Buen viaje!</p>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.lang-bar button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.' + lang).style.display = 'block';
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+        setLang('en');
+    </script>
+
+</body>
+</html>
