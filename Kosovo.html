@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosovo Travel Guide - A Hidden Balkan Gem</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --accent: #d4ac0d;
+            --bg: #f8f9fa;
+            --text: #2c3e50;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg);
+        }
+        .lang-bar {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .lang-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            margin: 4px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .lang-bar button:hover, .lang-bar button.active {
+            background: var(--accent);
+            color: #1a1a1a;
+        }
+        h1 {
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary);
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .flag-img {
+            width: 180px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .city-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .city-img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        .urdu, .hindi {
+            display: none;
+            direction: rtl;
+            font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', 'Noto Sans Devanagari', sans-serif;
+        }
+        .hindi {
+            direction: ltr;
+        }
+        @media (max-width: 600px) {
+            .flag-section { flex-direction: column; text-align: center; }
+            .flag-img { width: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Translator -->
+    <div class="lang-bar">
+        <strong>🌐 Translate / ترجم / अनुवाद:</strong><br>
+        <button onclick="setLang('en')" class="active" id="btn-en">English</button>
+        <button onclick="setLang('ur')" id="btn-ur">اردو (Urdu)</button>
+        <button onclick="setLang('hi')" id="btn-hi">हिन्दी (Hindi)</button>
+    </div>
+
+    <!-- ENGLISH CONTENT -->
+    <div class="content en">
+        <h1>🇽🇰 Kosovo Travel Guide: Europe's Youngest Nation</h1>
+        
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn1.matadornetwork.com/151ada4964202df34a9a13ba6ea1431d9ea82fc3.jpg" alt="Pristina Kosovo National Library" class="hero-img">
+        <p style="text-align:center;font-size:0.9em;color:#666;">Pristina's iconic National Library and Cathedral — symbols of a modern, vibrant capital.</p>
+
+        <div class="info-box">
+            <h2>🗺️ Country Background</h2>
+            <p>Kosovo, historically known as <span class="highlight">Dardania</span>, is a landlocked country in the Balkans, nestled between Serbia, North Macedonia, Albania, and Montenegro. With a population of around <strong>1.8 million</strong>, it declared independence from Serbia on <strong>February 17, 2008</strong>, making it Europe's youngest nation. The capital is <strong>Pristina (Prishtina)</strong>, and the official languages are Albanian and Serbian. The Euro is the official currency, even though Kosovo is not part of the Eurozone.</p>
+            <p>Despite its recent turbulent history, Kosovo today is a safe, welcoming destination with a unique blend of Ottoman heritage, Yugoslav architecture, and youthful energy. Over 50% of its population is under 25, giving the cities an incredibly vibrant café culture and nightlife scene.</p>
+        </div>
+
+        <div class="flag-section">
+            <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c82daa68af818efd1ccd0b83eb4d0619afa5bb07.png" alt="Kosovo Flag" class="flag-img">
+            <div>
+                <h2>🏳️ The Flag of Kosovo</h2>
+                <p>Adopted on the day of independence in 2008, the flag features a <strong>blue background</strong> symbolizing peace and hope for Euro-Atlantic integration. At the center lies a <strong>golden silhouette of Kosovo</strong>, crowned by <strong>six white stars</strong> representing the country's major ethnic groups: Albanians, Serbs, Bosniaks, Turks, Roma, and Gorani. It is a powerful symbol of unity in diversity.</p>
+            </div>
+        </div>
+
+        <h2>🏙️ Famous Cities You Must Visit</h2>
+
+        <div class="city-card">
+            <h3>1. Pristina (Prishtina) — The Cosmopolitan Capital</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/71dbf27299e2486e468131a1507a3564a43dd0ca.jpg" alt="Pristina Panorama" class="city-img">
+            <p>Pristina is the beating heart of Kosovo. Walk down <strong>Mother Teresa Boulevard</strong>, visit the quirky <strong>National Library</strong> (famously called the "world's ugliest building"), and see the <strong>Newborn Monument</strong> — repainted every year to mark independence. Don't miss the <strong>Bill Clinton Statue</strong> on Bill Clinton Boulevard, a testament to Kosovo's gratitude for the 1999 NATO intervention.</p>
+            <p>For food lovers, Pristina offers incredible grilled meats, flaky burek, and a surprisingly sophisticated cocktail scene at spots like Soma Book Station.</p>
+        </div>
+
+        <div class="city-card">
+            <h3>2. Prizren — The Cultural Soul</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/6d1385a49a021babb702259d4dbcdb84807cc7b9.jpg" alt="Prizren Old Town" class="city-img">
+            <p>Prizren is Kosovo's most beautiful city and a former Ottoman capital. The <strong>Stone Bridge</strong> over the Lumbardhi River, the majestic <strong>Sinan Pasha Mosque</strong>, and the cobbled old bazaar transport you back centuries. Hike up to <strong>Prizren Fortress</strong> for a panoramic sunset view over the red-tiled roofs and minarets. Prizren is also home to the <strong>League of Prizren Museum</strong>, a key site in Albanian national history.</p>
+            <div class="quote">"Walking through Prizren is like entering a living museum, where every corner tells a story."</div>
+        </div>
+
+        <div class="city-card">
+            <h3>3. Peja (Pejë) — Gateway to the Mountains</h3>
+            <p>Located near the Rugova Canyon and the Accursed Mountains, Peja is the adventure capital of Kosovo. Visit the <strong>Peja Patriarchate</strong>, a stunning Serbian Orthodox monastery and UNESCO site, and explore the old bazaar before heading into the mountains for hiking, climbing, and skiing.</p>
+        </div>
+
+        <div class="city-card">
+            <h3>4. Gjakova — The Ottoman Jewel</h3>
+            <p>Gjakova boasts Kosovo's <strong>largest old bazaar (Çarshia)</strong>, a 16th-century <strong>Hadum Mosque</strong>, and a rich artisan tradition. It is less touristy than Prizren, offering an authentic glimpse into traditional Kosovar life.</p>
+        </div>
+
+        <div class="info-box">
+            <h2>💡 Travel Tips</h2>
+            <ul>
+                <li><strong>Best Time to Visit:</strong> May-June and September-October for pleasant weather.</li>
+                <li><strong>Getting Around:</strong> Buses between cities are cheap (~€5) and efficient. Pristina to Prizren takes about 2 hours.</li>
+                <li><strong>Budget:</strong> Kosovo is extremely affordable. A meal costs €5-10, and accommodation ranges from €15 hostels to €80 luxury hotels.</li>
+                <li><strong>Coffee Culture:</strong> Kosovars are obsessed with macchiatos. Join them at a café for the ultimate local experience!</li>
+            </ul>
+        </div>
+
+        <div class="tags">
+            <span class="tag">#KosovoTravel</span>
+            <span class="tag">#Balkans</span>
+            <span class="tag">#Pristina</span>
+            <span class="tag">#Prizren</span>
+            <span class="tag">#TravelBlog</span>
+            <span class="tag">#Europe</span>
+        </div>
+
+        <p style="margin-top:30px;text-align:center;color:#888;font-size:0.9em;">✍️ Written for travelers, by a traveler. Safe journeys!</p>
+    </div>
+
+    <!-- URDU CONTENT -->
+    <div class="content ur urdu">
+        <h1>🇽🇰 کوسووٰ ٹریول گائیڈ: یورپ کا سب سے نوجوان ملک</h1>
+        
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn1.matadornetwork.com/151ada4964202df34a9a13ba6ea1431d9ea82fc3.jpg" alt="Pristina Kosovo" class="hero-img">
+        <p style="text-align:center;font-size:0.9em;color:#666;">پریسٹینا کی قومی لائبریری اور کیتھیڈرل — جدید دارالحکومت کی علامتیں۔</p>
+
+        <div class="info-box">
+            <h2>🗺️ ملک کی تاریخ</h2>
+            <p>کوسووٰ، جو تاریخی طور پر <span class="highlight">داردانیا</span> کے نام سے جانا جاتا ہے، بلقان میں ایک زمین بند ملک ہے۔ اس کی آبادی تقریباً <strong>1.8 ملین</strong> ہے اور اس نے <strong>17 فروری 2008</strong> کو سربیا سے آزادی کا اعلان کیا، جس سے یہ یورپ کا سب سے نوجوان ملک بن گیا۔ دارالحکومت <strong>پریسٹینا (پریشتینا)</strong> ہے، اور سرکاری زبانیں البانوی اور سربیائی ہیں۔ سرکاری کرنسی یورو ہے۔</p>
+            <p>اپنی حالیہ پرآشوب تاریخ کے باوجود، آج کا کوسووٰ ایک محفوظ اور خوش آمدید مقام ہے جس میں عثمانی ورثہ، یوگوسلاوی طرزِ تعمیر اور نوجوان توانائی کا منفرد امتزاج ہے۔</p>
+        </div>
+
+        <div class="flag-section">
+            <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c82daa68af818efd1ccd0b83eb4d0619afa5bb07.png" alt="Kosovo Flag" class="flag-img">
+            <div>
+                <h2>🏳️ کوسووٰ کا پرچم</h2>
+                <p>2008 میں آزادی کے دن اپنایا گیا، اس پرچم میں <strong>نیلا پس منظر</strong> امن اور یورو-ایٹلانٹک انضمام کی امید کی علامت ہے۔ مرکز میں <strong>کوسووٰ کا سنہری نقشہ</strong> ہے، جس کے اوپر <strong>چھ سفید ستارے</strong> ہیں جو ملک کی چھ بڑی نسلی جماعتوں کی نمائندگی کرتے ہیں: البانوی، سرب، بوسنیائی، ترک، روما اور گورانی۔</p>
+            </div>
+        </div>
+
+        <h2>🏙️ مشہور شہر جو آپ کو ضرور دیکھنے چاہئیں</h2>
+
+        <div class="city-card">
+            <h3>1. پریسٹینا — جدید دارالحکومت</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/71dbf27299e2486e468131a1507a3564a43dd0ca.jpg" alt="Pristina" class="city-img">
+            <p>پریسٹینا کوسووٰ کا دل ہے۔ <strong>مادر ٹریسا بلیوارڈ</strong> پر چہل قدمی کریں، منفرد <strong>قومی لائبریری</strong> دیکھیں، اور <strong>نیو born یادگار</strong> دیکھیں جو ہر سال دوبارہ رنگا جاتا ہے۔ <strong>بل کلنٹن کی مجسمہ</strong> اور بل کلنٹن بلیوارڈ 1999 میں نیٹو مداخلت کے لیے کوسووٰ کے شکریہ کا ثبوت ہیں۔</p>
+        </div>
+
+        <div class="city-card">
+            <h3>2. پrizرن — ثقافتی دل</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/6d1385a49a021babb702259d4dbcdb84807cc7b9.jpg" alt="Prizren" class="city-img">
+            <p>پrizرن کوسووٰ کا سب سے خوبصورت شہر ہے۔ <strong>پتھر کا پل</strong>، <strong>سنان پاشا مسجد</strong>، اور پرانی عثمانی بازار آپ کو صدیوں پیچھے لے جاتے ہیں۔ <strong>پrizرن قلعہ</strong> پر چڑھ کر غروب آفتاب کا منظر دیکھیں۔</p>
+            <div class="quote">"پrizرن میں چہل قدمی کرنا ایک زندہ عجائب گھر میں داخل ہونے جیسا ہے۔"</div>
+        </div>
+
+        <div class="city-card">
+            <h3>3. پیجا — پہاڑوں کا دروازہ</h3>
+            <p>رگووا کینین اور لعنتی پہاڑوں کے قریب، پیجا کوسووٰ کا ایڈونچر دارالحکومت ہے۔ <strong>پیجا پیٹریارکیٹ</strong> (یونیسکو ورثہ) دیکھیں اور پہاڑوں میں ٹریکنگ اور سکیئنگ کا لطف اٹھائیں۔</p>
+        </div>
+
+        <div class="city-card">
+            <h3>4. جاکووا — عثمانی جواہر</h3>
+            <p>جاکووا میں کوسووٰ کا <strong>سب سے بڑا پرانا بازار</strong>، 16ویں صدی کی <strong>حادم مسجد</strong>، اور امیر دستکاری روایت ہے۔ یہ پrizرن سے کم سیاحتی ہے، جو روایتی کوسوواری زندگی کا اصلی نظارہ پیش کرتا ہے۔</p>
+        </div>
+
+        <div class="info-box">
+            <h2>💡 سفر کے نکات</h2>
+            <ul>
+                <li><strong>بہترین وقت:</strong> مئی-جون اور ستمبر-اکتوبر۔</li>
+                <li><strong>آمد و رفت:</strong> بسیں سستی (~€5) ہیں۔ پریسٹینا سے پrizرن تقریباً 2 گھنٹے ہیں۔</li>
+                <li><strong>بجٹ:</strong> کوسووٰ انتہائی سستا ہے۔ ایک کھانا €5-10، اور رہائش €15 سے €80 تک۔</li>
+                <li><strong>کافی ثقافت:</strong> کوسوواری میکیاتو کے دیوانے ہیں — کافی ہاؤس میں بیٹھنا لازمی ہے!</li>
+            </ul>
+        </div>
+
+        <p style="margin-top:30px;text-align:center;color:#888;font-size:0.9em;">✍️ مسافروں کے لیے، ایک مسافر کی طرف سے۔ محفوظ سفر!</p>
+    </div>
+
+    <!-- HINDI CONTENT -->
+    <div class="content hi hindi">
+        <h1>🇽🇰 कोसोवो ट्रैवल गाइड: यूरोप का सबसे युवा राष्ट्र</h1>
+        
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn1.matadornetwork.com/151ada4964202df34a9a13ba6ea1431d9ea82fc3.jpg" alt="Pristina Kosovo" class="hero-img">
+        <p style="text-align:center;font-size:0.9em;color:#666;">प्रिस्टीना की राष्ट्रीय पुस्तकालय और कैथेड्रल — एक आधुनिक, जीवंत राजधानी के प्रतीक।</p>
+
+        <div class="info-box">
+            <h2>🗺️ देश का परिचय</h2>
+            <p>कोसोवो, जो ऐतिहासिक रूप से <span class="highlight">दारदानिया</span> के नाम से जाना जाता है, बाल्कन में एक भूमि-बद्ध देश है। इसकी जनसंख्या लगभग <strong>1.8 मिलियन</strong> है और इसने <strong>17 फरवरी 2008</strong> को सर्बिया से स्वतंत्रता की घोषणा की, जिससे यह यूरोप का सबसे युवा राष्ट्र बन गया। राजधानी <strong>प्रिस्टीना (प्रिश्टिना)</strong> है, और आधिकारिक भाषाएं अल्बानियाई और सर्बियाई हैं। आधिकारिक मुद्रा यूरो है।</p>
+            <p>अपने हाल के उथल-पुथल भरे इतिहास के बावजूद, आज का कोसोवो एक सुरक्षित, स्वागत योग्य गंतव्य है जिसमें ओटोमन विरासत, युगोस्लाव वास्तुकला और युवा ऊर्जा का अनूठा संयोजन है।</p>
+        </div>
+
+        <div class="flag-section">
+            <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c82daa68af818efd1ccd0b83eb4d0619afa5bb07.png" alt="Kosovo Flag" class="flag-img">
+            <div>
+                <h2>🏳️ कोसोवो का ध्वज</h2>
+                <p>2008 में स्वतंत्रता के दिन अपनाया गया, इस ध्वज में <strong>नीला पृष्ठभूमि</strong> शांति और यूरो-अटलांटिक एकीकरण की आशा का प्रतीक है। केंद्र में <strong>कोसोवो का सुनहरा सिल्हूट</strong> है, जिसके ऊपर <strong>छह सफेद तारे</strong> हैं जो देश की छह प्रमुख जातीय समूहों का प्रतिनिधित्व करते हैं: अल्बानियाई, सर्ब, बोस्नियाई, तुर्क, रोमा और गोरानी।</p>
+            </div>
+        </div>
+
+        <h2>🏙️ प्रसिद्ध शहर जो आपको अवश्य देखने चाहिए</h2>
+
+        <div class="city-card">
+            <h3>1. प्रिस्टीना — कॉस्मोपॉलिटन राजधानी</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/71dbf27299e2486e468131a1507a3564a43dd0ca.jpg" alt="Pristina" class="city-img">
+            <p>प्रिस्टीना कोसोवो का हृदय है। <strong>मदर टेरेसा बुलेवार्ड</strong> पर घूमें, अनोखी <strong>राष्ट्रीय पुस्तकालय</strong> देखें, और <strong>न्यूबॉर्न स्मारक</strong> देखें जो हर साल फिर से रंगा जाता है। <strong>बिल क्लिंटन की मूर्ति</strong> और बिल क्लिंटन बुलेवार्ड 1999 में नाटो हस्तक्षेप के लिए कोसोवो की कृतज्ञता का प्रमाण हैं।</p>
+        </div>
+
+        <div class="city-card">
+            <h3>2. प्रिज़्रेन — सांस्कृतिक आत्मा</h3>
+            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/6d1385a49a021babb702259d4dbcdb84807cc7b9.jpg" alt="Prizren" class="city-img">
+            <p>प्रिज़्रेन कोसोवो का सबसे सुंदर शहर है। <strong>पत्थर का पुल</strong>, <strong>सिनान पाशा मस्जिद</strong>, और पक्की पुरानी बाजार आपको सदियों पीछे ले जाते हैं। <strong>प्रिज़्रेन किले</strong> पर चढ़कर सूर्यास्त का पैनोरामिक दृश्य देखें।</p>
+            <div class="quote">"प्रिज़्रेन में घूमना एक जीवित संग्रहालय में प्रवेश करने जैसा है, जहाँ हर कोना एक कहानी सुनाता है।"</div>
+        </div>
+
+        <div class="city-card">
+            <h3>3. पेजा — पहाड़ों का प्रवेश द्वार</h3>
+            <p>रुगोवा कैन्यन और श्रापित पहाड़ों के पास, पेजा कोसोवो का एडवेंचर राजधानी है। <strong>पेजा पैट्रियारचेट</strong> (यूनेस्को विरासत) देखें और पहाड़ों में ट्रेकिंग और स्कीइंग का आनंद लें।</p>
+        </div>
+
+        <div class="city-card">
+            <h3>4. जाकोवा — ओटोमन रत्न</h3>
+            <p>जाकोवा में कोसोवो का <strong>सबसे बड़ा पुराना बाजार</strong>, 16वीं सदी की <strong>हादुम मस्जिद</strong>, और समृद्ध कारीगरी परंपरा है। यह प्रिज़्रेन से कम पर्यटकीय है, जो पारंपरिक कोसोवार जीवन की एक प्रामाणिक झलक प्रदान करता है।</p>
+        </div>
+
+        <div class="info-box">
+            <h2>💡 यात्रा सुझाव</h2>
+            <ul>
+                <li><strong>सबसे अच्छा समय:</strong> मई-जून और सितंबर-अक्टूबर।</li>
+                <li><strong>यातायात:</strong> बसें सस्ती (~€5) हैं। प्रिस्टीना से प्रिज़्रेन लगभग 2 घंटे।</li>
+                <li><strong>बजट:</strong> कोसोवो बेहद सस्ता है। एक भोजन €5-10, और आवास €15 से €80 तक।</li>
+                <li><strong>कॉफी संस्कृति:</strong> कोसोवार मैकियाटो के दीवाने हैं — कैफे में बैठना अनिवार्य है!</li>
+            </ul>
+        </div>
+
+        <p style="margin-top:30px;text-align:center;color:#888;font-size:0.9em;">✍️ यात्रियों के लिए, एक यात्री द्वारा। सुरक्षित यात्रा!</p>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            // Hide all
+            document.querySelectorAll('.content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.lang-bar button').forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected
+            document.querySelector('.' + lang).style.display = 'block';
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+        // Default English
+        setLang('en');
+    </script>
+
+</body>
+</html>
