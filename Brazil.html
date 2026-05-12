@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brazil Travel Guide — Multilingual Blog</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Georgia', 'Noto Sans Devanagari', serif;
+            line-height: 1.8;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            color: #333;
+            background: #f5f5f5;
+        }
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #009739;
+            font-size: 2.4em;
+            margin-bottom: 8px;
+            border-bottom: 3px solid #FFDF00;
+            padding-bottom: 12px;
+        }
+        .subtitle {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+        .intro-box {
+            background: #fff;
+            border-left: 5px solid #002776;
+            padding: 18px 22px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 0 6px 6px 0;
+        }
+        h2 {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #2c3e50;
+            margin-top: 35px;
+            font-size: 1.5em;
+        }
+        .city-section {
+            background: #fff;
+            padding: 22px;
+            margin: 22px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .location-tag {
+            display: inline-block;
+            background: #009739;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-family: 'Helvetica Neue', sans-serif;
+            margin-bottom: 10px;
+        }
+        .flag-section {
+            text-align: center;
+            padding: 18px;
+            background: #fff;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+        .flag-box {
+            max-width: 320px;
+            margin: 0 auto;
+            border: 2px solid #333;
+            background: #009739;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        .flag-diamond {
+            width: 140px;
+            height: 140px;
+            background: #FFDF00;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .flag-circle {
+            width: 90px;
+            height: 90px;
+            background: #002776;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.65em;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .caption {
+            font-size: 0.88em;
+            color: #777;
+            text-align: center;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        .conclusion {
+            background: #002776;
+            color: white;
+            padding: 22px;
+            border-radius: 8px;
+            margin-top: 35px;
+        }
+        .conclusion h2 { color: white; margin-top: 0; }
+        
+        /* Language Switcher */
+        .lang-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            background: #fff;
+            padding: 14px 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .lang-btn {
+            padding: 8px 18px;
+            border: 2px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 24px;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.92em;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: #555;
+        }
+        .lang-btn:hover { border-color: #002776; color: #002776; }
+        .lang-btn.active {
+            background: #009739;
+            color: white;
+            border-color: #009739;
+        }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        
+        /* Urdu RTL */
+        .urdu-content {
+            direction: rtl;
+            font-family: 'Noto Nastaliq Urdu', 'Georgia', serif;
+            line-height: 2.2;
+            font-size: 1.05em;
+        }
+        .urdu-content h1, .urdu-content h2 {
+            font-family: 'Noto Nastaliq Urdu', 'Helvetica Neue', sans-serif;
+        }
+        .urdu-content .intro-box {
+            border-left: none;
+            border-right: 5px solid #002776;
+            border-radius: 6px 0 0 6px;
+            text-align: right;
+        }
+        .urdu-content .location-tag {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        /* Hindi */
+        .hindi-content {
+            font-family: 'Noto Sans Devanagari', 'Georgia', serif;
+            line-height: 1.9;
+            font-size: 1.05em;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Language Switcher -->
+<div class="lang-bar">
+    <button class="lang-btn active" onclick="switchLang('en')">🇺🇸 English</button>
+    <button class="lang-btn" onclick="switchLang('hi')">🇮🇳 हिन्दी</button>
+    <button class="lang-btn" onclick="switchLang('ur')">🇵🇰 اردو</button>
+    <button class="lang-btn" onclick="switchLang('pt')">🇧🇷 Português</button>
+</div>
+
+<!-- ================= ENGLISH ================= -->
+<div id="en" class="lang-content active">
+
+<h1>🇧🇷 Brazil: The Land of Rhythm and Wonder</h1>
+<p class="subtitle">From samba-filled streets to thundering waterfalls — a journey through South America's most captivating giant.</p>
+
+<div class="intro-box">
+    <strong>Country:</strong> Federative Republic of Brazil (República Federativa do Brasil)<br>
+    <strong>Location:</strong> South America<br>
+    <strong>Capital:</strong> Brasília<br>
+    <strong>Language:</strong> Portuguese<br>
+    <strong>Currency:</strong> Brazilian Real (BRL)<br>
+    <strong>Best Time to Visit:</strong> December–March (summer/Carnival) or May–September (dry season)
+</div>
+
+<p><strong>Brazil</strong> is not just a country — it's a feeling. The largest nation in South America and the only one where Portuguese is spoken, Brazil stretches across a staggering 8.5 million square kilometers, home to over 213 million people who pulse with an irrepressible zest for life. citeweb_search:19#0 From the infinite green of the Amazon rainforest to the thundering power of Iguaçu Falls, from the golden beaches of Rio to the colonial cobblestones of Salvador, Brazil offers a sensory explosion that no other destination can match.</p>
+
+<p>The Portuguese first arrived in the early 1500s, and their colonial imprint — combined with vibrant African and indigenous heritage — created a cultural fusion unlike anywhere else on Earth. Brazil declared independence in 1822, and today it stands as a global powerhouse of music, football, and natural wonder. Whether you're dancing samba in the streets during Carnival, spotting jaguars in the Pantanal wetlands, or simply sipping caipirinha as the sun sets over Ipanema, Brazil will steal your heart.</p>
+
+<h2>🇧🇷 The Brazilian Flag: Order and Progress</h2>
+
+<div class="flag-section">
+    <div class="flag-box">
+        <div class="flag-diamond"></div>
+        <div class="flag-circle">27 ★<br>Ordem e<br>Progresso</div>
+    </div>
+    <p class="caption">The Brazilian flag — green for the forests, yellow for gold, blue for the sky, and 27 stars for each state.</p>
+</div>
+
+<p>Adopted on November 19, 1889, just days after the proclamation of the republic, the Brazilian flag is one of the world's most distinctive. The <strong>green field</strong> represents the lush rainforests and jungles — specifically the Amazon, which harbors the greatest biodiversity on Earth. citeweb_search:19#6 The <strong>yellow diamond</strong> symbolizes the nation's immense gold reserves; between 1500 and 1900, more gold was found in Brazil than in the rest of the world combined. citeweb_search:19#6</p>
+
+<p>At the center, a <strong>blue celestial globe</strong> dotted with 27 white stars represents the night sky over Rio de Janeiro on November 15, 1889 — the moment Brazil became a republic. Each star corresponds to a Brazilian state or the Federal District. citeweb_search:19#6web_search:19#8 The curved white banner bears the national motto <strong><em>Ordem e Progresso</em></strong> ("Order and Progress"), inspired by French philosopher Auguste Comte. citeweb_search:19#7</p>
+
+<h2>🌴 Rio de Janeiro – The Marvelous City</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 Rio de Janeiro — 22.9068° S, 43.1729° W</span>
+    imageimage_search:18#7
+    <p class="caption">Christ the Redeemer watching over Rio at sunrise — one of the New Seven Wonders of the World.</p>
+    
+    <p><strong>Rio de Janeiro</strong> is the soul of Brazil. Known as the <em>Cidade Maravilhosa</em> (Marvelous City), it is one of the world's truly great urban landscapes, where golden beaches, lush mountains, and samba-fueled nightlife collide in spectacular fashion. citeweb_search:19#0 The iconic <strong>Christ the Redeemer</strong> statue stands 98 feet tall atop Corcovado Mountain, arms outstretched as if embracing the entire city below — a UNESCO World Heritage Site and one of the New Seven Wonders of the World. citeweb_search:19#1</p>
+    
+    <p>Take the cable car up <strong>Sugarloaf Mountain</strong> for 360-degree views that will leave you breathless, then descend to the world-famous <strong>Copacabana</strong> and <strong>Ipanema beaches</strong>, where locals play volleyball, sip mate, and live life at the pace of the waves. citeweb_search:19#1 As night falls, head to <strong>Lapa</strong>, the city's bohemian heart, where samba spills from every doorway and street parties last until dawn. Rio isn't just a city you visit — it's a city you feel.</p>
+</div>
+
+<h2>🏙️ São Paulo – The Cultural Capital</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 São Paulo — 23.5505° S, 46.6333° W</span>
+    imageimage_search:18#5
+    <p class="caption">São Paulo's stunning skyline at sunset — South America's largest metropolis.</p>
+    
+    <p><strong>São Paulo</strong> is Brazil's beating economic and cultural heart. With over 12 million residents in the city and 30 million in the greater metro area, it is the largest city in the Southern Hemisphere and Latin America's financial powerhouse. citeweb_search:19#2 But beyond the skyscrapers and stock exchanges lies one of the world's most dynamic cultural scenes.</p>
+    
+    <p>The city's museums rival any in Europe — the <strong>São Paulo Museum of Art (MASP)</strong> houses the finest collection of Western art in Latin America. Its restaurant scene is legendary, serving everything from world-class sushi to hearty <em>feijoada</em> (black bean stew). citeweb_search:19#0 Neighborhoods like <strong>Vila Madalena</strong> burst with street art and live music, while <strong>Avenida Paulista</strong> pulses with the energy of a city that never stops creating. São Paulo may lack Rio's beaches, but it more than makes up for it with soul.</p>
+</div>
+
+<h2>🎨 Salvador – The Afro-Brazilian Soul</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 Salvador — 12.9714° S, 38.5014° W</span>
+    imageimage_search:18#3
+    <p class="caption">The colorful colonial facades of Pelourinho, Salvador's UNESCO-listed historic heart.</p>
+    
+    <p><strong>Salvador da Bahia</strong> is where Brazil's African heartbeat is loudest. Brazil's first capital, founded in the mid-16th century, Salvador is the epicenter of Afro-Brazilian culture — a city of drumbeats, capoeira, and cuisine that will set your taste buds on fire. citeweb_search:19#2web_search:19#4 The <strong>Pelourinho</strong> district, a UNESCO World Heritage Site, is a kaleidoscope of pastel-colored colonial buildings, cobblestone streets, and baroque churches that transport you back to the days of Portuguese rule. citeweb_search:19#4</p>
+    
+    <p>But Salvador is no museum piece. The city pulses with life — from the nightly street parties where <em>blocos afro</em> drum circles fill the air with rhythm, to the acrobatic displays of capoeira in every plaza. Its Carnival is the world's largest street party according to Guinness World Records. citeweb_search:19#2 Come for the history, stay for the energy — Salvador will move you in ways you never expected.</p>
+</div>
+
+<h2>💦 Iguaçu Falls – Nature's Grandest Spectacle</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 Iguaçu Falls — 25.6953° S, 54.4367° W</span>
+    imageimage_search:18#2
+    <p class="caption">The thundering cascades of Iguaçu Falls — 275 waterfalls straddling Brazil and Argentina.</p>
+    
+    <p>Straddling the border between Brazil and Argentina, <strong>Iguaçu Falls</strong> is one of the most awe-inspiring natural wonders on the planet. A UNESCO World Heritage Site, this collection of over 275 individual waterfalls stretches nearly three kilometers along the Iguaçu River, with the thundering <strong>Garganta del Diablo</strong> (Devil's Throat) plunging 80 meters into the mist below. citeweb_search:19#1</p>
+    
+    <p>The Brazilian side offers panoramic walkways that let you feel the spray on your face and witness the full scale of the falls, while the Argentine side brings you up close via footbridges that hover directly above the roaring water. Surrounded by lush Atlantic rainforest teeming with toucans, coatis, and butterflies, Iguaçu is not just a sight to see — it's a force of nature that will humble and exhilarate you in equal measure.</p>
+</div>
+
+<div class="conclusion">
+    <h2>Why Brazil Should Be Your Next Adventure</h2>
+    <p>Brazil is a destination that demands to be felt, not just observed. Whether you're standing beneath the outstretched arms of Christ the Redeemer, losing yourself in São Paulo's cultural whirlwind, dancing to the drums of Salvador, or feeling the earth shake beneath Iguaçu Falls, you'll discover a country that celebrates life with an intensity found nowhere else.</p>
+    <p>Affordable, warm, and impossibly diverse, Brazil is South America's ultimate travel experience. <em>Obrigado</em> (thank you) for reading — now go chase that Brazilian sun! ✈️</p>
+</div>
+
+</div>
+
+<!-- ================= HINDI ================= -->
+<div id="hi" class="lang-content hindi-content">
+
+<h1>🇧🇷 ब्राज़ील: लय और अद्भुत का देश</h1>
+<p class="subtitle">सम्बा से भरी सड़कों से लेकर गरजते झरनों तक — दक्षिण अमेरिका के सबसे मोहक विशालकाय देश की यात्रा।</p>
+
+<div class="intro-box">
+    <strong>देश:</strong> संघीय गणराज्य ब्राज़ील<br>
+    <strong>स्थान:</strong> दक्षिण अमेरिका<br>
+    <strong>राजधानी:</strong> ब्रासीलिया<br>
+    <strong>भाषा:</strong> पुर्तगाली<br>
+    <strong>मुद्रा:</strong> ब्राज़ीली रियाल (BRL)<br>
+    <strong>सबसे अच्छा समय:</strong> दिसंबर–मार्च (गर्मी/कार्निवल) या मई–सितंबर (सूखा मौसम)
+</div>
+
+<p><strong>ब्राज़ील</strong> सिर्फ एक देश नहीं — यह एक अनुभव है। दक्षिण अमेरिका का सबसे बड़ा देश और एकमात्र जहाँ पुर्तगाली बोली जाती है, ब्राज़ील 8.5 मिलियन वर्ग किलोमीटर में फैला हुआ है, जहाँ 21 करोड़ से अधिक लोग अदम्य जीवन-उत्साह के साथ रहते हैं। अमेज़न वर्षा वन की अनंत हरियाली से लेकर इगुआसू झरनों की गर्जना तक, रियो की सुनहरी समुद्र तटों से लेकर साल्वाडोर के औपनिवेशिक पत्थरों तक — ब्राज़ील एक ऐसा संवेदी विस्फोट है जो कहीं और नहीं मिलता।</p>
+
+<h2>🇧🇷 ब्राज़ीली झंडा: व्यवस्था और प्रगति</h2>
+
+<div class="flag-section">
+    <div class="flag-box">
+        <div class="flag-diamond"></div>
+        <div class="flag-circle">27 ★<br>Ordem e<br>Progresso</div>
+    </div>
+    <p class="caption">ब्राज़ीली झंडा — हरियाली के लिए हरा, सोने के लिए पीला, आकाश के लिए नीला, और 27 तारे प्रत्येक राज्य के लिए।</p>
+</div>
+
+<p>19 नवंबर 1889 को गणराज्य की घोषणा के कुछ दिनों बाद अपनाया गया, ब्राज़ीली झंडा दुनिया के सबसे विशिष्ट झंडों में से एक है। <strong>हरा क्षेत्र</strong> हरे-भरे वर्षा वनों और जंगलों का प्रतीक है — विशेष रूप से अमेज़न, जहाँ पृथ्वी पर सबसे अधिक जैव विविधता है। <strong>पीला हीरा</strong> राष्ट्र के विशाल सोने के भंडार का प्रतीक है; 1500 और 1900 के बीच, ब्राज़ील में बाकी दुनिया से अधिक सोना मिला। केंद्र में एक <strong>नीला आकाशीय गोल</strong> 27 सफेद तारों के साथ रियो डी जनेiro के ऊपर 15 नवंबर 1889 की रात्रि का आकाश दर्शाता है — जब ब्राज़ील गणराज्य बना।</p>
+
+<h2>🌴 रियो डी जनेiro — अद्भुत शहर</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 रियो डी जनेiro — 22.9068° दक्षिण, 43.1729° पश्चिम</span>
+    imageimage_search:18#7
+    <p class="caption">सूर्योदय में रियो पर नज़र रखते हुए क्राइस्ट द रिडीमर — दुनिया के नए सात अजूबों में से एक।</p>
+    
+    <p><strong>रियो डी जनेiro</strong> ब्राज़ील की आत्मा है। <em>सिडाडे मारविलोसा</em> (अद्भुत शहर) के रूप में जाना जाता है, यह दुनिया के सच्चे महान शहरों में से एक है, जहाँ सुनहरे समुद्र तट, हरे-भरे पहाड़, और सम्बा से भरी रात्रिजीवन शानदार ढंग से टकराते हैं। प्रतिष्ठित <strong>क्राइस्ट द रिडीमर</strong> मूर्ति कोरकोवाडो पहाड़ की चोटी पर 98 फीट ऊँची खड़ी है, बाहें फैलाए हुए जैसे पूरे शहर को गले लगा रही हो — यूनेस्को विश्व धरोहर स्थल और दुनिया के नए सात अजूबों में से एक।</p>
+    
+    <p><strong>शुगरलोफ पहाड़</strong> पर केबल कार से 360-डिग्री के दृश्यों का आनंद लें जो आपको Breathless कर देंगे, फिर विश्व-प्रसिद्ध <strong>कोपाकाबाना</strong> और <strong>इपानेमा समुद्र तटों</strong> पर उतरें, जहाँ स्थानीय लोग वॉलीबॉल खेलते हैं, मate पीते हैं, और लहरों की गति से जीवन जीते हैं। जब रात गिरती है, <strong>लापा</strong> की ओर बढ़ें, शहर का बोहेमियन हृदय, जहाँ सम्बा हर दरवाज़े से बाहर बहती है और सड़क पार्टियाँ भोर तक चलती हैं।</p>
+</div>
+
+<h2>🏙️ साओ पाउलो — सांस्कृतिक राजधानी</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 साओ पाउलो — 23.5505° दक्षिण, 46.6333° पश्चिम</span>
+    imageimage_search:18#5
+    <p class="caption">सूर्यास्त में साओ पाउलो का शानदार स्काईलाइन — दक्षिणी गोलार्ध का सबसे बड़ा महानगर।</p>
+    
+    <p><strong>साओ पाउलो</strong> ब्राज़ील की धड़कती हुई आर्थिक और सांस्कृतिक धड़कन है। शहर में 1.2 करोड़ से अधिक निवासी और महानगरीय क्षेत्र में 3 करोड़ से अधिक लोगों के साथ, यह दक्षिणी गोलार्ध का सबसे बड़ा शहर और लैटिन अमेरिका की वित्तीय शक्ति है। लेकिन गगनचुंबी इमारतों और स्टॉक एक्सचेंजों के परे दुनिया के सबसे गतिशील सांस्कृतिक दृश्यों में से एक है।</p>
+    
+    <p>शहर के संग्रहालय यूरोप में किसी से कम नहीं — <strong>साओ पाउलो कला संग्रहालय (MASP)</strong> लैटिन अमेरिका में पश्चिमी कला का सबसे बेहतरीन संग्रह रखता है। इसका रेस्तरां दृश्य किंवदंती है, जो दुनिया-स्तरीय सुशी से लेकर हार्दिक <em>फेजोआडा</em> (काली Bean स्टू) तक सब कुछ परोसता है। <strong>विला माडालेना</strong> जैसे पड़ोस स्ट्रीट आर्ट और लाइव संगीत से भरे हुए हैं, जबकि <strong>अवेनिडा पाउलिस्टा</strong> एक ऐसे शहर की ऊर्जा के साथ धड़कता है जो कभी रचना करना बंद नहीं करता।</p>
+</div>
+
+<h2>🎨 साल्वाडोर — अफ्रीकी-ब्राज़ीली आत्मा</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 साल्वाडोर — 12.9714° दक्षिण, 38.5014° पश्चिम</span>
+    imageimage_search:18#3
+    <p class="caption">पेलोरिन्हो के रंगीन औपनिवेशिक फासाड, साल्वाडोर का यूनेस्को सूचीबद्ध ऐतिहासिक हृदय।</p>
+    
+    <p><strong>साल्वाडोर दा बाहिया</strong> वह जगह है जहाँ ब्राज़ील की अफ्रीकी धड़कन सबसे ज़ोर से सुनाई देती है। 16वीं सदी के मध्य में स्थापित ब्राज़ील की पहली राजधानी, साल्वाडोर अफ्रीकी-ब्राज़ीली संस्कृति का केंद्र है — ढोल की थाप, कैपोइरा, और ऐसे व्यंजनों का शहर जो आपके स्वाद कलिकाओं को आग लगा देंगे। <strong>पेलोरिन्हो</strong> जिला, एक यूनेस्को विश्व धरोहर स्थल, पास्टel रंगीन औपनिवेशिक इमारतों, पत्थर की सड़कों, और बaroque चर्चों का एक कaleidoscope है जो आपको पुर्तगाली शासन के दिनों में वापस ले जाता है।</p>
+    
+    <p>लेकिन साल्वाडोर कोई संग्रहालय नहीं है। शहर जीवन से भरपूर है — रात्रिगत सड़क पार्टियों से लेकर जहाँ <em>ब्लोकोस अफ्रो</em> ढोल वृत्त हवा में लय भर देते हैं, हर चौक में कैपोइरा के कलाबाज़ी प्रदर्शन तक। इसका कार्निवल गिनीज़ वर्ल्ड रिकॉर्ड्स के अनुसार दुनिया का सबसे बड़ा सड़क उत्सव है। इतिहास के लिए आएं, ऊर्जा के लिए ठहरें — साल्वाडोर आपको उन तरीकों से छुएगा जो आपने कभी अपेक्षा नहीं की थी।</p>
+</div>
+
+<h2>💦 इगुआसू झरने — प्रकृति का सबसे भव्य प्रदर्शन</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 इगुआसू झरने — 25.6953° दक्षिण, 54.4367° पश्चिम</span>
+    imageimage_search:18#2
+    <p class="caption">इगुआसू झरनों की गरजती झरनियाँ — ब्राज़ील और अर्जेंटीना को जोड़ते 275 झरने।</p>
+    
+    <p>ब्राज़ील और अर्जेंटीना की सीमा पर स्थित, <strong>इगुआसू झरने</strong> ग्रह पर सबसे अधिक आश्चर्यजनक प्राकृतिक अजूबों में से एक हैं। एक यूनेस्को विश्व धरोहर स्थल, 275 से अधिक व्यक्तिगत झरनों का यह संग्रह इगुआसू नदी के साथ लगभग तीन किलोमीटर तक फैला हुआ है, जिसमें गरजता हुआ <strong>गारगांटा डेल डियाब्लो</strong> (शैतान का गला) 80 मीटर नीचे धुंध में गिरता है।</p>
+    
+    <p>ब्राज़ीली पक्ष पैनोरामिक वॉकवे प्रदान करता है जो आपको धुंध अपने चेहरे पर महसूस करने और झरनों के पूर्ण पैमाने को देखने देता है, जबकि अर्जेंटीनी पक्ष फुटब्रिज के माध्यम से आपको गरजते पानी के ठीक ऊपर लाता है। तोतों, कोटिस, और तितलियों से भरे हरे-भरे अटलांटिक वर्षा वन से घिरा हुआ, इगुआसू सिर्फ देखने की चीज़ नहीं है — यह प्रकृति की एक शक्ति है जो आपको विनम्र और उत्साहित दोनों करेगी।</p>
+</div>
+
+<div class="conclusion">
+    <h2>ब्राज़ील क्यों होनी चाहिए आपकी अगली यात्रा?</h2>
+    <p>ब्राज़ील एक ऐसा गंतव्य है जिसे सिर्फ देखा नहीं, महसूस किया जाना चाहिए। चाहे आप क्राइस्ट द रिडीमर की फैली हुई बाहों के नीचे खड़े हों, साओ पाउलो की सांस्कृतिक भंवर में खो जाएँ, साल्वाडोर के ढोलों पर नाचें, या इगुआसू झरनों के नीचे धरती को कांपते महसूस करें — आप एक ऐसा देश खोजेंगे जो जीवन का जश्न कहीं और न मिलने वाली तीव्रता के साथ मनाता है।</p>
+    <p>सस्ता, गर्म, और असंभवतः विविध, ब्राज़ील दक्षिण अमेरिका की अंतिम यात्रा अनुभव है। पढ़ने के लिए धन्यवाद — अब उस ब्राज़ीली सूरज का पीछा करें! ✈️</p>
+</div>
+
+</div>
+
+<!-- ================= URDU ================= -->
+<div id="ur" class="lang-content urdu-content">
+
+<h1>🇧🇷 برازیل: دھن اور حیرت کا ملک</h1>
+<p class="subtitle">سامبا سے بھرئی سڑکوں سے لے کر گرجتے آبشاروں تک — جنوبی امریکہ کے سب سے دلکش عظیم الجثہ ملک کا سفر۔</p>
+
+<div class="intro-box">
+    <strong>ملک:</strong> وفاقی جمہوریہ برازیل<br>
+    <strong>محل وقوع:</strong> جنوبی امریکہ<br>
+    <strong>دارالحکومت:</strong> براسیلیا<br>
+    <strong>زبان:</strong> پرتگالی<br>
+    <strong>کرنسی:</strong> برازیلی ریال (BRL)<br>
+    <strong>بہترین وقت:</strong> دسمبر–مارچ (گرمی/کارنیوال) یا مئی–ستمبر (خشک موسم)
+</div>
+
+<p><strong>برازیل</strong> صرف ایک ملک نہیں — یہ ایک احساس ہے۔ جنوبی امریکہ کا سب سے بڑا ملک اور واحد جہاں پرتگالی بولی جاتی ہے، برازیل 8.5 ملین مربع کلومیٹر میں پھیلا ہوا ہے، جہاں 21 کروڑ سے زیادہ لوگ ایک ناقابل تسخیر زندگی کے جوش کے ساتھ رہتے ہیں۔ ایمازون بارانی جنگل کی لامحدود سبزی سے لے کر ایگواسو آبشاروں کی گرجنا تک، ریو کے سنہرے ساحلوں سے لے کر سالواڈور کے نوآبادیاتی پتھروں تک — برازیل ایک حسی دھماکہ پیش کرتا ہے جو کہیں اور نہیں ملتا۔</p>
+
+<h2>🇧🇷 برازیلی پرچم: ترتیب اور ترقی</h2>
+
+<div class="flag-section">
+    <div class="flag-box">
+        <div class="flag-diamond"></div>
+        <div class="flag-circle">27 ★<br>Ordem e<br>Progresso</div>
+    </div>
+    <p class="caption">برازیلی پرچم — جنگلات کے لیے سبز، سونے کے لیے پیلا، آسمان کے لیے نیلا، اور 27 ستارے ہر ریاست کے لیے۔</p>
+</div>
+
+<p>19 نومبر 1889 کو جمہوریہ کے اعلان کے چند دن بعد اپنایا گیا، برازیلی پرچم دنیا کے سب سے منفرد پرچموں میں سے ایک ہے۔ <strong>سبز میدان</strong> ہرے بھرے بارانی جنگلات اور جھاڑیوں کی نمائندگی کرتا ہے — خاص طور پر ایمازون، جہاں زمین پر سب سے زیادہ حیاتیاتی تنوع ہے۔ <strong>پیلا ہیرا</strong> قوم کے وسیع سونے کے ذخائر کی علامت ہے؛ 1500 اور 1900 کے درمیان، برازیل میں باقی دنیا سے زیادہ سونا ملا۔ مرکز میں ایک <strong>نیلا آسمانی گولا</strong> 27 سفید ستاروں کے ساتھ ریو ڈی جینیرو کے اوپر 15 نومبر 1889 کی رات کا آسمان دکھاتا ہے — جب برازیل جمہوریہ بنا۔</p>
+
+<h2>🌴 ریو ڈی جینیرو — حیرت انگیز شہر</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 ریو ڈی جینیرو — 22.9068° جنوب، 43.1729° مغرب</span>
+    imageimage_search:18#7
+    <p class="caption">طلوع آفتاب میں ریو پر نظر رکھتے ہوئے خداوند ریڈیمر — دنیا کے نئے سات عجائب میں سے ایک۔</p>
+    
+    <p><strong>ریو ڈی جینیرو</strong> برازیل کی روح ہے۔ <em>سیڈیڈ ماریولوسا</em> (حیرت انگیز شہر) کے نام سے جانا جاتا ہے، یہ دنیا کے حقیقی عظیم شہروں میں سے ایک ہے، جہاں سنہرے ساحل، ہرے بھرے پہاڑ، اور سامبا سے بھرئی رات کی زندگی شاندار انداز میں ٹکراتی ہے۔ مشہور <strong>خداوند ریڈیمر</strong> مجسمہ کوورکووڈو پہاڑ کی چوٹی پر 98 فٹ اونچا کھڑا ہے، بازو پھیلائے ہوئے جیسے پورے شہر کو گلے لگا رہا ہو — یونیسکو عالمی ثقافتی ورثہ اور دنیا کے نئے سات عجائب میں سے ایک۔</p>
+    
+    <p><strong>شوگرلوف ماؤنٹین</strong> پر کیبل کار سے 360 ڈگری کے مناظر کا لطف اٹھائیں جو آپ کو حیران کر دیں گے، پھر مشہور <strong>کوپاکابانا</strong> اور <strong>ایپانیما ساحلوں</strong> پر اتریں، جہاں مقامی لوگ والی بال کھیلتے ہیں، mate پیتے ہیں، اور لہروں کی رفتار سے زندگی گزارتے ہیں۔ جب رات گرتی ہے، <strong>لاپا</strong> کی طرف بڑھیں، شہر کا بوہیمین دل، جہاں سامبا ہر دروازے سے بہتی ہے اور سڑک پارٹیاں صبح تک چلتی ہیں۔</p>
+</div>
+
+<h2>🏙️ ساؤ پالو — ثقافتی دارالحکومت</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 ساؤ پالو — 23.5505° جنوب، 46.6333° مغرب</span>
+    imageimage_search:18#5
+    <p class="caption">غروب آفتاب میں ساؤ پالو کا شاندار سکی لائن — جنوبی نصف کرہ کا سب سے بڑا شہر۔</p>
+    
+    <p><strong>ساؤ پالو</strong> برازیل کی دھڑکتی ہوئی اقتصادی اور ثقافتی دھڑکن ہے۔ شہر میں 1.2 کروڑ سے زیادہ رہائشی اور میٹروپولیٹن علاقے میں 3 کروڑ سے زیادہ لوگوں کے ساتھ، یہ جنوبی نصف کرہ کا سب سے بڑا شہر اور لاطینی امریکہ کی مالیاتی طاقت ہے۔ لیکن آسمان چھوتی عمارتوں اور اسٹاک ایکسچینجوں کے پیچھے دنیا کے سبھی سے متحرک ثقافتی مناظر میں سے ایک ہے۔</p>
+    
+    <p>شہر کے عجائب گھر یورپ میں کسی سے کم نہیں — <strong>ساؤ پالو آرٹ میوزیم (MASP)</strong> لاطینی امریکہ میں مغربی فنون لطیفہ کا بہترین مجموعہ رکھتا ہے۔ اس کا ریستوران منظر افسانوی ہے، جو دنیا کے درجے کا سوشی سے لے کر دلچسپ <em>فیجوآڈا</em> (کالی بین سٹیو) تک سب کچھ پیش کرتا ہے۔ <strong>ویلا مڈالینا</strong> جیسے پڑوس سٹریٹ آرٹ اور لائیو موسیقی سے بھرے ہوئے ہیں۔</p>
+</div>
+
+<h2>🎨 سالواڈور — افریقی-برازیلی روح</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 سالواڈور — 12.9714° جنوب، 38.5014° مغرب</span>
+    imageimage_search:18#3
+    <p class="caption">پیلورینہو کے رنگین نوآبادیاتی فاساد، سالواڈور کا یونیسکو فہرست شدہ تاریخی دل۔</p>
+    
+    <p><strong>سالواڈور دا باہیا</strong> وہ جگہ ہے جہاں برازیل کی افریقی دھڑکن سب سے زور سے سنائی دیتی ہے۔ 16ویں صدی کے وسط میں قائم برازیل کا پہلا دارالحکومت، سالواڈور افریقی-برازیلی ثقافت کا مرکز ہے — ڈھول کی تھاپ، کیپوایرا، اور ایسی پکوان کا شہر جو آپ کے ذائقہ کو آگ لگا دیں گے۔ <strong>پیلورینہو</strong> ضلع، ایک یونیسکو عالمی ثقافتی ورثہ، پیسٹل رنگین نوآبادیاتی عمارتوں، پتھر کی سڑکوں، اور باروک چرچوں کا ایک کیلیڈوسکوپ ہے۔</p>
+    
+    <p>لیکن سالواڈور کوئی عجائب گھر نہیں ہے۔ شہر زندگی سے لبریز ہے — رات کی سڑک پارٹیوں سے لے کر جہاں <em>بلوکوس افرو</em> ڈھول کے حلقے ہوا میں لے بھر دیتے ہیں، ہر چوک میں کیپوایرا کے نمایاں مظاہرے تک۔ اس کا کارنیوال گنیز ورلڈ ریکارڈز کے مطابق دنیا کی سب سے بڑی سڑک پارٹی ہے۔ تاریخ کے لیے آئیں، توانائی کے لیے ٹھہریں — سالواڈور آپ کو ان طریقوں سے چھوئے گا جو آپ نے کبھی توقع نہیں کی تھی۔</p>
+</div>
+
+<h2>💦 ایگواسو آبشار — فطرت کا سب سے عظیم الشان مظاہرہ</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 ایگواسو آبشار — 25.6953° جنوب، 54.4367° مغرب</span>
+    imageimage_search:18#2
+    <p class="caption">ایگواسو آبشاروں کی گرجتی جھرنیاں — برازیل اور ارجنٹائن کو ملاتے 275 آبشار۔</p>
+    
+    <p>برازیل اور ارجنٹائن کی سرحد پر واقع، <strong>ایگواسو آبشار</strong> سیارے پر سب سے زیادہ حیرت انگیز قدرتی عجائب میں سے ایک ہیں۔ ایک یونیسکو عالمی ثقافتی ورثہ، 275 سے زیادہ انفرادی آبشاروں کا یہ مجموعہ ایگواسو دریا کے ساتھ تقریباً تین کلومیٹر تک پھیلا ہوا ہے، جس میں گرجتا ہوا <strong>گارگانٹا ڈیل ڈیابلو</strong> (شیطان کا گلا) 80 میٹر نیچے دھند میں گرتا ہے۔</p>
+    
+    <p>برازیلی طرف پینورامک واک وے پیش کرتا ہے جو آپ کو دھند اپنے چہرے پر محسوس کرنے اور آبشاروں کے مکمل پیمانے کو دیکھنے دیتا ہے، جبکہ ارجنٹائینی طرف فٹ برجز کے ذریعے آپ کو گرجتے پانی کے بالکل اوپر لاتا ہے۔ طوطوں، کوٹیز، اور تتلیوں سے بھرے ہرے بھرے ایٹلانٹک بارانی جنگل سے گھرا ہوا، ایگواسو صرف دیکھنے کی چیز نہیں ہے — یہ فطرت کی ایک طاقت ہے جو آپ کو عاجز اور پرجوش دونوں کرے گی۔</p>
+</div>
+
+<div class="conclusion">
+    <h2>برازیل کیوں ہونی چاہیے آپ کی اگلی سفر؟</h2>
+    <p>برازیل ایک ایسا منزل ہے جسے صرف دیکھا نہیں، محسوس کیا جانا چاہیے۔ چاہے آپ خداوند ریڈیمر کی پھیلی ہوئی بازووں کے نیچے کھڑے ہوں، ساؤ پالو کے ثقافتی گرداب میں کھو جائیں، سالواڈور کے ڈھولوں پر ناچیں، یا ایگواسو آبشاروں کے نیچے زمین کو کانپتے محسوس کریں — آپ ایک ایسی قوم دریافت کریں گے جو زندگی کا جشن کہیں اور نہ ملنے والی شدت کے ساتھ مناتی ہے۔</p>
+    <p>سستا، گرم، اور ناقابل یقین حد تک متنوع، برازیل جنوبی امریکہ کا حتمی سفر تجربہ ہے۔ پڑھنے کا شکریہ — اب اس برازیلی سورج کا پیچھا کریں! ✈️</p>
+</div>
+
+</div>
+
+<!-- ================= PORTUGUESE ================= -->
+<div id="pt" class="lang-content">
+
+<h1>🇧🇷 Brasil: A Terra do Ritmo e da Maravilha</h1>
+<p class="subtitle">Das ruas cheias de samba às cachoeiras trovejantes — uma jornada pelo gigante mais cativante da América do Sul.</p>
+
+<div class="intro-box">
+    <strong>País:</strong> República Federativa do Brasil<br>
+    <strong>Localização:</strong> América do Sul<br>
+    <strong>Capital:</strong> Brasília<br>
+    <strong>Idioma:</strong> Português<br>
+    <strong>Moeda:</strong> Real Brasileiro (BRL)<br>
+    <strong>Melhor época:</strong> Dezembro–março (verão/carnaval) ou maio–setembro (estação seca)
+</div>
+
+<p>O <strong>Brasil</strong> não é apenas um país — é um sentimento. A maior nação da América do Sul e a única onde se fala português, o Brasil se estende por impressionantes 8,5 milhões de quilômetros quadrados, lar de mais de 213 milhões de pessoas que pulsam com uma alegria de viver irreprimível. Da verde infinito da Floresta Amazônica ao trovão das Cataratas do Iguaçu, das praias douradas do Rio aos paralelepípedos coloniais de Salvador, o Brasil oferece uma explosão sensorial que nenhum outro destino pode igualar.</p>
+
+<h2>🇧🇷 A Bandeira do Brasil: Ordem e Progresso</h2>
+
+<div class="flag-section">
+    <div class="flag-box">
+        <div class="flag-diamond"></div>
+        <div class="flag-circle">27 ★<br>Ordem e<br>Progresso</div>
+    </div>
+    <p class="caption">A bandeira brasileira — verde pelas florestas, amarelo pelo ouro, azul pelo céu, e 27 estrelas para cada estado.</p>
+</div>
+
+<p>Adotada em 19 de novembro de 1889, poucos dias após a proclamação da república, a bandeira brasileira é uma das mais distintas do mundo. O <strong>campo verde</strong> representa as exuberantes florestas e selvas — especificamente a Amazônia, que abriga a maior biodiversidade da Terra. O <strong>losango amarelo</strong> simboliza as imensas reservas de ouro da nação. No centro, um <strong>globo celeste azul</strong> pontilhado com 27 estrelas brancas representa o céu noturno sobre o Rio de Janeiro em 15 de novembro de 1889 — o momento em que o Brasil se tornou uma república.</p>
+
+<h2>🌴 Rio de Janeiro – A Cidade Maravilhosa</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 Rio de Janeiro — 22,9068° S, 43,1729° O</span>
+    imageimage_search:18#7
+    <p class="caption">O Cristo Redentor vigiando o Rio ao amanhecer — uma das Novas Sete Maravilhas do Mundo.</p>
+    
+    <p>O <strong>Rio de Janeiro</strong> é a alma do Brasil. Conhecido como a <em>Cidade Maravilhosa</em>, é uma das grandes paisagens urbanas do mundo, onde praias douradas, montanhas exuberantes e vida noturna animada pelo samba colidem de forma espetacular. A icônica estátua do <strong>Cristo Redentor</strong> tem 30 metros de altura no topo do Corcovado, braços abertos como se abraçasse toda a cidade — Patrimônio da Humanidade e uma das Novas Sete Maravilhas.</p>
+    
+    <p>Pegue o teleférico do <strong>Pão de Açúcar</strong> para vistas de 360 graus de tirar o fôlego, depois desça para as mundialmente famosas praias de <strong>Copacabana</strong> e <strong>Ipanema</strong>, onde os cariocas jogam vôlei, tomam mate e vivem a vida no ritmo das ondas. À noite, vá para a <strong>Lapa</strong>, o coração boêmio da cidade, onde o samba transborda de cada porta e as festas de rua duram até o amanhecer.</p>
+</div>
+
+<h2>🏙️ São Paulo – A Capital Cultural</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 São Paulo — 23,5505° S, 46,6333° O</span>
+    imageimage_search:18#5
+    <p class="caption">O deslumbrante skyline de São Paulo ao pôr do sol — a maior metrópole da América do Sul.</p>
+    
+    <p><strong>São Paulo</strong> é o coração econômico e cultural pulsante do Brasil. Com mais de 12 milhões de habitantes na cidade e 30 milhões na região metropolitana, é a maior cidade do Hemisfério Sul e a potência financeira da América Latina. Mas além dos arranha-céus e bolsas de valores está uma das cenas culturais mais dinâmicas do mundo.</p>
+    
+    <p>Os museus da cidade rivalizam com os da Europa — o <strong>MASP</strong> abriga a melhor coleção de arte ocidental da América Latina. Sua cena gastronômica é lendária, servindo de sushi de classe mundial à robusta <em>feijoada</em>. Bairros como a <strong>Vila Madalena</strong> transbordam de arte de rua e música ao vivo, enquanto a <strong>Avenida Paulista</strong> pulsa com a energia de uma cidade que nunca para de criar.</p>
+</div>
+
+<h2>🎨 Salvador – A Alma Afro-Brasileira</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 Salvador — 12,9714° S, 38,5014° O</span>
+    imageimage_search:18#3
+    <p class="caption">As coloridas fachadas coloniais do Pelourinho, o coração histórico de Salvador.</p>
+    
+    <p><strong>Salvador da Bahia</strong> é onde o coração africano do Brasil bate mais forte. Primeira capital do Brasil, fundada em meados do século XVI, Salvador é o epicentro da cultura afro-brasileira — uma cidade de batuques, capoeira e culinária que vai incendiar seu paladar. O distrito do <strong>Pelourinho</strong>, Patrimônio da Humanidade, é um caleidoscópio de edifícios coloniais coloridos, ruas de paralelepípedo e igrejas barrocas.</p>
+    
+    <p>Mas Salvador não é uma peça de museu. A cidade pulsa de vida — das festas de rua noturnas onde os <em>blocos afro</em> enchem o ar de ritmo, aos espetáculos acrobáticos de capoeira em cada praça. Seu Carnaval é a maior festa de rua do mundo segundo o Guinness. Venha pela história, fique pela energia — Salvador vai te mover de formas inesperadas.</p>
+</div>
+
+<h2>💦 Iguaçu – O Espetáculo Mais Grandioso da Natureza</h2>
+
+<div class="city-section">
+    <span class="location-tag">📍 Cataratas do Iguaçu — 25,6953° S, 54,4367° O</span>
+    imageimage_search:18#2
+    <p class="caption">As cachoeiras trovejantes de Iguaçu — 275 quedas entre Brasil e Argentina.</p>
+    
+    <p>Na fronteira entre Brasil e Argentina, as <strong>Cataratas do Iguaçu</strong> são uma das maravilhas naturais mais impressionantes do planeta. Patrimônio da Humanidade, este conjunto de mais de 275 quedas individuais se estende por quase três quilômetros ao longo do Rio Iguaçu, com a trovejante <strong>Garganta do Diabo</strong> despencando 80 metros na névoa abaixo.</p>
+    
+    <p>O lado brasileiro oferece passarelas panorâmicas que permitem sentir a spray no rosto e testemunhar a escala total das quedas, enquanto o lado argentino aproxima você por pontes que pairam diretamente sobre as águas trovejantes. Cercado pela exuberante Mata Atlântica repleta de tucanos, quatis e borboletas, Iguaçu não é apenas uma vista — é uma força da natureza que vai humilhar e exaltar em igual medida.</p>
+</div>
+
+<div class="conclusion">
+    <h2>Por que o Brasil Deve Ser Sua Próxima Aventura</h2>
+    <p>O Brasil é um destino que exige ser sentido, não apenas observado. Seja debaixo dos braços abertos do Cristo Redentor, perdido no redemoinho cultural de São Paulo, dançando aos tambores de Salvador, ou sentindo a terra tremer sob as Cataratas do Iguaçu, você descobrirá um país que celebra a vida com uma intensidade encontrada em nenhum outro lugar.</p>
+    <p>Acessível, acolhedor e impossivelmente diverso, o Brasil é a experiência de viagem definitiva da América do Sul. <em>Obrigado</em> por ler — agora vá atrás desse sol brasileiro! ✈️</p>
+</div>
+
+</div>
+
+<script>
+    function switchLang(lang) {
+        document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById(lang === 'ur' ? 'ur' : lang === 'hi' ? 'hi' : lang === 'pt' ? 'pt' : 'en').classList.add('active');
+        const buttons = document.querySelectorAll('.lang-btn');
+        for (let btn of buttons) {
+            if (btn.getAttribute('onclick').includes("'" + lang + "'")) {
+                btn.classList.add('active');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
