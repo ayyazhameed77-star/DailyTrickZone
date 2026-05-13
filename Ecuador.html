@@ -1,0 +1,334 @@
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecuador Travel Guide - Where the World Comes Together</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://kimi-web-img.moonshot.cn/img/i0.wp.com/49618082ca5a7204a122602d3c67544546f07316.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        /* Language Toggle */
+        .lang-bar {
+            background: #1a1a2e;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .lang-bar button {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 25px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .lang-bar button:hover, .lang-bar button.active {
+            background: #fff;
+            color: #1a1a2e;
+        }
+        
+        /* Content */
+        .content {
+            padding: 50px 60px;
+        }
+        
+        .intro-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .flag-container {
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .flag-container img {
+            width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .country-info h2 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .country-info p {
+            color: #555;
+            font-size: 1.05em;
+        }
+        
+        /* City Cards */
+        .city-card {
+            margin-bottom: 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .city-content {
+            padding: 35px;
+            background: #fff;
+        }
+        
+        .city-content h3 {
+            color: #1a1a2e;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-left: 5px solid #fcbf1e;
+            padding-left: 15px;
+        }
+        
+        .city-content p {
+            color: #444;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .footer p {
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+            .content { padding: 30px 25px; }
+            .intro-section { flex-direction: column; }
+            .city-image { height: 250px; }
+        }
+        
+        /* Fade animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 data-en="Ecuador Travel Guide" data-es="Guía de Viaje de Ecuador">Ecuador Travel Guide</h1>
+            <p class="subtitle" data-en="Where the World Comes Together" data-es="Donde el Mundo se Une">Where the World Comes Together</p>
+        </div>
+        
+        <!-- Language Toggle -->
+        <div class="lang-bar">
+            <button onclick="setLanguage('en')" id="btn-en" class="active">🇺🇸 English</button>
+            <button onclick="setLanguage('es')" id="btn-es">🇪🇨 Español</button>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Country Intro -->
+            <div class="intro-section fade-in">
+                <div class="flag-container">
+                    <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/8b65907bd45e8d86d7b4dce3cfb2e818f0457bd5.jpg" alt="Flag of Ecuador">
+                    <p style="margin-top:10px; font-size:0.9em; color:#666;" data-en="Flag of Ecuador" data-es="Bandera de Ecuador">Flag of Ecuador</p>
+                </div>
+                <div class="country-info">
+                    <h2 data-en="Discover Ecuador" data-es="Descubre Ecuador">Discover Ecuador</h2>
+                    <p data-en="Ecuador may be one of South America's smallest countries, but it packs an extraordinary punch. Named after the equator that slices through its heart, this nation of roughly 18 million people is a living museum of biodiversity. From the snow-capped peaks of the Andes to the steamy Amazon rainforest and the legendary Galápagos Islands, Ecuador holds more wonder per square mile than almost anywhere on Earth. The official language is Spanish, though 13 indigenous languages are also spoken, and the currency is the US Dollar. Ecuador's flag—yellow, blue, and red—bears the proud Andean condor, a symbol of strength and freedom. Here, ancient traditions thrive alongside modern life, and every landscape feels like a different planet."
+                       data-es="Ecuador puede ser uno de los países más pequeños de Sudamérica, pero tiene un impacto extraordinario. Nombrado por el ecuador que atraviesa su corazón, esta nación de aproximadamente 18 millones de personas es un museo viviente de biodiversidad. Desde las cumbres nevadas de los Andes hasta la selva amazónica y las legendarias Islas Galápagos, Ecuador alberga más maravillas por kilómetro cuadrado que casi cualquier otro lugar de la Tierra. El idioma oficial es el español, aunque también se hablan 13 lenguas indígenas, y la moneda es el Dólar estadounidense. La bandera de Ecuador—amarilla, azul y roja—lleva el orgulloso cóndor andino, símbolo de fuerza y libertad. Aquí, las tradiciones ancestrales conviven con la vida moderna, y cada paisaje se siente como un planeta diferente.">
+                        Ecuador may be one of South America's smallest countries, but it packs an extraordinary punch. Named after the equator that slices through its heart, this nation of roughly 18 million people is a living museum of biodiversity. From the snow-capped peaks of the Andes to the steamy Amazon rainforest and the legendary Galápagos Islands, Ecuador holds more wonder per square mile than almost anywhere on Earth. The official language is Spanish, though 13 indigenous languages are also spoken, and the currency is the US Dollar. Ecuador's flag—yellow, blue, and red—bears the proud Andean condor, a symbol of strength and freedom. Here, ancient traditions thrive alongside modern life, and every landscape feels like a different planet.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Quito -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/i0.wp.com/49618082ca5a7204a122602d3c67544546f07316.png" alt="Quito" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Quito - The Highest Capital on Earth" data-es="Quito - La Capital Más Alta de la Tierra">Quito - The Highest Capital on Earth</h3>
+                    <p data-en="Quito is not just the capital of Ecuador—it is the highest capital city in the world, sitting at a dizzying 2,850 meters above sea level in a valley surrounded by volcanoes. But altitude is only part of its magic. In 1978, Quito became the very first city on the planet to be declared a UNESCO World Heritage Site, and one stroll through its Old Town tells you exactly why. The historic center is a masterpiece of colonial architecture, where ornate churches like La Compañía de Jesús—covered entirely in gold leaf—stand alongside cobblestone plazas and bustling indigenous markets. Take the TelefériQo cable car up the Pichincha volcano for views that stretch to infinity, or stand with one foot in each hemisphere at the Middle of the World monument just outside the city. Quito's weather is famously unpredictable—four seasons in a single day—but that only adds to the adventure. Bring layers, an open heart, and prepare to fall in love with the sky."
+                       data-es="Quito no es solo la capital de Ecuador, es la capital más alta del mundo, ubicada a un vertiginoso 2,850 metros sobre el nivel del mar en un valle rodeado de volcanes. Pero la altitud es solo parte de su magia. En 1978, Quito se convirtió en la primera ciudad del planeta en ser declarada Patrimonio de la Humanidad por la UNESCO, y un paseo por su Centro Histórico te dice exactamente por qué. El centro histórico es una obra maestra de arquitectura colonial, donde iglesias ornamentadas como La Compañía de Jesús—cubierta enteramente en pan de oro—se alzan junto a plazas empedradas y bulliciosos mercados indígenas. Toma el TelefériQo hasta el volcán Pichincha para vistas que se extienden hasta el infinito, o pon un pie en cada hemisferio en el monumento de la Mitad del Mundo justo fuera de la ciudad. El clima de Quito es famosamente impredecible—cuatro estaciones en un solo día—pero eso solo añade a la aventura. Trae capas, un corazón abierto y prepárate para enamorarte del cielo.">
+                        Quito is not just the capital of Ecuador—it is the highest capital city in the world, sitting at a dizzying 2,850 meters above sea level in a valley surrounded by volcanoes. But altitude is only part of its magic. In 1978, Quito became the very first city on the planet to be declared a UNESCO World Heritage Site, and one stroll through its Old Town tells you exactly why. The historic center is a masterpiece of colonial architecture, where ornate churches like La Compañía de Jesús—covered entirely in gold leaf—stand alongside cobblestone plazas and bustling indigenous markets. Take the TelefériQo cable car up the Pichincha volcano for views that stretch to infinity, or stand with one foot in each hemisphere at the Middle of the World monument just outside the city. Quito's weather is famously unpredictable—four seasons in a single day—but that only adds to the adventure. Bring layers, an open heart, and prepare to fall in love with the sky.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Guayaquil -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/as1.ftcdn.net/80a28061085bc07e5f2dd4146ee72c1cc70bc25d.jpg" alt="Guayaquil" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Guayaquil - The Pearl of the Pacific" data-es="Guayaquil - La Perla del Pacífico">Guayaquil - The Pearl of the Pacific</h3>
+                    <p data-en="Ecuador's largest city and commercial heartbeat, Guayaquil sits proudly on the banks of the Guayas River where warm tropical breezes replace Andean chill. This is a city that lives and breathes by the water. The Malecón 2000 boardwalk is the soul of the city—a beautifully restored riverfront promenade where families stroll at sunset, street performers dance, and the smell of encebollado fish stew drifts from nearby cafés. Climb the colorful steps of Las Peñas, the city's oldest neighborhood, where every house is painted a different shade of joy and the hilltop lighthouse offers sweeping views across the river. Parque de las Iguanas is exactly what it sounds like: a downtown park where enormous green iguanas roam freely among pedestrians, as casual as pigeons in other cities. Guayaquil is the gateway to the Galápagos, but it is far more than a stopover. It is hot, humid, alive, and unapologetically coastal—a perfect contrast to the highland chill of Quito."
+                       data-es="La ciudad más grande y corazón comercial de Ecuador, Guayaquil se sienta orgullosa a orillas del río Guayas donde las cálidas brisas tropicales reemplazan el frío andino. Esta es una ciudad que vive y respira junto al agua. El Malecón 2000 es el alma de la ciudad: un hermoso paseo ribereño restaurado donde las familias pasean al atardecer, artistas callejeros bailan y el olor del encebollado se desprende de los cafés cercanos. Sube los coloridos escalones de Las Peñas, el barrio más antiguo de la ciudad, donde cada casa está pintada en un tono diferente de alegría y el faro en la cima ofrece vistas panorámicas del río. El Parque de las Iguanas es exactamente lo que suena: un parque céntrico donde enormes iguanas verdes deambulan libremente entre los peatones, tan casuales como palomas en otras ciudades. Guayaquil es la puerta de entrada a Galápagos, pero es mucho más que una escala. Es caliente, húmeda, viva y sin disculpas costera: un contraste perfecto al frío de la sierra de Quito.">
+                        Ecuador's largest city and commercial heartbeat, Guayaquil sits proudly on the banks of the Guayas River where warm tropical breezes replace Andean chill. This is a city that lives and breathes by the water. The Malecón 2000 boardwalk is the soul of the city—a beautifully restored riverfront promenade where families stroll at sunset, street performers dance, and the smell of encebollado fish stew drifts from nearby cafés. Climb the colorful steps of Las Peñas, the city's oldest neighborhood, where every house is painted a different shade of joy and the hilltop lighthouse offers sweeping views across the river. Parque de las Iguanas is exactly what it sounds like: a downtown park where enormous green iguanas roam freely among pedestrians, as casual as pigeons in other cities. Guayaquil is the gateway to the Galápagos, but it is far more than a stopover. It is hot, humid, alive, and unapologetically coastal—a perfect contrast to the highland chill of Quito.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Cuenca -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.ecuador-travels.com/2e20cb3d5ec8f80fe308765a88e762e3c588ce75.jpg" alt="Cuenca" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Cuenca - The Colonial Jewel" data-es="Cuenca - La Joya Colonial">Cuenca - The Colonial Jewel</h3>
+                    <p data-en="In the southern Andes, Cuenca waits like a secret whispered between mountains. This is Ecuador's third-largest city, yet it feels like a small town frozen in time—elegant, peaceful, and impossibly charming. Its entire colonial center is a UNESCO World Heritage Site, a grid of cobblestone streets, flower-draped balconies, and domed cathedrals that glow gold in the afternoon sun. The New Cathedral, with its iconic blue domes, dominates the skyline and the hearts of locals. Cuenca is famous for its Panama hats—yes, the real ones are made right here in Ecuador, woven by hand from toquilla straw in workshops tucked along quiet alleys. The nearby El Cajas National Park, with its hundreds of glacial lakes and wind-sculpted paramó landscapes, offers some of the most hauntingly beautiful hiking in the Andes. Cuenca has also become a beloved home for expats and retirees, drawn by the mild climate, low cost of living, and gentle pace of life. But even if you are just passing through, Cuenca wraps around you like a warm wool blanket—soft, comforting, and hard to leave."
+                       data-es="En los Andes del sur, Cuenca espera como un secreto susurrado entre montañas. Esta es la tercera ciudad más grande de Ecuador, pero se siente como un pueblo pequeño congelado en el tiempo: elegante, pacífica e imposiblemente encantadora. Todo su centro colonial es Patrimonio de la Humanidad de la UNESCO, una cuadrícula de calles empedradas, balcones adornados de flores y catedrales con cúpulas que brillan doradas bajo el sol de la tarde. La Catedral Nueva, con sus icónicas cúpulas azules, domina el horizonte y los corazones de los locales. Cuenca es famosa por sus sombreros Panamá—sí, los auténticos se hacen aquí en Ecuador, tejidos a mano con paja toquilla en talleres escondidos en callejones tranquilos. El cercano Parque Nacional El Cajas, con sus cientos de lagos glaciares y paisajes de páramo esculpidos por el viento, ofrece algunas de las caminatas más bellas y evocadoras de los Andes. Cuenca también se ha convertido en un hogar querido para expatriados y jubilados, atraídos por el clima templado, el bajo costo de vida y el ritmo pausado. Pero incluso si solo estás de paso, Cuenca te envuelve como una manta de lana cálida: suave, reconfortante y difícil de abandonar.">
+                        In the southern Andes, Cuenca waits like a secret whispered between mountains. This is Ecuador's third-largest city, yet it feels like a small town frozen in time—elegant, peaceful, and impossibly charming. Its entire colonial center is a UNESCO World Heritage Site, a grid of cobblestone streets, flower-draped balconies, and domed cathedrals that glow gold in the afternoon sun. The New Cathedral, with its iconic blue domes, dominates the skyline and the hearts of locals. Cuenca is famous for its Panama hats—yes, the real ones are made right here in Ecuador, woven by hand from toquilla straw in workshops tucked along quiet alleys. The nearby El Cajas National Park, with its hundreds of glacial lakes and wind-sculpted paramó landscapes, offers some of the most hauntingly beautiful hiking in the Andes. Cuenca has also become a beloved home for expats and retirees, drawn by the mild climate, low cost of living, and gentle pace of life. But even if you are just passing through, Cuenca wraps around you like a warm wool blanket—soft, comforting, and hard to leave.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Galapagos -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.travelandleisure.com/26de6ae5476697b15b263fecd22f2831420680e5.jpg" alt="Galapagos Islands" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="The Galápagos Islands - A Laboratory of Life" data-es="Las Islas Galápagos - Un Laboratorio de Vida">The Galápagos Islands - A Laboratory of Life</h3>
+                    <p data-en="There are places that change how you see the world, and then there is the Galápagos. Strung across the Pacific Ocean nearly 1,000 kilometers from the mainland, this volcanic archipelago is where Charles Darwin cracked the code of evolution—and where modern travelers come face-to-face with nature in its purest form. Giant tortoises lumber across highland meadows. Marine iguanas dive into turquoise waters. Blue-footed boobies perform their comical mating dances on lava rocks without a care for human observers. Sea lions nap on park benches in Puerto Ayora as if they own the place, and frankly, they do. The Galápagos is not a zoo; it is a living laboratory where animals have no fear of humans because they never learned to fear. Snorkel with penguins, walk across moon-like lava fields, and watch the sun set behind volcanic cones that rise straight from the sea. It is expensive to visit, yes. It is worth every single cent. The Galápagos does not just show you wildlife—it rewrites your understanding of our planet."
+                       data-es="Hay lugares que cambian la forma en que ves el mundo, y luego están las Galápagos. Dispersas en el Océano Pacífico a casi 1,000 kilómetros del continente, este archipiélago volcánico es donde Charles Darwin descifró el código de la evolución, y donde los viajeros modernos se enfrentan a la naturaleza en su forma más pura. Tortugas gigantes deambulan por prados de tierras altas. Iguanas marinas se zambullen en aguas turquesas. Piqueros de patas azules realizan sus cómicos bailes de apareamiento sobre rocas de lava sin importarles los observadores humanos. Lobos marinos duermen en bancas del parque en Puerto Ayora como si fueran los dueños del lugar, y francamente, lo son. Galápagos no es un zoológico, es un laboratorio vivo donde los animales no temen a los humanos porque nunca aprendieron a temer. Haz snorkel con pingüinos, camina por campos de lava que parecen lunares y observa el atardecer detrás de conos volcánicos que se elevan directamente desde el mar. Es caro visitarlas, sí. Vale cada centavo. Galápagos no solo te muestra la vida silvestre, reescribe tu comprensión de nuestro planeta.">
+                        There are places that change how you see the world, and then there is the Galápagos. Strung across the Pacific Ocean nearly 1,000 kilometers from the mainland, this volcanic archipelago is where Charles Darwin cracked the code of evolution—and where modern travelers come face-to-face with nature in its purest form. Giant tortoises lumber across highland meadows. Marine iguanas dive into turquoise waters. Blue-footed boobies perform their comical mating dances on lava rocks without a care for human observers. Sea lions nap on park benches in Puerto Ayora as if they own the place, and frankly, they do. The Galápagos is not a zoo; it is a living laboratory where animals have no fear of humans because they never learned to fear. Snorkel with penguins, walk across moon-like lava fields, and watch the sun set behind volcanic cones that rise straight from the sea. It is expensive to visit, yes. It is worth every single cent. The Galápagos does not just show you wildlife—it rewrites your understanding of our planet.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Practical Tips -->
+            <div style="background: #1a1a2e; color: #fff; padding: 40px; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.6em;" data-en="Travel Tips for Ecuador" data-es="Consejos de Viaje para Ecuador">Travel Tips for Ecuador</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">✈</span>
+                        <span data-en="Best time to visit: June to September for the highlands; December to May for the Galápagos." data-es="Mejor época para visitar: junio a septiembre para la sierra; diciembre a mayo para Galápagos.">Best time to visit: June to September for the highlands; December to May for the Galápagos.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">💰</span>
+                        <span data-en="Currency: US Dollar (USD). Carry small bills; change can be scarce in rural areas." data-es="Moneda: Dólar estadounidense (USD). Lleva billetes pequeños; el cambio puede ser escaso en áreas rurales.">Currency: US Dollar (USD). Carry small bills; change can be scarce in rural areas.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">🍫</span>
+                        <span data-en="Don't miss: Try ceviche on the coast, locro de papa potato soup in the highlands, and Ecuadorian chocolate." data-es="No te pierdas: Prueba ceviche en la costa, locro de papa en la sierra y chocolate ecuatoriano.">Don't miss: Try ceviche on the coast, locro de papa potato soup in the highlands, and Ecuadorian chocolate.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">🌎</span>
+                        <span data-en="Language: Spanish. Indigenous markets are a great place to practice friendly greetings." data-es="Idioma: Español. Los mercados indígenas son un excelente lugar para practicar saludos amistosos.">Language: Spanish. Indigenous markets are a great place to practice friendly greetings.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p data-en="Ecuador is a country that humbles you and lifts you up all at once. In the span of a single day, you can stand on a volcano, swim with sea lions, and dance in a colonial plaza. Pack your sense of wonder, and let Ecuador show you how small the world truly is." 
+               data-es="Ecuador es un país que te humilla y te eleva al mismo tiempo. En el transcurso de un solo día, puedes pararte en un volcán, nadar con lobos marinos y bailar en una plaza colonial. Empaca tu sentido de asombro y deja que Ecuador te muestre lo pequeño que es realmente el mundo.">
+                Ecuador is a country that humbles you and lifts you up all at once. In the span of a single day, you can stand on a volcano, swim with sea lions, and dance in a colonial plaza. Pack your sense of wonder, and let Ecuador show you how small the world truly is.
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.6;">✍️ Written with love for travelers | 2026</p>
+        </div>
+    </div>
+    
+    <script>
+        function setLanguage(lang) {
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (lang === 'es' && el.getAttribute('data-es')) {
+                    el.textContent = el.getAttribute('data-es');
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                }
+            });
+            
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/ecuador_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Ecuador Travel Guide saved successfully!")
+print(f"File size: {len(html_content)} characters")
