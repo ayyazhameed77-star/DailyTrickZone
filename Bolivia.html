@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolivia Travel Guide - Discover the Heart of South America</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f7f4;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #D52B1E 0%, #F9E300 50%, #007934 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .flag-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 20px;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            flex-direction: column;
+        }
+        
+        .flag-stripe {
+            width: 100%;
+            height: 40px;
+        }
+        
+        .flag-red {
+            background-color: #D52B1E;
+        }
+        
+        .flag-yellow {
+            background-color: #F9E300;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flag-green {
+            background-color: #007934;
+        }
+        
+        .coat-arms {
+            font-size: 24px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #fff8e1;
+            font-style: italic;
+        }
+        
+        /* Translation Bar */
+        .translate-bar {
+            background: #1a1a2e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .translate-info {
+            color: #f9f7f4;
+            font-size: 0.95em;
+        }
+        
+        .translate-info span {
+            color: #F9E300;
+            font-weight: bold;
+        }
+        
+        .translate-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .translate-btn {
+            padding: 8px 16px;
+            border: 2px solid #F9E300;
+            background: transparent;
+            color: #f9f7f4;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .translate-btn:hover, .translate-btn.active {
+            background: #F9E300;
+            color: #1a1a2e;
+        }
+        
+        /* Content */
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro {
+            background: #fff8e7;
+            padding: 25px;
+            border-left: 5px solid #D52B1E;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            color: #5a3a2a;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #007934;
+            margin: 35px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0e6d3;
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: #D52B1E;
+            margin: 25px 0 15px 0;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        
+        /* City Cards */
+        .city-card {
+            background: white;
+            border: 1px solid #e0d5c5;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .city-content {
+            padding: 25px;
+        }
+        
+        .city-title {
+            font-size: 1.5em;
+            color: #007934;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .city-tag {
+            background: #D52B1E;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Flag Section */
+        .flag-section {
+            background: linear-gradient(to right, #fff5f5, #fffef0, #f0fff5);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .bolivia-flag-display {
+            display: flex;
+            flex-direction: column;
+            max-width: 200px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .flag-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 15px auto;
+        }
+        
+        /* Tips Box */
+        .tips-box {
+            background: #e8f4f8;
+            border-left: 5px solid #007934;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tips-box h4 {
+            color: #007934;
+            margin-bottom: 10px;
+        }
+        
+        .tips-box ul {
+            margin-left: 20px;
+        }
+        
+        .tips-box li {
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #f9f7f4;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer p {
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .language-note {
+            background: #16213e;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .content { padding: 20px; }
+            .city-image { height: 200px; }
+            .translate-bar { flex-direction: column; text-align: center; }
+        }
+        
+        /* Hidden translations */
+        .translation {
+            display: none;
+        }
+        
+        .translation.active {
+            display: block;
+        }
+        
+        .original.active {
+            display: block;
+        }
+        
+        .original {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="flag-container">
+                <div class="flag-stripe flag-red"></div>
+                <div class="flag-stripe flag-yellow">
+                    <span class="coat-arms">🏔️</span>
+                </div>
+                <div class="flag-stripe flag-green"></div>
+            </div>
+            <h1>🇧🇴 Bolivia Travel Guide</h1>
+            <p class="subtitle">Discover the Heart of South America, Where the Sky Meets the Earth</p>
+        </div>
+        
+        <!-- Translation Bar -->
+        <div class="translate-bar">
+            <div class="translate-info">
+                🌐 <span>Translate this guide:</span> Read in your preferred language 
+                | Bolivia's official languages: <span>Spanish, Quechua, Aymara, Guaraní</span>
+            </div>
+            <div class="translate-buttons">
+                <button class="translate-btn active" onclick="showLang('en')">🇺🇸 English</button>
+                <button class="translate-btn" onclick="showLang('es')">🇪🇸 Español</button>
+                <button class="translate-btn" onclick="showLang('qu')">🗣️ Quechua</button>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            
+            <!-- ENGLISH VERSION -->
+            <div id="content-en" class="translation active">
+                <div class="intro">
+                    <p><strong>Welcome to Bolivia</strong> — a land where the earth cracks into geometric perfection, where cities cling to canyon walls at impossible altitudes, and where the past is not a museum piece but a living, breathing presence. Bolivia is South America's most underrated treasure, a country that rewards the patient traveler with landscapes that defy imagination and cultures that have endured for millennia. This guide takes you through its most extraordinary cities, the story behind its proud tricolor, and the practical wisdom you need to navigate this high-altitude wonderland.</p>
+                </div>
+                
+                <div class="flag-section">
+                    <h2>🇧🇴 The Story Behind the Flag</h2>
+                    <div class="bolivia-flag-display">
+                        <div style="height:40px; background:#D52B1E;"></div>
+                        <div style="height:40px; background:#F9E300; display:flex; align-items:center; justify-content:center; font-size:24px;">🏔️</div>
+                        <div style="height:40px; background:#007934;"></div>
+                    </div>
+                    <p>Bolivia's flag was officially adopted on <strong>October 31, 1851</strong>, though its colors trace back to the very first flag raised after independence on August 17, 1825. The red, yellow, and green horizontal stripes were inspired by the colors used by the Aymara and Quechua peoples long before Spanish arrival — woven into their textiles, painted on their pottery, and carried in their hearts. citeweb_search:8#13</p>
+                    <p>The <strong>red</strong> represents the blood of patriots who fought for independence and the valor of the Bolivian army. <strong>Yellow</strong> symbolizes the nation's mineral wealth — the silver of Potosí that once fueled the Spanish Empire, the gold of its rivers, and the sun that blesses its high plains. <strong>Green</strong> stands for the fertility of the land and hope for the future. In the center, the coat of arms features Mount Potosí, an alpaca, a pair of crossed cannons, and the Andean condor — symbols of Bolivia's natural abundance and its fierce fight for freedom. citeweb_search:8#6</p>
+                    <p>Notably, Bolivia has <strong>two national flags</strong> — the tricolor and the Wiphala, a seven-colored checkerboard banner representing the indigenous peoples of the Andes, given equal status in 2009 when Bolivia became the Plurinational State. citeweb_search:8#6</p>
+                </div>
+                
+                <h2>🏛️ Famous Cities You Must Visit</h2>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/boliviatravelsite.com/d47d4c1162c1a81ca9c0616062b52cf74773ba48.jpg" alt="La Paz Bolivia" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            La Paz
+                            <span class="city-tag">ADMINISTRATIVE CAPITAL</span>
+                        </div>
+                        <p>At 3,640 meters above sea level, La Paz is the world's highest administrative capital — a city that seems to defy gravity as it spills down the walls of a massive canyon. The teleféricos (cable cars) that crisscross the valley are not just transportation; they are the veins of a city that breathes at altitude. From the dizzying heights of El Alto to the colonial elegance of the historic center, La Paz is a sensory overload of markets, murals, and mountain air. Visit the Witches' Market (Mercado de las Brujas) where dried llama fetuses hang alongside herbal remedies, or ride the red teleférico line at sunset when the city transforms into a galaxy of lights against the darkening Andes. The nearby Valle de la Luna offers lunar landscapes just minutes from downtown, while the Death Road — the world's most dangerous cycling route — awaits adrenaline junkies. citeweb_search:8#0</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i.natgeofe.com/16ea4e79a4a0b99b53a943719c17479d8a5afbc0.jpg" alt="Salar de Uyuni" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Salar de Uyuni
+                            <span class="city-tag">WORLD'S LARGEST SALT FLAT</span>
+                        </div>
+                        <p>There are places on Earth that make you question whether you are still on the same planet. Salar de Uyuni is one of them. Stretching over <strong>10,000 square kilometers</strong>, it is the largest salt flat in the world — a blinding white desert that was once an ancient lake. In the dry season (May to October), the cracked hexagonal patterns create a geometric masterpiece that stretches to every horizon. But come the rains (November to March), a thin layer of water transforms the salar into the world's largest mirror, reflecting the sky so perfectly that you cannot tell where earth ends and heaven begins. citeweb_search:8#11</p>
+                        <p>Stay in a hotel built entirely of salt blocks, visit the eerie Train Cemetery where rusted locomotives from the 1940s lie abandoned in the desert, and explore Isla Incahuasi — an island of giant cacti rising from the salt like a surreal dream. The three-day jeep tours that continue into the Eduardo Avaroa Reserve reveal flamingo-filled lagoons, geysers that erupt at dawn, and hot springs where you can soak under the stars at 4,000 meters. citeweb_search:8#1</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c49515bdf586b7f6042ef300ab0fc2b84714e3f0.jpg" alt="Potosi" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Potosí
+                            <span class="city-tag">CITY OF SILVER</span>
+                        </div>
+                        <p>At 4,067 meters, Potosí floats at the edge of the sky — once one of the richest cities in the world, now a haunting monument to colonial ambition and indigenous sacrifice. The Cerro Rico (Rich Mountain) that looms over the city produced the majority of the world's silver during the Spanish Empire, minted into coins that circulated across Europe and Asia. citeweb_search:8#3 The baroque churches, sculpted balconies, and silent convents tell stories of unimaginable wealth. But the true heart of Potosí lies beneath the surface — in the mines where men still extract minerals in conditions little changed from colonial times. A guided tour into Cerro Rico is not comfortable, but it is essential; it connects you to the human cost of empire in a way no museum ever could. The Casa de la Moneda (Royal Mint) offers a less harrowing but equally fascinating look at how silver shaped global history.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/ffea8dfea57b8a1cfc3950b922a9229f8f2dd372.jpg" alt="Sucre Bolivia" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Sucre
+                            <span class="city-tag">CONSTITUTIONAL CAPITAL</span>
+                        </div>
+                        <p>After the thin air of the altiplano, Sucre is a gentle exhale. At 2,750 meters, Bolivia's constitutional capital and UNESCO World Heritage site offers whitewashed colonial perfection, tree-lined plazas, and a university atmosphere that keeps the city young and vibrant. The historic center is a maze of 16th and 17th-century architecture where the Casa de la Libertad stands as the birthplace of Bolivian independence — the very room where the declaration was signed in 1825. citeweb_search:8#1</p>
+                        <p>Sucre is widely regarded as one of the best places in South America to study Spanish, and many travelers who plan two days end up staying a week. On Sundays, the nearby village of Tarabuco hosts one of the continent's most authentic indigenous markets, where Jalq'a and Yampara communities gather in traditional dress to trade textiles that have changed little in centuries. Don't miss Parque Cretácico, where a working cement quarry revealed one of the world's largest collections of dinosaur footprints — over 5,000 tracks from eight species, preserved in stone for 68 million years. citeweb_search:8#1</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/1b288fd6361033d204b547762b41281eb4626fa1.jpg" alt="La Paz Night" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Copacabana & Lake Titicaca
+                            <span class="city-tag">SACRED LAKE</span>
+                        </div>
+                        <p>On the shores of Lake Titicaca — the world's highest navigable lake at 3,810 meters — Copacabana is a pilgrimage town where travelers and devotees converge. The Basilica of Our Lady of Copacabana, with its glittering Moorish-style domes, houses the Virgin who protects Bolivia's fishermen and travelers. From here, boats depart for Isla del Sol (Island of the Sun), the legendary birthplace of the Inca civilization. Walking the ancient Inca stairways across the island, passing terraced fields and sacred rocks, you feel the weight of millennia. The air is thin, the sun is fierce, and the silence is profound. At night, the stars seem close enough to touch, reflected in waters that have witnessed the rise and fall of empires. This is Bolivia at its most spiritual — a place where the boundary between the earthly and the divine feels paper-thin.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-box">
+                    <h4>🎒 Essential Travel Tips for Bolivia</h4>
+                    <ul>
+                        <li><strong>Altitude:</strong> La Paz (3,640m), Uyuni (3,656m), and Potosí (4,067m) demand respect. Spend your first days resting, drinking coca tea, and avoiding alcohol. citeweb_search:8#1</li>
+                        <li><strong>Best Season:</strong> May to October (dry season) offers clear skies, accessible salt flats, and reliable roads. December to March brings the mirror effect on Salar de Uyuni but also rain-related travel disruptions. citeweb_search:8#7</li>
+                        <li><strong>Currency:</strong> Bolivianos (BOB). Carry cash — ATMs are reliable in La Paz and Sucre but patchy in Uyuni and Copacabana. citeweb_search:8#1</li>
+                        <li><strong>Book Ahead:</strong> Uyuni salt flat tours during peak season (December-March, July-August) sell out months in advance. citeweb_search:8#1</li>
+                        <li><strong>Language:</strong> Spanish is essential. Quechua and Aymara are widely spoken in indigenous communities — learning "Allillanchu" (Quechua hello) opens doors.</li>
+                        <li><strong>Layers:</strong> Even in summer, nights at 3,600+ meters are freezing. Pack thermal layers, a warm jacket, and sun protection — the altitude intensifies UV exposure dramatically.</li>
+                    </ul>
+                </div>
+                
+                <h2>🌿 Beyond the Icons</h2>
+                <p>While the salt flats and La Paz draw the headlines, Bolivia's true magic lies in its diversity. Trek through the Amazon basin in Madidi National Park, one of the most biologically diverse places on Earth, where jaguars prowl and macaws paint the canopy. Explore the Jesuit Missions of Chiquitos, where baroque music still echoes through 300-year-old churches. In the south, the wine region of Tarija produces Bolivia's finest vintages at 1,800 meters — a surprising discovery in a country known for altitude rather than agriculture.</p>
+                
+                <p>Bolivia is not a country that reveals itself easily. It demands patience, respect for altitude, and a willingness to embrace discomfort. But for those who do, the rewards are immeasurable. It is the taste of a salteña (savory pastry) at a street corner in La Paz, the sound of pan flutes drifting across the altiplano at dusk, and the sight of pink flamingos taking flight over a blood-red lagoon. It is a country where the ancient and the modern coexist in beautiful, chaotic harmony — where every mountain pass reveals a new wonder, and every conversation with a local deepens your understanding of what it means to live at the roof of the world.</p>
+            </div>
+            
+            <!-- SPANISH VERSION -->
+            <div id="content-es" class="translation">
+                <div class="intro">
+                    <p><strong>Bienvenido a Bolivia</strong> — una tierra donde la tierra se agrieta en perfección geométrica, donde las ciudades se aferran a las paredes de cañones a altitudes imposibles, y donde el pasado no es una pieza de museo sino una presencia viva y palpitante. Bolivia es el tesoro más subestimado de Sudamérica, un país que recompensa al viajero paciente con paisajes que desafían la imaginación y culturas que han perdurado por milenios. Esta guía te lleva a través de sus ciudades más extraordinarias, la historia detrás de su orgulloso tricolor, y la sabiduría práctica que necesitas para navegar este país de altura.</p>
+                </div>
+                
+                <div class="flag-section">
+                    <h2>🇧🇴 La Historia Detrás de la Bandera</h2>
+                    <div class="bolivia-flag-display">
+                        <div style="height:40px; background:#D52B1E;"></div>
+                        <div style="height:40px; background:#F9E300; display:flex; align-items:center; justify-content:center; font-size:24px;">🏔️</div>
+                        <div style="height:40px; background:#007934;"></div>
+                    </div>
+                    <p>La bandera de Bolivia fue adoptada oficialmente el <strong>31 de octubre de 1851</strong>, aunque sus colores se remontan a la primera bandera izada tras la independencia el 17 de agosto de 1825. Las franjas horizontales roja, amarilla y verde fueron inspiradas por los colores utilizados por los pueblos Aymara y Quechua mucho antes de la llegada española — tejidos en sus textiles, pintados en su cerámica, y llevados en sus corazones.</p>
+                    <p>El <strong>rojo</strong> representa la sangre de los patriotas que lucharon por la independencia y el valor del ejército boliviano. El <strong>amarillo</strong> simboliza la riqueza mineral del país — la plata de Potosí que alguna vez alimentó al Imperio Español, el oro de sus ríos, y el sol que bendice sus altiplanos. El <strong>verde</strong> representa la fertilidad de la tierra y la esperanza para el futuro. En el centro, el escudo presenta el Monte Potosí, una alpaca, cañones cruzados, y el cóndor andino.</p>
+                    <p>Notablemente, Bolivia tiene <strong>dos banderas nacionales</strong> — el tricolor y la Wiphala, una bandera de siete colores en diseño de tablero de ajedrez que representa a los pueblos indígenas de los Andes, dada igual estatus en 2009 cuando Bolivia se convirtió en el Estado Plurinacional.</p>
+                </div>
+                
+                <h2>🏛️ Ciudades Famosas que Debes Visitar</h2>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/boliviatravelsite.com/d47d4c1162c1a81ca9c0616062b52cf74773ba48.jpg" alt="La Paz Bolivia" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            La Paz
+                            <span class="city-tag">CAPITAL ADMINISTRATIVA</span>
+                        </div>
+                        <p>A 3,640 metros sobre el nivel del mar, La Paz es la capital administrativa más alta del mundo — una ciudad que parece desafiar la gravedad mientras se derrama por las paredes de un cañón masivo. Los teleféricos que cruzan el valle no son solo transporte; son las venas de una ciudad que respira a la altura. Desde las vertiginosas alturas de El Alto hasta la elegancia colonial del centro histórico, La Paz es una sobrecarga sensorial de mercados, murales y aire de montaña. Visita el Mercado de las Brujas donde fetos de llama secos cuelgan junto a remedios herbales, o viaja en la línea roja de teleférico al atardecer cuando la ciudad se transforma en una galaxia de luces contra los Andes oscurecidos.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i.natgeofe.com/16ea4e79a4a0b99b53a943719c17479d8a5afbc0.jpg" alt="Salar de Uyuni" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Salar de Uyuni
+                            <span class="city-tag">SALAR MÁS GRANDE DEL MUNDO</span>
+                        </div>
+                        <p>Hay lugares en la Tierra que te hacen cuestionar si aún estás en el mismo planeta. El Salar de Uyuni es uno de ellos. Extendido sobre <strong>10,000 kilómetros cuadrados</strong>, es el desierto de sal más grande del mundo — un desierto blanco deslumbrante que alguna vez fue un lago antiguo. En la temporada seca (mayo a octubre), los patrones hexagonales agrietados crean una obra maestra geométrica que se extiende hasta cada horizonte. Pero con las lluvias (noviembre a marzo), una capa delgada de agua transforma el salar en el espejo más grande del mundo, reflejando el cielo tan perfectamente que no puedes decir dónde termina la tierra y comienza el cielo.</p>
+                        <p>Alojate en un hotel construido enteramente de bloques de sal, visita el Cementerio de Trenes donde locomotoras oxidadas de los años 40 yacen abandonadas en el desierto, y explora la Isla Incahuasi — una isla de cactus gigantes que emerge de la sal como un sueño surrealista.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c49515bdf586b7f6042ef300ab0fc2b84714e3f0.jpg" alt="Potosi" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Potosí
+                            <span class="city-tag">CIUDAD DE LA PLATA</span>
+                        </div>
+                        <p>A 4,067 metros, Potosí flota al borde del cielo — alguna vez una de las ciudades más ricas del mundo, ahora un monumento conmovedor a la ambición colonial y el sacrificio indígena. El Cerro Rico que se cierne sobre la ciudad produjo la mayoría de la plata del mundo durante el Imperio Español, acuñada en monedas que circularon por Europa y Asia. Las iglesias barrocas, balcones esculpidos y conventos silenciosos cuentan historias de riqueza inimaginable. Pero el verdadero corazón de Potosí yace bajo la superficie — en las minas donde los hombres aún extraen minerales en condiciones poco cambiadas desde la época colonial. Un tour guiado al Cerro Rico no es cómodo, pero es esencial.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/ffea8dfea57b8a1cfc3950b922a9229f8f2dd372.jpg" alt="Sucre Bolivia" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Sucre
+                            <span class="city-tag">CAPITAL CONSTITUCIONAL</span>
+                        </div>
+                        <p>Después del aire enrarecido del altiplano, Sucre es un suave suspiro. A 2,750 metros, la capital constitucional de Bolivia y Patrimonio de la Humanidad de la UNESCO ofrece perfección colonial encalada, plazas arboladas y una atmósfera universitaria que mantiene a la ciudad joven y vibrante. El centro histórico es un laberinto de arquitectura de los siglos XVI y XVII donde la Casa de la Libertad se erige como el lugar de nacimiento de la independencia boliviana — la misma habitación donde se firmó la declaración en 1825.</p>
+                        <p>Sucre es ampliamente reconocida como uno de los mejores lugares de Sudamérica para estudiar español, y muchos viajeros que planean dos días terminan quedándose una semana. Los domingos, el cercano pueblo de Tarabuco alberga uno de los mercados indígenas más auténticos del continente.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/1b288fd6361033d204b547762b41281eb4626fa1.jpg" alt="La Paz Night" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Copacabana y Lago Titicaca
+                            <span class="city-tag">LAGO SAGRADO</span>
+                        </div>
+                        <p>En las orillas del Lago Titicaca — el lago navegable más alto del mundo a 3,810 metros — Copacabana es un pueblo de peregrinación donde viajeros y devotos convergen. La Basílica de Nuestra Señora de Copacabana, con sus cúpulas brillantes de estilo morisco, alberga a la Virgen que protege a los pescadores y viajeros bolivianos. Desde aquí, los botes parten hacia la Isla del Sol, el legendario lugar de nacimiento de la civilización inca. Caminar por las antiguas escalinatas incas a través de la isla, pasando campos en andenería y rocas sagradas, te hace sentir el peso de los milenios. El aire es delgado, el sol es feroz, y el silencio es profundo.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-box">
+                    <h4>🎒 Consejos Esenciales para Viajar a Bolivia</h4>
+                    <ul>
+                        <li><strong>Altitud:</strong> La Paz (3,640m), Uyuni (3,656m), y Potosí (4,067m) exigen respeto. Pasa tus primeros días descansando, tomando té de coca, y evitando alcohol.</li>
+                        <li><strong>Mejor Temporada:</strong> Mayo a octubre (temporada seca) ofrece cielos despejados, salares accesibles y carreteras confiables. Diciembre a marzo trae el efecto espejo en el Salar de Uyuni pero también interrupciones por lluvia.</li>
+                        <li><strong>Moneda:</strong> Bolivianos (BOB). Lleva efectivo — los cajeros son confiables en La Paz y Sucre pero irregulares en Uyuni y Copacabana.</li>
+                        <li><strong>Reserva con Anticipación:</strong> Los tours del Salar de Uyuni durante temporada alta se agotan meses antes.</li>
+                        <li><strong>Idioma:</strong> El español es esencial. Quechua y Aymara se hablan ampliamente en comunidades indígenas.</li>
+                        <li><strong>Capas:</strong> Incluso en verano, las noches a 3,600+ metros son heladas. Empaca capas térmicas, chaqueta abrigada y protección solar.</li>
+                    </ul>
+                </div>
+                
+                <h2>🌿 Más Allá de los Iconos</h2>
+                <p>Mientras los salares y La Paz atraen los titulares, la verdadera magia de Bolivia radica en su diversidad. Camina por la cuenca del Amazonas en el Parque Nacional Madidi, uno de los lugares más biodiversos de la Tierra, donde los jaguares acechan y las guacamayas pintan el dosel. Explora las Misiones Jesuitas de Chiquitos, donde la música barroca aún resuena en iglesias de 300 años. En el sur, la región vinícola de Tarija produce los mejores vinos de Bolivia a 1,800 metros.</p>
+                
+                <p>Bolivia no es un país que se revele fácilmente. Exige paciencia, respeto por la altitud, y voluntad de abrazar la incomodidad. Pero para quienes lo hacen, las recompensas son inconmensurables. Es el sabor de una salteña en una esquina de La Paz, el sonido de zampoñas que flotan sobre el altiplano al atardecer, y la vista de flamencos rosados que despegan sobre una laguna roja sangre. Es un país donde lo antiguo y lo moderno coexisten en una hermosa, caótica armonía.</p>
+            </div>
+            
+            <!-- QUECHUA VERSION -->
+            <div id="content-qu" class="translation">
+                <div class="intro">
+                    <p><strong>Allillanchu Boliviaman</strong> — huk suyumanta, allpaqa hexagonal perfecto nisqanmi p'akin, llaqtakunaqa imposible altitudkunapi cañon pirqankunapi tiyamun, ñawpaq kawsayqa museo piezamanta manañachu, kawsaq, samayninmi. Boliviaqa Sudaméricap aswan subestimado tesorom, huk suyuqa paciente viajerota recompensanmi imaynanpaq paisajekunawan imaginacionta desafianwan, culturakunawan milenioskunata perdurarqan. Kay qullqataqa aswan extraordinario llaqtankunata, tricolor unanchanpa willasqanta, chaymi altitud país nisqapi navegarpaq yachayninmi.</p>
+                </div>
+                
+                <div class="flag-section">
+                    <h2>🇧🇴 Unanchanpa Willasqan</h2>
+                    <div class="bolivia-flag-display">
+                        <div style="height:40px; background:#D52B1E;"></div>
+                        <div style="height:40px; background:#F9E300; display:flex; align-items:center; justify-content:center; font-size:24px;">🏔️</div>
+                        <div style="height:40px; background:#007934;"></div>
+                    </div>
+                    <p>Boliviapa unanchanqa <strong>1851 watapi, Octubre killapi 31 p'unchawpi</strong> aswan allinmi churarqa, aswan ñawpaqta 1825 watapi, Agosto 17 p'unchawpi independenciapa qhipan. Puka, q'illu, q'omer horizontal franjakunaqa Aymara, Quechua runakunapa ñawpaq colorkunamanta apachisqa — textilkunapi awasqa, cerámica pintasqa, sunqoypi apachisqa.</p>
+                    <p><strong>Puka</strong>qa independenciapaq ñak'arisqa patriota runakunapa yawarninmi, ejércitopa valorniyta riqsin. <strong>Q'illu</strong>qa suyupa mineral riquezanmi — Potosípa plata, ríokunapa oro, altiplanokunapa inti. <strong>Q'omer</strong>qa allpapa fertilidadninmi, paqarinpaq suyayninmi. Chawpinpi escudoqa Monte Potosí, alpaca, cañones cruzados, condor andinota rikuchin.</p>
+                    <p>Boliviaqa <strong>iskay nacional unanchankunata</strong> charin — tricolorniyta Wiphalata, siete colores ajedrez diseñopi, Andes runakunata riqsin, 2009 watapi igual estatus churarqan.</p>
+                </div>
+                
+                <h2>🏛️ Riqsisqa Llaqtakuna</h2>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/boliviatravelsite.com/d47d4c1162c1a81ca9c0616062b52cf74773ba48.jpg" alt="La Paz Bolivia" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            La Paz
+                            <span class="city-tag">ADMINISTRATIVO UMA LLAQTA</span>
+                        </div>
+                        <p>3,640 metro hanaq, La Pazqa tukuy pachap aswan hanaq administrativo uma llaqtami — huk llaqtaqa gravedadta desafian hina cañon pirqankunapi urmamun. Teleféricokunaqa valleta ch'iqanmi, mana transportemantañachu, suyupa venaskunam, altitudpi samayninmi. El Alto hanaqkunamanta centro histórico eleganciakunaman, La Pazqa sensorial sobrecargami, mercadokuna, muralkuna, montaña wayram. Mercado de las Brujas visitay, llama fetos herbales remedioskunawan chaypi wisqon, rojo teleférico línea atardecerpi, llaqta estrellas galaxiaman t'inkisqa, Andespa oscurecimiento.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i.natgeofe.com/16ea4e79a4a0b99b53a943719c17479d8a5afbc0.jpg" alt="Salar de Uyuni" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Salar de Uyuni
+                            <span class="city-tag">TUKUY PACHAP HATUN SALAR</span>
+                        </div>
+                        <p>Huk pachakuna kanku maypipas planetamantañañachu tapukunman. Salar de Uyuniqa hukllanmi. <strong>10,000 kilometro cuadrado</strong> hatunmi, tukuy pachap aswan hatun salar desiertom — blanco deslumbrante desiertom, ñawpaq lago antiguom. Temporada secapi (Mayo-Octubre), hexagonal p'akinakuna geometrica obra maestra, horizontekunaman aswan. Lluviaspi (Noviembre-Marzo), huch'uy yaku capa tukuy pachap aswan hatun espejoman t'inkimun, cielo perfecto reflejasqa, allpapi tukusqanqa mana yachanmanchu.</p>
+                        <p>Sal bloques hotelpi puñuy, Tren Cementeriokunata visitay — 40-kunapa locomotoras oxidadas desiertopi sachasqa, Isla Incahuasi — cactus gigantes isla, salmanta surrealista sueño hina paqarimun.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c49515bdf586b7f6042ef300ab0fc2b84714e3f0.jpg" alt="Potosi" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Potosí
+                            <span class="city-tag">PLATA LLAQTA</span>
+                        </div>
+                        <p>4,067 metro hanaq, Potosíqa cielo bordepi tiyamun — ñawpaq tukuy pachap aswan qullqi llaqtamanta, kunan colonial ambicionniyta, indígena sacrificioniyta monumento conmovedor. Cerro Rico llaqtapaq hawanpi, ñawpaq tukuy pachap mayoría plata produjirqan, Imperio Españolpaq monedaskuna Europa Asiawan circularqan. Barroco iglesiaskuna, balcones esculpidos, conventos silenciosos riqueza inimaginable willankuna. Aswan Potosípa sunqonqa pachamantañañachu — minaskunapi runakuna kunanpas minerales extractamun, colonial condiciones poco cambiadas.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/ffea8dfea57b8a1cfc3950b922a9229f8f2dd372.jpg" alt="Sucre Bolivia" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Sucre
+                            <span class="city-tag">CONSTITUCIONAL UMA LLAQTA</span>
+                        </div>
+                        <p>Altiplano aire enrarecidomanta qhipan, Sucreqa suave suspiromi. 2,750 metro, Boliviapa constitucional uma llaqta, UNESCO herenciapa llaqta, colonial encalado perfeccion, plazas arboladas, universidad atmósfera joven vibrante. Centro históricoqa siglos XVI-XVII arquitectura laberintom, Casa de la Libertad independenciapa paqarisqan — 1825 watapi declaración firmasqa cuartom.</p>
+                        <p>Sucreqa Sudaméricap aswan allin lugar Spanish yachanapaq, runakuna iskay punchaw planificasqa, semana tiyarqan. Domingokuna, cercano Tarabuco pueblopi auténtico indígena mercado, Jalq'a Yampara comunidades tradicional vestimentapi.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/1b288fd6361033d204b547762b41281eb4626fa1.jpg" alt="La Paz Night" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Copacabana - Titicaca Qucha
+                            <span class="city-tag">SAGRADO QUCHA</span>
+                        </div>
+                        <p>Titicaca Quchap orillaspi — 3,810 metro, tukuy pachap aswan hanaq purina quchami — Copacabanaqa peregrinación pueblom, viajeros devotos tinkunam. Basílica Nuestra Señora de Copacabana, morisco estilo cúpulas brillantes, Virgen boliviano pescadores viajeros protectormi. Kaymanta, botes Isla del Solman purimun, Inca civilizacionpa legendario paqarisqan. Antiguo Inca escalinatas caminay, andenería campos, sagrado rocas, mileniospa peso samarinay. Wayra delgado, inti feroz, silencio profundo.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-box">
+                    <h4>🎒 Bolivia Purinapa Yachaykuna</h4>
+                    <ul>
+                        <li><strong>Hanaq:</strong> La Paz (3,640m), Uyuni (3,656m), Potosí (4,067m) respetoyuq. Ñaupa punchawkuna samay, coca té upyay, alcohol ama upyay.</li>
+                        <li><strong>Allin Pacha:</strong> Mayo-Octubre (qasa pacha) cielos despejados, salares accesibles, carreteras confiables. Diciembre-Marzo espejo efectivo, lluvia interrupciones.</li>
+                        <li><strong>Qullqi:</strong> Bolivianos (BOB). Efectivo apamuy — cajeros La Paz Sucrepi confiables, Uyuni Copacabanapi irregular.</li>
+                        <li><strong>Ñaupaq:</strong> Salar de Uyuni tours temporada altapi meses ñaupaq tukuy.</li>
+                        <li><strong>Simi:</strong> Castellano esencial. Quechua Aymara comunidades indígenaspi aswan rimasqa.</li>
+                        <li><strong>Capas:</strong> Veranopipas 3,600+ metro tutakuna qasam. Térmico capas, abrigo chaqueta, solar protección.</li>
+                    </ul>
+                </div>
+                
+                <h2>🌿 Aswan Rikunakuna</h2>
+                <p>Salares La Paz titulares apamun, Boliviapa aswan yachanqa imaynatam diversidadnin. Amazonas cuenca Parque Nacional Madidipi puriy, tukuy pachap aswan biodiverso lugarmanta, jaguares acechan, guacamayas dosel pintamun. Misiones Jesuitas de Chiquitosta exploray, barroco música 300 watayuq iglesiaskunapi kawsaq. Surpi, Tarija vinícola región 1,800 metro, Bolivia aswan allin vinos produjirqan.</p>
+                
+                <p>Boliviaqa mana fácil rikuy paisum. Paciencia, altitud respeto, incomodidad aceptasqa munan. Chayqa recompensakuna inconmensurables. La Paz esquina salteña sabor, zampoñakunapa uyarinin altiplanopi atardecer, flamencos rosados laguna rojapi phawarinin. Ñawpaq moderno hermosa caótica armoniapi kawsaq suyum.</p>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>🇧🇴 <strong>Bolivia Travel Guide 2026</strong> | Written with love for travelers worldwide</p>
+            <p>"Bolivia es un Estado Plurinacional, multicultural y lleno de maravillas"</p>
+            <div class="language-note">
+                <p>🗣️ <strong>Bolivia's Official Languages:</strong> Spanish (Castellano), Quechua, Aymara, Guaraní — and 36+ indigenous languages recognized constitutionally</p>
+                <p>Bolivia is one of the most linguistically diverse countries in the Americas.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showLang(lang) {
+            // Hide all translations
+            document.querySelectorAll('.translation').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected translation
+            document.getElementById('content-' + lang).classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
