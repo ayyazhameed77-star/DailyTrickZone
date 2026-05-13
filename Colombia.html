@@ -1,0 +1,334 @@
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia Travel Guide - The Soul of South America</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #fce38a 0%, #f38181 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/ec7a7de5adc850e9201ba0dc2f3d06b44aa39906.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        /* Language Toggle */
+        .lang-bar {
+            background: #1a1a2e;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .lang-bar button {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 25px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .lang-bar button:hover, .lang-bar button.active {
+            background: #fff;
+            color: #1a1a2e;
+        }
+        
+        /* Content */
+        .content {
+            padding: 50px 60px;
+        }
+        
+        .intro-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .flag-container {
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .flag-container img {
+            width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .country-info h2 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .country-info p {
+            color: #555;
+            font-size: 1.05em;
+        }
+        
+        /* City Cards */
+        .city-card {
+            margin-bottom: 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .city-content {
+            padding: 35px;
+            background: #fff;
+        }
+        
+        .city-content h3 {
+            color: #1a1a2e;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-left: 5px solid #fcbf1e;
+            padding-left: 15px;
+        }
+        
+        .city-content p {
+            color: #444;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .footer p {
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+            .content { padding: 30px 25px; }
+            .intro-section { flex-direction: column; }
+            .city-image { height: 250px; }
+        }
+        
+        /* Fade animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 data-en="Colombia Travel Guide" data-es="Guía de Viaje de Colombia">Colombia Travel Guide</h1>
+            <p class="subtitle" data-en="The Soul of South America" data-es="El Alma de Sudamérica">The Soul of South America</p>
+        </div>
+        
+        <!-- Language Toggle -->
+        <div class="lang-bar">
+            <button onclick="setLanguage('en')" id="btn-en" class="active">🇺🇸 English</button>
+            <button onclick="setLanguage('es')" id="btn-es">🇨🇴 Español</button>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Country Intro -->
+            <div class="intro-section fade-in">
+                <div class="flag-container">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/2b7370ad5da70ef7b5abbb438ea2d71a2562809b.png" alt="Flag of Colombia">
+                    <p style="margin-top:10px; font-size:0.9em; color:#666;" data-en="Flag of Colombia" data-es="Bandera de Colombia">Flag of Colombia</p>
+                </div>
+                <div class="country-info">
+                    <h2 data-en="Discover Colombia" data-es="Descubre Colombia">Discover Colombia</h2>
+                    <p data-en="Colombia is a country of breathtaking contrasts, where snow-capped Andean peaks meet Caribbean coastlines and Amazon rainforest. Home to over 52 million people, it is the second most biodiverse nation on Earth. The official language is Spanish, and the currency is the Colombian Peso. Colombia's vibrant culture blends indigenous heritage, Spanish colonial history, and African rhythms into something truly magical. From the world's finest coffee to the birthplace of magical realism and salsa dancing, Colombia is no longer just a destination—it is a feeling that stays with you long after you leave."
+                       data-es="Colombia es un país de contrastes impresionantes, donde las cumbres andinas nevadas se encuentran con las costas del Caribe y la selva amazónica. Hogar de más de 52 millones de personas, es la segunda nación con mayor biodiversidad de la Tierra. El idioma oficial es el español y la moneda es el Peso colombiano. La vibrante cultura de Colombia mezcla el patrimonio indígena, la historia colonial española y los ritmos africanos en algo verdaderamente mágico. Desde el mejor café del mundo hasta el lugar de nacimiento del realismo mágico y la salsa, Colombia ya no es solo un destino, es un sentimiento que se queda contigo mucho después de irte.">
+                        Colombia is a country of breathtaking contrasts, where snow-capped Andean peaks meet Caribbean coastlines and Amazon rainforest. Home to over 52 million people, it is the second most biodiverse nation on Earth. The official language is Spanish, and the currency is the Colombian Peso. Colombia's vibrant culture blends indigenous heritage, Spanish colonial history, and African rhythms into something truly magical. From the world's finest coffee to the birthplace of magical realism and salsa dancing, Colombia is no longer just a destination—it is a feeling that stays with you long after you leave.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bogota -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/47833cb5c8c00022b10fe1e46ac26ab261c97371.jpg" alt="Bogota" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Bogotá - The Andean Capital" data-es="Bogotá - La Capital Andina">Bogotá - The Andean Capital</h3>
+                    <p data-en="Perched at 2,640 meters above sea level in the Eastern Andes, Bogotá is a city that takes your breath away—literally. Colombia's sprawling capital is a thrilling mix of colonial charm and urban edge. Wander through La Candelaria, the historic heart where cobblestone streets are lined with brightly colored houses, edgy street art, and cozy cafés that smell of freshly ground coffee. The Gold Museum houses the world's largest collection of pre-Columbian gold, whispering legends of El Dorado. Take the cable car up Monserrate for panoramic views that stretch across the mountain-ringed metropolis. Bogotá's weather is famously unpredictable—brilliant sunshine can turn to mountain fog within hours—so always carry a jacket. But that ever-changing sky is part of the magic. This is a city of poets, artists, and dreamers, pulsing with creative energy that demands to be felt."
+                       data-es="Ubicada a 2,640 metros sobre el nivel del mar en los Andes orientales, Bogotá es una ciudad que te deja sin aliento, literalmente. La extensa capital de Colombia es una mezcla emocionante de encanto colonial y filo urbano. Pasea por La Candelaria, el corazón histórico donde las calles empedradas están bordeadas por casas de colores brillantes, arte callejero vanguardista y acogedores cafés que huelen a café recién molido. El Museo del Oro alberga la colección más grande del mundo de oro precolombino, susurrando leyendas del Dorado. Toma el teleférico hasta Monserrate para vistas panorámicas que se extienden por la metrópoli rodeada de montañas. El clima de Bogotá es famosamente impredecible: el sol brillante puede convertirse en niebla de montaña en cuestión de horas, así que siempre lleva una chaqueta. Pero ese cielo siempre cambiante es parte de la magia. Esta es una ciudad de poetas, artistas y soñadores, pulsando con energía creativa que exige ser sentida.">
+                        Perched at 2,640 meters above sea level in the Eastern Andes, Bogotá is a city that takes your breath away—literally. Colombia's sprawling capital is a thrilling mix of colonial charm and urban edge. Wander through La Candelaria, the historic heart where cobblestone streets are lined with brightly colored houses, edgy street art, and cozy cafés that smell of freshly ground coffee. The Gold Museum houses the world's largest collection of pre-Columbian gold, whispering legends of El Dorado. Take the cable car up Monserrate for panoramic views that stretch across the mountain-ringed metropolis. Bogotá's weather is famously unpredictable—brilliant sunshine can turn to mountain fog within hours—so always carry a jacket. But that ever-changing sky is part of the magic. This is a city of poets, artists, and dreamers, pulsing with creative energy that demands to be felt.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Medellin -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/medellin-tours.com/b4fc99a6fa33155640142f9df95cc3f6a6ef74d3.jpg" alt="Medellin" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Medellín - City of Eternal Spring" data-es="Medellín - Ciudad de la Eterna Primavera">Medellín - City of Eternal Spring</h3>
+                    <p data-en="Medellín is nothing short of a miracle. Once considered the most dangerous city in the world, it has transformed into one of the most innovative and welcoming cities on the planet. Nestled in a lush valley, Medellín enjoys a perfect spring-like climate year-round—temperatures hover blissfully between 23°C and 26°C every single day. The Metro system, the only one in Colombia, is clean, efficient, and connects to stunning cable cars that glide over hillside neighborhoods, offering jaw-dropping valley views. Comuna 13, once the city's most feared barrio, is now an open-air gallery of vibrant murals and electric escalators, telling a powerful story of resilience through street art. Explore El Poblado for trendy rooftop bars, or head to Laureles for authentic arepas and local salsa nights. Medellín does not hide its past; it paints over it with color, music, and hope. The warmth of the Paisa people will make you feel at home the moment you arrive."
+                       data-es="Medellín no es nada menos que un milagro. Alguna vez considerada la ciudad más peligrosa del mundo, se ha transformado en una de las ciudades más innovadoras y acogedoras del planeta. Enclavada en un valle exuberante, Medellín disfruta de un clima primaveral perfecto durante todo el año: las temperaturas oscilan felizmente entre 23°C y 26°C cada día. El sistema de Metro, el único en Colombia, es limpio, eficiente y se conecta con impresionantes teleféricos que se deslizan sobre los barrios de las laderas, ofreciendo vistas alucinantes del valle. La Comuna 13, alguna vez el barrio más temido de la ciudad, es ahora una galería al aire libre de murales vibrantes y escaleras eléctricas, contando una poderosa historia de resiliencia a través del arte callejero. Explora El Poblado para bares de moda en azoteas, o dirígete a Laureles por arepas auténticas y noches locales de salsa. Medellín no esconde su pasado; lo pinta con color, música y esperanza. La calidez de la gente paisa te hará sentir en casa desde el momento en que llegues.">
+                        Medellín is nothing short of a miracle. Once considered the most dangerous city in the world, it has transformed into one of the most innovative and welcoming cities on the planet. Nestled in a lush valley, Medellín enjoys a perfect spring-like climate year-round—temperatures hover blissfully between 23°C and 26°C every single day. The Metro system, the only one in Colombia, is clean, efficient, and connects to stunning cable cars that glide over hillside neighborhoods, offering jaw-dropping valley views. Comuna 13, once the city's most feared barrio, is now an open-air gallery of vibrant murals and electric escalators, telling a powerful story of resilience through street art. Explore El Poblado for trendy rooftop bars, or head to Laureles for authentic arepas and local salsa nights. Medellín does not hide its past; it paints over it with color, music, and hope. The warmth of the Paisa people will make you feel at home the moment you arrive.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Cartagena -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/ec7a7de5adc850e9201ba0dc2f3d06b44aa39906.jpg" alt="Cartagena" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Cartagena - Caribbean Crown Jewel" data-es="Cartagena - Joya de la Corona Caribeña">Cartagena - Caribbean Crown Jewel</h3>
+                    <p data-en="Step inside the ancient walls of Cartagena and you will swear you have wandered onto a movie set. This UNESCO World Heritage city on Colombia's Caribbean coast is pure magic—crumbling colonial mansions painted in sun-bleached pastels, bougainvillea spilling over wrought-iron balconies, and horse-drawn carriages clip-clopping through cobblestone plazas. The Walled City is a labyrinth of history and romance, where every corner begs for a photograph. As the tropical heat rises, escape to a rooftop bar for a coconut lemonade and watch the sun melt into the sea. At night, the Getsemaní neighborhood comes alive with the sound of drums and salsa spilling from doorways, as locals gather on stoops to dance until dawn. Take a boat to the Rosario Islands for crystal-clear waters and white-sand beaches, or visit the Totumo Mud Volcano for a surreal floating experience. Cartagena is hot, sticky, and absolutely intoxicating—a place that slows you down to Caribbean time and reminds you that life is meant to be savored."
+                       data-es="Entra dentro de las antiguas murallas de Cartagena y jurarás que has entrado en un set de cine. Esta ciudad Patrimonio de la Humanidad de la UNESCO en la costa caribeña de Colombia es pura magia: mansiones coloniales en ruinas pintadas en colores pastel desvanecidos por el sol, buganvillas derramándose sobre balcones de hierro forjado, y carruajes tirados por caballos trotando por plazas empedradas. La Ciudad Amurallada es un laberinto de historia y romance, donde cada rincón pide a gritos una fotografía. A medida que aumenta el calor tropical, escapa a un bar en la azotea para una limonada de coco y observa cómo el sol se derrite en el mar. Por la noche, el barrio de Getsemaní cobra vida con el sonido de tambores y salsa que se derrama de las puertas, mientras los locales se reúnen en los porches para bailar hasta el amanecer. Toma un bote hacia las Islas del Rosario para aguas cristalinas y playas de arena blanca, o visita el Volcán de Lodo Totumo para una experiencia surrealista de flotación. Cartagena es caliente, pegajosa y absolutamente embriagadora: un lugar que te hace bajar la velocidad al ritmo caribeño y te recuerda que la vida está hecha para ser saboreada.">
+                        Step inside the ancient walls of Cartagena and you will swear you have wandered onto a movie set. This UNESCO World Heritage city on Colombia's Caribbean coast is pure magic—crumbling colonial mansions painted in sun-bleached pastels, bougainvillea spilling over wrought-iron balconies, and horse-drawn carriages clip-clopping through cobblestone plazas. The Walled City is a labyrinth of history and romance, where every corner begs for a photograph. As the tropical heat rises, escape to a rooftop bar for a coconut lemonade and watch the sun melt into the sea. At night, the Getsemaní neighborhood comes alive with the sound of drums and salsa spilling from doorways, as locals gather on stoops to dance until dawn. Take a boat to the Rosario Islands for crystal-clear waters and white-sand beaches, or visit the Totumo Mud Volcano for a surreal floating experience. Cartagena is hot, sticky, and absolutely intoxicating—a place that slows you down to Caribbean time and reminds you that life is meant to be savored.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Coffee Region -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/3525756d2847032eef7bdf0c6a9a38a4ccdba780.jpg" alt="Cocora Valley" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Salento & Cocora Valley - Coffee Paradise" data-es="Salento y Valle del Cocora - Paraíso del Café">Salento & Cocora Valley - Coffee Paradise</h3>
+                    <p data-en="In the misty mountains of Colombia's Coffee Triangle lies Salento, a postcard-perfect town where painted wooden balconies overlook streets lined with artisan shops and the smell of fresh coffee hangs in the cool mountain air. But the real star is just outside town: the Valle del Cocora, home to the world's tallest palm trees. These slender wax palms rise like natural cathedrals against rolling green hills and misty cloud forests, creating a landscape that feels almost spiritual. Hike through the valley, crossing rickety wooden bridges over rushing streams, and stop at a traditional coffee farm to learn how Colombia produces the smoothest coffee on Earth. The Coffee Region is where time slows down—where farmers still harvest beans by hand and where every cup tells a story of patience, tradition, and love for the land. Whether you are a coffee connoisseur or simply a lover of beautiful places, Salento and Cocora will steal your heart and awaken your senses."
+                       data-es="En las montañas brumosas del Eje Cafetero de Colombia se encuentra Salento, un pueblo de postal perfecta donde los balcones de madera pintados dan a calles bordeadas de tiendas artesanales y el olor a café fresco flota en el aire fresco de la montaña. Pero la verdadera estrella está justo fuera del pueblo: el Valle del Cocora, hogar de las palmas más altas del mundo. Estas esbeltas palmas de cera se elevan como catedrales naturales contra colinas verdes ondulantes y bosques nublados brumosos, creando un paisaje que se siente casi espiritual. Camina por el valle, cruzando puentes de madera endeble sobre arroyos torrentosos, y detente en una finca cafetera tradicional para aprender cómo Colombia produce el café más suave de la Tierra. La Región Cafetera es donde el tiempo se ralentiza, donde los agricultores aún cosechan los granos a mano y donde cada taza cuenta una historia de paciencia, tradición y amor por la tierra. Ya seas un conocedor de café o simplemente un amante de los lugares hermosos, Salento y el Cocora te robarán el corazón y despertarán tus sentidos.">
+                        In the misty mountains of Colombia's Coffee Triangle lies Salento, a postcard-perfect town where painted wooden balconies overlook streets lined with artisan shops and the smell of fresh coffee hangs in the cool mountain air. But the real star is just outside town: the Valle del Cocora, home to the world's tallest palm trees. These slender wax palms rise like natural cathedrals against rolling green hills and misty cloud forests, creating a landscape that feels almost spiritual. Hike through the valley, crossing rickety wooden bridges over rushing streams, and stop at a traditional coffee farm to learn how Colombia produces the smoothest coffee on Earth. The Coffee Region is where time slows down—where farmers still harvest beans by hand and where every cup tells a story of patience, tradition, and love for the land. Whether you are a coffee connoisseur or simply a lover of beautiful places, Salento and Cocora will steal your heart and awaken your senses.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Practical Tips -->
+            <div style="background: #1a1a2e; color: #fff; padding: 40px; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.6em;" data-en="Travel Tips for Colombia" data-es="Consejos de Viaje para Colombia">Travel Tips for Colombia</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">✈</span>
+                        <span data-en="Best time to visit: December to March and July to August are the driest seasons across most regions." data-es="Mejor época para visitar: diciembre a marzo y julio a agosto son las temporadas más secas en la mayoría de las regiones.">Best time to visit: December to March and July to August are the driest seasons across most regions.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">💰</span>
+                        <span data-en="Currency: Colombian Peso (COP). Cash is king in small towns; cards work well in big cities." data-es="Moneda: Peso colombiano (COP). El efectivo es rey en los pueblos pequeños; las tarjetas funcionan bien en las grandes ciudades.">Currency: Colombian Peso (COP). Cash is king in small towns; cards work well in big cities.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">☕</span>
+                        <span data-en="Don't miss: Drink tinto (black coffee) like a local, try bandeja paisa, and dance salsa in Cali." data-es="No te pierdas: Bebe tinto como un local, prueba la bandeja paisa y baila salsa en Cali.">Don't miss: Drink tinto (black coffee) like a local, try bandeja paisa, and dance salsa in Cali.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">🌎</span>
+                        <span data-en="Language: Spanish. A few phrases go a long way in this warm, welcoming country." data-es="Idioma: Español. Algunas frases ayudan mucho en este cálido y acogedor país.">Language: Spanish. A few phrases go a long way in this warm, welcoming country.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p data-en="Colombia is not a country you simply visit—it is a country that hugs you, feeds you, dances with you, and leaves you forever changed. From Andean peaks to Caribbean shores, every mile tells a story of resilience, joy, and irresistible warmth. Vamos!" 
+               data-es="Colombia no es un país que simplemente visitas: es un país que te abraza, te alimenta, baila contigo y te deja cambiado para siempre. Desde las cumbres andinas hasta las costas caribeñas, cada milla cuenta una historia de resiliencia, alegría y calidez irresistible. ¡Vamos!">
+                Colombia is not a country you simply visit—it is a country that hugs you, feeds you, dances with you, and leaves you forever changed. From Andean peaks to Caribbean shores, every mile tells a story of resilience, joy, and irresistible warmth. Vamos!
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.6;">✍️ Written with love for travelers | 2026</p>
+        </div>
+    </div>
+    
+    <script>
+        function setLanguage(lang) {
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (lang === 'es' && el.getAttribute('data-es')) {
+                    el.textContent = el.getAttribute('data-es');
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                }
+            });
+            
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/colombia_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Colombia Travel Guide saved successfully!")
+print(f"File size: {len(html_content)} characters")
