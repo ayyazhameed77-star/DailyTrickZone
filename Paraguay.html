@@ -1,0 +1,334 @@
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paraguay Travel Guide - The Heart of South America</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #d31027 0%, #ea384d 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://kimi-web-img.moonshot.cn/img/as2.ftcdn.net/37da5f11ab5599cf860d8b70e1f6dec6a0e6e7c6.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        /* Language Toggle */
+        .lang-bar {
+            background: #1a1a2e;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .lang-bar button {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 25px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .lang-bar button:hover, .lang-bar button.active {
+            background: #fff;
+            color: #1a1a2e;
+        }
+        
+        /* Content */
+        .content {
+            padding: 50px 60px;
+        }
+        
+        .intro-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .flag-container {
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .flag-container img {
+            width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .country-info h2 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .country-info p {
+            color: #555;
+            font-size: 1.05em;
+        }
+        
+        /* City Cards */
+        .city-card {
+            margin-bottom: 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .city-content {
+            padding: 35px;
+            background: #fff;
+        }
+        
+        .city-content h3 {
+            color: #1a1a2e;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-left: 5px solid #0038a8;
+            padding-left: 15px;
+        }
+        
+        .city-content p {
+            color: #444;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .footer p {
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+            .content { padding: 30px 25px; }
+            .intro-section { flex-direction: column; }
+            .city-image { height: 250px; }
+        }
+        
+        /* Fade animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 data-en="Paraguay Travel Guide" data-es="Guía de Viaje de Paraguay">Paraguay Travel Guide</h1>
+            <p class="subtitle" data-en="The Heart of South America" data-es="El Corazón de Sudamérica">The Heart of South America</p>
+        </div>
+        
+        <!-- Language Toggle -->
+        <div class="lang-bar">
+            <button onclick="setLanguage('en')" id="btn-en" class="active">🇺🇸 English</button>
+            <button onclick="setLanguage('es')" id="btn-es">🇵🇾 Español</button>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Country Intro -->
+            <div class="intro-section fade-in">
+                <div class="flag-container">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/977ac368e13f9cf8d720230ea814d17279878010.png" alt="Flag of Paraguay">
+                    <p style="margin-top:10px; font-size:0.9em; color:#666;" data-en="Flag of Paraguay" data-es="Bandera de Paraguay">Flag of Paraguay</p>
+                </div>
+                <div class="country-info">
+                    <h2 data-en="Discover Paraguay" data-es="Descubre Paraguay">Discover Paraguay</h2>
+                    <p data-en="Paraguay is South America's best-kept secret—a landlocked gem of roughly 7 million people nestled right in the center of the continent. Unlike its famous neighbors, Paraguay does not shout for attention; it simply waits, warm and welcoming, for curious travelers to arrive. The country has two official languages: Spanish and Guaraní—the latter spoken by nearly 90% of the population, making it the most widely spoken indigenous language on the continent. The currency is the Paraguayan Guaraní, and the flag bears red, white, and blue stripes symbolizing courage, peace, and liberty. From the mighty Paraná and Paraguay rivers to the red-earth ruins of Jesuit missions, this is a nation where ancient traditions and modern life flow together as naturally as the currents of its rivers."
+                       data-es="Paraguay es el secreto mejor guardado de Sudamérica: una joya sin litoral de aproximadamente 7 millones de personas enclavada justo en el centro del continente. A diferencia de sus famosos vecinos, Paraguay no grita por atención; simplemente espera, cálido y acogedor, a que lleguen viajeros curiosos. El país tiene dos idiomas oficiales: el español y el guaraní, este último hablado por casi el 90% de la población, lo que lo convierte en la lengua indígena más hablada del continente. La moneda es el Guaraní paraguayo y la bandera lleva franjas rojas, blancas y azules que simbolizan coraje, paz y libertad. Desde los poderosos ríos Paraná y Paraguay hasta las ruinas de tierra roja de las misiones jesuíticas, esta es una nación donde las tradiciones ancestrales y la vida moderna fluyen juntas tan naturalmente como las corrientes de sus ríos.">
+                        Paraguay is South America's best-kept secret—a landlocked gem of roughly 7 million people nestled right in the center of the continent. Unlike its famous neighbors, Paraguay does not shout for attention; it simply waits, warm and welcoming, for curious travelers to arrive. The country has two official languages: Spanish and Guaraní—the latter spoken by nearly 90% of the population, making it the most widely spoken indigenous language on the continent. The currency is the Paraguayan Guaraní, and the flag bears red, white, and blue stripes symbolizing courage, peace, and liberty. From the mighty Paraná and Paraguay rivers to the red-earth ruins of Jesuit missions, this is a nation where ancient traditions and modern life flow together as naturally as the currents of its rivers.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Asuncion -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/as2.ftcdn.net/37da5f11ab5599cf860d8b70e1f6dec6a0e6e7c6.jpg" alt="Asuncion" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Asunción - The Hottest Capital with the Coolest Soul" data-es="Asunción - La Capital Más Caliente con el Alma Más Fresca">Asunción - The Hottest Capital with the Coolest Soul</h3>
+                    <p data-en="Asunción is considered the hottest capital in the Americas, and I am not just talking about the temperature. Founded in 1537 along the eastern bank of the Paraguay River, this city of 3.5 million people pulses with a laid-back rhythm that feels almost rebellious in our hyper-connected world. The historic downtown is a fascinating patchwork of colonial mansions, weathered 20th-century façades, and sudden bursts of modern street art. The Palacio de los López, the pink presidential palace, glows ethereally at night and anchors the waterfront Costanera, where locals gather to sip tereré and watch the sun bleed into the river. Condé Nast Traveler recently named Asunción one of the best places to visit in 2026, and it is easy to see why: a new wave of chefs is reinventing Paraguayan cuisine, specialty coffee shops are blooming, and restored heritage buildings now house boutique hotels and creative spaces. Do not miss the Panteón Nacional de los Héroes, a small but stunning mausoleum where an eternal flame honors the country's fallen. Asunción is not polished, and that is precisely its charm—it is real, raw, and refreshingly human."
+                       data-es="Asunción es considerada la capital más caliente de América, y no solo hablo de la temperatura. Fundada en 1537 a orillas del río Paraguay, esta ciudad de 3.5 millones de personas pulsa con un ritmo relajado que se siente casi rebelde en nuestro mundo hiperconectado. El centro histórico es un fascinante mosaico de mansiones coloniales, fachadas desgastadas del siglo XX y repentinas explosiones de arte callejero moderno. El Palacio de los López, el palacio presidencial color rosa, brilla etéreo por la noche y ancla la Costanera ribereña, donde los locales se reúnen para sorber tereré y ver cómo el sol se derrama en el río. Condé Nast Traveler nombró recientemente a Asunción como uno de los mejores destinos para visitar en 2026, y es fácil ver por qué: una nueva ola de chefs está reinventando la cocina paraguaya, las cafeterías de especialidad florecen y los edificios patrimoniales restaurados albergan ahora hoteles boutique y espacios creativos. No te pierdas el Panteón Nacional de los Héroes, un mausoleo pequeño pero impresionante donde una llama eterna honra a los caídos del país. Asunción no está pulida, y ese es precisamente su encanto: es real, cruda y refrescantemente humana.">
+                        Asunción is considered the hottest capital in the Americas, and I am not just talking about the temperature. Founded in 1537 along the eastern bank of the Paraguay River, this city of 3.5 million people pulses with a laid-back rhythm that feels almost rebellious in our hyper-connected world. The historic downtown is a fascinating patchwork of colonial mansions, weathered 20th-century façades, and sudden bursts of modern street art. The Palacio de los López, the pink presidential palace, glows ethereally at night and anchors the waterfront Costanera, where locals gather to sip tereré and watch the sun bleed into the river. Condé Nast Traveler recently named Asunción one of the best places to visit in 2026, and it is easy to see why: a new wave of chefs is reinventing Paraguayan cuisine, specialty coffee shops are blooming, and restored heritage buildings now house boutique hotels and creative spaces. Do not miss the Panteón Nacional de los Héroes, a small but stunning mausoleum where an eternal flame honors the country's fallen. Asunción is not polished, and that is precisely its charm—it is real, raw, and refreshingly human.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Encarnacion -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/958f9ca0c4785855a9e13fe36af7a334ae66bf78.jpg" alt="Encarnacion Jesuit Ruins" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Encarnación - Where Carnival Meets Centuries" data-es="Encarnación - Donde el Carnaval Encuentra los Siglos">Encarnación - Where Carnival Meets Centuries</h3>
+                    <p data-en="On the banks of the Paraná River, just across from Argentina, lies Encarnación—a city that effortlessly blends beach-town relaxation with whispers of history. The Costanera waterfront comes alive each evening as families stroll, couples share mate, and the lights of Posadas flicker on the opposite shore. San José Beach offers a surprising slice of riverfront paradise in a landlocked country, with calm, shallow waters perfect for a refreshing dip. But Encarnación's true soul lies just outside the city: the Jesuit Missions of La Santísima Trinidad de Paraná and Jesús de Tavarangue. These UNESCO World Heritage ruins, built in the 17th century, are masterpieces of red stone and faith, where indigenous Guaraní and European Jesuits once created a unique utopian society. Wander the silent arches and bell towers as the sun sets, and you will feel centuries collapse into a single breath. If you visit in January or February, the Carnaval Encarnaceno transforms the city into a riot of feathers, drums, and dancing—often called the most authentic carnival in South America after Rio. It is affordable, joyful, and gloriously untouristy."
+                       data-es="A orillas del río Paraná, justo enfrente de Argentina, se encuentra Encarnación: una ciudad que combina sin esfuerzo la relajación de un pueblo playero con susurros de historia. La Costanera ribereña cobra vida cada tarde cuando las familias pasean, las parejas comparten mate y las luces de Posadas parpadean en la orilla opuesta. La Playa San José ofrece una sorprendente porción de paraíso ribereño en un país sin litoral, con aguas tranquilas y poco profundas perfectas para un chapuzón refrescante. Pero el verdadero alma de Encarnación se encuentra justo fuera de la ciudad: las Misiones Jesuíticas de La Santísima Trinidad de Paraná y Jesús de Tavarangue. Estas ruinas, Patrimonio de la Humanidad de la UNESCO, construidas en el siglo XVII, son obras maestras de piedra roja y fe, donde los guaraníes indígenas y los jesuitas europeos una vez crearon una sociedad utópica única. Deambula por los arcos silenciosos y las torres de campanario al atardecer, y sentirás cómo los siglos colapsan en un solo aliento. Si visitas en enero o febrero, el Carnaval Encarnaceno transforma la ciudad en un aluvión de plumas, tambores y baile, a menudo llamado el carnaval más auténtico de Sudamérica después de Río. Es asequible, alegre y gloriosamente poco turístico.">
+                        On the banks of the Paraná River, just across from Argentina, lies Encarnación—a city that effortlessly blends beach-town relaxation with whispers of history. The Costanera waterfront comes alive each evening as families stroll, couples share mate, and the lights of Posadas flicker on the opposite shore. San José Beach offers a surprising slice of riverfront paradise in a landlocked country, with calm, shallow waters perfect for a refreshing dip. But Encarnación's true soul lies just outside the city: the Jesuit Missions of La Santísima Trinidad de Paraná and Jesús de Tavarangue. These UNESCO World Heritage ruins, built in the 17th century, are masterpieces of red stone and faith, where indigenous Guaraní and European Jesuits once created a unique utopian society. Wander the silent arches and bell towers as the sun sets, and you will feel centuries collapse into a single breath. If you visit in January or February, the Carnaval Encarnaceno transforms the city into a riot of feathers, drums, and dancing—often called the most authentic carnival in South America after Rio. It is affordable, joyful, and gloriously untouristy.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Ciudad del Este -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/iguazufalls.com/0e4a20d065a4cbb8c29e09f6a69b68a38d2c26ac.jpg" alt="Ciudad del Este" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="Ciudad del Este - The City That Powers a Continent" data-es="Ciudad del Este - La Ciudad que Energiza un Continente">Ciudad del Este - The City That Powers a Continent</h3>
+                    <p data-en="Ciudad del Este sits at the triple border of Paraguay, Brazil, and Argentina, and it is unlike anywhere else on Earth. By day, it is a shopper's fever dream—thousands of Brazilians and Argentinians flood across the Friendship Bridge to hunt for electronics, perfumes, and bargains in a sprawling maze of malls and street stalls. But look beyond the commerce, and you will find one of the modern world's greatest wonders: the Itaipú Dam. This colossal hydroelectric plant, shared with Brazil, generates enough electricity to power nearly all of Paraguay and a fifth of Brazil. Standing before the spillways as water thunders into the Paraná River is a humbling reminder of human ambition. The dam offers free guided tours, a museum of Guaraní land and culture, and an evening light show projected onto the reservoir walls. Ciudad del Este is chaotic, loud, and unapologetically commercial—but it is also the gateway to the majestic Iguazú Falls, just minutes away in Brazil and Argentina. Love it or hate it, this city will leave an impression."
+                       data-es="Ciudad del Este se encuentra en la triple frontera de Paraguay, Brasil y Argentina, y no se parece a ningún otro lugar de la Tierra. De día, es el sueño febril de un comprador: miles de brasileños y argentinos inundan el Puente de la Amistad para buscar electrónicos, perfumes y gangas en un laberinto de centros comerciales y puestos callejeros. Pero mira más allá del comercio y encontrarás una de las grandes maravillas del mundo moderno: la Represa de Itaipú. Esta colosal planta hidroeléctrica, compartida con Brasil, genera suficiente electricidad para abastecer casi todo Paraguay y una quinta parte de Brasil. Pararse frente a los vertederos mientras el agua retumba en el río Paraná es un recordatorio humillante de la ambición humana. La represa ofrece visitas guiadas gratuitas, un museo de la tierra y cultura guaraní, y un espectáculo de luves vespertino proyectado sobre las paredes del embalse. Ciudad del Este es caótica, ruidosa y sin disculpas comercial, pero también es la puerta de entrada a las majestuosas Cataratas del Iguazú, a solo minutos en Brasil y Argentina. Te guste o no, esta ciudad dejará una impresión.">
+                        Ciudad del Este sits at the triple border of Paraguay, Brazil, and Argentina, and it is unlike anywhere else on Earth. By day, it is a shopper's fever dream—thousands of Brazilians and Argentinians flood across the Friendship Bridge to hunt for electronics, perfumes, and bargains in a sprawling maze of malls and street stalls. But look beyond the commerce, and you will find one of the modern world's greatest wonders: the Itaipú Dam. This colossal hydroelectric plant, shared with Brazil, generates enough electricity to power nearly all of Paraguay and a fifth of Brazil. Standing before the spillways as water thunders into the Paraná River is a humbling reminder of human ambition. The dam offers free guided tours, a museum of Guaraní land and culture, and an evening light show projected onto the reservoir walls. Ciudad del Este is chaotic, loud, and unapologetically commercial—but it is also the gateway to the majestic Iguazú Falls, just minutes away in Brazil and Argentina. Love it or hate it, this city will leave an impression.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- San Bernardino -->
+            <div class="city-card fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/643673c4da45071e9dccad46464a42af4a1a0765.jpg" alt="San Bernardino" class="city-image">
+                <div class="city-content">
+                    <h3 data-en="San Bernardino - The Summer Soul of Paraguay" data-es="San Bernardino - El Alma Veraniega de Paraguay">San Bernardino - The Summer Soul of Paraguay</h3>
+                    <p data-en="Just an hour from Asunción, San Bernardino feels like stepping into a different world—a world of pine-scented hills, German-influenced architecture, and the vast, shimmering expanse of Lake Ypacaraí. Founded by German immigrants in the late 19th century, this lakeside town has become Paraguay's most beloved summer retreat, where Asuncenos escape the capital's sweltering heat on weekends. The waterfront buzzes with sailboats, kayaks, and families grilling sopa paraguaya by the shore. The town's European heritage is still visible in its chalet-style homes, artisan breweries, and the occasional polka melody drifting from a neighborhood gathering. San Bernardino is not about ticking off tourist sights; it is about slowing down. Rent a paddleboat, eat fresh fried fish at a lakeside shack, and watch the sky turn violet over the water. If you want to understand how Paraguayans truly live, laugh, and recharge, come here on a Sunday afternoon when the tereré flows freely and the whole town feels like one big family reunion."
+                       data-es="A solo una hora de Asunción, San Bernardino se siente como entrar en un mundo diferente: un mundo de colinas perfumadas de pino, arquitectura de influencia alemana y la vasta y brillante extensión del Lago Ypacaraí. Fundada por inmigrantes alemanes a finales del siglo XIX, esta ciudad lacustre se ha convertido en el retiro veraniego más querido de Paraguay, donde los asuncenos escapan del sofocante calor de la capital los fines de semana. La ribera bulle de veleros, kayacs y familias asando sopa paraguaya a orillas del lago. La herencia europea de la ciudad aún es visible en sus casas de estilo chalet, cervecerías artesanales y la ocasional melodía de polka que flota desde una reunión vecinal. San Bernardino no se trata de tachar sitios turísticos, se trata de bajar la velocidad. Alquila una barca de remos, come pescado frito fresco en una choza junto al lago y observa cómo el cielo se torna violeta sobre el agua. Si quieres entender cómo los paraguayos realmente viven, ríen y se recargan, ven aquí un domingo por la tarde cuando el tereré fluye libremente y toda la ciudad se siente como una gran reunión familiar.">
+                        Just an hour from Asunción, San Bernardino feels like stepping into a different world—a world of pine-scented hills, German-influenced architecture, and the vast, shimmering expanse of Lake Ypacaraí. Founded by German immigrants in the late 19th century, this lakeside town has become Paraguay's most beloved summer retreat, where Asuncenos escape the capital's sweltering heat on weekends. The waterfront buzzes with sailboats, kayaks, and families grilling sopa paraguaya by the shore. The town's European heritage is still visible in its chalet-style homes, artisan breweries, and the occasional polka melody drifting from a neighborhood gathering. San Bernardino is not about ticking off tourist sights; it is about slowing down. Rent a paddleboat, eat fresh fried fish at a lakeside shack, and watch the sky turn violet over the water. If you want to understand how Paraguayans truly live, laugh, and recharge, come here on a Sunday afternoon when the tereré flows freely and the whole town feels like one big family reunion.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Practical Tips -->
+            <div style="background: #1a1a2e; color: #fff; padding: 40px; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: #fff; margin-bottom: 20px; font-size: 1.6em;" data-en="Travel Tips for Paraguay" data-es="Consejos de Viaje para Paraguay">Travel Tips for Paraguay</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">✈</span>
+                        <span data-en="Best time to visit: April to September for milder temperatures; January-February for carnival season." data-es="Mejor época para visitar: abril a septiembre para temperaturas más suaves; enero-febrero para la temporada de carnaval.">Best time to visit: April to September for milder temperatures; January-February for carnival season.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">💰</span>
+                        <span data-en="Currency: Paraguayan Guaraní (PYG). Cash is essential in small towns; USD are accepted in some places." data-es="Moneda: Guaraní paraguayo (PYG). El efectivo es esencial en pueblos pequeños; USD se aceptan en algunos lugares.">Currency: Paraguayan Guaraní (PYG). Cash is essential in small towns; USD are accepted in some places.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">🧉</span>
+                        <span data-en="Don't miss: Try tereré (iced herbal mate), chipa cheese bread, sopa paraguaya, and local beef." data-es="No te pierdas: Prueba tereré, chipa, sopa paraguaya y carne local.">Don't miss: Try tereré (iced herbal mate), chipa cheese bread, sopa paraguaya, and local beef.</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #fcbf1e;">🌎</span>
+                        <span data-en="Language: Spanish and Guaraní are both official. Most people speak both, and Guaraní words flavor everyday conversation." data-es="Idioma: El español y el guaraní son ambos oficiales. La mayoría habla ambos, y las palabras guaraníes dan sabor a la conversación diaria.">Language: Spanish and Guaraní are both official. Most people speak both, and Guaraní words flavor everyday conversation.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p data-en="Paraguay does not beg to be noticed. It simply opens its arms, offers you a gourd of tereré, and invites you to stay awhile. In a world obsessed with the next big thing, this quiet heart of South America reminds us that the greatest journeys are the ones we never planned. Jajei pora!" 
+               data-es="Paraguay no suplica ser notado. Simplemente abre sus brazos, te ofrece un guampa de tereré y te invita a quedarte un rato. En un mundo obsesionado con la próxima gran novedad, este tranquilo corazón de Sudamérica nos recuerda que los mayores viajes son los que nunca planeamos. ¡Jajei pora!">
+                Paraguay does not beg to be noticed. It simply opens its arms, offers you a gourd of tereré, and invites you to stay awhile. In a world obsessed with the next big thing, this quiet heart of South America reminds us that the greatest journeys are the ones we never planned. Jajei pora!
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.6;">✍️ Written with love for travelers | 2026</p>
+        </div>
+    </div>
+    
+    <script>
+        function setLanguage(lang) {
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (lang === 'es' && el.getAttribute('data-es')) {
+                    el.textContent = el.getAttribute('data-es');
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                }
+            });
+            
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/paraguay_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Paraguay Travel Guide saved successfully!")
+print(f"File size: {len(html_content)} characters")
