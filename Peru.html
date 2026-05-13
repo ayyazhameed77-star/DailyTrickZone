@@ -1,0 +1,620 @@
+
+# Create a complete HTML travel blog for Peru with translation feature
+# The blog will be ~800 words, human-readable, with city images and translation
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peru Travel Guide - Discover the Land of the Incas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f7f4;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #d91023 0%, #ffffff 50%, #d91023 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .flag-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .flag-stripe {
+            width: 60px;
+            height: 40px;
+        }
+        
+        .flag-red {
+            background-color: #d91023;
+        }
+        
+        .flag-white {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .coat-of-arms {
+            width: 30px;
+            height: 30px;
+            background: #gold;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #2c1810;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #5a3a2a;
+            font-style: italic;
+        }
+        
+        /* Translation Bar */
+        .translate-bar {
+            background: #2c1810;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .translate-info {
+            color: #f9f7f4;
+            font-size: 0.95em;
+        }
+        
+        .translate-info span {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .translate-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .translate-btn {
+            padding: 8px 16px;
+            border: 2px solid #d91023;
+            background: transparent;
+            color: #f9f7f4;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .translate-btn:hover, .translate-btn.active {
+            background: #d91023;
+            color: white;
+        }
+        
+        /* Content */
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro {
+            background: #fff8e7;
+            padding: 25px;
+            border-left: 5px solid #d91023;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            color: #5a3a2a;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #d91023;
+            margin: 35px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0e6d3;
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: #8b4513;
+            margin: 25px 0 15px 0;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        
+        /* City Cards */
+        .city-card {
+            background: white;
+            border: 1px solid #e0d5c5;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .city-content {
+            padding: 25px;
+        }
+        
+        .city-title {
+            font-size: 1.5em;
+            color: #d91023;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .city-tag {
+            background: #d91023;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Flag Section */
+        .flag-section {
+            background: linear-gradient(to right, #fff5f5, #ffffff, #fff5f5);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .peru-flag-display {
+            display: flex;
+            justify-content: center;
+            height: 120px;
+            max-width: 180px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .flag-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 15px auto;
+        }
+        
+        /* Tips Box */
+        .tips-box {
+            background: #e8f4f8;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tips-box h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+        
+        .tips-box ul {
+            margin-left: 20px;
+        }
+        
+        .tips-box li {
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c1810;
+            color: #f9f7f4;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer p {
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .language-note {
+            background: #3d2817;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .content { padding: 20px; }
+            .city-image { height: 200px; }
+            .translate-bar { flex-direction: column; text-align: center; }
+        }
+        
+        /* Hidden translations */
+        .translation {
+            display: none;
+        }
+        
+        .translation.active {
+            display: block;
+        }
+        
+        .original.active {
+            display: block;
+        }
+        
+        .original {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="flag-container">
+                <div class="flag-stripe flag-red"></div>
+                <div class="flag-stripe flag-white">
+                    <div style="font-size:20px;">🦙</div>
+                </div>
+                <div class="flag-stripe flag-red"></div>
+            </div>
+            <h1>🇵🇪 Peru Travel Guide</h1>
+            <p class="subtitle">Discover the Land of the Incas, Where Ancient History Meets Breathtaking Beauty</p>
+        </div>
+        
+        <!-- Translation Bar -->
+        <div class="translate-bar">
+            <div class="translate-info">
+                🌐 <span>Translate this guide:</span> Read in your preferred language 
+                | Peru's official languages: <span>Spanish, Quechua, Aymara</span>
+            </div>
+            <div class="translate-buttons">
+                <button class="translate-btn active" onclick="showLang('en')">🇺🇸 English</button>
+                <button class="translate-btn" onclick="showLang('es')">🇪🇸 Español</button>
+                <button class="translate-btn" onclick="showLang('qu')">🗣️ Quechua</button>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            
+            <!-- ENGLISH VERSION -->
+            <div id="content-en" class="translation active">
+                <div class="intro">
+                    <p><strong>Welcome to Peru</strong> — a country where the past whispers through ancient stone walls and the present pulses with vibrant culture. From the misty peaks of the Andes to the lush depths of the Amazon rainforest, Peru offers a journey unlike any other. This guide will walk you through the heart of this South American gem, revealing its famous cities, rich heritage, and the stories behind its proud flag.</p>
+                </div>
+                
+                <div class="flag-section">
+                    <h2>🇵🇪 The Story Behind the Flag</h2>
+                    <div class="peru-flag-display">
+                        <div style="flex:1; background:#d91023;"></div>
+                        <div style="flex:1; background:#ffffff; display:flex; align-items:center; justify-content:center; font-size:40px;">🦙</div>
+                        <div style="flex:1; background:#d91023;"></div>
+                    </div>
+                    <p>The flag of Peru was officially adopted on <strong>February 25, 1825</strong>, following independence from Spain. Its three vertical stripes — red, white, and red — were designed by General José de San Martín, inspired by the red-and-white flamingos (parihuanas) he saw upon arrival.</p>
+                    <p>The <strong>red</strong> symbolizes the blood of patriots who fought for freedom, while <strong>white</strong> represents purity and peace. The coat of arms in the center features a vicuña (representing fauna), a cinchona tree (for flora), and a cornucopia spilling gold and silver coins (symbolizing mineral wealth).</p>
+                </div>
+                
+                <h2>🏛️ Famous Cities You Must Visit</h2>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/caminoincamachupicchu.org/c0f3084776846828e2c29ad60f9eb301189fe4e5.jpg" alt="Machu Picchu" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Machu Picchu
+                            <span class="city-tag">WONDER OF THE WORLD</span>
+                        </div>
+                        <p>Perched at 2,430 meters in the Andes Mountains, Machu Picchu is the legendary "Lost City of the Incas." Built around 1450 as a royal estate for Emperor Pachacuti, this UNESCO World Heritage site remained hidden from the outside world until American historian Hiram Bingham revealed it in 1911. The precision stonework, agricultural terraces, and astronomical alignments demonstrate the Inca mastery of engineering and spirituality. Whether you arrive via the classic four-day Inca Trail or the scenic train through the Sacred Valley, standing at the Sun Gate as dawn breaks over the citadel is a moment that will stay with you forever.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/19f52eb35575fbc62d8830099d4ebab4afe7b8ac.jpg" alt="Lima Miraflores" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Lima
+                            <span class="city-tag">GASTRONOMIC CAPITAL</span>
+                        </div>
+                        <p>Peru's bustling capital sits on cliffs overlooking the Pacific Ocean, offering a perfect blend of colonial history and modern energy. The Miraflores district enchants visitors with its parks, ocean views, and world-class restaurants — Lima is considered one of the gastronomic centers of the world. Explore the historic Plaza Mayor, the Larco Museum's pre-Columbian treasures, and the bohemian Barranco district for nightlife and art. Don't miss the Magic Water Circuit at Parque de la Reserva, the largest fountain complex in the world, where water dances to music and laser lights every evening.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/peru-travels.com/a84eb5c0eaf7484944708263a222b8d09b294dca.jpeg" alt="Arequipa" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Arequipa
+                            <span class="city-tag">THE WHITE CITY</span>
+                        </div>
+                        <p>Nicknamed "La Ciudad Blanca" (The White City), Arequipa glows with buildings constructed from white volcanic stone called sillar. Framed by three dramatic volcanoes — Misti, Chachani, and Pichu Pichu — this colonial city is a UNESCO World Heritage site. The Santa Catalina Monastery is a city within a city, with its colorful walls and hidden courtyards. Arequipa is also the gateway to the Colca Canyon, one of the world's deepest canyons, where Andean condors soar on thermal currents against a backdrop of terraced fields and pre-Inca ruins.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.machutravelperu.com/3ad50f48ebc389a263f4221e2b3dc6e3fb25fa0e.webp" alt="Lake Titicaca" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Lake Titicaca & Puno
+                            <span class="city-tag">HIGHEST NAVIGABLE LAKE</span>
+                        </div>
+                        <p>At 3,810 meters above sea level, Lake Titicaca is the highest navigable lake in the world and the legendary birthplace of the Inca civilization. The shimmering blue waters are home to the Uros people, who live on floating islands made entirely of totora reeds. A visit to these islands offers a glimpse into a way of life that has endured for centuries. Nearby Taquile Island is renowned for its textile art, recognized by UNESCO as Intangible Cultural Heritage. The sunsets here paint the sky in shades of gold and violet, reflecting off waters that seem to merge with the heavens.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-box">
+                    <h4>🎒 Essential Travel Tips for Peru</h4>
+                    <ul>
+                        <li><strong>Altitude:</strong> Cusco sits at 3,400m — spend 2 days acclimatizing before trekking. Drink coca tea, stay hydrated, and avoid alcohol initially.</li>
+                        <li><strong>Best Season:</strong> May to September offers dry weather and clear skies, ideal for Machu Picchu and the Andes.</li>
+                        <li><strong>Currency:</strong> Peruvian Sol (PEN). Credit cards accepted in cities; carry cash for rural areas.</li>
+                        <li><strong>Book Ahead:</strong> Machu Picchu tickets and Inca Trail permits sell out months in advance — plan 3-6 months ahead.</li>
+                        <li><strong>Language:</strong> Spanish is widely spoken. Learning basic Quechua phrases like "Allillanchu" (Hello) earns smiles in the highlands.</li>
+                    </ul>
+                </div>
+                
+                <h2>🌿 Beyond the Icons</h2>
+                <p>While Machu Picchu draws the crowds, Peru's true magic lies in its diversity. Fly over the mysterious Nazca Lines in the desert south, sandboard down dunes in Huacachina, or cruise the Amazon from Iquitos — the world's largest city unreachable by road. In the north, discover Kuelap, the "Machu Picchu of the North," built by the Chachapoya civilization, or surf the warm waters of Mancora.</p>
+                
+                <p>Peru is more than a destination; it is a feeling. It is the warmth of a quinoa soup on a cold mountain morning, the sound of pan flutes echoing through cobblestone streets, and the sight of a condor gliding over ancient valleys. Whether you come for the history, the food, the nature, or the people, Peru will carve a place in your heart that calls you back, again and again.</p>
+            </div>
+            
+            <!-- SPANISH VERSION -->
+            <div id="content-es" class="translation">
+                <div class="intro">
+                    <p><strong>Bienvenido a Perú</strong> — un país donde el pasado susurra a través de antiguos muros de piedra y el presente pulsa con cultura vibrante. Desde las brumosas cumbres de los Andes hasta las profundidades exuberantes de la selva amazónica, Perú ofrece un viaje como ningún otro. Esta guía te llevará al corazón de esta joya sudamericana, revelando sus ciudades famosas, su rica herencia y las historias detrás de su orgullosa bandera.</p>
+                </div>
+                
+                <div class="flag-section">
+                    <h2>🇵🇪 La Historia Detrás de la Bandera</h2>
+                    <div class="peru-flag-display">
+                        <div style="flex:1; background:#d91023;"></div>
+                        <div style="flex:1; background:#ffffff; display:flex; align-items:center; justify-content:center; font-size:40px;">🦙</div>
+                        <div style="flex:1; background:#d91023;"></div>
+                    </div>
+                    <p>La bandera del Perú fue adoptada oficialmente el <strong>25 de febrero de 1825</strong>, tras la independencia de España. Sus tres franjas verticales — rojo, blanco y rojo — fueron diseñadas por el General José de San Martín, inspiradas por los flamencos rojos y blancos (parihuanas) que vio al llegar.</p>
+                    <p>El <strong>rojo</strong> simboliza la sangre de los patriotas que lucharon por la libertad, mientras que el <strong>blanco</strong> representa la pureza y la paz. El escudo en el centro presenta una vicuña (fauna), un árbol de quina (flora) y una cornucopia derramando monedas de oro y plata (riqueza mineral).</p>
+                </div>
+                
+                <h2>🏛️ Ciudades Famosas que Debes Visitar</h2>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/caminoincamachupicchu.org/c0f3084776846828e2c29ad60f9eb301189fe4e5.jpg" alt="Machu Picchu" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Machu Picchu
+                            <span class="city-tag">MARAVILLA DEL MUNDO</span>
+                        </div>
+                        <p>Ubicada a 2,430 metros en los Andes, Machu Picchu es la legendaria "Ciudad Perdida de los Incas." Construida alrededor de 1450 como finca real del Emperador Pachacútec, este sitio Patrimonio de la Humanidad permaneció oculto al mundo hasta que el historiador Hiram Bingham lo reveló en 1911. La precisión de la mampostería, las terrazas agrícolas y los alineamientos astronómicos demuestran el dominio inca de la ingeniería y la espiritualidad. Ya sea que llegues por el clásico Camino Inca de cuatro días o el tren escénico por el Valle Sagrado, estar en la Puerta del Sol al amanecer es un momento que permanecerá contigo para siempre.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/19f52eb35575fbc62d8830099d4ebab4afe7b8ac.jpg" alt="Lima Miraflores" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Lima
+                            <span class="city-tag">CAPITAL GASTRONÓMICA</span>
+                        </div>
+                        <p>La bulliciosa capital del Perú se asienta sobre acantilados con vista al Océano Pacífico, ofreciendo una mezcla perfecta de historia colonial y energía moderna. El distrito de Miraflores encanta con sus parques, vistas al mar y restaurantes de clase mundial — Lima es considerada uno de los centros gastronómicos del mundo. Explora la histórica Plaza Mayor, los tesoros precolombinos del Museo Larco y el bohemio distrito de Barranco para la vida nocturna y el arte. No te pierdas el Circuito Mágico del Agua en el Parque de la Reserva, el complejo de fuentes más grande del mundo.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/peru-travels.com/a84eb5c0eaf7484944708263a222b8d09b294dca.jpeg" alt="Arequipa" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Arequipa
+                            <span class="city-tag">LA CIUDAD BLANCA</span>
+                        </div>
+                        <p>Apodada "La Ciudad Blanca", Arequipa brilla con edificios construidos de piedra volcánica blanca llamada sillar. Enmarcada por tres volcanes dramáticos — Misti, Chachani y Pichu Pichu — esta ciudad colonial es Patrimonio de la Humanidad. El Monasterio de Santa Catalina es una ciudad dentro de la ciudad, con sus muros coloridos y patios escondidos. Arequipa también es la puerta al Cañón del Colca, uno de los cañones más profundos del mundo, donde los cóndores andinos surcan las corrientes térmicas.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.machutravelperu.com/3ad50f48ebc389a263f4221e2b3dc6e3fb25fa0e.webp" alt="Lake Titicaca" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Lago Titicaca y Puno
+                            <span class="city-tag">LAGO NAVEGABLE MÁS ALTO</span>
+                        </div>
+                        <p>A 3,810 metros sobre el nivel del mar, el Lago Titicaca es el lago navegable más alto del mundo y el legendario lugar de nacimiento de la civilización inca. Las brillantes aguas azules albergan a los Uros, que viven en islas flotantes hechas enteramente de totora. Una visita a estas islas ofrece una visión de un modo de vida que ha perdurado por siglos. La cercana Isla Taquile es famosa por su arte textil, reconocido por la UNESCO como Patrimonio Cultural Inmaterial.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-box">
+                    <h4>🎒 Consejos Esenciales para Viajar a Perú</h4>
+                    <ul>
+                        <li><strong>Altitud:</strong> Cusco está a 3,400m — pasa 2 días aclimatándote antes de hacer trekking. Toma té de coca, mantente hidratado y evita el alcohol inicialmente.</li>
+                        <li><strong>Mejor Temporada:</strong> De mayo a septiembre ofrece clima seco y cielos despejados, ideal para Machu Picchu y los Andes.</li>
+                        <li><strong>Moneda:</strong> Sol peruano (PEN). Tarjetas aceptadas en ciudades; lleva efectivo para áreas rurales.</li>
+                        <li><strong>Reserva con Anticipación:</strong> Los boletos de Machu Picchu y los permisos del Camino Inca se agotan meses antes — planifica con 3-6 meses de anticipación.</li>
+                        <li><strong>Idioma:</strong> El español se habla ampliamente. Aprender frases básicas en quechua como "Allillanchu" (Hola) genera sonrisas en la sierra.</li>
+                    </ul>
+                </div>
+                
+                <h2>🌿 Más Allá de los Iconos</h2>
+                <p>Mientras Machu Picchu atrae a las multitudes, la verdadera magia del Perú radica en su diversidad. Sobrevuela las misteriosas Líneas de Nazca en el desierto del sur, practica sandboard en las dunas de Huacachina, o navega el Amazonas desde Iquitos — la ciudad más grande del mundo inaccesible por carretera. En el norte, descubre Kuelap, la "Machu Picchu del Norte," construida por la civilización Chachapoya, o surfea las cálidas aguas de Mancora.</p>
+                
+                <p>Perú es más que un destino; es una sensación. Es el calor de una sopa de quinua en una fría mañana de montaña, el sonido de zampoñas resonando en calles empedradas, y la vista de un cóndor planeando sobre antiguos valles. Ya sea que vengas por la historia, la comida, la naturaleza o la gente, Perú se ganará un lugar en tu corazón que te llamará de regreso, una y otra vez.</p>
+            </div>
+            
+            <!-- QUECHUA VERSION -->
+            <div id="content-qu" class="translation">
+                <div class="intro">
+                    <p><strong>Allillanchu Perúman</strong> — huk suyumanta, ñawpaq pacha rumi pirqankunamanta uyarin, kunan pacha kawsayninmi sinchi. Andes urqukunamanta Amazonas sach'a-sach'a hawanman, Perúqa huk ñanta qawaykunamanta aswan allinmi. Kay qullqataqa kay suyup sunqonman pusanqa, riqsisqa llaqtankunata, aswan kawsayninpa willankunata, chaymi sunqoyninpa unanchanpa willasqan.</p>
+                </div>
+                
+                <div class="flag-section">
+                    <h2>🇵🇪 Unanchanpa Willasqan</h2>
+                    <div class="peru-flag-display">
+                        <div style="flex:1; background:#d91023;"></div>
+                        <div style="flex:1; background:#ffffff; display:flex; align-items:center; justify-content:center; font-size:40px;">🦙</div>
+                        <div style="flex:1; background:#d91023;"></div>
+                    </div>
+                    <p>Perupa unanchanqa <strong>1825 watapi, Febrero killapi 25 p'unchawpi</strong> aswan allinmi churarqa, España suyumanta qispisqa qhipan. Uchuy hina ch'iqan q'ipiyninqa — puka, yuraq, puka — General José de San Martínpa ruwasqanmi, parihuanakunata rikusqanmantam apachisqa.</p>
+                    <p><strong>Puka</strong>qa qispiypaq ñak'arisqa runakunapa yawarninmi, <strong>yuraq</strong>qa ch'uyanata, k'uyanata riqsin. Chawpinpi unanchanqa vicuñata (uywakuna), quinata (sach'akuna), cornucopiata (qullqikuna) rikuchin.</p>
+                </div>
+                
+                <h2>🏛️ Riqsisqa Llaqtakuna</h2>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/caminoincamachupicchu.org/c0f3084776846828e2c29ad60f9eb301189fe4e5.jpg" alt="Machu Picchu" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Machu Picchu
+                            <span class="city-tag">TIERRAP TUKUY</span>
+                        </div>
+                        <p>Andes urqukunapi 2,430 metro hanaq, Machu Picchuqa "Inka Llaqta Chinkasqa" nisqa. Pachakutiq Inka 1450 watapi wasinchasqa, UNESCOpa herenciapa listapi. Hiram Bingham 1911 watapi rikuchirqan. Rumikunapa allin taripan, chakra terrace-kunapa, astronomía alineacionkunapa Inka ingenieríapa yuyayninta rikuchin. Inca Ñanpi ña trenpi, Inti Punkupi amanecer rikuyqa wiñaypaq sunqoypi saqisqa.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/19f52eb35575fbc62d8830099d4ebab4afe7b8ac.jpg" alt="Lima Miraflores" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Lima
+                            <span class="city-tag">MIKUNAP UMA LLAQTA</span>
+                        </div>
+                        <p>Perupa uma llaqtaqa Pacifico oceanopa qhapana ñinpi tiyamun, ñawpaq kawsayninwan kunan kawsayninpa tinkunata rikuchin. Miraflores distrituqa parkkunawan, oceanopa rikuykunawan, jatun restaurantekunawan anchatam kusichin — Limaqa tukuy pachap mikunap uma llaqtanmi. Plaza Mayor, Museo Larco, Barranco distrituta qhaway. Parque de la Reservapa Circuito Mágico del Aguaqa tukuy pachap aswan hatun phutuykunata charin.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/peru-travels.com/a84eb5c0eaf7484944708263a222b8d09b294dca.jpeg" alt="Arequipa" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Arequipa
+                            <span class="city-tag">YURAQ LLAQTA</span>
+                        </div>
+                        <p>"Yuraq Llaqta" nisqa, Arequipaq sillar nisqa yuraq rumiwan wasichasqa. Misti, Chachani, Pichu Pichu urqukunawan hawanpi — UNESCO herenciapa llaqta. Santa Catalina Monasterioqa llaqtapi llaqtam, yana pirqakunawan, patakunawan. Arequipaqa Colca Cañonpa punkunmi, tukuy pachap aswan hanaq cañonkunamanta huk, condorkunata phawarinaykita qhaway.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.machutravelperu.com/3ad50f48ebc389a263f4221e2b3dc6e3fb25fa0e.webp" alt="Lake Titicaca" class="city-image">
+                    <div class="city-content">
+                        <div class="city-title">
+                            Titicaca Qucha - Puno
+                            <span class="city-tag">HANAQ QUCHA</span>
+                        </div>
+                        <p>3,810 metro hanaq, Titicacaqa tukuy pachap aswan hanaq purina quchami, Inka kawsaypa paqarisqan. Uros runakuna totora sach'awan ruwasqa wat'akunapi tiyamun, ñawpaq kawsaynin qhaway. Taquile wat'api textil arteqa UNESCOwan riqsisqa. Inti chinkayninqa quchapi phuyupi t'inkisqa, yurakunata, pukakunata, violetakunata rikuchin.</p>
+                    </div>
+                </div>
+                
+                <div class="tips-box">
+                    <h4>🎒 Peruman Purinapa Yachaykuna</h4>
+                    <ul>
+                        <li><strong>Hanaq:</strong> Cusco 3,400 metro hanaq — 2 punchaw acclimatization, coca té upyay, yaku upyay, alcohol ama upyay.</li>
+                        <li><strong>Allin Pacha:</strong> Mayo-Setiembre, qasa pacha, Machu Picchu, Andespaq allin.</li>
+                        <li><strong>Qullqi:</strong> Sol peruano (PEN). Llaqtakunapi tarjetakuna, rural distritukunapi efectivo.</li>
+                        <li><strong>Ñaupaq:</strong> Machu Picchu boletokuna, Inca Ñan permisokuna ñaupaq wat'akunata tukuy — 3-6 killkata ñaupaq planifika.</li>
+                        <li><strong>Simi:</strong> Castellano rimasqa. Quechua simipi "Allillanchu" (Imaynallam) yachayqa kusichin.</li>
+                    </ul>
+                </div>
+                
+                <h2>🌿 Aswan Rikunakuna</h2>
+                <p>Machu Picchu runakunata apamun, Perupa aswan yachanqa imaynatam diversidadnin. Nazca Líneas surqanpi, Huacachina dunaskunapi sandboard, Iquitos Amazonaspi — tukuy pachap aswan hatun llaqta, ñan ama kanqan. Nortepi Kuelap "Machu Picchu del Norte" nisqa, Chachapoya runakunapa ruwasqa, Mancora q'uñi yakukunapi surf.</p>
+                
+                <p>Perúqa mayqinman目的地 manañachu; huk rimayniyuqmi. Quinua sopa q'asapunchawpa q'uñin, zampoñakunapa uyarinin rumi ñanpi, condorpa phawarin antiguo vallekunapi. Ñawpaq kawsaypaq, mikunapaq, naturalezapaq, runakunapaq, Perú sunqoypi saqisqa, wiñaypaq kutimusqaykita munanqa.</p>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>🇵🇪 <strong>Peru Travel Guide 2026</strong> | Written with love for travelers worldwide</p>
+            <p>"El Perú es un país megadiverso, pluricultural y multilingüe"</p>
+            <div class="language-note">
+                <p>🗣️ <strong>Peru's Official Languages:</strong> Spanish (Castellano) — spoken by ~84% | Quechua — spoken by ~13% | Aymara — spoken by ~1.7%</p>
+                <p>Peru recognizes over 47 indigenous languages across its diverse territories.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showLang(lang) {
+            // Hide all translations
+            document.querySelectorAll('.translation').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected translation
+            document.getElementById('content-' + lang).classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.translate-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>'''
+
+# Save the HTML file
+output_path = '/mnt/agents/output/peru_travel_guide.html'
+with open(output_path, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print(f"✅ Peru Travel Guide saved to: {output_path}")
+print(f"📄 File size: {len(html_content)} characters")
+print(f"🖼️ Images included: Machu Picchu, Lima Miraflores, Arequipa, Lake Titicaca")
+print(f"🌐 Languages: English, Spanish, Quechua")
