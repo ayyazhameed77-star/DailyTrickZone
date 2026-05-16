@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jamaica Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=Source+Sans+3:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    .heading-font { font-family: 'Playfair Display', Georgia, serif; }
+    .body-font { font-family: 'Source Sans 3', sans-serif; }
+    .flag-stripe-gold { background: #FED100; }
+    .flag-stripe-green { background: #009B3A; }
+    .flag-stripe-black { background: #000000; }
+    .hero-bg {
+      background: linear-gradient(135deg, #009B3A 0%, #006B2D 30%, #004D1F 60%, #FED100 100%);
+    }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.15); }
+    .fade-in { animation: fadeIn 0.8s ease forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .lang-btn.active { background: #009B3A; color: white; }
+    .jamaica-divider {
+      height: 6px;
+      background: linear-gradient(90deg, #009B3A 0%, #009B3A 33%, #FED100 33%, #FED100 66%, #000 66%, #000 100%);
+      border-radius: 3px;
+    }
+    .blog-content p { margin-bottom: 1.1em; line-height: 1.85; }
+    .city-card-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+    }
+    .city-svg-bg {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full body-font">
+  <div id="app" class="w-full h-full overflow-auto" style="background:#FAFAF5;"><!-- Flag Bar -->
+   <div class="flex w-full" style="height:8px;">
+    <div class="flex-1 flag-stripe-green"></div>
+    <div class="flex-1 flag-stripe-gold"></div>
+    <div class="flex-1 flag-stripe-black"></div>
+    <div class="flex-1 flag-stripe-gold"></div>
+    <div class="flex-1 flag-stripe-green"></div>
+   </div><!-- Hero -->
+   <header class="hero-bg relative px-4 py-16 md:py-24 text-center overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, #FED100 1px, transparent 1px), radial-gradient(circle at 80% 30%, #FED100 1px, transparent 1px); background-size: 60px 60px;"></div><!-- Jamaica Flag SVG -->
+    <div class="relative mx-auto mb-6" style="width:120px; height:80px;">
+     <svg viewbox="0 0 120 80" width="120" height="80" style="filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));"><rect width="120" height="80" fill="#009B3A" /> <polygon points="0,0 60,40 0,80" fill="#000" /> <polygon points="120,0 60,40 120,80" fill="#000" /> <line x1="0" y1="0" x2="120" y2="80" stroke="#FED100" stroke-width="8" /> <line x1="120" y1="0" x2="0" y2="80" stroke="#FED100" stroke-width="8" />
+     </svg>
+    </div>
+    <h1 id="heroTitle" class="heading-font text-4xl md:text-6xl font-900 text-white relative drop-shadow-lg">Jamaica Travel Guide</h1>
+    <p id="heroSub" class="relative text-lg md:text-xl mt-4 font-300" style="color:#FED100;">🌴 One Love, One Heart, One Island Paradise 🌴</p>
+    <p id="authorLine" class="relative mt-3 text-sm" style="color:rgba(255,255,255,0.75);">By <span id="authorName">Travel Explorer</span> · 8 min read</p>
+   </header><!-- Language Selector -->
+   <div class="sticky top-0 z-50 px-4 py-3 flex flex-wrap items-center justify-center gap-2" style="background:rgba(250,250,245,0.95); backdrop-filter:blur(8px); border-bottom:1px solid #e5e5dc;"><span class="text-sm font-600 mr-2" style="color:#006B2D;"><i data-lucide="languages" style="width:16px;height:16px;display:inline;vertical-align:middle;"></i> <span data-translate="translate_label">Translate:</span></span> <button onclick="setLang('en')" class="lang-btn active px-4 py-1.5 rounded-full text-sm font-600 border-2 transition-all" style="border-color:#009B3A;">English</button> <button onclick="setLang('ur')" class="lang-btn px-4 py-1.5 rounded-full text-sm font-600 border-2 transition-all" style="border-color:#009B3A;">اردو</button> <button onclick="setLang('hi')" class="lang-btn px-4 py-1.5 rounded-full text-sm font-600 border-2 transition-all" style="border-color:#009B3A;">हिन्दी</button> <button onclick="setLang('jam')" class="lang-btn px-4 py-1.5 rounded-full text-sm font-600 border-2 transition-all" style="border-color:#009B3A;">Patois 🇯🇲</button>
+   </div><!-- Blog Content -->
+   <main class="max-w-3xl mx-auto px-5 md:px-8 py-10">
+    <div class="jamaica-divider mb-10"></div><!-- Intro -->
+    <section class="blog-content fade-in mb-10">
+     <h2 id="sec1Title" class="heading-font text-2xl md:text-3xl font-700 mb-4" style="color:#006B2D;">Welcome to Jamaica — The Jewel of the Caribbean</h2>
+     <p data-translate="intro1" style="color:#333;">Jamaica is more than just a destination — it is a feeling. From the moment you step onto this lush island, the rhythm of reggae, the warmth of the people, and the breathtaking beauty of the landscape wrap around you like a warm Caribbean breeze. Nestled in the heart of the Caribbean Sea, Jamaica is the third-largest island in the region, spanning 10,990 square kilometres of pure tropical paradise. With its motto "Out of Many, One People," Jamaica celebrates a rich cultural tapestry woven from African, European, Asian, and Indigenous Taíno heritage.</p>
+     <p data-translate="intro2" style="color:#333;">The island's capital, Kingston, pulses with energy — a vibrant city where world-famous music was born and where history meets modernity at every corner. But Jamaica's magic extends far beyond its capital. From the misty peaks of the Blue Mountains to the crystal-clear waters of Negril's Seven Mile Beach, every inch of this island tells a story worth discovering.</p>
+    </section><!-- Cities Section -->
+    <section class="fade-in mb-10">
+     <h2 id="sec2Title" class="heading-font text-2xl md:text-3xl font-700 mb-6" style="color:#006B2D;">Famous Cities You Must Visit</h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"><!-- Kingston -->
+      <div class="card-hover rounded-xl overflow-hidden" style="background:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+       <div class="city-svg-bg" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);">
+        <svg viewbox="0 0 300 160" width="260" height="140"><rect x="40" y="60" width="30" height="80" fill="#FED100" rx="2" /> <rect x="80" y="40" width="35" height="100" fill="#4ecca3" rx="2" /> <rect x="125" y="25" width="40" height="115" fill="#e8e8e8" rx="2" /> <rect x="175" y="50" width="30" height="90" fill="#FED100" rx="2" /> <rect x="215" y="35" width="35" height="105" fill="#4ecca3" rx="2" /> <circle cx="260" cy="30" r="15" fill="#FED100" opacity="0.8" /> <rect x="20" y="140" width="260" height="8" fill="#009B3A" rx="3" /> <text x="150" y="155" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif">
+          Kingston Skyline
+         </text>
+        </svg>
+       </div>
+       <div class="p-5">
+        <h3 class="heading-font text-xl font-700 mb-2" style="color:#000;">Kingston 🎵</h3>
+        <p data-translate="kingston" class="text-sm" style="color:#555; line-height:1.7;">The heartbeat of Jamaica! Kingston is a cultural powerhouse — home to the legendary Bob Marley Museum, the stunning Devon House, and the bustling markets of downtown. Visit the National Gallery of Jamaica, explore the vibrant street art scene, and savour authentic jerk chicken at Scotchies. The Blue Mountains rise majestically behind the city, offering world-class coffee plantations and breathtaking hiking trails.</p>
+       </div>
+      </div><!-- Montego Bay -->
+      <div class="card-hover rounded-xl overflow-hidden" style="background:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+       <div class="city-svg-bg" style="background: linear-gradient(135deg, #00b4d8, #0096c7, #0077b6);">
+        <svg viewbox="0 0 300 160" width="260" height="140"><ellipse cx="150" cy="130" rx="140" ry="20" fill="#ffe066" opacity="0.6" /> <path d="M20,90 Q75,60 150,85 Q225,110 280,80" fill="none" stroke="white" stroke-width="2" opacity="0.5" /> <path d="M20,100 Q75,70 150,95 Q225,120 280,90" fill="none" stroke="white" stroke-width="2" opacity="0.3" /> <circle cx="240" cy="35" r="20" fill="#FED100" opacity="0.9" /> <path d="M60,120 L65,90 L75,88 L80,120Z" fill="#009B3A" /> <path d="M55,120 L67,75 L79,120Z" fill="#00A844" /> <path d="M120,115 L128,80 L136,115Z" fill="#009B3A" /> <text x="150" y="155" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif">
+          Montego Bay Beach
+         </text>
+        </svg>
+       </div>
+       <div class="p-5">
+        <h3 class="heading-font text-xl font-700 mb-2" style="color:#000;">Montego Bay 🏖️</h3>
+        <p data-translate="mobay" class="text-sm" style="color:#555; line-height:1.7;">Known lovingly as "MoBay," Montego Bay is Jamaica's tourism capital. The famous Doctor's Cave Beach offers pristine turquoise waters perfect for swimming and snorkelling. Explore the historic Rose Hall Great House with its haunting legends, take a bamboo raft ride on the Martha Brae River, or dance the night away on the Hip Strip. MoBay is also gateway to the stunning Luminous Lagoon.</p>
+       </div>
+      </div><!-- Ocho Rios -->
+      <div class="card-hover rounded-xl overflow-hidden" style="background:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+       <div class="city-svg-bg" style="background: linear-gradient(135deg, #2d6a4f, #40916c, #52b788);">
+        <svg viewbox="0 0 300 160" width="260" height="140"><path d="M30,140 Q80,40 150,80 Q220,120 270,50" fill="none" stroke="white" stroke-width="3" opacity="0.4" /> <rect x="100" y="50" width="100" height="70" rx="5" fill="rgba(255,255,255,0.15)" /> <path d="M130,50 L130,30 Q150,10 170,30 L170,50" fill="#52b788" stroke="white" stroke-width="1" /> <path d="M80,140 C80,100 100,80 120,90 C125,60 145,50 150,70 C155,50 175,60 180,90 C200,80 220,100 220,140Z" fill="white" opacity="0.2" /> <line x1="148" y1="90" x2="148" y2="130" stroke="white" stroke-width="2" opacity="0.5" /> <line x1="148" y1="100" x2="160" y2="108" stroke="white" stroke-width="1.5" opacity="0.5" /> <text x="150" y="155" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif">
+          Dunn's River Falls
+         </text>
+        </svg>
+       </div>
+       <div class="p-5">
+        <h3 class="heading-font text-xl font-700 mb-2" style="color:#000;">Ocho Rios 🌊</h3>
+        <p data-translate="ochorios" class="text-sm" style="color:#555; line-height:1.7;">Ocho Rios is nature's playground. The iconic Dunn's River Falls — a 180-foot cascading waterfall you can actually climb — is a must-do experience. Swim in the Blue Hole's hidden natural pools, explore the lush Fern Gully with its towering ferns, or visit Mystic Mountain for zip-lining through the rainforest canopy. The vibrant craft markets here are perfect for authentic Jamaican souvenirs.</p>
+       </div>
+      </div><!-- Negril -->
+      <div class="card-hover rounded-xl overflow-hidden" style="background:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+       <div class="city-svg-bg" style="background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd166);">
+        <svg viewbox="0 0 300 160" width="260" height="140"><rect x="0" y="110" width="300" height="50" fill="#ffe066" opacity="0.4" /> <circle cx="150" cy="55" r="35" fill="#FED100" opacity="0.8" /> <circle cx="150" cy="55" r="28" fill="#ff8c42" /> <path d="M0,105 Q50,95 100,100 Q150,105 200,98 Q250,91 300,100 L300,160 L0,160Z" fill="#0096c7" opacity="0.3" /> <path d="M0,115 Q50,108 100,112 Q150,116 200,110 Q250,104 300,112 L300,160 L0,160Z" fill="#0077b6" opacity="0.3" /> <path d="M80,130 L80,95 L84,95 L84,130" fill="#8B4513" /> <path d="M82,95 Q82,80 70,88 Q82,82 94,88 Q82,80 82,95Z" fill="#009B3A" /> <text x="150" y="155" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif">
+          Seven Mile Beach Sunset
+         </text>
+        </svg>
+       </div>
+       <div class="p-5">
+        <h3 class="heading-font text-xl font-700 mb-2" style="color:#000;">Negril 🌅</h3>
+        <p data-translate="negril" class="text-sm" style="color:#555; line-height:1.7;">Negril is where time stands still. The legendary Seven Mile Beach stretches endlessly with powdery white sand and calm, warm waters. Watch the world's most spectacular sunsets from Rick's Café, where daring cliff divers plunge into the azure sea below. Negril's West End cliffs offer romantic boutique hotels, while the laid-back beach bars serve the best rum punch you will ever taste.</p>
+       </div>
+      </div>
+     </div>
+    </section>
+    <div class="jamaica-divider mb-10"></div><!-- Culture Section -->
+    <section class="blog-content fade-in mb-10">
+     <h2 id="sec3Title" class="heading-font text-2xl md:text-3xl font-700 mb-4" style="color:#006B2D;">Culture, Food &amp; the Jamaican Spirit</h2>
+     <p data-translate="culture1" style="color:#333;">Jamaica's culture is a vibrant explosion of music, food, and celebration. Reggae music — born in the streets of Trenchtown, Kingston — is now a UNESCO Intangible Cultural Heritage. The legendary Bob Marley, Peter Tosh, and Jimmy Cliff gave Jamaica's music to the world, and today the rhythms of dancehall and ska continue to evolve while honouring their roots. Every February, the Bob Marley Birthday Bash draws thousands to Nine Mile, his birthplace in St. Ann Parish.</p>
+     <p data-translate="culture2" style="color:#333;">Jamaican cuisine is a feast for the senses. Jerk chicken and pork, slow-smoked over pimento wood, is the island's signature dish — spicy, smoky, and utterly addictive. Try ackee and saltfish, the national dish, for breakfast. Savour curry goat with rice and peas at a local cook shop. Do not leave without tasting bammy (cassava flatbread), festival (sweet fried dough), and a refreshing glass of sorrel or soursop juice. Street food in Jamaica is an adventure — from patties at Tastee's to roasted corn by the roadside.</p>
+     <p data-translate="culture3" style="color:#333;">The Jamaican people embody the spirit of "irie" — a feeling of peace, happiness, and contentment. Their warmth and hospitality are legendary. Whether you are chatting with a fisherman in Port Royal, bargaining at a craft market in Falmouth, or dancing at a sound system party under the stars, you will feel the genuine love and pride Jamaicans have for their island. The national language, Jamaican Patois (or Creole), adds a musical quality to every conversation — "Wah gwaan?" means "What's going on?" and "Everyting criss!" means "Everything is great!"</p>
+    </section><!-- Travel Tips -->
+    <section class="fade-in mb-10 p-6 rounded-xl" style="background:linear-gradient(135deg, #009B3A08, #FED10015); border:2px solid #FED100;">
+     <h2 id="sec4Title" class="heading-font text-xl md:text-2xl font-700 mb-4" style="color:#006B2D;">🧳 Essential Travel Tips</h2>
+     <ul class="space-y-3" id="tipsList">
+      <li class="flex items-start gap-3" data-translate-li="tip1"><span style="color:#009B3A; font-size:1.2em;">✦</span><span style="color:#444;">Best time to visit: November to mid-December for perfect weather and fewer crowds. Jamaica Carnival in April is spectacular!</span></li>
+      <li class="flex items-start gap-3" data-translate-li="tip2"><span style="color:#009B3A; font-size:1.2em;">✦</span><span style="color:#444;">Currency: Jamaican Dollar (JMD), though US dollars are widely accepted in tourist areas.</span></li>
+      <li class="flex items-start gap-3" data-translate-li="tip3"><span style="color:#009B3A; font-size:1.2em;">✦</span><span style="color:#444;">Try local transportation — route taxis are an authentic (and affordable) way to travel between towns.</span></li>
+      <li class="flex items-start gap-3" data-translate-li="tip4"><span style="color:#009B3A; font-size:1.2em;">✦</span><span style="color:#444;">Blue Mountain Coffee is one of the world's most prized coffees — visit a plantation for the freshest cup you will ever drink.</span></li>
+      <li class="flex items-start gap-3" data-translate-li="tip5"><span style="color:#009B3A; font-size:1.2em;">✦</span><span style="color:#444;">Always greet people warmly — Jamaicans appreciate friendliness and respect. A simple "Good morning" goes a long way!</span></li>
+     </ul>
+    </section><!-- Closing -->
+    <section class="blog-content fade-in mb-10">
+     <h2 id="sec5Title" class="heading-font text-2xl md:text-3xl font-700 mb-4" style="color:#006B2D;">Why Jamaica Will Steal Your Heart</h2>
+     <p data-translate="closing1" style="color:#333;">Jamaica is not just a place you visit — it is a place that enters your soul. The combination of stunning natural beauty, rich cultural heritage, world-renowned music, incredible food, and the warmest people on Earth creates an experience that is truly unlike anywhere else. Whether you are climbing waterfalls in Ocho Rios, watching the sunset in Negril, exploring the vibrant streets of Kingston, or simply swaying to reggae on a moonlit beach, Jamaica offers moments that stay with you forever.</p>
+     <p data-translate="closing2" style="color:#333;">As the Jamaicans say, <strong>"Wi likkle but wi tallawah"</strong> — we are small but mighty. This tiny island has given the world reggae, the fastest man alive (Usain Bolt), Blue Mountain Coffee, jerk seasoning, and an enduring philosophy of love, peace, and unity. Come for the beaches, stay for the culture, and leave with a piece of Jamaica in your heart. <em>One Love!</em> 🇯🇲</p>
+    </section>
+    <div class="jamaica-divider mb-8"></div><!-- Footer -->
+    <footer class="text-center pb-10">
+     <div class="flex justify-center gap-3 mb-4"><span style="font-size:2em;">🇯🇲</span> <span style="font-size:2em;">🌴</span> <span style="font-size:2em;">🎶</span> <span style="font-size:2em;">☀️</span>
+     </div>
+     <p id="footerText" class="text-sm" style="color:#888;">Jamaica Travel Guide — Out of Many, One People</p>
+    </footer>
+   </main><!-- Flag Bar Bottom -->
+   <div class="flex w-full" style="height:8px;">
+    <div class="flex-1 flag-stripe-green"></div>
+    <div class="flex-1 flag-stripe-gold"></div>
+    <div class="flex-1 flag-stripe-black"></div>
+    <div class="flex-1 flag-stripe-gold"></div>
+    <div class="flex-1 flag-stripe-green"></div>
+   </div>
+  </div>
+  <script>
+// Translation data
+const translations = {
+  en: {
+    translate_label: "Translate:",
+    intro1: "Jamaica is more than just a destination — it is a feeling. From the moment you step onto this lush island, the rhythm of reggae, the warmth of the people, and the breathtaking beauty of the landscape wrap around you like a warm Caribbean breeze. Nestled in the heart of the Caribbean Sea, Jamaica is the third-largest island in the region, spanning 10,990 square kilometres of pure tropical paradise. With its motto \"Out of Many, One People,\" Jamaica celebrates a rich cultural tapestry woven from African, European, Asian, and Indigenous Taíno heritage.",
+    intro2: "The island's capital, Kingston, pulses with energy — a vibrant city where world-famous music was born and where history meets modernity at every corner. But Jamaica's magic extends far beyond its capital. From the misty peaks of the Blue Mountains to the crystal-clear waters of Negril's Seven Mile Beach, every inch of this island tells a story worth discovering.",
+    kingston: "The heartbeat of Jamaica! Kingston is a cultural powerhouse — home to the legendary Bob Marley Museum, the stunning Devon House, and the bustling markets of downtown. Visit the National Gallery of Jamaica, explore the vibrant street art scene, and savour authentic jerk chicken at Scotchies. The Blue Mountains rise majestically behind the city, offering world-class coffee plantations and breathtaking hiking trails.",
+    mobay: "Known lovingly as \"MoBay,\" Montego Bay is Jamaica's tourism capital. The famous Doctor's Cave Beach offers pristine turquoise waters perfect for swimming and snorkelling. Explore the historic Rose Hall Great House with its haunting legends, take a bamboo raft ride on the Martha Brae River, or dance the night away on the Hip Strip. MoBay is also gateway to the stunning Luminous Lagoon.",
+    ochorios: "Ocho Rios is nature's playground. The iconic Dunn's River Falls — a 180-foot cascading waterfall you can actually climb — is a must-do experience. Swim in the Blue Hole's hidden natural pools, explore the lush Fern Gully with its towering ferns, or visit Mystic Mountain for zip-lining through the rainforest canopy. The vibrant craft markets here are perfect for authentic Jamaican souvenirs.",
+    negril: "Negril is where time stands still. The legendary Seven Mile Beach stretches endlessly with powdery white sand and calm, warm waters. Watch the world's most spectacular sunsets from Rick's Café, where daring cliff divers plunge into the azure sea below. Negril's West End cliffs offer romantic boutique hotels, while the laid-back beach bars serve the best rum punch you will ever taste.",
+    culture1: "Jamaica's culture is a vibrant explosion of music, food, and celebration. Reggae music — born in the streets of Trenchtown, Kingston — is now a UNESCO Intangible Cultural Heritage. The legendary Bob Marley, Peter Tosh, and Jimmy Cliff gave Jamaica's music to the world, and today the rhythms of dancehall and ska continue to evolve while honouring their roots. Every February, the Bob Marley Birthday Bash draws thousands to Nine Mile, his birthplace in St. Ann Parish.",
+    culture2: "Jamaican cuisine is a feast for the senses. Jerk chicken and pork, slow-smoked over pimento wood, is the island's signature dish — spicy, smoky, and utterly addictive. Try ackee and saltfish, the national dish, for breakfast. Savour curry goat with rice and peas at a local cook shop. Do not leave without tasting bammy (cassava flatbread), festival (sweet fried dough), and a refreshing glass of sorrel or soursop juice. Street food in Jamaica is an adventure — from patties at Tastee's to roasted corn by the roadside.",
+    culture3: "The Jamaican people embody the spirit of \"irie\" — a feeling of peace, happiness, and contentment. Their warmth and hospitality are legendary. Whether you are chatting with a fisherman in Port Royal, bargaining at a craft market in Falmouth, or dancing at a sound system party under the stars, you will feel the genuine love and pride Jamaicans have for their island. The national language, Jamaican Patois (or Creole), adds a musical quality to every conversation — \"Wah gwaan?\" means \"What's going on?\" and \"Everyting criss!\" means \"Everything is great!\"",
+    tip1: "Best time to visit: November to mid-December for perfect weather and fewer crowds. Jamaica Carnival in April is spectacular!",
+    tip2: "Currency: Jamaican Dollar (JMD), though US dollars are widely accepted in tourist areas.",
+    tip3: "Try local transportation — route taxis are an authentic (and affordable) way to travel between towns.",
+    tip4: "Blue Mountain Coffee is one of the world's most prized coffees — visit a plantation for the freshest cup you will ever drink.",
+    tip5: "Always greet people warmly — Jamaicans appreciate friendliness and respect. A simple \"Good morning\" goes a long way!",
+    closing1: "Jamaica is not just a place you visit — it is a place that enters your soul. The combination of stunning natural beauty, rich cultural heritage, world-renowned music, incredible food, and the warmest people on Earth creates an experience that is truly unlike anywhere else. Whether you are climbing waterfalls in Ocho Rios, watching the sunset in Negril, exploring the vibrant streets of Kingston, or simply swaying to reggae on a moonlit beach, Jamaica offers moments that stay with you forever.",
+    closing2: "As the Jamaicans say, <strong>\"Wi likkle but wi tallawah\"</strong> — we are small but mighty. This tiny island has given the world reggae, the fastest man alive (Usain Bolt), Blue Mountain Coffee, jerk seasoning, and an enduring philosophy of love, peace, and unity. Come for the beaches, stay for the culture, and leave with a piece of Jamaica in your heart. <em>One Love!</em> 🇯🇲",
+    sec1: "Welcome to Jamaica — The Jewel of the Caribbean",
+    sec2: "Famous Cities You Must Visit",
+    sec3: "Culture, Food & the Jamaican Spirit",
+    sec4: "🧳 Essential Travel Tips",
+    sec5: "Why Jamaica Will Steal Your Heart"
+  },
+  ur: {
+    translate_label: "ترجمہ:",
+    intro1: "جمیکا صرف ایک منزل نہیں ہے — یہ ایک احساس ہے۔ جس لمحے آپ اس سرسبز جزیرے پر قدم رکھتے ہیں، ریگے کی تال، لوگوں کی گرمجوشی، اور مناظر کی دلکش خوبصورتی آپ کو کیریبین کی گرم ہوا کی طرح لپیٹ لیتی ہے۔ کیریبین سمندر کے دل میں واقع، جمیکا خطے کا تیسرا سب سے بڑا جزیرہ ہے، جو 10,990 مربع کلومیٹر خالص اشنکٹبندیی جنت پر پھیلا ہوا ہے۔ اپنے نعرے \"بہت سے لوگوں میں سے، ایک قوم\" کے ساتھ، جمیکا افریقی، یورپی، ایشیائی اور مقامی ٹائنو ورثے سے بنے ایک بھرپور ثقافتی تانے بانے کا جشن مناتا ہے۔",
+    intro2: "جزیرے کا دارالحکومت، کنگسٹن، توانائی سے دھڑکتا ہے — ایک متحرک شہر جہاں عالمی شہرت یافتہ موسیقی نے جنم لیا اور جہاں تاریخ ہر موڑ پر جدیدیت سے ملتی ہے۔ لیکن جمیکا کا جادو اس کے دارالحکومت سے بہت آگے پھیلا ہوا ہے۔ بلیو ماؤنٹینز کی دھندلی چوٹیوں سے لے کر نیگریل کے سیون مائل بیچ کے شفاف پانیوں تک، اس جزیرے کا ہر انچ ایک قابلِ دریافت کہانی سناتا ہے۔",
+    kingston: "جمیکا کی دھڑکن! کنگسٹن ایک ثقافتی طاقتور شہر ہے — افسانوی باب مارلے میوزیم، شاندار ڈیون ہاؤس، اور ڈاؤن ٹاؤن کی مصروف منڈیوں کا گھر۔ جمیکا کی نیشنل گیلری دیکھیں، متحرک اسٹریٹ آرٹ کا نظارہ کریں، اور سکاچیز میں اصلی جرک چکن کا لطف اٹھائیں۔",
+    mobay: "پیار سے \"موبے\" کے نام سے جانا جاتا ہے، مونٹیگو بے جمیکا کا سیاحتی دارالحکومت ہے۔ مشہور ڈاکٹرز کیو بیچ تیراکی اور سنورکلنگ کے لیے صاف فیروزی پانی پیش کرتا ہے۔ تاریخی روز ہال گریٹ ہاؤس کی دلدوز داستانیں دریافت کریں۔",
+    ochorios: "اوچو ریوس فطرت کا کھیل کا میدان ہے۔ مشہور ڈنز ریور فالز — 180 فٹ کا آبشار جس پر آپ چڑھ سکتے ہیں — ایک لازمی تجربہ ہے۔ بلیو ہول کے پوشیدہ قدرتی تالابوں میں تیراکی کریں اور فرن گلی کی سرسبزی کا لطف اٹھائیں۔",
+    negril: "نیگریل وہ جگہ ہے جہاں وقت ٹھہر جاتا ہے۔ افسانوی سیون مائل بیچ سفید ریت اور گرم پانیوں کے ساتھ لامتناہی طور پر پھیلا ہوا ہے۔ رکز کیفے سے دنیا کے سب سے شاندار غروب آفتاب دیکھیں جہاں بہادر غوطہ خور نیلے سمندر میں چھلانگ لگاتے ہیں۔",
+    culture1: "جمیکا کی ثقافت موسیقی، کھانے اور جشن کا ایک متحرک دھماکا ہے۔ ریگے موسیقی — کنگسٹن کے ٹرینچ ٹاؤن کی گلیوں میں پیدا ہوئی — اب یونیسکو کا غیر محسوس ثقافتی ورثہ ہے۔ افسانوی باب مارلے، پیٹر ٹوش، اور جمی کلف نے جمیکا کی موسیقی دنیا کو دی۔",
+    culture2: "جمیکن کھانا حواس کی دعوت ہے۔ پیمنٹو لکڑی پر آہستہ آہستہ دھونا میں پکا ہوا جرک چکن اور پورک جزیرے کی خاص ڈش ہے — مسالہ دار، دھواں دار اور بالکل نشے کی لت۔ ناشتے میں ایکی اور نمکین مچھلی آزمائیں۔ مقامی کک شاپ میں کری بکرا چاول اور مٹر کے ساتھ کھائیں۔",
+    culture3: "جمیکن لوگ \"آئری\" کی روح کو مجسم کرتے ہیں — امن، خوشی اور اطمینان کا احساس۔ ان کی گرمجوشی اور مہمان نوازی مشہور ہے۔ چاہے آپ پورٹ رائل میں مچھیروں سے بات کر رہے ہوں یا ستاروں تلے ساؤنڈ سسٹم پارٹی میں ناچ رہے ہوں، آپ کو جمیکنز کی اپنے جزیرے سے حقیقی محبت محسوس ہوگی۔",
+    tip1: "جانے کا بہترین وقت: نومبر سے دسمبر کے وسط تک بہترین موسم اور کم بھیڑ کے لیے۔ اپریل میں جمیکا کارنیول شاندار ہے!",
+    tip2: "کرنسی: جمیکن ڈالر (JMD)، حالانکہ سیاحتی علاقوں میں امریکی ڈالر بھی قبول کیے جاتے ہیں۔",
+    tip3: "مقامی ٹرانسپورٹ آزمائیں — روٹ ٹیکسیاں شہروں کے درمیان سفر کا ایک مستند اور سستا طریقہ ہیں۔",
+    tip4: "بلیو ماؤنٹین کافی دنیا کی سب سے قیمتی کافیوں میں سے ایک ہے — تازہ ترین کپ کے لیے پلانٹیشن ضرور جائیں۔",
+    tip5: "ہمیشہ لوگوں کو گرمجوشی سے سلام کریں — جمیکن دوستی اور احترام کی قدر کرتے ہیں۔ ایک سادہ \"صبح بخیر\" بہت کام آتی ہے!",
+    closing1: "جمیکا صرف ایک جگہ نہیں ہے جہاں آپ جاتے ہیں — یہ ایک ایسی جگہ ہے جو آپ کی روح میں داخل ہو جاتی ہے۔ حیرت انگیز قدرتی خوبصورتی، بھرپور ثقافتی ورثے، عالمی شہرت یافتہ موسیقی، ناقابل یقین کھانے، اور زمین پر سب سے گرمجوش لوگوں کا مجموعہ ایک ایسا تجربہ تخلیق کرتا ہے جو واقعی کسی اور جگہ سے مختلف ہے۔",
+    closing2: "جیسا کہ جمیکن کہتے ہیں، <strong>\"وی لکل بٹ وی ٹالاوا\"</strong> — ہم چھوٹے ہیں لیکن طاقتور ہیں۔ اس چھوٹے جزیرے نے دنیا کو ریگے، سب سے تیز رفتار انسان (یوسین بولٹ)، بلیو ماؤنٹین کافی، جرک مسالا، اور محبت، امن اور اتحاد کا لازوال فلسفہ دیا ہے۔ ساحلوں کے لیے آئیں، ثقافت کے لیے رکیں، اور اپنے دل میں جمیکا کا ایک ٹکڑا لے کر جائیں۔ <em>ون لو!</em> 🇯🇲",
+    sec1: "جمیکا میں خوش آمدید — کیریبین کا زیور",
+    sec2: "مشہور شہر جو آپ کو ضرور دیکھنے چاہئیں",
+    sec3: "ثقافت، کھانا اور جمیکن جذبہ",
+    sec4: "🧳 ضروری سفری تجاویز",
+    sec5: "جمیکا آپ کا دل کیوں چرا لے گا"
+  },
+  hi: {
+    translate_label: "अनुवाद:",
+    intro1: "जमैका सिर्फ एक गंतव्य नहीं है — यह एक अहसास है। जिस पल आप इस हरे-भरे द्वीप पर कदम रखते हैं, रेगे की लय, लोगों की गर्मजोशी, और परिदृश्य की लुभावनी सुंदरता आपको कैरेबियन की गर्म हवा की तरह लपेट लेती है। कैरेबियन सागर के हृदय में बसा, जमैका क्षेत्र का तीसरा सबसे बड़ा द्वीप है, जो 10,990 वर्ग किलोमीटर शुद्ध उष्णकटिबंधीय स्वर्ग में फैला है। अपने आदर्श वाक्य \"अनेक में से, एक जन\" के साथ, जमैका अफ्रीकी, यूरोपीय, एशियाई और स्वदेशी टाइनो विरासत से बुनी एक समृद्ध सांस्कृतिक तानाबाना का जश्न मनाता है।",
+    intro2: "द्वीप की राजधानी, किंग्स्टन, ऊर्जा से धड़कती है — एक जीवंत शहर जहाँ विश्व प्रसिद्ध संगीत का जन्म हुआ और जहाँ इतिहास हर कोने पर आधुनिकता से मिलता है। लेकिन जमैका का जादू इसकी राजधानी से कहीं आगे फैला है। ब्लू माउंटेंस की धुंधली चोटियों से लेकर नेग्रिल के सेवन माइल बीच के क्रिस्टल-क्लियर पानी तक, इस द्वीप का हर इंच एक खोजने योग्य कहानी सुनाता है।",
+    kingston: "जमैका की धड़कन! किंग्स्टन एक सांस्कृतिक शक्तिशाला है — प्रसिद्ध बॉब मार्ले संग्रहालय, शानदार डेवन हाउस और डाउनटाउन के व्यस्त बाज़ारों का घर। जमैका की राष्ट्रीय गैलरी देखें, जीवंत स्ट्रीट आर्ट का आनंद लें, और स्कॉचीज़ में असली जर्क चिकन का स्वाद लें।",
+    mobay: "प्यार से \"मोबे\" के नाम से जाना जाने वाला, मोंटेगो बे जमैका की पर्यटन राजधानी है। प्रसिद्ध डॉक्टर्स केव बीच तैराकी और स्नॉर्कलिंग के लिए स्वच्छ फ़िरोज़ा पानी प्रदान करता है। ऐतिहासिक रोज़ हॉल ग्रेट हाउस की भूतिया किंवदंतियों का अन्वेषण करें।",
+    ochorios: "ओचो रियोस प्रकृति का खेल का मैदान है। प्रतिष्ठित डन्स रिवर फ़ॉल्स — 180 फुट का शानदार जलप्रपात जिस पर आप वास्तव में चढ़ सकते हैं — एक अवश्य करने योग्य अनुभव है। ब्लू होल के छिपे प्राकृतिक पूलों में तैरें और फ़र्न गली की हरियाली का आनंद लें।",
+    negril: "नेग्रिल वह जगह है जहाँ समय ठहर जाता है। प्रसिद्ध सेवन माइल बीच मुलायम सफ़ेद रेत और शांत, गर्म पानी के साथ अंतहीन रूप से फैला है। रिक्स कैफ़े से दुनिया के सबसे शानदार सूर्यास्त देखें जहाँ बहादुर गोताखोर नीले समुद्र में कूदते हैं।",
+    culture1: "जमैका की संस्कृति संगीत, भोजन और उत्सव का एक जीवंत विस्फोट है। रेगे संगीत — किंग्स्टन के ट्रेंचटाउन की सड़कों पर जन्मा — अब यूनेस्को का अमूर्त सांस्कृतिक विरासत है। प्रसिद्ध बॉब मार्ले, पीटर टॉश और जिमी क्लिफ ने जमैका का संगीत दुनिया को दिया।",
+    culture2: "जमैकन व्यंजन इंद्रियों का उत्सव है। पिमेंटो की लकड़ी पर धीमी आंच पर पकाया गया जर्क चिकन और पोर्क द्वीप का विशेष व्यंजन है — मसालेदार, धुएँ वाला और पूरी तरह से नशीला। नाश्ते में एकी और नमकीन मछली आज़माएँ। स्थानीय कुक शॉप में करी बकरा चावल और मटर के साथ खाएँ।",
+    culture3: "जमैकन लोग \"आइरी\" की भावना को मूर्त रूप देते हैं — शांति, खुशी और संतोष का एहसास। उनकी गर्मजोशी और मेहमाननवाज़ी प्रसिद्ध है। चाहे आप पोर्ट रॉयल में मछुआरे से बात कर रहे हों या सितारों के नीचे साउंड सिस्टम पार्टी में नाच रहे हों, आप जमैकनों के अपने द्वीप से सच्चे प्यार को महसूस करेंगे।",
+    tip1: "जाने का सबसे अच्छा समय: नवंबर से दिसंबर के मध्य तक बेहतरीन मौसम और कम भीड़ के लिए। अप्रैल में जमैका कार्निवल शानदार है!",
+    tip2: "मुद्रा: जमैकन डॉलर (JMD), हालांकि पर्यटन क्षेत्रों में अमेरिकी डॉलर व्यापक रूप से स्वीकार किए जाते हैं।",
+    tip3: "स्थानीय परिवहन आज़माएँ — रूट टैक्सी शहरों के बीच यात्रा का एक प्रामाणिक और सस्ता तरीका है।",
+    tip4: "ब्लू माउंटेन कॉफ़ी दुनिया की सबसे बेशकीमती कॉफ़ी में से एक है — सबसे ताज़ा कप के लिए प्लांटेशन ज़रूर जाएँ।",
+    tip5: "हमेशा लोगों का गर्मजोशी से अभिवादन करें — जमैकन दोस्ती और सम्मान की कद्र करते हैं। एक सादा \"सुप्रभात\" बहुत काम आता है!",
+    closing1: "जमैका सिर्फ एक जगह नहीं है जहाँ आप जाते हैं — यह एक ऐसी जगह है जो आपकी आत्मा में प्रवेश कर जाती है। अद्भुत प्राकृतिक सुंदरता, समृद्ध सांस्कृतिक विरासत, विश्व प्रसिद्ध संगीत, अविश्वसनीय भोजन, और पृथ्वी पर सबसे गर्मजोश लोगों का संयोजन एक ऐसा अनुभव बनाता है जो वास्तव में कहीं और जैसा नहीं है।",
+    closing2: "जैसा कि जमैकन कहते हैं, <strong>\"वी लिकल बट वी टालावा\"</strong> — हम छोटे हैं लेकिन शक्तिशाली हैं। इस छोटे द्वीप ने दुनिया को रेगे, सबसे तेज़ इंसान (उसेन बोल्ट), ब्लू माउंटेन कॉफ़ी, जर्क मसाला, और प्रेम, शांति और एकता का शाश्वत दर्शन दिया है। समुद्र तटों के लिए आएँ, संस्कृति के लिए रुकें, और अपने दिल में जमैका का एक टुकड़ा लेकर जाएँ। <em>वन लव!</em> 🇯🇲",
+    sec1: "जमैका में आपका स्वागत है — कैरेबियन का रत्न",
+    sec2: "प्रसिद्ध शहर जो आपको अवश्य देखने चाहिए",
+    sec3: "संस्कृति, भोजन और जमैकन भावना",
+    sec4: "🧳 आवश्यक यात्रा सुझाव",
+    sec5: "जमैका आपका दिल क्यों चुरा लेगा"
+  },
+  jam: {
+    translate_label: "Translate:",
+    intro1: "Jamaica nuh jus a place fi visit — a one feeling dat. From di moment yuh step pan dis lush island, di rhythm a reggae, di warmth a di people, an di breathtaking beauty a di landscape wrap round yuh like a warm Caribbean breeze. Nestle inna di heart a di Caribbean Sea, Jamaica a di third-largest island inna di region, spanning 10,990 square kilometres a pure tropical paradise. Wid di motto \"Out of Many, One People,\" Jamaica celebrate a rich cultural tapestry weave from African, European, Asian, an Indigenous Taíno heritage.",
+    intro2: "Di island capital, Kingston, pulse wid energy — a vibrant city weh world-famous music born an weh history meet modernity at every corner. But Jamaica magic extend far beyond di capital. From di misty peaks a di Blue Mountains to di crystal-clear waters a Negril Seven Mile Beach, every inch a dis island tell a story worth discovering.",
+    kingston: "Di heartbeat a Jamaica! Kingston a one cultural powerhouse — home to di legendary Bob Marley Museum, di stunning Devon House, an di bustling markets a downtown. Visit di National Gallery, explore di vibrant street art scene, an savour authentic jerk chicken at Scotchies. Di Blue Mountains rise majestically behind di city wid world-class coffee plantation dem.",
+    mobay: "Known lovingly as \"MoBay,\" Montego Bay a Jamaica tourism capital. Di famous Doctor's Cave Beach offer pristine turquoise waters perfect fi swimming an snorkelling. Explore di historic Rose Hall Great House wid its haunting legends, tek a bamboo raft ride pan di Martha Brae River, or dance di night away pan di Hip Strip.",
+    ochorios: "Ocho Rios a nature playground. Di iconic Dunn's River Falls — a 180-foot cascading waterfall weh yuh can actually climb — a one must-do experience. Swim inna di Blue Hole hidden natural pools, explore di lush Fern Gully wid its towering ferns, or visit Mystic Mountain fi zip-lining through di rainforest canopy.",
+    negril: "Negril a weh time stand still. Di legendary Seven Mile Beach stretch endlessly wid powdery white sand an calm, warm waters. Watch di world most spectacular sunsets from Rick's Café, weh daring cliff divers plunge into di azure sea below. Negril West End cliffs offer romantic boutique hotels an di best rum punch yuh will ever taste.",
+    culture1: "Jamaica culture a one vibrant explosion a music, food, an celebration. Reggae music — born inna di streets a Trenchtown, Kingston — now a UNESCO Intangible Cultural Heritage. Di legendary Bob Marley, Peter Tosh, an Jimmy Cliff give Jamaica music to di world, an today di rhythms a dancehall an ska continue fi evolve while honouring dem roots.",
+    culture2: "Jamaican cuisine a one feast fi di senses. Jerk chicken an pork, slow-smoke over pimento wood, a di island signature dish — spicy, smoky, an utterly addictive. Try ackee an saltfish, di national dish, fi breakfast. Savour curry goat wid rice an peas at a local cook shop. Nuh leave widout tasting bammy, festival, an a refreshing glass a sorrel juice.",
+    culture3: "Di Jamaican people embody di spirit a \"irie\" — a feeling a peace, happiness, an contentment. Dem warmth an hospitality legendary. Whether yuh a chat wid a fisherman inna Port Royal, bargaining at a craft market inna Falmouth, or dancing at a sound system party under di stars, yuh wi feel di genuine love an pride Jamaicans have fi dem island. \"Wah gwaan?\" mean \"What's going on?\" an \"Everyting criss!\" mean \"Everything is great!\"",
+    tip1: "Best time fi visit: November to mid-December fi perfect weather an fewer crowds. Jamaica Carnival inna April spectacular!",
+    tip2: "Currency: Jamaican Dollar (JMD), though US dollars widely accepted inna tourist areas.",
+    tip3: "Try local transportation — route taxis a one authentic (an affordable) way fi travel between towns.",
+    tip4: "Blue Mountain Coffee a one a di world most prized coffees — visit a plantation fi di freshest cup yuh will ever drink.",
+    tip5: "Always greet people warmly — Jamaicans appreciate friendliness an respect. A simple \"Good morning\" go a long way!",
+    closing1: "Jamaica nuh jus a place yuh visit — a one place dat enter yuh soul. Di combination a stunning natural beauty, rich cultural heritage, world-renowned music, incredible food, an di warmest people pan Earth create an experience dat truly unlike anywhere else.",
+    closing2: "As di Jamaicans say, <strong>\"Wi likkle but wi tallawah\"</strong> — we small but mighty. Dis tiny island give di world reggae, di fastest man alive (Usain Bolt), Blue Mountain Coffee, jerk seasoning, an an enduring philosophy a love, peace, an unity. Come fi di beaches, stay fi di culture, an leave wid a piece a Jamaica inna yuh heart. <em>One Love!</em> 🇯🇲",
+    sec1: "Welcome to Jamaica — Di Jewel a di Caribbean",
+    sec2: "Famous Cities Yuh Must Visit",
+    sec3: "Culture, Food & di Jamaican Spirit",
+    sec4: "🧳 Essential Travel Tips",
+    sec5: "Why Jamaica Wi Tief Yuh Heart"
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  // Update language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('onclick').includes(`'${lang}'`)) btn.classList.add('active');
+  });
+
+  // Set text direction
+  const isRTL = lang === 'ur';
+  document.getElementById('app').style.direction = isRTL ? 'rtl' : 'ltr';
+
+  // Update translatable elements
+  document.querySelectorAll('[data-translate]').forEach(el => {
+    const key = el.getAttribute('data-translate');
+    if (t[key]) {
+      if (key === 'closing2') el.innerHTML = t[key];
+      else el.textContent = t[key];
+    }
+  });
+
+  // Update tips
+  document.querySelectorAll('[data-translate-li]').forEach(el => {
+    const key = el.getAttribute('data-translate-li');
+    if (t[key]) el.querySelector('span:last-child').textContent = t[key];
+  });
+
+  // Update section titles
+  if (t.sec1) document.getElementById('sec1Title').textContent = t.sec1;
+  if (t.sec2) document.getElementById('sec2Title').textContent = t.sec2;
+  if (t.sec3) document.getElementById('sec3Title').textContent = t.sec3;
+  if (t.sec4) document.getElementById('sec4Title').textContent = t.sec4;
+  if (t.sec5) document.getElementById('sec5Title').textContent = t.sec5;
+}
+
+// Element SDK
+const defaultConfig = {
+  blog_title: 'Jamaica Travel Guide',
+  author_name: 'Travel Explorer',
+  background_color: '#FAFAF5',
+  surface_color: '#FFFFFF',
+  text_color: '#333333',
+  primary_action_color: '#009B3A',
+  accent_color: '#FED100',
+  font_family: 'Playfair Display',
+  font_size: 16
+};
+
+function applyConfig(config) {
+  const bg = config.background_color || defaultConfig.background_color;
+  const surface = config.surface_color || defaultConfig.surface_color;
+  const text = config.text_color || defaultConfig.text_color;
+  const primary = config.primary_action_color || defaultConfig.primary_action_color;
+  const accent = config.accent_color || defaultConfig.accent_color;
+  const font = config.font_family || defaultConfig.font_family;
+  const size = config.font_size || defaultConfig.font_size;
+
+  const app = document.getElementById('app');
+  app.style.background = bg;
+
+  document.getElementById('heroTitle').textContent = config.blog_title || defaultConfig.blog_title;
+  document.getElementById('authorName').textContent = config.author_name || defaultConfig.author_name;
+
+  // Colors
+  document.querySelectorAll('.card-hover').forEach(c => c.style.background = surface);
+  document.querySelectorAll('[data-translate]').forEach(el => {
+    if (!el.closest('.city-svg-bg') && el.tagName === 'P') el.style.color = text;
+  });
+  document.querySelectorAll('[data-translate-li] span:last-child').forEach(el => el.style.color = text);
+  document.querySelectorAll('[data-translate-li] span:first-child').forEach(el => el.style.color = primary);
+  document.querySelectorAll('#sec1Title, #sec2Title, #sec3Title, #sec4Title, #sec5Title').forEach(el => el.style.color = primary);
+  document.getElementById('heroSub').style.color = accent;
+
+  // Font
+  const stack = `${font}, Georgia, serif`;
+  document.querySelectorAll('.heading-font').forEach(el => el.style.fontFamily = stack);
+  document.getElementById('heroTitle').style.fontFamily = stack;
+
+  // Font size
+  document.querySelectorAll('.blog-content p').forEach(el => el.style.fontSize = `${size}px`);
+  document.querySelectorAll('.card-hover p').forEach(el => el.style.fontSize = `${size * 0.875}px`);
+  document.getElementById('heroTitle').style.fontSize = `${size * 2.5}px`;
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => applyConfig(config),
+  mapToCapabilities: (config) => ({
+    recolorables: [
+      { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+      { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+      { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+      { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: v => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+      { get: () => config.accent_color || defaultConfig.accent_color, set: v => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
+    ],
+    borderables: [],
+    fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+    fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+  }),
+  mapToEditPanelValues: (config) => new Map([
+    ['blog_title', config.blog_title || defaultConfig.blog_title],
+    ['author_name', config.author_name || defaultConfig.author_name]
+  ])
+});
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fcc3fc8c62b9083',t:'MTc3ODk1NDA4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
