@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suriname Travel Guide — Discover the Amazon's Hidden Jewel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Segoe+UI:wght@300;400;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #b71c1c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fffef8;
+            border-radius: 20px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #1b5e20 0%, #ffffff 50%, #b71c1c 100%);
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .header::after {
+            content: "★";
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            font-size: 60px;
+            color: #ffd700;
+            opacity: 0.4;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #1b5e20;
+            font-size: 2.8em;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+        }
+        .header .subtitle {
+            color: #4a4a4a;
+            font-size: 1.15em;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .lang-bar {
+            background: #f5f5f0;
+            padding: 18px;
+            text-align: center;
+            border-bottom: 3px solid #e0e0d0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .lang-btn {
+            padding: 12px 30px;
+            margin: 0 8px;
+            border: 2px solid #1b5e20;
+            background: white;
+            color: #1b5e20;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            letter-spacing: 0.5px;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            background: #1b5e20;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(27,94,32,0.3);
+        }
+        .content {
+            padding: 45px 35px;
+            line-height: 1.85;
+            color: #333;
+        }
+        .lang-section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        .lang-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .intro-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #fff8e1 100%);
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 35px;
+            border-left: 6px solid #1b5e20;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: #fafaf5;
+            padding: 25px;
+            border-radius: 18px;
+            margin: 30px 0;
+            border: 2px solid #e8e8e0;
+        }
+        .flag-visual {
+            font-size: 90px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            flex-shrink: 0;
+        }
+        .city-card {
+            margin: 35px 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+            background: white;
+        }
+        .city-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+        }
+        .city-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        .city-info {
+            padding: 30px;
+        }
+        .city-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1b5e20;
+            font-size: 1.6em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #fff176 0%, #fff176 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 45%;
+            background-position: 0 88%;
+            padding: 0 5px;
+            font-weight: 600;
+            color: #1b5e20;
+        }
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin: 30px 0;
+        }
+        .culture-item {
+            background: #fafaf5;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 5px solid #1b5e20;
+            transition: transform 0.3s;
+        }
+        .culture-item:hover {
+            transform: scale(1.03);
+        }
+        .culture-item .icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+        .meta-tag {
+            display: inline-block;
+            background: #1b5e20;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 25px;
+            font-size: 0.88em;
+            margin: 6px 6px 6px 0;
+            font-weight: 500;
+        }
+        .meta-tag.alt {
+            background: #b71c1c;
+        }
+        .meta-tag.gold {
+            background: #f9a825;
+            color: #333;
+        }
+        .tip-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 35px;
+            border-left: 5px solid #f9a825;
+        }
+        .footer {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.95em;
+        }
+        .footer p {
+            opacity: 0.95;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #1b5e20;
+            font-size: 1.9em;
+            margin: 35px 0 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #f9a825;
+            border-radius: 2px;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2em; }
+            .lang-btn { padding: 10px 20px; font-size: 0.9em; }
+            .content { padding: 30px 18px; }
+            .flag-section { flex-direction: column; text-align: center; }
+            .city-img { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>🇸🇷 Suriname Travel Guide</h1>
+        <p class="subtitle">Where the Amazon Meets Dutch Colonial Charm</p>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+        <button class="lang-btn" onclick="switchLang('nl')">🇳🇱 Nederlands</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+
+        <!-- ENGLISH VERSION -->
+        <div id="lang-en" class="lang-section active">
+            <div class="intro-box">
+                <p style="font-size: 1.1em; color: #444;">
+                    <strong>Welcome to Suriname</strong> — officially the <em>Republic of Suriname</em> (Republiek Suriname). Tucked between Guyana and French Guiana on South America's wild Atlantic coast, this extraordinary nation is South America's smallest country by population yet one of its greatest treasures. With <span class="highlight">over 93% of its land covered in pristine rainforest</span>, Suriname is the greenest country on Earth and the only Dutch-speaking nation in the Americas. A true cultural mosaic, its people descend from Indigenous tribes, African slaves, Indian indentured laborers, Javanese, Chinese, Lebanese, and Dutch settlers — all living in remarkable harmony.
+                </p>
+            </div>
+
+            <div class="flag-section">
+                <div class="flag-visual">🇸🇷</div>
+                <div>
+                    <h3 style="color: #1b5e20; margin-bottom: 10px; font-family: 'Playfair Display', serif;">The National Flag</h3>
+                    <p>Suriname's flag features <strong>three horizontal stripes</strong>: green on top and bottom, with a thick white band and a central red stripe. The green represents the nation's lush <strong>forests and agriculture</strong>; the white symbolizes <strong>justice and peace</strong>; the red stands for <strong>progress and love</strong>. At the center shines a bold <strong>yellow five-pointed star</strong>, representing the unity of Suriname's diverse ethnic groups and a golden future for all. Adopted on independence day, <strong>November 25, 1975</strong>, it is one of the most meaningful flags in South America.</p>
+                </div>
+            </div>
+
+            <h2>🏙️ Famous Cities You Must Visit</h2>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1598890777032-bde83547de50?w=800&q=80" alt="Paramaribo Historic City" class="city-img">
+                <div class="city-info">
+                    <h3>🏛️ Paramaribo — The Colonial Jewel</h3>
+                    <p>Situated on the banks of the Suriname River, <strong>Paramaribo</strong> is one of the most captivating capitals in South America. Its <em>Historic Inner City</em> was declared a <strong>UNESCO World Heritage Site in 2002</strong> for its unique fusion of Dutch colonial architecture and tropical adaptation. Stroll along the <em>Waterkant</em> river promenade, marvel at the wooden <strong>St. Peter and St. Paul Cathedral</strong> — the largest wooden building in the Western Hemisphere — and visit <strong>Fort Zeelandia</strong>, a 17th-century fortress that now houses a museum. One of the most touching symbols of tolerance is <strong>Kaizerstraat</strong>, where a historic synagogue and a grand mosque stand side by side, sharing the same parking lot. The city feels like Amsterdam transplanted into the tropics, complete with canals, wooden mansions, and a laid-back rhythm.</p>
+                    <span class="meta-tag">National Language: Dutch</span>
+                    <span class="meta-tag alt">UNESCO Heritage</span>
+                    <span class="meta-tag gold">Population: ~240,000</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1516934024742-b461fba47600?w=800&q=80" alt="Suriname Amazon Jungle" class="city-img">
+                <div class="city-info">
+                    <h3>🌿 Nieuw Nickerie — Gateway to the West</h3>
+                    <p>Located in the northwest near the Corantijn River border with Guyana, <strong>Nieuw Nickerie</strong> is Suriname's second-largest city and the agricultural heartland of the country. This bustling town is surrounded by rice paddies and coconut plantations, offering a glimpse into the rural soul of Suriname. From here, adventurous travelers can arrange boat trips to the <strong>Bigi Pan Nature Reserve</strong>, a vast wetland teeming with scarlet ibises, herons, and caimans. It's a birdwatcher's paradise and one of the best ecotourism spots in the country. The city itself has a friendly, small-town vibe with vibrant markets and a strong Indo-Surinamese cultural influence.</p>
+                    <span class="meta-tag">Best For: Nature & Birds</span>
+                    <span class="meta-tag alt">Region: Nickerie</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Suriname Rainforest River" class="city-img">
+                <div class="city-info">
+                    <h3>⛏️ Brokopondo — The Lake District</h3>
+                    <p>About 100 kilometers south of Paramaribo lies <strong>Brokopondo</strong>, a town famous for the massive <strong>Afobaka Dam</strong> and the stunning <strong>Brokopondo Reservoir</strong> (also known as Lake Professor van Blommenstein). Created in the 1960s to power an aluminium smelter, this enormous artificial lake flooded vast areas of rainforest, creating an eerie, beautiful landscape of dead tree trunks rising from dark waters. Today it serves as a gateway to the interior, where Maroon and Indigenous communities live along the riverbanks in traditional villages. Visit <strong>Atjoni</strong> to board longboats into the Upper Suriname River, where you can stay in rustic eco-lodges, experience traditional <em>odo</em> life, and hear the distant sound of <em>godo-godo</em> drums echoing through the jungle.</p>
+                    <span class="meta-tag">Adventure Level: High</span>
+                    <span class="meta-tag gold">Maroon Culture</span>
+                </div>
+            </div>
+
+            <h2>🗣️ Language, Culture & Traditions</h2>
+            <p style="margin-bottom: 22px;"><span class="highlight">Dutch is the sole official and national language</span> of Suriname — making it the only independent country outside Europe where Dutch prevails in government, education, and media. However, walk the streets and you'll hear a symphony of tongues: <strong>Sranan Tongo</strong> (an English-based Creole and the lingua franca), <strong>Sarnami Hindustani</strong>, <strong>Javanese</strong>, <strong>Arawak</strong>, <strong>Carib</strong>, and <strong>Maroons</strong> languages like Ndyuka and Saramaccan. This linguistic diversity mirrors the nation's extraordinary cultural tapestry.</p>
+            <p style="margin-bottom: 22px;">Life in Suriname revolves around <strong>food, family, and festivity</strong>. The cuisine is legendary — a mouthwatering blend of roti, pom (a savory cassava casserole), peanut soup, Javanese noodles, Chinese stir-fry, and fresh river fish. On New Year's Eve, the entire country explodes in <em>Owru Yari</em> celebrations with fireworks, concerts, and street parties. The annual <strong>Carnival</strong> (February/March) and <strong>Holi Phagwa</strong> (Hindu festival of colors) paint the streets in joyous chaos. And everywhere, from Paramaribo's cafes to jungle settlements, you'll find people sharing a cold <strong>Parbo Bier</strong> and laughing together.</p>
+
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="icon">🌿</div>
+                    <h4>Amazon Wilderness</h4>
+                    <p>93% virgin rainforest. Home to jaguars, giant otters, and harpy eagles.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥁</div>
+                    <h4>Maroon Heritage</h4>
+                    <p>Descendants of escaped slaves preserving African traditions in the interior.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🍛</div>
+                    <h4>Fusion Cuisine</h4>
+                    <p>Roti, pom, saoto soup, and cassava bread — a flavor for every culture.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🤝</div>
+                    <h4>Religious Harmony</h4>
+                    <p>Churches, mosques, temples, and synagogues coexist peacefully side by side.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <p><strong>💡 Travel Tip:</strong> The best time to visit Suriname is during the <strong>dry seasons</strong> — February to April and August to November — when jungle trails are passable and river travel is safest. Suriname uses the <strong>Surinamese Dollar (SRD)</strong>, but cash is king outside Paramaribo. Bring your sense of adventure: this is a country where you can have breakfast in a Dutch colonial cafe, lunch with a Maroon chief, and dinner at a Javanese warung — all in one unforgettable day.</p>
+            </div>
+        </div>
+
+        <!-- DUTCH VERSION -->
+        <div id="lang-nl" class="lang-section">
+            <div class="intro-box">
+                <p style="font-size: 1.1em; color: #444;">
+                    <strong>Welkom in Suriname</strong> — officieel de <em>Republiek Suriname</em>. Ingeklemd tussen Guyana en Frans-Guyana aan de wilde Atlantische kust van Zuid-Amerika is dit buitengewone land het kleinste land qua bevolking van Zuid-Amerika, maar tegelijkertijd een van de grootste schatten. Met <span class="highlight">meer dan 93% van het land bedekt met ongerept regenwoud</span> is Suriname het groenste land ter wereld en de enige Nederlandstalige natie in de Amerika's. Een waar cultureel mozaïek: de bevolking stamt af van inheemse stammen, Afrikaanse slaven, Indiase contractarbeiders, Javanen, Chinezen, Libanezen en Nederlandse kolonisten — allen leven zij in opmerkelijke harmonie.
+                </p>
+            </div>
+
+            <div class="flag-section">
+                <div class="flag-visual">🇸🇷</div>
+                <div>
+                    <h3 style="color: #1b5e20; margin-bottom: 10px; font-family: 'Playfair Display', serif;">De Nationale Vlag</h3>
+                    <p>De vlag van Suriname bestaat uit <strong>drie horizontale banen</strong>: groen boven en onder, met een dikke witte band en een rode streep in het midden. Het groen staat voor de weelderige <strong>bossen en landbouw</strong> van het land; het wit symboliseert <strong>rechtvaardigheid en vrede</strong>; het rood staat voor <strong>vooruitgang en liefde</strong>. In het centrum schittert een heldere <strong>gele vijfpuntige ster</strong>, die de eenheid van de diverse bevolkingsgroepen van Suriname vertegenwoordigt en een gouden toekomst voor iedereen. Aangenomen op de onafhankelijkheidsdag, <strong>25 november 1975</strong>, is het een van de meest betekenisvolle vlaggen van Zuid-Amerika.</p>
+                </div>
+            </div>
+
+            <h2>🏙️ Beroemde Steden die U Moet Bezoeken</h2>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1598890777032-bde83547de50?w=800&q=80" alt="Paramaribo Historische Stad" class="city-img">
+                <div class="city-info">
+                    <h3>🏛️ Paramaribo — De Koloniale Parel</h3>
+                    <p>Gelegen aan de oevers van de Surinamerivier is <strong>Paramaribo</strong> een van de meest boeiende hoofdsteden van Zuid-Amerika. De <em>Historische Binnenstad</em> werd in <strong>2002 uitgeroepen tot UNESCO Werelderfgoed</strong> vanwege de unieke fusie van Nederlandse koloniale architectuur en tropische aanpassing. Wandel langs de <em>Waterkant</em>, bewonder de houten <strong>Kathedrale Sint-Petrus-en-Paulus</strong> — het grootste houten gebouw op het westelijk halfrond — en bezoek <strong>Fort Zeelandia</strong>, een 17e-eeuws fort dat nu een museum huisvest. Een van de meest aangrijpende symbolen van tolerantie is de <strong>Kaizerstraat</strong>, waar een historische synagoge en een grote moskee naast elkaar staan, zelfs dezelfde parkeerplaats delend. De stad voelt als Amsterdam in de tropen, met grachten, houten herenhuizen en een ontspannen ritme.</p>
+                    <span class="meta-tag">Nationale Taal: Nederlands</span>
+                    <span class="meta-tag alt">UNESCO Erfgoed</span>
+                    <span class="meta-tag gold">Bevolking: ~240.000</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1516934024742-b461fba47600?w=800&q=80" alt="Suriname Amazone Jungle" class="city-img">
+                <div class="city-info">
+                    <h3>🌿 Nieuw Nickerie — Poort naar het Westen</h3>
+                    <p>Gelegen in het noordwesten nabij de Corantijnrivier aan de grens met Guyana, is <strong>Nieuw Nickerie</strong> de op één na grootste stad van Suriname en het agrarische hart van het land. Dit bruisende stadje is omgeven door rijstvelden en kokosplantages en biedt een glimp van het landelijke Suriname. Van hieruit kunnen avontuurlijke reizigers boottochten regelen naar het <strong>Bigi Pan Natuurreservaat</strong>, een uitgestrekt moerasgebied dat wemelt van rode ibissen, reigers en kaaimannen. Het is een paradijs voor vogelliefhebbers en een van de beste ecotoeristische bestemmingen van het land. De stad zelf heeft een vriendelijke, kleinstedelijke sfeer met levendige markten en een sterke Indo-Surinaamse culturele invloed.</p>
+                    <span class="meta-tag">Best Voor: Natuur & Vogels</span>
+                    <span class="meta-tag alt">Regio: Nickerie</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Suriname Regenwoud Rivier" class="city-img">
+                <div class="city-info">
+                    <h3>⛏️ Brokopondo — Het Stuwmeergebied</h3>
+                    <p>Ongeveer 100 kilometer ten zuiden van Paramaribo ligt <strong>Brokopondo</strong>, een stad bekend vanwege de enorme <strong>Afobaka Dam</strong> en het prachtige <strong>Brokopondo-stuwmeer</strong> (ook bekend als Lake Professor van Blommenstein). Gecreëerd in de jaren zestig voor een aluminiumsmelter, overstroomde dit enorme kunstmatige meer grote gebieden regenwoud, wat een griezelig, mooi landschap creëerde van dode boomstammen die oprijzen uit donker water. Vandaag de dag dient het als poort naar het binnenland, waar Marrons en inheemse gemeenschappen langs de rivieroever leven in traditionele dorpen. Bezoek <strong>Atjoni</strong> om in langboten de Boven-Surinamerivier in te varen, waar u kunt verblijven in rustieke ecolodges, traditioneel <em>odo</em>-leven kunt ervaren en het verre geluid van <em>godo-godo</em>-trommels kunt horen die door de jungle galmen.</p>
+                    <span class="meta-tag">Avonturenniveau: Hoog</span>
+                    <span class="meta-tag gold">Marrons Cultuur</span>
+                </div>
+            </div>
+
+            <h2>🗣️ Taal, Cultuur & Tradities</h2>
+            <p style="margin-bottom: 22px;"><span class="highlight">Nederlands is de enige officiële en nationale taal</span> van Suriname — wat het het enige onafhankelijke land buiten Europa maakt waar Nederlands overheerst in de overheid, het onderwijs en de media. Maar loop door de straten en u hoort een symfonie van talen: <strong>Sranan Tongo</strong> (een op het Engels gebaseerd creool en de lingua franca), <strong>Sarnami Hindostaans</strong>, <strong>Javaans</strong>, <strong>Arawak</strong>, <strong>Carib</strong>, en <strong>Marron</strong>-talen zoals Ndyuka en Saramaccaans. Deze taaldiversiteit weerspiegelt het buitengewone culturele tapijtwerk van de natie.</p>
+            <p style="margin-bottom: 22px;">Het leven in Suriname draait om <strong>eten, familie en festiviteit</strong>. De keuken is legendarisch — een verrukkelijke mix van roti, pom (een hartige casseroleschotel van cassave), pindasoep, Javaanse noodles, Chinese roerbak en verse riviervis. Met oudejaarsavond ontploft het hele land in <em>Owru Yari</em>-vieringen met vuurwerk, concerten en straatfeesten. Het jaarlijkse <strong>Carnaval</strong> (februari/maart) en <strong>Holi Phagwa</strong> (het Hindoeïstische kleurenfeest) schilderen de straten in vreugdevol chaos. En overal, van Paramaribo's cafés tot jungle-nederzettingen, vindt u mensen die samen een koud <strong>Parbo Bier</strong> drinken en samen lachen.</p>
+
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="icon">🌿</div>
+                    <h4>Amazonewildernis</h4>
+                    <p>93% maagdelijk regenwoud. Thuis van jaguars, reuzenotters en harpijarenden.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥁</div>
+                    <h4>Marrons Erfgoed</h4>
+                    <p>Afstammelingen van ontsnapte slaven die Afrikaanse tradities in het binnenland bewaren.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🍛</div>
+                    <h4>Fusion Keuken</h4>
+                    <p>Roti, pom, saotosoep en cassavebrood — een smaak voor elke cultuur.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🤝</div>
+                    <h4>Religieuze Harmonie</h4>
+                    <p>Kerken, moskeeën, tempels en synagogen bestaan vredig naast elkaar.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <p><strong>💡 Reistip:</strong> De beste tijd om Suriname te bezoeken is tijdens de <strong>droge seizoenen</strong> — februari tot april en augustus tot november — wanneer junglepaden begaanbaar zijn en rivierreizen het veiligst zijn. Suriname gebruikt de <strong>Surinaamse Dollar (SRD)</strong>, maar contant geld is koning buiten Paramaribo. Breng uw gevoel voor avontuur mee: dit is een land waar u kunt ontbijten in een Nederlands koloniaal café, lunchen met een Marron-hoofdman, en dineren in een Javaanse warung — allemaal in één onvergetelijke dag.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>🇸🇷 Suriname Reisgids | Gemaakt met ❤️ voor Ontdekkingsreizigers</p>
+        <p style="margin-top: 10px; opacity: 0.9;">Nationale Taal: Nederlands | Beste Reistijd: Droge Seizoenen</p>
+    </div>
+</div>
+
+<script>
+    function switchLang(lang) {
+        document.querySelectorAll('.lang-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById('lang-' + lang).classList.add('active');
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
