@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costa Rica Travel Guide 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .lang-bar {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            z-index: 100;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .lang-bar h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .lang-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-en { background: #3498db; color: white; }
+        .btn-ur { background: #27ae60; color: white; }
+        .btn-hi { background: #e74c3c; color: white; }
+        .btn-es { background: #f39c12; color: white; }
+        .active { box-shadow: 0 0 0 3px rgba(0,0,0,0.2); transform: scale(1.05); }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .header-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            border-left: 5px solid #e74c3c;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+        .flag-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .flag-img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .city-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        .highlight-box h3 { color: white; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .stat-item {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-item strong {
+            display: block;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+        .urdu-text { direction: rtl; font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif; }
+        .hindi-text { font-family: 'Mangal', 'Kokila', sans-serif; }
+
+        @media (max-width: 600px) {
+            .blog-card { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .city-img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Language Selector -->
+    <div class="lang-bar">
+        <h3 id="lang-title">🌐 Choose Your Language / زبان منتخب کریں / भाषा चुनें / Elige tu idioma</h3>
+        <button class="lang-btn btn-en active" onclick="setLang('en')">🇺🇸 English</button>
+        <button class="lang-btn btn-ur" onclick="setLang('ur')">🇵🇰 اردو (Urdu)</button>
+        <button class="lang-btn btn-hi" onclick="setLang('hi')">🇮🇳 हिंदी (Hindi)</button>
+        <button class="lang-btn btn-es" onclick="setLang('es')">🇨🇷 Español (Spanish)</button>
+        <p style="margin-top:10px; font-size:0.85rem; color:#666;">
+            <span class="en">National Language: Spanish (Español)</span>
+            <span class="ur" style="display:none;">قومی زبان: ہسپانوی (Spanish)</span>
+            <span class="hi" style="display:none;">राष्ट्रीय भाषा: स्पेनिश (Spanish)</span>
+            <span class="es" style="display:none;">Idioma Nacional: Español</span>
+        </p>
+    </div>
+
+    <!-- Main Blog Content -->
+    <div class="blog-card">
+        <img src="https://kimi-web-img.moonshot.cn/img/d1cq5bmaro4ubb.cloudfront.net/0293f46cd7a6f63ae630fc7d21c3fe26b5b3ac74.jpeg" alt="Costa Rica Beach" class="header-img">
+        
+        <h1>
+            <span class="en">🇨🇷 Costa Rica: The Jewel of Central America</span>
+            <span class="ur urdu-text" style="display:none;">🇨🇷 کوسٹا ریکا: وسطی امریکا کا ہیرا</span>
+            <span class="hi hindi-text" style="display:none;">🇨🇷 कोस्टा रिका: मध्य अमेरिका का मोती</span>
+            <span class="es" style="display:none;">🇨🇷 Costa Rica: La Joya de Centroamérica</span>
+        </h1>
+        
+        <p class="subtitle">
+            <span class="en">A Complete Travel Guide for 2026</span>
+            <span class="ur urdu-text" style="display:none;">2026 کے لیے مکمل سفر گائیڈ</span>
+            <span class="hi hindi-text" style="display:none;">2026 के लिए एक संपूर्ण यात्रा गाइड</span>
+            <span class="es" style="display:none;">Una Guía de Viaje Completa para 2026</span>
+        </p>
+
+        <!-- Country Background -->
+        <h2>
+            <span class="en">🗺️ Country Background</span>
+            <span class="ur urdu-text" style="display:none;">🗺️ ملک کا تعارف</span>
+            <span class="hi hindi-text" style="display:none;">🗺️ देश का परिचय</span>
+            <span class="es" style="display:none;">🗺️ Antecedentes del País</span>
+        </h2>
+        
+        <p class="en">
+            Costa Rica, officially the Republic of Costa Rica, is a small but incredibly diverse country located in Central America. Bordered by Nicaragua to the north, Panama to the southeast, the Pacific Ocean to the west, and the Caribbean Sea to the east, this nation spans just 51,100 square kilometers — about the size of West Virginia. Yet within this compact territory lies 5% of the world's biodiversity! The name "Costa Rica" literally translates to "Rich Coast," a title given by Spanish explorers who believed the land held vast treasures of gold. Today, that richness is measured not in gold, but in pristine rainforests, active volcanoes, and some of the happiest people on Earth. Costa Rica abolished its military in 1948, redirecting those funds toward education and healthcare, making it one of the most stable and peaceful democracies in Latin America.
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            کوسٹا ریکا، سرکاری طور پر جمہوریہ کوسٹا ریکا، وسطی امریکا میں واقع ایک چھوٹا لیکن ناقابل یقین حد تک متنوع ملک ہے۔ شمال میں نکاراگوا، جنوب مشرق میں پاناما، مغرب میں بحر الکاہل اور مشرق میں بحیرہ کیریبین سے متصل، یہ ملک صرف 51,100 مربع کلومیٹر پر محیط ہے — تقریباً مغربی ورجینیا کے برابر۔ پھر بھی اس چھوٹی سی سرزمین میں دنیا کی 5% بائیو ڈائیورسٹی موجود ہے! "کوسٹا ریکا" کا لفظی ترجمہ "امیر ساحل" ہے، ایک ایسا عنوان جو ہسپانوی مہم جوؤں نے دیا تھا جنہیں یقین تھا کہ یہ سرزمین سونے کے وافر خزانوں پر مشتمل ہے۔ آج، یہ دولت سونے میں نہیں بلکہ پاکیزہ بارانی جنگلات، فعال آتش فشاںوں، اور زمین پر کچھ خوش ترین لوگوں میں ماپا جاتا ہے۔ کوسٹا ریکا نے 1948 میں اپنی فوج ختم کر دی، اور ان فنڈز کو تعلیم اور صحت کی دیکھ بھال کی طرف موڑ دیا، جس نے اسے لاطینی امریکا میں سب سے زیادہ مستحکم اور پرامن جمہوریتوں میں سے ایک بنا دیا۔
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            कोस्टा रिका, आधिकारिक तौर पर रिपब्लिक ऑफ कोस्टा रिका, मध्य अमेरिका में स्थित एक छोटा लेकिन अविश्वसनीय रूप से विविध देश है। उत्तर में निकारागुआ, दक्षिण-पूर्व में पनामा, पश्चिम में प्रशांत महासागर और पूर्व में कैरेबियन सागर से घिरा, यह राष्ट्र केवल 51,100 वर्ग किलोमीटर में फैला है — लगभग पश्चिमी वर्जीनिया के आकार के बराबर। फिर भी इस छोटे से क्षेत्र में दुनिया की 5% जैव विविधता मौजूद है! "कोस्टा रिका" का शाब्दिक अनुवाद "अमीर तट" होता है, एक ऐसा शीर्षक जो स्पेनिश खोजकर्ताओं ने दिया था जो मानते थे कि यह भूमि सोने के विशाल खजाने से भरी है। आज, यह धन सोने में नहीं, बल्कि अप्रदूषित वर्षावनों, सक्रिय ज्वालामुखियों, और पृथ्वी पर कुछ सबसे खुशहाल लोगों में मापा जाता है। कोस्टा रिका ने 1948 में अपनी सेना समाप्त कर दी, और उन धनराशियों को शिक्षा और स्वास्थ्य सेवा की ओर मोड़ दिया, जिसने इसे लैटिन अमेरिका में सबसे स्थिर और शांतिपूर्ण लोकतंत्रों में से एक बना दिया।
+        </p>
+        <p class="es" style="display:none;">
+            Costa Rica, oficialmente la República de Costa Rica, es un país pequeño pero increíblemente diverso ubicado en América Central. Limita con Nicaragua al norte, Panamá al sureste, el Océano Pacífico al oeste y el Mar Caribe al este. Esta nación abarca solo 51,100 kilómetros cuadrados —aproximadamente el tamaño de Virginia Occidental—. Sin embargo, dentro de este territorio compacto se encuentra el 5% de la biodiversidad mundial. El nombre "Costa Rica" se traduce literalmente como "Costa Rica", un título dado por exploradores españoles que creían que la tierra albergaba vastos tesoros de oro. Hoy, esa riqueza no se mide en oro, sino en bosques tropicales prístinos, volcanes activos y algunas de las personas más felices de la Tierra. Costa Rica abolió su ejército en 1948, redirigiendo esos fondos hacia la educación y la salud, convirtiéndose en una de las democracias más estables y pacíficas de América Latina.
+        </p>
+
+        <!-- Flag Section -->
+        <h2>
+            <span class="en">🏳️ National Flag</span>
+            <span class="ur urdu-text" style="display:none;">🏳️ قومی پرچم</span>
+            <span class="hi hindi-text" style="display:none;">🏳️ राष्ट्रीय ध्वज</span>
+            <span class="es" style="display:none;">🏳️ Bandera Nacional</span>
+        </h2>
+        
+        <div class="flag-container">
+            <img src="https://kimi-web-img.moonshot.cn/img/wgnflag.com/2623ddccd9b52a329b99c5899160cb16997b8657.jpg" alt="Costa Rica Flag" class="flag-img">
+        </div>
+        
+        <p class="en">
+            The flag of Costa Rica features five horizontal stripes: blue, white, red, white, and blue. The central red stripe is double the width of the others and bears the national coat of arms. The blue represents the sky, opportunities, and perseverance; white symbolizes peace, wisdom, and happiness; while the red stands for the warmth of the Costa Rican people, their love of life, and the blood spilled for freedom. Adopted on November 27, 1906, this flag reflects the values that make Costa Rica unique — a nation that chose pens over swords and nature over conquest.
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            کوسٹا ریکا کا پرچم پانچ افقی دھاریاں پیش کرتا ہے: نیلا، سفید، سرخ، سفید، اور نیلا۔ مرکزی سرخ دھاری باقی دھاریوں سے دوگنی چوڑائی کی حامل ہے اور اس پر قومی نشان (کوٹ آف آرمس) موجود ہے۔ نیلا رنگ آسمان، مواقع، اور استقامت کو ظاہر کرتا ہے؛ سفید امن، حکمت، اور خوشی کی علامت ہے؛ جبکہ سرخ کوسٹا ریکا کے لوگوں کی گرمجوشی، زندگی سے ان کی محبت، اور آزادی کے لیے بہایا گیا خون کی نمائندگی کرتا ہے۔ 27 نومبر 1906 کو اپنایا گیا، یہ پرچم ان اقدار کی عکاسی کرتا ہے جو کوسٹا ریکا کو منفرد بناتی ہیں — ایک ایسا ملک جس نے تلواروں پر قلموں اور فتح پر فطرت کو ترجیح دی۔
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            कोस्टा रिका का ध्वज पाँच क्षैतिज धारियों को दर्शाता है: नीला, सफेद, लाल, सफेद, और नीला। केंद्रीय लाल धारी दूसरों से दोगुनी चौड़ी है और इस पर राष्ट्रीय coat of arms अंकित है। नीला रंग आकाश, अवसरों, और दृढ़ संकल्प को दर्शाता है; सफेद शांति, बुद्धिमत्ता, और खुशी का प्रतीक है; जबकि लाल कोस्टा रिका के लोगों की गर्मजोशी, जीवन के प्रति उनके प्रेम, और स्वतंत्रता के लिए बहाए गए खून को दर्शाता है। 27 नवंबर 1906 को अपनाया गया, यह ध्वज उन मूल्यों को दर्शाता है जो कोस्टा रिका को अद्वितीय बनाते हैं — एक ऐसा राष्ट्र जिसने तलवारों पर कलमों और विजय पर प्रकृति को चुना।
+        </p>
+        <p class="es" style="display:none;">
+            La bandera de Costa Rica presenta cinco franjas horizontales: azul, blanco, rojo, blanco y azul. La franja roja central tiene el doble de ancho que las demás y lleva el escudo nacional. El azul representa el cielo, las oportunidades y la perseverancia; el blanco simboliza la paz, la sabiduría y la felicidad; mientras que el rojo representa la calidez del pueblo costarricense, su amor por la vida y la sangre derramada por la libertad. Adoptada el 27 de noviembre de 1906, esta bandera refleja los valores que hacen única a Costa Rica — una nación que eligió las plumas sobre las espadas y la naturaleza sobre la conquista.
+        </p>
+
+        <!-- Quick Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <strong class="en">51,100 km²</strong>
+                <strong class="ur urdu-text" style="display:none;">51,100 مربع کلومیٹر</strong>
+                <strong class="hi hindi-text" style="display:none;">51,100 वर्ग किमी</strong>
+                <strong class="es" style="display:none;">51,100 km²</strong>
+                <span class="en">Area</span>
+                <span class="ur urdu-text" style="display:none;">رقبہ</span>
+                <span class="hi hindi-text" style="display:none;">क्षेत्रफल</span>
+                <span class="es" style="display:none;">Área</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">5.2 Million</strong>
+                <strong class="ur urdu-text" style="display:none;">5.2 ملین</strong>
+                <strong class="hi hindi-text" style="display:none;">5.2 मिलियन</strong>
+                <strong class="es" style="display:none;">5.2 Millones</strong>
+                <span class="en">Population</span>
+                <span class="ur urdu-text" style="display:none;">آبادی</span>
+                <span class="hi hindi-text" style="display:none;">जनसंख्या</span>
+                <span class="es" style="display:none;">Población</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">San José</strong>
+                <strong class="ur urdu-text" style="display:none;">سان جوزے</strong>
+                <strong class="hi hindi-text" style="display:none;">सैन होज़े</strong>
+                <strong class="es" style="display:none;">San José</strong>
+                <span class="en">Capital</span>
+                <span class="ur urdu-text" style="display:none;">دارالحکومت</span>
+                <span class="hi hindi-text" style="display:none;">राजधानी</span>
+                <span class="es" style="display:none;">Capital</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">Spanish</strong>
+                <strong class="ur urdu-text" style="display:none;">ہسپانوی</strong>
+                <strong class="hi hindi-text" style="display:none;">स्पेनिश</strong>
+                <strong class="es" style="display:none;">Español</strong>
+                <span class="en">Language</span>
+                <span class="ur urdu-text" style="display:none;">زبان</span>
+                <span class="hi hindi-text" style="display:none;">भाषा</span>
+                <span class="es" style="display:none;">Idioma</span>
+            </div>
+        </div>
+
+        <!-- Famous Cities -->
+        <h2>
+            <span class="en">🏙️ Famous Cities & Destinations</span>
+            <span class="ur urdu-text" style="display:none;">🏙️ مشہور شہروں اور مقامات</span>
+            <span class="hi hindi-text" style="display:none;">🏙️ प्रसिद्ध शहर और गंतव्य</span>
+            <span class="es" style="display:none;">🏙️ Ciudades y Destinos Famosos</span>
+        </h2>
+
+        <!-- San José -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.creescapes.com/16c842862ec62bcfbeddb12201f4af7890957808.jpg" alt="San Jose Costa Rica" class="city-img">
+            <h3>
+                <span class="en">📍 San José — The Capital City</span>
+                <span class="ur urdu-text" style="display:none;">📍 سان جوزے — دارالحکومت</span>
+                <span class="hi hindi-text" style="display:none;">📍 सैन होज़े — राजधानी शहर</span>
+                <span class="es" style="display:none;">📍 San José — La Capital</span>
+            </h3>
+            <p class="en">
+                Nestled in the Central Valley at 1,170 meters above sea level, San José is Costa Rica's bustling capital and cultural heart. With a population of around 350,000 in the city proper (and over 2 million in the metro area), it serves as the nation's political and economic hub. Don't miss the Pre-Columbian Gold Museum, the National Theatre — an architectural masterpiece — and the lively Mercado Central where you can savor <em>gallo pinto</em> (rice and beans), the national dish. The city's elevation gives it a pleasant spring-like climate year-round, making it a perfect starting point for your Costa Rican adventure.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                سطح سمندر سے 1,170 میٹر کی بلندی پر مرکزی وادی میں آباد، سان جوزے کوسٹا ریکا کا ہجوم خیز دارالحکومت اور ثقافتی دل ہے۔ شہر میں تقریباً 350,000 کی آبادی (میٹرو علاقے میں 2 ملین سے زیادہ) کے ساتھ، یہ قوم کا سیاسی اور اقتصادی مرکز ہے۔ پری کولمبیئن گولڈ میوزیم، نیشنل تھیٹر — ایک معماری کا شاہکار — اور زندہ دل مرکزی بازار (مرکاڈو سنٹرل) ضرور دیکھیں جہاں آپ قومی پکوان <em>گایو پنٹو</em> (چاول اور دال) کا مزہ لے سکتے ہیں۔ شہر کی بلندی اسے پورے سال خوشگوار بہار جیسا موسم فراہم کرتی ہے، جس سے یہ آپ کے کوسٹا ریکا کے سفر کا بہترین آغاز بن جاتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                समुद्र तल से 1,170 मीटर की ऊंचाई पर केंद्रीय घाटी में बसा, सैन होज़े कोस्टा रिका का व्यस्त राजधानी और सांस्कृतिक केंद्र है। शहर में लगभग 350,000 की आबादी (मेट्रो क्षेत्र में 2 मिलियन से अधिक) के साथ, यह राष्ट्र का राजनीतिक और आर्थिक केंद्र है। प्री-कोलंबियन गोल्ड म्यूजियम, नेशनल थियेटर — एक वास्तुकला की उत्कृष्ट कृति — और जीवंत मर्काडो सेंट्रल को न चूंें जहाँ आप राष्ट्रीय व्यंजन <em>गायो पिंटो</em> (चावल और बीन्स) का स्वाद ले सकते हैं। शहर की ऊंचाई इसे पूरे वर्ष सुखद वसंत जैसे जलवायु प्रदान करती है, जिससे यह आपके कोस्टा रिका साहसिक कार्य का एकदम सही प्रारंभिक बिंदु बन जाता है।
+            </p>
+            <p class="es" style="display:none;">
+                Ubicada en el Valle Central a 1,170 metros sobre el nivel del mar, San José es la bulliciosa capital y corazón cultural de Costa Rica. Con una población de alrededor de 350,000 en la ciudad propiamente dicha (y más de 2 millones en el área metropolitana), sirve como el centro político y económico de la nación. No te pierdas el Museo del Oro Precolombino, el Teatro Nacional — una obra maestra arquitectónica — y el animado Mercado Central donde puedes saborear el <em>gallo pinto</em> (arroz y frijoles), el plato nacional. La elevación de la ciudad le brinda un clima primaveral agradable durante todo el año, convirtiéndola en el punto de partida perfecto para tu aventura costarricense.
+            </p>
+        </div>
+
+        <!-- Manuel Antonio -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/cdn.getyourguide.com/ab9dfbb51afdf82ca8e45c94d0465d6145ed2a1b.jpg" alt="Manuel Antonio Beach" class="city-img">
+            <h3>
+                <span class="en">📍 Manuel Antonio — Beach Paradise</span>
+                <span class="ur urdu-text" style="display:none;">📍 مانوئل انتونیو — ساحل سورگ</span>
+                <span class="hi hindi-text" style="display:none;">📍 मैनुअल एंटोनियो — समुद्र तट का स्वर्ग</span>
+                <span class="es" style="display:none;">📍 Manuel Antonio — Paraíso de Playas</span>
+            </h3>
+            <p class="en">
+                Located on the Pacific coast, Manuel Antonio is Costa Rica's most popular national park and beach destination. This tiny park — just 16 square kilometers — packs an unbelievable punch with pristine white-sand beaches, lush rainforest trails, and abundant wildlife including sloths, capuchin monkeys, and scarlet macaws. The park's four beaches (Manuel Antonio, Espadilla Sur, Escondido, and Playita) are regularly ranked among the world's most beautiful. Whether you're zip-lining through the canopy, kayaking through mangroves, or simply watching the sunset paint the Pacific gold, Manuel Antonio delivers pure tropical magic.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                بحر الکاہل کے ساحل پر واقع، مانوئل انتونیو کوسٹا ریکا کا سب سے مقبول قومی پارک اور ساحلی مقام ہے۔ یہ چھوٹا سا پارک — صرف 16 مربع کلومیٹر — پاکیزہ سفید ریت والے ساحلوں، سرسبز بارانی جنگلی پگڈنڈیوں، اور کثرت سے موجود جنگلی حیات بشمول سلوٹھ، کیپوچن بندر، اور سرخ میکاؤ کے ساتھ ایک ناقابل یقین تجربہ پیش کرتا ہے۔ پارک کے چار ساحل (مانوئل انتونیو، ایسپاڈیلا سور، ایسکونڈیدو، اور پلائٹا) باقاعدگی سے دنیا کے خوبصورت ترین ساحلوں میں شمار ہوتے ہیں۔ چاہے آپ چادر کے درمیان زپ لائننگ کر رہے ہوں، مینگروو کے ذریعے کایاکنگ کر رہے ہوں، یا صرف غروب آفتاب کو بحر الکاہل کو سونے میں رنگتے دیکھ رہے ہوں، مانوئل انتونیو خالص استوائی جادو پیش کرتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                प्रशांत तट पर स्थित, मैनुअल एंटोनियो कोस्टा रिका का सबसे लोकप्रिय राष्ट्रीय उद्यान और समुद्र तट गंतव्य है। यह छोटा सा उद्यान — केवल 16 वर्ग किलोमीटर — अप्रदूषित सफेद रेत वाले समुद्र तटों, हरे-भरे वर्षावन ट्रेल्स, और भरपूर वन्यजीवन जिसमें स्लॉथ, कैपुचिन बंदर, और स्कारलेट मकॉ शामिल हैं, के साथ एक अविश्वसनीय अनुभव प्रदान करता है। उद्यान के चार समुद्र तट (मैनुअल एंटोनियो, एस्पाडिला सुर, एसकॉन्डिडो, और प्लायिता) नियमित रूप से दुनिया के सबसे खूबसूरत समुद्र तटों में शुमार होते हैं। चाहे आप छतर के माध्यम से जिप-लाइनिंग कर रहे हों, मैंग्रोव के माध्यम से कयाकिंग कर रहे हों, या बस सूर्यास्त को प्रशांत को सोने में रंगते देख रहे हों, मैनुअल एंटोनियो शुद्ध उष्णकटिबंधीय जादू प्रदान करता है।
+            </p>
+            <p class="es" style="display:none;">
+                Ubicado en la costa del Pacífico, Manuel Antonio es el parque nacional y destino de playa más popular de Costa Rica. Este pequeño parque — de solo 16 kilómetros cuadrados — ofrece un impacto increíble con playas de arena blanca prístinas, senderos de selva tropical exuberante y abundante vida silvestre incluyendo perezosos, monos capuchinos y guacamayos escarlata. Las cuatro playas del parque (Manuel Antonio, Espadilla Sur, Escondido y Playita) son regularmente clasificadas entre las más hermosas del mundo. Ya sea que estés haciendo canopy, kayak por los manglares o simplemente viendo la puesta de sol pintar el Pacífico de dorado, Manuel Antonio ofrece pura magia tropical.
+            </p>
+        </div>
+
+        <!-- Monteverde -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/d1cq5bmaro4ubb.cloudfront.net/7334c790356bf1d85bd4a90b2dca0210505b73b8.jpeg" alt="Monteverde Cloud Forest" class="city-img">
+            <h3>
+                <span class="en">📍 Monteverde — The Cloud Forest</span>
+                <span class="ur urdu-text" style="display:none;">📍 مونٹیورڈے — بادلوں کا جنگل</span>
+                <span class="hi hindi-text" style="display:none;">📍 मोंटेवर्डे — बादल वन</span>
+                <span class="es" style="display:none;">📍 Monteverde — El Bosque Nuboso</span>
+            </h3>
+            <p class="en">
+                Perched at 1,440 meters in the Tilarán Mountains, Monteverde is a misty wonderland that feels like stepping into another world. The Monteverde Cloud Forest Reserve protects over 10,500 hectares of tropical cloud forest — one of the last remaining habitats of its kind on Earth. Home to more than 400 bird species (including the resplendent quetzal), 120 amphibian and reptile species, and 2,500 plant species, it's a biodiversity hotspot. Walk the famous hanging bridges suspended in the canopy, visit the butterfly gardens, or take a night tour to spot nocturnal creatures. The cool, damp climate creates an ethereal atmosphere where clouds drift through the trees and every leaf glistens with moisture.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                تیلاران پہاڑیوں میں 1,440 میٹر کی بلندی پر واقع، مونٹیورڈے ایک دھندلا عجوبہ ہے جو کسی دوسری دنیا میں قدم رکھنے جیسا محسوس ہوتا ہے۔ مونٹیورڈے کلاؤڈ فارسٹ ریزرو 10,500 ہیکٹر سے زیادہ کے استوائی بادل جنگل کی حفاظت کرتا ہے — زمین پر اس کی نوعیت کا ایک آخری باقی مسکن۔ 400 سے زیادہ پرندوں کی انواع (بشمول شاندار کیٹزل)، 120 امپیبیئن اور رینگنے والے جانوروں کی انواع، اور 2,500 پودوں کی انواع کا مسکن، یہ ایک بائیو ڈائیورسٹی ہاٹ اسپاٹ ہے۔ چھتری میں لٹکائی گئی مشہور ہینگنگ برجز پر چلیں، تیتلی باغات کا دورہ کریں، یا رات کے جانوروں کو دیکھنے کے لیے نائٹ ٹور لیں۔ ٹھنڈی، نم موسم ایک آسمانی فضا پیدا کرتا ہے جہاں بادل درختوں کے درمیان بہتے ہیں اور ہر پتہ نمی سے چمکتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                टिलारान पहाड़ियों में 1,440 मीटर की ऊंचाई पर स्थित, मोंटेवर्डे एक धुंधला आश्चर्यजनक स्थान है जो किसी अन्य दुनिया में कदम रखने जैसा महसूस होता है। मोंटेवर्डे क्लाउड फॉरेस्ट रिजर्व 10,500 हेक्टेयर से अधिक उष्णकटिबंधीय बादल वन की रक्षा करता है — पृथ्वी पर इस प्रकार का एक अंतिम शेष आवास। 400 से अधिक पक्षी प्रजातियों (जिसमें शानदार क्वेट्ज़ल शामिल है), 120 उभयचर और सरीसृप प्रजातियों, और 2,500 पौधों की प्रजातियों का घर, यह एक जैव विविधता हॉटस्पॉट है। छतरी में लटकाए गए प्रसिद्ध हैंगिंग ब्रिज पर चलें, तितली उद्यानों का दौरा करें, या रात्रिकालीन प्राणियों को देखने के लिए नाइट टूर लें। ठंडा, नम जलवायु एक अलौकिक वातावरण बनाता है जहाँ बादल पेड़ों के माध्यम से तैरते हैं और हर पत्ता नमी से चमकता है।
+            </p>
+            <p class="es" style="display:none;">
+                Ubicado a 1,440 metros en las montañas de Tilarán, Monteverde es un mundo maravilloso y brumoso que se siente como entrar a otro mundo. La Reserva del Bosque Nuboso de Monteverde protege más de 10,500 hectáreas de bosque nuboso tropical — uno de los últimos hábitats remanentes de su tipo en la Tierra. Hogar de más de 400 especies de aves (incluyendo el quetzal resplandeciente), 120 especies de anfibios y reptiles, y 2,500 especies de plantas, es un hotspot de biodiversidad. Camina por los famosos puentes colgantes suspendidos en el dosel, visita los jardines de mariposas, o haz un tour nocturno para avistar criaturas nocturnas. El clima fresco y húmedo crea una atmósfera etérea donde las nubes se deslizan entre los árboles y cada hoja brilla con humedad.
+            </p>
+        </div>
+
+        <!-- Tortuguero -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/farm1.staticflickr.com/519040da46335d43a88e519a83c75f1dd51f2176.jpg" alt="Tortuguero National Park" class="city-img">
+            <h3>
+                <span class="en">📍 Tortuguero — The Amazon of Costa Rica</span>
+                <span class="ur urdu-text" style="display:none;">📍 ٹورٹوگیرو — کوسٹا ریکا کا ایمیزون</span>
+                <span class="hi hindi-text" style="display:none;">📍 टोर्टुगेरो — कोस्टा रिका का अमेज़न</span>
+                <span class="es" style="display:none;">📍 Tortuguero — El Amazonas de Costa Rica</span>
+            </h3>
+            <p class="en">
+                Accessible only by boat or small plane, Tortuguero is one of the most remote and spectacular regions in Costa Rica. This network of canals and lagoons on the Caribbean coast is often called "The Amazon of Costa Rica" and protects 31,187 hectares of tropical rainforest, mangrove swamps, and beaches. It's one of the most important nesting sites for green sea turtles in the world — between July and October, thousands of turtles come ashore to lay their eggs. Navigate the dark-water canals spotting caimans, river otters, and poison dart frogs, or hike through the jungle to hidden lagoons. With no cars and no roads, Tortuguero offers a rare glimpse into a world untouched by modern life.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                صرف کشتی یا چھوٹے طیارے سے قابل رسائی، ٹورٹوگیرو کوسٹا ریکا کا ایک سب سے دور دراز اور شاندار علاقہ ہے۔ کیریبین ساحل پر یہ نہروں اور جھیلوں کا جال اکثر "کوسٹا ریکا کا ایمیزون" کہلاتا ہے اور 31,187 ہیکٹر استوائی بارانی جنگل، مینگروو دلدل، اور ساحلوں کی حفاظت کرتا ہے۔ یہ دنیا بھر میں سبز سمندری کچھوؤں کے لیے سب سے اہم گھونسلا سائٹس میں سے ایک ہے — جولائی اور اکتوبر کے درمیان، ہزاروں کچھوے انڈے دینے کے لیے ساحل پر آتے ہیں۔ سیاہ پانی کی نہروں میں کیمنز، دریا اوٹرز، اور زہریلے تیر پھینکنے والے مینڈکوں کو دیکھتے ہوئے سفر کریں، یا پوشیدہ جھیلوں تک پہنچنے کے لیے جنگل میں ٹریکنگ کریں۔ کاروں اور سڑکوں کے بغیر، ٹورٹوگیرو جدید زندگی سے بے نقاب دنیا کی ایک نایاب جھلک پیش کرتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                केवल नाव या छोटे विमान से पहुँचा जा सकने वाला, टोर्टुगेरो कोस्टा रिका का सबसे दूरस्थ और शानदार क्षेत्रों में से एक है। कैरेबियन तट पर यह नहरों और लैगून का नेटवर्क अक्सर "कोस्टा रिका का अमेज़न" कहलाता है और 31,187 हेक्टेयर उष्णकटिबंधीय वर्षावन, मैंग्रोव दलदल, और समुद्र तटों की रक्षा करता है। यह दुनिया भर में हरी समुद्री कछुओं के लिए सबसे महत्वपूर्ण घोंसला स्थलों में से एक है — जुलाई और अक्टूबर के बीच, हजारों कछुए अंडे देने के लिए किनारे पर आते हैं। काले पानी की नहरों में काइमन, नदी ऊदबिलाव, और जहरीले तीर मेंढक को देखते हुए नेविगेट करें, या छिपी हुई लैगून तक पहुँचने के लिए जंगल में ट्रेक करें। कारों और सड़कों के बिना, टोर्टुगेरो आधुनिक जीवन से अछूती दुनिया की एक दुर्लभ झलक प्रदान करता है।
+            </p>
+            <p class="es" style="display:none;">
+                Accesible solo por bote o avioneta, Tortuguero es una de las regiones más remotas y espectaculares de Costa Rica. Esta red de canales y lagunas en la costa caribeña es conocida como "El Amazonas de Costa Rica" y protege 31,187 hectáreas de selva tropical, pantanos de manglar y playas. Es uno de los sitios de anidación más importantes para las tortugas verdes en el mundo — entre julio y octubre, miles de tortugas llegan a la costa para poner sus huevos. Navega por los canales de agua oscura avistando caimanes, nutrias de río y ranas venenosas de dardo, o camina por la selva hacia lagunas escondidas. Sin autos ni carreteras, Tortuguero ofrece una rara visión de un mundo intocado por la vida moderna.
+            </p>
+        </div>
+
+        <!-- Travel Tips -->
+        <div class="highlight-box">
+            <h3>
+                <span class="en">💡 Essential Travel Tips</span>
+                <span class="ur urdu-text" style="display:none;">💡 ضروری سفر کی نکات</span>
+                <span class="hi hindi-text" style="display:none;">💡 आवश्यक यात्रा सुझाव</span>
+                <span class="es" style="display:none;">💡 Consejos Esenciales de Viaje</span>
+            </h3>
+            <p class="en">
+                • <strong>Best Time to Visit:</strong> December to April (dry season) offers sunny skies, but May-November (green season) brings fewer crowds and lush landscapes.<br>
+                • <strong>Currency:</strong> Costa Rican Colón (CRC), but US dollars are widely accepted.<br>
+                • <strong>Language:</strong> Spanish is the national language. English is common in tourist areas.<br>
+                • <strong>Must-Try Food:</strong> Gallo Pinto, Casado, Sopa Negra, and fresh tropical fruits.<br>
+                • <strong>Eco-Tourism:</strong> Costa Rica generates over 99% of its electricity from renewable sources. Support certified sustainable hotels!<br>
+                • <strong>Pura Vida:</strong> This famous phrase means "pure life" — it's a greeting, a farewell, and a philosophy of living simply and happily.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                • <strong>دورہ کرنے کا بہترین وقت:</strong> دسمبر سے اپریل (خشک موسم) میں دھوپ والا آسمان ملتا ہے، لیکن مئی-نومبر (ہرا موسم) میں کم ہجوم اور سرسبز مناظر ہوتے ہیں۔<<br>
+                • <strong>کرنسی:</strong> کوسٹا ریکا کولون (CRC)، لیکن امریکی ڈالر بھی وسیع پیمانے پر قبول کیے جاتے ہیں۔<<br>
+                • <strong>زبان:</strong> ہسپانوی قومی زبان ہے۔ سیاحتی علاقوں میں انگریزی عام ہے۔<<br>
+                • <strong>ضرور آزمائیں:</strong> گایو پنٹو، کاساڈو، سوپا نیگرا، اور تازہ استوائی پھل۔<<br>
+                • <strong>ایکو ٹورازم:</strong> کوسٹا ریکا اپنی بجلی کا 99% سے زیادہ قابل تجدید ذرائع سے پیدا کرتا ہے۔ تصدیق شدہ پائیدار ہوٹلز کی حمایت کریں!<br>
+                • <strong>پورا ویدا:</strong> یہ مشہور جملہ "خالص زندگی" کا مطلب ہے — یہ ایک سلام، ایک الوداع، اور سادہ اور خوشحال زندگی گزارنے کا فلسفہ ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                • <strong>घूमने का सबसे अच्छा समय:</strong> दिसंबर से अप्रैल (शुष्क मौसम) में धूप वाला आकाश मिलता है, लेकिन मई-नवंबर (हरा मौसम) में कम भीड़ और हरा-भरा परिदृश्य होता है।<<br>
+                • <strong>मुद्रा:</strong> कोस्टा रिका कोलोन (CRC), लेकिन अमेरिकी डॉलर भी व्यापक रूप से स्वीकार किए जाते हैं।<<br>
+                • <strong>भाषा:</strong> स्पेनिश राष्ट्रीय भाषा है। पर्यटन क्षेत्रों में अंग्रेजी आम है।<<br>
+                • <strong>जरूर आजमाएं:</strong> गायो पिंटो, कासाडो, सोपा नेग्रा, और ताजा उष्णकटिबंधीय फल।<<br>
+                • <strong>इको-टूरिज्म:</strong> कोस्टा रिका अपनी बिजली का 99% से अधिक नवीकरणीय स्रोतों से उत्पन्न करता है। प्रमाणित स्थायी होटलों का समर्थन करें!<br>
+                • <strong>पुरा विदा:</strong> यह प्रसिद्ध वाक्यांश "शुद्ध जीवन" का अर्थ है — यह एक अभिवादन, एक विदाई, और सरल और खुशहाल जीवन जीने का दर्शन है।
+            </p>
+            <p class="es" style="display:none;">
+                • <strong>Mejor Época para Visitar:</strong> De diciembre a abril (temporada seca) ofrece cielos soleados, pero de mayo a noviembre (temporada verde) trae menos multitudes y paisajes exuberantes.<br>
+                • <strong>Moneda:</strong> Colón Costarricense (CRC), pero los dólares estadounidenses son ampliamente aceptados.<br>
+                • <strong>Idioma:</strong> El español es el idioma nacional. El inglés es común en áreas turísticas.<br>
+                • <strong>Debes Probar:</strong> Gallo Pinto, Casado, Sopa Negra, y frutas tropicales frescas.<br>
+                • <strong>Eco-Turismo:</strong> Costa Rica genera más del 99% de su electricidad de fuentes renovables. ¡Apoya hoteles sostenibles certificados!<br>
+                • <strong>Pura Vida:</strong> Esta famosa frase significa "vida pura" — es un saludo, una despedida y una filosofía de vivir simple y felizmente.
+            </p>
+        </div>
+
+        <!-- Conclusion -->
+        <h2>
+            <span class="en">🌟 Final Thoughts</span>
+            <span class="ur urdu-text" style="display:none;">🌟 آخری خیالات</span>
+            <span class="hi hindi-text" style="display:none;">🌟 अंतिम विचार</span>
+            <span class="es" style="display:none;">🌟 Reflexiones Finales</span>
+        </h2>
+        
+        <p class="en">
+            Costa Rica is more than a destination — it's a revelation. In a world racing toward development, this small nation chose a different path. It chose to protect its forests, to welcome its wildlife, and to measure success not by GDP but by the smiles of its people and the health of its ecosystems. Whether you're watching a sloth crawl through the canopy, standing in awe before Arenal Volcano, or simply sipping coffee in a San José café, you'll feel it — that unmistakable sense that here, life is lived as it should be. Pure. Simple. Rich in every way that truly matters. <strong>Pura Vida!</strong>
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            کوسٹا ریکا صرف ایک مقام نہیں — یہ ایک انکشاف ہے۔ ترقی کی طرف دوڑتی دنیا میں، اس چھوٹے ملک نے ایک مختلف راستہ چنا۔ اس نے اپنے جنگلات کی حفاظت کرنے، اپنے جنگلی حیات کو خوش آمدید کہنے، اور کامیابی کو جی ڈی پی نہیں بلکہ اپنے لوگوں کی مسکراہٹوں اور اپنے ماحولیاتی نظام کی صحت سے ماپنے کا انتخاب کیا۔ چاہے آپ ایک سلوٹھ کو چھتری کے درمیان رینگتے دیکھ رہے ہوں، ارینل آتش فشاں کے سامنے حیرت میں کھڑے ہوں، یا صرف سان جوزے کے کافی ہاؤس میں کافی پی رہے ہوں، آپ اسے محسوس کریں گے — وہ ناقابل فرق احساس کہ یہاں، زندگی ویسے ہی جیتی جاتی ہے جیسے جینی چاہیے۔ خالص۔ سادہ۔ ہر اس طریقے سے امیر جو واقعی اہم ہے۔ <strong>پورا ویدا!</strong>
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            कोस्टा रिका एक गंतव्य से अधिक है — यह एक अनुभूति है। विकास की ओर दौड़ती दुनिया में, इस छोटे राष्ट्र ने एक अलग रास्ता चुना। इसने अपने वनों की रक्षा करने, अपने वन्यजीवन का स्वागत करने, और सफलता को जीडीपी नहीं बल्कि अपने लोगों की मुस्कानों और अपने पारिस्थितिकी तंत्र के स्वास्थ्य से मापने का विकल्प चुना। चाहे आप एक स्लॉथ को छतरी के माध्यम से रेंगते देख रहे हों, अरेनल ज्वालामुखी के सामने आश्चर्य में खड़े हों, या बस सैन होज़े के कैफे में कॉफी पी रहे हों, आप इसे महसूस करेंगे — वह अमिट भावना कि यहाँ, जीवन वैसे ही जिया जाता है जैसे जीना चाहिए। शुद्ध। सरल। हर उस तरीके से अमीर जो वास्तव में मायने रखता है। <strong>पुरा विदा!</strong>
+        </p>
+        <p class="es" style="display:none;">
+            Costa Rica es más que un destino — es una revelación. En un mundo que corre hacia el desarrollo, esta pequeña nación eligió un camino diferente. Eligió proteger sus bosques, dar la bienvenida a su vida silvestre, y medir el éxito no por el PIB sino por las sonrisas de su gente y la salud de sus ecosistemas. Ya sea que estés viendo a un perezoso arrastrarse por el dosel, de pie asombrado ante el Volcán Arenal, o simplemente tomando café en un café de San José, lo sentirás — esa inconfundible sensación de que aquí, la vida se vive como debería ser. Pura. Simple. Rica en cada forma que realmente importa. <strong>¡Pura Vida!</strong>
+        </p>
+    </div>
+
+    <div class="footer">
+        <p class="en">© 2026 Costa Rica Travel Guide | Written with ❤️ for travelers worldwide</p>
+        <p class="ur urdu-text" style="display:none;">© 2026 کوسٹا ریکا سفر گائیڈ | دنیا بھر کے مسافروں کے لیے ❤️ سے لکھا گیا</p>
+        <p class="hi hindi-text" style="display:none;">© 2026 कोस्टा रिका यात्रा गाइड | दुनिया भर के यात्रियों के लिए ❤️ से लिखा गया</p>
+        <p class="es" style="display:none;">© 2026 Guía de Viaje de Costa Rica | Escrito con ❤️ para viajeros de todo el mundo</p>
+    </div>
+</div>
+
+<script>
+    function setLang(lang) {
+        // Hide all language content
+        document.querySelectorAll('.en, .ur, .hi, .es').forEach(el => {
+            el.style.display = 'none';
+        });
+        
+        // Show selected language content
+        document.querySelectorAll('.' + lang).forEach(el => {
+            if (el.classList.contains('urdu-text')) {
+                el.style.display = 'block';
+                el.style.direction = 'rtl';
+            } else if (el.classList.contains('hindi-text')) {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'block';
+            }
+        });
+        
+        // Update button states
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector('.btn-' + lang).classList.add('active');
+        
+        // Update page language attribute
+        const langMap = { 'en': 'en', 'ur': 'ur', 'hi': 'hi', 'es': 'es' };
+        document.documentElement.lang = langMap[lang];
+    }
+    
+    // Initialize with English
+    setLang('en');
+</script>
+
+</body>
+</html>
