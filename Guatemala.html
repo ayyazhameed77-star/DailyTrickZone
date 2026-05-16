@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guatemala Travel Guide 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #5dade2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .lang-bar {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            z-index: 100;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .lang-bar h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .lang-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-en { background: #3498db; color: white; }
+        .btn-ur { background: #27ae60; color: white; }
+        .btn-hi { background: #e74c3c; color: white; }
+        .btn-es { background: #f39c12; color: white; }
+        .active { box-shadow: 0 0 0 3px rgba(0,0,0,0.2); transform: scale(1.05); }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .header-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            border-left: 5px solid #e74c3c;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+        .flag-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .flag-img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .city-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #5dade2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        .highlight-box h3 { color: white; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .stat-item {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-item strong {
+            display: block;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+        .urdu-text { direction: rtl; font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif; }
+        .hindi-text { font-family: 'Mangal', 'Kokila', sans-serif; }
+
+        @media (max-width: 600px) {
+            .blog-card { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .city-img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Language Selector -->
+    <div class="lang-bar">
+        <h3 id="lang-title">🌐 Choose Your Language / زبان منتخب کریں / भाषा चुनें / Elige tu idioma</h3>
+        <button class="lang-btn btn-en active" onclick="setLang('en')">🇺🇸 English</button>
+        <button class="lang-btn btn-ur" onclick="setLang('ur')">🇵🇰 اردو (Urdu)</button>
+        <button class="lang-btn btn-hi" onclick="setLang('hi')">🇮🇳 हिंदी (Hindi)</button>
+        <button class="lang-btn btn-es" onclick="setLang('es')">🇬🇹 Español (Spanish)</button>
+        <p style="margin-top:10px; font-size:0.85rem; color:#666;">
+            <span class="en">National Language: Spanish (Español) — 22 Maya languages also spoken</span>
+            <span class="ur urdu-text" style="display:none;">قومی زبان: ہسپانوی (Spanish) — 22 مایا زبانیں بھی بولی جاتی ہیں</span>
+            <span class="hi hindi-text" style="display:none;">राष्ट्रीय भाषा: स्पेनिश (Spanish) — 22 माया भाषाएँ भी बोली जाती हैं</span>
+            <span class="es" style="display:none;">Idioma Nacional: Español — También se hablan 22 lenguas mayas</span>
+        </p>
+    </div>
+
+    <!-- Main Blog Content -->
+    <div class="blog-card">
+        <img src="https://kimi-web-img.moonshot.cn/img/travelandsqueak.com/f23dd1a44c914788b8abc127395414981585e6e5.jpg" alt="Lake Atitlan Guatemala" class="header-img">
+        
+        <h1>
+            <span class="en">🇬🇹 Guatemala: The Soul of the Maya World</span>
+            <span class="ur urdu-text" style="display:none;">🇬🇹 گوئٹے مالا: مایا دنیا کی روح</span>
+            <span class="hi hindi-text" style="display:none;">🇬🇹 ग्वाटेमाला: माया दुनिया की आत्मा</span>
+            <span class="es" style="display:none;">🇬🇹 Guatemala: El Alma del Mundo Maya</span>
+        </h1>
+        
+        <p class="subtitle">
+            <span class="en">A Complete Travel Guide for 2026</span>
+            <span class="ur urdu-text" style="display:none;">2026 کے لیے مکمل سفر گائیڈ</span>
+            <span class="hi hindi-text" style="display:none;">2026 के लिए एक संपूर्ण यात्रा गाइड</span>
+            <span class="es" style="display:none;">Una Guía de Viaje Completa para 2026</span>
+        </p>
+
+        <!-- Country Background -->
+        <h2>
+            <span class="en">🗺️ Country Background</span>
+            <span class="ur urdu-text" style="display:none;">🗺️ ملک کا تعارف</span>
+            <span class="hi hindi-text" style="display:none;">🗺️ देश का परिचय</span>
+            <span class="es" style="display:none;">🗺️ Antecedentes del País</span>
+        </h2>
+        
+        <p class="en">
+            Guatemala, officially the Republic of Guatemala, is a breathtaking Central American nation that serves as the living heartland of the ancient Maya civilization. Bordered by Mexico to the north and west, Belize and the Caribbean Sea to the northeast, Honduras and El Salvador to the southeast, and the Pacific Ocean to the south, this country of 108,889 square kilometers packs extraordinary diversity into every corner. With a population of approximately 18 million, Guatemala is the most populous country in Central America. The name "Guatemala" derives from the Nahuatl word <em>Cuathemallan</em>, meaning "place of many trees," though some Maya scholars connect it to <em>Iximche</em>, meaning "maize tree." Unlike many of its neighbors, Guatemala's indigenous heritage remains vibrantly alive — over 40% of the population identifies as indigenous Maya, speaking one of 22 officially recognized Maya languages alongside Spanish. From the volcanic highlands to the steamy Petén jungle, Guatemala offers a journey through time, culture, and landscape unlike anywhere else on Earth.
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            گوئٹے مالا، سرکاری طور پر جمہوریہ گوئٹے مالا، ایک دلفریب وسطی امریکی ملک ہے جو قدیم مایا تہذیب کا زندہ دلدلان ہے۔ شمال اور مغرب میں میکسیکو، شمال مشرق میں بیلیز اور بحیرہ کیریبین، جنوب مشرق میں ہونڈوراس اور ایل سیلواڈور، اور جنوب میں بحر الکاہل سے متصل، 108,889 مربع کلومیٹر کا یہ ملک ہر کونے میں غیر معمولی تنوع کو سمیٹے ہوئے ہے۔ تقریباً 18 ملین کی آبادی کے ساتھ، گوئٹے مالا وسطی امریکا کا سب سے زیادہ آبادی والا ملک ہے۔ "گوئٹے مالا" کا نام نہوatl لفظ <em>کواتھمالان</em> سے نکلتا ہے، جس کا مطلب ہے "درختوں کی جگہ"، اگرچہ کچھ مایا اسکالر اسے <em>ایکسیمچے</em> سے جوڑتے ہیں، جس کا مطلب ہے "مکئی کا درخت"۔ اپنے بہت سے پڑوسیوں کے برعکس، گوئٹے مالا کی مقامی ورثہ زندہ دل طور پر زندہ ہے — 40% سے زیادہ آبادی مقامی مایا کے طور پر شناخت کرتی ہے، جو ہسپانوی کے ساتھ 22 سرکاری طور پر تسلیم شدہ مایا زبانوں میں سے ایک بولتی ہے۔ آتش فشاں کے پہاڑی علاقوں سے لے کر بھاپ والے پیٹین جنگل تک، گوئٹے مالا زمین پر کسی اور جگہ کے برعکس وقت، ثقافت، اور منظر نامے کے ذریعے ایک سفر پیش کرتا ہے۔
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            ग्वाटेमाला, आधिकारिक तौर पर रिपब्लिक ऑफ ग्वाटेमाला, एक मनमोहक मध्य अमेरिकी राष्ट्र है जो प्राचीन माया सभ्यता का जीवित हृदयस्थल है। उत्तर और पश्चिम में मेक्सिको, उत्तर-पूर्व में बेलीज़ और कैरेबियन सागर, दक्षिण-पूर्व में होंडुरास और एल साल्वाडोर, और दक्षिण में प्रशांत महासागर से घिरा, 108,889 वर्ग किलोमीटर का यह देश हर कोने में असाधारण विविधता समेटे हुए है। लगभग 18 मिलियन की आबादी के साथ, ग्वाटेमाला मध्य अमेरिका का सबसे अधिक आबादी वाला देश है। "ग्वाटेमाला" नाम नाहुआतल शब्द <em>Cuathemallan</em> से व्युत्पन्न है, जिसका अर्थ है "कई पेड़ों का स्थान," हालाँकि कुछ माया विद्वान इसे <em>Iximche</em> से जोड़ते हैं, जिसका अर्थ है "मक्का का पेड़"। अपने कई पड़ोसियों के विपरीत, ग्वाटेमाला की स्वदेशी विरासत जीवंत रूप से जीवित है — 40% से अधिक आबादी स्वयं को स्वदेशी माया के रूप में पहचानती है, जो स्पेनिश के साथ 22 आधिकारिक रूप से मान्यता प्राप्त माया भाषाओं में से एक बोलती है। ज्वालामुखीय पठार से लेकर भाप वाले पेटेन जंगल तक, ग्वाटेमाला पृथ्वी पर कहीं और के विपरीत समय, संस्कृति, और परिदृश्य के माध्यम से एक यात्रा प्रदान करता है।
+        </p>
+        <p class="es" style="display:none;">
+            Guatemala, oficialmente la República de Guatemala, es una deslumbrante nación centroamericana que sirve como el corazón viviente de la antigua civilización maya. Limitada con México al norte y oeste, Belice y el Mar Caribe al noreste, Honduras y El Salvador al sureste, y el Océano Pacífico al sur, este país de 108,889 kilómetros cuadrados concentra una extraordinaria diversidad en cada rincón. Con una población de aproximadamente 18 millones, Guatemala es el país más poblado de Centroamérica. El nombre "Guatemala" deriva de la palabra náhuatl <em>Cuathemallan</em>, que significa "lugar de muchos árboles," aunque algunos estudiosos mayas lo conectan con <em>Iximche</em>, que significa "árbol de maíz." A diferencia de muchos de sus vecinos, el patrimonio indígena de Guatemala sigue vibrante — más del 40% de la población se identifica como maya indígena, hablando una de las 22 lenguas mayas oficialmente reconocidas junto al español. Desde las tierras altas volcánicas hasta la húmeda jungla del Petén, Guatemala ofrece un viaje a través del tiempo, la cultura y el paisaje como ningún otro lugar en la Tierra.
+        </p>
+
+        <!-- Flag Section -->
+        <h2>
+            <span class="en">🏳️ National Flag</span>
+            <span class="ur urdu-text" style="display:none;">🏳️ قومی پرچم</span>
+            <span class="hi hindi-text" style="display:none;">🏳️ राष्ट्रीय ध्वज</span>
+            <span class="es" style="display:none;">🏳️ Bandera Nacional</span>
+        </h2>
+        
+        <div class="flag-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/1200px-Flag_of_Guatemala.svg.png" alt="Guatemala Flag" class="flag-img">
+        </div>
+        
+        <p class="en">
+            The flag of Guatemala features two sky-blue vertical stripes on either side of a central white stripe, with the national coat of arms at the center. The blue represents the two oceans that border the country — the Pacific and the Atlantic (Caribbean) — while the white symbolizes peace and purity. The coat of arms displays a resplendent quetzal, the national bird whose iridescent green tail feathers were once more valuable than gold to the Maya. The bird perches on a scroll bearing the date of Central American independence (September 15, 1821), while crossed rifles and swords represent the nation's willingness to defend itself, and a laurel wreath symbolizes victory. Adopted in 1871, this flag embodies Guatemala's pride in its natural beauty, its history of independence, and its enduring hope for peace.
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            گوئٹے مالا کا پرچم مرکزی سفید دھاری کے دونوں اطراف دو آسمان نیلے عمودی دھاریاں پیش کرتا ہے، جس کے مرکز میں قومی کوٹ آف آرمس ہے۔ نیلا رنگ ان دو سمندروں کی نمائندگی کرتا ہے جو ملک کو گھیرتے ہیں — بحر الکاہل اور بحر اوقیانوس (کیریبین) — جبکہ سفید امن اور پاکیزگی کی علامت ہے۔ کوٹ آف آرمز ایک شاندار کیٹزل کو دکھاتا ہے، قومی پرندہ جس کے چمکدار سبز دم کے پر مایا کے لیے ایک وقت میں سونے سے بھی زیادہ قیمتی تھے۔ پرندہ ایک اسکرول پر بیٹھا ہے جس پر وسطی امریکی آزادی کی تاریخ (15 ستمبر 1821) درج ہے، جبکہ متقاطع رائفلز اور تلواریں قوم کی خود دفاع کی خواہش کی نمائندگی کرتی ہیں، اور لوریل ہار فتح کی علامت ہے۔ 1871 میں اپنایا گیا، یہ پرچم گوئٹے مالا کو اپنی قدرتی خوبصورتی، آزادی کی تاریخ، اور امن کی پائیدار امید پر فخر کو ظاہر کرتا ہے۔
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            ग्वाटेमाला का ध्वज केंद्रीय सफेद धारी के दोनों ओर दो आसमानी नीली ऊर्ध्वाधर धारियों को दर्शाता है, जिसके केंद्र में राष्ट्रीय coat of arms है। नीला रंग उन दो महासागरों का प्रतिनिधित्व करता है जो देश को घेरते हैं — प्रशांत और अटलांटिक (कैरेबियन) — जबकि सफेद शांति और पवित्रता का प्रतीक है। coat of arms एक शानदार क्वेट्ज़ल को दर्शाता है, राष्ट्रीय पक्षी जिसके चमकीले हरे पूंछ के पंख माया के लिए एक समय में सोने से भी अधिक मूल्यवान थे। पक्षी एक स्क्रॉल पर बैठा है जिस पर मध्य अमेरिकी स्वतंत्रता की तारीख (15 सितंबर 1821) अंकित है, जबकि क्रॉस राइफल्स और तलवारें राष्ट्र की स्वयं की रक्षा की इच्छा का प्रतिनिधित्व करती हैं, और लॉरेल माला विजय का प्रतीक है। 1871 में अपनाया गया, यह ध्वज ग्वाटेमाला की प्राकृतिक सुंदरता, स्वतंत्रता के इतिहास, और शांति की दृढ़ आशा पर गर्व को दर्शाता है।
+        </p>
+        <p class="es" style="display:none;">
+            La bandera de Guatemala presenta dos franjas verticales azul cielo a cada lado de una franja central blanca, con el escudo nacional en el centro. El azul representa los dos océanos que bordean el país — el Pacífico y el Atlántico (Caribe) — mientras que el blanco simboliza la paz y la pureza. El escudo de armas muestra un quetzal resplandeciente, el ave nacional cuyas plumas de cola verdes iridiscentes fueron una vez más valiosas que el oro para los mayas. El ave se posa sobre un pergamino que lleva la fecha de la independencia centroamericana (15 de septiembre de 1821), mientras que rifles y espadas cruzados representan la disposición de la nación para defenderse, y una guirnalda de laurel simboliza la victoria. Adoptada en 1871, esta bandera encarna el orgullo de Guatemala por su belleza natural, su historia de independencia y su perdurable esperanza de paz.
+        </p>
+
+        <!-- Quick Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <strong class="en">108,889 km²</strong>
+                <strong class="ur urdu-text" style="display:none;">108,889 مربع کلومیٹر</strong>
+                <strong class="hi hindi-text" style="display:none;">108,889 वर्ग किमी</strong>
+                <strong class="es" style="display:none;">108,889 km²</strong>
+                <span class="en">Area</span>
+                <span class="ur urdu-text" style="display:none;">رقبہ</span>
+                <span class="hi hindi-text" style="display:none;">क्षेत्रफल</span>
+                <span class="es" style="display:none;">Área</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">18 Million</strong>
+                <strong class="ur urdu-text" style="display:none;">18 ملین</strong>
+                <strong class="hi hindi-text" style="display:none;">18 मिलियन</strong>
+                <strong class="es" style="display:none;">18 Millones</strong>
+                <span class="en">Population</span>
+                <span class="ur urdu-text" style="display:none;">آبادی</span>
+                <span class="hi hindi-text" style="display:none;">जनसंख्या</span>
+                <span class="es" style="display:none;">Población</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">Guatemala City</strong>
+                <strong class="ur urdu-text" style="display:none;">گوئٹے مالا سٹی</strong>
+                <strong class="hi hindi-text" style="display:none;">ग्वाटेमाला सिटी</strong>
+                <strong class="es" style="display:none;">Ciudad de Guatemala</strong>
+                <span class="en">Capital</span>
+                <span class="ur urdu-text" style="display:none;">دارالحکومت</span>
+                <span class="hi hindi-text" style="display:none;">राजधानी</span>
+                <span class="es" style="display:none;">Capital</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">Spanish + 22 Maya</strong>
+                <strong class="ur urdu-text" style="display:none;">ہسپانوی + 22 مایا</strong>
+                <strong class="hi hindi-text" style="display:none;">स्पेनिश + 22 माया</strong>
+                <strong class="es" style="display:none;">Español + 22 Mayas</strong>
+                <span class="en">Languages</span>
+                <span class="ur urdu-text" style="display:none;">زبانیں</span>
+                <span class="hi hindi-text" style="display:none;">भाषाएँ</span>
+                <span class="es" style="display:none;">Idiomas</span>
+            </div>
+        </div>
+
+        <!-- Famous Cities -->
+        <h2>
+            <span class="en">🏙️ Famous Cities & Destinations</span>
+            <span class="ur urdu-text" style="display:none;">🏙️ مشہور شہروں اور مقامات</span>
+            <span class="hi hindi-text" style="display:none;">🏙️ प्रसिद्ध शहर और गंतव्य</span>
+            <span class="es" style="display:none;">🏙️ Ciudades y Destinos Famosos</span>
+        </h2>
+
+        <!-- Guatemala City -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/a3dd493e0413d8b0fef1a3f0ebecb08450a33710.jpg" alt="Guatemala City aerial view" class="city-img">
+            <h3>
+                <span class="en">📍 Guatemala City — The Vibrant Capital</span>
+                <span class="ur urdu-text" style="display:none;">📍 گوئٹے مالا سٹی — زندہ دل دارالحکومت</span>
+                <span class="hi hindi-text" style="display:none;">📍 ग्वाटेमाला सिटी — जीवंत राजधानी</span>
+                <span class="es" style="display:none;">📍 Ciudad de Guatemala — La Capital Vibrante</span>
+            </h3>
+            <p class="en">
+                Guatemala City is the largest city in Central America, home to nearly 3 million people in the metro area. Perched in a mountain valley known as the Valle de la Ermita at 1,500 meters above sea level, it's surrounded by volcanoes — Agua, Fuego, and Pacaya — that create a dramatic backdrop. The city's Zona 1 historic center features the grand National Palace of Culture, the Metropolitan Cathedral, and the bustling Sixth Avenue pedestrian street. For a taste of local life, visit the Mercado Central where vendors sell traditional textiles, fresh produce, and handmade crafts. The city is also a gateway to the stunning Pacaya Volcano hikes, where you can roast marshmallows over active lava flows. While often overlooked by tourists rushing to Antigua, Guatemala City offers an authentic urban experience filled with museums, art galleries, and some of the best street food in the region.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                گوئٹے مالا سٹی وسطی امریکا کا سب سے بڑا شہر ہے، میٹرو علاقے میں تقریباً 3 ملین افراد کا گھر۔ سطح سمندر سے 1,500 میٹر کی بلندی پر ویلے ڈی لا ارمیٹا نامی پہاڑی وادی میں واقع، یہ آتش فشاںوں — اگوا، فوئگو، اور پکایا — سے گھرا ہوا ہے جو ایک ڈرامائی پس منظر پیدا کرتے ہیں۔ شہر کا زونا 1 تاریخی مرکز ثقافت کے شاندار نیشنل پیلس، میٹروپولیٹن کیتھیڈرل، اور ہجوم خیز چھٹی ایونیو پیدل چلنے والی سڑک کو پیش کرتا ہے۔ مقامی زندگی کا ذائقہ چکھنے کے لیے مرکزی بازار (مرکاڈو سنٹرل) کا دورہ کریں جہاں بیچنے والے روایتی ٹیکسٹائل، تازہ پیداوار، اور ہاتھ سے بنے دستکاری فروخت کرتے ہیں۔ شہر شاندار پکایا آتش فشاں ٹریکس کا بھی دروازہ ہے، جہاں آپ فعال لاوا بہاؤ پر مارشمیلو بھون سکتے ہیں۔ اگرچہ سیاح جو انتigua کی طرف دوڑتے ہیں اکثر اسے نظرانداز کرتے ہیں، گوئٹے مالا سٹی علاقے کے بہترین سٹریٹ فوڈ سے بھرپور ایک مستند شہری تجربہ پیش کرتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                ग्वाटेमाला सिटी मध्य अमेरिका का सबसे बड़ा शहर है, जो मेट्रो क्षेत्र में लगभग 3 मिलियन लोगों का घर है। समुद्र तल से 1,500 मीटर की ऊंचाई पर वैले डी ला एर्मिटा नामक पहाड़ी घाटी में स्थित, यह ज्वालामुखियों — अगुआ, फुएगो, और पकाया — से घिरा हुआ है जो एक नाटकीय पृष्ठभूमि बनाते हैं। शहर का ज़ोना 1 ऐतिहासिक केंद्र संस्कृति के भव्य राष्ट्रीय महल, महानगर कैथेड्रल, और हलचल भरी छठी एवेन्यू पैदल सड़क को दर्शाता है। स्थानीय जीवन का स्वाद लेने के लिए मर्काडो सेंट्रल का दौरा करें जहाँ विक्रेता पारंपरिक वस्त्र, ताज़ी उपज, और हाथ से बनी शिल्प बेचते हैं। शहर शानदार पकाया ज्वालामुखी ट्रेक का भी प्रवेश द्वार है, जहाँ आप सक्रिय लावा प्रवाह पर मार्शमैलो भून सकते हैं। हालाँकि अक्सर अंतिगुआ की ओर दौड़ने वाले पर्यटकों द्वारा नज़रअंदाज़ किया जाता है, ग्वाटेमाला सिटी संग्रहालयों, कला गैलरियों, और क्षेत्र के कुछ सर्वश्रेष्ठ स्ट्रीट फूड से भरा एक प्रामाणिक शहरी अनुभव प्रदान करता है।
+            </p>
+            <p class="es" style="display:none;">
+                La Ciudad de Guatemala es la ciudad más grande de Centroamérica, hogar de casi 3 millones de personas en el área metropolitana. Ubicada en un valle montañoso conocido como el Valle de la Ermita a 1,500 metros sobre el nivel del mar, está rodeada de volcanes — Agua, Fuego y Pacaya — que crean un telón de fondo dramático. El centro histórico de Zona 1 de la ciudad alberga el gran Palacio Nacional de la Cultura, la Catedral Metropolitana y la bulliciosa calle peatonal Sexta Avenida. Para probar la vida local, visita el Mercado Central donde los vendedores ofrecen textiles tradicionales, productos frescos y artesanías hechas a mano. La ciudad también es la puerta de entrada a las impresionantes caminatas al Volcán Pacaya, donde puedes asar bombones sobre flujos de lava activos. Aunque a menudo es pasada por alto por turistas que se apresuran hacia Antigua, la Ciudad de Guatemala ofrece una experiencia urbana auténtica llena de museos, galerías de arte y algunas de las mejores comidas callejeras de la región.
+            </p>
+        </div>
+
+        <!-- Antigua Guatemala -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/static01.nyt.com/862a44faec627dfd623e41acfd6ae78127342909.jpg" alt="Antigua Guatemala colonial city" class="city-img">
+            <h3>
+                <span class="en">📍 Antigua Guatemala — The Colonial Jewel</span>
+                <span class="ur urdu-text" style="display:none;">📍 انتigua گوئٹے مالا — نوآبادیاتی ہیرا</span>
+                <span class="hi hindi-text" style="display:none;">📍 अंतिगुआ ग्वाटेमाला — औपनिवेशिक रत्न</span>
+                <span class="es" style="display:none;">📍 Antigua Guatemala — La Joya Colonial</span>
+            </h3>
+            <p class="en">
+                Antigua Guatemala is quite simply one of the most beautiful colonial cities in the Americas. A UNESCO World Heritage Site, this former capital was founded in 1543 and largely destroyed by earthquakes in 1773, leaving behind a haunting landscape of ruined cathedrals and cobblestone streets framed by three towering volcanoes. Today, Antigua is a living museum of Spanish Baroque architecture — pastel-colored facades, ornate churches, and grand plazas that seem frozen in time. The iconic Santa Catalina Arch, with Volcán de Agua rising behind it, is one of the most photographed spots in Central America. Beyond its beauty, Antigua is Guatemala's cultural heartbeat: language schools draw students from around the world, Semana Santa (Holy Week) celebrations feature elaborate alfombras (carpets) of colored sawdust, and the surrounding coffee fincas produce some of the finest beans on Earth. Whether you're sipping single-origin coffee in a rooftop café or hiking up Pacaya to watch the sunset paint the volcanoes gold, Antigua will steal your heart.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                انتigua گوئٹے مالا بس امریکہ کے سب سے خوبصورت نوآبادیاتی شہروں میں سے ایک ہے۔ ایک UNESCO عالمی ورثہ مقام، یہ سابقہ دارالحکومت 1543 میں قائم ہوا اور 1773 میں زلزلوں سے بڑی حد تک تباہ ہو گیا، جس کے پیچھے تین اونچے آتش فشاںوں سے گھری ہوئی کھنڈرات کیتھیڈرلز اور پتھر کی سڑکوں کا ایک haunted منظر نامہ چھوڑ گیا۔ آج، انتigua ہسپانوی باروک معماری کا ایک زندہ میوزیم ہے — پیلے رنگ کے چہرے، آراستہ چرچ، اور بڑے چوک جو وقت میں جمے ہوئے لگتے ہیں۔ شاندار سینٹا کیٹلینا آرچ، جس کے پیچھے وولکان ڈی اگوا اٹھتا ہے، وسطی امریکا میں سب سے زیادہ فوٹو گراف کیے جانے والے مقامات میں سے ایک ہے۔ اپنی خوبصورتی سے بالاتر، انتigua گوئٹے مالا کا ثقافتی دل دھڑکتا ہے: زبان کے اسکول دنیا بھر کے طلباء کو کھینچتے ہیں، سیمانا سینٹا (مقدس ہفتہ) تقریبات رنگین ساڈسٹ کے elaborate الفومبراس (قالین) پیش کرتی ہیں، اور گرد و نواح کے کافی فینکاس زمین پر کچھ بہترین بین پیدا کرتے ہیں۔ چاہے آپ چھت کے کافی ہاؤس میں سنگل اوریجن کافی پی رہے ہوں یا پکایا پر چڑھ کر غروب آفتاب کو آتش فشاںوں کو سونے میں رنگتے دیکھ رہے ہوں، انتigua آپ کا دل چورا لے گا۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                अंतिगुआ ग्वाटेमाला सच में अमेरिका के सबसे खूबसूरत औपनिवेशिक शहरों में से एक है। एक UNESCO विश्व धरोहर स्थल, यह पूर्व राजधानी 1543 में स्थापित हुई और 1773 में भूकंपों से बड़े पैमाने पर नष्ट हो गई, जिसके पीछे तीन विशाल ज्वालामुखियों से घिरी खंडहर कैथेड्रल और पत्थर की सड़कों का एक मनमोहक परिदृश्य छोड़ गई। आज, अंतिगुआ स्पेनिश बारोक वास्तुकला का एक जीवित संग्रहालय है — पेस्टल रंग के फ़ासाड, भव्य चर्च, और विशाल चौक जो समय में जमे हुए लगते हैं। प्रतिष्ठित सांता कैटालिना आर्क, जिसके पीछे वोल्कान डी अगुआ उठता है, मध्य अमेरिका में सबसे अधिक फोटोग्राफ किए जाने वाले स्थलों में से एक है। अपनी सुंदरता से परे, अंतिगुआ ग्वाटेमाला का सांस्कृतिक हृदय है: भाषा स्कूल दुनिया भर के छात्रों को आकर्षित करते हैं, सेमाना सांता (पवित्र सप्ताह) समारोह रंगीन सॉडस्ट के विस्तृत अल्फोम्ब्रास (कालीन) प्रदर्शित करते हैं, और आसपास के कॉफी फिंकास पृथ्वी पर कुछ बेहतरीन बीन्स उत्पादित करते हैं। चाहे आप छत के कैफे में सिंगल-ऑरिजिन कॉफी पी रहे हों या पकाया पर चढ़कर सूर्यास्त को ज्वालामुखियों को सोने में रंगते देख रहे हों, अंतिगुआ आपका दिल चुरा लेगा।
+            </p>
+            <p class="es" style="display:none;">
+                Antigua Guatemala es simplemente una de las ciudades coloniales más bellas de las Américas. Patrimonio de la Humanidad de la UNESCO, esta antigua capital fue fundada en 1543 y en gran parte destruida por terremotos en 1773, dejando tras de sí un paisaje evocador de catedrales en ruinas y calles empedradas enmarcadas por tres imponentes volcanes. Hoy, Antigua es un museo viviente de arquitectura barroca española — fachadas de colores pastel, iglesias ornamentadas y grandes plazas que parecen congeladas en el tiempo. El icónico Arco de Santa Catalina, con el Volcán de Agua elevándose detrás, es uno de los lugares más fotografiados de Centroamérica. Más allá de su belleza, Antigua es el corazón cultural de Guatemala: las escuelas de idiomas atraen estudiantes de todo el mundo, las celebraciones de Semana Santa presentan elaboradas alfombras de aserrín coloreado, y las fincas cafetaleras circundantes producen algunos de los mejores granos de la Tierra. Ya sea que estés tomando café de origen único en una cafetería en la azotea o subiendo al Pacaya para ver la puesta de sol pintar los volcanes de dorado, Antigua te robará el corazón.
+            </p>
+        </div>
+
+        <!-- Tikal -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.cahalpech.com/0809b15e35c86289df76d132c96f1fdcea69932a.jpg" alt="Tikal Maya ruins Guatemala" class="city-img">
+            <h3>
+                <span class="en">📍 Tikal — The Ancient Maya Metropolis</span>
+                <span class="ur urdu-text" style="display:none;">📍 ٹیکال — قدیم مایا میٹروپولس</span>
+                <span class="hi hindi-text" style="display:none;">📍 टिकाल — प्राचीन माया महानगर</span>
+                <span class="es" style="display:none;">📍 Tikal — La Antigua Metrópoli Maya</span>
+            </h3>
+            <p class="en">
+                Deep in the steamy jungles of northern Guatemala's Petén region lies Tikal, one of the greatest archaeological sites of the ancient Maya world. This vast city flourished from 200 to 900 AD and once housed over 100,000 people across 16 square kilometers. The towering Temple I (Temple of the Great Jaguar) rises 47 meters above the jungle floor, offering panoramic views that stretch across an ocean of green canopy. Tikal was a powerhouse of Maya civilization — a center of astronomy, mathematics, and architecture that rivaled anything in the Old World. The site is also a wildlife paradise: howler monkeys announce dawn with their thunderous calls, toucans flash through the trees, and jaguars still patrol the forest paths. Arriving at sunrise to watch mist rise between the temples while the jungle awakens is an experience that transcends tourism and touches something primal within the human spirit.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                شمالی گوئٹے مالا کے پیٹین علاقے کے بھاپ والے جنگلوں میں گہرائی میں ٹیکال واقع ہے، جو قدیم مایا دنیا کے عظیم ترین آثار قدیمہ مقامات میں سے ایک ہے۔ یہ وسیع شہر 200 سے 900 عیسوی تک شکوفا ہوا اور ایک وقت میں 16 مربع کلومیٹر میں 100,000 سے زیادہ افراد کا گھر تھا۔ اونچا ٹیمپل I (عظیم جگوار کا مندر) جنگل کے فرش سے 47 میٹر بلند ہوتا ہے، جو پینورامک مناظر پیش کرتا ہے جو ہری چھتری کے سمندر تک پھیلتے ہیں۔ ٹیکال مایا تہذیب کا ایک طاقت ور مرکز تھا — فلکیات، ریاضی، اور معماری کا ایک مرکز جو پرانی دنیا کی کسی بھی چیز سے مقابلہ کرتا تھا۔ یہ مقام ایک جنگلی حیات کا جنت بھی ہے: ہاؤلر بندر اپنے گرجدار آوازوں کے ساتھ فجر کا اعلان کرتے ہیں، ٹوکان درختوں کے ذریعے چمکتے ہیں، اور جگوار اب بھی جنگلی پگڈنڈیوں پر گشت کرتے ہیں۔ مندروں کے درمیان دھند اٹھتے ہوئے اور جنگل کے جاگتے ہوئے سورج طلوع کا مشاہدہ کرنے کے لیے پہنچنا ایک ایسا تجربہ ہے جو سیاحت سے بالاتر ہے اور انسانی روح کے اندر کچھ ابتدائی کو چھوتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                उत्तरी ग्वाटेमाला के पेटेन क्षेत्र के भाप वाले जंगलों की गहराई में टिकाल स्थित है, जो प्राचीन माया दुनिया के सबसे महान पुरातात्विक स्थलों में से एक है। यह विशाल शहर 200 से 900 ईस्वी तक फला-फूला और एक समय में 16 वर्ग किलोमीटर में 100,000 से अधिक लोगों का घर था। ऊँचा टेम्पल I (द ग्रेट जगुआर का टेम्पल) जंगल के फर्श से 47 मीटर ऊपर उठता है, जो पैनोरामिक दृश्य प्रदान करता है जो हरे छतर के महासागर तक फैलते हैं। टिकाल माया सभ्यता का एक शक्तिशाली केंद्र था — खगोल विज्ञान, गणित, और वास्तुकला का एक केंद्र जो पुरानी दुनिया की किसी भी चीज़ से बराबरी करता था। यह स्थल एक वन्यजीवन का स्वर्ग भी है: हाउलर बंदर अपनी गरजदार आवाज़ों के साथ भोर का ऐलान करते हैं, टूकन पेड़ों के माध्यम से चमकते हैं, और जगुआर अब भी जंगली पगडंडियों पर गश्त लगाते हैं। मंदिरों के बीच धुंध उठते हुए और जंगल के जागते हुए सूर्योदय देखने के लिए पहुँचना एक ऐसा अनुभव है जो पर्यटन से परे है और मानव आत्मा के भीतर कुछ आदिम को छूता है।
+            </p>
+            <p class="es" style="display:none;">
+                En lo profundo de las húmedas selvas del norte de Guatemala, en la región del Petén, se encuentra Tikal, uno de los mayores sitios arqueológicos del antiguo mundo maya. Esta vasta ciudad floreció del 200 al 900 d.C. y alguna vez albergó a más de 100,000 personas en 16 kilómetros cuadrados. El imponente Templo I (Templo del Gran Jaguar) se eleva 47 metros sobre el suelo de la selva, ofreciendo vistas panorámicas que se extienden sobre un océano de dosel verde. Tikal fue una potencia de la civilización maya — un centro de astronomía, matemáticas y arquitectura que rivalizaba con cualquier cosa del Viejo Mundo. El sitio también es un paraíso de vida silvestre: los monos aulladores anuncian el amanecer con sus estruendosos llamados, los tucanes destellan entre los árboles, y los jaguares aún patrullan los senderos del bosque. Llegar al amanecer para ver la niebla elevarse entre los templos mientras la selva despierta es una experiencia que trasciende el turismo y toca algo primordial dentro del espíritu humano.
+            </p>
+        </div>
+
+        <!-- Lake Atitlán -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.passportandpixels.com/3c6b7feba9921a2274a9e5f964a5c145b7ff00c7.jpg" alt="Lake Atitlan Guatemala scenic" class="city-img">
+            <h3>
+                <span class="en">📍 Lake Atitlán — The Volcanic Mirror</span>
+                <span class="ur urdu-text" style="display:none;">📍 جھیل اٹیٹلان — آتش فشاں کا آئینہ</span>
+                <span class="hi hindi-text" style="display:none;">📍 झील एटिटलान — ज्वालामुखीय दर्पण</span>
+                <span class="es" style="display:none;">📍 Lago Atitlán — El Espejo Volcánico</span>
+            </h3>
+            <p class="en">
+                Aldous Huxley famously called Lake Atitlán "the most beautiful lake in the world," and it's not hard to see why. This volcanic caldera lake, formed 84,000 years ago by a massive eruption, sits at 1,562 meters above sea level and is surrounded by three majestic volcanoes — San Pedro, Tolimán, and Atitlán. The lake's waters shift from deep sapphire to emerald green depending on the light, creating a kaleidoscope of color that changes by the hour. Around the shoreline, twelve Maya villages each maintain their own traditional dress, language, and customs. Panajachel is the main tourist hub with its lively markets and waterfront restaurants, while villages like San Marcos La Laguna draw yoga enthusiasts and spiritual seekers. Take a lancha (boat) across the lake at sunrise when the water is glass-smooth and the volcanoes reflect perfectly — it's a moment of pure magic that will stay with you forever.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                ایلڈوس ہکسلے نے مشہور طور پر جھیل اٹیٹلان کو "دنیا کی سب سے خوبصورت جھیل" کہا، اور یہ دیکھنا مشکل نہیں کہ کیوں۔ یہ آتش فشاں کالڈیرا جھیل، جو 84,000 سال پہلے ایک بڑے پھٹنے سے بنی، سطح سمندر سے 1,562 میٹر کی بلندی پر بیٹھی ہے اور تین شاندار آتش فشاںوں — سان پیڈرو، ٹولیمان، اور اٹیٹلان — سے گھری ہوئی ہے۔ جھیل کے پانی روشنی کے مطابق گہرے نیلے سے زمرد سبز تک بدلتے ہیں، جو رنگوں کا ایک کلیڈوسکوپ پیدا کرتے ہیں جو گھنٹے بہ گھنٹے بدلتا ہے۔ ساحل کی دوری پر، بارہ مایا گاؤں ہر ایک اپنی روایتی لباس، زبان، اور رسوم برقرار رکھتے ہیں۔ پاناجاچیل اہم سیاحتی مرکز ہے جس میں اس کی زندہ دل منڈیاں اور واٹر فرنٹ ریستوراں ہیں، جبکہ سان مارکوس لا لگونا جیسے گاؤں یوگا کے شوقینوں اور روحانی تلاش کرنے والوں کو کھینچتے ہیں۔ سورج طلوع پر جھیل کے پار ایک لانچا (کشتی) لیں جب پانی شیشے کی طرح ہموار ہے اور آتش فشاں بہترین طور پر عکاس ہوتے ہیں — یہ خالص جادو کا ایک لمحہ ہے جو ہمیشہ کے لیے آپ کے ساتھ رہے گا۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                एल्डस हक्सली ने प्रसिद्ध रूप से झील एटिटलान को "दुनिया की सबसे खूबसूरत झील" कहा, और यह देखना मुश्किल नहीं है कि क्यों। यह ज्वालामुखीय कैल्डेरा झील, जो 84,000 साल पहले एक विशाल विस्फोट से बनी, समुद्र तल से 1,562 मीटर की ऊंचाई पर स्थित है और तीन भव्य ज्वालामुखियों — सैन पेड्रो, टोलीमान, और एटिटलान — से घिरी हुई है। झील के पानी रोशनी के अनुसार गहरे नीले से पन्ना हरे तक बदलते हैं, जो रंगों का एक कaleidoscope बनाते हैं जो घंटे दर घंटे बदलता है। किनारे के आसपास, बारह माया गाँव अपनी-अपनी पारंपरिक पोशाक, भाषा, और रीति-रिवाज बनाए रखते हैं। पानाजाचेल मुख्य पर्यटन केंद्र है जिसमें इसकी जीवंत बाज़ार और वॉटरफ्रंट रेस्तरां हैं, जबकि सैन मार्कोस ला लगुना जैसे गाँव योग के शौकीनों और आध्यात्मिक खोजकर्ताओं को आकर्षित करते हैं। सूर्योदय पर झील के पार एक लान्चा (नाव) लें जब पानी कांच की तरह चिकना है और ज्वालामुखी पूरी तरह से परावर्तित होते हैं — यह शुद्ध जादू का एक क्षण है जो हमेशा के लिए आपके साथ रहेगा।
+            </p>
+            <p class="es" style="display:none;">
+                Aldous Huxley llamó famosamente al Lago Atitlán "el lago más hermoso del mundo," y no es difícil ver por qué. Este lago de caldera volcánica, formado hace 84,000 años por una erupción masiva, se encuentra a 1,562 metros sobre el nivel del mar y está rodeado por tres majestuosos volcanes — San Pedro, Tolimán y Atitlán. Las aguas del lago cambian de zafiro profundo a verde esmeralda dependiendo de la luz, creando un caleidoscopio de color que cambia cada hora. Alrededor de la orilla, doce pueblos mayas mantienen cada uno su propio vestido tradicional, idioma y costumbres. Panajachel es el principal centro turístico con sus animados mercados y restaurantes frente al lago, mientras que pueblos como San Marcos La Laguna atraen a entusiastas del yoga y buscadores espirituales. Toma una lancha (bote) a través del lago al amanecer cuando el agua es lisa como el vidrio y los volcanes se reflejan perfectamente — es un momento de pura magia que permanecerá contigo para siempre.
+            </p>
+        </div>
+
+        <!-- Travel Tips -->
+        <div class="highlight-box">
+            <h3>
+                <span class="en">💡 Essential Travel Tips</span>
+                <span class="ur urdu-text" style="display:none;">💡 ضروری سفر کی نکات</span>
+                <span class="hi hindi-text" style="display:none;">💡 आवश्यक यात्रा सुझाव</span>
+                <span class="es" style="display:none;">💡 Consejos Esenciales de Viaje</span>
+            </h3>
+            <p class="en">
+                • <strong>Best Time to Visit:</strong> November to April (dry season) offers clear skies for volcano views; May-October brings lush greenery but afternoon rains.<br>
+                • <strong>Currency:</strong> Guatemalan Quetzal (GTQ), named after the resplendent quetzal bird. US dollars accepted in tourist areas.<br>
+                • <strong>Language:</strong> Spanish is official; 22 Maya languages are also spoken. Learning basic Spanish greatly enhances your experience.<br>
+                • <strong>Must-Try Food:</strong> Pepian (a rich meat stew), Kak'ik (turkey soup), Tamales, and fresh corn tortillas.<br>
+                • <strong>Safety:</strong> Guatemala City requires caution in certain zones; Antigua, Lake Atitlán, and Tikal are generally very safe for tourists.<br>
+                • <strong>Transport:</strong> Chicken buses (colorful converted US school buses) are cheap and iconic; shuttle vans connect major tourist destinations.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                • <strong>دورہ کرنے کا بہترین وقت:</strong> نومبر سے اپریل (خشک موسم) میں آتش فشاں کے مناظر کے لیے صاف آسمان ملتا ہے؛ مئی-اکتوبر میں سرسبز سبزیاں لاتا ہے لیکن دوپہر کی بارشیں ہوتی ہیں۔<<br>
+                • <strong>کرنسی:</strong> گوئٹے مالا کیٹزل (GTQ)، جو شاندار کیٹزل پرندے کے نام پر ہے۔ سیاحتی علاقوں میں امریکی ڈالر قبول کیے جاتے ہیں۔<<br>
+                • <strong>زبان:</strong> ہسپانوی سرکاری ہے؛ 22 مایا زبانیں بھی بولی جاتی ہیں۔ بنیادی ہسپانوی سیکھنا آپ کے تجربے کو بہت بڑھا دے گا۔<<br>
+                • <strong>ضرور آزمائیں:</strong> پیپیان (ایک امیر گوشت کا اسٹیو)، کاک'ک (ترکی سوپ)، ٹامیلز، اور تازہ مکئی کی ٹورٹیلاز۔<<br>
+                • <strong>حفاظت:</strong> گوئٹے مالا سٹی میں کچھ زونز میں احتیاط کی ضرورت ہے؛ انتigua، جھیل اٹیٹلان، اور ٹیکال عام طور پر سیاحوں کے لیے بہت محفوظ ہیں۔<<br>
+                • <strong>نقل و حمل:</strong> چکن بسیں (رنگین تبدیل شدہ امریکی اسکول بسیں) سستی اور شاندار ہیں؛ شٹل وینز اہم سیاحتی مقامات کو جوڑتی ہیں۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                • <strong>घूमने का सबसे अच्छा समय:</strong> नवंबर से अप्रैल (शुष्क मौसम) में ज्वालामुखी के दृश्यों के लिए साफ आकाश मिलता है; मई-अक्टूबर में हरियाली लाता है लेकिन दोपहर की बारिश होती है।<<br>
+                • <strong>मुद्रा:</strong> ग्वाटेमाला क्वेट्ज़ल (GTQ), जो शानदार क्वेट्ज़ल पक्षी के नाम पर है। पर्यटन क्षेत्रों में अमेरिकी डॉलर स्वीकार किए जाते हैं।<<br>
+                • <strong>भाषा:</strong> स्पेनिश आधिकारिक है; 22 माया भाषाएँ भी बोली जाती हैं। बुनियादी स्पेनिश सीखना आपके अनुभव को बहुत बढ़ा देगा।<<br>
+                • <strong>जरूर आजमाएं:</strong> पेपियान (एक समृद्ध मांस स्टू), काक'िक (टर्की सूप), टामालेस, और ताज़ी मकई की टॉर्टिलाज।<<br>
+                • <strong>सुरक्षा:</strong> ग्वाटेमाला सिटी में कुछ ज़ोन में सावधानी की आवश्यकता है; अंतिगुआ, झील एटिटलान, और टिकाल आम तौर पर पर्यटकों के लिए बहुत सुरक्षित हैं।<<br>
+                • <strong>परिवहन:</strong> चिकन बसें (रंगीन परिवर्तित अमेरिकी स्कूल बसें) सस्ती और प्रतिष्ठित हैं; शटल वैन प्रमुख पर्यटन स्थलों को जोड़ती हैं।
+            </p>
+            <p class="es" style="display:none;">
+                • <strong>Mejor Época para Visitar:</strong> De noviembre a abril (temporada seca) ofrece cielos despejados para vistas de volcanes; mayo-octubre trae vegetación exuberante pero lluvias de tarde.<br>
+                • <strong>Moneda:</strong> Quetzal guatemalteco (GTQ), nombrado en honor al quetzal resplandeciente. Dólares estadounidenses aceptados en áreas turísticas.<br>
+                • <strong>Idioma:</strong> El español es oficial; también se hablan 22 lenguas mayas. Aprender español básico mejora enormemente tu experiencia.<br>
+                • <strong>Debes Probar:</strong> Pepián (un rico guiso de carne), Kak'ik (sopa de pavo), Tamales, y tortillas frescas de maíz.<br>
+                • <strong>Seguridad:</strong> La Ciudad de Guatemala requiere precaución en ciertas zonas; Antigua, el Lago Atitlán y Tikal son generalmente muy seguros para turistas.<br>
+                • <strong>Transporte:</strong> Los "chicken buses" (coloridos autobuses escolares estadounidenses convertidos) son baratos e icónicos; las vans de traslado conectan los principales destinos turísticos.
+            </p>
+        </div>
+
+        <!-- Conclusion -->
+        <h2>
+            <span class="en">🌟 Final Thoughts</span>
+            <span class="ur urdu-text" style="display:none;">🌟 آخری خیالات</span>
+            <span class="hi hindi-text" style="display:none;">🌟 अंतिम विचार</span>
+            <span class="es" style="display:none;">🌟 Reflexiones Finales</span>
+        </h2>
+        
+        <p class="en">
+            Guatemala is not a country you simply visit — it's a country that transforms you. Standing atop a Maya temple at Tikal as the jungle chorus swells around you, watching indigenous women weave centuries-old patterns on backstrap looms, or sharing a meal of pepian with a local family — these moments connect you to something ancient and enduring. It's a land where the past isn't buried in museums but breathes in the markets, speaks in 23 languages, and rises majestically from volcanic shores. Guatemala asks something of its visitors: an openness to wonder, a respect for deep tradition, and a willingness to see beauty in resilience. Give it that, and Guatemala will give you memories that glow like quetzal feathers in the sun — iridescent, unforgettable, and utterly precious. <strong>Bienvenidos a Guatemala — the soul of the Maya world awaits.</strong>
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            گوئٹے مالا ایک ایسا ملک نہیں ہے جو آپ صرف دورہ کریں — یہ ایک ایسا ملک ہے جو آپ کو بدل دیتا ہے۔ ٹیکال پر ایک مایا مندر کی چوٹی پر کھڑے ہوئے جب جنگل کا گانا آپ کے ارد گرد بڑھتا ہے، مقامی خواتین کو صدیوں پرانی پیٹرن بیک اسٹراپ لومز پر بناتے ہوئے دیکھنا، یا ایک مقامی خاندان کے ساتھ پیپیان کا کھانا بانٹنا — یہ لمحات آپ کو کسی قدیم اور پائیدار چیز سے جوڑتے ہیں۔ یہ ایک ایسی سرزمین ہے جہاں ماضی میوزیموں میں دفن نہیں بلکہ منڈیوں میں سانس لیتا ہے، 23 زبانوں میں بولتا ہے، اور آتش فشاں کے ساحلوں سے شاندار طور پر اٹھتا ہے۔ گوئٹے مالا اپنے زائرین سے کچھ مانگتا ہے: حیرت کے لیے کھلا پن، گہری روایت کا احترام، اور لچک میں خوبصورتی دیکھنے کی خواہش۔ اسے یہ دیں، اور گوئٹے مالا آپ کو یادیں دے گا جو سورج میں کیٹزل کے پروں کی طرح چمکتی ہیں — چمکدار، ناقابل فراموش، اور بالکل قیمتی۔ <strong>گوئٹے مالا میں خوش آمدید — مایا دنیا کی روح منتظر ہے۔</strong>
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            ग्वाटेमाला एक ऐसा देश नहीं है जिसे आप बस घूम लें — यह एक ऐसा देश है जो आपको बदल देता है। टिकाल पर एक माया मंदिर की चोटी पर खड़े हुए जब जंगल का गाना आपके चारों ओर बढ़ता है, स्वदेशी महिलाओं को सदियों पुराने पैटर्न को बैकस्ट्रैप लूम पर बुनते हुए देखना, या एक स्थानीय परिवार के साथ पेपियान का भोजन साझा करना — ये क्षण आपको किसी प्राचीन और स्थायी चीज़ से जोड़ते हैं। यह एक ऐसी भूमि है जहाँ अतीत संग्रहालयों में दबा नहीं है बल्कि बाज़ारों में साँस लेता है, 23 भाषाओं में बोलता है, और ज्वालामुखीय तटों से भव्य रूप से उठता है। ग्वाटेमाला अपने आगंतुकों से कुछ माँगता है: आश्चर्य के लिए खुलापन, गहरी परंपरा का सम्मान, और लचीलापन में सुंदरता देखने की इच्छा। उसे यह दें, और ग्वाटेमाला आपको ऐसी यादें देगा जो सूरज में क्वेट्ज़ल के पंखों की तरह चमकती हैं — चमकीली, अविस्मरणीय, और बिल्कुल कीमती। <strong>Bienvenidos a Guatemala — माया दुनिया की आत्मा इंतज़ार कर रही है।</strong>
+        </p>
+        <p class="es" style="display:none;">
+            Guatemala no es un país que simplemente visitas — es un país que te transforma. Parado en la cima de un templo maya en Tikal mientras el coro de la selva crece a tu alrededor, ver a mujeres indígenas tejer patrones centenarios en telares de cintura, o compartir una comida de pepián con una familia local — estos momentos te conectan con algo antiguo y perdurable. Es una tierra donde el pasado no está enterrado en museos sino que respira en los mercados, habla en 23 idiomas, y se alza majestuosamente desde las costas volcánicas. Guatemala le pide algo a sus visitantes: una apertura a la maravilla, un respeto por la tradición profunda, y una disposición para ver belleza en la resiliencia. Dáselo, y Guatemala te dará recuerdos que brillan como plumas de quetzal al sol — iridiscentes, inolvidables y completamente preciosos. <strong>Bienvenidos a Guatemala — el alma del mundo maya te espera.</strong>
+        </p>
+    </div>
+
+    <div class="footer">
+        <p class="en">© 2026 Guatemala Travel Guide | Written with ❤️ for travelers worldwide</p>
+        <p class="ur urdu-text" style="display:none;">© 2026 گوئٹے مالا سفر گائیڈ | دنیا بھر کے مسافروں کے لیے ❤️ سے لکھا گیا</p>
+        <p class="hi hindi-text" style="display:none;">© 2026 ग्वाटेमाला यात्रा गाइड | दुनिया भर के यात्रियों के लिए ❤️ से लिखा गया</p>
+        <p class="es" style="display:none;">© 2026 Guía de Viaje de Guatemala | Escrito con ❤️ para viajeros de todo el mundo</p>
+    </div>
+</div The HTML code got cut off in my previous response. Let me complete it for you:
+
+---
+
+### **🇬🇹 Guatemala Travel Guide — HTML Blog Post (Complete)**
+
+Here is the **complete, corrected HTML** with the closing tags restored:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guatemala Travel Guide 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #5dade2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .lang-bar {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            z-index: 100;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .lang-bar h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .lang-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-en { background: #3498db; color: white; }
+        .btn-ur { background: #27ae60; color: white; }
+        .btn-hi { background: #e74c3c; color: white; }
+        .btn-es { background: #f39c12; color: white; }
+        .active { box-shadow: 0 0 0 3px rgba(0,0,0,0.2); transform: scale(1.05); }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .header-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            border-left: 5px solid #e74c3c;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+        .flag-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .flag-img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .city-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .city-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #5dade2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        .highlight-box h3 { color: white; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .stat-item {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-item strong {
+            display: block;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+        .urdu-text { direction: rtl; font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif; }
+        .hindi-text { font-family: 'Mangal', 'Kokila', sans-serif; }
+
+        @media (max-width: 600px) {
+            .blog-card { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .city-img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Language Selector -->
+    <div class="lang-bar">
+        <h3 id="lang-title">🌐 Choose Your Language / زبان منتخب کریں / भाषा चुनें / Elige tu idioma</h3>
+        <button class="lang-btn btn-en active" onclick="setLang('en')">🇺🇸 English</button>
+        <button class="lang-btn btn-ur" onclick="setLang('ur')">🇵🇰 اردو (Urdu)</button>
+        <button class="lang-btn btn-hi" onclick="setLang('hi')">🇮🇳 हिंदी (Hindi)</button>
+        <button class="lang-btn btn-es" onclick="setLang('es')">🇬🇹 Español (Spanish)</button>
+        <p style="margin-top:10px; font-size:0.85rem; color:#666;">
+            <span class="en">National Language: Spanish (Español) — 22 Maya languages also spoken</span>
+            <span class="ur urdu-text" style="display:none;">قومی زبان: ہسپانوی (Spanish) — 22 مایا زبانیں بھی بولی جاتی ہیں</span>
+            <span class="hi hindi-text" style="display:none;">राष्ट्रीय भाषा: स्पेनिश (Spanish) — 22 माया भाषाएँ भी बोली जाती हैं</span>
+            <span class="es" style="display:none;">Idioma Nacional: Español — También se hablan 22 lenguas mayas</span>
+        </p>
+    </div>
+
+    <!-- Main Blog Content -->
+    <div class="blog-card">
+        <img src="https://kimi-web-img.moonshot.cn/img/travelandsqueak.com/f23dd1a44c914788b8abc127395414981585e6e5.jpg" alt="Lake Atitlan Guatemala" class="header-img">
+        
+        <h1>
+            <span class="en">🇬🇹 Guatemala: The Soul of the Maya World</span>
+            <span class="ur urdu-text" style="display:none;">🇬🇹 گوئٹے مالا: مایا دنیا کی روح</span>
+            <span class="hi hindi-text" style="display:none;">🇬🇹 ग्वाटेमाला: माया दुनिया की आत्मा</span>
+            <span class="es" style="display:none;">🇬🇹 Guatemala: El Alma del Mundo Maya</span>
+        </h1>
+        
+        <p class="subtitle">
+            <span class="en">A Complete Travel Guide for 2026</span>
+            <span class="ur urdu-text" style="display:none;">2026 کے لیے مکمل سفر گائیڈ</span>
+            <span class="hi hindi-text" style="display:none;">2026 के लिए एक संपूर्ण यात्रा गाइड</span>
+            <span class="es" style="display:none;">Una Guía de Viaje Completa para 2026</span>
+        </p>
+
+        <!-- Country Background -->
+        <h2>
+            <span class="en">🗺️ Country Background</span>
+            <span class="ur urdu-text" style="display:none;">🗺️ ملک کا تعارف</span>
+            <span class="hi hindi-text" style="display:none;">🗺️ देश का परिचय</span>
+            <span class="es" style="display:none;">🗺️ Antecedentes del País</span>
+        </h2>
+        
+        <p class="en">
+            Guatemala, officially the Republic of Guatemala, is a breathtaking Central American nation that serves as the living heartland of the ancient Maya civilization. Bordered by Mexico to the north and west, Belize and the Caribbean Sea to the northeast, Honduras and El Salvador to the southeast, and the Pacific Ocean to the south, this country of 108,889 square kilometers packs extraordinary diversity into every corner. With a population of approximately 18 million, Guatemala is the most populous country in Central America. The name "Guatemala" derives from the Nahuatl word <em>Cuathemallan</em>, meaning "place of many trees," though some Maya scholars connect it to <em>Iximche</em>, meaning "maize tree." Unlike many of its neighbors, Guatemala's indigenous heritage remains vibrantly alive — over 40% of the population identifies as indigenous Maya, speaking one of 22 officially recognized Maya languages alongside Spanish. From the volcanic highlands to the steamy Petén jungle, Guatemala offers a journey through time, culture, and landscape unlike anywhere else on Earth.
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            گوئٹے مالا، سرکاری طور پر جمہوریہ گوئٹے مالا، ایک دلفریب وسطی امریکی ملک ہے جو قدیم مایا تہذیب کا زندہ دلدلان ہے۔ شمال اور مغرب میں میکسیکو، شمال مشرق میں بیلیز اور بحیرہ کیریبین، جنوب مشرق میں ہونڈوراس اور ایل سیلواڈور، اور جنوب میں بحر الکاہل سے متصل، 108,889 مربع کلومیٹر کا یہ ملک ہر کونے میں غیر معمولی تنوع کو سمیٹے ہوئے ہے۔ تقریباً 18 ملین کی آبادی کے ساتھ، گوئٹے مالا وسطی امریکا کا سب سے زیادہ آبادی والا ملک ہے۔ "گوئٹے مالا" کا نام نہوatl لفظ <em>کواتھمالان</em> سے نکلتا ہے، جس کا مطلب ہے "درختوں کی جگہ"، اگرچہ کچھ مایا اسکالر اسے <em>ایکسیمچے</em> سے جوڑتے ہیں، جس کا مطلب ہے "مکئی کا درخت"۔ اپنے بہت سے پڑوسیوں کے برعکس، گوئٹے مالا کی مقامی ورثہ زندہ دل طور پر زندہ ہے — 40% سے زیادہ آبادی مقامی مایا کے طور پر شناخت کرتی ہے، جو ہسپانوی کے ساتھ 22 سرکاری طور پر تسلیم شدہ مایا زبانوں میں سے ایک بولتی ہے۔ آتش فشاں کے پہاڑی علاقوں سے لے کر بھاپ والے پیٹین جنگل تک، گوئٹے مالا زمین پر کسی اور جگہ کے برعکس وقت، ثقافت، اور منظر نامے کے ذریعے ایک سفر پیش کرتا ہے۔
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            ग्वाटेमाला, आधिकारिक तौर पर रिपब्लिक ऑफ ग्वाटेमाला, एक मनमोहक मध्य अमेरिकी राष्ट्र है जो प्राचीन माया सभ्यता का जीवित हृदयस्थल है। उत्तर और पश्चिम में मेक्सिको, उत्तर-पूर्व में बेलीज़ और कैरेबियन सागर, दक्षिण-पूर्व में होंडुरास और एल साल्वाडोर, और दक्षिण में प्रशांत महासागर से घिरा, 108,889 वर्ग किलोमीटर का यह देश हर कोने में असाधारण विविधता समेटे हुए है। लगभग 18 मिलियन की आबादी के साथ, ग्वाटेमाला मध्य अमेरिका का सबसे अधिक आबादी वाला देश है। "ग्वाटेमाला" नाम नाहुआतल शब्द <em>Cuathemallan</em> से व्युत्पन्न है, जिसका अर्थ है "कई पेड़ों का स्थान," हालाँकि कुछ माया विद्वान इसे <em>Iximche</em> से जोड़ते हैं, जिसका अर्थ है "मक्का का पेड़"। अपने कई पड़ोसियों के विपरीत, ग्वाटेमाला की स्वदेशी विरासत जीवंत रूप से जीवित है — 40% से अधिक आबादी स्वयं को स्वदेशी माया के रूप में पहचानती है, जो स्पेनिश के साथ 22 आधिकारिक रूप से मान्यता प्राप्त माया भाषाओं में से एक बोलती है। ज्वालामुखीय पठार से लेकर भाप वाले पेटेन जंगल तक, ग्वाटेमाला पृथ्वी पर कहीं और के विपरीत समय, संस्कृति, और परिदृश्य के माध्यम से एक यात्रा प्रदान करता है।
+        </p>
+        <p class="es" style="display:none;">
+            Guatemala, oficialmente la República de Guatemala, es una deslumbrante nación centroamericana que sirve como el corazón viviente de la antigua civilización maya. Limitada con México al norte y oeste, Belice y el Mar Caribe al noreste, Honduras y El Salvador al sureste, y el Océano Pacífico al sur, este país de 108,889 kilómetros cuadrados concentra una extraordinaria diversidad en cada rincón. Con una población de aproximadamente 18 millones, Guatemala es el país más poblado de Centroamérica. El nombre "Guatemala" deriva de la palabra náhuatl <em>Cuathemallan</em>, que significa "lugar de muchos árboles," aunque algunos estudiosos mayas lo conectan con <em>Iximche</em>, que significa "árbol de maíz." A diferencia de muchos de sus vecinos, el patrimonio indígena de Guatemala sigue vibrante — más del 40% de la población se identifica como maya indígena, hablando una de las 22 lenguas mayas oficialmente reconocidas junto al español. Desde las tierras altas volcánicas hasta la húmeda jungla del Petén, Guatemala ofrece un viaje a través del tiempo, la cultura y el paisaje como ningún otro lugar en la Tierra.
+        </p>
+
+        <!-- Flag Section -->
+        <h2>
+            <span class="en">🏳️ National Flag</span>
+            <span class="ur urdu-text" style="display:none;">🏳️ قومی پرچم</span>
+            <span class="hi hindi-text" style="display:none;">🏳️ राष्ट्रीय ध्वज</span>
+            <span class="es" style="display:none;">🏳️ Bandera Nacional</span>
+        </h2>
+        
+        <div class="flag-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/1200px-Flag_of_Guatemala.svg.png" alt="Guatemala Flag" class="flag-img">
+        </div>
+        
+        <p class="en">
+            The flag of Guatemala features two sky-blue vertical stripes on either side of a central white stripe, with the national coat of arms at the center. The blue represents the two oceans that border the country — the Pacific and the Atlantic (Caribbean) — while the white symbolizes peace and purity. The coat of arms displays a resplendent quetzal, the national bird whose iridescent green tail feathers were once more valuable than gold to the Maya. The bird perches on a scroll bearing the date of Central American independence (September 15, 1821), while crossed rifles and swords represent the nation's willingness to defend itself, and a laurel wreath symbolizes victory. Adopted in 1871, this flag embodies Guatemala's pride in its natural beauty, its history of independence, and its enduring hope for peace.
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            گوئٹے مالا کا پرچم مرکزی سفید دھاری کے دونوں اطراف دو آسمان نیلے عمودی دھاریاں پیش کرتا ہے، جس کے مرکز میں قومی کوٹ آف آرمس ہے۔ نیلا رنگ ان دو سمندروں کی نمائندگی کرتا ہے جو ملک کو گھیرتے ہیں — بحر الکاہل اور بحر اوقیانوس (کیریبین) — جبکہ سفید امن اور پاکیزگی کی علامت ہے۔ کوٹ آف آرمز ایک شاندار کیٹزل کو دکھاتا ہے، قومی پرندہ جس کے چمکدار سبز دم کے پر مایا کے لیے ایک وقت میں سونے سے بھی زیادہ قیمتی تھے۔ پرندہ ایک اسکرول پر بیٹھا ہے جس پر وسطی امریکی آزادی کی تاریخ (15 ستمبر 1821) درج ہے، جبکہ متقاطع رائفلز اور تلواریں قوم کی خود دفاع کی خواہش کی نمائندگی کرتی ہیں، اور لوریل ہار فتح کی علامت ہے۔ 1871 میں اپنایا گیا، یہ پرچم گوئٹے مالا کو اپنی قدرتی خوبصورتی، آزادی کی تاریخ، اور امن کی پائیدار امید پر فخر کو ظاہر کرتا ہے۔
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            ग्वाटेमाला का ध्वज केंद्रीय सफेद धारी के दोनों ओर दो आसमानी नीली ऊर्ध्वाधर धारियों को दर्शाता है, जिसके केंद्र में राष्ट्रीय coat of arms है। नीला रंग उन दो महासागरों का प्रतिनिधित्व करता है जो देश को घेरते हैं — प्रशांत और अटलांटिक (कैरेबियन) — जबकि सफेद शांति और पवित्रता का प्रतीक है। coat of arms एक शानदार क्वेट्ज़ल को दर्शाता है, राष्ट्रीय पक्षी जिसके चमकीले हरे पूंछ के पंख माया के लिए एक समय में सोने से भी अधिक मूल्यवान थे। पक्षी एक स्क्रॉल पर बैठा है जिस पर मध्य अमेरिकी स्वतंत्रता की तारीख (15 सितंबर 1821) अंकित है, जबकि क्रॉस राइफल्स और तलवारें राष्ट्र की स्वयं की रक्षा की इच्छा का प्रतिनिधित्व करती हैं, और लॉरेल माला विजय का प्रतीक है। 1871 में अपनाया गया, यह ध्वज ग्वाटेमाला की प्राकृतिक सुंदरता, स्वतंत्रता के इतिहास, और शांति की दृढ़ आशा पर गर्व को दर्शाता है।
+        </p>
+        <p class="es" style="display:none;">
+            La bandera de Guatemala presenta dos franjas verticales azul cielo a cada lado de una franja central blanca, con el escudo nacional en el centro. El azul representa los dos océanos que bordean el país — el Pacífico y el Atlántico (Caribe) — mientras que el blanco simboliza la paz y la pureza. El escudo de armas muestra un quetzal resplandeciente, el ave nacional cuyas plumas de cola verdes iridiscentes fueron una vez más valiosas que el oro para los mayas. El ave se posa sobre un pergamino que lleva la fecha de la independencia centroamericana (15 de septiembre de 1821), mientras que rifles y espadas cruzados representan la disposición de la nación para defenderse, y una guirnalda de laurel simboliza la victoria. Adoptada en 1871, esta bandera encarna el orgullo de Guatemala por su belleza natural, su historia de independencia y su perdurable esperanza de paz.
+        </p>
+
+        <!-- Quick Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <strong class="en">108,889 km²</strong>
+                <strong class="ur urdu-text" style="display:none;">108,889 مربع کلومیٹر</strong>
+                <strong class="hi hindi-text" style="display:none;">108,889 वर्ग किमी</strong>
+                <strong class="es" style="display:none;">108,889 km²</strong>
+                <span class="en">Area</span>
+                <span class="ur urdu-text" style="display:none;">رقبہ</span>
+                <span class="hi hindi-text" style="display:none;">क्षेत्रफल</span>
+                <span class="es" style="display:none;">Área</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">18 Million</strong>
+                <strong class="ur urdu-text" style="display:none;">18 ملین</strong>
+                <strong class="hi hindi-text" style="display:none;">18 मिलियन</strong>
+                <strong class="es" style="display:none;">18 Millones</strong>
+                <span class="en">Population</span>
+                <span class="ur urdu-text" style="display:none;">آبادی</span>
+                <span class="hi hindi-text" style="display:none;">जनसंख्या</span>
+                <span class="es" style="display:none;">Población</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">Guatemala City</strong>
+                <strong class="ur urdu-text" style="display:none;">گوئٹے مالا سٹی</strong>
+                <strong class="hi hindi-text" style="display:none;">ग्वाटेमाला सिटी</strong>
+                <strong class="es" style="display:none;">Ciudad de Guatemala</strong>
+                <span class="en">Capital</span>
+                <span class="ur urdu-text" style="display:none;">دارالحکومت</span>
+                <span class="hi hindi-text" style="display:none;">राजधानी</span>
+                <span class="es" style="display:none;">Capital</span>
+            </div>
+            <div class="stat-item">
+                <strong class="en">Spanish + 22 Maya</strong>
+                <strong class="ur urdu-text" style="display:none;">ہسپانوی + 22 مایا</strong>
+                <strong class="hi hindi-text" style="display:none;">स्पेनिश + 22 माया</strong>
+                <strong class="es" style="display:none;">Español + 22 Mayas</strong>
+                <span class="en">Languages</span>
+                <span class="ur urdu-text" style="display:none;">زبانیں</span>
+                <span class="hi hindi-text" style="display:none;">भाषाएँ</span>
+                <span class="es" style="display:none;">Idiomas</span>
+            </div>
+        </div>
+
+        <!-- Famous Cities -->
+        <h2>
+            <span class="en">🏙️ Famous Cities & Destinations</span>
+            <span class="ur urdu-text" style="display:none;">🏙️ مشہور شہروں اور مقامات</span>
+            <span class="hi hindi-text" style="display:none;">🏙️ प्रसिद्ध शहर और गंतव्य</span>
+            <span class="es" style="display:none;">🏙️ Ciudades y Destinos Famosos</span>
+        </h2>
+
+        <!-- Guatemala City -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/a3dd493e0413d8b0fef1a3f0ebecb08450a33710.jpg" alt="Guatemala City aerial view" class="city-img">
+            <h3>
+                <span class="en">📍 Guatemala City — The Vibrant Capital</span>
+                <span class="ur urdu-text" style="display:none;">📍 گوئٹے مالا سٹی — زندہ دل دارالحکومت</span>
+                <span class="hi hindi-text" style="display:none;">📍 ग्वाटेमाला सिटी — जीवंत राजधानी</span>
+                <span class="es" style="display:none;">📍 Ciudad de Guatemala — La Capital Vibrante</span>
+            </h3>
+            <p class="en">
+                Guatemala City is the largest city in Central America, home to nearly 3 million people in the metro area. Perched in a mountain valley known as the Valle de la Ermita at 1,500 meters above sea level, it's surrounded by volcanoes — Agua, Fuego, and Pacaya — that create a dramatic backdrop. The city's Zona 1 historic center features the grand National Palace of Culture, the Metropolitan Cathedral, and the bustling Sixth Avenue pedestrian street. For a taste of local life, visit the Mercado Central where vendors sell traditional textiles, fresh produce, and handmade crafts. The city is also a gateway to the stunning Pacaya Volcano hikes, where you can roast marshmallows over active lava flows. While often overlooked by tourists rushing to Antigua, Guatemala City offers an authentic urban experience filled with museums, art galleries, and some of the best street food in the region.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                گوئٹے مالا سٹی وسطی امریکا کا سب سے بڑا شہر ہے، میٹرو علاقے میں تقریباً 3 ملین افراد کا گھر۔ سطح سمندر سے 1,500 میٹر کی بلندی پر ویلے ڈی لا ارمیٹا نامی پہاڑی وادی میں واقع، یہ آتش فشاںوں — اگوا، فوئگو، اور پکایا — سے گھرا ہوا ہے جو ایک ڈرامائی پس منظر پیدا کرتے ہیں۔ شہر کا زونا 1 تاریخی مرکز ثقافت کے شاندار نیشنل پیلس، میٹروپولیٹن کیتھیڈرل، اور ہجوم خیز چھٹی ایونیو پیدل چلنے والی سڑک کو پیش کرتا ہے۔ مقامی زندگی کا ذائقہ چکھنے کے لیے مرکزی بازار (مرکاڈو سنٹرل) کا دورہ کریں جہاں بیچنے والے روایتی ٹیکسٹائل، تازہ پیداوار، اور ہاتھ سے بنے دستکاری فروخت کرتے ہیں۔ شہر شاندار پکایا آتش فشاں ٹریکس کا بھی دروازہ ہے، جہاں آپ فعال لاوا بہاؤ پر مارشمیلو بھون سکتے ہیں۔ اگرچہ سیاح جو انتigua کی طرف دوڑتے ہیں اکثر اسے نظرانداز کرتے ہیں، گوئٹے مالا سٹی علاقے کے بہترین سٹریٹ فوڈ سے بھرپور ایک مستند شہری تجربہ پیش کرتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                ग्वाटेमाला सिटी मध्य अमेरिका का सबसे बड़ा शहर है, जो मेट्रो क्षेत्र में लगभग 3 मिलियन लोगों का घर है। समुद्र तल से 1,500 मीटर की ऊंचाई पर वैले डी ला एर्मिटा नामक पहाड़ी घाटी में स्थित, यह ज्वालामुखियों — अगुआ, फुएगो, और पकाया — से घिरा हुआ है जो एक नाटकीय पृष्ठभूमि बनाते हैं। शहर का ज़ोना 1 ऐतिहासिक केंद्र संस्कृति के भव्य राष्ट्रीय महल, महानगर कैथेड्रल, और हलचल भरी छठी एवेन्यू पैदल सड़क को दर्शाता है। स्थानीय जीवन का स्वाद लेने के लिए मर्काडो सेंट्रल का दौरा करें जहाँ विक्रेता पारंपरिक वस्त्र, ताज़ी उपज, और हाथ से बनी शिल्प बेचते हैं। शहर शानदार पकाया ज्वालामुखी ट्रेक का भी प्रवेश द्वार है, जहाँ आप सक्रिय लावा प्रवाह पर मार्शमैलो भून सकते हैं। हालाँकि अक्सर अंतिगुआ की ओर दौड़ने वाले पर्यटकों द्वारा नज़रअंदाज़ किया जाता है, ग्वाटेमाला सिटी संग्रहालयों, कला गैलरियों, और क्षेत्र के कुछ सर्वश्रेष्ठ स्ट्रीट फूड से भरा एक प्रामाणिक शहरी अनुभव प्रदान करता है।
+            </p>
+            <p class="es" style="display:none;">
+                La Ciudad de Guatemala es la ciudad más grande de Centroamérica, hogar de casi 3 millones de personas en el área metropolitana. Ubicada en un valle montañoso conocido como el Valle de la Ermita a 1,500 metros sobre el nivel del mar, está rodeada de volcanes — Agua, Fuego y Pacaya — que crean un telón de fondo dramático. El centro histórico de Zona 1 de la ciudad alberga el gran Palacio Nacional de la Cultura, la Catedral Metropolitana y la bulliciosa calle peatonal Sexta Avenida. Para probar la vida local, visita el Mercado Central donde los vendedores ofrecen textiles tradicionales, productos frescos y artesanías hechas a mano. La ciudad también es la puerta de entrada a las impresionantes caminatas al Volcán Pacaya, donde puedes asar bombones sobre flujos de lava activos. Aunque a menudo es pasada por alto por turistas que se apresuran hacia Antigua, la Ciudad de Guatemala ofrece una experiencia urbana auténtica llena de museos, galerías de arte y algunas de las mejores comidas callejeras de la región.
+            </p>
+        </div>
+
+        <!-- Antigua Guatemala -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/static01.nyt.com/862a44faec627dfd623e41acfd6ae78127342909.jpg" alt="Antigua Guatemala colonial city" class="city-img">
+            <h3>
+                <span class="en">📍 Antigua Guatemala — The Colonial Jewel</span>
+                <span class="ur urdu-text" style="display:none;">📍 انتigua گوئٹے مالا — نوآبادیاتی ہیرا</span>
+                <span class="hi hindi-text" style="display:none;">📍 अंतिगुआ ग्वाटेमाला — औपनिवेशिक रत्न</span>
+                <span class="es" style="display:none;">📍 Antigua Guatemala — La Joya Colonial</span>
+            </h3>
+            <p class="en">
+                Antigua Guatemala is quite simply one of the most beautiful colonial cities in the Americas. A UNESCO World Heritage Site, this former capital was founded in 1543 and largely destroyed by earthquakes in 1773, leaving behind a haunting landscape of ruined cathedrals and cobblestone streets framed by three towering volcanoes. Today, Antigua is a living museum of Spanish Baroque architecture — pastel-colored facades, ornate churches, and grand plazas that seem frozen in time. The iconic Santa Catalina Arch, with Volcán de Agua rising behind it, is one of the most photographed spots in Central America. Beyond its beauty, Antigua is Guatemala's cultural heartbeat: language schools draw students from around the world, Semana Santa (Holy Week) celebrations feature elaborate alfombras (carpets) of colored sawdust, and the surrounding coffee fincas produce some of the finest beans on Earth. Whether you're sipping single-origin coffee in a rooftop café or hiking up Pacaya to watch the sunset paint the volcanoes gold, Antigua will steal your heart.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                انتigua گوئٹے مالا بس امریکہ کے سب سے خوبصورت نوآبادیاتی شہروں میں سے ایک ہے۔ ایک UNESCO عالمی ورثہ مقام، یہ سابقہ دارالحکومت 1543 میں قائم ہوا اور 1773 میں زلزلوں سے بڑی حد تک تباہ ہو گیا، جس کے پیچھے تین اونچے آتش فشاںوں سے گھری ہوئی کھنڈرات کیتھیڈرلز اور پتھر کی سڑکوں کا ایک haunted منظر نامہ چھوڑ گیا۔ آج، انتigua ہسپانوی باروک معماری کا ایک زندہ میوزیم ہے — پیلے رنگ کے چہرے، آراستہ چرچ، اور بڑے چوک جو وقت میں جمے ہوئے لگتے ہیں۔ شاندار سینٹا کیٹلینا آرچ، جس کے پیچھے وولکان ڈی اگوا اٹھتا ہے، وسطی امریکا میں سب سے زیادہ فوٹو گراف کیے جانے والے مقامات میں سے ایک ہے۔ اپنی خوبصورتی سے بالاتر، انتigua گوئٹے مالا کا ثقافتی دل دھڑکتا ہے: زبان کے اسکول دنیا بھر کے طلباء کو کھینچتے ہیں، سیمانا سینٹا (مقدس ہفتہ) تقریبات رنگین ساڈسٹ کے elaborate الفومبراس (قالین) پیش کرتی ہیں، اور گرد و نواح کے کافی فینکاس زمین پر کچھ بہترین بین پیدا کرتے ہیں۔ چاہے آپ چھت کے کافی ہاؤس میں سنگل اوریجن کافی پی رہے ہوں یا پکایا پر چڑھ کر غروب آفتاب کو آتش فشاںوں کو سونے میں رنگتے دیکھ رہے ہوں، انتigua آپ کا دل چورا لے گا۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                अंतिगुआ ग्वाटेमाला सच में अमेरिका के सबसे खूबसूरत औपनिवेशिक शहरों में से एक है। एक UNESCO विश्व धरोहर स्थल, यह पूर्व राजधानी 1543 में स्थापित हुई और 1773 में भूकंपों से बड़े पैमाने पर नष्ट हो गई, जिसके पीछे तीन विशाल ज्वालामुखियों से घिरी खंडहर कैथेड्रल और पत्थर की सड़कों का एक मनमोहक परिदृश्य छोड़ गई। आज, अंतिगुआ स्पेनिश बारोक वास्तुकला का एक जीवित संग्रहालय है — पेस्टल रंग के फ़ासाड, भव्य चर्च, और विशाल चौक जो समय में जमे हुए लगते हैं। प्रतिष्ठित सांता कैटालिना आर्क, जिसके पीछे वोल्कान डी अगुआ उठता है, मध्य अमेरिका में सबसे अधिक फोटोग्राफ किए जाने वाले स्थलों में से एक है। अपनी सुंदरता से परे, अंतिगुआ ग्वाटेमाला का सांस्कृतिक हृदय है: भाषा स्कूल दुनिया भर के छात्रों को आकर्षित करते हैं, सेमाना सांता (पवित्र सप्ताह) समारोह रंगीन सॉडस्ट के विस्तृत अल्फोम्ब्रास (कालीन) प्रदर्शित करते हैं, और आसपास के कॉफी फिंकास पृथ्वी पर कुछ बेहतरीन बीन्स उत्पादित करते हैं। चाहे आप छत के कैफे में सिंगल-ऑरिजिन कॉफी पी रहे हों या पकाया पर चढ़कर सूर्यास्त को ज्वालामुखियों को सोने में रंगते देख रहे हों, अंतिगुआ आपका दिल चुरा लेगा।
+            </p>
+            <p class="es" style="display:none;">
+                Antigua Guatemala es simplemente una de las ciudades coloniales más bellas de las Américas. Patrimonio de la Humanidad de la UNESCO, esta antigua capital fue fundada en 1543 y en gran parte destruida por terremotos en 1773, dejando tras de sí un paisaje evocador de catedrales en ruinas y calles empedradas enmarcadas por tres imponentes volcanes. Hoy, Antigua es un museo viviente de arquitectura barroca española — fachadas de colores pastel, iglesias ornamentadas y grandes plazas que parecen congeladas en el tiempo. El icónico Arco de Santa Catalina, con el Volcán de Agua elevándose detrás, es uno de los lugares más fotografiados de Centroamérica. Más allá de su belleza, Antigua es el corazón cultural de Guatemala: las escuelas de idiomas atraen estudiantes de todo el mundo, las celebraciones de Semana Santa presentan elaboradas alfombras de aserrín coloreado, y las fincas cafetaleras circundantes producen algunos de los mejores granos de la Tierra. Ya sea que estés tomando café de origen único en una cafetería en la azotea o subiendo al Pacaya para ver la puesta de sol pintar los volcanes de dorado, Antigua te robará el corazón.
+            </p>
+        </div>
+
+        <!-- Tikal -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.cahalpech.com/0809b15e35c86289df76d132c96f1fdcea69932a.jpg" alt="Tikal Maya ruins Guatemala" class="city-img">
+            <h3>
+                <span class="en">📍 Tikal — The Ancient Maya Metropolis</span>
+                <span class="ur urdu-text" style="display:none;">📍 ٹیکال — قدیم مایا میٹروپولس</span>
+                <span class="hi hindi-text" style="display:none;">📍 टिकाल — प्राचीन माया महानगर</span>
+                <span class="es" style="display:none;">📍 Tikal — La Antigua Metrópoli Maya</span>
+            </h3>
+            <p class="en">
+                Deep in the steamy jungles of northern Guatemala's Petén region lies Tikal, one of the greatest archaeological sites of the ancient Maya world. This vast city flourished from 200 to 900 AD and once housed over 100,000 people across 16 square kilometers. The towering Temple I (Temple of the Great Jaguar) rises 47 meters above the jungle floor, offering panoramic views that stretch across an ocean of green canopy. Tikal was a powerhouse of Maya civilization — a center of astronomy, mathematics, and architecture that rivaled anything in the Old World. The site is also a wildlife paradise: howler monkeys announce dawn with their thunderous calls, toucans flash through the trees, and jaguars still patrol the forest paths. Arriving at sunrise to watch mist rise between the temples while the jungle awakens is an experience that transcends tourism and touches something primal within the human spirit.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                شمالی گوئٹے مالا کے پیٹین علاقے کے بھاپ والے جنگلوں میں گہرائی میں ٹیکال واقع ہے، جو قدیم مایا دنیا کے عظیم ترین آثار قدیمہ مقامات میں سے ایک ہے۔ یہ وسیع شہر 200 سے 900 عیسوی تک شکوفا ہوا اور ایک وقت میں 16 مربع کلومیٹر میں 100,000 سے زیادہ افراد کا گھر تھا۔ اونچا ٹیمپل I (عظیم جگوار کا مندر) جنگل کے فرش سے 47 میٹر بلند ہوتا ہے، جو پینورامک مناظر پیش کرتا ہے جو ہری چھتری کے سمندر تک پھیلتے ہیں۔ ٹیکال مایا تہذیب کا ایک طاقت ور مرکز تھا — فلکیات، ریاضی، اور معماری کا ایک مرکز جو پرانی دنیا کی کسی بھی چیز سے مقابلہ کرتا تھا۔ یہ مقام ایک جنگلی حیات کا جنت بھی ہے: ہاؤلر بندر اپنے گرجدار آوازوں کے ساتھ فجر کا اعلان کرتے ہیں، ٹوکان درختوں کے ذریعے چمکتے ہیں، اور جگوار اب بھی جنگلی پگڈنڈیوں پر گشت کرتے ہیں۔ مندروں کے درمیان دھند اٹھتے ہوئے اور جنگل کے جاگتے ہوئے سورج طلوع کا مشاہدہ کرنے کے لیے پہنچنا ایک ایسا تجربہ ہے جو سیاحت سے بالاتر ہے اور انسانی روح کے اندر کچھ ابتدائی کو چھوتا ہے۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                उत्तरी ग्वाटेमाला के पेटेन क्षेत्र के भाप वाले जंगलों की गहराई में टिकाल स्थित है, जो प्राचीन माया दुनिया के सबसे महान पुरातात्विक स्थलों में से एक है। यह विशाल शहर 200 से 900 ईस्वी तक फला-फूला और एक समय में 16 वर्ग किलोमीटर में 100,000 से अधिक लोगों का घर था। ऊँचा टेम्पल I (द ग्रेट जगुआर का टेम्पल) जंगल के फर्श से 47 मीटर ऊपर उठता है, जो पैनोरामिक दृश्य प्रदान करता है जो हरे छतर के महासागर तक फैलते हैं। टिकाल माया सभ्यता का एक शक्तिशाली केंद्र था — खगोल विज्ञान, गणित, और वास्तुकला का एक केंद्र जो पुरानी दुनिया की किसी भी चीज़ से बराबरी करता था। यह स्थल एक वन्यजीवन का स्वर्ग भी है: हाउलर बंदर अपनी गरजदार आवाज़ों के साथ भोर का ऐलान करते हैं, टूकन पेड़ों के माध्यम से चमकते हैं, और जगुआर अब भी जंगली पगडंडियों पर गश्त लगाते हैं। मंदिरों के बीच धुंध उठते हुए और जंगल के जागते हुए सूर्योदय देखने के लिए पहुँचना एक ऐसा अनुभव है जो पर्यटन से परे है और मानव आत्मा के भीतर कुछ आदिम को छूता है।
+            </p>
+            <p class="es" style="display:none;">
+                En lo profundo de las húmedas selvas del norte de Guatemala, en la región del Petén, se encuentra Tikal, uno de los mayores sitios arqueológicos del antiguo mundo maya. Esta vasta ciudad floreció del 200 al 900 d.C. y alguna vez albergó a más de 100,000 personas en 16 kilómetros cuadrados. El imponente Templo I (Templo del Gran Jaguar) se eleva 47 metros sobre el suelo de la selva, ofreciendo vistas panorámicas que se extienden sobre un océano de dosel verde. Tikal fue una potencia de la civilización maya — un centro de astronomía, matemáticas y arquitectura que rivalizaba con cualquier cosa del Viejo Mundo. El sitio también es un paraíso de vida silvestre: los monos aulladores anuncian el amanecer con sus estruendosos llamados, los tucanes destellan entre los árboles, y los jaguares aún patrullan los senderos del bosque. Llegar al amanecer para ver la niebla elevarse entre los templos mientras la selva despierta es una experiencia que trasciende el turismo y toca algo primordial dentro del espíritu humano.
+            </p>
+        </div>
+
+        <!-- Lake Atitlán -->
+        <div class="city-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.passportandpixels.com/3c6b7feba9921a2274a9e5f964a5c145b7ff00c7.jpg" alt="Lake Atitlan Guatemala scenic" class="city-img">
+            <h3>
+                <span class="en">📍 Lake Atitlán — The Volcanic Mirror</span>
+                <span class="ur urdu-text" style="display:none;">📍 جھیل اٹیٹلان — آتش فشاں کا آئینہ</span>
+                <span class="hi hindi-text" style="display:none;">📍 झील एटिटलान — ज्वालामुखीय दर्पण</span>
+                <span class="es" style="display:none;">📍 Lago Atitlán — El Espejo Volcánico</span>
+            </h3>
+            <p class="en">
+                Aldous Huxley famously called Lake Atitlán "the most beautiful lake in the world," and it's not hard to see why. This volcanic caldera lake, formed 84,000 years ago by a massive eruption, sits at 1,562 meters above sea level and is surrounded by three majestic volcanoes — San Pedro, Tolimán, and Atitlán. The lake's waters shift from deep sapphire to emerald green depending on the light, creating a kaleidoscope of color that changes by the hour. Around the shoreline, twelve Maya villages each maintain their own traditional dress, language, and customs. Panajachel is the main tourist hub with its lively markets and waterfront restaurants, while villages like San Marcos La Laguna draw yoga enthusiasts and spiritual seekers. Take a lancha (boat) across the lake at sunrise when the water is glass-smooth and the volcanoes reflect perfectly — it's a moment of pure magic that will stay with you forever.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                ایلڈوس ہکسلے نے مشہور طور پر جھیل اٹیٹلان کو "دنیا کی سب سے خوبصورت جھیل" کہا، اور یہ دیکھنا مشکل نہیں کہ کیوں۔ یہ آتش فشاں کالڈیرا جھیل، جو 84,000 سال پہلے ایک بڑے پھٹنے سے بنی، سطح سمندر سے 1,562 میٹر کی بلندی پر بیٹھی ہے اور تین شاندار آتش فشاںوں — سان پیڈرو، ٹولیمان، اور اٹیٹلان — سے گھری ہوئی ہے۔ جھیل کے پانی روشنی کے مطابق گہرے نیلے سے زمرد سبز تک بدلتے ہیں، جو رنگوں کا ایک کلیڈوسکوپ پیدا کرتے ہیں جو گھنٹے بہ گھنٹے بدلتا ہے۔ ساحل کی دوری پر، بارہ مایا گاؤں ہر ایک اپنی روایتی لباس، زبان، اور رسوم برقرار رکھتے ہیں۔ پاناجاچیل اہم سیاحتی مرکز ہے جس میں اس کی زندہ دل منڈیاں اور واٹر فرنٹ ریستوراں ہیں، جبکہ سان مارکوس لا لگونا جیسے گاؤں یوگا کے شوقینوں اور روحانی تلاش کرنے والوں کو کھینچتے ہیں۔ سورج طلوع پر جھیل کے پار ایک لانچا (کشتی) لیں جب پانی شیشے کی طرح ہموار ہے اور آتش فشاں بہترین طور پر عکاس ہوتے ہیں — یہ خالص جادو کا ایک لمحہ ہے جو ہمیشہ کے لیے آپ کے ساتھ رہے گا۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                एल्डस हक्सली ने प्रसिद्ध रूप से झील एटिटलान को "दुनिया की सबसे खूबसूरत झील" कहा, और यह देखना मुश्किल नहीं है कि क्यों। यह ज्वालामुखीय कैल्डेरा झील, जो 84,000 साल पहले एक विशाल विस्फोट से बनी, समुद्र तल से 1,562 मीटर की ऊंचाई पर स्थित है और तीन भव्य ज्वालामुखियों — सैन पेड्रो, टोलीमान, और एटिटलान — से घिरी हुई है। झील के पानी रोशनी के अनुसार गहरे नीले से पन्ना हरे तक बदलते हैं, जो रंगों का एक कaleidoscope बनाते हैं जो घंटे दर घंटे बदलता है। किनारे के आसपास, बारह माया गाँव अपनी-अपनी पारंपरिक पोशाक, भाषा, और रीति-रिवाज बनाए रखते हैं। पानाजाचेल मुख्य पर्यटन केंद्र है जिसमें इसकी जीवंत बाज़ार और वॉटरफ्रंट रेस्तरां हैं, जबकि सैन मार्कोस ला लगुना जैसे गाँव योग के शौकीनों और आध्यात्मिक खोजकर्ताओं को आकर्षित करते हैं। सूर्योदय पर झील के पार एक लान्चा (नाव) लें जब पानी कांच की तरह चिकना है और ज्वालामुखी पूरी तरह से परावर्तित होते हैं — यह शुद्ध जादू का एक क्षण है जो हमेशा के लिए आपके साथ रहेगा।
+            </p>
+            <p class="es" style="display:none;">
+                Aldous Huxley llamó famosamente al Lago Atitlán "el lago más hermoso del mundo," y no es difícil ver por qué. Este lago de caldera volcánica, formado hace 84,000 años por una erupción masiva, se encuentra a 1,562 metros sobre el nivel del mar y está rodeado por tres majestuosos volcanes — San Pedro, Tolimán y Atitlán. Las aguas del lago cambian de zafiro profundo a verde esmeralda dependiendo de la luz, creando un caleidoscopio de color que cambia cada hora. Alrededor de la orilla, doce pueblos mayas mantienen cada uno su propio vestido tradicional, idioma y costumbres. Panajachel es el principal centro turístico con sus animados mercados y restaurantes frente al lago, mientras que pueblos como San Marcos La Laguna atraen a entusiastas del yoga y buscadores espirituales. Toma una lancha (bote) a través del lago al amanecer cuando el agua es lisa como el vidrio y los volcanes se reflejan perfectamente — es un momento de pura magia que permanecerá contigo para siempre.
+            </p>
+        </div>
+
+        <!-- Travel Tips -->
+        <div class="highlight-box">
+            <h3>
+                <span class="en">💡 Essential Travel Tips</span>
+                <span class="ur urdu-text" style="display:none;">💡 ضروری سفر کی نکات</span>
+                <span class="hi hindi-text" style="display:none;">💡 आवश्यक यात्रा सुझाव</span>
+                <span class="es" style="display:none;">💡 Consejos Esenciales de Viaje</span>
+            </h3>
+            <p class="en">
+                • <strong>Best Time to Visit:</strong> November to April (dry season) offers clear skies for volcano views; May-October brings lush greenery but afternoon rains.<br>
+                • <strong>Currency:</strong> Guatemalan Quetzal (GTQ), named after the resplendent quetzal bird. US dollars accepted in tourist areas.<br>
+                • <strong>Language:</strong> Spanish is official; 22 Maya languages are also spoken. Learning basic Spanish greatly enhances your experience.<br>
+                • <strong>Must-Try Food:</strong> Pepian (a rich meat stew), Kak'ik (turkey soup), Tamales, and fresh corn tortillas.<br>
+                • <strong>Safety:</strong> Guatemala City requires caution in certain zones; Antigua, Lake Atitlán, and Tikal are generally very safe for tourists.<br>
+                • <strong>Transport:</strong> Chicken buses (colorful converted US school buses) are cheap and iconic; shuttle vans connect major tourist destinations.
+            </p>
+            <p class="ur urdu-text" style="display:none;">
+                • <strong>دورہ کرنے کا بہترین وقت:</strong> نومبر سے اپریل (خشک موسم) میں آتش فشاں کے مناظر کے لیے صاف آسمان ملتا ہے؛ مئی-اکتوبر میں سرسبز سبزیاں لاتا ہے لیکن دوپہر کی بارشیں ہوتی ہیں۔<br>
+                • <strong>کرنسی:</strong> گوئٹے مالا کیٹزل (GTQ)، جو شاندار کیٹزل پرندے کے نام پر ہے۔ سیاحتی علاقوں میں امریکی ڈالر قبول کیے جاتے ہیں۔<br>
+                • <strong>زبان:</strong> ہسپانوی سرکاری ہے؛ 22 مایا زبانیں بھی بولی جاتی ہیں۔ بنیادی ہسپانوی سیکھنا آپ کے تجربے کو بہت بڑھا دے گا۔<br>
+                • <strong>ضرور آزمائیں:</strong> پیپیان (ایک امیر گوشت کا اسٹیو)، کاک'ک (ترکی سوپ)، ٹامیلز، اور تازہ مکئی کی ٹورٹیلاز۔<br>
+                • <strong>حفاظت:</strong> گوئٹے مالا سٹی میں کچھ زونز میں احتیاط کی ضرورت ہے؛ انتigua، جھیل اٹیٹلان، اور ٹیکال عام طور پر سیاحوں کے لیے بہت محفوظ ہیں۔<br>
+                • <strong>نقل و حمل:</strong> چکن بسیں (رنگین تبدیل شدہ امریکی اسکول بسیں) سستی اور شاندار ہیں؛ شٹل وینز اہم سیاحتی مقامات کو جوڑتی ہیں۔
+            </p>
+            <p class="hi hindi-text" style="display:none;">
+                • <strong>घूमने का सबसे अच्छा समय:</strong> नवंबर से अप्रैल (शुष्क मौसम) में ज्वालामुखी के दृश्यों के लिए साफ आकाश मिलता है; मई-अक्टूबर में हरियाली लाता है लेकिन दोपहर की बारिश होती है।<br>
+                • <strong>मुद्रा:</strong> ग्वाटेमाला क्वेट्ज़ल (GTQ), जो शानदार क्वेट्ज़ल पक्षी के नाम पर है। पर्यटन क्षेत्रों में अमेरिकी डॉलर स्वीकार किए जाते हैं।<br>
+                • <strong>भाषा:</strong> स्पेनिश आधिकारिक है; 22 माया भाषाएँ भी बोली जाती हैं। बुनियादी स्पेनिश सीखना आपके अनुभव को बहुत बढ़ा देगा।<br>
+                • <strong>जरूर आजमाएं:</strong> पेपियान (एक समृद्ध मांस स्टू), काक'िक (टर्की सूप), टामालेस, और ताज़ी मकई की टॉर्टिलाज।<br>
+                • <strong>सुरक्षा:</strong> ग्वाटेमाला सिटी में कुछ ज़ोन में सावधानी की आवश्यकता है; अंतिगुआ, झील एटिटलान, और टिकाल आम तौर पर पर्यटकों के लिए बहुत सुरक्षित हैं।<br>
+                • <strong>परिवहन:</strong> चिकन बसें (रंगीन परिवर्तित अमेरिकी स्कूल बसें) सस्ती और प्रतिष्ठित हैं; शटल वैन प्रमुख पर्यटन स्थलों को जोड़ती हैं।
+            </p>
+            <p class="es" style="display:none;">
+                • <strong>Mejor Época para Visitar:</strong> De noviembre a abril (temporada seca) ofrece cielos despejados para vistas de volcanes; mayo-octubre trae vegetación exuberante pero lluvias de tarde.<br>
+                • <strong>Moneda:</strong> Quetzal guatemalteco (GTQ), nombrado en honor al quetzal resplandeciente. Dólares estadounidenses aceptados en áreas turísticas.<br>
+                • <strong>Idioma:</strong> El español es oficial; también se hablan 22 lenguas mayas. Aprender español básico mejora enormemente tu experiencia.<br>
+                • <strong>Debes Probar:</strong> Pepián (un rico guiso de carne), Kak'ik (sopa de pavo), Tamales, y tortillas frescas de maíz.<br>
+                • <strong>Seguridad:</strong> La Ciudad de Guatemala requiere precaución en ciertas zonas; Antigua, el Lago Atitlán y Tikal son generalmente muy seguros para turistas.<br>
+                • <strong>Transporte:</strong> Los "chicken buses" (coloridos autobuses escolares estadounidenses convertidos) son baratos e icónicos; las vans de traslado conectan los principales destinos turísticos.
+            </p>
+        </div>
+
+        <!-- Conclusion -->
+        <h2>
+            <span class="en">🌟 Final Thoughts</span>
+            <span class="ur urdu-text" style="display:none;">🌟 آخری خیالات</span>
+            <span class="hi hindi-text" style="display:none;">🌟 अंतिम विचार</span>
+            <span class="es" style="display:none;">🌟 Reflexiones Finales</span>
+        </h2>
+        
+        <p class="en">
+            Guatemala is not a country you simply visit — it's a country that transforms you. Standing atop a Maya temple at Tikal as the jungle chorus swells around you, watching indigenous women weave centuries-old patterns on backstrap looms, or sharing a meal of pepian with a local family — these moments connect you to something ancient and enduring. It's a land where the past isn't buried in museums but breathes in the markets, speaks in 23 languages, and rises majestically from volcanic shores. Guatemala asks something of its visitors: an openness to wonder, a respect for deep tradition, and a willingness to see beauty in resilience. Give it that, and Guatemala will give you memories that glow like quetzal feathers in the sun — iridescent, unforgettable, and utterly precious. <strong>Bienvenidos a Guatemala — the soul of the Maya world awaits.</strong>
+        </p>
+        <p class="ur urdu-text" style="display:none;">
+            گوئٹے مالا ایک ایسا ملک نہیں ہے جو آپ صرف دورہ کریں — یہ ایک ایسا ملک ہے جو آپ کو بدل دیتا ہے۔ ٹیکال پر ایک مایا مندر کی چوٹی پر کھڑے ہوئے جب جنگل کا گانا آپ کے ارد گرد بڑھتا ہے، مقامی خواتین کو صدیوں پرانی پیٹرن بیک اسٹراپ لومز پر بناتے ہوئے دیکھنا، یا ایک مقامی خاندان کے ساتھ پیپیان کا کھانا بانٹنا — یہ لمحات آپ کو کسی قدیم اور پائیدار چیز سے جوڑتے ہیں۔ یہ ایک ایسی سرزمین ہے جہاں ماضی میوزیموں میں دفن نہیں بلکہ منڈیوں میں سانس لیتا ہے، 23 زبانوں میں بولتا ہے، اور آتش فشاں کے ساحلوں سے شاندار طور پر اٹھتا ہے۔ گوئٹے مالا اپنے زائرین سے کچھ مانگتا ہے: حیرت کے لیے کھلا پن، گہری روایت کا احترام، اور لچک میں خوبصورتی دیکھنے کی خواہش۔ اسے یہ دیں، اور گوئٹے مالا آپ کو یادیں دے گا جو سورج میں کیٹزل کے پروں کی طرح چمکتی ہیں — چمکدار، ناقابل فراموش، اور بالکل قیمتی۔ <strong>گوئٹے مالا میں خوش آمدید — مایا دنیا کی روح منتظر ہے۔</strong>
+        </p>
+        <p class="hi hindi-text" style="display:none;">
+            ग्वाटेमाला एक ऐसा देश नहीं है जिसे आप बस घूम लें — यह एक ऐसा देश है जो आपको बदल देता है। टिकाल पर एक माया मंदिर की चोटी पर खड़े हुए जब जंगल का गाना आपके चारों ओर बढ़ता है, स्वदेशी महिलाओं को सदियों पुराने पैटर्न को बैकस्ट्रैप लूम पर बुनते हुए देखना, या एक स्थानीय परिवार के साथ पेपियान का भोजन साझा करना — ये क्षण आपको किसी प्राचीन और स्थायी चीज़ से जोड़ते हैं। यह एक ऐसी भूमि है जहाँ अतीत संग्रहालयों में दबा नहीं है बल्कि बाज़ारों में साँस लेता है, 23 भाषाओं में बोलता है, और ज्वालामुखीय तटों से भव्य रूप से उठता है। ग्वाटेमाला अपने आगंतुकों से कुछ माँगता है: आश्चर्य के लिए खुलापन, गहरी परंपरा का सम्मान, और लचीलापन में सुंदरता देखने की इच्छा। उसे यह दें, और ग्वाटेमाला आपको ऐसी यादें देगा जो सूरज में क्वेट्ज़ल के पंखों की तरह चमकती हैं — चमकीली, अविस्मरणीय, और बिल्कुल कीमती। <strong>Bienvenidos a Guatemala — माया दुनिया की आत्मा इंतज़ार कर रही है।</strong>
+        </p>
+        <p class="es" style="display:none;">
+            Guatemala no es un país que simplemente visitas — es un país que te transforma. Parado en la cima de un templo maya en Tikal mientras el coro de la selva crece a tu alrededor, ver a mujeres indígenas tejer patrones centenarios en telares de cintura, o compartir una comida de pepián con una familia local — estos momentos te conectan con algo antiguo y perdurable. Es una tierra donde el pasado no está enterrado en museos sino que respira en los mercados, habla en 23 idiomas, y se alza majestuosamente desde las costas volcánicas. Guatemala le pide algo a sus visitantes: una apertura a la maravilla, un respeto por la tradición profunda, y una disposición para ver belleza en la resiliencia. Dáselo, y Guatemala te dará recuerdos que brillan como plumas de quetzal al sol — iridiscentes, inolvidables y completamente preciosos. <strong>Bienvenidos a Guatemala — el alma del mundo maya te espera.</strong>
+        </p>
+    </div>
+
+    <div class="footer">
+        <p class="en">© 2026 Guatemala Travel Guide | Written with ❤️ for travelers worldwide</p>
+        <p class="ur urdu-text" style="display:none;">© 2026 گوئٹے مالا سفر گائیڈ | دنیا بھر کے مسافروں کے لیے ❤️ سے لکھا گیا</p>
+        <p class="hi hindi-text" style="display:none;">© 2026 ग्वाटेमाला यात्रा गाइड | दुनिया भर के यात्रियों के लिए ❤️ से लिखा गया</p>
+        <p class="es" style="display:none;">© 2026 Guía de Viaje de Guatemala | Escrito con ❤️ para viajeros de todo el mundo</p>
+    </div>
+</div>
+
+<script>
+    function setLang(lang) {
+        // Hide all language content
+        document.querySelectorAll('.en, .ur, .hi, .es').forEach(el => {
+            el.style.display = 'none';
+        });
+        
+        // Show selected language content
+        document.querySelectorAll('.' + lang).forEach(el => {
+            if (el.classList.contains('urdu-text')) {
+                el.style.display = 'block';
+                el.style.direction = 'rtl';
+            } else if (el.classList.contains('hindi-text')) {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'block';
+            }
+        });
+        
+        // Update button states
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector('.btn-' + lang).classList.add('active');
+        
+        // Update page language attribute
+        const langMap = { 'en': 'en', 'ur': 'ur', 'hi': 'hi', 'es': 'es' };
+        document.documentElement.lang = langMap[lang];
+    }
+    
+    // Initialize with English
+    setLang('en');
+</script>
+
+</body>
+</html>
