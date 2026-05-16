@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uruguay Travel Guide - Discover the Oriental Republic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Noto+Sans+Devanagari&family=Segoe+UI&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #0038a8 0%, #ffffff 50%, #fcd116 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .header::before {
+            content: "☀️";
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 50px;
+            opacity: 0.3;
+        }
+        .header h1 {
+            color: #0038a8;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .header .subtitle {
+            color: #555;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        .lang-bar {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .lang-btn {
+            padding: 10px 25px;
+            margin: 0 5px;
+            border: 2px solid #0038a8;
+            background: white;
+            color: #0038a8;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            background: #0038a8;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,56,168,0.3);
+        }
+        .content {
+            padding: 40px 30px;
+            line-height: 1.8;
+            color: #333;
+        }
+        .lang-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .lang-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .intro-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #0038a8;
+        }
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        .flag-emoji {
+            font-size: 80px;
+        }
+        .city-card {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        .city-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        .city-info {
+            padding: 25px;
+            background: white;
+        }
+        .city-info h3 {
+            color: #0038a8;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #fcd116 0%, #fcd116 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: bold;
+        }
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .culture-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border-top: 4px solid #0038a8;
+        }
+        .culture-item .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            line-height: 2.2;
+            direction: rtl;
+            text-align: right;
+        }
+        .hindi-text {
+            font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
+            line-height: 2;
+        }
+        .meta-tag {
+            display: inline-block;
+            background: #0038a8;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 5px 5px 5px 0;
+        }
+        .footer {
+            background: #0038a8;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .lang-btn { padding: 8px 15px; font-size: 0.85em; }
+            .content { padding: 25px 15px; }
+            .flag-section { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>🇺🇾 Uruguay Travel Guide</h1>
+        <p class="subtitle">Discover South America's Best-Kept Secret</p>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+        <button class="lang-btn" onclick="switchLang('hi')">🇮🇳 हिन्दी</button>
+        <button class="lang-btn" onclick="switchLang('ur')">🇵🇰 اردو</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+
+        <!-- ENGLISH VERSION -->
+        <div id="lang-en" class="lang-section active">
+            <div class="intro-box">
+                <p style="font-size: 1.1em; color: #555;">
+                    <strong>Welcome to Uruguay</strong> — officially the <em>Oriental Republic of Uruguay</em> (República Oriental del Uruguay). Nestled between Brazil and Argentina on South America's Atlantic coast, this small but captivating nation is home to just <span class="highlight">3.4 million people</span>, making it one of the continent's most intimate destinations. Despite its size, Uruguay punches well above its weight in culture, stability, and natural beauty.
+                </p>
+            </div>
+
+            <div class="flag-section">
+                <div class="flag-emoji">🇺🇾</div>
+                <div>
+                    <h3 style="color: #0038a8; margin-bottom: 8px;">The National Flag</h3>
+                    <p>Uruguay's flag features <strong>nine horizontal stripes</strong> — five white and four blue — representing the country's original nine departments. The golden <strong>"Sun of May"</strong> (Sol de Mayo) in the canton symbolizes the dawn of independence and freedom. It is one of the oldest national flags in the world still in use, adopted in 1828.</p>
+                </div>
+            </div>
+
+            <h2 style="color: #0038a8; margin: 30px 0 15px;">🏙️ Famous Cities You Must Visit</h2>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800" alt="Montevideo Skyline" class="city-img">
+                <div class="city-info">
+                    <h3>🏛️ Montevideo — The Capital Soul</h3>
+                    <p>Home to nearly half of Uruguay's population, <strong>Montevideo</strong> is where old-world charm meets modern elegance. Stroll through <em>Ciudad Vieja</em> (Old City) with its colonial architecture, visit the iconic <strong>Palacio Salvo</strong>, and walk the 25km <em>La Rambla</em> promenade along the Río de la Plata. Don't miss the Sunday <em>Feria de Tristán Narvaja</em> flea market — a treasure hunter's paradise. The capital is also the birthplace of <strong>candombe</strong> drum culture and claims its own version of tango history.</p>
+                    <span class="meta-tag">National Language: Spanish</span>
+                    <span class="meta-tag">Population: ~1.7M</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1562673483-d6c5a0a93d?w=800" alt="Punta del Este" class="city-img">
+                <div class="city-info">
+                    <h3>🌊 Punta del Este — The St. Tropez of South America</h3>
+                    <p>Where the wealthy come to play, <strong>Punta del Este</strong> is Uruguay's glamorous peninsula resort. Famous for the giant <strong>"La Mano" (The Hand)</strong> sculpture emerging from Brava Beach, this city blends luxury yachts, high-end dining, and golden Atlantic sunsets. During summer (December–March), it transforms into a buzzing international hub. Visit the historic lighthouse, explore Gorriti Island, or simply people-watch at the yacht harbor with a glass of local <strong>Tannat wine</strong>.</p>
+                    <span class="meta-tag">Best Season: Summer</span>
+                    <span class="meta-tag">Known For: Beaches & Nightlife</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1590725617-369ec2771f2e?w=800" alt="Colonia del Sacramento" class="city-img">
+                <div class="city-info">
+                    <h3>🌿 Colonia del Sacramento — A UNESCO Time Capsule</h3>
+                    <p>Just an hour by ferry from Buenos Aires, <strong>Colonia del Sacramento</strong> is a Portuguese colonial masterpiece frozen in time. Its <em>Barrio Histórico</em> features cobblestone streets, vintage cars, blooming bougainvillea, and the old city gate <em>Puerta de Campo</em>. Founded in 1680 for smuggling goods into Spanish-controlled Argentina, it is now a peaceful haven where you can sip <em>mate</em> by the river and watch the world drift by at 17th-century speed.</p>
+                    <span class="meta-tag">UNESCO Heritage</span>
+                    <span class="meta-tag">Founded: 1680</span>
+                </div>
+            </div>
+
+            <h2 style="color: #0038a8; margin: 30px 0 15px;">🧉 Culture, Language & Traditions</h2>
+            <p style="margin-bottom: 20px;">The <span class="highlight">official and national language is Spanish</span>, specifically the <em>Rioplatense</em> dialect shared with Argentina, flavored by Italian immigration and local expressions like <em>"ta"</em> (okay) and <em>"bo"</em> (hey). Life revolves around three sacred pillars: <strong>mate</strong> (the herbal tea shared communally), <strong>asado</strong> (the ritual of barbecue), and <strong>gaucho</strong> (cowboy) heritage. Uruguayans are famously laid-back — they even have a phrase, <em>"modo barco"</em> (boat mode), meaning total relaxation.</p>
+
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="icon">🧉</div>
+                    <h4>Mate Culture</h4>
+                    <p>Shared everywhere — on beaches, buses, and offices. A symbol of friendship.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥩</div>
+                    <h4>Asado Sundays</h4>
+                    <p>Weekly gatherings to grill premium beef over wood fires with family.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥾</div>
+                    <h4>Gaucho Life</h4>
+                    <p>Experience traditional ranch stays and horseback riding in the pampas.</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥁</div>
+                    <h4>Candombe</h4>
+                    <p>Afro-Uruguayan drum parades during Carnival — a UNESCO-recognized tradition.</p>
+                </div>
+            </div>
+
+            <div style="background: #e8f4f8; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 5px solid #fcd116;">
+                <p><strong>💡 Travel Tip:</strong> Uruguay is one of South America's safest and most politically stable countries. The best time to visit is between <strong>October and March</strong> when the weather is warm and the coastal towns come alive. Whether you're a foodie, history buff, beach lover, or culture seeker — Uruguay welcomes you with open arms and a warm gourd of mate.</p>
+            </div>
+        </div>
+
+        <!-- HINDI VERSION -->
+        <div id="lang-hi" class="lang-section hindi-text">
+            <div class="intro-box">
+                <p style="font-size: 1.1em; color: #555;">
+                    <strong>उरुग्वे में आपका स्वागत है</strong> — आधिकारिक तौर पर <em>ओरिएंटल रिपब्लिक ऑफ उरुग्वे</em> (República Oriental del Uruguay)। दक्षिण अमेरिका के अटलांटिक तट पर ब्राजील और अर्जेंटीना के बीच बसा यह छोटा लेकिन मनमोहक देश मात्र <span class="highlight">3.4 मिलियन लोगों</span> का घर है, जो इसे महाद्वीप का सबसे अंतरंग गंतव्य बनाता है। अपने आकार के बावजूद, उरुग्वे संस्कृति, स्थिरता और प्राकृतिक सुंदरता में कई बड़े देशों को मात देता है।
+                </p>
+            </div>
+
+            <div class="flag-section">
+                <div class="flag-emoji">🇺🇾</div>
+                <div>
+                    <h3 style="color: #0038a8; margin-bottom: 8px;">राष्ट्रीय ध्वज</h3>
+                    <p>उरुग्वे के झंडे में <strong>नौ क्षैतिज धारियाँ</strong> हैं — पांच सफेद और चार नीली — जो देश के मूल नौ विभागों का प्रतीक हैं। कैंटन में सुनहरा <strong>"सन ऑफ मे"</strong> (Sol de Mayo) आजादी और स्वतंत्रता के भोर का प्रतीक है। यह दुनिया में अब भी प्रयोग में आने वाले सबसे पुराने राष्ट्रीय झंडों में से एक है, जिसे 1828 में अपनाया गया था।</p>
+                </div>
+            </div>
+
+            <h2 style="color: #0038a8; margin: 30px 0 15px;">🏙️ प्रसिद्ध शहर जो आपको अवश्य देखने चाहिए</h2>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800" alt="Montevideo" class="city-img">
+                <div class="city-info">
+                    <h3>🏛️ मोंटेवीडियो — राजधानी की आत्मा</h3>
+                    <p>उरुग्वे की लगभग आधी आबादी का घर, <strong>मोंटेवीडियो</strong> पुराने जमाने की खूबसूरती और आधुनिक elegance का संगम है। <em>सिउदाद विएजा</em> (पुराना शहर) में घूमें जहाँ उपनिवेशी वास्तुकला है, प्रतिष्ठित <strong>पैलेसियो साल्वो</strong> देखें, और रío डे ला प्लाटा के साथ 25 किमी लंबी <em>ला रामब्ला</em> पर चलें। रविवार को <em>फेरिया डे ट्रिस्टान नारवाजा</em> फ्ली मार्केट न भूलें — यह खजाने की खोज करने वालों का स्वर्ग है। राजधानी <strong>कैंडोम्बे</strong> ढोल संस्कृति का भी जन्मस्थान है और टैंगो के अपने संस्करण का दावा करती है।</p>
+                    <span class="meta-tag">राष्ट्रीय भाषा: स्पेनिश</span>
+                    <span class="meta-tag">आबादी: ~1.7 मिलियन</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1562673483-d6c5a0a93d?w=800" alt="Punta del Este" class="city-img">
+                <div class="city-info">
+                    <h3>🌊 पुंता डेल एस्टे — दक्षिण अमेरिका का सेंट ट्रोपेज़</h3>
+                    <p>जहाँ अमीर खेलने आते हैं, <strong>पुंता डेल एस्टे</strong> उरुग्वे का ग्लैमरस प्रायद्वीप रिसॉर्ट है। ब्रावा बीच से निकलती विशाल <strong>"ला मानो" (हाथ)</strong> मूर्ति के लिए प्रसिद्ध, यह शहर लक्जरी यॉट, उच्च-स्तरीय भोजन और सुनहरे अटलांटिक सूर्यास्त को समेटे हुए है। गर्मियों में (दिसंबर-मार्च), यह एक गुलजार अंतरराष्ट्रीय केंद्र में बदल जाता है। ऐतिहासिक लाइटहाउस देखें, गोरिटी द्वीप का पता लगाएं, या यॉट बंदरगाह पर स्थानीय <strong>टैनाट वाइन</strong> का एक गिलास लेकर लोगों को देखें।</p>
+                    <span class="meta-tag">सबसे अच्छा मौसम: गर्मी</span>
+                    <span class="meta-tag">प्रसिद्ध: समुद्र तट और नाइटलाइफ</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1590725617-369ec2771f2e?w=800" alt="Colonia" class="city-img">
+                <div class="city-info">
+                    <h3>🌿 कोलोनिया डेल सैक्रामेंटो — एक यूनेस्को टाइम कैप्सूल</h3>
+                    <p>ब्यूनस आयर्स से सिर्फ एक घंटे की फेरी पर, <strong>कोलोनिया डेल सैक्रामेंटो</strong> समय में जमी एक पुर्तगाली उपनिवेशी कलाकृति है। इसका <em>बैरियो हिस्टोरिको</em> पत्थर की सड़कें, विंटेज कारों, खिलते bougainvillea, और पुरानी शहर के द्वार <em>पुएर्टा डे कैंपो</em> को प्रस्तुत करता है। 1680 में स्पेनिश-नियंत्रित अर्जेंटीना में सामान की तस्करी के लिए स्थापित, यह अब एक शांतिहaven है जहाँ आप नदी के किनारे <em>माते</em> पी सकते हैं और 17वीं सदी की गति से दुनिया को गुजरते देख सकते हैं।</p>
+                    <span class="meta-tag">यूनेस्को विरासत</span>
+                    <span class="meta-tag">स्थापना: 1680</span>
+                </div>
+            </div>
+
+            <h2 style="color: #0038a8; margin: 30px 0 15px;">🧉 संस्कृति, भाषा और परंपराएँ</h2>
+            <p style="margin-bottom: 20px;"><span class="highlight">आधिकारिक और राष्ट्रीय भाषा स्पेनिश है</span>, विशेष रूप से <em>रियोप्लातेंस</em> बोली जो अर्जेंटीना के साथ साझा की जाती है, इतालवी आप्रवासन और <em>"ता"</em> (ठीक है) और <em>"बो"</em> (अरे) जैसी स्थानीय अभिव्यक्तियों से समृद्ध। जीवन तीन पवित्र स्तंभों के इर्द-गिर्द घूमता है: <strong>माते</strong> (सामूहिक रूप से साझा की जाने वाली जड़ी-बूटी की चाय), <strong>असादो</strong> (बारबेक्यू का अनुष्ठान), और <strong>गौचो</strong> (काउबॉय) विरासत। उरुग्वे के लोग कुख्यात रूप से शांत हैं — उनके पास तो एक वाक्यांश भी है, <em>"मोडो बार्को"</em> (बोट मोड), जिसका अर्थ है पूर्ण आराम।</p>
+
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="icon">🧉</div>
+                    <h4>माते संस्कृति</h4>
+                    <p>हर जगह साझा किया जाता है — समुद्र तटों, बसों और कार्यालयों में। दोस्ती का प्रतीक।</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥩</div>
+                    <h4>असादो रविवार</h4>
+                    <p>परिवार के साथ लकड़ी की आग पर प्रीमियम बीफ ग्रिल करने के साप्ताहिक समागम।</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥾</div>
+                    <h4>गौचो जीवन</h4>
+                    <p>पैंपास में पारंपरिक रांच ठहराव और घुड़सवारी का अनुभव करें।</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥁</div>
+                    <h4>कैंडोम्बे</h4>
+                    <p>कार्निवल के दौरान अफ्री-उरुग्वेयन ढोल परेड — एक यूनेस्को-मान्यता प्राप्त परंपरा।</p>
+                </div>
+            </div>
+
+            <div style="background: #e8f4f8; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 5px solid #fcd116;">
+                <p><strong>💡 यात्रा सुझाव:</strong> उरुग्वे दक्षिण अमेरिका का सबसे सुरक्षित और राजनीतिक रूप से सबसे स्थिर देशों में से एक है। यात्रा का सबसे अच्छा समय <strong>अक्टूबर और मार्च</strong> के बीच है जब मौसम गर्म हो और तटीय कस्बे जीवंत हो जाएँ। चाहे आप एक फूडी हों, इतिहास प्रेमी, समुद्र तट प्रेमी, या संस्कृति खोजकर्ता — उरुग्वे आपको खुले बाहों और गर्म माते के कलश के साथ स्वागत करता है।</p>
+            </div>
+        </div>
+
+        <!-- URDU VERSION -->
+        <div id="lang-ur" class="lang-section urdu-text">
+            <div class="intro-box">
+                <p style="font-size: 1.1em; color: #555;">
+                    <strong>یوراگوئے میں خوش آمدید</strong> — سرکاری طور پر <em>آرینٹل ریپبلک آف یوراگوئے</em> (República Oriental del Uruguay)۔ جنوبی امریکہ کے ایٹلانٹک ساحل پر برازیل اور ارجنٹائن کے درمیان واقع یہ چھوٹا لیکن دلکش ملک صرف <span class="highlight">3.4 ملین افراد</span> کا گھر ہے، جو اسے براعظم کا سب سے پرسکون مقام بناتا ہے۔ اپنے سائز کے باوجود، یوراگوئے ثقافت، استحکام اور قدرتی حسن میں بہت بڑے ممالک کو مات دےتا ہے۔
+                </p>
+            </div>
+
+            <div class="flag-section">
+                <div class="flag-emoji">🇺🇾</div>
+                <div>
+                    <h3 style="color: #0038a8; margin-bottom: 8px;">قومی پرچم</h3>
+                    <p>یوراگوئے کے پرچم میں <strong>نو افقی دھاریاں</strong> ہیں — پانچ سفید اور چار نیلی — جو ملک کے اصل نو محکموں کی نمائندگی کرتی ہیں۔ کینٹن میں سنہرا <strong>"سن آف مے"</strong> (Sol de Mayo) آزادی اور آزادئ کی صبح کا символ ہے۔ یہ دنیا میں اب بھی استعمال ہونے والے قدیم ترین قومی پرچموں میں سے ایک ہے، جسے 1828 میں اپنایا گیا تھا۔</p>
+                </div>
+            </div>
+
+            <h2 style="color: #0038a8; margin: 30px 0 15px;">🏙️ مشہور شہر جو آپ ضرور دیکھیں</h2>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800" alt="Montevideo" class="city-img">
+                <div class="city-info">
+                    <h3>🏛️ مونٹیویڈیو — دارالحکومت کی روح</h3>
+                    <p>یوراگوء کی تقریباً آدھی آبادی کا گھر، <strong>مونٹیویڈیو</strong> جہاں پرانی دنیا کی کشش اور جدید نفاست کا امتزاج ہے۔ <em>سیوداد ویجا</em> (پرانا شہر) میں سیر کریں جہاں نوآبادیاتی فن تعمیر ہے، شاندار <strong>پیلاسیو سالوو</strong> دیکھیں، اور رío de la Plata کے ساتھ 25 کلومیٹر لمبی <em>لا رامبلا</em> پر چہل قدمی کریں۔ اتوار کو <em>فیریا دے ٹرسٹان نارواجا</em> فلائی مارکیٹ نہ بھولیں — یہ خزانے کی تلاش کرنے والوں کا جنت ہے۔ دارالحکومت <strong>کینڈومبے</strong> ڈھول ثقافت کا بھی جنم مقام ہے اور ٹینگو کے اپنے ورژن کا دعویٰ کرتی ہے۔</p>
+                    <span class="meta-tag">قومی زبان: ہسپانوی</span>
+                    <span class="meta-tag">آبادی: ~1.7 ملین</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1562673483-d6c5a0a93d?w=800" alt="Punta del Este" class="city-img">
+                <div class="city-info">
+                    <h3>🌊 پونٹا ڈیل اسٹی — جنوبی امریکہ کا سینٹ ٹروپز</h3>
+                    <p>جہاں امیر کھیلنے آتے ہیں، <strong>پونٹا ڈیل اسٹی</strong> یوراگوئے کا پرتعیش جزیرہ نما ریزورٹ ہے۔ براوا بیچ سے ابھرتے ہوئے دیو <strong>"لا مانو" (ہاتھ)</strong> مجسمے کے لیے مشہور، یہ شہر لگژری یخت، اعلیٰ درجے کی خوراک اور سنہرے ایٹلانٹک سورج غروب کو سمیٹے ہوئے ہے۔ گرمیوں میں (دسمبر-مارچ)، یہ ایک سرگرم بین الاقوامی مرکز میں تبدیل ہو جاتا ہے۔ تاریخی لائٹ ہاؤس دیکھیں، گورٹی جزیرہ دریافت کریں، یا یخت بندرگاہ پر مقامی <strong>ٹیناٹ شراب</strong> کا ایک گلاس لیے لوگوں کو دیکھیں۔</p>
+                    <span class="meta-tag">بہترین موسم: گرمی</span>
+                    <span class="meta-tag">مشہور: ساحل اور نائٹ لائف</span>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1590725617-369ec2771f2e?w=800" alt="Colonia" class="city-img">
+                <div class="city-info">
+                    <h3>🌿 کولونیا دل ساکرامینٹو — ایک یونیسکو ٹائم کیپسول</h3>
+                    <p>بیونس آئرس سے صرف ایک گھنٹے کی فیری پر، <strong>کولونیا دل ساکرامینٹو</strong> وقت میں جمے ایک پرتگالی نوآبادیاتی شاہکار ہے۔ اس کا <em>بیریو ہسٹوریکو</em> پتھر کی سڑکیں، ونٹیج کاریں، کھلتے bougainvillea، اور پرانے شہر کا دروازہ <em>پوئرتا دے کیمپو</em> پیش کرتا ہے۔ 1680 میں ہسپانوی زیر کنٹرول ارجنٹائن میں سامان کی اسمگلنگ کے لیے قائم، یہ اب ایک پرامن پناہ گاہ ہے جہاں آپ دریا کے کنارے <em>ماتے</em> پی سکتے ہیں اور 17ویں صدی کی رفتار سے دنیا کو گزرتے ہوئے دیکھ سکتے ہیں۔</p>
+                    <span class="meta-tag">یونیسکو ورثہ</span>
+                    <span class="meta-tag">تاسیس: 1680</span>
+                </div>
+            </div>
+
+            <h2 style="color: #0038a8; margin: 30px 0 15px;">🧉 ثقافت، زبان اور روایات</h2>
+            <p style="margin-bottom: 20px;"><span class="highlight">سرکاری اور قومی زبان ہسپانوی ہے</span>, خاص طور پر <em>ریوپلاتینس</em> لہجہ جو ارجنٹائن کے ساتھ مشترکہ ہے، اطالوی ہجرت اور <em>"تا"</em> (ٹھیک ہے) اور <em>"بو"</em> (سنیں) جیسی مقامی عبارات سے مالا مال۔ زندگی تین مقدس ستونوں کے گرد گھومتی ہے: <strong>ماتے</strong> (اجتماعی طور پر شیئر کی جانے والی جڑی بوٹی کی چائے), <strong>اسادو</strong> (باربی کیو کا رسم), اور <strong>گاؤچو</strong> (کاؤ بوائے) وراثت۔ یوراگوئین مشہور طور پر پرسکون ہیں — ان کے پاس تو ایک جملہ بھی ہے، <em>"موڈو بارکو"</em> (بوٹ موڈ)، جس کا مطلب ہے مکمل آرام۔</p>
+
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="icon">🧉</div>
+                    <h4>ماتے ثقافت</h4>
+                    <p>ہر جگہ شیئر کیا جاتا ہے — ساحلوں، بسوں اور دفتروں میں۔ دوستی کا symbol۔</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥩</div>
+                    <h4>اتوار اسادو</h4>
+                    <p>لکڑی کی آگ پر پریمیم بیف گرل کرنے کے ہفتہ وار اجتماع خاندان کے ساتھ۔</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥾</div>
+                    <h4>گاؤچو زندگی</h4>
+                    <p>پیمپاس میں روایتی رانچ قیام اور گھڑ سواری کا تجربہ کریں۔</p>
+                </div>
+                <div class="culture-item">
+                    <div class="icon">🥁</div>
+                    <h4>کینڈومبے</h4>
+                    <p>کارنیول کے دوران افریقی-یوراگوئین ڈھول پریڈ — ایک یونیسکو تسلیم شدہ روایت۔</p>
+                </div>
+            </div>
+
+            <div style="background: #e8f4f8; padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 5px solid #fcd116;">
+                <p><strong>💡 سفر کا مشورہ:</strong> یوراگوئے جنوبی امریکہ کا سب سے محفوظ اور سیاسی طور پر سب سے مستحکم ملکوں میں سے ایک ہے۔ سفر کا بہترین وقت <strong>اکتوبر اور مارچ</strong> کے درمیان ہے جب موسم گرم ہو اور ساحلی قصبے زندہ ہو جائیں۔ چاہے آپ ایک کھانے کے شوقین ہوں، تاریخ کے دلدادہ، ساحل کے عاشق، یا ثقافت کے تلاش کار — یوراگوئے آپ کو کھلے بازوؤں اور گرم ماتے کے گھڑے کے ساتھ خوش آمدید کہتا ہے۔</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>🇺🇾 Uruguay Travel Guide | Created with ❤️ for Global Explorers</p>
+        <p style="margin-top: 8px; opacity: 0.9;">National Language: Spanish (Español) | Best Time: Oct–Mar</p>
+    </div>
+</div>
+
+<script>
+    function switchLang(lang) {
+        // Hide all sections
+        document.querySelectorAll('.lang-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Remove active class from all buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Show selected section
+        document.getElementById('lang-' + lang).classList.add('active');
+        
+        // Add active class to clicked button
+        event.target.classList.add('active');
+        
+        // Update body direction for Urdu
+        if(lang === 'ur') {
+            document.body.style.direction = 'rtl';
+        } else {
+            document.body.style.direction = 'ltr';
+        }
+    }
+</script>
+
+</body>
+</html>
