@@ -1,0 +1,417 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haiti Travel Guide – Discover the Pearl of the Caribbean</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2d3436;
+            line-height: 1.8;
+            padding-bottom: 40px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #006241, #00218f);
+            color: #fff;
+            padding: 50px 20px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .lang-bar {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .lang-btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: #dfe6e9;
+            color: #2d3436;
+        }
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .lang-btn.active {
+            background: #d35400;
+            color: white;
+        }
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        .card h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c;
+            display: inline-block;
+        }
+        .card p {
+            font-size: 1.05em;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .tips-box {
+            background: #e8f6f3;
+            border-left: 5px solid #006241;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .tips-box h3 { color: #006241; margin-bottom: 10px; }
+        .tips-box ul { margin-left: 20px; }
+        .tips-box li { margin-bottom: 8px; }
+        .flag-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+        .flag-img {
+            width: 180px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+        .city-img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin: 20px 0;
+            object-fit: cover;
+            max-height: 450px;
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #636e72;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #636e72;
+            font-size: 0.9em;
+        }
+        .tag {
+            display: inline-block;
+            background: #006241;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 5px 5px 0 0;
+        }
+        @media(max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .card { padding: 20px; }
+            .flag-section { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 id="main-title">Haiti Travel Guide</h1>
+    <p id="sub-title">Discover the Unspoiled Pearl of the Caribbean</p>
+</div>
+
+<div class="container">
+
+    <!-- Language Selector -->
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="setLang('en')">🇺🇸 English</button>
+        <button class="lang-btn" onclick="setLang('ur')">🇵🇰 اردو</button>
+        <button class="lang-btn" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        <button class="lang-btn" onclick="setLang('ht')">🇭🇹 Kreyòl</button>
+    </div>
+
+    <!-- Introduction -->
+    <div class="card">
+        <h2 id="intro-title">Welcome to Haiti</h2>
+        <div class="content en">
+            <p>Haiti is a Caribbean nation that shares the island of Hispaniola with the Dominican Republic to its east. Known as the <span class="highlight">"Pearl of the Antilles,"</span> Haiti is a land of remarkable beauty, rich history, and resilient culture. Despite facing significant challenges, this country offers travelers an authentic experience filled with warm hospitality, stunning coastlines, and a deeply rooted heritage that remains unmatched anywhere else in the Americas.</p>
+            <p>What makes Haiti truly special is its identity as the world's first Black-led republic and the first independent nation of Latin America and the Caribbean. Following a successful slave rebellion against French colonial rule, Haiti declared independence on <strong>January 1, 1804</strong>. This remarkable history of courage and freedom still pulses through the streets, music, and art of this incredible nation today.</p>
+            <p>The official languages are <strong>French</strong> and <strong>Haitian Creole (Kreyòl)</strong>. French is used in government and legal affairs, while Kreyòl, a beautiful fusion of French, African languages, and indigenous Taíno elements, is the language spoken by virtually every Haitian in daily life.</p>
+        </div>
+        <div class="content ur" style="display:none;" dir="rtl">
+            <p>ہیٹی ایک کیریبین ملک ہے جو مشرق میں ڈومینیکن ریپبلک کے ساتھ جزیرہ ہسپانیولا کا اشتراک کرتا ہے۔ <span class="highlight">"پیرل آف دی اینٹیلز"</span> کے نام سے مشہور، ہیٹی قابل ذکر خوبصورتی، امیر تاریخ اور لچکدار ثقافت کا سرزمین ہے۔ اہم چیلنجوں کا سامنا کرنے کے باوجود، یہ ملک مسافروں کو گرم جوش مہمان نوازی، شاندار ساحلوں، اور گہری جڑوں والی وراثت سے بھرپور ایک اصلی تجربہ پیش کرتا ہے جو امریکہ میں کہیں اور بے مثال ہے۔</p>
+            <p>ہیٹی کو واقعی خاص بنانے والی بات اس کی پہچان ہے کہ یہ دنیا کی پہلی بلیک لیڈ ریپبلک اور لاطینی امریکہ اور کیریبین کا پہلا آزاد ملک ہے۔ فرانسیسی نوآبادیاتی حکمرانی کے خلاف کامیاب غلام بغاوت کے بعد، ہیٹی نے <strong>1 جنوری 1804</strong> کو آزادی کا اعلان کیا۔ آج بھی اس عظیم تاریخ کی بہادری اور آزادی اس ناقابل یقین ملک کی گلیوں، موسیقی اور فن میں دل کی دھڑکن ہے۔</p>
+            <p>سرکاری زبانیں <strong>فرانسیسی</strong> اور <strong>ہیٹی کریول (کرییول)</strong> ہیں۔ فرانسیسی حکومت اور قانونی معاملات میں استعمال ہوتی ہے، جبکہ کرییول — فرانسیسی، افریقی زبانوں، اور مقامی ٹائنو عناصر کا ایک خوبصورت امتزاج — تقریباً ہر ہیٹی شخص کی روزمرہ زندگی میں بولی جانے والی زبان ہے۔</p>
+        </div>
+        <div class="content hi" style="display:none;">
+            <p>हैती एक कैरेबियन देश है जो पूर्व में डोमिनिकन गणराज्य के साथ हिस्पानियोला द्वीप साझा करता है। <span class="highlight">"पर्ल ऑफ द एंटिलीज़"</span> के नाम से जाना जाने वाला, हैती असाधारण सुंदरता, समृद्ध इतिहास और लचीली संस्कृति की भूमि है। महत्वपूर्ण चुनौतियों का सामना करने के बावजूद, यह देश यात्रियों को स्नेहपूर्ण आतिथ्य, आश्चर्यजनक समुद्र तटों और गहरी जड़ों वाली विरासत से भरा एक प्रामाणिक अनुभव प्रदान करता है जो अमेरिका में कहीं और बेजोड़ है।</p>
+            <p>हैती को वास्तव में विशेष बनाता है इसकी पहचान दुनिया की पहली काले-नेतृत्व वाली गणराज्य और लैटिन अमेरिका और कैरेबियन का पहला स्वतंत्र राष्ट्र होना। फ्रांसीसी औपनिवेशिक शासन के खिलाफ एक सफल दास विद्रोह के बाद, हैती ने <strong>1 जनवरी 1804</strong> को स्वतंत्रता की घोषणा की। आज भी साहस और स्वतंत्रता की यह असाधारण कहानी इस अविश्वसनीय राष्ट्र की सड़कों, संगीत और कला में संचालित होती है।</p>
+            <p>आधिकारिक भाषाएँ <strong>फ्रेंच</strong> और <strong>हैतियाई क्रियोल (क्रेओल)</strong> हैं। फ्रेंच सरकार और कानूनी मामलों में उपयोग किया जाता है, जबकि क्रेओल — फ्रेंच, अफ्रीकी भाषाओं, और स्वदेशी ताइनो तत्वों का एक सुंदर मिश्रण — लगभग हर हैतियाई व्यक्ति की दैनिक जीवन में बोली जाने वाली भाषा है।</p>
+        </div>
+        <div class="content ht" style="display:none;">
+            <p>Ayiti se yon peyi nan Karayib ki pataje zile Espayola ak Repiblik Dominikèn nan bò solèy leve li. Byen li te konnen kòm <span class="highlight">"Perlas Antiy yo,"</span> Ayiti se yon peyi ki gen bote remakab, yon istwa rich, ak yon kiltè ki gen anpil rezistans. Malgre difikilte enpòtan yo, peyi sa a ofri vwayajè yon eksperyans otantik plen ak akèy cho, bès etonnan, ak yon eritaj ki gen rasin fon ki san parèy anba zepòl Lamerik oswa nan Karayib la.</p>
+            <p>Sa ki fè Ayiti espesyal tout bon se idantite li kòm premye repiblik ki te dirije pa moun nwa epi premye nasyon endepandan Amerik laten ak Karayib la apre yon rebelyon esklav ki te gen siksès kont dominasyon kolonyal Fransèz la. Ayiti te deklare endepandans li <strong>1ye janvye 1804</strong>. Istwa ekstraòdinè sa a sou kouraj ak libète a ap toujou bat nan lari, mizik, ak ati peyi etonnan sa a jodi a.</p>
+            <p>Lang ofisyèl yo se <strong>Franse</strong> ak <strong>Kreyòl Ayisyen</strong>. Yo itilize franse nan zafè gouvènman ak legal, pandan Kreyòl la, yon bèl melanje franse, lang Afriken, ak eleman Taïno endijèn, se lang ki prèske tout Ayisyen pale nan lavi chak jou a.</p>
+        </div>
+        <div>
+            <span class="tag">🏝️ Caribbean</span>
+            <span class="tag">🌍 Island Nation</span>
+            <span class="tag">🎭 Rich Culture</span>
+        </div>
+    </div>
+
+    <!-- The Flag -->
+    <div class="card">
+        <h2 id="flag-title">National Flag & Symbolism</h2>
+        <div class="flag-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Haiti.svg" alt="Flag of Haiti" class="flag-img">
+            <div class="content en">
+                <p>The <strong>flag of Haiti</strong> consists of two horizontal bands of blue and red, with the national coat of arms in the center. The colors hold profound meaning: <strong>blue</strong> represents the Black citizens and formerly enslaved peoples of Haiti, while <strong>red</strong> symbolizes the mulatto population and the blood shed during the fight for freedom. These colors were originally derived from the French Tricolor, with the white stripe removed to symbolize the eradication of colonial oppression. The coat of arms features a palm tree topped with the Phrygian cap of liberty, surrounded by trophies and cannons — a powerful emblem of a nation born through revolution.</p>
+            </div>
+            <div class="content ur" style="display:none;" dir="rtl">
+                <p><strong>ہیٹی کا پرچم</strong> دو افقی نیلے اور سرخ دھاریوں پر مشتمل ہے، جس کے مرکز میں قومی کوٹ آف آرمس ہے۔ ان رنگوں میں گہرا معنی ہے: <strong>نیلا</strong> ہیٹی کے سیاہ شہریوں اور سابق غلاموں کی نمائندگی کرتا ہے، جبکہ <strong>سرخ</strong> مولیٹو آبادی اور آزادی کی جنگ کے دوران بہائے گئے خون کی علامت ہے۔ یہ رنگ اصل میں فرانسیسی ترسّل سے لیے گئے تھے، جس میں سفید دھاری ہٹا دی گئی تاکہ نوآبادیاتی ظلم و ستم کے خاتمے کی علامت بن سکے۔ کوٹ آف آرمز میں ایک کھجور کا درخت ہے جس پر آزادی کی پھریجین ٹوپی ہے، جسے ٹروفیاں اور توپیں گھیرے ہوئے ہیں — ایک انقلاب سے پیدا ہونے والے ملک کی طاقتور علامت۔</p>
+            </div>
+            <div class="content hi" style="display:none;">
+                <p><strong>हैती का ध्वज</strong> दो क्षैतिज नीली और लाल पट्टियों से बना है, जिसके केंद्र में राष्ट्रीय कोट ऑफ आर्म्स है। इन रंगों का गहरा अर्थ है: <strong>नीला</strong> हैती के काले नागरिकों और पूर्व में गुलाम लोगों का प्रतिनिधित्व करता है, जबकि <strong>लाल</strong> मुलातो आबादी और स्वतंत्रता के लिए लड़ाई के दौरान बहाए गए खून का प्रतीक है। ये रंग मूल रूप से फ्रांसीसी ट्राइकलर से लिए गए थे, जिसमें उपनिवेशवादी उत्पीड़न के उन्मूलन का प्रतीक बनाने के लिए सफेद पट्टी को हटा दिया गया था। कोट ऑफ आर्म्स में एक खजूर का पेड़ है जो स्वतंत्रता की फ्राइजियन टोपी से सजा है, जो ट्रॉफियों और तोपों से घिरा हुआ है — एक क्रांति के माध्यम से जन्मे राष्ट्र का शक्तिशाली प्रतीक।</p>
+            </div>
+            <div class="content ht" style="display:none;">
+                <p><strong>Drapo Ayiti a</strong> fèt ak de bann wouj ak ble ki andireyontal, ak pam nasyonal nan mitan li. Koulè sa yo gen yon siyifikasyon pwofon: <strong>ble a</strong> reprezante moun nwa Ayiti ak moun ki te esklav anvan an, pandan <strong>wouj la</span> senbolize popilasyon milat la ak san ki te koule pandan batay pou libète a. Koulè orijinal sa yo soti nan Tricolore franse a, ak wòch blanch ki te retire pou senbolize eliminasyon opresyon kolonyal la. Panno nasyonal la gen yon pyebwa kann nan mitan li ak bon libète Frigian anwo l, ki antoure ak twofe ak gwo zam kann — yon anblèm puissant nan yon nasyon ki fèt nan revolisyon an.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cap-Haïtien City -->
+    <div class="card">
+        <h2 id="city-title">Cap-Haïtien – The Jewel of the North</h2>
+        <img src="https://v3b.fal.media/files/b/0a9a7855/VdiwV1hZbA-KsiNNqdufBG_10CH4WaH.png" alt="Cap-Haïtien Haiti" class="city-img">
+        <p class="caption" id="caption-text">The stunning cityscape of Cap-Haïtien with the historic Citadelle Laferrière in the distance</p>
+
+        <div class="content en">
+            <p>If there is one place in Haiti that completely steals your heart, it is <strong>Cap-Haïtien</strong>. Known locally as simply "Le Cap," this coastal city is often hailed as the cultural capital of Haiti and hosts some of the most breathtaking colonial-era architecture in the entire Caribbean. Strolling through its narrow streets lined with pastel-colored buildings, wrought-iron balconies, and lively markets, you feel as though you've stepped back into a beautifully preserved piece of history.</p>
+            <p>Cap-Haïtien was once the richest city in the Caribbean during the French colonial period, serving as the capital of Saint-Domingue before the revolution. Today, it remains Haiti's second-largest city and serves as the main gateway to the country's most iconic UNESCO World Heritage Site — <strong>the Citadelle Laferrière</strong>. This massive mountaintop fortress, built by King Henri Christophe in the early 19th century, is the largest fortress in the Americas and one of the most impressive architectural feats you will ever witness. From its ramparts, you can gaze across rolling green hills all the way to the Atlantic Ocean.</p>
+            <p>The city also offers beautiful nearby beaches like <strong>Labadee</strong> and <strong>Cormier Plage</strong>, where turquoise waters meet powdery golden sands. Beyond sightseeing, Cap-Haïtien is famous for its vibrant carnival celebrations, traditional Rara music processions during Easter, and some of the best Haitian cuisine you will ever taste — from spicy griot (fried pork) to fresh lobster and creamy rum-infused drinks.</p>
+        </div>
+        <div class="content ur" style="display:none;" dir="rtl">
+            <p>اگر ہیٹی میں ایک جگہ ہے جو آپ کا دل مکمل طور پر چوری کر لیتی ہے، تو وہ <strong>کیپ-ہیشین</strong> ہے۔ مقامی طور پر صرف "لے کیپ" کے نام سے جانا جاتا ہے، یہ ساحلی شہر اکثر ہیٹی کا ثقافتی دارالحکومت قرار دیا جاتا ہے اور پورے کیریبین میں نوآبادیاتی دور کی باشکاور تعمیرات میں سے کچھ کی میزبانی کرتا ہے۔ پاسٹل رنگوں والی عمارتوں، فورج آئرن بالکونیوں، اور پرجوش بازاروں سے لددی اس کی تنگ گلیوں میں گھومتے ہوئے، آپ کو ایسا محسوس ہوتا ہے جیسے آپ تاریخ کے ایک خوبصورت محفوظ حصے میں واپس قدم رکھ چکے ہیں۔</p>
+            <p>کیپ-ہیشین ایک زمانے میں فرانسیسی نوآبادیاتی دور کے دوران کیریبین کا سب سے امیر شہر تھا، اور یہ انقلاب سے پہلے سینٹ-ڈومنگ کا دارالحکومت تھا۔ آج، یہ ہیٹی کا دوسرا سب سے بڑا شہر ہے اور ملک کی سب سے مشہور یونیسکو عالمی وراثت کی جگہ تک رسائی کا اہم دروازہ ہے — <strong>سیٹیڈیل لیفرریییر</strong>۔ یہ وسیع پہاڑی چوٹی کا قلعہ، جو کنگ ہنری کرسٹوف نے 19ویں صدی کے اوائل میں تعمیر کیا تھا، امریکہ کا سب سے بڑا قلعہ ہے اور آپ نے کبھی گواہی دی ہوگی سب سے متاثر کن معماری کارناموں میں سے ایک ہے۔ اس کے فصیلوں سے، آپ سرسبز و شاداب سبز پہاڑیوں کو اٹلانٹک سمندر تک دیکھ سکتے ہیں۔</p>
+            <p>شہر خوبصورت قریبی ساحلیں بھی پیش کرتا ہے جیسے <strong>لیباڈی</strong> اور <strong>کورمیر پلیج</strong>، جہاں فیروزی پانی سنہری ریت سے ملتا ہے۔ دیکھنے کے علاوہ، کیپ-ہیشین اپنے پرجوش کارنیول تہواروں، ایسٹر کے دوران روایتی رارا موسیقی کے جلوسوں، اور کچھ بہترین ہیٹیائی پکوانوں کے لیے مشہور ہے جو آپ نے کبھی چکھے ہوں گے — مسالے دار گریوٹ (تلا ہوا سور کا گوشت) سے لے کر تازہ لوبسٹر اور کریمی رم سے بھری مشروبات تک۔</p>
+        </div>
+        <div class="content hi" style="display:none;">
+            <p>अगर हैती में एक जगह है जो आपका दिल पूरी तरह चुरा लेती है, तो वह <strong>कैप-हैतिएन</strong> है। स्थानीय रूप से इसे सिर्फ "ले कैप" के नाम से जाना जाता है, इस तटीय शहर को अक्सर हैती की सांस्कृतिक राजधानी कहा जाता है और यह पूरे कैरेबियन में सबसे लुभावने औपनिवेशिक-युग की वास्तुकला में से कुछ की मेजबानी करता है। पास्टल रंग की इमारतों, इष्टतiffin बालकनियों और जीवंत बाजारों से सजी इसकी संकरी गलियों में टहलते हुए, आपको ऐसा महसूस होता है जैसे आप इतिहास के एक खूबसूरत संरक्षित टुकड़े में वापस कदम रख चुके हैं।</p>
+            <p>कैप-हैतिएन एक समय में फ्रांसीसी औपनिवेशिक अवधि के दौरान कैरेबियन का सबसे अमीर शहर था, और यह क्रांति से पहले सेंट-डोमिंग की राजधानी था। आज, यह हैती का दूसरा सबसे बड़ा शहर है और देश की सबसे प्रतिष्ठित यूनेस्को विश्व धरोहर स्थल तक पहुंच का मुख्य द्वार है — <strong>सिटाडेल लाफेरिएर</strong>। यह विशाल पहाड़ी शीर्ष किला, जिसे राजा हेनरी क्रिस्टोफ ने 19वीं शताब्दी की शुरुआत में बनवाया था, अमेरिका का सबसे बड़ा किला है और सबसे प्रभावशाली वास्तुशिल्प उपलब्धियों में से एक है जिसे आप कभी देखेंगे। इसके बुर्ज से, आप हरे-भरे पहाड़ों को अटलांटिक महासागर तक देख सकते हैं।</p>
+            <p>शहर खूबसूरत नजदीकी समुद्र तट भी प्रदान करता है, जैसे <strong>लाबाडी</strong> और <strong>कॉर्मियर प्लाज</strong>, जहां फिरोजी पानी सुनहरी रेत से मिलता है। दर्शनीय स्थलों के अलावा, कैप-हैतिएन अपने जीवंत कार्निवाल उत्सव, ईस्टर के दौरान पारंपरिक रारा संगीत जुलूस, और कुछ बेहतरीन हैतियाई व्यंजनों के लिए प्रसिद्ध है जो आपने कभी चखे होंगे — मसालेदार ग्रियो (तला हुआ सुअर का मांस) से लेकर ताजा लॉबस्टर और क्रीमी रम-युक्त पेय तक।</p>
+        </div>
+        <div class="content ht" style="display:none;">
+            <p>Si gen yon kote nan peyi Ayiti ki ka pran tout kè w tout bon, se <strong>Okap</strong> (Kap Ayisyen) li ye. Konnen jis kòm "Kafou" oswa "Kap", sitiyasyon linivèsitè sa a sou lanmè yo souvan dirije kòm kapital kiltirèl Ayiti a epi li genyen kèk nan achitekti epòk kolon lal ki pi bèl nan tout Karayib la. Lè w ap pase mache nan ri a ki etwat ki bòde ak kay ki gen koulè pastel, bal kèy fèr fòje, ak mache ki gen aktivite, ou santi tankou w te fè yon pa retounen nan yon moso istwa ki byen konserve ki bèl anpil.</p>
+            <p>Kap Ayisyen te alafwa lavil ki pi rich nan Karayib la pandan peryòd kolon franse a, li te sèvi kòm kapital Sen-Doming anvan revolisyon an. Jodi a, li rete dezyèm gwo lavil Ayiti a epi li sèvi kòm pòtay prensipal pou pi gwo sit mayond Ayiti a — <strong>Sitadèl Laferyè</strong>. Fòtèris pwin mòn sa a, ki te konstwi pa Wa Henri Christophe nan kòmansman 19yèm syèk la, se fòtèris ki pi gwo nan Amerik la ak youn nan reyalizasyon achitekti ki pi enpresyonan ou janm wè. Nan miray li yo, ou ka gade sou kolin vèt k ap roule jouk jouk nan Oseyan Atlantik la.</p>
+            <p>Lavil la ofri bèl plaj tou tankou <strong>Labadi</strong> ak <strong>Plaj Kòmye</strong>, kote dlo ble zelyon rankontre sab dore. Lòt pase vizit sit, Kap Ayisyen se yon kote ki popilè pou selebrasyon kanaval li yo aktyivil, defile mizik Rara tradiyonèl pandan Pak, ak kèk nan pi bon manje ayisyen ou janm gouste — soti nan griyo (kochon fri) byen pwaye jiska lanbi fre ak bweson krem ki gen rhum ladan yo.</p>
+        </div>
+    </div>
+
+    <!-- Travel Tips -->
+    <div class="card">
+        <div class="tips-box">
+            <h3 id="tips-title">Travel Tips for Haiti</h3>
+            <div class="content en">
+                <ul>
+                    <li><strong>Best Time to Visit:</strong> November to March offers the most pleasant weather, avoiding the tropical heat and hurricane season.</li>
+                    <li><strong>Currency:</strong> Haitian Gourde (HTG), though US dollars are widely accepted in tourist areas.</li>
+                    <li><strong>Getting There:</strong> Cap-Haïtien International Airport (CAP) or Port-au-Prince International Airport (PAP) are the main entry points.</li>
+                    <li><strong>Must-Try Dishes:</strong> Griot, Diri ak Djon-Djon (black mushroom rice), Soup Joumou (pumpkin soup), and fresh tropical fruit juices.</li>
+                    <li><strong>Safety:</strong> Travel with local guides, avoid walking alone at night, and always remain aware of your surroundings.</li>
+                    <li><strong>Language Tip:</strong> Learn a few phrases in Kreyòl — locals deeply appreciate the effort and respond with incredible warmth.</li>
+                </ul>
+            </div>
+            <div class="content ur" style="display:none;" dir="rtl">
+                <ul>
+                    <li><strong>جانے کا بہترین وقت:</strong> نومبر سے مارچ تک سب سے خوشگوار موسم پیش کرتا ہے، جو استوائی گرمی اور طوفانوں کے موسم سے بچاتا ہے۔</li>
+                    <li><strong>کرنسی:</strong> ہیٹی گورڈ (HTG)، حالانکہ سیاحتی علاقوں میں امریکی ڈالر وسیع طور پر قبول کیے جاتے ہیں۔</li>
+                    <li><strong>وہاں پہنچنا:</strong> کیپ-ہیشین بین الاقوامی ہوائی اڈہ (CAP) یا پورٹ-او-پرنس بین الاقوامی ہوائی اڈہ (PAP) اہم داخلی مقامات ہیں۔</li>
+                    <li><strong>ضرور چکھیں:</strong> گریوٹ، ڈیری اک ڈجون-ڈجون (کالے مشروم چاول)، سوپ جومو (کدو کا سوپ)، اور تازہ استوائی پھلوں کے رس۔</li>
+                    <li><strong>حفاظت:</strong> مقامی رہنماؤں کے ساتھ سفر کریں، رات کو اکیلے چلنے سے گریز کریں، اور ہمیشہ اپنے آس پاس سے آگاہ رہیں۔</li>
+                    <li><strong>زبان کا نکات:</strong> کریول میں چند عبارات سیکھیں — مقامی لوگ اس کوشش کی گہرائی سے تعریف کرتے ہیں اور ناقابل یقین گرمجوشی سے جواب دیتے ہیں۔</li>
+                </ul>
+            </div>
+            <div class="content hi" style="display:none;">
+                <ul>
+                    <li><strong>यात्रा का सर्वोत्तम समय:</strong> नवंबर से मार्च सबसे सुखद मौसम प्रदान करता है, उष्णकटिबंधीय गर्मी और तूफान के मौसम से बचाता है।</li>
+                    <li><strong>मुद्रा:</strong> हaitian Gourde (HTG), हालांकि पर्यटक क्षेत्रों में US डॉलर का व्यापक रूप से स्वीकार किया जाता है।</li>
+                    <li><strong>पहुंचने का तरीका:</strong> कैप-हैतिएन अंतर्राष्ट्रीय हवाई अड्डा (CAP) या पोर्ट-ऑ-प्रिंस अंतर्राष्ट्रीय हवाई अड्डा (PAP) मुख्य प्रवेश बिंदु हैं।</li>
+                    <li><strong>जरूर चखें:</strong> ग्रियो, डिरी अक डजॉन-डजॉन (काली मशरूम चावल), सूप जुमू (कद्दू का सूप), और ताज़ा उष्णकटिबंधीय फलों के रस।</li>
+                    <li><strong>सुरक्षा:</strong> स्थानीय गाइडों के साथ यात्रा करें, रात में अकेले घूमने से बचें, और हमेशा अपने आस-पास के माहौल के प्रति जागरूक रहें।</li>
+                    <li><strong>भाषा टिप:</strong> क्रेओल में कुछ वाक्यांश सीखें — स्थानीय लोग इस प्रयास की बहुत सराहना करते हैं और अविश्वसनीय गर्मजोशी से प्रतिक्रिया करते हैं।</li>
+                </ul>
+            </div>
+            <div class="content ht" style="display:none;">
+                <ul>
+                    <li><strong>Pi Bon Moman pou Vizite:</strong> De novanm rive nan mas ofri tan ki pi dous, evite chalè twopikal la ak sezon siklòn nan.</li>
+                    <li><strong>Lajan:</strong> Goud Ayisyen an (HTG), men dola ameriken aksepte nan anpil kote touris yo.</li>
+                    <li><strong>Kijan Pou Rive:</strong> Ayewopò Entènasyonal Kap Ayisyen (CAP) oswa Ayewopò Entènasyonal Pòtoprans (PAP) se prensipal pòtay antre yo.</li>
+                    <li><strong>Fòk Ou Gouste:</strong> Griyo, Diri ak Djon-Djon, Soup Joumou, ak ji fwi twopikal.</li>
+                    <li><strong>Sekirite:</strong> Vwayaje ak gide lokal, evite mache pou kont ou lannwit, epi toujou ret atantif nan anviwònman w.</li>
+                    <li><strong>Konsèy Lang:</strong> Aprann kèk fraz nan Kreyòl — moun lokal yo apresye sa anpil epi yo reponn ak yon chalè enkwayab.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="card">
+        <h2 id="end-title">Final Thoughts</h2>
+        <div class="content en">
+            <p>Haiti is far more than the headlines you might read. It is a country of <strong>indomitable spirit, breathtaking natural beauty, and soul-stirring culture</strong>. From the mighty Citadelle standing guard over the northern mountains to the rhythms of Rara music echoing through village streets, Haiti invites travelers who seek authenticity over luxury, connection over convenience, and stories that will stay with them forever. If you are willing to look beyond the surface, Haiti will reward you with an experience unlike any other in the Caribbean — raw, real, and absolutely unforgettable.</p>
+        </div>
+        <div class="content ur" style="display:none;" dir="rtl">
+            <p>ہیٹی ان سرخیوں سے کہیں زیادہ ہے جو آپ پڑھ سکتے ہیں۔ یہ <strong>ناقابل تسخیر حوصلے، سانس روک دینے والی قدرتی خوبصورتی، اور روح کو جھنجھوڑ دینے والی ثقافت</strong> کا ملک ہے۔ شمالی پہاڑوں پر چوکسی کرنے والے شاندار قلعے سے لے کر دیہاتی گلیوں میں گونجتی رارا موسیقی کی دھڑکن تک، ہیٹی ان مسافروں کو مدعو کرتا ہے جو عیش و آرام پر اصالت، آرام سے روابط، اور ایسی کہانیوں کی تلاش میں ہیں جو انہیں ہمیشہ کے لیے ساتھ لگا رہیں گی۔ اگر آپ سطح سے آگے دیکھنے کو تیار ہیں، تو ہیٹی آپ کو کیریبین میں کسی اور جگہ کے برعکس ایک تجربے سے نوازے گا — کچا، حقیقی، اور بالکل ناقابل فراموش۔</p>
+        </div>
+        <div class="content hi" style="display:none;">
+            <p>हैती वो सुर्खियों से कहीं अधिक है जो आप पढ़ सकते हैं। यह <strong>अदम्य आत्मा, सांस रोक देने वाली प्राकृतिक सुंदरता, और आत्मा को झकझोर देने वाली संस्कृति</strong> का देश है। उत्तरी पहाड़ों की रखवाली करने वाले शक्तिशाली सिटाडेल से लेकर गाँव की गलियों में गूंजती रारा संगीत की धड़कन तक, हैती उन यात्रियों को आमंत्रित करता है जो भौतिक सुख से अधिक प्रामाणिकता, सुविधा से अधिक कनेक्शन, और ऐसी कहानियों की तलाश में हैं जो उन्हें हमेशा के लिए साथ रखेंगी। यदि आप सतह से परे देखने को तैयार हैं, तो हैती आपको कैरेबियन में कहीं और के विपरीत एक अनुभव से इनाम देगा — कच्चा, असली, और बिल्कुल अविस्मरणीय।</p>
+        </div>
+        <div class="content ht" style="display:none;">
+            <p>Ayiti pi plis pase tit jounal ou ta ka li a. Li se yon peyi ki gen <strong>lespri endomptab, bote natirèl etonnan, ak yon kiltè ki ka tranble nan nanm ou</strong>. Nan Sitadèl ki pwisan an ki veye sou mòn nò yo rive nan rit mizik Rara ki ekri nan lari vilaj yo, Ayiti envite vwayajè ki chache otantikite pase chès, koneksyon pase fasilite, ak istwa toupatou yo. Si ou pare pou gade pi lwen pase sifas la, Ayiti ap rekonpanse ou ak yon eksperyans ki pa gen parèy nan Karayib la — yon sa ki kri, reyèl, epi totalman inoubliyab.</p>
+        </div>
+        <div>
+            <span class="tag">✈️ Travel</span>
+            <span class="tag">❤️ Haiti</span>
+            <span class="tag">🌴 Caribbean</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Made with for travelers worldwide | Bon Voyage! </p>
+        <p>National Languages: French & Haitian Creole (Kreyòl) | For translation: English, Urdu, Hindi, Kreyòl</p>
+    </div>
+
+</div>
+
+<script>
+    function setLang(lang) {
+        // Update button active state
+        const buttons = document.querySelectorAll('.lang-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Show/hide content
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(c => c.style.display = 'none');
+
+        const selected = document.querySelectorAll('.' + lang);
+        selected.forEach(s => s.style.display = 'block');
+
+        // Update page direction for Urdu
+        if (lang === 'ur') {
+            document.body.style.direction = 'rtl';
+        } else {
+            document.body.style.direction = 'ltr';
+        }
+
+        // Update titles based on language
+        const titles = {
+            en: {
+                main: "Haiti Travel Guide",
+                sub: "Discover the Unspoiled Pearl of the Caribbean",
+                intro: "Welcome to Haiti",
+                flag: "National Flag & Symbolism",
+                city: "Cap-Haïtien – The Jewel of the North",
+                caption: "The stunning cityscape of Cap-Haïtien with the historic Citadelle Laferrière in the distance",
+                tips: "Travel Tips for Haiti",
+                end: "Final Thoughts"
+            },
+            ur: {
+                main: "ہیٹی ٹریول گائیڈ",
+                sub: "کارائیب کا بے نقاب موتی دریافت کریں",
+                intro: "ہیٹی میں خوش آمدید",
+                flag: "قومی پرچم اور علامت",
+                city: "کیپ-ہیشین — شمال کا جواہر",
+                caption: "تاریخی سیٹیڈیل لیفرریییر کیا فاصلے پر کیپ-ہیشین کا دلکش شہر کا منظر",
+                tips: "ہیٹی کے لیے سفر کے نکات",
+                end: "آخری خیالات"
+            },
+            hi: {
+                main: "हैती यात्रा गाइड",
+                sub: "कैरेबियन के अनदेखे मोती की खोज करें",
+                intro: "हैती में आपका स्वागत है",
+                flag: "राष्ट्रीय ध्वज और प्रतीकवाद",
+                city: "कैप-हैतिएन — उत्तर का रत्न",
+                caption: "दूर की ऐतिहासिक सिटाडेल लाफेरिएर के साथ कैप-हैतिएन का शानदार नगर दृश्य",
+                tips: "हैती के लिए यात्रा सुझाव",
+                end: "अंतिम विचार"
+            },
+            ht: {
+                main: "Gid Vwayaj Ayiti",
+                sub: "De Scriptures Perlas Karayib la",
+                intro: "Byenveni nan Ayiti",
+                flag: "Drapo ak Sentim Nasyonal",
+                city: "Kap Ayisyen – Bijou Nò a",
+                caption: "Bèl vizaj Kap Ayisyen ak Sitadèl Laferyè ki byen lwen",
+                tips: "Konsèy Vwayaj pou Ayiti",
+                end: "Dènye Pawòl"
+            }
+        };
+
+        const t = titles[lang];
+        document.getElementById('main-title').innerText = t.main;
+        document.getElementById('sub-title').innerText = t.sub;
+        document.getElementById('intro-title').innerText = t.intro;
+        document.getElementById('flag-title').innerText = t.flag;
+        document.getElementById('city-title').innerText = t.city;
+        document.getElementById('caption-text').innerText = t.caption;
+        document.getElementById('tips-title').innerText = t.tips;
+        document.getElementById('end-title').innerText = t.end;
+    }
+</script>
+
+</body>
+</html>
+```
