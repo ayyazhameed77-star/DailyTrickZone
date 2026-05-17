@@ -1,0 +1,959 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papua New Guinea Travel Guide | Ultimate Blogger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E3A;
+            --secondary: #1a3c6e;
+            --gold: #D4AF37;
+            --dark: #1a1a2e;
+            --light: #f8f6f3;
+            --text: #2d2d2d;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* Translation Bar */
+        .translate-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            z-index: 1000;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .translate-bar span {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .lang-btn {
+            padding: 8px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+        }
+        
+        .lang-btn .flag {
+            font-size: 16px;
+        }
+        
+        /* Hero */
+        .hero {
+            margin-top: 60px;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('https://images.trvl-media.com/260bd4026ac7c8d5924eb6df2801403fa908eb5c.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(transparent, var(--light));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: scrollDot 2s infinite;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        /* Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        
+        /* Country Info Card */
+        .info-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .info-item h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        /* Flag Section */
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .flag-img {
+            width: 280px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .flag-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .flag-meaning {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .flag-meaning h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .color-meaning {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .color-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+        
+        /* City Cards */
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .city-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .city-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .city-card:hover .city-img {
+            transform: scale(1.1);
+        }
+        
+        .city-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .city-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3));
+        }
+        
+        .city-content {
+            padding: 25px 30px 30px;
+        }
+        
+        .city-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .city-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .city-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        /* Blog Content */
+        .blog-content {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .blog-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin: 35px 0 15px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            opacity: 0.1;
+            line-height: 1;
+        }
+        
+        .highlight-box p {
+            color: rgba(255,255,255,0.95) !important;
+            margin: 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            border-radius: 15px;
+            color: #fff;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 50px 0 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            max-width: 500px;
+            margin: 0 auto 20px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        @keyframes scrollDot {
+            0% { opacity: 1; top: 8px; }
+            100% { opacity: 0; top: 25px; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .city-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .blog-content { padding: 30px 20px; }
+            .flag-section { flex-direction: column; text-align: center; }
+            .section { padding: 50px 0; }
+            .translate-bar { flex-wrap: wrap; padding: 10px; }
+            .lang-btn { padding: 6px 14px; font-size: 12px; }
+        }
+        
+        /* Hidden class for translation */
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <!-- Translation Bar -->
+    <div class="translate-bar">
+        <span>🌐 Translate:</span>
+        <button class="lang-btn active" onclick="switchLang('en')">
+            <span class="flag">🇬🇧</span> English
+        </button>
+        <button class="lang-btn" onclick="switchLang('tpi')">
+            <span class="flag">🇵🇬</span> Tok Pisin
+        </button>
+        <button class="lang-btn" onclick="switchLang('ho')">
+            <span class="flag">🇵🇬</span> Hiri Motu
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Ultimate Travel Guide 2026</div>
+            <h1>Papua New Guinea</h1>
+            <p class="hero-subtitle">Discover the Land of a Thousand Cultures — Where Ancient Traditions Meet Untamed Wilderness</p>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- Country Overview -->
+        <section class="section">
+            <div class="lang-content active" id="content-en">
+                <h2 class="section-title">Country Overview</h2>
+                <p class="section-subtitle">Essential facts about this fascinating Pacific nation</p>
+            </div>
+            <div class="lang-content" id="content-tpi">
+                <h2 class="section-title">Long Kountri</h2>
+                <p class="section-subtitle">Ol bikpela samting long dispela kain kountri</p>
+            </div>
+            <div class="lang-content" id="content-ho">
+                <h2 class="section-title">Edia Abia</h2>
+                <p class="section-subtitle">Edana dika bona bada habona dika</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="flag-section">
+                    <img src="https://flagcdn.com/w640/pg.png" alt="Papua New Guinea Flag" class="flag-img">
+                    <div class="flag-meaning">
+                        <div class="lang-content active" id="flag-en">
+                            <h3>National Flag</h3>
+                            <p>The flag of Papua New Guinea features the <strong>Southern Cross</strong> constellation and the <strong>Raggiana Bird-of-Paradise</strong> — a symbol of the nation's unique wildlife and its place in the Southern Hemisphere. The red and black colors represent the traditional colors of Melanesian tribes.</p>
+                        </div>
+                        <div class="lang-content" id="flag-tpi">
+                            <h3>Plak bilong Kountri</h3>
+                            <p>Plak bilong Papua Niugini i gat <strong>Southern Cross</strong> na <strong>Raggiana Bird-of-Paradise</strong> — em i mak bilong ol kainkain animal na ples bilong kountri long saut hap. Red na black kala i mak bilong ol tumbuna kala bilong ol Melanesia lain.</p>
+                        </div>
+                        <div class="lang-content" id="flag-ho">
+                            <h3>Edana Dika Bona</h3>
+                            <p>Papua Niugini edana dika <strong>Southern Cross</strong> bona <strong>Raggiana Bird-of-Paradise</strong> dahaka — edana dika bona noho edia noho bada habona. Red bona black kala dahaka edia dika bona.</p>
+                        </div>
+                        <div class="color-meaning">
+                            <div class="color-box"><div class="color-dot" style="background:#C41E3A"></div> Red — Courage & Unity</div>
+                            <div class="color-box"><div class="color-dot" style="background:#1a1a2e"></div> Black — Melanesian Heritage</div>
+                            <div class="color-box"><div class="color-dot" style="background:#D4AF37"></div> Gold — Prosperity</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="icon">🏛️</div>
+                        <h4>Capital</h4>
+                        <p>Port Moresby</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">👥</div>
+                        <h4>Population</h4>
+                        <p>~9.5 Million</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">🗣️</div>
+                        <h4>Languages</h4>
+                        <p>800+ Indigenous</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">💰</div>
+                        <h4>Currency</h4>
+                        <p>Papua New Guinean Kina (PGK)</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">🌏</div>
+                        <h4>Region</h4>
+                        <p>Oceania / Melanesia</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">📅</div>
+                        <h4>Independence</h4>
+                        <p>September 16, 1975</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">800+</span>
+                <div class="stat-label">Languages</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">600+</span>
+                <div class="stat-label">Islands</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">7,000</span>
+                <div class="stat-label">Cultural Groups</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">85%</span>
+                <div class="stat-label">Rural Population</div>
+            </div>
+        </div>
+
+        <!-- Famous Cities -->
+        <section class="section">
+            <div class="lang-content active" id="cities-en">
+                <h2 class="section-title">Famous Cities</h2>
+                <p class="section-subtitle">Must-visit destinations across Papua New Guinea</p>
+            </div>
+            <div class="lang-content" id="cities-tpi">
+                <h2 class="section-title">Ol Bikpela Taun</h2>
+                <p class="section-subtitle">Ol gutpela ples yu mas lukim long PNG</p>
+            </div>
+            <div class="lang-content" id="cities-ho">
+                <h2 class="section-title">Edana Dika Tauni</h2>
+                <p class="section-subtitle">Edana dika tauni bona PNG</p>
+            </div>
+            
+            <div class="city-grid">
+                <!-- Port Moresby -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/1379949e87c262393b5c34a508ff1d1c5496a3f9.jpg" alt="Port Moresby" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Capital City</span>
+                        <div class="lang-content active" id="pm-en">
+                            <h3>Port Moresby</h3>
+                            <p>The vibrant capital sits on the shores of Fairfax Harbour, blending modern development with traditional Motu-Koita culture. Visit the National Museum, Parliament House, and the stunning Ela Beach for sunset views over the Coral Sea.</p>
+                        </div>
+                        <div class="lang-content" id="pm-tpi">
+                            <h3>Port Moresby</h3>
+                            <p>Kapital taun i sindaun long Fairfax Harbour, i gat ol niupela samting na ol tumbuna kastom bilong Motu-Koita. Yu ken lukim National Museum, Parliament House, na Ela Beach long lukim san i go daun.</p>
+                        </div>
+                        <div class="lang-content" id="pm-ho">
+                            <h3>Port Moresby</h3>
+                            <p>Edana dika tauni Fairfax Harbour noho, edana dika bona Motu-Koita edia. National Museum, Parliament House, bona Ela Beach dahaka noho.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lae -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.kupi.com/55efafeb04de6ec668d37cc46ab15dbf95f25aba.webp" alt="Lae" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Garden City</span>
+                        <div class="lang-content active" id="lae-en">
+                            <h3>Lae</h3>
+                            <p>Known as the "Garden City," Lae is PNG's industrial heart and gateway to the Highlands. The Lae War Cemetery honors WWII soldiers, while the bustling markets showcase the region's agricultural bounty.</p>
+                        </div>
+                        <div class="lang-content" id="lae-tpi">
+                            <h3>Lae</h3>
+                            <p>Ol i kolim "Garden City," Lae em i bikpela wok taun bilong PNG na rot i go long Highlands. Lae War Cemetery i save long ol soldia bilong WWII, na ol maket i gat planti kain kaikai.</p>
+                        </div>
+                        <div class="lang-content" id="lae-ho">
+                            <h3>Lae</h3>
+                            <p>"Garden City" dahaka, Lae PNG edana dika wok tauni bona Highlands noho. Lae War Cemetery WWII soldia dahaka, maket edana dika kaikai dahaka.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Madang -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.trvl-media.com/260bd4026ac7c8d5924eb6df2801403fa908eb5c.jpg" alt="Madang" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Pearl of the Pacific</span>
+                        <div class="lang-content active" id="madang-en">
+                            <h3>Madang</h3>
+                            <p>Often called the "Pearl of the Pacific," Madang boasts pristine beaches, world-class diving at Planet Rock, and the stunning Coastwatchers Memorial Lighthouse. It's a diver's paradise with coral reefs teeming with marine life.</p>
+                        </div>
+                        <div class="lang-content" id="madang-tpi">
+                            <h3>Madang</h3>
+                            <p>Ol i kolim "Pearl of the Pacific," Madang i gat ol gutpela biksi, gutpela div long Planet Rock, na Coastwatchers Memorial Lighthouse. Em i gutpela ples bilong ol diva wantaim ol kainkain pis.</p>
+                        </div>
+                        <div class="lang-content" id="madang-ho">
+                            <h3>Madang</h3>
+                            <p>"Pearl of the Pacific" dahaka, Madang biksi bona, Planet Rock div bona, Coastwatchers Memorial Lighthouse. Diva edana dika pisi dahaka noho.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mount Hagen -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/papuanewguinea.travel/3cd016e9f117195ac99e69529958a488a05cffd7.webp" alt="Mount Hagen" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Highlands Gem</span>
+                        <div class="lang-content active" id="mh-en">
+                            <h3>Mount Hagen</h3>
+                            <p>The cultural capital of the Highlands, Mount Hagen hosts the famous Sing-Sing festival where hundreds of tribes gather in spectacular traditional dress. The surrounding Wahgi Valley offers breathtaking mountain scenery and coffee plantations.</p>
+                        </div>
+                        <div class="lang-content" id="mh-tpi">
+                            <h3>Mount Hagen</h3>
+                            <p>Kapital bilong kastom long Highlands, Mount Hagen i gat bikpela Sing-Sing bilong ol lain bilong kantri. Wahgi Valley i gat ol gutpela maunten na ol kopi gaden.</p>
+                        </div>
+                        <div class="lang-content" id="mh-ho">
+                            <h3>Mount Hagen</h3>
+                            <p>Highlands kastom kapital, Mount Hagen Sing-Sing edana dika lain dahaka. Wahgi Valley maunten bona kopi gaden dahaka.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rabaul -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/live-production.wcms.abc-cdn.net.au/a728c48ff6539b2c0a09911d7476819441412542" alt="Rabaul" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Volcanic Harbor</span>
+                        <div class="lang-content active" id="rabaul-en">
+                            <h3>Rabaul</h3>
+                            <p>Set within a massive volcanic caldera, Rabaul is one of the world's most beautiful natural harbors. Explore WWII tunnels, witness active volcanoes like Tavurvur, and dive into the crystal-clear waters of Simpson Harbour.</p>
+                        </div>
+                        <div class="lang-content" id="rabaul-tpi">
+                            <h3>Rabaul</h3>
+                            <p>I sindaun insait long bikpela volkeno, Rabaul em i wanpela gutpela harbtaun long wol. Yu ken lukim ol WWII tunnel, Tavurvur volkeno, na div long Simpson Harbour.</p>
+                        </div>
+                        <div class="lang-content" id="rabaul-ho">
+                            <h3>Rabaul</h3>
+                            <p>Volkeno noho, Rabaul edana dika harbtauni. WWII tunnel, Tavurvur volkeno, bona Simpson Harbour div dahaka.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kokoda Track -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/img.rezdy.com/b2f036a687e97c8d54568b63764c459fbcf0bd59.jpg" alt="Kokoda Track" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Historic Trail</span>
+                        <div class="lang-content active" id="kokoda-en">
+                            <h3>Kokoda Track</h3>
+                            <p>The legendary 96-kilometer trail through the Owen Stanley Range is a pilgrimage for trekkers. Following the path of WWII soldiers, it offers dense jungle, river crossings, and profound historical significance through remote villages.</p>
+                        </div>
+                        <div class="lang-content" id="kokoda-tpi">
+                            <h3>Kokoda Track</h3>
+                            <p>Bikpela 96-kilometa rot long Owen Stanley Range em i gutpela rot bilong ol trekka. I bihainim rot bilong ol WWII soldia, i gat bikbus, wara, na ol tumbuna ples.</p>
+                        </div>
+                        <div class="lang-content" id="kokoda-ho">
+                            <h3>Kokoda Track</h3>
+                            <p>96-kilometa rot Owen Stanley Range noho, trekka edana dika rot. WWII soldia rot, bikbus, wara, bona tumbuna ples dahaka.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Article -->
+        <section class="section">
+            <div class="lang-content active" id="blog-en">
+                <div class="blog-content">
+                    <h2 class="section-title">Why Papua New Guinea Should Be Your Next Adventure</h2>
+                    
+                    <p>Papua New Guinea is not your typical tropical getaway — it is a raw, untamed frontier where ancient traditions thrive in one of the most biodiverse nations on Earth. With over 800 languages spoken across 7,000 cultural groups, this island nation offers an authenticity that has vanished from most tourist destinations.</p>
+                    
+                    <p>Imagine standing on the rim of an active volcano in Rabaul, watching plumes of smoke rise against a turquoise harbor. Picture yourself trekking the legendary Kokoda Track, where every muddy step connects you to the courage of soldiers who fought here during World War II. Envision diving into waters so clear you can see coral gardens 30 meters below, surrounded by sharks, rays, and technicolor fish that seem painted by imagination.</p>
+                    
+                    <h3>A Cultural Mosaic Like No Other</h3>
+                    <p>What truly sets PNG apart is its living culture. In the Highlands, the Mount Hagen Show brings together over 100 tribes in a explosion of feathers, shells, and body paint. The Asaro Mudmen emerge from the mist in ghostly clay masks, while the Huli Wigmen craft elaborate ceremonial headdresses from their own hair. These are not performances for tourists — they are expressions of identity that have endured for millennia.</p>
+                    
+                    <div class="highlight-box">
+                        <p>"In Papua New Guinea, you don't just observe culture — you step inside it. The warmth of village welcomes, the sharing of betel nut, and the haunting harmonies of sing-sing chants will stay with you long after you leave."</p>
+                    </div>
+                    
+                    <h3>Wilderness Beyond Imagination</h3>
+                    <p>Beyond the cultural richness lies a natural world that defies superlatives. The Sepik River winds for 1,100 kilometers through pristine rainforest, lined with spirit houses adorned with crocodile carvings. The Highlands harbor tree kangaroos, birds of paradise with iridescent plumage, and orchid species found nowhere else. Offshore, the Coral Triangle delivers some of the planet's most spectacular marine biodiversity.</p>
+                    
+                    <h3>Practical Travel Tips</h3>
+                    <p>The best time to visit is during the dry season from May to October. Internal travel relies heavily on domestic flights — PNG's mountainous terrain makes road travel challenging. Respect local customs: always ask permission before photographing people, and bring small gifts when visiting villages. The Kina is the local currency, though Australian dollars are widely accepted in urban areas.</p>
+                    
+                    <p>Accommodations range from luxury lodges in Port Moresby and Madang to rustic guesthouses in remote areas. For the adventurous, village homestays offer the most immersive experience. English, Tok Pisin, and Hiri Motu are the official languages, though learning a few phrases in Tok Pisin will earn you smiles everywhere.</p>
+                    
+                    <h3>Final Thoughts</h3>
+                    <p>Papua New Guinea is not for the faint of heart. Infrastructure can be basic, travel requires patience, and the humidity is relentless. But for those willing to venture beyond the ordinary, PNG rewards with experiences that redefine what travel can be. It is a place where you will witness humanity's ancient roots while surrounded by nature at its most magnificent. If you seek a destination that challenges, inspires, and transforms — welcome to Papua New Guinea.</p>
+                </div>
+            </div>
+            
+            <div class="lang-content" id="blog-tpi">
+                <div class="blog-content">
+                    <h2 class="section-title">Bilong Wanem Yu Mas Go long Papua Niugini</h2>
+                    
+                    <p>Papua Niugini i no olsem ol narapela ples bilong holide — em i wanpela strongpela ples we ol tumbuna kastim i stap yet long wanpela kountri we i gat planti kainkain samting. Long moa 800 tokples na 7,000 kainkain lain, dispela kountri i gat ol samting ol narapela ples i no gat.</p>
+                    
+                    <p>Tingim yu sanap long maunten bilong volkeno long Rabaul, lukim smok i go antap long bikpela harbtaun. Tingim yu wokabaut long bikpela Kokoda Track, we olgeta step i joinim yu long ol soldia bilong WWII. Tingim yu div long wara bilong solwara we yu ken lukim ol kala bilong coral long 30 mita daunbilo.</p>
+                    
+                    <h3>Kastom I Olsem Narapela</h3>
+                    <p>Wanem samting i mekim PNG i spesal em kastom bilong ol pipol. Long Highlands, Mount Hagen Show i bringim 100 moa lain wantaim ol paua, sel, na kala bilong bodi. Ol Asaro Mudmen i kamap long smok wantaim ol pes bilong graun, na ol Huli Wigmen i wokim ol hat bilong ol yet. Dispela i no samting bilong soim ol turis — em i samting bilong tumbuna.</p>
+                    
+                    <div class="highlight-box">
+                        <p>"Long Papua Niugini, yu no lukim kastim tasol — yu go insait long em. Ol welkam bilong ol villis, ol betel nut, na ol singsing bilong ol lain bai i stap long tingting bilong yu."</p>
+                    </div>
+                    
+                    <h3>Bikbus Na Solwara</h3>
+                    <p>Long bikpela kastim i gat ol gutpela samting bilong graun. Sepik Rivva i go 1,100 kilometa long bikbus, i gat ol haus tambaran wantaim ol krokodail. Highlands i gat ol tree kangaroo, ol bird of paradise, na ol orchid. Long solwara, Coral Triangle i gat ol kainkain pis na coral.</p>
+                    
+                    <h3>Ol Gutpela Tok</h3>
+                    <p>Best taim bilong go em long taim bilong drai, May long October. Yu mas flai long ol ples narapela — maunten i mekim rot i hat. Respekt ol kastom: askim pastaim bipo yu kisim piksa, na kisim ol liklik presen long ol villis. Kina em moni bilong kountri, na Australian dolla i orait long taun.</p>
+                    
+                    <p>Yu ken slip long ol gutpela haus long Port Moresby na Madang, o long ol ples bilong ol pipol long ol arapela ples. Sapos yu laik adventja, villis homstes em i best. English, Tok Pisin, na Hiri Motu em ol ofisel tokples. Sapos yu lainim liklik Tok Pisin, ol pipol bai i amamas tru.</p>
+                    
+                    <h3>Last Tok</h3>
+                    <p>Papua Niugini i no bilong ol man we i les. Rot i hat, moni i bikpela, na hat i strong. Tasol sapos yu laik go long ples i no olsem ol narapela, PNG bai i givim yu ol gutpela samting. Em i ples we yu ken lukim ol tumbuna samting na ol gutpela samting bilong graun. Sapos yu laik ples i mekim yu tingting gut — welkam long Papua Niugini.</p>
+                </div>
+            </div>
+            
+            <div class="lang-content" id="blog-ho">
+                <div class="blog-content">
+                    <h2 class="section-title">Bema Papua Niugini Dahaka</h2>
+                    
+                    <p>Papua Niugini edana dika ples noho — edana dika ples noho tumbuna kastom bona edana dika kountri. 800 tokples bona 7,000 lain, edana dika kountri edana dika samting noho.</p>
+                    
+                    <p>Rabaul volkeno noho sanap, smok harbtaun noho. Kokoda Track wokabaut, WWII soldia rot noho. Solwara div, coral kala 30 mita daunbilo noho.</p>
+                    
+                    <h3>Kastom Edana Dika</h3>
+                    <p>PNG edana dika kastom noho. Highlands Mount Hagen Show 100 lain noho, paua, sel, bodi kala. Asaro Mudmen smok noho graun pes, Huli Wigmen hat wokim. Turis soim noho — tumbuna samting noho.</p>
+                    
+                    <div class="highlight-box">
+                        <p>"Papua Niugini, kastom lukim noho — insait go. Villis welkam, betel nut, singsing tingting stap."</p>
+                    </div>
+                    
+                    <h3>Bikbus Bona Solwara</h3>
+                    <p>Kastom graun samting noho. Sepik Rivva 1,100 kilometa bikbus, tambaran haus krokodail. Highlands tree kangaroo, bird of paradise, orchid. Solwara Coral Triangle pis coral noho.</p>
+                    
+                    <h3>Ol Gutpela Tok</h3>
+                    <p>Best taim drai taim, May October. Flai ol ples — maunten rot hat. Kastom respekt: piksa askim pastaim, villis presen. Kina moni, Australian dolla taun orait.</p>
+                    
+                    <p>Port Moresby Madang gutpela haus, arapela ples ples. Adventja villis homstes best. English, Tok Pisin, Hiri Motu ofisel tokples. Tok Pisin lainim, pipol amamas.</p>
+                    
+                    <h3>Last Tok</h3>
+                    <p>Papua Niugini les man noho. Rot hat, moni bikpela, hat strong. PNG gutpela samting givim. Tumbuna samting bona graun gutpela samting lukim. Tingting gut ples — welkam Papua Niugini.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>Papua New Guinea Travel Guide</h3>
+        <div class="footer-divider"></div>
+        <p>Explore the untouched beauty of the Pacific's last frontier. Every journey here is a story worth telling.</p>
+        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.6;">© 2026 PNG Travel Blog | Built with ❤️ for Adventurers</p>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.lang-btn').classList.add('active');
+            
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            
+            // Show selected language content
+            document.querySelectorAll('[id$="-' + lang + '"]').forEach(el => el.classList.add('active'));
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.city-card, .info-item, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>'''
+
+# Save the file
+with open('/mnt/agents/output/png_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("File saved successfully!")
+print(f"File size: {len(html_content)} characters")
