@@ -1,0 +1,426 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Saint Kitts and Nevis Caribbean Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #009543 0%, #000 50%, #ce1126 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .lang-toggle:hover {
+            transform: scale(1.05);
+            background: #ffd700;
+        }
+        .content {
+            padding: 40px 30px;
+            line-height: 1.8;
+            color: #333;
+        }
+        .intro-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #009543;
+        }
+        .intro-box h2 {
+            color: #009543;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .flag-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 15px;
+        }
+        .flag-section img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin-bottom: 15px;
+        }
+        .flag-meaning {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .flag-item {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .green { background: #009543; color: white; }
+        .red { background: #ce1126; color: white; }
+        .black { background: #000; color: white; }
+        .yellow { background: #ffd700; color: #333; }
+        .city-section {
+            margin: 40px 0;
+        }
+        .city-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        .city-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .city-info {
+            padding: 25px;
+        }
+        .city-info h3 {
+            color: #ce1126;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffecd2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid #ffd700;
+        }
+        .highlight-box h3 {
+            color: #b8860b;
+            margin-bottom: 15px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-style: italic;
+        }
+        .hidden { display: none; }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ce1126;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 20px 15px; }
+            .lang-toggle { position: relative; top: auto; right: auto; margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">🇰🇳 Switch to Creole</button>
+            <h1 id="mainTitle">Discover Saint Kitts and Nevis</h1>
+            <p class="subtitle" id="subtitle">The Caribbean's Hidden Gem Waiting to Be Explored</p>
+        </div>
+
+        <div class="content">
+            <!-- ENGLISH VERSION -->
+            <div id="english-content" class="fade-in">
+                <div class="intro-box">
+                    <h2>🌴 Country Background</h2>
+                    <p>Welcome to <strong>Saint Kitts and Nevis</strong>, the smallest sovereign state in the Western Hemisphere and one of the most enchanting twin-island nations in the Caribbean! Located where the Atlantic Ocean meets the Caribbean Sea, this beautiful federation consists of two main islands—Saint Kitts (the larger, also known as Saint Christopher) and Nevis (the smaller, meaning "snow" in Spanish, named after its cloud-capped peak).</p>
+                    <p>With a population of approximately 53,000 friendly souls, this nation proudly carries the nickname <em>"The Mother Colony of the West Indies"</em> as it was the first English colony in the Caribbean, established in 1623. The islands gained independence from Britain on September 19, 1983, yet they retain a delightful blend of British colonial charm and vibrant Caribbean culture that makes every visitor feel instantly at home.</p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">261</div>
+                        <div class="stat-label">km² Area</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">53K</div>
+                        <div class="stat-label">Population</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1983</div>
+                        <div class="stat-label">Independence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Beautiful Islands</div>
+                    </div>
+                </div>
+
+                <div class="flag-section">
+                    <h2>🇰🇳 The National Flag</h2>
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/fdb00f1973bfdc700ab9891c0a42e4381186c031.png" alt="Flag of Saint Kitts and Nevis">
+                    <p style="margin-top: 10px; font-style: italic; color: #666;">Adopted in 1983, this striking flag tells the story of a nation</p>
+                    <div class="flag-meaning">
+                        <span class="flag-item green">🌿 Green = Fertile Land</span>
+                        <span class="flag-item red">❤️ Red = Freedom Struggle</span>
+                        <span class="flag-item black">⭐ Black = African Heritage</span>
+                        <span class="flag-item yellow">☀️ Yellow = Sunshine</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">The two white stars represent the two islands—Saint Kitts and Nevis—united in one nation, shining bright against the black diagonal band that symbolizes their African roots.</p>
+                </div>
+
+                <div class="city-section">
+                    <h2 style="text-align: center; color: #009543; font-size: 2em; margin-bottom: 20px;">🏙️ Famous Cities & Towns</h2>
+                    
+                    <div class="city-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/7642b2590c7c2e19e60564919c9d6b961bbf6007.jpg" alt="Basseterre Saint Kitts">
+                        <div class="city-info">
+                            <h3>Basseterre — The Capital Heart</h3>
+                            <p>Basseterre, meaning "low land" in French, is the vibrant capital of Saint Kitts and one of the oldest towns in the Eastern Caribbean. As you stroll through its charming streets, you'll be captivated by the historic Berkeley Memorial Clock Tower standing proudly in the center of Independence Square—once a slave market, now a symbol of freedom and resilience.</p>
+                            <p>The city perfectly blends colonial architecture with modern Caribbean life. Port Zante welcomes cruise ships with open arms, while the Circus (modeled after London's Piccadilly) buzzes with local energy. Don't miss the stunning St. George's Anglican Church, built in 1670, and the lively Pelican Mall where you can shop for local crafts and sample fresh tropical fruits.</p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.kupi.com/29e124003c584c563084c43e6c4236e371033955.webp" alt="Charlestown Nevis">
+                        <div class="city-info">
+                            <h3>Charlestown — Nevisian Charm</h3>
+                            <p>Charlestown, the quaint capital of Nevis, is like stepping into a colorful postcard from the past. With its beautifully preserved Georgian-style buildings painted in pastel yellows, pinks, and blues, this harbor town exudes an irresistible old-world charm that few Caribbean destinations can match.</p>
+                            <p>This is the birthplace of Alexander Hamilton, one of America's founding fathers, and you can visit the Hamilton House museum to learn about his incredible journey from these humble island shores to the heights of American politics. The Nevis Museum nearby offers fascinating insights into the island's sugar plantation history. As you wander along the waterfront, the gentle sea breeze carries the aroma of freshly grilled lobster from beachside shacks, inviting you to slow down and embrace the island way of life.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>✨ Must-See Wonders</h3>
+                    <p><strong>Brimstone Hill Fortress</strong> — Often called the "Gibraltar of the West Indies," this UNESCO World Heritage Site is a magnificent 17th-century fortress perched dramatically on a volcanic hilltop. The views from here will steal your breath away—on clear days, you can see six neighboring islands!</p>
+                    <p><strong>Mount Liamuiga</strong> — For the adventurous soul, hiking to the summit of this dormant volcano (1,156 meters) offers an unforgettable trek through lush rainforest to a crater lake at the top. The name means "fertile land" in the Kalinago language.</p>
+                    <p><strong>Scenic Railway</strong> — All aboard the "Sugar Train"! This unique narrow-gauge railway takes you on a 30-mile circle around Saint Kitts, offering spectacular coastal and mountain views while you sip on complimentary rum punch and learn about the island's sugar cane history.</p>
+                </div>
+
+                <div class="gallery">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.islands.com/faaebfc9beee8d99c4c452be77a1d5b3fcac4631.jpg" alt="Scenic St Kitts coastline">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.trvl-media.com/25163a9b768e4d4aa770299e7c4f290ca9f5bec5.jpg" alt="Brimstone Hill Fortress">
+                    <img src="https://kimi-web-img.moonshot.cn/img/mystkittstouristinformation.com/70da601ba6564f67ec3ebf99432887a4a83a1645.jpg" alt="Beautiful St Kitts beach">
+                </div>
+
+                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 25px; border-radius: 15px; margin: 30px 0;">
+                    <h3 style="color: #2e7d32; margin-bottom: 15px;">🍽️ Taste of the Islands</h3>
+                    <p>No trip to Saint Kitts and Nevis is complete without indulging in the local cuisine! <strong>Goat water</strong>, the national dish, is a hearty stew that warms the soul. Try freshly caught grilled lobster on Pinney's Beach, savor spicy roti from a roadside vendor, and don't leave without tasting the sweet local mangoes and soursop. Wash it all down with a glass of <strong>ting</strong> (grapefruit soda) or, better yet, a sip of the world-famous Cane Spirit Rothschild rum!</p>
+                </div>
+
+                <p style="font-size: 1.1em; text-align: center; color: #555; font-style: italic; margin: 30px 0;">
+                    Whether you're seeking adventure on volcanic peaks, relaxation on pristine beaches, or a journey through living history, Saint Kitts and Nevis promises memories that will last a lifetime. Come feel the warmth of the people, the rhythm of the steel drums, and the magic of the Caribbean sun. Your island paradise awaits! 🌊☀️
+                </p>
+            </div>
+
+            <!-- CREOLE/LOCAL VERSION -->
+            <div id="creole-content" class="hidden">
+                <div class="intro-box">
+                    <h2>🌴 Bout We Country</h2>
+                    <p>Welcome to <strong>Saint Kitts and Nevis</strong>, de smallest sovereign state in de Western Hemisphere and one o' de most enchantin' twin-island nation in de Caribbean! We locate where de Atlantic Ocean meet de Caribbean Sea, dis beautiful federation got two main island—Saint Kitts (de big one, dem does call it Saint Christopher too) and Nevis (de small one, "snow" in Spanish, name after de cloud on top de mountain).</p>
+                    <p>We got roughly 53,000 friendly people livin' here, and we proud to carry de name <em>"The Mother Colony of de West Indies"</em> cause we was de first English colony in de Caribbean, start up in 1623. We get we independence from Britain on September 19, 1983, but we still keep dat nice mix o' British colonial charm and vibratin' Caribbean culture dat does make every visitor feel right at home.</p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">261</div>
+                        <div class="stat-label">km² Area</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">53K</div>
+                        <div class="stat-label">Population</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1983</div>
+                        <div class="stat-label">Independence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Beautiful Islands</div>
+                    </div>
+                </div>
+
+                <div class="flag-section">
+                    <h2>🇰🇳 De National Flag</h2>
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/fdb00f1973bfdc700ab9891c0a42e4381186c031.png" alt="Flag of Saint Kitts and Nevis">
+                    <p style="margin-top: 10px; font-style: italic; color: #666;">We adopt dis flag in 1983, and it tell de story o' we nation</p>
+                    <div class="flag-meaning">
+                        <span class="flag-item green">🌿 Green = Fertile Land</span>
+                        <span class="flag-item red">❤️ Red = Freedom Struggle</span>
+                        <span class="flag-item black">⭐ Black = African Heritage</span>
+                        <span class="flag-item yellow">☀️ Yellow = Sunshine</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.95em;">De two white star dem represent de two island—Saint Kitts and Nevis—unite as one nation, shinin' bright against de black diagonal band dat symbolize we African roots.</p>
+                </div>
+
+                <div class="city-section">
+                    <h2 style="text-align: center; color: #009543; font-size: 2em; margin-bottom: 20px;">🏙️ Famous City & Town Dem</h2>
+                    
+                    <div class="city-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/7642b2590c7c2e19e60564919c9d6b961bbf6007.jpg" alt="Basseterre Saint Kitts">
+                        <div class="city-info">
+                            <h3>Basseterre — De Capital Heart</h3>
+                            <p>Basseterre, meanin' "low land" in French, is de vibratin' capital o' Saint Kitts and one o' de oldest town in de Eastern Caribbean. When you strollin' through de charmful street dem, you go be captivate by de historic Berkeley Memorial Clock Tower standin' proud in de center o' Independence Square—once a slave market, now a symbol o' freedom and resilience.</p>
+                            <p>De city perfect blend colonial architecture wid modern Caribbean life. Port Zante welcome cruise ship wid open arms, while de Circus (dem model it after London Piccadilly) buzzin' wid local energy. Don't miss de stunnin' St. George's Anglican Church, build in 1670, and de lively Pelican Mall where you can shop for local craft and sample fresh tropical fruit dem.</p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.kupi.com/29e124003c584c563084c43e6c4236e371033955.webp" alt="Charlestown Nevis">
+                        <div class="city-info">
+                            <h3>Charlestown — Nevisian Charm</h3>
+                            <p>Charlestown, de quaint capital o' Nevis, is like steppin' into a colorful postcard from de past. Wid it beautifully preserved Georgian-style buildin' dem paint in pastel yellow, pink, and blue, dis harbor town exude a irresistible old-world charm dat few Caribbean destination can match.</p>
+                            <p>Dis is de birthplace o' Alexander Hamilton, one o' America foundin' father dem, and you can visit de Hamilton House museum to learn bout he incredible journey from dese humble island shore to de heights o' American politics. De Nevis Museum nearby offer fascinatin' insight into de island sugar plantation history. As you wander along de waterfront, de gentle sea breeze carry de aroma o' freshly grill lobster from beachside shack, invitin' you to slow down and embrace de island way o' life.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>✨ Must-See Wonder Dem</h3>
+                    <p><strong>Brimstone Hill Fortress</strong> — Dem does call it de "Gibraltar of de West Indies," dis UNESCO World Heritage Site is a magnificent 17th-century fortress perch dramatic on a volcanic hilltop. De view from here go steal you breath away—on clear day, you can see six neighborin' island!</p>
+                    <p><strong>Mount Liamuiga</strong> — For de adventurous soul, hikin' to de summit o' dis dormant volcano (1,156 meters) offer a unforgettable trek through lush rainforest to a crater lake at de top. De name mean "fertile land" in de Kalinago language.</p>
+                    <p><strong>Scenic Railway</strong> — All aboard de "Sugar Train"! Dis unique narrow-gauge railway take you on a 30-mile circle round Saint Kitts, offerin' spectacular coastal and mountain view while you sip on complimentary rum punch and learn bout de island sugar cane history.</p>
+                </div>
+
+                <div class="gallery">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.islands.com/faaebfc9beee8d99c4c452be77a1d5b3fcac4631.jpg" alt="Scenic St Kitts coastline">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.trvl-media.com/25163a9b768e4d4aa770299e7c4f290ca9f5bec5.jpg" alt="Brimstone Hill Fortress">
+                    <img src="https://kimi-web-img.moonshot.cn/img/mystkittstouristinformation.com/70da601ba6564f67ec3ebf99432887a4a83a1645.jpg" alt="Beautiful St Kitts beach">
+                </div>
+
+                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 25px; border-radius: 15px; margin: 30px 0;">
+                    <h3 style="color: #2e7d32; margin-bottom: 15px;">🍽️ Taste o' de Islands</h3>
+                    <p>No trip to Saint Kitts and Nevis complete without indulgin' in de local cuisine! <strong>Goat water</strong>, de national dish, is a hearty stew dat warm de soul. Try freshly caught grill lobster on Pinney's Beach, savor spicy roti from a roadside vendor, and don't leave without tastin' de sweet local mango and soursop. Wash it all down wid a glass o' <strong>ting</strong> (grapefruit soda) or, better yet, a sip o' de world-famous Cane Spirit Rothschild rum!</p>
+                </div>
+
+                <p style="font-size: 1.1em; text-align: center; color: #555; font-style: italic; margin: 30px 0;">
+                    Whether you seekin' adventure on volcanic peak, relaxation on pristine beach, or a journey through livin' history, Saint Kitts and Nevis promise memory dat go last a lifetime. Come feel de warmth o' de people, de rhythm o' de steel drum, and de magic o' de Caribbean sun. You island paradise awaitin'! 🌊☀️
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🌴 Saint Kitts and Nevis Travel Guide 🌴</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Written with love for travelers worldwide | 2024</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+        function toggleLanguage() {
+            const enContent = document.getElementById('english-content');
+            const crContent = document.getElementById('creole-content');
+            const btn = document.getElementById('langBtn');
+            const title = document.getElementById('mainTitle');
+            const subtitle = document.getElementById('subtitle');
+            
+            if (currentLang === 'en') {
+                enContent.classList.add('hidden');
+                crContent.classList.remove('hidden');
+                crContent.classList.add('fade-in');
+                btn.textContent = '🇬🇧 Switch to English';
+                title.textContent = 'Discover Saint Kitts and Nevis';
+                subtitle.textContent = 'De Caribbean Hidden Gem Waitin' To Be Explored';
+                currentLang = 'creole';
+            } else {
+                crContent.classList.add('hidden');
+                enContent.classList.remove('hidden');
+                enContent.classList.add('fade-in');
+                btn.textContent = '🇰🇳 Switch to Creole';
+                title.textContent = 'Discover Saint Kitts and Nevis';
+                subtitle.textContent = 'The Caribbean\'s Hidden Gem Waiting to Be Explored';
+                currentLang = 'en';
+            }
+            
+            // Scroll to top of content
+            document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/saint_kitts_nevis_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("HTML file created successfully!")
+print(f"File size: {len(html_content)} characters")
