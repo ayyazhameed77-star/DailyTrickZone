@@ -1,0 +1,500 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiji Travel Guide - Discover Paradise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://kimi-web-img.moonshot.cn/img/t4.ftcdn.net/3d7b7c7847a204b4994326ea09bed1921edc9792.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 30px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #555;
+        }
+        
+        .lang-btn.active {
+            background: #0077be;
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(0,119,190,0.1);
+        }
+        
+        /* Content */
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+        }
+        
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #0077be;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0077be;
+            display: inline-block;
+        }
+        
+        .section p {
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Flag Section */
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .flag-img {
+            width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .flag-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #0077be;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .flag-info p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        /* City Cards */
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .city-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .city-card-body {
+            padding: 20px;
+        }
+        
+        .city-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #0077be;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .city-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #0077be, #00a8e8);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-box .number {
+            font-size: 2em;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-box .label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+        }
+        
+        /* Hidden content for translation */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+            .content { padding: 30px 20px; }
+            .flag-section { flex-direction: column; text-align: center; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+                <button class="lang-btn" onclick="switchLang('fj')">🇫🇯 iTaukei</button>
+            </div>
+            <h1>Fiji Travel Guide</h1>
+            <p class="subtitle">Where Happiness Finds You</p>
+        </div>
+        
+        <!-- English Content -->
+        <div id="content-en" class="lang-content active">
+            <div class="content">
+                <!-- Country Overview -->
+                <div class="section">
+                    <h2>🇫🇯 Country Overview</h2>
+                    <div class="flag-section">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Fiji.svg" alt="Fiji Flag" class="flag-img">
+                        <div class="flag-info">
+                            <h3>Republic of Fiji</h3>
+                            <p><strong>Capital:</strong> Suva</p>
+                            <p><strong>Population:</strong> ~936,000</p>
+                            <p><strong>Language:</strong> English, iTaukei, Fiji Hindi</p>
+                            <p><strong>Currency:</strong> Fijian Dollar (FJD)</p>
+                            <p><strong>Best Time to Visit:</strong> May to October (Dry Season)</p>
+                        </div>
+                    </div>
+                    <p>Fiji is an archipelago of over 330 islands nestled in the heart of the South Pacific Ocean, about 2,000 kilometers northeast of New Zealand. Only about 110 of these islands are inhabited, making Fiji a true tropical paradise where untouched nature meets warm hospitality. The country spans across Melanesia and Polynesia, creating a unique cultural blend that captivates every visitor.</p>
+                    <p>The nation gained independence from British colonial rule on October 10, 1970, and has since developed into one of the most welcoming tourist destinations in the world. Fiji's name itself comes from the Tongan word "Viti," and the locals affectionately call their homeland "Viti" in the iTaukei language. The country is renowned for its crystal-clear turquoise waters, pristine coral reefs, lush rainforests, and the genuine warmth of its people.</p>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="number">330+</div>
+                        <div class="label">Islands</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">1,300+</div>
+                        <div class="label">Fish Species</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">4,000</div>
+                        <div class="label">Sq Miles</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">26°C</div>
+                        <div class="label">Avg Temp</div>
+                    </div>
+                </div>
+                
+                <!-- Famous Cities -->
+                <div class="section">
+                    <h2>🏙️ Famous Cities</h2>
+                    <div class="city-grid">
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/discoverfiji.com/d6fe50bf2b3f3341da005a6ea7d502ee3b63f5b7.jpg" alt="Suva">
+                            <div class="city-card-body">
+                                <h3>Suva</h3>
+                                <p>The vibrant capital city located on Viti Levu island. Suva is a bustling hub of culture, commerce, and politics. Visit the Fiji Museum, explore the colorful Municipal Market, and stroll along the waterfront promenade. The city beautifully blends colonial architecture with modern Pacific charm.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/c9928a9ad94ae4f16c17c798e5981886d4d87bc5.jpg" alt="Nadi">
+                            <div class="city-card-body">
+                                <h3>Nadi</h3>
+                                <p>Gateway to Fiji and home to the international airport. Nadi is famous for the stunning Sri Siva Subramaniya Temple, the largest Hindu temple in the Southern Hemisphere. It's also the perfect starting point for island-hopping adventures to the Mamanucas and Yasawas.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/0750e2e6ba5837d45ebbde308ea41ecde88c082c.jpg" alt="Denarau">
+                            <div class="city-card-body">
+                                <h3>Denarau Island</h3>
+                                <p>A luxurious resort hub just off Nadi, featuring world-class hotels, an 18-hole championship golf course, and a marina with restaurants and shops. Denarau is the epitome of tropical luxury, offering pristine beaches and unforgettable sunsets.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/ac0a567e6b3d20b8531f068c8e2566dd8bf98ae0.jpg" alt="Lautoka">
+                            <div class="city-card-body">
+                                <h3>Lautoka</h3>
+                                <p>Known as the "Sugar City" due to its thriving sugar cane industry. Lautoka offers beautiful botanical gardens, a lively market, and serves as a departure point for cruises to the enchanting Yasawa Islands.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beautiful Places -->
+                <div class="section">
+                    <h2>🏝️ Most Beautiful Places</h2>
+                    <p>Fiji is a visual masterpiece of nature. The Mamanuca Islands offer postcard-perfect beaches with powdery white sand and impossibly blue waters. The Yasawa Islands boast dramatic volcanic peaks rising from the sea, hidden lagoons, and some of the best snorkeling spots on Earth.</p>
+                    <p>Taveuni, known as the "Garden Island," is a nature lover's dream with Bouma National Heritage Park and the stunning Tavoro Waterfalls. Savusavu on Vanua Levu enchants with its hot springs, pearl farms, and tranquil bays. For adventure seekers, the Coral Coast offers incredible diving at the Beqa Lagoon, famous for shark diving experiences.</p>
+                    <div class="gallery">
+                        <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/9f835fdbc64f4b6b78fa67eeb7c709281ac9a4ae.jpg" alt="Aerial View">
+                        <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/0750e2e6ba5837d45ebbde308ea41ecde88c082c.jpg" alt="Beach">
+                        <img src="https://kimi-web-img.moonshot.cn/img/p-airnz.com/dd5f8c946eefebf6d46c2ab74af0cb43af60e962.jpg" alt="Culture">
+                    </div>
+                </div>
+                
+                <!-- Culture & Tips -->
+                <div class="section">
+                    <h2>🌺 Culture & Travel Tips</h2>
+                    <p>Fijian culture is deeply rooted in community, respect, and tradition. The traditional greeting "Bula!" is more than just hello—it embodies the spirit of life, health, and happiness. When visiting villages, dress modestly and bring a gift of yaqona (kava root) for the traditional sevusevu ceremony.</p>
+                    <p>The lovo feast, where food is cooked underground, is a must-experience culinary tradition. Fijians are known as some of the friendliest people on Earth, and their hospitality is genuine and heartfelt. Remember to always ask permission before photographing locals, and remove your hat when entering villages as a sign of respect.</p>
+                    <p><strong>Essential Tips:</strong> Pack reef-safe sunscreen, bring a reusable water bottle, respect marine life while snorkeling, and learn a few iTaukei phrases—the locals will love you for it! The phrase "Vinaka" (thank you) will take you far in this beautiful nation.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- iTaukei (Fijian) Content -->
+        <div id="content-fj" class="lang-content">
+            <div class="content">
+                <div class="section">
+                    <h2>🇫🇯 Nai vakamacala ni Vanua</h2>
+                    <div class="flag-section">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Fiji.svg" alt="Fiji Flag" class="flag-img">
+                        <div class="flag-info">
+                            <h3>Matanitu Tugalala o Viti</h3>
+                            <p><strong>Taba ni Matanitu:</strong> Suva</p>
+                            <p><strong>Levu ni tamata:</strong> ~936,000</p>
+                            <p><strong>Vosa:</strong> Vosa vaka-Viti, iTaukei, Hindi</p>
+                            <p><strong>Ilavo:</strong> Fijian Dollar (FJD)</p>
+                            <p><strong>Gauna vinaka ni lako:</strong> Me ki Okotova</p>
+                        </div>
+                    </div>
+                    <p>Na Viti e dua na yasana vakavuravura e sivia na 330 na yanuyanu e tiko ena loma ni wasawasa ni Pasifika, e tiko voleka ki na 2,000 na kilomita mai na New Zealand. E tiko vica ga na 110 na yanuyanu e ra tiko kina na tamata, ka cakava na Viti me dua na parataisi dina ni vanua vakavuravura. Na vanua oqo e tiko ena loma ni Melanesia kei na Polynesia, ka vakavuna me dua na veiwasei vakalomalagi e rawa ni vakadomona na tamata yadua.</p>
+                    <p>Na matanitu oqo e a taukeni mai Vavalagi e na 10 Okotova 1970, ka sa qai vakatorocaketaki me yacova ni sa dua na vanua vinaka duadua me lako kina na tamata mai na vuravura taucoko. Na yaca "Fiji" e lako mai na vosa Tonga "Viti," ka ra kacivi na nodra vanua na kai Viti me "Viti" ena vosa iTaukei. Na vanua oqo e kilai tu ena nona wai bulabula, na kena veivanua kaukauwa, na veikau rairai vinaka, kei na kena loma vinaka na tamata.</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="number">330+</div>
+                        <div class="label">Yanuyanu</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">1,300+</div>
+                        <div class="label">Ika</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">4,000</div>
+                        <div class="label">Miles</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">26°C</div>
+                        <div class="label">Katakata</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🏙️ Na Koro Levu</h2>
+                    <div class="city-grid">
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/discoverfiji.com/d6fe50bf2b3f3341da005a6ea7d502ee3b63f5b7.jpg" alt="Suva">
+                            <div class="city-card-body">
+                                <h3>Suva</h3>
+                                <p>Na koro levu ni matanitu e tiko ena yanuyau ni Viti Levu. Na Suva e dua na koro bula ena vakavuravura, veivakasala, kei na politiki. Raici na Fiji Museum, lako yani ki na makete levu, kei na lako voli ena baravi. Na koro oqo e vakataucokotaka na veivale vakavalagi kei na kena totoka vakavuravura.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/c9928a9ad94ae4f16c17c798e5981886d4d87bc5.jpg" alt="Nadi">
+                            <div class="city-card-body">
+                                <h3>Nadi</h3>
+                                <p>Na matamata ni Viti kei na vanua ni sipi vakamatanitu. Na Nadi e kilai tu ena kena vale ni lotu Hindu levu duadua ena vuravura oqo. E dua talega na vanua vinaka me tekivu kina na nomu lako voli ki na Mamanuca kei na Yasawa.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/0750e2e6ba5837d45ebbde308ea41ecde88c082c.jpg" alt="Denarau">
+                            <div class="city-card-body">
+                                <h3>Denarau</h3>
+                                <p>Dua na yanuyanu totoka voleka ki na Nadi, e tiko kina na hotela vinaka, golf, kei na makete. Na Denarau e vakatakarakara taka na totoka ni vuravura, e tiko kina na matasawa savasava kei na kena rairai vinaka na siga ni botu.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/ac0a567e6b3d20b8531f068c8e2566dd8bf98ae0.jpg" alt="Lautoka">
+                            <div class="city-card-body">
+                                <h3>Lautoka</h3>
+                                <p>Kilai tu me "Koro ni Sucri" baleta ni kena cakacaka levu na dovu. Na Lautoka e tiko kina na were ni kau totoka, makete bula, kei na vanua me tekivu kina na nomu lako ki na Yasawa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🏝️ Na Vanua Totoka</h2>
+                    <p>Na Viti e dua na cakacaka totoka ni Kalou. Na Mamanuca e tiko kina na matasawa totoka kei na wai bulabula. Na Yasawa e tiko kina na veiulunivanua vakavolivoli, na veiwaitui vuni, kei na vanua vinaka duadua me lako voli kina.</p>
+                    <p>Na Taveuni, kilai tu me "Yanuyanu ni Were," e dua na vanua totoka ni Kalou kei na Bouma National Heritage Park kei na Tavoro Waterfalls. Na Savusavu ena Vanua Levu e vakadomona ena nona wai katakata, pearl farms, kei na veiwaitui vakacegu. Na Coral Coast e tiko kina na Beqa Lagoon, kilai tu ena kena veisucu ni yu.</p>
+                    <div class="gallery">
+                        <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/9f835fdbc64f4b6b78fa67eeb7c709281ac9a4ae.jpg" alt="Aerial View">
+                        <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/0750e2e6ba5837d45ebbde308ea41ecde88c082c.jpg" alt="Beach">
+                        <img src="https://kimi-web-img.moonshot.cn/img/p-airnz.com/dd5f8c946eefebf6d46c2ab74af0cb43af60e962.jpg" alt="Culture">
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🌺 Na iTovo Vakaviti kei na Veivuke</h2>
+                    <p>Na iTovo vaka-Viti e vakadeitaki tu ena veiwekani, na vakarokoroko, kei na veitovo makawa. Na "Bula!" e sega ni vosa walega—e vakatakarakara taka na bula, na bula vinaka, kei na marau. Ni lako ki na koro, vakaisulu vakamakawa, ka kauta mai na yaqona me vaka na sevusevu.</p>
+                    <p>Na lovo e dua na kana makawa e vakasaqara me kana—na kakana e vavavi ena ruku ni qele. Na kai Viti e kilai tu me ra tamata loma vinaka duadua ena vuravura, kei na nodra vakacegu e dina ka loma vinaka. Mo kere veivosaki ni ko via taka na tamata, ka kauta tani na nomu ibe ni lako ki na koro me vakarokoroko.</p>
+                    <p><strong>Veivuke Bibi:</strong> Kauta mai na sunscreen, kauta na wai, vakarokoroko na bula ni wasawasa, kei vulica e vica na vosa vaka-Viti—era na marautaki iko na kai Viti! Na vosa "Vinaka" (vinaka vakalevu) ena kauta iko yani voleka ena vanua totoka oqo.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>🌴 Fiji Travel Guide 2026 | Bula Vinaka! | Made with ❤️ for Travelers</p>
+        </div>
+    </div>
+    
+    <script>
+        function switchLang(lang) {
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById('content-' + lang).classList.add('active');
+            
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>'''
+
+# Save to file
+with open('/mnt/agents/output/fiji_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("File saved successfully!")
+print(f"File size: {len(html_content)} characters")
