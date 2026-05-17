@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antigua and Barbuda Travel Guide - 365 Beaches</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #e3f2fd 0%, #fff8e1 100%);
+    color: #1a237e;
+    line-height: 1.8;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  }
+  
+  /* Language Switcher */
+  .lang-bar {
+    background: #1a237e;
+    padding: 12px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .lang-bar button {
+    background: transparent;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    padding: 8px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: 14px;
+  }
+  
+  .lang-bar button:hover, .lang-bar button.active {
+    background: #ffd700;
+    color: #1a237e;
+  }
+  
+  /* Hero Header */
+  .hero {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 40px;
+    color: white;
+  }
+  
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  /* Content */
+  .content {
+    padding: 40px;
+  }
+  
+  .section {
+    margin-bottom: 35px;
+  }
+  
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d32f2f;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-left: 4px solid #ffd700;
+    padding-left: 15px;
+  }
+  
+  .section p {
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 1.05rem;
+    color: #333;
+  }
+  
+  /* Image Grid */
+  .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .img-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  
+  .img-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .img-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .img-caption {
+    padding: 10px;
+    background: #f8f9fa;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  /* Flag Section */
+  .flag-section {
+    background: linear-gradient(135deg, #d32f2f 0%, #1a237e 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    margin: 20px 0;
+  }
+  
+  .flag-section img {
+    width: 220px;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+    background: #fff;
+  }
+  
+  .flag-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .flag-section p {
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Highlight Box */
+  .highlight {
+    background: #e8eaf6;
+    border-left: 4px solid #1a237e;
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 20px 0;
+  }
+  
+  .highlight h4 {
+    color: #1a237e;
+    margin-bottom: 10px;
+  }
+  
+  /* Footer */
+  .footer {
+    background: #1a237e;
+    color: #c5cae9;
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .content { padding: 20px; }
+    .lang-bar button { padding: 6px 14px; font-size: 12px; }
+  }
+  
+  /* Antiguan dialect styling */
+  .antiguan { font-family: 'Open Sans', sans-serif; }
+  
+  /* Hide inactive languages */
+  .lang-content { display: none; }
+  .lang-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Language Switcher -->
+  <div class="lang-bar">
+    <button class="active" onclick="switchLang('en')">🇬🇧 English</button>
+    <button onclick="switchLang('ag')">🇦🇬 Antiguan</button>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/f0d9b99822fcd44032f9d6b0728543f51212d561.jpg" alt="Antigua and Barbuda Beautiful Scenery">
+    <div class="hero-overlay">
+      <h1 id="hero-title">Antigua and Barbuda</h1>
+      <p id="hero-sub">A Different Beach for Every Day of the Year</p>
+    </div>
+  </div>
+
+  <!-- ENGLISH CONTENT -->
+  <div id="lang-en" class="lang-content active">
+    <div class="content">
+      
+      <div class="section">
+        <h2>Welcome to Antigua and Barbuda</h2>
+        <p>Sprawled across the Leeward Islands where the Caribbean Sea meets the Atlantic Ocean, Antigua and Barbuda is a twin-island paradise that promises something extraordinary: <strong>365 white sand beaches</strong>, one for every day of the year. With a population of just under 100,000 warm-hearted souls, this sovereign nation offers an intoxicating blend of colonial charm, nautical heritage, and unhurried island living that keeps visitors returning year after year.</p>
+        <p>From the bustling streets of St. John's to the untouched pink sands of Barbuda, every corner of this country tells a story written by trade winds, turquoise waters, and a people whose motto is <em>"Each Endeavour, All Achieving."</em> Whether you come for the world-class sailing, the rich history, or simply to lounge beneath a palm tree with a Wadadli beer in hand, these islands will capture your heart.</p>
+      </div>
+
+      <div class="section">
+        <h2>Background & History</h2>
+        <p>The islands were first inhabited by the Siboney, followed by the Arawak and Carib peoples, before British settlers arrived in <strong>1632</strong>. For centuries, Antigua and Barbuda remained under British rule as part of the Leeward Islands colony, with sugar plantations shaping the landscape and society. The islands briefly joined the West Indies Federation (1958–1962) before becoming an associated state in 1967, and finally achieving full independence on <strong>November 1, 1981</strong>.</p>
+        <p>Today, the nation stands proud as a constitutional monarchy within the Commonwealth, with English as the official language and Antiguan Creole—a melodic English-based patois—heard in every market and rum shop. The influence of African heritage is woven deeply into the culture, music, and cuisine, creating a vibrant identity that is uniquely Caribbean.</p>
+      </div>
+
+      <!-- Flag Section -->
+      <div class="flag-section">
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/3a2a0fe54c720dcab0e1323d681438fc7d1dd5d6.jpg" alt="Antigua and Barbuda Flag">
+        <h3>The National Flag</h3>
+        <p>Adopted on February 27, 1967, and designed by acclaimed artist <strong>Sir Reginald Samuel</strong> from over 600 competition entries. The V-shape represents Victory. Black symbolizes the African ancestry of the people and the soil; Blue for hope and the Caribbean Sea; White for the sandy beaches; Red for the dynamism and energy of the people. The golden rising sun heralds a new era, while its seven points stand for the six parishes and the island of Barbuda.</p>
+      </div>
+
+      <div class="section">
+        <h2>Famous Cities & Attractions</h2>
+        
+        <div class="img-grid">
+          <div class="img-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/c34fe9377a754d791a081d52c240ae5135665f56.jpg" alt="St John's Cathedral Antigua">
+            <div class="img-caption">St. John's - The Capital City</div>
+          </div>
+          <div class="img-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.celebritycruises.com/5cf2cc03c9e6a27f4c27b1b2bad924d64c4decde.jpg" alt="St John's Colorful Waterfront">
+            <div class="img-caption">Heritage Quay & Redcliffe Quay</div>
+          </div>
+          <div class="img-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/sponsored.foreignpolicy.com/3097ab1cb2852334838424ff1a9c64730d31bfdd.jpg" alt="English Harbour Nelson's Dockyard">
+            <div class="img-caption">English Harbour & Nelson's Dockyard</div>
+          </div>
+        </div>
+
+        <p><strong>St. John's</strong>, the capital and largest city, is a lively harbor town where colorful colonial buildings meet modern Caribbean energy. Dominating the skyline is the baroque <strong>St. John's Cathedral</strong>, with its twin silver towers rising above red-tiled roofs. Below, Heritage Quay and Redcliffe Quay offer duty-free shopping, local crafts, and waterfront dining where you can watch mega-yachts glide into the harbor.</p>
+        
+        <p><strong>English Harbour</strong> is the nautical soul of the nation. Home to the UNESCO World Heritage Site of <strong>Nelson's Dockyard</strong>, this beautifully restored Georgian naval dockyard was once Admiral Horatio Nelson's base in the 1780s. Today it hosts some of the world's most prestigious sailing events, including Antigua Sailing Week and the Classic Yacht Regatta. Nearby <strong>Shirley Heights</strong> offers breathtaking panoramic views over the harbor, especially at sunset when the Sunday barbecue parties come alive with steel drum music.</p>
+        
+        <p><strong>Barbuda</strong>, the sister island, is a world apart. Its capital, <strong>Codrington</strong>, sits beside the Codrington Lagoon, home to one of the largest <strong>Frigate Bird Sanctuaries</strong> in the Western Hemisphere. Barbuda's <strong>Princess Diana Beach</strong> boasts miles of untouched pink-tinged sand, tinted by crushed coral and shells, offering a serenity that is increasingly rare in the Caribbean.</p>
+      </div>
+
+      <div class="section">
+        <h2>Natural Wonders</h2>
+        <p>Beyond the famous 365 beaches—ranging from the lively Dickenson Bay to the secluded Half Moon Bay and the family-friendly Ffryes Beach—Antigua and Barbuda offer dramatic natural landmarks. <strong>Devil's Bridge National Park</strong> on the rugged eastern coast features a natural limestone arch carved by centuries of Atlantic waves, with blowholes that shoot seawater skyward.</p>
+        <p>Underwater, <strong>Cades Reef</strong> invites snorkelers and divers into a kaleidoscope of tropical fish, sea turtles, and coral gardens. On land, <strong>Fig Tree Drive</strong> winds through lush rainforest and banana groves, while the <strong>Pillars of Hercules</strong> stand as ancient limestone sentinels guarding the entrance to English Harbour.</p>
+      </div>
+
+      <div class="highlight">
+        <h4>🍽️ Must-Try: Fungi & Pepperpot</h4>
+        <p>The national dish pairs fungi (a savory cornmeal pudding similar to Italian polenta) with pepperpot, a rich, slow-cooked stew of salted meat, spinach, and okra flavored with cinnamon and cloves. Add a side of ducana (a sweet potato and coconut dumpling), and wash it all down with local Wadadli beer or a sip of English Harbour Five Year Rum.</p>
+      </div>
+
+      <div class="section">
+        <h2>Culture & Festivals</h2>
+        <p>Antiguans take their cricket as seriously as their sailing. The island has produced legends like <strong>Sir Viv Richards</strong> and <strong>Sir Richie Richardson</strong>, and the Sir Vivian Richards Stadium roars with energy during international matches. The annual <strong>Carnival</strong> in late July and early August transforms the streets into a riot of colorful costumes, calypso, and soca music, celebrating emancipation and independence with unbridled joy.</p>
+        <p>For a more tranquil cultural experience, visit <strong>Betty's Hope</strong>, a restored sugar plantation with twin windmills that offers a poignant look into the islands' colonial past. The <strong>Museum of Antigua and Barbuda</strong> in St. John's, housed in the colonial courthouse, traces history from prehistoric Siboney settlements to modern nationhood.</p>
+      </div>
+
+      <div class="section">
+        <h2>Final Thoughts</h2>
+        <p>Antigua and Barbuda is more than a beach destination—it is a state of mind. It is the warmth of a stranger's greeting, the taste of salt on your lips after a morning sail, and the golden glow of a sunset viewed from Shirley Heights. Whether you are swimming with stingrays at Stingray City, exploring a 300-year-old dockyard, or simply counting beaches one by one, these islands offer a Caribbean experience that is as authentic as it is beautiful.</p>
+        <p><em>So pack your sunscreen, bring your sense of adventure, and let the trade winds carry you to paradise. The people of Antigua and Barbuda are waiting to welcome you home—365 times over.</em></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ANTIGUAN CONTENT (Local Dialect) -->
+  <div id="lang-ag" class="lang-content antiguan">
+    <div class="content">
+      
+      <div class="section">
+        <h2>Welcome to Antigua an' Barbuda!</h2>
+        <p>Ay, welcome! Antigua an' Barbuda is we likkle twin-island paradise out in de Leeward Islands, where de Caribbean Sea an' de Atlantic Ocean meet up. We got <strong>365 white sand beaches</strong>—one for every day o' de year! Barely 100,000 people livin' here, but we heart big bad. From de busy streets o' St. John's to de quiet pink sands o' Barbuda, every inch o' dese islands tell a story written by trade winds, turquoise water, an' people who believe <em>"Each Endeavour, All Achieving."</em></p>
+        <p>Whether yuh come for de world-famous sailing, de rich history, or jus' to lime under a coconut tree with a cold Wadadli in yuh hand, we gon' make yuh feel right at home. De islands sweet so till, yuh gon' find yuhself plannin' to come back before yuh even leave!</p>
+      </div>
+
+      <div class="section">
+        <h2>We History & Background</h2>
+        <p>Long before de British come in <strong>1632</strong>, de Siboney, Arawak, an' Carib people was here. For plenty long years, Antigua an' Barbuda was under British rule, part o' de Leeward Islands, an' sugar plantations cover de land. We join up with de West Indies Federation from 1958 to 1962, den become an associated state in 1967, an' finally get we full independence on <strong>November 1, 1981</strong>.</p>
+        <p>Now we is a proud nation inside de Commonwealth. We speak English official, but when we limin' or go by de market, yuh gon' hear we Antiguan dialect—a sweet sing-song patois dat blend English with African roots. Is we culture, we music, an' we food dat make we who we is, an' we proud bad!</p>
+      </div>
+
+      <div class="flag-section">
+        <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/3a2a0fe54c720dcab0e1323d681438fc7d1dd5d6.jpg" alt="Antigua and Barbuda Flag">
+        <h3>We National Flag</h3>
+        <p>Sir Reginald Samuel design dis flag, an' we adopt it on February 27, 1967—long before independence. De V-shape is for Victory. Black stand for we African ancestry an' de soil; Blue for hope an' de sea surroundin' we; White for de sandy beaches; Red for de energy an' fire in we people. De golden sun risin' mean a new era dawnin', an' de seven points? Six for we parishes, an' one for Barbuda. Chuh, man, is a flag full o' meaning!</p>
+      </div>
+
+      <div class="section">
+        <h2>Famous Places Yuh Must See</h2>
+        
+        <div class="img-grid">
+          <div class="img-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/c34fe9377a754d791a081d52c240ae5135665f56.jpg" alt="St John's Cathedral Antigua">
+            <div class="img-caption">St. John's - We Capital</div>
+          </div>
+          <div class="img-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/www.celebritycruises.com/5cf2cc03c9e6a27f4c27b1b2bad924d64c4decde.jpg" alt="St John's Colorful Waterfront">
+            <div class="img-caption">Heritage Quay & Waterfront</div>
+          </div>
+          <div class="img-card">
+            <img src="https://kimi-web-img.moonshot.cn/img/sponsored.foreignpolicy.com/3097ab1cb2852334838424ff1a9c64730d31bfdd.jpg" alt="English Harbour Nelson's Dockyard">
+            <div class="img-caption">English Harbour & Nelson's Dockyard</div>
+          </div>
+        </div>
+
+        <p><strong>St. John's</strong> is de capital an' de heart o' de island. De cathedral with de twin silver towers risin' up over de city—chuh, is a sight to see! Down by de water, Heritage Quay an' Redcliffe Quay got duty-free shopping, local crafts, an' plenty good food. Yuh could sit by de harbor, sip a rum punch, an' watch de big yachts come in like dey own de place.</p>
+        
+        <p><strong>English Harbour</strong> is where de real sailors gather. Nelson's Dockyard is a UNESCO World Heritage Site, an' was Admiral Horatio Nelson base back in de 1780s. Now is de home o' Antigua Sailing Week an' de Classic Yacht Regatta—de best sailing in de whole Caribbean! An' Shirley Heights? When Sunday come an' de sun startin' to set, de music playin', de barbecue smokin', an' de view? Breathtaking bad!</p>
+        
+        <p><strong>Barbuda</strong> is de quiet sister. Codrington is de main settlement, an' by de lagoon yuh find de biggest Frigate Bird Sanctuary in de Western Hemisphere. De pink sand beach—Princess Diana Beach—got sand so fine an' pink from crushed coral, yuh gon' think yuh walkin' on rose petals. Is paradise, true true.</p>
+      </div>
+
+      <div class="section">
+        <h2>Nature At Its Best</h2>
+        <p>We got 365 beaches, yes, but we got plenty more dan dat. <strong>Devil's Bridge</strong> on de east coast is a natural limestone arch where de Atlantic waves crash through blowholes—nature showin' off she power! Under de water, <strong>Cades Reef</strong> full o' bright fish, turtles, an' coral. An' <strong>Fig Tree Drive</strong> wind through de rainforest where banana trees bow down to greet yuh.</p>
+        <p>De <strong>Pillars of Hercules</strong> guard de entrance to English Harbour like ancient soldiers, an' if yuh lucky, yuh might see baby turtles hatchin' on we quiet north coast. Is magic, pure an' simple.</p>
+      </div>
+
+      <div class="highlight">
+        <h4>🍽️ Yuh Must Try: Fungi an' Pepperpot!</h4>
+        <p>We national dish is fungi an' pepperpot—de fungi is a cornmeal pudding, an' de pepperpot is a rich stew o' salted meat, spinach, okra, an' plenty spice. Add ducana (sweet potato an' coconut dumplin') on de side, an' a cold Wadadli beer or a sip o' English Harbour Rum, an' yuh belly gon' thank yuh!</p>
+      </div>
+
+      <div class="section">
+        <h2>We Culture & Festivals</h2>
+        <p>We love we cricket bad! We produce legends like <strong>Sir Viv Richards</strong> an' <strong>Sir Richie Richardson</strong>, an' when a match on at Sir Vivian Richards Stadium, de whole island stop to watch. An' <strong>Carnival</strong>? When July/August come, de streets burst open with colorful costumes, calypso, an' soca music—de energy so high yuh could feel it in yuh bones!</p>
+        <p>If yuh want quiet history, visit <strong>Betty's Hope</strong> sugar plantation. De twin windmills still standin', remindin' we o' where we come from. An' de Museum in St. John's tell de story from de first Siboney people to de proud nation we is today.</p>
+      </div>
+
+      <div class="section">
+        <h2>Parting Words</h2>
+        <p>Antigua an' Barbuda is more dan just beaches, my friend. Is a feelin'—de warmth o' we people, de taste o' salt on yuh skin after a sail, an' de golden sunset from Shirley Heights. Whether yuh swimmin' with stingrays, explorin' a 300-year-old dockyard, or countin' beaches one by one, we islands gon' steal yuh heart an' mek yuh dream o' comin' back.</p>
+        <p><em>Pack yuh sunscreen, bring yuh adventurous spirit, an' let de trade winds carry yuh home. We waitin' for yuh—with 365 reasons to smile!</em></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🏝️ Antigua and Barbuda Travel Guide | 365 Beaches | Written with ❤️ for travelers worldwide 🏝️</p>
+    <p>Images sourced from Britannica, TripAdvisor, Celebrity Cruises & Foreign Policy</p>
+  </div>
+
+</div>
+
+<script>
+function switchLang(lang) {
+  // Hide all content
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-bar button').forEach(el => el.classList.remove('active'));
+  
+  // Show selected
+  document.getElementById('lang-' + lang).classList.add('active');
+  event.target.classList.add('active');
+  
+  // Update hero text
+  const titles = {
+    en: 'Antigua and Barbuda',
+    ag: 'Antigua an\' Barbuda'
+  };
+  const subs = {
+    en: 'A Different Beach for Every Day of the Year',
+    ag: '365 Beaches, 365 Reasons to Smile'
+  };
+  document.getElementById('hero-title').textContent = titles[lang];
+  document.getElementById('hero-sub').textContent = subs[lang];
+}
+</script>
+
+</body>
+</html>
