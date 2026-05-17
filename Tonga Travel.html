@@ -1,0 +1,494 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tonga Travel Guide - The Friendly Islands</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/dad3e4e5fbb3072fe95c7a473205c0ae7609c554.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 30px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #555;
+        }
+        
+        .lang-btn.active {
+            background: #8B0000;
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(139,0,0,0.1);
+        }
+        
+        /* Content */
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+        }
+        
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #8B0000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #8B0000;
+            display: inline-block;
+        }
+        
+        .section p {
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Flag Section */
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .flag-img {
+            width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .flag-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #8B0000;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .flag-info p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        /* City Cards */
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .city-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .city-card-body {
+            padding: 20px;
+        }
+        
+        .city-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #8B0000;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .city-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-box .number {
+            font-size: 2em;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-box .label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+        }
+        
+        /* Hidden content for translation */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2em; }
+            .content { padding: 30px 20px; }
+            .flag-section { flex-direction: column; text-align: center; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+                <button class="lang-btn" onclick="switchLang('to')">🇹🇴 Lea Faka-Tonga</button>
+            </div>
+            <h1>Tonga Travel Guide</h1>
+            <p class="subtitle">The Friendly Islands</p>
+        </div>
+        
+        <!-- English Content -->
+        <div id="content-en" class="lang-content active">
+            <div class="content">
+                <!-- Country Overview -->
+                <div class="section">
+                    <h2>🇹🇴 Country Overview</h2>
+                    <div class="flag-section">
+                        <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/9f6a423655fff0b4c1490fa5bbb8065b8621cca8.png" alt="Tonga Flag" class="flag-img">
+                        <div class="flag-info">
+                            <h3>Kingdom of Tonga</h3>
+                            <p><strong>Capital:</strong> Nuku'alofa</p>
+                            <p><strong>Population:</strong> ~105,000</p>
+                            <p><strong>Languages:</strong> Tongan, English</p>
+                            <p><strong>Currency:</strong> Tongan Pa'anga (TOP)</p>
+                            <p><strong>Best Time to Visit:</strong> May to November (Dry Season)</p>
+                        </div>
+                    </div>
+                    <p>Tonga is a captivating Polynesian kingdom located in the South Pacific, southeast of Fiji and northeast of New Zealand. Comprising 169 islands, of which only 36 are inhabited, Tonga stretches across a vast expanse of pristine ocean. The archipelago is divided into three main island groups: Tongatapu in the south, Ha'apai in the center, and Vava'u in the north. What makes Tonga truly extraordinary is that it is the only Pacific nation never to have been colonized by a foreign power, maintaining its sovereignty and monarchy for over a thousand years.</p>
+                    <p>The Kingdom of Tonga was unified by King Taufa'ahau Tupou I in 1845, establishing a constitutional monarchy that continues to this day. The current monarch, King Tupou VI, descends from one of the oldest royal lines in the world. Captain James Cook named Tonga the "Friendly Islands" in 1773 after receiving a warm welcome from the locals, though he narrowly escaped what historians believe was a planned ambush. Tonga gained independence on June 4, 1970, becoming a fully sovereign member of the Commonwealth while uniquely retaining its monarch as head of state.</p>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="number">169</div>
+                        <div class="label">Islands</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">1,000+</div>
+                        <div class="label">Years Monarchy</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">747</div>
+                        <div class="label">Sq km</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">25°C</div>
+                        <div class="label">Avg Temp</div>
+                    </div>
+                </div>
+                
+                <!-- Famous Cities -->
+                <div class="section">
+                    <h2>🏙️ Famous Cities & Towns</h2>
+                    <div class="city-grid">
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/flagmatch.com/018a288e64eeaee40f45118234a91636bcdcd7c2.webp" alt="Nuku'alofa">
+                            <div class="city-card-body">
+                                <h3>Nuku'alofa</h3>
+                                <p>The capital and largest city of Tonga, located on the north coast of Tongatapu Island. Nuku'alofa is home to the magnificent Royal Palace, the Talamahu Market bursting with tropical produce, and the striking Free Church of Tonga. The waterfront area offers beautiful views of the harbor, and the city serves as the cultural and commercial heartbeat of the kingdom.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/959e311699eabf48362ad803a303980724903c29.jpg" alt="Beach">
+                            <div class="city-card-body">
+                                <h3>Neiafu</h3>
+                                <p>The main town of Vava'u, one of the most beautiful island groups in the South Pacific. Neiafu is a yachting paradise, with a protected harbor that attracts sailors from around the world. The town offers stunning beaches, excellent whale watching opportunities, and serves as the gateway to the incredible Vava'u island group with its crystal-clear lagoons.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/de39b39ce7c680c3ea772a8e3ec4fa8a6cba15b3.jpg" alt="Tropical Beach">
+                            <div class="city-card-body">
+                                <h3>Pangai</h3>
+                                <p>The main settlement of the Ha'apai island group, Pangai offers an authentic glimpse into traditional Tongan life. This peaceful town is surrounded by some of the most pristine beaches in Tonga, with powdery white sand and turquoise waters. It's the perfect base for exploring the untouched beauty of the Ha'apai archipelago.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/0308c456323022e74672d81ed9dbcf4f5cb856e5.jpg" alt="Aerial View">
+                            <div class="city-card-body">
+                                <h3>Mu'a</h3>
+                                <p>An ancient and historically significant village on Tongatapu, once the capital of the Tu'i Tonga Empire. Mu'a is home to the Langi — massive stone trilithon tombs of ancient Tongan kings. The nearby Mu'a Lagoon offers excellent snorkeling, while the village itself provides a fascinating window into Tonga's powerful pre-colonial history.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beautiful Places -->
+                <div class="section">
+                    <h2>🏝️ Most Beautiful Places</h2>
+                    <p>Tonga is a treasure trove of natural wonders that remain refreshingly untouched by mass tourism. The Mapu a Vaea Blowholes on the southern coast of Tongatapu are a spectacular natural phenomenon, where powerful waves force water through volcanic rock formations, shooting geysers up to 30 meters into the air. Nearby, the ancient Ha'amonga 'a Maui Trilithon — a massive coral limestone arch built in the 13th century — stands as a testament to the engineering prowess of ancient Tongans and is often called the "Stonehenge of the Pacific."</p>
+                    <p>The Vava'u island group is arguably the crown jewel of Tonga, offering world-class sailing, swimming with humpback whales, and some of the most pristine coral gardens in the Pacific. Swallows Cave on Kapa Island features an incredible underwater entrance leading to a cathedral-like cavern illuminated by brilliant blue light. The Ha'apai group offers deserted beaches, vibrant marine life, and the chance to experience authentic island life far from the tourist trail. For a truly unique experience, Tonga's volcanic islands like Fonuafo'ou have emerged from the sea within living memory, creating brand-new land for nature to colonize.</p>
+                    <div class="gallery">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.esa.int/8f2772f9906c9863ad9d68fd261bbeeeb05be160.jpg" alt="Satellite View">
+                        <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/dad3e4e5fbb3072fe95c7a473205c0ae7609c554.jpg" alt="Beach">
+                        <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/959e311699eabf48362ad803a303980724903c29.jpg" alt="Coastal View">
+                    </div>
+                </div>
+                
+                <!-- Culture & Tips -->
+                <div class="section">
+                    <h2>🌺 Culture & Travel Tips</h2>
+                    <p>Tongan culture is deeply rooted in respect, family, and tradition, governed by the principles of faka'apa'apa (respect) and feveitokai'aki (sharing). The society operates within a hierarchical structure where the King, nobles, and commoners each have defined roles. Christianity plays a central role in daily life, with Sunday strictly observed as a day of rest and worship — virtually all commercial activities cease, and the sound of church singing fills the air across the islands.</p>
+                    <p>Traditional dress remains important, with both men and women often wearing ta'ovala — woven mats wrapped around the waist over Western clothing — as a sign of respect, especially in church and formal settings. The kava ceremony is a significant social ritual where the traditional drink made from pepper plant roots is prepared and shared in a formal, respectful manner. When visiting villages, it is essential to dress modestly, remove your shoes before entering homes, and always show deference to elders and chiefs.</p>
+                    <p><strong>Essential Tips:</strong> Pack modest clothing for village visits and church attendance, bring reef-safe sunscreen and sturdy footwear for exploring coral formations, respect the Sunday Sabbath, learn basic Tongan phrases like "Malo e lelei" (hello) and "Malo 'aupito" (thank you very much), and be prepared for a slower pace of life. Tonga is one of the few places where you can legally swim with humpback whales between July and October — an absolutely magical experience. Cash is essential as credit cards are not widely accepted outside major hotels. Embrace the warmth of the Tongan people, and you'll understand why Captain Cook called these the Friendly Islands.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tongan (Lea Faka-Tonga) Content -->
+        <div id="content-to" class="lang-content">
+            <div class="content">
+                <div class="section">
+                    <h2>🇹🇴 Fakamatala Fakamotu</h2>
+                    <div class="flag-section">
+                        <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/9f6a423655fff0b4c1490fa5bbb8065b8621cca8.png" alt="Tonga Flag" class="flag-img">
+                        <div class="flag-info">
+                            <h3>Pule'anga Fakatu'i 'o Tonga</h3>
+                            <p><strong>Kolo fakatu'i:</strong> Nuku'alofa</p>
+                            <p><strong>Kakai:</strong> ~105,000</p>
+                            <p><strong>Lea:</strong> Lea Faka-Tonga, Lea Faka-Pilitania</p>
+                            <p><strong>Pa'anga:</strong> Pa'anga Faka-Tonga (TOP)</p>
+                            <p><strong>Taimi lelei ki he fe'auhi:</strong> Mei ki Novema</p>
+                        </div>
+                    </div>
+                    <p>Ko Tonga ha pule'anga fakatu'i fakapōlinitia 'oku tu'u 'i he Pasifiki tonga-hahake, tonga-hifo 'o Fisi mo toka-hake 'o Niu Silani. 'Oku 'i ai ha ngaahi motu 169, pea 'oku nofo kakai 'i he motu 36 pē, pea 'oku fāfā ki he sami māfana 'o e Pasifiki. 'Oku vahevahe ki he ngaahi kulupu motu tolu: Tongatapu 'i he tonga, Ha'apai 'i he loto, mo Vava'u 'i he toka. 'Oku fa'iteliha 'a Tonga he ko e fonua Pasifiki pe tē 'ikai ke fili'i 'e ha fonua fakapapālangi, pea 'oku tauhi 'e he pule'anga fakatu'i mei he ta'u 1,000 ki mu'a.</p>
+                    <p>Ko e Pule'anga 'o Tonga na'e faka'ofa'ofa 'e he Tu'i Tonga Taufa'ahau Tupou I 'i he 1845, na'e fa'u ai ha konisitutone fakatu'i 'oku kei tauhia pea 'oku kei hoko mai. Ko e Tu'i lolotonga, ko Tupou VI, ko e 'ulungaanga mei he hingoa fakatokelau taha 'o e mamani. Na'e tauhi 'e Kapineti Sēmesi Kuka 'a Tonga ko e "Motu Fakafe'ao" 'i he 1773 hili ha talitali fiefia mei he kakai, nonga pe 'oku pehe 'e he hisitōlia na'e fakataha ha anga fili. Na'e ma'u 'e Tonga 'a e tau'atāina 'i he 4 Sune 1970, pea 'oku kuonga 'a e fonua ki he Kominiueli 'oku tauhi 'e he 'ene Tu'i.</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="number">169</div>
+                        <div class="label">Motu</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">1,000+</div>
+                        <div class="label">Ta'u Fakatu'i</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">747</div>
+                        <div class="label">Km Sikuea</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">25°C</div>
+                        <div class="label">Māfana</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🏙️ Koloa Fakamau'i mo Kolo</h2>
+                    <div class="city-grid">
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/flagmatch.com/018a288e64eeaee40f45118234a91636bcdcd7c2.webp" alt="Nuku'alofa">
+                            <div class="city-card-body">
+                                <h3>Nuku'alofa</h3>
+                                <p>Ko e kolo fakatu'i mo e kolo lahi taha 'o Tonga, 'oku tu'u 'i he matākiu 'o e motu 'o Tongatapu. 'Oku 'i ai 'i Nuku'alofa e Palasi Fakatu'i fakailoa, e feletoa Talamahu 'oku momoko ai ha fua tropical, mo e Siasi 'o Tonga. Ko e vaha'a kolo 'oku ma'u ai ha vaa'i faka'ofo'ofa 'o e 'avanga, pea 'oku ngāue 'a e kolo ko e fatu fakamālie mo fakakomēsiale 'o e pule'anga.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/959e311699eabf48362ad803a303980724903c29.jpg" alt="Beach">
+                            <div class="city-card-body">
+                                <h3>Neiafu</h3>
+                                <p>Ko e kolo lahi 'o Vava'u, taha 'o e ngaahi kulupu motu faka'ofo'ofa taha 'i he Pasifiki. Ko Neiafu ko e parataisi ki he vaka, 'oku 'i ai ha 'avanga malu na'e fie ma'u ai 'e he kau vaka mei he fonua kotoa. 'Oku 'i ai 'i he kolo ha ngaahi matasawa faka'ofo'ofa, mo e vakai'i tofua'a lelei, pea 'oku ngāue ko e matamata ki he motu Vava'u.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/de39b39ce7c680c3ea772a8e3ec4fa8a6cba15b3.jpg" alt="Tropical Beach">
+                            <div class="city-card-body">
+                                <h3>Pangai</h3>
+                                <p>Ko e kolo lahi 'o e kulupu motu Ha'apai, 'oku Pangai 'o 'oange ha vaa'i ki he olaga fakafonua 'o Tonga. Ko e kolo malie ni 'oku fāfā ai 'e he ngaahi matasawa sili taha 'i Tonga, 'oku 'i ai ha oneone pa'epa'e mo e vai lanu moana. Ko e mea sili taha ki he 'alu ki he motu Ha'apai 'oku te'eki ai ke fili'i 'e he kau fetu'utaki.</p>
+                            </div>
+                        </div>
+                        <div class="city-card">
+                            <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/0308c456323022e74672d81ed9dbcf4f5cb856e5.jpg" alt="Aerial View">
+                            <div class="city-card-body">
+                                <h3>Mu'a</h3>
+                                <p>Ko e kolo motu'a mo fakahisitōlia 'i Tongatapu, ko e kolo fakatu'i mu'a 'o e Tu'i Tonga. 'Oku 'i ai 'i Mu'a e Langi — ko e ngaahi mala'ē maka lahi 'o e ngaahi Tu'i Tonga motu'a. Ko e Mu'a Lagoon 'i ai 'oku 'i ai ha snokeling lelei, 'oku fakaa'u ai 'a e kolo ko e matapa ki he hisitōlia lahi 'o Tonga.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🏝️ Fakatokanga Faka'ofo'ofa</h2>
+                    <p>Ko Tonga ha fonua 'oku 'i ai ha ngaahi mea faka'ofo'ofa 'a e kaloni 'oku te'eki ai ke fili'i 'e he kau fetu'utaki. Ko e Mapu a Vaea Blowholes 'i he matākiu tonga 'o Tongatapu ko e mea faka'ofo'ofa 'a e kaloni, 'oku tafe ai e ngaahi ngingila maka 'a e sami 'i he ngaahi maka volkeno, 'oku fana ai ha vai ki he 30 mita ki luga. 'I he tafa'aki, ko e Ha'amonga 'a Maui Trilithon — ko e matāpā maka lahi na'e langa 'i he senituri 13 — 'oku tu'u ko e fakamanatu ki he ngaue faka'enisinia 'o e kau Tonga motu'a, pea 'oku pehe ko e "Stonehenge 'o e Pasifiki."</p>
+                    <p>Ko e kulupu motu 'o Vava'u 'oku pehe 'oku iai ha mea sili taha 'o Tonga, 'oku 'oange ai ha vaka lelei, 'alu 'oku tauhi mo e tofua'a, mo e ngaahi matala kola sili taha 'i he Pasifiki. Ko e Ana a e Lupe 'i he motu Kapa 'oku 'i ai ha matapa 'i lalo 'o e vai 'oku 'alu ai ki he ana falelotu 'oku fana ai 'e he maama lanu moana. Ko e kulupu motu Ha'apai 'oku 'oange ai ha matasawa 'oku 'ikai ha kakai, meaola moana, mo e faingamalie ki he olaga motu fakafonua. Mo ha mea fa'iteliha, ko e ngaahi motu volkeno 'o Tonga 'o ka ko Fonuafo'ou na'e tupu mei he sami 'i he olaga lolotonga, 'oku fa'u ai ha fonua fo'ou.</p>
+                    <div class="gallery">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.esa.int/8f2772f9906c9863ad9d68fd261bbeeeb05be160.jpg" alt="Satellite View">
+                        <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/dad3e4e5fbb3072fe95c7a473205c0ae7609c554.jpg" alt="Beach">
+                        <img src="https://kimi-web-img.moonshot.cn/img/tongapocketguide.com/959e311699eabf48362ad803a303980724903c29.jpg" alt="Coastal View">
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🌺 Fakamālie mo Fakamatala Fiefia</h2>
+                    <p>Ko e faka-Tonga 'oku tu'u ma'u 'i he faka'apa'apa, famili, mo e anga fakamotu'a, 'oku pule'i 'e he ngaahi anga 'o e faka'apa'apa mo e feveitokai'aki. 'Oku ngāue 'a e fonua 'i totonu 'o ha fa'u fakalakalaka 'oku 'i ai ha ngaahi fatongia fakamau 'a e Tu'i, kau eiki, mo e kakai. Ko e Lotu 'oku 'i ai ha fatongia fatu 'i he olaga 'aho kotoa, 'oku fakamau lelei 'a e Aho Sā 'o ha 'aho malolo mo lotu — 'oku tu'u pe ngaue fakakomēsiale, pea 'oku fa'angalo e leo 'o e hiva falesa 'i he motu kotoa.</p>
+                    <p>Ko e vala fakamotu'a 'oku kei tauhia, 'oku ngaahi kakai fakatā mo fafine 'oku nau vala ta'ovala — ko e ngaahi tao vala 'oku siomi 'i he toló — 'o ha faka'apa'apa, pehe ki he lotu mo e ngaahi me'a fakalao. Ko e fakamālō kava ko ha fakamālō fakamotu'a 'oku faia ai mo fa'asoa ai e kava 'i ha fomu faka'apa'apa. 'I he taimi 'e 'alu ai ki he kolo, 'oku fiema'u ke vala fakamālie, to'o e va'e 'i mua 'o e 'alu ki 'api, pea fakahā 'a e faka'apa'apa ki he kau motu'a mo e kau eiki.</p>
+                    <p><strong>Fakamatala Fakamau:</strong> Karami vala fakamālie mo e 'alu ki he kolo mo e lotu, karami sunscreen mo e vala va'e mo'ua, fakahā 'a e Aho Sā, ako ha ngaahi lea faka-Tonga 'o ka ko "Malo e lelei" mo "Malo 'aupito", pea fakatokanga ki he taimi motu. Ko Tonga ko taha 'o e ngaahi fonua 'oku lava ke tauhi mo e tofua'a 'i he lili 'o Siulai ki 'Okotopa — ha mea fakamālie. 'Oku fiema'u e pa'anga 'aupito he 'oku 'ikai lelei 'a e kāti 'i fafo 'o e ngaahi hotele lahi. Faka'ofa'ofa ki he māfana 'o e kakai Tonga, pea 'e ke iloa lea 'a e 'uhinga 'a e mea na'e pehe ai 'e Kuka ko e Motu Fakafe'ao.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>🌴 Tonga Travel Guide 2026 | Malo 'aupito! | Made with ❤️ for Travelers</p>
+        </div>
+    </div>
+    
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById('content-' + lang).classList.add('active');
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/tonga_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("File saved successfully!")
+print(f"File size: {len(html_content)} characters")
