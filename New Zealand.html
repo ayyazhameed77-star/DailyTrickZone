@@ -1,0 +1,435 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Zealand Travel Guide | Aotearoa - The Land of the Long White Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .flag-wave { animation: wave 3s ease-in-out infinite; }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .gradient-text { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e3a5f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-hover { transition: all 0.4s ease; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .lang-btn { transition: all 0.3s ease; }
+        .lang-btn.active { background: linear-gradient(135deg, #1e3a5f, #2d5a87); color: white; }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center text-white font-bold text-lg">NZ</div>
+                    <span class="text-xl font-bold text-gray-800" data-en="Travel Guide" data-ma="Puka Arataki" data-mi="Aratohu Haere">Travel Guide</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-gray-600 hover:text-blue-900 transition-colors font-medium" data-en="About" data-ma="Mō" data-mi="Mō">About</a>
+                    <a href="#cities" class="text-gray-600 hover:text-blue-900 transition-colors font-medium" data-en="Cities" data-ma="Ngā Tāone" data-mi="Ngā Tāone">Cities</a>
+                    <a href="#culture" class="text-gray-600 hover:text-blue-900 transition-colors font-medium" data-en="Culture" data-ma="Ahurea" data-mi="Ahurea">Culture</a>
+                    <a href="#tips" class="text-gray-600 hover:text-blue-900 transition-colors font-medium" data-en="Tips" data-ma="Tūtohu" data-mi="Tohutohu">Tips</a>
+                </div>
+                <!-- Language Switcher -->
+                <div class="flex items-center space-x-2 bg-gray-100 rounded-full p-1">
+                    <button onclick="switchLanguage('en')" class="lang-btn active px-4 py-1.5 rounded-full text-sm font-medium" id="btn-en">🇬🇧 English</button>
+                    <button onclick="switchLanguage('ma')" class="lang-btn px-4 py-1.5 rounded-full text-sm font-medium text-gray-600 hover:text-gray-900" id="btn-ma">🇳🇿 Māori</button>
+                    <button onclick="switchLanguage('mi')" class="lang-btn px-4 py-1.5 rounded-full text-sm font-medium text-gray-600 hover:text-gray-900" id="btn-mi">🇳🇿 Te Reo</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1469521669194-babb45599def?w=1920&q=80" alt="New Zealand Landscape" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+            <div class="mb-6 inline-block">
+                <svg class="w-24 h-16 mx-auto flag-wave" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="240" height="160" fill="#012169"/>
+                    <path d="M0 0 L240 160 M240 0 L0 160" stroke="white" stroke-width="32"/>
+                    <path d="M0 0 L240 160 M240 0 L0 160" stroke="#C8102E" stroke-width="20"/>
+                    <path d="M120 0 V160 M0 80 H240" stroke="white" stroke-width="54"/>
+                    <path d="M120 0 V160 M0 80 H240" stroke="#C8102E" stroke-width="36"/>
+                    <path d="M0 0 L100 60 V0 H0Z M240 0 L140 60 V0 H240Z M0 160 L100 100 V160 H0Z M240 160 L140 100 V160 H240Z" fill="#012169"/>
+                    <g fill="white">
+                        <path d="M120 12 L123 22 L134 22 L125 29 L128 39 L120 33 L112 39 L115 29 L106 22 L117 22Z"/>
+                        <path d="M60 40 L63 50 L74 50 L65 57 L68 67 L60 61 L52 67 L55 57 L46 50 L57 50Z"/>
+                        <path d="M180 40 L183 50 L194 50 L185 57 L188 67 L180 61 L172 67 L175 57 L166 50 L177 50Z"/>
+                        <path d="M60 120 L63 130 L74 130 L65 137 L68 147 L60 141 L52 147 L55 137 L46 130 L57 130Z"/>
+                        <path d="M180 120 L183 130 L194 130 L185 137 L188 147 L180 141 L172 147 L175 137 L166 130 L177 130Z"/>
+                    </g>
+                </svg>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight" data-en="New Zealand" data-ma="Aotearoa" data-mi="Aotearoa">New Zealand</h1>
+            <p class="text-xl md:text-2xl font-light mb-2 opacity-90" data-en="The Land of the Long White Cloud" data-ma="Te Whenua o te Kapua Roa" data-mi="Te Whenua o te Kapua Roa">The Land of the Long White Cloud</p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">🇳🇿 Oceania</span>
+                <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">🌏 Pacific</span>
+                <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">🏔️ Adventure</span>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="scroll-reveal">
+                    <div class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4" data-en="COUNTRY PROFILE" data-ma="KŌRERO MŌ TE WHENUA" data-mi="KŌRERO MŌ TE WHENUA">COUNTRY PROFILE</div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6 gradient-text" data-en="Discover New Zealand" data-ma="Tūhura i Aotearoa" data-mi="Tūhura i Aotearoa">Discover New Zealand</h2>
+                    <div class="prose prose-lg text-gray-600 leading-relaxed space-y-4">
+                        <p data-en="New Zealand, known to the Māori as <strong>Aotearoa</strong> (The Land of the Long White Cloud), is a breathtaking island nation located in the southwestern Pacific Ocean. Comprising two main landmasses—the North Island (Te Ika-a-Māui) and the South Island (Te Waipounamu)—along with over 700 smaller islands, this country spans approximately 268,021 square kilometers." data-ma="Ko Aotearoa, e mōhiotia ana e ngā Māori hei <strong>Aotearoa</strong> (Te Whenua o te Kapua Roa), he whenua mīharo kei te tonga hauāuru o Te Moana-nui-a-Kiwa. E rua ngā moutere nui – ko Te Ika-a-Māui me Te Waipounamu – me ētahi atu moutere 700, e 268,021 km2 te rahi." data-mi="Ko Aotearoa, e mōhiotia ana e ngā Māori hei <strong>Aotearoa</strong> (Te Whenua o te Kapua Roa), he whenua mīharo kei te tonga hauāuru o Te Moana-nui-a-Kiwa. E rua ngā moutere nui – ko Te Ika-a-Māui me Te Waipounamu – me ētahi atu moutere 700, e 268,021 km2 te rahi.">
+                            New Zealand, known to the Māori as <strong>Aotearoa</strong> (The Land of the Long White Cloud), is a breathtaking island nation located in the southwestern Pacific Ocean. Comprising two main landmasses—the North Island (Te Ika-a-Māui) and the South Island (Te Waipounamu)—along with over 700 smaller islands, this country spans approximately 268,021 square kilometers.
+                        </p>
+                        <p data-en="With a population of around 5.2 million friendly locals known as 'Kiwis,' New Zealand boasts a unique blend of Māori heritage and British colonial history. The country is renowned for its dramatic landscapes, from pristine beaches and ancient rainforests to snow-capped mountains and active volcanoes. As the filming location for <em>The Lord of the Rings</em> and <em>The Hobbit</em> trilogies, New Zealand has captured the imagination of travelers worldwide." data-ma="He 5.2 miriona tangata e noho ana i konei, e mōhiotia ana he 'Kiwi'. He whenua whakahirahira tōna ahurea Māori me tōna hītori Peretānia. He mīharo ngā āhua whenua – ngā onepū, ngā ngāhere tawhito, ngā maunga huka, me ngā puia. Nā te whakaari i <em>The Lord of the Rings</em> me <em>The Hobbit</em>, kua rongonui Aotearoa i te ao." data-mi="He 5.2 miriona tangata e noho ana i konei, e mōhiotia ana he 'Kiwi'. He whenua whakahirahira tōna ahurea Māori me tōna hītori Peretānia. He mīharo ngā āhua whenua – ngā onepū, ngā ngāhere tawhito, ngā maunga huka, me ngā puia. Nā te whakaari i <em>The Lord of the Rings</em> me <em>The Hobbit</em>, kua rongonui Aotearoa i te ao.">
+                            With a population of around 5.2 million friendly locals known as 'Kiwis,' New Zealand boasts a unique blend of Māori heritage and British colonial history. The country is renowned for its dramatic landscapes, from pristine beaches and ancient rainforests to snow-capped mountains and active volcanoes. As the filming location for <em>The Lord of the Rings</em> and <em>The Hobbit</em> trilogies, New Zealand has captured the imagination of travelers worldwide.
+                        </p>
+                    </div>
+                    <div class="mt-8 grid grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-2xl font-bold text-blue-900">5.2M</div>
+                            <div class="text-sm text-gray-500" data-en="Population" data-ma="Taupori" data-mi="Taupori">Population</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-2xl font-bold text-blue-900">268k</div>
+                            <div class="text-sm text-gray-500" data-en="km² Area" data-ma="km² Rahi" data-mi="km² Rahi">km² Area</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-2xl font-bold text-blue-900">2</div>
+                            <div class="text-sm text-gray-500" data-en="Main Islands" data-ma="Moutere Nui" data-mi="Moutere Nui">Main Islands</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-reveal relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-teal-500 rounded-2xl opacity-20 blur-xl"></div>
+                    <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80" alt="New Zealand Nature" class="relative rounded-2xl shadow-2xl w-full h-96 object-cover">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="font-semibold text-gray-800" data-en="Top Destination 2024" data-ma="Wāhi Tino 2024" data-mi="Wāhi Tino 2024">Top Destination 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section id="cities" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-block px-4 py-1 bg-teal-100 text-teal-800 rounded-full text-sm font-semibold mb-4" data-en="MUST-VISIT CITIES" data-ma="NGĀ TĀONE ME HAERE" data-mi="NGĀ TĀONE ME HAERE">MUST-VISIT CITIES</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-en="Iconic Cities of New Zealand" data-ma="Ngā Tāone Rongonui o Aotearoa" data-mi="Ngā Tāone Rongonui o Aotearoa">Iconic Cities of New Zealand</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-en="From vibrant urban centers to adventure capitals, explore the diverse cities that make New Zealand unforgettable." data-ma="Mai i ngā tāone nui ki ngā tāone mō te pakanga, tūhura i ngā tāone rerekē e hangai ana ki Aotearoa." data-mi="Mai i ngā tāone nui ki ngā tāone mō te pakanga, tūhura i ngā tāone rerekē e hangai ana ki Aotearoa.">From vibrant urban centers to adventure capitals, explore the diverse cities that make New Zealand unforgettable.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Auckland -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover scroll-reveal">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/877cc6fa89fde6ad697eceecedb942e9f879a9f9.jpg" alt="Auckland Skyline" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-blue-900">
+                            <i class="fas fa-map-marker-alt mr-1"></i> North Island
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Auckland <span class="text-lg font-normal text-gray-500">(Tāmaki Makaurau)</span></h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-en="New Zealand's largest city and economic hub, Auckland is built on a narrow isthmus between two harbors. Known as the 'City of Sails,' it features the iconic Sky Tower, vibrant waterfront precincts, and over 50 volcanic cones dotting the landscape. Explore Waiheke Island's vineyards, stroll through the Auckland Domain, or experience the bustling nightlife of Britomart and Ponsonby." data-ma="Ko te tāone nui rawa o Aotearoa, e hangaia ana i waenga i ngā whanga e rua. E mōhiotia ana hei 'Tāone o ngā Rā' – kei konei te Sky Tower, ngā wāhi wai, me ngā puia 50+. Haere ki Waiheke mō te wāina, hīkoi i te Auckland Domain, whakangahau i Britomart." data-mi="Ko te tāone nui rawa o Aotearoa, e hangaia ana i waenga i ngā whanga e rua. E mōhiotia ana hei 'Tāone o ngā Rā' – kei konei te Sky Tower, ngā wāhi wai, me ngā puia 50+. Haere ki Waiheke mō te wāina, hīkoi i te Auckland Domain, whakangahau i Britomart.">
+                            New Zealand's largest city and economic hub, Auckland is built on a narrow isthmus between two harbors. Known as the 'City of Sails,' it features the iconic Sky Tower, vibrant waterfront precincts, and over 50 volcanic cones dotting the landscape. Explore Waiheke Island's vineyards, stroll through the Auckland Domain, or experience the bustling nightlife of Britomart and Ponsonby.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">🏙️ Urban</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">🍷 Wine</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">🌋 Volcanoes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Queenstown -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover scroll-reveal">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/assets.simpleviewinc.com/670cb036da730419d64bb75cb516c8edc2f11375.jpg" alt="Queenstown Landscape" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-teal-900">
+                            <i class="fas fa-map-marker-alt mr-1"></i> South Island
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Queenstown <span class="text-lg font-normal text-gray-500">(Tāhuna)</span></h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-en="The adventure capital of the world, Queenstown sits on the shores of the crystal-clear Lake Wakatipu, surrounded by the dramatic Remarkables mountain range. Whether you're bungee jumping from the Kawarau Bridge, skiing in winter, or simply enjoying the world-class wineries of the Central Otago region, Queenstown delivers adrenaline and beauty in equal measure. Don't miss the historic Arrowtown nearby." data-ma="Ko te tāone mō te pakanga o te ao, e noho ana i te tahataha o te roto Wakatipu, i waenga i ngā maunga Remarkables. Ahakoa he peke peke, he hāki, he inu wāina i Central Otago, he mīharo a Tāhuna. Kaua e wareware i Arrowtown." data-mi="Ko te tāone mō te pakanga o te ao, e noho ana i te tahataha o te roto Wakatipu, i waenga i ngā maunga Remarkables. Ahakoa he peke peke, he hāki, he inu wāina i Central Otago, he mīharo a Tāhuna. Kaua e wareware i Arrowtown.">
+                            The adventure capital of the world, Queenstown sits on the shores of the crystal-clear Lake Wakatipu, surrounded by the dramatic Remarkables mountain range. Whether you're bungee jumping from the Kawarau Bridge, skiing in winter, or simply enjoying the world-class wineries of the Central Otago region, Queenstown delivers adrenaline and beauty in equal measure. Don't miss the historic Arrowtown nearby.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-sm">⛷️ Skiing</span>
+                            <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-sm">🪂 Adventure</span>
+                            <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-sm">🏔️ Mountains</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellington -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover scroll-reveal">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/media.gettyimages.com/55a768baf201e19b8985f5a2f389063992c354c0.jpg" alt="Wellington Harbor" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-indigo-900">
+                            <i class="fas fa-map-marker-alt mr-1"></i> North Island
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Wellington <span class="text-lg font-normal text-gray-500">(Te Whanganui-a-Tara)</span></h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-en="New Zealand's vibrant capital, Wellington, is nestled between a sparkling harbor and rolling green hills. Known for its creative energy, the city is home to Te Papa Tongarewa (Museum of New Zealand), the Weta Workshop (where movie magic happens), and Cuba Street's eclectic cafes and boutiques. The cable car ride to the Botanic Garden offers panoramic views of this windy but wonderful city." data-ma="Ko te tāone matua o Aotearoa, e noho ana i waenga i te whanga me ngā puke kākāriki. Kei konei Te Papa, te Weta Workshop, me Cuba Street. He mīharo te haere ki te Māra Tipu mā te waka taura." data-mi="Ko te tāone matua o Aotearoa, e noho ana i waenga i te whanga me ngā puke kākāriki. Kei konei Te Papa, te Weta Workshop, me Cuba Street. He mīharo te haere ki te Māra Tipu mā te waka taura.">
+                            New Zealand's vibrant capital, Wellington, is nestled between a sparkling harbor and rolling green hills. Known for its creative energy, the city is home to Te Papa Tongarewa (Museum of New Zealand), the Weta Workshop (where movie magic happens), and Cuba Street's eclectic cafes and boutiques. The cable car ride to the Botanic Garden offers panoramic views of this windy but wonderful city.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">🎭 Culture</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">☕ Cafes</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">🎬 Film</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rotorua -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover scroll-reveal">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.newzealand.com/df7bed6afc941b935cc6cf95b42aad96f2ad5fdf.jpg" alt="Rotorua Geothermal" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-orange-900">
+                            <i class="fas fa-map-marker-alt mr-1"></i> North Island
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Rotorua <span class="text-lg font-normal text-gray-500">(Te Rotorua-nui-a-Kahumatamomoe)</span></h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-en="Rotorua is New Zealand's geothermal wonderland, where bubbling mud pools, steaming geysers, and natural hot springs create an otherworldly landscape. This is also the heartland of Māori culture—experience an authentic hangi feast and powerful haka performance at Te Puia or Whakarewarewa. The nearby Redwoods Treewalk and stunning lakes provide endless opportunities for exploration and relaxation." data-ma="Ko Rotorua te whenua whakamīharo o Aotearoa – ngā repo puehu, ngā puia wera, ngā puna wai mahana. Ko te ngākau o te ahurea Māori tēnei – tūhura i te hākari hangi me te haka i Te Puia. He mīharo hoki ngā rākau Redwoods me ngā roto." data-mi="Ko Rotorua te whenua whakamīharo o Aotearoa – ngā repo puehu, ngā puia wera, ngā puna wai mahana. Ko te ngākau o te ahurea Māori tēnei – tūhura i te hākari hangi me te haka i Te Puia. He mīharo hoki ngā rākau Redwoods me ngā roto.">
+                            Rotorua is New Zealand's geothermal wonderland, where bubbling mud pools, steaming geysers, and natural hot springs create an otherworldly landscape. This is also the heartland of Māori culture—experience an authentic hangi feast and powerful haka performance at Te Puia or Whakarewarewa. The nearby Redwoods Treewalk and stunning lakes provide endless opportunities for exploration and relaxation.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-sm">🌋 Geothermal</span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-sm">🎭 Māori Culture</span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-sm">♨️ Hot Springs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-block px-4 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-semibold mb-4" data-en="RICH HERITAGE" data-ma="TAONGA TUKU IHO" data-mi="TAONGA TUKU IHO">RICH HERITAGE</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-en="Māori Culture & Traditions" data-ma="Te Ahurea me Ngā Tikanga Māori" data-mi="Te Ahurea me Ngā Tikanga Māori">Māori Culture & Traditions</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl scroll-reveal">
+                    <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-en="The Haka" data-ma="Te Haka" data-mi="Te Haka">The Haka</h3>
+                    <p class="text-gray-600" data-en="A powerful ceremonial dance performed by Māori, the haka is a display of tribe pride, strength, and unity. The world-famous Ka Mate haka, performed by the All Blacks rugby team before matches, has become a global symbol of New Zealand identity." data-ma="He kanikani whakahīhī, whakakaha, whakakotahi a te haka. Ko te haka 'Ka Mate' a te kapa whutupōro All Blacks kua rongonui i te ao." data-mi="He kanikani whakahīhī, whakakaha, whakakotahi a te haka. Ko te haka 'Ka Mate' a te kapa whutupōro All Blacks kua rongonui i te ao.">
+                        A powerful ceremonial dance performed by Māori, the haka is a display of tribe pride, strength, and unity. The world-famous Ka Mate haka, performed by the All Blacks rugby team before matches, has become a global symbol of New Zealand identity.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-teal-50 to-cyan-50 p-8 rounded-2xl scroll-reveal">
+                    <div class="w-14 h-14 bg-teal-600 rounded-xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-en="Hangi Feast" data-ma="Te Hākari Hangi" data-mi="Te Hākari Hangi">Hangi Feast</h3>
+                    <p class="text-gray-600" data-en="A traditional Māori method of cooking food using heated rocks buried in a pit oven. Meats and vegetables are wrapped in leaves and slow-cooked underground for several hours, resulting in a smoky, tender feast that brings communities together." data-ma="He tikanga Māori mō te tunu kai mā ngā kōwhatu wera e tanumia ki raro i te whenua. Ka tākai ngā mīti me ngā huawhenua ki ngā rau, ka tunu mō te roa, ka ngāwari, ka kōrero te reka." data-mi="He tikanga Māori mō te tunu kai mā ngā kōwhatu wera e tanumia ki raro i te whenua. Ka tākai ngā mīti me ngā huawhenua ki ngā rau, ka tunu mō te roa, ka ngāwari, ka kōrero te reka.">
+                        A traditional Māori method of cooking food using heated rocks buried in a pit oven. Meats and vegetables are wrapped in leaves and slow-cooked underground for several hours, resulting in a smoky, tender feast that brings communities together.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-2xl scroll-reveal">
+                    <div class="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-en="Te Reo Māori" data-ma="Te Reo Māori" data-mi="Te Reo Māori">Te Reo Māori</h3>
+                    <p class="text-gray-600" data-en="The Māori language is an official language of New Zealand alongside English and New Zealand Sign Language. You'll hear it everywhere—from place names like Whangarei and Tauranga to everyday greetings like 'Kia ora' (hello) and 'Haere mai' (welcome)." data-ma="Ko te reo Māori he reo whaimana o Aotearoa. Ka rongo koe i te reo i ngā ingoa wāhi pēnei i Whangārei, Tauranga, me ngā mihi o ia rā pēnei i 'Kia ora' me 'Haere mai'." data-mi="Ko te reo Māori he reo whaimana o Aotearoa. Ka rongo koe i te reo i ngā ingoa wāhi pēnei i Whangārei, Tauranga, me ngā mihi o ia rā pēnei i 'Kia ora' me 'Haere mai'.">
+                        The Māori language is an official language of New Zealand alongside English and New Zealand Sign Language. You'll hear it everywhere—from place names like Whangarei and Tauranga to everyday greetings like 'Kia ora' (hello) and 'Haere mai' (welcome).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section id="tips" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-block px-4 py-1 bg-white/10 text-white rounded-full text-sm font-semibold mb-4" data-en="ESSENTIAL TIPS" data-ma="NGĀ TOHUTOHU" data-mi="NGĀ TOHUTOHU MATUA">ESSENTIAL TIPS</div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-en="Before You Go" data-ma="I Mua i Tō Haere" data-mi="I Mua i Tō Haere">Before You Go</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">🌤️</div>
+                    <h3 class="text-lg font-bold mb-2" data-en="Best Time to Visit" data-ma="Te Wā Tino pai" data-mi="Te Wā Tino pai">Best Time to Visit</h3>
+                    <p class="text-gray-300 text-sm" data-en="December-February (summer) for warm weather and festivals. June-August for skiing in the South Island. Shoulder seasons (Mar-May, Sep-Nov) offer fewer crowds." data-ma="Tihema-Hanuere (raumati) mō te rangi mahana. Hune-Akuhata mō te hāki i Te Waipounamu. Ngā wā waenga he iti iho ngā tāngata." data-mi="Tihema-Hanuere (raumati) mō te rangi mahana. Hune-Akuhata mō te hāki i Te Waipounamu. Ngā wā waenga he iti iho ngā tāngata.">
+                        December-February (summer) for warm weather and festivals. June-August for skiing in the South Island. Shoulder seasons (Mar-May, Sep-Nov) offer fewer crowds.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-lg font-bold mb-2" data-en="Currency" data-ma="Moni" data-mi="Moni">Currency</h3>
+                    <p class="text-gray-300 text-sm" data-en="New Zealand Dollar (NZD). Credit cards are widely accepted. Tipping is not customary but appreciated for exceptional service. GST (15%) is included in displayed prices." data-ma="Tāra o Aotearoa (NZD). Ka whakaaetia ngā kāri nama. Kāore e tikanga te tuku koha, engari ka whakamihi mō te ratonga pai. Kei roto te GST (15%) i ngā utu." data-mi="Tāra o Aotearoa (NZD). Ka whakaaetia ngā kāri nama. Kāore e tikanga te tuku koha, engari ka whakamihi mō te ratonga pai. Kei roto te GST (15%) i ngā utu.">
+                        New Zealand Dollar (NZD). Credit cards are widely accepted. Tipping is not customary but appreciated for exceptional service. GST (15%) is included in displayed prices.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">🚗</div>
+                    <h3 class="text-lg font-bold mb-2" data-en="Getting Around" data-ma="Te Haere" data-mi="Te Haere">Getting Around</h3>
+                    <p class="text-gray-300 text-sm" data-en="Driving is on the left side. Rent a campervan for the ultimate road trip experience. Domestic flights connect major cities. Intercity buses and scenic trains are great alternatives." data-ma="Te taraiwa i te mauī. Rīhana he kaemepēne mō te haere huarahi. Ka hono ngā rererangi i ngā tāone nui. He pai hoki ngā pahi me ngā tereina." data-mi="Te taraiwa i te mauī. Rīhana he kaemepēne mō te haere huarahi. Ka hono ngā rererangi i ngā tāone nui. He pai hoki ngā pahi me ngā tereina.">
+                        Driving is on the left side. Rent a campervan for the ultimate road trip experience. Domestic flights connect major cities. Intercity buses and scenic trains are great alternatives.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">🌿</div>
+                    <h3 class="text-lg font-bold mb-2" data-en="Biosecurity" data-ma="Te Haumaru Koiora" data-mi="Te Haumaru Koiora">Biosecurity</h3>
+                    <p class="text-gray-300 text-sm" data-en="NZ has strict biosecurity laws. Declare all food, plants, and outdoor equipment at customs. Clean hiking boots thoroughly. Protecting the unique ecosystem is everyone's responsibility." data-ma="He kaha ngā ture haumaru koiora o Aotearoa. Whakapuakina ngā kai, tipu, taputapu tuawhenua ki te vāmana. Horoiia ngā pūtu hīkoi. Ko te tiaki i te taiao he kawenga mō te katoa." data-mi="He kaha ngā ture haumaru koiora o Aotearoa. Whakapuakina ngā kai, tipu, taputapu tuawhenua ki te vāmana. Horoiia ngā pūtu hīkoi. Ko te tiaki i te taiao he kawenga mō te katoa.">
+                        NZ has strict biosecurity laws. Declare all food, plants, and outdoor equipment at customs. Clean hiking boots thoroughly. Protecting the unique ecosystem is everyone's responsibility.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-sm">NZ</div>
+                        <span class="text-white font-bold text-lg">Travel Guide</span>
+                    </div>
+                    <p class="text-sm" data-en="Your comprehensive guide to exploring the beauty and culture of Aotearoa New Zealand." data-ma="Tō puka arataki mō te tūhura i te ataahua me te ahurea o Aotearoa." data-mi="Tō puka arataki mō te tūhura i te ataahua me te ahurea o Aotearoa.">
+                        Your comprehensive guide to exploring the beauty and culture of Aotearoa New Zealand.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4" data-en="Quick Links" data-ma="Hononga Tere" data-mi="Hononga Tere">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-white transition-colors">About NZ</a></li>
+                        <li><a href="#cities" class="hover:text-white transition-colors">Cities</a></li>
+                        <li><a href="#culture" class="hover:text-white transition-colors">Culture</a></li>
+                        <li><a href="#tips" class="hover:text-white transition-colors">Travel Tips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4" data-en="Connect" data-ma="Tūhono" data-mi="Tūhono">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p data-en="© 2024 New Zealand Travel Guide. Kia ora and safe travels!" data-ma="© 2024 Puka Arataki Aotearoa. Kia ora, haere pai!" data-mi="© 2024 Puka Arataki Aotearoa. Kia ora, haere pai!">
+                    © 2024 New Zealand Travel Guide. Kia ora and safe travels!
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        let currentLang = 'en';
+        
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-gray-600');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.remove('text-gray-600');
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            
+            // Update page title
+            const titles = {
+                'en': 'New Zealand Travel Guide | Aotearoa',
+                'ma': 'Puka Arataki Aotearoa',
+                'mi': 'Puka Arataki Aotearoa'
+            };
+            document.title = titles[lang];
+            
+            // Update HTML lang attribute
+            const langCodes = { 'en': 'en', 'ma': 'mi', 'mi': 'mi' };
+            document.documentElement.lang = langCodes[lang];
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>'''
+
+# Save the HTML file
+output_path = '/mnt/agents/output/new_zealand_travel_guide.html'
+with open(output_path, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print(f"HTML file saved successfully to: {output_path}")
+print(f"File size: {len(html_content)} characters")
