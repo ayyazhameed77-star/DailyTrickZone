@@ -1,0 +1,962 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanuatu Travel Guide | Ultimate Blogger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E3A;
+            --secondary: #1a3c6e;
+            --gold: #D4AF37;
+            --dark: #1a1a2e;
+            --light: #f8f6f3;
+            --text: #2d2d2d;
+            --teal: #008080;
+            --coral: #FF6B6B;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* Translation Bar */
+        .translate-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            z-index: 1000;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .translate-bar span {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .lang-btn {
+            padding: 8px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+        }
+        
+        .lang-btn .flag {
+            font-size: 16px;
+        }
+        
+        /* Hero */
+        .hero {
+            margin-top: 60px;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
+                        url('https://kimi-web-img.moonshot.cn/img/www.hideawayholidays.com.au/60d8fea92aa67791dc11f0a0e6e89758b68b8f05.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(transparent, var(--light));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: scrollDot 2s infinite;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        /* Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        
+        /* Country Info Card */
+        .info-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .info-item h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        /* Flag Section */
+        .flag-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .flag-img {
+            width: 280px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .flag-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .flag-meaning {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .flag-meaning h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .color-meaning {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .color-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+        
+        /* City Cards */
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .city-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .city-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .city-card:hover .city-img {
+            transform: scale(1.1);
+        }
+        
+        .city-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .city-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3));
+        }
+        
+        .city-content {
+            padding: 25px 30px 30px;
+        }
+        
+        .city-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .city-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .city-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        /* Blog Content */
+        .blog-content {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .blog-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin: 35px 0 15px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--secondary) 100%);
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            opacity: 0.1;
+            line-height: 1;
+        }
+        
+        .highlight-box p {
+            color: rgba(255,255,255,0.95) !important;
+            margin: 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, var(--teal), var(--secondary));
+            border-radius: 15px;
+            color: #fff;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 50px 0 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            max-width: 500px;
+            margin: 0 auto 20px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        @keyframes scrollDot {
+            0% { opacity: 1; top: 8px; }
+            100% { opacity: 0; top: 25px; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .city-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .blog-content { padding: 30px 20px; }
+            .flag-section { flex-direction: column; text-align: center; }
+            .section { padding: 50px 0; }
+            .translate-bar { flex-wrap: wrap; padding: 10px; }
+            .lang-btn { padding: 6px 14px; font-size: 12px; }
+        }
+        
+        /* Hidden class for translation */
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <!-- Translation Bar -->
+    <div class="translate-bar">
+        <span>🌐 Translate:</span>
+        <button class="lang-btn active" onclick="switchLang('en')">
+            <span class="flag">🇬🇧</span> English
+        </button>
+        <button class="lang-btn" onclick="switchLang('bi')">
+            <span class="flag">🇻🇺</span> Bislama
+        </button>
+        <button class="lang-btn" onclick="switchLang('fr')">
+            <span class="flag">🇫🇷</span> French
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Ultimate Travel Guide 2026</div>
+            <h1>Vanuatu</h1>
+            <p class="hero-subtitle">Discover the Happiest Nation on Earth — Where Volcanoes Meet Paradise and Ancient Traditions Dance with the Sea</p>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- Country Overview -->
+        <section class="section">
+            <div class="lang-content active" id="content-en">
+                <h2 class="section-title">Country Overview</h2>
+                <p class="section-subtitle">Essential facts about this Pacific island paradise</p>
+            </div>
+            <div class="lang-content" id="content-bi">
+                <h2 class="section-title">Lukluk Long Kountri</h2>
+                <p class="section-subtitle">Ol bikpela samting long dispela ples blong solwara</p>
+            </div>
+            <div class="lang-content" id="content-fr">
+                <h2 class="section-title">Aperçu du Pays</h2>
+                <p class="section-subtitle">Faits essentiels sur ce paradis insulaire du Pacifique</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="flag-section">
+                    <img src="https://flagcdn.com/w640/vu.png" alt="Vanuatu Flag" class="flag-img">
+                    <div class="flag-meaning">
+                        <div class="lang-content active" id="flag-en">
+                            <h3>National Flag</h3>
+                            <p>The flag of Vanuatu features a <strong>boar's tusk</strong> encircling two crossed <strong>namele fern fronds</strong> — symbols of prosperity and peace. The black triangle represents the Melanesian people, green the lush islands, red the struggle for independence, and yellow the sunshine. The motto "Long God Yumi Stanap" means "In God We Stand."</p>
+                        </div>
+                        <div class="lang-content" id="flag-bi">
+                            <h3>Plak Blong Kountri</h3>
+                            <p>Plak blong Vanuatu i gat <strong>tusk blong pig</strong> i raunim tupela <strong>namele fern</strong> — ol samting blong gudfala laef na pees. Black triangle i mak blong ol Melanesia pipol, green i mak blong ol aelan, red i mak blong faitim independens, na yellow i mak blong san. Ol toktok "Long God Yumi Stanap" i minim "In God We Stand."</p>
+                        </div>
+                        <div class="lang-content" id="flag-fr">
+                            <h3>Drapeau National</h3>
+                            <p>Le drapeau du Vanu présente une <strong>défense de sanglier</strong> entourant deux <strong>frondes de fougère namele</strong> croisées — symboles de prospérité et de paix. Le triangle noir représente le peuple mélanésien, le vert les îles luxuriantes, le rouge la lutte pour l'indépendance, et le jaune le soleil. La devise "Long God Yumi Stanap" signifie "En Dieu nous nous tenons."</p>
+                        </div>
+                        <div class="color-meaning">
+                            <div class="color-box"><div class="color-dot" style="background:#009543"></div> Green — Rich Islands</div>
+                            <div class="color-box"><div class="color-dot" style="background:#000000"></div> Black — Melanesian People</div>
+                            <div class="color-box"><div class="color-dot" style="background:#D21034"></div> Red — Sacrifice</div>
+                            <div class="color-box"><div class="color-dot" style="background:#FDCE12"></div> Yellow — Sunshine</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="icon">🏛️</div>
+                        <h4>Capital</h4>
+                        <p>Port Vila</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">👥</div>
+                        <h4>Population</h4>
+                        <p>~334,000</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">🗣️</div>
+                        <h4>Languages</h4>
+                        <p>100+ Indigenous</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">💰</div>
+                        <h4>Currency</h4>
+                        <p>Vanuatu Vatu (VUV)</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">🌏</div>
+                        <h4>Region</h4>
+                        <p>Oceania / Melanesia</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">📅</div>
+                        <h4>Independence</h4>
+                        <p>July 30, 1980</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">83</span>
+                <div class="stat-label">Islands</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <div class="stat-label">Languages</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">9</span>
+                <div class="stat-label">Active Volcanoes</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">#1</span>
+                <div class="stat-label">Happiest Country</div>
+            </div>
+        </div>
+
+        <!-- Famous Cities -->
+        <section class="section">
+            <div class="lang-content active" id="cities-en">
+                <h2 class="section-title">Famous Cities & Destinations</h2>
+                <p class="section-subtitle">Must-visit gems across the Vanuatu archipelago</p>
+            </div>
+            <div class="lang-content" id="cities-bi">
+                <h2 class="section-title">Ol Bikpela Taun</h2>
+                <p class="section-subtitle">Ol gutpela ples yu mas lukim long Vanuatu</p>
+            </div>
+            <div class="lang-content" id="cities-fr">
+                <h2 class="section-title">Villes & Destinations Célèbres</h2>
+                <p class="section-subtitle">Joyaux incontournables de l'archipel du Vanuatu</p>
+            </div>
+            
+            <div class="city-grid">
+                <!-- Port Vila -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/05cc89dd5dc204e9f61300524aee6af3634ad3aa.jpg" alt="Port Vila" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Capital City</span>
+                        <div class="lang-content active" id="pv-en">
+                            <h3>Port Vila</h3>
+                            <p>The vibrant capital on Efate Island blends French colonial charm with Melanesian warmth. Stroll through the bustling Mama's Market for fresh tropical produce, visit the National Museum of Vanuatu, and unwind at Hideaway Island — home to the world's only underwater post office. The waterfront promenade offers stunning sunset views over the harbor.</p>
+                        </div>
+                        <div class="lang-content" id="pv-bi">
+                            <h3>Port Vila</h3>
+                            <p>Kapital taun long Efate Aelan i gat ol French samting na Melanesia welkam. Yu ken wokabaut long Mama's Market, lukim National Museum, na go long Hideaway Island — em i gat wanpela post ofis i stap daun long solwara. Wotafrant i gat gutpela san i go daun.</p>
+                        </div>
+                        <div class="lang-content" id="pv-fr">
+                            <h3>Port Vila</h3>
+                            <p>La capitale vibrante sur l'île d'Éfaté mêle le charme colonial français à la chaleur mélanésienne. Promenez-vous au marché animé de Mama, visitez le Musée national du Vanuatu, et détendez-vous à Hideaway Island — abrite la seule boîte aux lettres sous-marine au monde. La promenade du front de mer offre des couchers de soleil spectaculaires.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Luganville -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.cunard.com/2550634c4101f629e5e590bf043a92fadb3ae9b6.jpg" alt="Luganville" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Santo Island</span>
+                        <div class="lang-content active" id="lug-en">
+                            <h3>Luganville</h3>
+                            <p>Vanuatu's second-largest town sits on Espiritu Santo, the legendary "Island of the Holy Spirit." It was a crucial WWII base for Allied forces, and divers flock here to explore the sunken SS President Coolidge — one of the world's most accessible wreck dives. The town serves as gateway to Champagne Beach and the island's famous blue holes.</p>
+                        </div>
+                        <div class="lang-content" id="lug-bi">
+                            <h3>Luganville</h3>
+                            <p>Namba tu bikpela taun long Vanuatu i stap long Espiritu Santo. Long taim bilong WWII em i bikpela ples bilong ol soldia. Ol diva i kam lukim SS President Coolidge i sink daun long solwara — wanpela gutpela ples bilong div. Taun em i rot i go long Champagne Beach na ol blu hol.</p>
+                        </div>
+                        <div class="lang-content" id="lug-fr">
+                            <h3>Luganville</h3>
+                            <p>La deuxième plus grande ville du Vanuatu se trouve sur Espiritu Santo, la légendaire "Île du Saint-Esprit". Elle fut une base cruciale pour les forces alliées pendant la Seconde Guerre mondiale, et les plongeurs affluent pour explorer l'épave du SS President Coolidge — l'une des épaves les plus accessibles au monde. La ville est le portail vers Champagne Beach et les célèbres trous bleus.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Espiritu Santo Blue Holes -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/i0.wp.com/bbf5b834ea0a0094eb3d1ca342e04da5fbeceeb2.jpg" alt="Blue Holes" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Natural Wonder</span>
+                        <div class="lang-content active" id="bh-en">
+                            <h3>Espiritu Santo Blue Holes</h3>
+                            <p>Hidden within the island's lush interior, these freshwater springs create pools of impossibly vivid blue water. Matevulu and Nanda Blue Holes are the most famous, surrounded by ancient banyan trees with vines cascading into crystal-clear depths. Swimming here feels like entering another world — serene, magical, and utterly unforgettable.</p>
+                        </div>
+                        <div class="lang-content" id="bh-bi">
+                            <h3>Blu Hol Long Santo</h3>
+                            <p>I stap insait long bikbus, ol dispela freswota i mekim ol ples we wara i blu tru. Matevulu na Nanda Blu Hol em i ol bikpela wan, i gat ol bikpela tri i raunim. Sapos yu swim long hia, yu bai filim olsem yu go long narapela wol — i pees, i magic, na yu no ken forgetim.</p>
+                        </div>
+                        <div class="lang-content" id="bh-fr">
+                            <h3>Trous Bleus d'Espiritu Santo</h3>
+                            <p>Cachés dans l'intérieur luxuriant de l'île, ces sources d'eau douce créent des piscines d'un bleu incroyablement vif. Matevulu et Nanda Blue Holes sont les plus célèbres, entourés d'anciens banians avec des lianes cascadant dans des profondeurs cristallines. Nager ici, c'est comme entrer dans un autre monde — serein, magique et absolument inoubliable.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mount Yasur -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/iugs-geoheritage.org/24b0b509ab888e0046f5fc3379e358e38180b055.jpg" alt="Mount Yasur" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Active Volcano</span>
+                        <div class="lang-content active" id="yasur-en">
+                            <h3>Mount Yasur, Tanna Island</h3>
+                            <p>One of the world's most accessible active volcanoes, Mount Yasur has been erupting continuously for over 800 years. Visitors can stand at the crater rim and witness spectacular lava explosions lighting up the night sky. The local John Frum cargo cult and the welcoming Yakel tribe add profound cultural depth to this otherworldly experience on Tanna Island.</p>
+                        </div>
+                        <div class="lang-content" id="yasur-bi">
+                            <h3>Maunten Yasur, Tanna Aelan</h3>
+                            <p>Wanpela long ol gutpela volkeno long wol we yu ken sanap klos long em, Maunten Yasur i paia i go yet moa 800 yia. Ol turis i ken sanap long maunten na lukim ol bikpela paia i go antap long skai. Ol John Frum pipol na Yakel trib i givim gutpela kastom long dispela ples long Tanna.</p>
+                        </div>
+                        <div class="lang-content" id="yasur-fr">
+                            <h3>Mont Yasur, Île de Tanna</h3>
+                            <p>L'un des volcans actifs les plus accessibles au monde, le mont Yasur est en éruption continue depuis plus de 800 ans. Les visiteurs peuvent se tenir au bord du cratère et assister à des explosions de lave spectaculaires illuminant le ciel nocturne. Le culte cargo John Frum et la tribu accueillante des Yakel ajoutent une profondeur culturelle à cette expérience surréaliste sur l'île de Tanna.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Efate Island Resort -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/modularassets.cdn.ignitetravel.com/ecee4a8df9c5880c43607e77585772aa947ed0d0.png" alt="Efate Island" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Island Paradise</span>
+                        <div class="lang-content active" id="efate-en">
+                            <h3>Efate Island</h3>
+                            <p>The heart of Vanuatu tourism, Efate offers everything from luxury resorts to untouched jungle. Circle the island by road to discover hidden waterfalls, black sand beaches at Eton, and the stunning Mele Cascades. Offshore, the coral reefs of Hideaway Island and the marine sanctuary of Erakor Lagoon provide world-class snorkeling and diving experiences.</p>
+                        </div>
+                        <div class="lang-content" id="efate-bi">
+                            <h3>Efate Aelan</h3>
+                            <p>Hat blong turis long Vanuatu, Efate i gat ol gutpela haus na bikbus we i no bin bagarap. Yu ken raunim aelan long rot na lukim ol wara i pundaun, blak san biksi long Eton, na Mele Cascades. Long solwara, Hideaway Island coral na Erakor Lagoon i gat ol gutpela ples bilong div.</p>
+                        </div>
+                        <div class="lang-content" id="efate-fr">
+                            <h3>Île d'Éfaté</h3>
+                            <p>Le cœur du tourisme vanuatais, Éfaté offre tout, des resorts de luxe à la jungle vierge. Faites le tour de l'île en voiture pour découvrir des cascades cachées, les plages de sable noir d'Eton, et les superbes cascades de Mele. Au large, les récifs coralliens de Hideaway Island et le sanctuaire marin du lagon d'Erakor offrent des expériences de snorkeling et de plongée de classe mondiale.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Matevulu Blue Hole -->
+                <div class="city-card">
+                    <div class="city-img-wrap">
+                        <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/da86219fc9b769afb485430632649f678ab00727.jpg" alt="Matevulu Blue Hole" class="city-img">
+                    </div>
+                    <div class="city-content">
+                        <span class="city-tag">Hidden Gem</span>
+                        <div class="lang-content active" id="mate-en">
+                            <h3>Matevulu Blue Hole</h3>
+                            <p>Perhaps the most photographed natural wonder in Vanuatu, Matevulu Blue Hole is a freshwater spring of surreal turquoise clarity. A rope swing hangs from an ancient banyan tree, inviting adventurous souls to plunge into the cool, mineral-rich waters. The surrounding jungle echoes with bird calls, creating a soundtrack of pure tropical serenity.</p>
+                        </div>
+                        <div class="lang-content" id="mate-bi">
+                            <h3>Matevulu Blu Hol</h3>
+                            <p>Wanpela long ol bikpela ples we ol man i save kisim piksa long Vanuatu, Matevulu Blu Hol em i freswota we i blu tru. Wanpela rop i hangamap long bikpela tri, na yu ken swing na pundaun long kol wara. Bikbus i raunim na ol pisin i singaut, i mekim gutpela musik blong tropics.</p>
+                        </div>
+                        <div class="lang-content" id="mate-fr">
+                            <h3>Trou Bleu de Matevulu</h3>
+                            <p>Peut-être la merveille naturelle la plus photographiée du Vanuatu, le trou bleu de Matevulu est une source d'eau douce d'une clarté turquoise surréaliste. Une balançoire en corde pend à un ancien banian, invitant les âmes aventureuses à plonger dans les eaux fraîches et riches en minéraux. La jungle environnante résonne des chants d'oiseaux, créant une bande-son de pure sérénité tropicale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Article -->
+        <section class="section">
+            <div class="lang-content active" id="blog-en">
+                <div class="blog-content">
+                    <h2 class="section-title">Why Vanuatu Should Be Your Next Paradise Escape</h2>
+                    
+                    <p>In a world of over-touristed beaches and cookie-cutter resorts, Vanuatu stands apart as a beacon of authenticity. This Y-shaped archipelago of 83 islands in the South Pacific is not just a destination — it is a feeling. Named the world's happiest country multiple times by the Happy Planet Index, Vanuatu invites travelers to slow down, breathe deeply, and reconnect with what truly matters.</p>
+                    
+                    <p>Picture yourself standing at the edge of Mount Yasur's crater, feeling the ground tremble beneath your feet as molten rock explodes into the starry night. Imagine swimming in a blue hole so vividly turquoise it seems digitally enhanced, surrounded only by the sounds of jungle birds and rustling leaves. Envision sharing a shell of kava with village elders, their weathered faces breaking into smiles as they welcome you into their world.</p>
+                    
+                    <h3>A Living Culture, Not a Museum Piece</h3>
+                    <p>What makes Vanuatu extraordinary is that its culture is not preserved behind glass — it is lived every single day. On the island of Tanna, the Yakel tribe maintains a traditional lifestyle largely untouched by modernity. The land diving ceremony of Pentecost Island, where men leap from towering wooden towers with only vines tied to their ankles, is the original inspiration for bungee jumping and remains a powerful spiritual ritual.</p>
+                    
+                    <div class="highlight-box">
+                        <p>"Vanuatu doesn't just show you paradise — it lets you live inside it. The Ni-Vanuatu people teach us that happiness isn't found in possessions, but in community, nature, and the simple joy of being present."</p>
+                    </div>
+                    
+                    <h3>Adventure at Every Turn</h3>
+                    <p>Beyond the cultural immersion lies a playground for adventurers. Dive the SS President Coolidge, a luxury liner turned troopship that now rests as the world's largest accessible wreck. Trek through the dense rainforest of Espiritu Santo to discover hidden blue holes of impossible beauty. Snorkel above coral gardens teeming with clownfish, sea turtles, and reef sharks in waters so clear you can see 30 meters down.</p>
+                    
+                    <h3>Practical Travel Tips</h3>
+                    <p>The best time to visit is during the dry season from May to October, when humidity drops and the skies are reliably blue. Port Vila and Luganville have international airports, with domestic flights and ferries connecting the outer islands. The Vatu is the local currency, though Australian dollars are widely accepted. English, French, and Bislama are all official languages, making communication surprisingly easy.</p>
+                    
+                    <p>Accommodations range from boutique eco-resorts to family-run guesthouses and village homestays. For the most immersive experience, consider staying with a local family — you will gain insights no luxury hotel can offer. Bring reef-safe sunscreen, modest clothing for village visits, and an open heart. Vanuatu rewards those who travel with curiosity and respect.</p>
+                    
+                    <h3>Final Thoughts</h3>
+                    <p>Vanuatu is more than a vacation — it is a reminder of how the world once was and how it can still be. It is a place where children wave at strangers, where elders share stories under banyan trees, and where the rhythm of life follows the tides rather than the clock. If you are searching for a destination that nourishes your soul as much as your Instagram feed, look no further. Vanuatu is waiting, and it has never looked more beautiful.</p>
+                </div>
+            </div>
+            
+            <div class="lang-content" id="blog-bi">
+                <div class="blog-content">
+                    <h2 class="section-title">Bilong Wanem Yu Mas Go Long Vanuatu</h2>
+                    
+                    <p>Long wol we ol turis i go planti long ol biksi, Vanuatu i stap olsem wanpela gutpela ples we i no olsem ol narapela. Dispela 83 aelan long Saut Pasifik i no tasol wanpela ples — em i wanpela filim. Ol i kolim em "happiest country" planti taim, na Vanuatu i askim ol turis long go isi, kisim win gut, na tingim gut long wanem samting i important tru.</p>
+                    
+                    <p>Tingim yu sanap klos long Maunten Yasur, filim graun i guria long lek bilong yu taim paia i go antap long nait. Tingim yu swim long blu hol we wara i blu tru, na yu harim tasol ol pisin na ol tri. Tingim yu dring kava wantaim ol tumbuna man, na ol i amamas long welkam yu long ol ples bilong ol.</p>
+                    
+                    <h3>Kastom I Stap Yet, I No Samting Bilong Lukim Tasol</h3>
+                    <p>Wanem samting i mekim Vanuatu i spesal em kastom bilong ol pipol i stap yet. Long Tanna, ol Yakel pipol i livim olsem tumbuna taim. Long Pentecost Aelan, ol man i jump daun long bikpela tower wantaim rop long lek — dispela em i as bilong bungee jumping na em i strongpela kastom yet.</p>
+                    
+                    <div class="highlight-box">
+                        <p>"Vanuatu i no soim yu paradis tasol — em i larim yu livim insait long en. Ol Ni-Vanuatu pipol i skulim yu long wanem hapines i no long ol samting, tasol long ol pipol, graun, na amamas bilong stap gut."</p>
+                    </div>
+                    
+                    <h3>Adventja Long Olgeta Ples</h3>
+                    <p>Long kastom i gat ol gutpela ples bilong ol man i laik adventja. Div long SS President Coolidge, wanpela bikpela sip i sink daun long solwara. Wokabaut long bikbus long Santo na lukim ol blu hol. Div long solwara we yu ken lukim ol kala pis, turtle, na shark long wara we i klia tru.</p>
+                    
+                    <h3>Ol Gutpela Tok</h3>
+                    <p>Best taim long go em long taim bilong drai, May long October. Port Vila na Luganville i gat ol bikpela eroplan, na ol liklik eroplan na sip i joinim ol narapela aelan. Vatu em moni bilong kountri, na Australian dolla i orait. English, French, na Bislama em ol ofisel tokples, na em i isi long toktok.</p>
+                    
+                    <p>Yu ken slip long ol gutpela haus o long ol ples bilong ol pipol. Sapos yu laik kisim gutpela save, yu mas slip wantaim ol lokal famili — ol bai i givim yu ol samting we ol gutpela haus i no inap. Yu mas kisim sunscreen, klos long ol villis, na gutpela tingting. Vanuatu i givim gutpela samting long ol man we i laik save na respekt.</p>
+                    
+                    <h3>Last Tok</h3>
+                    <p>Vanuatu i moa yet long holide — em i wanpela tingting long wanem taim bipo na wanem taim nau. Em i ples we ol pikinini i welkam ol narapela man, we ol tumbuna i stori long aninit long ol tri, na we laip i bihainim solwara i kamap na i go daun. Sapos yu laik ples i givim yu gutpela filim long bel na long fes, yu no mas lukim narapela ples. Vanuatu i wetim yu, na em i no bin lukim olsem yet.</p>
+                </div>
+            </div>
+            
+            <div class="lang-content" id="blog-fr">
+                <div class="blog-content">
+                    <h2 class="section-title">Pourquoi le Vanuatu Devrait Être Votre Prochaine Évasion Paradisiaque</h2>
+                    
+                    <p>Dans un monde de plages surfréquentées et de resorts standardisés, le Vanuatu se distingue comme un phare d'authenticité. Cet archipel en forme de Y de 83 îles dans le Pacifique Sud n'est pas qu'une destination — c'est une sensation. Nommé le pays le plus heureux du monde à plusieurs reprises par l'Indice du Bonheur Planétaire, le Vanuatu invite les voyageurs à ralentir, respirer profondément et se reconnecter avec ce qui compte vraiment.</p>
+                    
+                    <p>Imaginez-vous au bord du cratère du mont Yasur, sentant le sol trembler sous vos pieds tandis que la roche en fusion explose dans la nuit étoilée. Imaginez nager dans un trou bleu d'un turquoise si vif qu'il semble retouché numériquement, entouré seulement par les chants des oiseaux de la jungle. Imaginez partager un bol de kava avec les anciens du village, leurs visages burinés s'illuminant d'un sourire alors qu'ils vous accueillent dans leur monde.</p>
+                    
+                    <h3>Une Culture Vivante, Pas un Objet de Musée</h3>
+                    <p>Ce qui rend le Vanuatu extraordinaire, c'est que sa culture n'est pas conservée derrière du verre — elle est vécue chaque jour. Sur l'île de Tanna, la tribu Yakel maintient un mode de vie traditionnel largement épargné par la modernité. La cérémonie du saut des terres de l'île de Pentecôte, où les hommes sautent de hautes tours en bois avec seulement des lianes attachées aux chevilles, est l'inspiration originale du saut à l'élastique et reste un puissant rituel spirituel.</p>
+                    
+                    <div class="highlight-box">
+                        <p>"Le Vanuatu ne vous montre pas seulement le paradis — il vous laisse y vivre. Le peuple ni-vanuatais nous enseigne que le bonheur ne se trouve pas dans les possessions, mais dans la communauté, la nature et la simple joie d'être présent."</p>
+                    </div>
+                    
+                    <h3>L'Aventure à Chaque Détour</h3>
+                    <p>Au-delà de l'immersion culturelle se trouve un terrain de jeu pour les aventuriers. Plongez sur le SS President Coolidge, un paquebot de luxe devenu navire de troupes qui repose désormais comme l'épave la plus accessible au monde. Faites une randonnée dans la forêt tropicale dense d'Espiritu Santo pour découvrir des trous bleus d'une beauté impossible. Faites du snorkeling au-dessus de jardins de coraux grouillants de poissons-clowns, de tortues de mer et de requins de récif dans des eaux si claires que vous pouvez voir à 30 mètres de profondeur.</p>
+                    
+                    <h3>Conseils Pratiques de Voyage</h3>
+                    <p>La meilleure période pour visiter est pendant la saison sèche de mai à octobre, lorsque l'humidité diminue et que le ciel est invariablement bleu. Port Vila et Luganville ont des aéroports internationaux, avec des vols intérieurs et des ferries reliant les îles extérieures. Le Vatu est la monnaie locale, bien que les dollars australiens soient largement acceptés. L'anglais, le français et le bichelamar sont toutes des langues officielles, ce qui rend la communication étonnamment facile.</p>
+                    
+                    <p>Les hébergements vont des éco-resorts de charme aux pensions familiales et aux séjours chez l'habitant dans les villages. Pour l'expérience la plus immersive, envisagez de séjourner avec une famille locale — vous obtiendrez des perspectives qu'aucun hôtel de luxe ne peut offrir. Apportez un écran solaire respectueux des récifs, des vêtements modestes pour les visites de villages, et un cœur ouvert. Le Vanuatu récompense ceux qui voyagent avec curiosité et respect.</p>
+                    
+                    <h3>Réflexions Finales</h3>
+                    <p>Le Vanuatu est plus qu'une vacance — c'est un rappel de comment le monde était autrefois et comment il peut encore être. C'est un endroit où les enfants saluent les étrangers, où les anciens partagent des histoires sous les banians, et où le rythme de la vie suit les marées plutôt que l'horloge. Si vous cherchez une destination qui nourrit votre âme autant que votre fil Instagram, ne cherchez pas plus loin. Le Vanuatu vous attend, et il n'a jamais été aussi beau.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>Vanuatu Travel Guide</h3>
+        <div class="footer-divider"></div>
+        <p>Discover the happiest nation on Earth. Every moment here is a gift from paradise.</p>
+        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.6;">© 2026 Vanuatu Travel Blog | Built with ❤️ for Dreamers</p>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.lang-btn').classList.add('active');
+            
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            
+            // Show selected language content
+            document.querySelectorAll('[id$="-' + lang + '"]').forEach(el => el.classList.add('active'));
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.city-card, .info-item, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>'''
+
+# Save the file
+with open('/mnt/agents/output/vanuatu_travel_guide.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("File saved successfully!")
+print(f"File size: {len(html_content)} characters")
